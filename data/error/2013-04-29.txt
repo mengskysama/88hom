@@ -1,0 +1,15 @@
+------------------------2013-04-29 15:47:16
+错误SQL语句：
+select * from ecms_webset where lang='zh_CN' limit 1
+客户端:127.0.0.1
+时间:2013-04-29 15:47:16
+------------------------2013-04-29 15:47:40
+错误SQL语句：
+select * from ecms_webset where lang='zh_CN' limit 1
+客户端:127.0.0.1
+时间:2013-04-29 15:47:40
+------------------------2013-04-29 15:47:42
+错误SQL语句：
+select * from ecms_user where type='admin' and status='admin'  
+客户端:127.0.0.1
+时间:2013-04-29 15:47:42

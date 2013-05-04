@@ -1,0 +1,1 @@
+../../../images/web/zh_CN

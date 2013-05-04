@@ -1,0 +1,15 @@
+------------------------2013-04-23 17:08:12
+错误SQL语句：
+select  from ecms_ad_type  order by adtypeUpdateTime 
+客户端:127.0.0.1
+时间:2013-04-23 17:08:12
+------------------------2013-04-23 17:08:50
+错误SQL语句：
+select  from ecms_ad_type  order by adtypeUpdateTime desc 
+客户端:127.0.0.1
+时间:2013-04-23 17:08:50
+------------------------2013-04-23 17:21:42
+错误SQL语句：
+select  from ecms_ad_type  order by adtypeUpdateTime desc 
+客户端:127.0.0.1
+时间:2013-04-23 17:21:42

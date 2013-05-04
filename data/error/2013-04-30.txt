@@ -1,0 +1,135 @@
+------------------------2013-04-30 15:20:36
+错误SQL语句：
+select * from ecms_user where type='admin' and status='admin'  
+客户端:127.0.0.1
+时间:2013-04-30 15:20:36
+------------------------2013-04-30 15:20:44
+错误SQL语句：
+select * from ecms_webset where lang='zh_CN' limit 1
+客户端:127.0.0.1
+时间:2013-04-30 15:20:44
+------------------------2013-04-30 15:20:49
+错误SQL语句：
+select * from ecms_user where type='admin' and status='admin'  
+客户端:127.0.0.1
+时间:2013-04-30 15:20:49
+------------------------2013-04-30 15:31:36
+错误SQL语句：
+select * from ecms_user where type='admin' and status='admin'  
+客户端:127.0.0.1
+时间:2013-04-30 15:31:36
+------------------------2013-04-30 15:36:59
+错误SQL语句：
+select * from ecms_user where type='admin' and status='admin'  
+客户端:127.0.0.1
+时间:2013-04-30 15:36:59
+------------------------2013-04-30 15:37:05
+错误SQL语句：
+select * from ecms_webset where lang='zh_CN' limit 1
+客户端:127.0.0.1
+时间:2013-04-30 15:37:05
+------------------------2013-04-30 15:37:18
+错误SQL语句：
+select * from ecms_user where type='admin' and status='admin'  
+客户端:127.0.0.1
+时间:2013-04-30 15:37:18
+------------------------2013-04-30 15:51:55
+错误SQL语句：
+select * from ecms_group where group_id= and lang='zh_CN'
+客户端:127.0.0.1
+时间:2013-04-30 15:51:55
+------------------------2013-04-30 15:52:46
+错误SQL语句：
+select * from ecms_group where group_id=1 and lang='zh_CN'
+客户端:127.0.0.1
+时间:2013-04-30 15:52:46
+------------------------2013-04-30 15:59:43
+错误SQL语句：
+select * from ecms_group where group_id=1 and lang='zh_CN'
+客户端:127.0.0.1
+时间:2013-04-30 15:59:43
+------------------------2013-04-30 16:00:01
+错误SQL语句：
+select * from ecms_group where group_id=1 and lang='zh_CN'
+客户端:127.0.0.1
+时间:2013-04-30 16:00:01
+------------------------2013-04-30 16:05:33
+错误SQL语句：
+select * from ecms_group where userGroupId=1
+客户端:127.0.0.1
+时间:2013-04-30 16:05:33
+------------------------2013-04-30 16:05:35
+错误SQL语句：
+select * from ecms_group where userGroupId=1
+客户端:127.0.0.1
+时间:2013-04-30 16:05:35
+------------------------2013-04-30 16:09:52
+错误SQL语句：
+select * from ecms_group where userGroupId=1
+客户端:127.0.0.1
+时间:2013-04-30 16:09:52
+------------------------2013-04-30 16:09:54
+错误SQL语句：
+select * from ecms_group where userGroupId=1
+客户端:127.0.0.1
+时间:2013-04-30 16:09:54
+------------------------2013-04-30 16:20:52
+错误SQL语句：
+select * from ecms_webset where lang='zh_CN' limit 1
+客户端:127.0.0.1
+时间:2013-04-30 16:20:52
+------------------------2013-04-30 16:49:00
+错误SQL语句：
+select * from ecms_webset where lang='zh_CN' limit 1
+客户端:127.0.0.1
+时间:2013-04-30 16:49:00
+------------------------2013-04-30 17:01:05
+错误SQL语句：
+select * from ecms_webset where lang='zh_CN' limit 1
+客户端:127.0.0.1
+时间:2013-04-30 17:01:05
+------------------------2013-04-30 17:17:33
+错误SQL语句：
+update ecms_group set group_name='超级管理员1' where userGroupId=1
+客户端:127.0.0.1
+时间:2013-04-30 17:17:33
+------------------------2013-04-30 17:19:05
+错误SQL语句：
+update ecms_group set group_name='超级管理员1' where userGroupId=1
+客户端:127.0.0.1
+时间:2013-04-30 17:19:05
+------------------------2013-04-30 17:35:41
+错误SQL语句：
+select * from ecms_webset where lang='zh_CN' limit 1
+客户端:127.0.0.1
+时间:2013-04-30 17:35:41
+------------------------2013-04-30 17:46:13
+错误SQL语句：
+select * from ecms_webset where lang='zh_CN' limit 1
+客户端:127.0.0.1
+时间:2013-04-30 17:46:13
+------------------------2013-04-30 17:49:21
+错误SQL语句：
+select count(*) as counts from ecms_webset where lang='zh_CN'
+客户端:127.0.0.1
+时间:2013-04-30 17:49:21
+------------------------2013-04-30 17:49:21
+错误SQL语句：
+insert into ecms_webset(siteName,keywords,description,serverPhone,serverPhone1,serverFax,serverFax1,
+			  mobile,mobile1,serverQicq,serverQicq1,serverMSN,serverMSN1,serverMail,serverMail1,baiduCountJs,googleCountJs,lang) 
+			  values('','','',''
+			  ,'','','',''
+			  ,'','','',''
+			  ,'','','','','','zh_CN')
+客户端:127.0.0.1
+时间:2013-04-30 17:49:21
+------------------------2013-04-30 17:57:15
+SQL语句错误：SQL查询语句为空
+
+客户端:127.0.0.1
+时间:2013-04-30 17:57:15
+------------------------2013-04-30 17:57:15
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-04-30 17:57:15

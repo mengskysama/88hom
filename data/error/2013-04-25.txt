@@ -1,0 +1,20 @@
+------------------------2013-04-25 00:06:25
+错误SQL语句：
+insert into ecms_ad(adtypeId,adTitle,adUrl,adPic,adFiles,adLayer,adSite,adSiteDesc,adEId,adEClass,width,height,adState,adCreateTime,adUpdateTime) values(,'sdfsdf','#','','',1,0,'','','',0,0,1,1366819585,1366819585)
+客户端:127.0.0.1
+时间:2013-04-25 00:06:25
+------------------------2013-04-25 00:06:55
+错误SQL语句：
+insert into ecms_ad(adtypeId,adTitle,adUrl,adPic,adFiles,adLayer,adSite,adSiteDesc,adEId,adEClass,width,height,adState,adCreateTime,adUpdateTime) values(,'sdf','#','','',1,0,'','','',0,0,1,1366819615,1366819615)
+客户端:127.0.0.1
+时间:2013-04-25 00:06:55
+------------------------2013-04-25 00:07:29
+错误SQL语句：
+insert into ecms_ad(adtypeId,adTitle,adUrl,adPic,adFiles,adLayer,adSite,adSiteDesc,adEId,adEClass,width,height,adState,adCreateTime,adUpdateTime) values(,'sdf','#','','',1,0,'','','',0,0,1,1366819649,1366819649)
+客户端:127.0.0.1
+时间:2013-04-25 00:07:29
+------------------------2013-04-25 22:00:47
+错误SQL语句：
+update ecms_ad set adtypeId=2,adTitle='广告1',adUrl='#',adPic='1366898447.jpg',adFiles='',adLayer=1',adSite=1,adSiteDesc='广告位置1',adEId='',adEClass='',width=1000,height=200,adState=1,adUpdateTime=1366898447 where adId=1
+客户端:127.0.0.1
+时间:2013-04-25 22:00:47
