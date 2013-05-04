@@ -1,0 +1,70 @@
+RewriteEngine on
+
+#RewriteCond %{HTTP_HOST} ^szchanshen\.com$ [NC]
+#RewriteRule ^(.*)$ http://www.szchanshen.com/$1 [L,R=301]
+
+RewriteRule ^index\.htm$ index.php [L]
+
+#about
+RewriteRule ^about/index\.htm$ about/index.php [L]
+RewriteRule ^about/index-([0-9]+)\.htm$ about/index.php?t=$1 [L]
+RewriteRule ^about/sitemap\.htm$ about/sitemap.php [L]
+RewriteRule ^about/flsm\.htm$ about/flsm.php [L]
+#RewriteRule ^about/index-([0-9]+)-([0-9]+)\.htm$ about/index.php?t=$1&page=$2 [L]
+#RewriteRule ^about/d-([0-9]+)\.htm$ about/detail.php?id=$1 [L]
+
+#service
+RewriteRule ^service/index\.htm$ service/index.php [L]
+RewriteRule ^service/index-([0-9]+)\.htm$ service/index.php?t=$1 [L]
+RewriteRule ^service/dzhk\.htm$ service/dzhk.php [L]
+RewriteRule ^service/dzhk-([0-9]+)\.htm$ service/dzhk.php?page=$1 [L]
+RewriteRule ^service/ppgg\.htm$ service/ppgg.php [L]
+
+#project
+RewriteRule ^project/index\.htm$ project/index.php [L]
+RewriteRule ^project/index-([0-9]+)\.htm$ project/detail.php?t=$1 [L]
+RewriteRule ^project/pics\.htm$ project/pics.php [L]
+RewriteRule ^project/pics-([0-9]+)\.htm$ project/pics.php?id=$1 [L]
+
+#business
+RewriteRule ^business/index\.htm$ business/index.php [L]
+RewriteRule ^business/index-([0-9]+)\.htm$ business/index.php?t=$1 [L]
+
+#job
+RewriteRule ^job/index\.htm$ job/index.php [L]
+RewriteRule ^job/jobs\.htm$ job/jobs.php [L]
+RewriteRule ^job/index-([0-9]+)\.htm$ job/index.php?t=$1 [L]
+RewriteRule ^job/jobs-([0-9]+)\.htm$ job/jobs.php?page=$1 [L]
+RewriteRule ^job/jobs-([0-9]+)-([0-9]+)\.htm$ job/jobs.php?t=$1&page=$2 [L]
+
+#contact
+RewriteRule ^contact/index\.htm$ contact/index.php [L]
+RewriteRule ^contact/index-([0-9]+)\.htm$ contact/index.php?t=$1 [L]
+
+#news
+RewriteRule ^news/index\.htm$ news/index.php [L]
+RewriteRule ^news/index-([0-9]+)\.htm$ news/index.php?pageIndex=$1 [L]
+RewriteRule ^news/d-([0-9]+)\.htm$ news/detail.php?id=$1 [L]
+RewriteRule ^news/mediaLogin\.htm$ news/mediaLogin.php [L]
+RewriteRule ^news/mediaList\.htm$ news/mediaList.php [L]
+RewriteRule ^news/mediaList-([0-9]+)\.htm$ news/mediaList.php?page=$1 [L]
+
+#bbs
+RewriteRule ^bbs/index\.htm$ bbs/index.php [L]
+RewriteRule ^bbs/release\.htm$ bbs/release.php [L]
+RewriteRule ^bbs/index-([0-9]+)\.htm$ bbs/index.php?page=$1 [L]
+RewriteRule ^bbs/d-([0-9]+)\.htm$ bbs/detail.php?id=$1 [L]
+RewriteRule ^bbs/d-([0-9]+)-([0-9]+)\.htm$ bbs/detail.php?id=$1&page=$2 [L]
+
+#business
+RewriteRule ^business/index\.htm$ business/index.php [L]
+RewriteRule ^business/index-([0-9]+)\.htm$ business/index.php?t=$1 [L]
+RewriteRule ^business/index-([0-9]+)-([0-9]+)\.htm$ business/index.php?t=$1&page=$2 [L]
+RewriteRule ^business/d-([0-9]+)\.htm$ business/detail.php?id=$1 [L]
+
+#rm
+RewriteRule ^rm/index\.htm$ rm/index.php [L]
+RewriteRule ^rm/index-([0-9]+)\.htm$ rm/index.php?t=$1 [L]
+
+
+
