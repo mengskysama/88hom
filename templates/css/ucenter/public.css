@@ -36,21 +36,21 @@ a:hover {color:#f00;text-decoration: none;}
 
 /* 底部 */
 .ss_bot{ width:1000px; margin:0 auto; height:100%; border-top:1px #dfdfdf solid; overflow:hidden; clear:both;}
-.gr_bot{ width:100%; background:url(../images/grzc_20.jpg) top repeat-x; height:198px; clear:both;}
+.gr_bot{ width:100%; background:url(../../images/ucenter/grzc_20.jpg) top repeat-x; height:198px; clear:both;}
 .gr_bot1{ width:1000px; margin:0 auto; height:100%}
 .gr_bot2{ float:left; width:1000px; padding-top:20px; padding-bottom:10px; text-align:center; color:#898989; border-top:1px #dfdfdf solid; line-height:24px;}
 .c{margin-left:0px;height:40px; width:1000px; overflow:hidden; padding-top:38px; padding-bottom:35px;}
 .c div{ float:left; height:40px; line-height:20px;}
 .c a{ margin:0px 3px; text-decoration:none; color:#000;}
 .c a:hover{ color:#f00;}
-.c .s{ background-image:url(../images/s1.gif); background-repeat:no-repeat; width:1px; background-position:left center; margin:0px 20px;}
-.c .c1{ background-image:url(../images/t1.gif); background-repeat:no-repeat; background-position:0px 5px; padding-left:47px;}	
-.c .c2{ background-image:url(../images/t2.gif); background-repeat:no-repeat; background-position:0px 5px; padding-left:47px;}
-.c .c3{ background-image:url(../images/t3.gif); background-repeat:no-repeat; background-position:0px 5px; padding-left:47px;}
-.c .c4{ background-image:url(../images/t4.gif); background-repeat:no-repeat; background-position:0px 5px; padding-left:47px;}
+.c .s{ background-image:url(../../images/ucenter/s1.gif); background-repeat:no-repeat; width:1px; background-position:left center; margin:0px 20px;}
+.c .c1{ background-image:url(../../images/ucenter/t1.gif); background-repeat:no-repeat; background-position:0px 5px; padding-left:47px;}	
+.c .c2{ background-image:url(../../images/ucenter/t2.gif); background-repeat:no-repeat; background-position:0px 5px; padding-left:47px;}
+.c .c3{ background-image:url(../../images/ucenter/t3.gif); background-repeat:no-repeat; background-position:0px 5px; padding-left:47px;}
+.c .c4{ background-image:url(../../images/ucenter/t4.gif); background-repeat:no-repeat; background-position:0px 5px; padding-left:47px;}
 
 /* 个人中心头部 */
-.qg_tb{ width:100%; background:url(../images/qg_02.jpg) top repeat-x;}
+.qg_tb{ width:100%; background:url(../../images/ucenter/qg_02.jpg) top repeat-x;}
 .qg_tb1{ width:1000px; margin:0 auto;overflow:hidden}
 .qgtb{ height:30px; line-height:30px; text-align:right;color:#FFF; width:500px; float:right;}
 .qgtb a{ color:#FFF;}
@@ -58,15 +58,15 @@ a:hover {color:#f00;text-decoration: none;}
 .qg_logo{ float:left; margin-top:20px;}
 .qg_ss{ width:750px; float:right }
 .sslg{ width:164px; margin:0 auto}
-.qg_ssl{ width:560px; height:115px; background:url(../images/qg_22.jpg) left bottom no-repeat; margin-top:10px;}
+.qg_ssl{ width:560px; height:115px; background:url(../../images/ucenter/qg_22.jpg) left bottom no-repeat; margin-top:10px;}
 .qg_ssfl{ width:490px;height:35px; padding-left:70px; display:block}
 .qg_ssfl li{ width:78px; float:left; height:30px; line-height:25px; text-align:center}
 .qg_ssfl li a{ width:78px; height:30px; display:block; color:#333333;line-height:25px; }
-.qg_ssfl li a:hover{ width:78px; height:30px; background:url(../images/ssqh.jpg) center no-repeat; color:#FFF}
+.qg_ssfl li a:hover{ width:78px; height:30px; background:url(../../images/ucenter/ssqh.jpg) center no-repeat; color:#FFF}
 .qg_ssk{ width:540px; height:60px; padding:8px 10px;}
-.qg_ssk1{width:459px; height:32px; background:url(../images/qg_09.jpg) no-repeat; float:left}
+.qg_ssk1{width:459px; height:32px; background:url(../../images/ucenter/qg_09.jpg) no-repeat; float:left}
 .qg_ssk1 input{ float:left; width:400px; height:28px; margin-left:55px; line-height:28px; font-size:14px; color:#999; border:none; margin-top:2px; background:none}
-.qg_ssk2{ float:left; width:70px; height:32px; text-align:center; line-height:32px; background:url(../images/ss2.jpg) no-repeat;margin-left:10px; font-size:14px; color:#FFF}
+.qg_ssk2{ float:left; width:70px; height:32px; text-align:center; line-height:32px; background:url(../../images/ucenter/ss2.jpg) no-repeat;margin-left:10px; font-size:14px; color:#FFF}
 .qg_ssk2 a{ color:#FFF}
 .qg_ssk3{padding-top:8px; width:540px; height:24px; float:left; line-height:24px;}
 .qg_zf{margin-left:15px;}
@@ -74,10 +74,19 @@ a:hover {color:#f00;text-decoration: none;}
 
 /* 个人中心左侧 */
 .qg_main{width:1000px; margin:0 auto;padding-top:20px;overflow:hidden;padding-bottom:25px;}
-.qg_l{ width:220px; float:left; background:url(../images/qg_17.jpg) repeat-y; border-bottom:1px solid #dddddd;}
+.qg_l{ width:220px; float:left; background:url(../../images/ucenter/qg_17.jpg) repeat-y; border-bottom:1px solid #dddddd;}
 .qg_r{ width:751px; float:right;}
 .qg_zc{ width:200px; margin:0px 10px 20px 10px;}
-.qg_bt{ width:140px; background:url(../images/qg_14.jpg) top no-repeat; height:45px; line-height:45px; font-size:14px; font-weight:bolder; padding-left:80px;}
-.qg_bt1{ width:200px; background:url(../images/qg_29.jpg) center no-repeat; height:60px; line-height:60px; text-align:center; font-size:14px; font-weight:bolder; color:#FFF}
-.qg_bt11{ width:200px; background:url(../images/qg_36.jpg) center no-repeat; height:60px; line-height:60px; text-align:center; font-size:14px; font-weight:bolder; color:#FFF}
-.qg_bt2{ line-height:24px; background:url(../images/qg_33.jpg) 0 no-repeat; width:180px; text-indent:15px;margin:0px 0px 0px 20px;font-size:14px;}
+.qg_bt{ width:140px; background:url(../../images/ucenter/qg_14.jpg) top no-repeat; height:45px; line-height:45px; font-size:14px; font-weight:bolder; padding-left:80px;}
+.qg_bt1{ width:200px; background:url(../../images/ucenter/qg_29.jpg) center no-repeat; height:60px; line-height:60px; text-align:center; font-size:14px; font-weight:bolder; color:#FFF}
+.qg_bt11{ width:200px; background:url(../../images/ucenter/qg_36.jpg) center no-repeat; height:60px; line-height:60px; text-align:center; font-size:14px; font-weight:bolder; color:#FFF}
+.qg_bt2{ line-height:24px; background:url(../../images/ucenter/qg_33.jpg) 0 no-repeat; width:180px; text-indent:15px;margin:0px 0px 0px 20px;font-size:14px;}
+
+
+
+.plus_a{line-height:24px;padding-top:5px;}
+.plus_b{width:230px;height:43px;line-height:18px;padding:4px 10px 3px 13px;background:url(../../images/ucenter/title05.gif) no-repeat;color:#a8a8a8;}
+.plus_d{width:230px;height:26px;line-height:26px;padding:0px 10px 0px 13px;background:url(../../images/ucenter/title05a.gif) no-repeat;color:#a8a8a8;margin-top:6px;}
+.plus_c{width:210px;height:26px;line-height:26px;padding:0px 10px 0px 33px;background:url(../../images/ucenter/title06.gif) no-repeat;color:#a8a8a8;margin-top:6px;}
+.plus_e{width:210px;height:43px;line-height:18px;padding:4px 10px 0px 33px;background:url(../../images/ucenter/prompt01.gif) no-repeat;color:#a8a8a8;background-position:0 -95px;}
+.plus_e a{color:#0097ff;}

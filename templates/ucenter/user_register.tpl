@@ -6,6 +6,7 @@
 
 <!--{$jsFiles}-->
 <!--{$cssFiles}-->
+
 </head>
 
 <body>
@@ -15,6 +16,8 @@
     <span><a href="#">房不剩房首页</a> | <a href="#">资讯</a> |  <a href="#">新房</a> <a href="#">二手房</a> <a href="#">租房</a> | <a href="#">装修家居</a> | <a href="#">业主论坛</a></span>
 </div>
 <!--中间-->
+<form id="userRegForm" action="register.php" method="post">
+<input type="hidden" name="userType" value="3">
 <div class="gr_zj">
 	<div class="gr_b">
     	<div class="gr_dl">
@@ -22,23 +25,29 @@
             	<li class="sjzc"><a href="#">手机号码注册</a></li>
                 <li class="yxzc"><a href="#">电子邮箱注册</a></li>
             </ul>
+             <div class="other" id="div_err_msg">
+               <div class="">
+               </div>
+             </div>
             <div class="sjzc1">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
   						  <td width="105" height="30" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>账户：</td>
   						  <td height="30" class="grzc_31">
-                          	<input name="" type="text"  value="建议用手机号码注册" />
+                          	<input id="userName" name="userName" type="text" onclick="if(this.value=='建议用手机号码注册'){this.value='';}" value="建议用手机号码注册" />
+                          	
                           </td>
+                          
 		  </tr>
             <tr> 
                           <td width="105" height="35"></td>
   						  <td height="35" valign="top">
-                          	<p class="z6">6~18个字符，可使用字母、数字、下划线，需以字母开头</p>
+                          	<p class="z6">6~18个字符，可使用字母、数字、下划线</p>
                           </td>
 		  </tr>
  					 <tr>
  						 <td width="105" height="30" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>密码：</td>
-					     <td height="30"class="grzc_31"><input name="" type="text"  value="" /></td>
+					     <td height="30"class="grzc_31"><input id="userPassword" name="userPassword" type="password"  value="" /></td>
 		  </tr>
           				 <td width="105" height="35"></td>
   						  <td height="35" valign="top">
@@ -46,7 +55,7 @@
                          </td>
   					<tr>
  					    <td width="105" height="30" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>确认密码：</td>
-   					    <td height="30" class="grzc_31"><input name="" type="text"  value="" /></td>
+   					    <td height="30" class="grzc_31"><input id="confirmUserPass" name="confirmUserPass" type="password"  value="" /></td>
 	      </tr>
           				 <td width="105" height="35"></td>
   						  <td height="35" valign="top">
@@ -55,20 +64,37 @@
 				    <tr>
    					    <td width="105" height="30" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机号：</td>
  					    <td height="30">
-                        	<input name="" type="text" class="sjh"  value=""/>
-                            <input name="button2" type="submit" class="hq b0" id="button2" value="" />
+                        	<input id="userPhone" name="userPhone" type="text" class="sjh"  value=""/>
+                            <input name="button2" type="button" class="hq b0" id="button2" value="" onclick="return sendCertCode();"/>
+                            
+                                <!--验证弹出 begin -->
+                                <div id="div_mathcode" style="display: none;">
+                                        <div >
+                                            <div>
+                            					<img src='<!--{$cfg.web_code_web}-->' id='imgcode' name='imgcode'  onClick="this.src=this.src+'?op=login&'+Math.random()" style='cursor:pointer;'>;
+                                                
+                                            </div>
+                                            <div>
+                                                <input type="text" value="" maxlength="4" class="yzboxa01inp" id="txt_mathcode" />
+                                                <input type="button" class="yzboxa01but" value="确认" id="btn_mathcode" />
+                                            </div>
+                                        </div>
+ 
+                                </div>
+                                <!--验证弹出 end-->
+                            
                         </td>
 		  </tr>
  					 <tr>
   					    <td width="105" height="70" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机验证码：</td>
    					    <td height="70">
-                       	  <input name="" type="text" class="sjyz"  value=""/>
+                       	  <input id="phoneCert" name="phoneCert" type="text" class="sjyz"  value=""/>
                             <span class="yzm z6">若1分钟后仍未收到验证码短信，<a href="#">请点此重发</a><br /> 若无法收到验证短信，请使用<a href="#">电子邮箱注册</a></span>
                         </td>
 		  </tr>
 					  <tr>
   						  <td height="30" colspan="2" align="right" valign="middle">
-                          <div class="zcjz"><input name="" type="checkbox" value="" class="message_t01" /><span class="message_t02">同意"<a href="#">服务条款</a>"和"<a href="#">隐私权相关政策</a>"</span></div>
+                          <div class="zcjz"><input name="agreement" type="checkbox" value="" class="message_t01" /><span class="message_t02">同意"<a href="#">服务条款</a>"和"<a href="#">隐私权相关政策</a>"</span></div>
                           </td>
 		  </tr>
  					 <tr>
@@ -82,6 +108,7 @@
         </div>
     </div>
 </div>
+</form>
 <!--底部-->
 <div class="gr_bot">
 	<div class="gr_bot1">

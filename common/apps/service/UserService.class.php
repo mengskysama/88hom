@@ -6,7 +6,7 @@ class UserService{
 		$this->db=$db;
 		$this->userDAO=new UserDAO($db);
 	}
-	//¸ù¾ÝÓÃ»§Ãû»ñÈ¡ÓÃ»§ÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	public function getUserByUserName($username){
 		$result=$this->userDAO->getUserByUserName($username);
 		if(null==$result||$result==''){
@@ -15,7 +15,34 @@ class UserService{
 			return $result;
 		}
 	}
-	//¸ù¾ÝID»ñÈ¡ÓÃ»§ÐÅÏ¢
+	public function getUserByUserPhone($userPhone){
+		$result=$this->userDAO->getUserByUserPhone($userPhone);
+		if(null==$result||$result==''){
+			return '';
+		}else{
+			return $result;
+		}
+	}
+	
+	public function isValidCertCode($userPhone,$vcode){
+		$result=$this->userDAO->isValidCertCode($userPhone,$vcode);
+		if(null==$result||$result==''){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+	public function saveCertCode($userPhone,$certCode){
+		$result=$this->userDAO->saveCertCode($userPhone,$certCode);
+		if(null==$result||$result==''){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+	//ï¿½ï¿½ï¿½IDï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	public function getUserById($id){
 		$result=$this->userDAO->getUserById($id);
 		if(null==$result||$result==''){
@@ -25,7 +52,7 @@ class UserService{
 		}
 	}
 	
-	//»ñÈ¡ÓÃ»§ÐÅÏ¢ÁÐ±í
+	//ï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½Ð±ï¿½
 	public function getUserList($where,$order,$limit){
 		$result=$this->userDAO->getUserList($where,$order,$limit);
 		if(!empty($result)){
@@ -35,12 +62,12 @@ class UserService{
 		}
 		return $result;
 	}
-	//»ñÈ¡ÓÃ»§×ÜÊý
+	//ï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
 	public function countUser($where){
 		return $this->userDAO->countUser($where);
 	}
 	/**
-	 * ¸ù¾ÝID¸ü¸ÄÐÅÏ¢×´Ì¬
+	 * ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ï¿½Ï¢×´Ì¬
 	 * @access public
 	 * @param int $state ×´Ì¬
 	 * @param int $id
@@ -49,10 +76,10 @@ class UserService{
 	public function changeState($state,$id){
 		$msg=true;
 		$result=$this->userDAO->changeState($state,$id);
-		if($result<0)$msg='ÐÅÏ¢×´Ì¬¸ü¸ÄÊ§°Ü£¡';
+		if($result<0)$msg='ï¿½ï¿½Ï¢×´Ì¬ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½';
 		return $msg;
 	}
-	//ºóÌ¨ÓÃ»§µÇ³ö
+	//ï¿½ï¿½Ì¨ï¿½Ã»ï¿½ï¿½Ç³ï¿½
 	public function getAdminLoginOut($msg=NULL){
 		global $cfg,$html;
 		$_SESSION['Admin_User']='';
@@ -61,61 +88,61 @@ class UserService{
 		$html->gotoFrame($cfg['web_url'].'admin/index.php',$msg);
 		//header('location:'.$cfg['web_url'].'admin/index.php');
 	}
-	//¼ì²éºóÌ¨ÓÃ»§µÇÂ¼ÊÇ·ñ¹ýÆÚ
+	//ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½Ã»ï¿½ï¿½ï¿½Â¼ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
 	public function checkAdminUserExpired(){
 		if(isset($_SESSION['Admin_User'])&&!empty($_SESSION['Admin_User'])){
 			$user=$_SESSION['Admin_User'];
 			$time=time()-$user['time'];
 			if($time>7200){
-				$this->getAdminLoginOut('µÇÂ¼ÒÑ¹ýÆÚ£¬ÇëÖØÐÂµÇÂ¼!');
+				$this->getAdminLoginOut('ï¿½ï¿½Â¼ï¿½Ñ¹ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼!');
 			}else{
 				$user['time']=time();
 				$_SESSION['Admin_User']=$user;
 			}
 		}else{
-			$this->getAdminLoginOut('µÇÂ¼ÒÑ¹ýÆÚ£¬ÇëÖØÐÂµÇÂ¼!');
+			$this->getAdminLoginOut('ï¿½ï¿½Â¼ï¿½Ñ¹ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼!');
 		}
 	}
-	//·¢²¼ºóÌ¨¹ÜÀí×éÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public function releaseGroup($group){
 		$msg=true;
 		$checkUnique=$this->userDAO->checkGroupUnique($group['groupName']);
 		if(!empty($checkUnique) && $checkUnique['counts']>0){
-			$msg='¹ÜÀí×é±ðÃû³Æ²»¿ÉÖØ¸´£¡';
+			$msg='ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½';
 		}else{
 			$result=$this->userDAO->releaseGroup($group);
-			if($result<0)$msg='Ìí¼Ó¹ÜÀí×éÊ§°Ü£¡';
+			if($result<0)$msg='ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½';
 		}
 		return $msg;
 	}
-	//ÐÞ¸ÄºóÌ¨¹ÜÀí×é±ðÐÅÏ¢
+	//ï¿½Þ¸Äºï¿½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public function saveGroup($group){
 		$msg=true;
 		$resultGroup=$this->userDAO->getGroupDetailById($group['id']);
 		if($group['groupName']==$resultGroup['groupName']){
 			$result=$this->userDAO->saveGroup($group);
-			if($result<0)$msg='¹ÜÀí×é±ðÐÞ¸ÄÊ§°Ü£¡';
+			if($result<0)$msg='ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½Ê§ï¿½Ü£ï¿½';
 		}else{
 			$checkUnique=$this->userDAO->checkGroupUnique($group['groupName']);
 			if(!empty($checkUnique) && $checkUnique['counts']>0){
-				$msg='¹ÜÀí×é±ðÃû³Æ²»¿ÉÖØ¸´£¡';
+				$msg='ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½';
 			}else{
 				$result=$this->userDAO->saveGroup($group);
-				if($result<0)$msg='¹ÜÀí×é±ðÐÞ¸ÄÊ§°Ü£¡';
+				if($result<0)$msg='ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½Ê§ï¿½Ü£ï¿½';
 			}
 		}
 		return $msg;
 	}
 	/**
-	 * »ñÈ¡×é±ðÏêÇé
-	 * @param string $id ÐÅÏ¢ID
+	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @param string $id ï¿½ï¿½Ï¢ID
 	 * @return array
 	 */
 	public function getGroupDetailById($id) {
 		return $this->userDAO->getGroupDetailById($id);
 	}
 	/**
-	 * »ñÈ¡×é±ðÁÐ±í
+	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 	 * @access public
 	 * @return array
 	 */
@@ -123,7 +150,7 @@ class UserService{
 		return $this->userDAO->getGroupList();
 	}
 	/**
-	 * ·¢²¼ÓÃ»§×é±ðÈ¨ÏÞ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½
 	 * @access public
 	 * @return array
 	 */
@@ -176,22 +203,22 @@ class UserService{
 		fclose($fp);
 	}
 	/**
-	 * ·¢²¼ÓÃ»§
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	 * @access public
 	 * @return array
 	 */
 	public function releaseSystemUser($user){
 		$msg=true;
-		$this->db->begin();//ÊÂÎñ¿ªÊ¼
+		$this->db->begin();//ï¿½ï¿½ï¿½ï¿½Ê¼
 		try {
 			$checkUnique=$this->userDAO->checkUsersUnique($user['username']);
 			if(!empty($checkUnique) && $checkUnique['counts']>0){
-				throw new Exception('ÓÃ»§ÃûÒÑ¾­´æÔÚ£¡');
+				throw new Exception('ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ú£ï¿½');
 			}else{
 				$user['password']=sysAuth($user['password']);
 				$result=$this->userDAO->release($user);
 				if($result<0){
-					throw new Exception('Ìí¼ÓÏµÍ³ÓÃ»§Ê§°Ü£¡');
+					throw new Exception('ï¿½ï¿½ï¿½ÏµÍ³ï¿½Ã»ï¿½Ê§ï¿½Ü£ï¿½');
 				}else{
 					$userId=$this->db->getInsertNum();
 					$group=require ECMS_PATH_CONF.'system/group_'.$user['groupId'].'.php';
@@ -200,43 +227,43 @@ class UserService{
 					fclose($fp);
 				}
 			}
-			$this->db->commit();//ÊÂÎñÌá½»
+			$this->db->commit();//ï¿½ï¿½ï¿½ï¿½ï¿½á½»
 		}catch (Exception $e) {
 			$msg=$e->getMessage();
-			$this->db->rollback();//ÊÂÎñ»Ø¹ö
+			$this->db->rollback();//ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½
 		}
-		$this->db->end();//ÊÂÎñ½áÊø
+		$this->db->end();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return $msg;
 	}
 	public function saveSystemUser($user){
 		$msg=true;
-		$this->db->begin();//ÊÂÎñ¿ªÊ¼
+		$this->db->begin();//ï¿½ï¿½ï¿½ï¿½Ê¼
 		try {
 			$user['password']=sysAuth($user['password']);
 			$result=$this->userDAO->save($user);
 			if($result<0){
-				throw new Exception('ÐÞ¸ÄÐÅÏ¢Ê§°Ü£¡');
+				throw new Exception('ï¿½Þ¸ï¿½ï¿½ï¿½Ï¢Ê§ï¿½Ü£ï¿½');
 			}else{
 				$group=require ECMS_PATH_CONF.'system/group_'.$user['groupId'].'.php';
 				$fp = fopen(ECMS_PATH_CONF . 'system/user_' . $user['id'] . '.php', 'w');
 				fputs($fp, '<?php return '.var_export($group, true) . '; ?>');
 				fclose($fp);
 			}
-			$this->db->commit();//ÊÂÎñÌá½»
+			$this->db->commit();//ï¿½ï¿½ï¿½ï¿½ï¿½á½»
 		}catch (Exception $e) {
 			$msg=$e->getMessage();
-			$this->db->rollback();//ÊÂÎñ»Ø¹ö
+			$this->db->rollback();//ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½
 		}
-		$this->db->end();//ÊÂÎñ½áÊø
+		$this->db->end();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return $msg;
 	}
 	public function delById($id){
 		$msg=true;
 		$result=$this->userDAO->del($id);
-		if($result<0)$msg='ÐÅÏ¢É¾³ýÊ§°Ü£¡';
+		if($result<0)$msg='ï¿½ï¿½Ï¢É¾ï¿½ï¿½Ê§ï¿½Ü£ï¿½';
 		return $msg;
 	}
-	//ÐÞ¸ÄÏµÍ³ÓÃ»§È¨ÏÞ
+	//ï¿½Þ¸ï¿½ÏµÍ³ï¿½Ã»ï¿½È¨ï¿½ï¿½
 	public function releaseSystemUserPermissions($user,$id){
 		$msg=true;
 		$sysUser=$this->getUserById($id);
@@ -257,7 +284,7 @@ class UserService{
 			}
 			fclose($fp);
 		}else{
-			$msg='Ã»ÓÐ´ËÓÃ»§ÐÅÏ¢';
+			$msg='Ã»ï¿½Ð´ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢';
 		}
 		return $msg;
 	}
@@ -270,7 +297,7 @@ class UserService{
 		if(!empty($checkUnique) && $checkUnique['counts']>0){
 			$result=$this->userDAO->saveWebSet($webset);
 			if($result<0){
-				$msg='ÐÞ¸ÄÍøÕ¾ÅäÖÃÊ§°Ü£¡';
+				$msg='ï¿½Þ¸ï¿½ï¿½ï¿½Õ¾ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½';
 			}else{
 				$webset=$this->getWebSet();
 				$this->userDAO->cacheWebSet($webset);
@@ -278,7 +305,7 @@ class UserService{
 		}else{
 			$result=$this->userDAO->releaseWebSet($webset);
 			if($result<0){
-				$msg='ÐÂ½¨ÍøÕ¾ÅäÖÃÊ§°Ü£¡';
+				$msg='ï¿½Â½ï¿½ï¿½ï¿½Õ¾ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½';
 			}else{
 				$webset=$this->getWebSet();
 				$this->userDAO->cacheWebSet($webset);
@@ -289,34 +316,34 @@ class UserService{
 	public function editpwd($userId,$pwd){
 		$msg=true;
 		$result=$this->userDAO->editpwd($userId,$pwd);
-		if($result<0)$msg='ÃÜÂëÐÞ¸Ä´íÎó£¡';
+		if($result<0)$msg='ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Ä´ï¿½ï¿½ï¿½';
 		return $msg;
 	}
 	/**
-	 * ·¢²¼WEBÓÃ»§
+	 * ï¿½ï¿½ï¿½ï¿½WEBï¿½Ã»ï¿½
 	 * @access public
 	 * @return array
 	 */
 	public function releaseWebUser($webUser){
 		$msg=true;
-		$this->db->begin();//ÊÂÎñ¿ªÊ¼
+		$this->db->begin();//ï¿½ï¿½ï¿½ï¿½Ê¼
 		try {
 			$checkUnique=$this->userDAO->checkWebUsersUnique($webUser['username']);
 			if(!empty($checkUnique) && $checkUnique['counts']>0){
-				throw new Exception('ÓÃ»§ÃûÒÑ¾­´æÔÚ£¡');
+				throw new Exception('ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ú£ï¿½');
 			}else{
 				$webUser['password']=sysAuth($webUser['password'],'ENCODE',ECMS_KEY_WEB);
 				$result=$this->userDAO->releaseWebUser($webUser);
 				if($result<0){
-					throw new Exception('ÓÃ»§×¢²áÊ§°Ü£¡');
+					throw new Exception('ï¿½Ã»ï¿½×¢ï¿½ï¿½Ê§ï¿½Ü£ï¿½');
 				}
 			}
-			$this->db->commit();//ÊÂÎñÌá½»
+			$this->db->commit();//ï¿½ï¿½ï¿½ï¿½ï¿½á½»
 		}catch (Exception $e) {
 			$msg=$e->getMessage();
-			$this->db->rollback();//ÊÂÎñ»Ø¹ö
+			$this->db->rollback();//ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½
 		}
-		$this->db->end();//ÊÂÎñ½áÊø
+		$this->db->end();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return $msg;
 	}
 	public function getWebUserById($id){
@@ -339,14 +366,14 @@ class UserService{
 		$msg=true;
 		$user=$this->getWebUserByUserName($webUser['username']);
 		if(empty($user)){
-			$msg='ÓÃ»§Ãû²»´æÔÚ£¡';
+			$msg='ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½';
 		}else{
 			if($webUser['password']==sysAuth($user['password'],'DECODE',ECMS_KEY_WEB)){
 				$user['time']=time();
 				$_SESSION['Web_Login']='webLoginOn';
 				$_SESSION['Web_User']=$user;
 			}else{
-				$msg='ÃÜÂë´íÎó!';
+				$msg='ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!';
 			}
 		}
 		return $msg;
@@ -364,7 +391,7 @@ class UserService{
 		$webUser['password']=sysAuth($webUser['password'],'ENCODE',ECMS_KEY_WEB);
 		$result=$this->userDAO->saveWebUser($webUser);
 		if($result<0){
-			$msg='ÐÞ¸Ä»ù±¾ÐÅÏ¢Ê§°Ü£¡';
+			$msg='ï¿½Þ¸Ä»ï¿½ï¿½ï¿½Ï¢Ê§ï¿½Ü£ï¿½';
 		}
 		return $msg;
 	}
@@ -377,13 +404,13 @@ class UserService{
 	public function changeWebUserState($id,$state){
 		$msg=true;
 		$result=$this->userDAO->changeWebUserState($id,$state);
-		if($result<0)$msg='²Ù×÷Ê§°Ü£¡';
+		if($result<0)$msg='ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½';
 		return $msg;
 	}
 	public function delWebUserById($id){
 		$msg=true;
 		$result=$this->userDAO->delWebUserById($id);
-		if($result<0)$msg='É¾³ýÊ§°Ü£¡';
+		if($result<0)$msg='É¾ï¿½ï¿½Ê§ï¿½Ü£ï¿½';
 		return $msg;
 	}
 }

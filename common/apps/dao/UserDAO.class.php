@@ -5,7 +5,7 @@ class UserDAO{
 		$this->db=$db;
 	}
 	/**
-	 * ¸ù¾İusername»ñÈ¡ÓÃ»§ĞÅÏ¢
+	 * ï¿½ï¿½ï¿½usernameï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	 * @param string $username 
 	 * @access public
 	 * @return array
@@ -14,8 +14,27 @@ class UserDAO{
 		$sql="select * from ecms_user where userUsername='$username'";
 		return $this->db->getQueryValue($sql);
 	}
+	
+	public function getUserByUserPhone($userPhone){
+		$sql = "select * from ecms_user where userPhone='".$userPhone."'";
+		return $this->db->getQueryValue($sql);
+	}
+	
+	public function isValidCertCode($userPhoe,$vcode){
+		$sql = "select id from ecms_register_phone_cert_code where phone='".$userPhone."' and cert_code=".$vcode." and cert_code_status=1";
+		return $this->db->getQueryValue($sql);
+	}
+	
+	public function saveCertCode($userPhone,$vcode){
+		$sql = "update ecms_register_phone_cert_code set cert_code_status=0 where phone='".$userPhone."' and cert_code_status=1";
+		$this->db->getQueryExecute($sql);
+		
+		$sql = "insert into ecms_register_phone_cert_code(phone,cert_code,cert_code_status,create_time) values('".$userPhone."',".$vcode.",1,now())";
+		return $this->db->getQueryExecute($sql);
+	}
+	
 	/**
-	 * ¸ù¾İid»ñÈ¡ÓÃ»§ĞÅÏ¢
+	 * ï¿½ï¿½ï¿½idï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	 * @param string $username 
 	 * @access public
 	 * @return array
@@ -25,7 +44,7 @@ class UserDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	/**
-	 * »ñÈ¡ÓÃ»§ĞÅÏ¢ÁĞ±í
+	 * ï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½Ğ±ï¿½
 	 * @param array $user 
 	 * @access public
 	 * @return array
@@ -39,7 +58,7 @@ class UserDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	/**
-	 * ¸ù¾İID¸ü¸ÄĞÅÏ¢×´Ì¬
+	 * ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ï¿½Ï¢×´Ì¬
 	 * @access public
 	 * @param int $state ×´Ì¬
 	 * @param int $id
@@ -50,7 +69,7 @@ class UserDAO{
 		return $this->db->getQueryExecute($sql);
 	}
 	/**
-	 * ·¢²¼ÓÃ»§ĞÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	 * @param array $user 
 	 * @access public
 	 * @return array
@@ -77,7 +96,7 @@ class UserDAO{
 		return $this->db->getQueryExecute($sql);
 	}
 	/**
-	 * ·¢²¼¹ÜÀíÓÃ»§×éĞÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 * @param array $user 
 	 * @access public
 	 * @return array
@@ -87,7 +106,7 @@ class UserDAO{
 		return $this->db->getQueryExecute($sql);
 	}
 	/**
-	 * ĞŞ¸Ä¹ÜÀíÓÃ»§×éĞÅÏ¢
+	 * ï¿½Ş¸Ä¹ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 * @param array $user 
 	 * @access public
 	 * @return array
@@ -97,8 +116,8 @@ class UserDAO{
 		return $this->db->getQueryExecute($sql);
 	}
 	/**
-	 * »ñÈ¡×é±ğÏêÇé
-	 * @param string $id ĞÅÏ¢ID
+	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @param string $id ï¿½ï¿½Ï¢ID
 	 * @return array
 	 */
 	public function getGroupDetailById($id) {
@@ -106,7 +125,7 @@ class UserDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	/**
-	 * »ñÈ¡×é±ğÁĞ±í
+	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½
 	 * @access public
 	 * @return array
 	 */
@@ -115,8 +134,8 @@ class UserDAO{
 		return $this->db->getQueryArray($sql);
 	}
 	/**
-	 * ¼ì²é¹ÜÀí×é±ğÎ¨Ò»ĞÔ
-	 * @param int $info ×ÖµäÏîĞÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¨Ò»ï¿½ï¿½
+	 * @param int $info ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 * @return string
 	 **/
 	public function checkGroupUnique($groupName) {
@@ -124,8 +143,8 @@ class UserDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	/**
-	 * ¼ì²éÏµÍ³ÓÃ»§ÕËºÅÎ¨Ò»ĞÔ
-	 * @param int $info ×ÖµäÏîĞÅÏ¢
+	 * ï¿½ï¿½ï¿½ÏµÍ³ï¿½Ã»ï¿½ï¿½Ëºï¿½Î¨Ò»ï¿½ï¿½
+	 * @param int $info ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 * @return string
 	 **/
 	public function checkUsersUnique($userName) {
@@ -133,8 +152,8 @@ class UserDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	/**
-	 * »ñÈ¡webÍøÕ¾ÅäÖÃ
-	 * @param int $info ×ÖµäÏîĞÅÏ¢
+	 * ï¿½ï¿½È¡webï¿½ï¿½Õ¾ï¿½ï¿½ï¿½ï¿½
+	 * @param int $info ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 * @return string
 	 **/
 	public function getWebSet(){
@@ -186,8 +205,8 @@ class UserDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	/**
-	 * ¼ì²éWEBÓÃ»§ÕËºÅÎ¨Ò»ĞÔ
-	 * @param int $info ×ÖµäÏîĞÅÏ¢
+	 * ï¿½ï¿½ï¿½WEBï¿½Ã»ï¿½ï¿½Ëºï¿½Î¨Ò»ï¿½ï¿½
+	 * @param int $info ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 * @return string
 	 **/
 	public function checkWebUsersUnique($userName) {

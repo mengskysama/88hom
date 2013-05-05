@@ -1,0 +1,20 @@
+------------------------2013-05-05 22:10:25
+错误SQL语句：
+insert into ecms_register_phone_cert_code(phone,cert_code,cert_code_status,create_time) values('15986605675',900518,1,now())
+客户端:127.0.0.1
+时间:2013-05-05 22:10:25
+------------------------2013-05-05 22:12:13
+错误SQL语句：
+insert into ecms_register_phone_cert_code(phone,cert_code,cert_code_status,create_time) values('15986605675',705374,1,now())
+客户端:127.0.0.1
+时间:2013-05-05 22:12:13
+------------------------2013-05-05 22:12:30
+错误SQL语句：
+insert into ecms_register_phone_cert_code(phone,cert_code,cert_code_status,create_time) values('15986605674',254989,1,now())
+客户端:127.0.0.1
+时间:2013-05-05 22:12:30
+------------------------2013-05-05 22:14:06
+错误SQL语句：
+insert into ecms_register_phone_cert_code(phone,cert_code,cert_code_status,create_time) values('15986605675',687136,1,now())
+客户端:127.0.0.1
+时间:2013-05-05 22:14:06

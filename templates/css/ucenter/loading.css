@@ -43,6 +43,10 @@ input{color:#CCC;}
 .zc_r{ width:123px; float:right}
 .zc_r img{ margin-bottom:5px;}
 
+/*注册页面通用*/
+.pw_failure{float:left;width:20px;height:16px;margin-top:13px;background:url(../../images/ucenter/tipicon.png) no-repeat 0 -17px;}
+.pw_success{float:left;width:20px;height:16px;margin-top:13px;background:url(../../images/ucenter/tipicon.png) no-repeat 0 -33px;}
+
 /*个人注册页面*/
 .gr_zj{ background:#f2efeb; width:100%; border-top:1px #ba202a solid; overflow:hidden}
 .gr_b{ width:1000px; margin:0 auto;height:553px; background:url(../../images/ucenter/grzc_11.jpg) right bottom no-repeat;}

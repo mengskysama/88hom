@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-05-03 22:54:13
+<?php /* Smarty version Smarty-3.1.8, created on 2013-05-05 15:43:59
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_register.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:187565183ceffcb09a2-61316980%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9dbd38769ea73e1e17f9b6c9fa2ee217bebe6a70' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_register.tpl',
-      1 => 1367592834,
+      1 => 1367739836,
       2 => 'file',
     ),
   ),
@@ -35,6 +35,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
+
 </head>
 
 <body>
@@ -52,23 +53,29 @@ ucenter/grzc_03.jpg" />
             	<li class="sjzc"><a href="#">手机号码注册</a></li>
                 <li class="yxzc"><a href="#">电子邮箱注册</a></li>
             </ul>
+             <div class="other" id="div_err_msg">
+               <div class="">
+               </div>
+             </div>
             <div class="sjzc1">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
   						  <td width="105" height="30" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>账户：</td>
   						  <td height="30" class="grzc_31">
-                          	<input name="" type="text"  value="建议用手机号码注册" />
+                          	<input id="userName" name="userName" type="text" onclick="if(this.value=='建议用手机号码注册'){this.value='';}" value="建议用手机号码注册" />
+                          	
                           </td>
+                          
 		  </tr>
             <tr> 
                           <td width="105" height="35"></td>
   						  <td height="35" valign="top">
-                          	<p class="z6">6~18个字符，可使用字母、数字、下划线，需以字母开头</p>
+                          	<p class="z6">6~18个字符，可使用字母、数字、下划线</p>
                           </td>
 		  </tr>
  					 <tr>
  						 <td width="105" height="30" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>密码：</td>
-					     <td height="30"class="grzc_31"><input name="" type="text"  value="" /></td>
+					     <td height="30"class="grzc_31"><input id="userPassword" name="userPassword" type="password"  value="" /></td>
 		  </tr>
           				 <td width="105" height="35"></td>
   						  <td height="35" valign="top">
@@ -76,7 +83,7 @@ ucenter/grzc_03.jpg" />
                          </td>
   					<tr>
  					    <td width="105" height="30" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>确认密码：</td>
-   					    <td height="30" class="grzc_31"><input name="" type="text"  value="" /></td>
+   					    <td height="30" class="grzc_31"><input id="confirmUserPass" name="confirmUserPass" type="password"  value="" /></td>
 	      </tr>
           				 <td width="105" height="35"></td>
   						  <td height="35" valign="top">
@@ -85,20 +92,38 @@ ucenter/grzc_03.jpg" />
 				    <tr>
    					    <td width="105" height="30" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机号：</td>
  					    <td height="30">
-                        	<input name="" type="text" class="sjh"  value=""/>
-                            <input name="button2" type="submit" class="hq b0" id="button2" value="" />
+                        	<input id="userPhone" name="userPhone" type="text" class="sjh"  value=""/>
+                            <input name="button2" type="button" class="hq b0" id="button2" value="" onclick="return sendCertCode();"/>
+                            
+                                <!--验证弹出 begin -->
+                                <div id="div_mathcode" style="display: none;">
+                                        <div >
+                                            <div>
+                            					<img src='<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_code_web'];?>
+' id='imgcode' name='imgcode'  onClick="this.src=this.src+'?op=login&'+Math.random()" style='cursor:pointer;'>;
+                                                
+                                            </div>
+                                            <div>
+                                                <input type="text" value="" maxlength="4" class="yzboxa01inp" id="txt_mathcode" />
+                                                <input type="button" class="yzboxa01but" value="确认" id="btn_mathcode" />
+                                            </div>
+                                        </div>
+ 
+                                </div>
+                                <!--验证弹出 end-->
+                            
                         </td>
 		  </tr>
  					 <tr>
   					    <td width="105" height="70" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机验证码：</td>
    					    <td height="70">
-                       	  <input name="" type="text" class="sjyz"  value=""/>
+                       	  <input id="phoneCert" name="phoneCert" type="text" class="sjyz"  value=""/>
                             <span class="yzm z6">若1分钟后仍未收到验证码短信，<a href="#">请点此重发</a><br /> 若无法收到验证短信，请使用<a href="#">电子邮箱注册</a></span>
                         </td>
 		  </tr>
 					  <tr>
   						  <td height="30" colspan="2" align="right" valign="middle">
-                          <div class="zcjz"><input name="" type="checkbox" value="" class="message_t01" /><span class="message_t02">同意"<a href="#">服务条款</a>"和"<a href="#">隐私权相关政策</a>"</span></div>
+                          <div class="zcjz"><input name="agreement" type="checkbox" value="" class="message_t01" /><span class="message_t02">同意"<a href="#">服务条款</a>"和"<a href="#">隐私权相关政策</a>"</span></div>
                           </td>
 		  </tr>
  					 <tr>
