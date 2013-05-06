@@ -1,5 +1,6 @@
 <?php
 require '../path.inc.php';
+require 'Constants.php';
 
 $tpl_dir = 'ucenter/';
 $smarty->caching = false;

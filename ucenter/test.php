@@ -1,4 +1,4 @@
 <?php
-echo rand(100000,999999);
+echo md5(uniqid(rand()));
 
 ?>

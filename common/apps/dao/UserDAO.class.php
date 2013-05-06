@@ -20,16 +20,27 @@ class UserDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	
-	public function isValidCertCode($userPhoe,$vcode){
-		$sql = "select id from ecms_register_phone_cert_code where phone='".$userPhone."' and cert_code=".$vcode." and cert_code_status=1";
+	public function isValidCertCode($certChannel,$vcode){
+		$sql = "select id from ecms_register_cert_code where cert_channel='".$certChannel."' and cert_code='".$vcode."' and cert_code_status=1";
 		return $this->db->getQueryValue($sql);
 	}
 	
-	public function saveCertCode($userPhone,$vcode){
-		$sql = "update ecms_register_phone_cert_code set cert_code_status=0 where phone='".$userPhone."' and cert_code_status=1";
+	public function saveCertCode($certChannel,$vcode){
+		$sql = "update ecms_register_cert_code set cert_code_status=0 where cert_channel='".$certChannel."' and cert_code_status=1";
 		$this->db->getQueryExecute($sql);
 		
-		$sql = "insert into ecms_register_phone_cert_code(phone,cert_code,cert_code_status,create_time) values('".$userPhone."',".$vcode.",1,now())";
+		$sql = "insert into ecms_register_cert_code(cert_channel,cert_code,cert_code_status,create_time) values('".$certChannel."',".$vcode.",1,now())";
+		return $this->db->getQueryExecute($sql);
+	}
+	
+	public function saveUser($user){
+		$sql = "insert into ecms_user(userUsername,userPassword,userPhone,userPhoneState,userEmail,userEmailState,userType,userGroupId,userState,userCreateTime,userUpdateTime) values(".
+				"values('".$user['userUsername']."','".$user['userPassword']."','".$user['userPhone']."',".$user['userPhoneState'].",'".$user['userEmail']."',".$user['userEmailState'].",".$user['userType'].",".$user['userGroupId'].",".$user['userState'].",now(),now()";
+		return $this->db->getInsertNum();
+	}
+	
+	public function activeUserEmail($userEmail){
+		$sql = "update ecms_user set userEmailState=1 where userEmail='".$userEmail."'";
 		return $this->db->getQueryExecute($sql);
 	}
 	

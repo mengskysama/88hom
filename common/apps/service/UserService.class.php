@@ -24,8 +24,8 @@ class UserService{
 		}
 	}
 	
-	public function isValidCertCode($userPhone,$vcode){
-		$result=$this->userDAO->isValidCertCode($userPhone,$vcode);
+	public function isValidCertCode($certChannel,$vcode){
+		$result=$this->userDAO->isValidCertCode($certChannel,$vcode);
 		if(null==$result||$result==''){
 			return false;
 		}else{
@@ -33,13 +33,21 @@ class UserService{
 		}
 	}
 	
-	public function saveCertCode($userPhone,$certCode){
-		$result=$this->userDAO->saveCertCode($userPhone,$certCode);
-		if(null==$result||$result==''){
+	public function saveCertCode($certChannel,$certCode){
+		$result=$this->userDAO->saveCertCode($certChannel,$certCode);
+		if($result<0){
 			return false;
 		}else{
 			return true;
 		}
+	}
+	
+	public function saveUser($user){
+		return $this->userDAO->saveUser($user);
+	}
+	
+	public function activeUserEmail($userEmail){
+		return $this->userDAO->activeUserEmail($userEmail);
 	}
 	
 	//���ID��ȡ�û���Ϣ

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-05-03 18:12:54
+<?php /* Smarty version Smarty-3.1.8, created on 2013-05-06 17:29:03
          compiled from "E:/workspace/projects/88hom/templates\ucenter\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:45625183520f67df85-16661246%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c97d3cc2295094cdb70d8a4f1a3e22bf84c36bfa' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\index.tpl',
-      1 => 1367575971,
+      1 => 1367804336,
       2 => 'file',
     ),
   ),
@@ -25,6 +25,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'userTagClass' => 0,
     'agentTagClass' => 0,
     'shopTagClass' => 0,
+    'regFormAction' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -67,6 +68,7 @@ ucenter/logo.jpg"></a>
                 </ul>
              </div>
          <div class="dlnr">
+         <form name="loginForm" action="login.php" method="post">
        	   <table width="100%" border="0" cellspacing="0" cellpadding="0">
  		   <tr>
    				 <td width="73" height="40" align="center" valign="middle" class="logo_4">账 户：</td>
@@ -86,11 +88,15 @@ ucenter/logo.jpg"></a>
      			<a href="#" class="wj f14">忘记密码？</a></div></td>
           </tr>
 	      </table>
+	    </form>
 	<div class="load_b f14">
 		<p>您还没有注册为<font class="red">房不剩房</font>用户？</p>
         <div class="zc">
         	<div class="zc_l">
+        	<form name="regForm" action="<?php echo $_smarty_tpl->tpl_vars['regFormAction']->value;?>
+" method="post">
         	  <input name="button" type="submit" class="zc2 b b0" id="button" value="注册" />
+        	</form>
         	</div>
              <div class="zc_r">
         <a href="#"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
