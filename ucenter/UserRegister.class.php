@@ -65,5 +65,30 @@ class UserRegister{
 		}
 		return $isValid;
 	}
+	
+	private function sendEmai($to,$userName,$userId,$vcode){
+
+		$sendMail = new SendMail();
+		$sendMail->mailer = ECMS_MAIL_MAILER;
+		$sendMail->SMTPAuth = true;
+		$sendMail->isHTML(true);
+		$sendMail->host = ECMS_MAIL_HOST;
+		$sendMail->from = ECMS_MAIL_USERNAME;
+		$sendMail->fromName = ECMS_MAIL_USERNAME;
+		$sendMail->sender = ECMS_MAIL_USERNAME;
+		$sendMail->username = ECMS_MAIL_USERNAME;
+		$sendMail->password = ECMS_MAIL_PASSWORD;
+		$sendMail->addAddress($to);
+		
+		$sendMail->subject = "欢迎注册房不剩房通行证，请验证您的邮箱";
+		$body="亲爱的用户".$userName."，您好：<br/>".
+			"感谢您注册房不剩房，点击以下链接验证您的邮箱，只需一步即可尽享房不剩房服务！<br/>".		
+			"http://www.88hom.com/email_check.php?UserID=".$userId."&VerifyCode=".$vcode."<br/>".		
+			"请在48小时内完成验证，如果无法点击上面的链接，您可以复制该地址，并粘帖在浏览器的地址栏中访问。<br/>".
+			"这只是一封系统自动发出的邮件，请不要直接回复。";
+		$sendMail->body = $body;
+		$sendMail->SMTPDebug =false;
+		$sendMail->send();
+	}
 }
 ?>
