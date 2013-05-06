@@ -30,6 +30,8 @@ $(document).ready(function() {
 
 
     $("#userRegForm").submit(function() {
+
+    	alert($("agree").checked);
         if (check()) {
 /*            var pwdRtn = encryptedString(key_to_encode, $("#userPassword").val());
             $("#userPassword").val(pwdRtn);
@@ -42,7 +44,8 @@ $(document).ready(function() {
     });
 
     $("#button2").click(function() {
-        $("#button2").attr("disabled", true);
+    	alert("hhh");
+        //$("#button2").attr("disabled", true);
         if (check()) {
             /*
         	var pwdRtn = encryptedString(key_to_encode, $("#userPassword").val());
@@ -56,18 +59,17 @@ $(document).ready(function() {
     });
 
 
-
-    jQuery("#phoneCert").blur(function() {
+    $("#phoneCert").blur(function() {
         check_code();
     });
 
 
-    jQuery("#a_sendcode").click(function() {
+    $("#a_sendcode").click(function() {
         if (jQuery("#vcode").attr("disabled") == true) {
             return;
         }
-        if (jQuery("#userPhone").val() == "") {
-            ShowWrong(jQuery("#userPhone"), "请输入手机号码", "plus_c");
+        if ($("#userPhone").val() == "") {
+            ShowWrong($("#userPhone"), "请输入手机号码", "");
             isMobileValid = false;
             return;
         }
@@ -76,7 +78,7 @@ $(document).ready(function() {
             ajax_mobile();
         }
         if (isMobileValid) {
-            sendVcode(jQuery("#userPhone").val(), jQuery("#txt_mathcode").val());
+            sendVcode($("#userPhone").val(), $("#txt_mathcode").val());
         }
         return false;
     });
@@ -86,6 +88,25 @@ $(document).ready(function() {
     });
 });
 
+function register(){
+
+    $("#button2").click(function() {
+    	alert("hhh");
+        $("#button2").attr("disabled", true);
+        if (check()) {
+            /*
+        	var pwdRtn = encryptedString(key_to_encode, $("#userPassword").val());
+            $("#userPassword").val(pwdRtn);
+            $("#confirmUserPass").val(pwdRtn);
+            */
+            document.getElementById("userRegForm").submit();
+        } else {
+            $("#button2").attr("disabled", false);
+        }
+    });
+
+	
+}
 
 function sendCertCode() {
     if ($("#userPhone").val() == "") {
@@ -141,9 +162,9 @@ function sendVcode(mobile, mathcode) {
 
 
 function refresh_code() {
-    var codefor = jQuery("#userPhone").val();
+    var codefor = $("#userPhone").val();
     var v_random = Math.round(Math.random() * 10000);
-    jQuery("#imgcode").attr("src", 'get_math_code.aspx?code=' + v_random + '&codefor=' + codefor);
+    $("#imgcode").attr("src", 'get_math_code.php?code=' + v_random + '&codefor=' + codefor);
 }
 
 //手机号输入格式检测
@@ -207,31 +228,32 @@ function ajax_mobile() {
 
 function check() {
 
-    check_pass("#userPassword");
-    check_pass1("#confirmUserPass");
+    //check_pass("#userPassword");
+    //check_pass1("#confirmUserPass");
 
-    if (jQuery("#userPhone").val() == "") {
-        ShowWrong(jQuery("#userPhone"), "请输入手机号码", "plus_c");
+    if ($("#userPhone").val() == "") {
+        ShowWrong($("#userPhone"), "请输入手机号码", "");
         isMobileValid = false;
         return;
     }
 
-    if (jQuery("#phoneCert").val() == "") {
-        ShowWrong(jQuery("#phoneCert"), "请输入手机验证码", "plus_c");
+    if ($("#phoneCert").val() == "") {
+        ShowWrong($("#phoneCert"), "请输入手机验证码", "");
         isCodeValid = false;
         return false;
     }
-
-
+/*
     if (!$("agree").checked) {
-        alert("请先选中同意《搜房服务协议》");
+        alert("请先选中同意《服务条款》和《隐私权相关政策》");
         return false;
     }
+*/
     if (!(isnamevalid && ispassvalid && ispass1valid && isCodeValid)) {
         alert("请按照页面的提示重新填写信息。");
         return false;
     }
-    return true;
+    return false;
+    //return true;
 }
 
 

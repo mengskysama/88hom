@@ -117,7 +117,7 @@ function username_result(req) {
         isNameValid = true; //用户名验证正确
         //显示成功
         ShowWrong($('#userName'), "", "");
-        closeDiv();
+        //closeDiv();
     } else {
         isNameValid = false;
         ShowWrong($('#userName'), "该用户名已被注册，请重新输入", "");

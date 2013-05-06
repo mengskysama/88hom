@@ -89,12 +89,12 @@
   					    <td width="105" height="70" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机验证码：</td>
    					    <td height="70">
                        	  <input id="phoneCert" name="phoneCert" type="text" class="sjyz"  value=""/>
-                            <span class="yzm z6">若1分钟后仍未收到验证码短信，<a href="#">请点此重发</a><br /> 若无法收到验证短信，请使用<a href="#">电子邮箱注册</a></span>
+                            <span class="yzm z6">若1分钟后仍未收到验证码短信，<a href="javascript:void(0);" id="a_sendcode">请点此重发</a><br /> 若无法收到验证短信，请使用<a href="#">电子邮箱注册</a></span>
                         </td>
 		  </tr>
 					  <tr>
   						  <td height="30" colspan="2" align="right" valign="middle">
-                          <div class="zcjz"><input name="agreement" type="checkbox" value="" class="message_t01" /><span class="message_t02">同意"<a href="#">服务条款</a>"和"<a href="#">隐私权相关政策</a>"</span></div>
+                          <div class="zcjz"><input id="agree" name="agree" type="checkbox" class="message_t01" /><span class="message_t02">同意"<a href="#">服务条款</a>"和"<a href="#">隐私权相关政策</a>"</span></div>
                           </td>
 		  </tr>
  					 <tr>

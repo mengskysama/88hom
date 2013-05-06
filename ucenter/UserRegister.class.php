@@ -22,8 +22,14 @@ class UserRegister{
 		$this->agreement = $agreement;
 	}
 	
+	private function validate(){
+		$result[0] = ERR_CODE_REGISTER_SUCCESS;
+		$result[1] = "";
+		return $result;
+	}
+	
 	public function register(){
-		$result = validate();
+		$result = $this->validate();
 		if($result[0] != ERR_CODE_REGISTER_SUCCESS){
 			return $result;
 		}
@@ -36,6 +42,8 @@ class UserRegister{
 		$user['userEmail'] = $this->userEmail;
 		$user['userEmailState'] = 0;
 		$user['userType'] = 3;
+		$user['userGroupId'] = 0;
+		$user['userState'] = 0;
 		$userService = new UserService($this->db);
 		$userId = $userService->saveUser($user);
 		
@@ -47,12 +55,7 @@ class UserRegister{
 			$mailSender = new SendMail();
 			$mailSender->send();
 		}
-	}
-	
-	private function validate(){
-		$result[0] = ERR_CODE_REGISTER_SUCCESS;
-		$result[1] = "";
-		return $result;
+		return ERR_CODE_REGISTER_SUCCESS;
 	}
 	
 	public function verifyAccount($userId,$verifyCode){

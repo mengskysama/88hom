@@ -43,7 +43,8 @@ class UserService{
 	}
 	
 	public function saveUser($user){
-		return $this->userDAO->saveUser($user);
+		$userId = $this->userDAO->saveUser($user);
+		return $userId;
 	}
 	
 	public function activeUserEmail($userEmail){
