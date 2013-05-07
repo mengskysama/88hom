@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-05-06 17:29:03
+<?php /* Smarty version Smarty-3.1.8, created on 2013-05-07 16:47:44
          compiled from "E:/workspace/projects/88hom/templates\ucenter\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:45625183520f67df85-16661246%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c97d3cc2295094cdb70d8a4f1a3e22bf84c36bfa' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\index.tpl',
-      1 => 1367804336,
+      1 => 1367916458,
       2 => 'file',
     ),
   ),
@@ -40,6 +40,53 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
+<script language="JavaScript" type="text/javascript">
+$(document).ready(function() {
+	
+	$("#loginID").focus(function() {      
+        var $inputTextVal = $(this).val();
+		if($inputTextVal == "手机号/邮箱/用户名码") {
+			$(this).val("");
+		}     
+    });
+    
+	$("#loginID").blur(function() {      
+        var $inputTextVal = $(this).val();
+		if($inputTextVal == "") {
+			$(this).val("手机号/邮箱/用户名码");
+		}     
+    });
+    
+	$("#button2").onclick(function() {      
+        var $inputTextVal = $(this).val();
+		if($inputTextVal == "") {
+			$(this).val("手机号/邮箱/用户名码");
+		}     
+    });
+    
+});
+function check_input() {
+	if($("#loginID").val() == "") {
+		alert("请填写账户名！");
+        $("#loginID").focus();
+        return false;
+	}
+    if($("#loginID").val() == "手机号/邮箱/用户名码") {
+		alert("请填写正确的账户名！");
+ 		$("#loginID").val("");
+		$("#loginPWD").val("");
+		$("#loginID").focus();
+		return false;
+	}
+	if($("#loginPWD").val() == "") {
+		alert("请填写密码！");
+		$("#loginPWD").focus();
+ 		return false;
+	}
+    return true;
+}      
+
+</script>
 </head>
 
 <body>
@@ -68,15 +115,15 @@ ucenter/logo.jpg"></a>
                 </ul>
              </div>
          <div class="dlnr">
-         <form name="loginForm" action="login.php" method="post">
+         <form name="loginForm" onsubmit="return check_input();" action="login.php" method="post">
        	   <table width="100%" border="0" cellspacing="0" cellpadding="0">
  		   <tr>
    				 <td width="73" height="40" align="center" valign="middle" class="logo_4">账 户：</td>
-   				 <td width="73" class="logo_31"><input name="" type="text"  value="手机号/邮箱/用户名码" /></td>
+   				 <td width="73" class="logo_31"><input id="loginID" name="loginID" type="text" value="手机号/邮箱/用户名码" /></td>
  		   </tr>
  		   <tr>
  			     <td width="73" height="40" align="center" valign="middle" class="logo_4">密 码：</td>
-   				 <td width="73" class="logo_31"><input name="" type="text" value="密码" /></td>
+   				 <td width="73" class="logo_31"><input id="loginPWD" name="loginPWD" type="password" value="" /></td>
  		   </tr>
  		   <tr>
    			 	 <td height="40" colspan="2" align="center" valign="middle">

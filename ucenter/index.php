@@ -25,6 +25,7 @@ $smarty->assign('userTagClass',$userTagClass);
 $smarty->assign('agentTagClass',$agentTagClass);
 $smarty->assign('shopTagClass',$shopTagClass);
 $smarty->assign('regFormAction',$regFormAction);
+$smarty->assign('userType',$userType);
 $smarty->display($tpl_name);
 
 ?>

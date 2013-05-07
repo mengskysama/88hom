@@ -25,6 +25,49 @@ class UserRegister{
 	private function validate(){
 		$result[0] = ERR_CODE_REGISTER_SUCCESS;
 		$result[1] = "";
+		
+		if($this->userName == ""){
+			$result[0] = 203;
+			$result[1] = "invalid account";
+			return $result;
+		}
+		$userService = new UserService($this->db);
+		$user = $userService->getUserByUserName($this->userName);
+		if(!empty($user)){
+			$result[0] = 201;
+			$result[1] = "the acount found";
+			return $result;
+		}
+		
+		if($this->userPassword == "" || $this->confirmUserPass == "" || $this->userPassword != $this->confirmUserPass){
+			$result[0] = 206;
+			$result[1] = "Password is incorrect";
+			return $result;
+		}
+		
+		if($this->userPhone != ""){
+			$user = $userService->getUserByUserPhone($this->userPhone);
+			if(!empty($user)){
+				$result[0] = 201;
+				$result[1] = "the phone already exist";
+				return $result;				
+			}
+		}
+		
+		if($this->userEmail != ""){
+			$user = $userService->getUserByUserEmail($this->userEmail);
+			if(!empty($user)){
+				$result[0] = 201;
+				$result[1] = "the email already exist";
+				return $result;				
+			}
+		}
+		
+		if($this->agreement != "yes"){
+			$result[0] = 207;
+			$result[1] = "do not agree the related privacy";
+			return $result;
+		}
 		return $result;
 	}
 	
@@ -50,10 +93,8 @@ class UserRegister{
 		//send the verify email if the register is by email
 		if(!empty($this->userEmail)){
 			$certCode = md5(uniqid(rand()));
-			$userService->saveCertCode($this->userEmail, $certCode);
-			
-			$mailSender = new SendMail();
-			$mailSender->send();
+			$userService->saveCertCode($this->userEmail, $certCode);			
+			$this->sendEmail($this->userEmail, $this->userName, $userId, $certCode);
 		}
 		return ERR_CODE_REGISTER_SUCCESS;
 	}
@@ -69,7 +110,7 @@ class UserRegister{
 		return $isValid;
 	}
 	
-	private function sendEmai($to,$userName,$userId,$vcode){
+	private function sendEmail($to,$userName,$userId,$vcode){
 
 		$sendMail = new SendMail();
 		$sendMail->mailer = ECMS_MAIL_MAILER;
@@ -84,11 +125,11 @@ class UserRegister{
 		$sendMail->addAddress($to);
 		
 		$sendMail->subject = "欢迎注册房不剩房通行证，请验证您的邮箱";
-		$body="亲爱的用户".$userName."，您好：<br/>".
-			"感谢您注册房不剩房，点击以下链接验证您的邮箱，只需一步即可尽享房不剩房服务！<br/>".		
-			"http://www.88hom.com/email_check.php?UserID=".$userId."&VerifyCode=".$vcode."<br/>".		
-			"请在48小时内完成验证，如果无法点击上面的链接，您可以复制该地址，并粘帖在浏览器的地址栏中访问。<br/>".
-			"这只是一封系统自动发出的邮件，请不要直接回复。";
+		$body = "亲爱的用户".$userName."，您好：<br/>".
+				"感谢您注册房不剩房，点击以下链接验证您的邮箱，只需一步即可尽享房不剩房服务！<br/>".		
+				"http://www.88hom.com/email_check.php?UserID=".$userId."&VerifyCode=".$vcode."<br/>".		
+				"请在48小时内完成验证，如果无法点击上面的链接，您可以复制该地址，并粘帖在浏览器的地址栏中访问。<br/>".
+				"这只是一封系统自动发出的邮件，请不要直接回复。";
 		$sendMail->body = $body;
 		$sendMail->SMTPDebug =false;
 		$sendMail->send();

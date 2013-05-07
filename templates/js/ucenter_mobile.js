@@ -21,7 +21,7 @@ $(document).ready(function() {
     });
 
     $("#phoneCert").focus(function() {
-        ShowWrongMobile(this, "", "");
+    	ShowWrong(this, "", "");
     });
 
     $("#phoneCert").change(function() {
@@ -31,7 +31,6 @@ $(document).ready(function() {
 
     $("#userRegForm").submit(function() {
 
-    	alert($("agree").checked);
         if (check()) {
 /*            var pwdRtn = encryptedString(key_to_encode, $("#userPassword").val());
             $("#userPassword").val(pwdRtn);
@@ -43,9 +42,8 @@ $(document).ready(function() {
         }
     });
 
-    $("#button2").click(function() {
-    	alert("hhh");
-        //$("#button2").attr("disabled", true);
+    $("#register_confirm").click(function() {
+        $("#register_confirm").prop("disabled", true);
         if (check()) {
             /*
         	var pwdRtn = encryptedString(key_to_encode, $("#userPassword").val());
@@ -54,15 +52,9 @@ $(document).ready(function() {
             */
             document.getElementById("userRegForm").submit();
         } else {
-            $("#button2").attr("disabled", false);
+            $("#register_confirm").prop("disabled", false);
         }
     });
-
-
-    $("#phoneCert").blur(function() {
-        check_code();
-    });
-
 
     $("#a_sendcode").click(function() {
         if (jQuery("#vcode").attr("disabled") == true) {
@@ -87,26 +79,6 @@ $(document).ready(function() {
         sendCertCode();
     });
 });
-
-function register(){
-
-    $("#button2").click(function() {
-    	alert("hhh");
-        $("#button2").attr("disabled", true);
-        if (check()) {
-            /*
-        	var pwdRtn = encryptedString(key_to_encode, $("#userPassword").val());
-            $("#userPassword").val(pwdRtn);
-            $("#confirmUserPass").val(pwdRtn);
-            */
-            document.getElementById("userRegForm").submit();
-        } else {
-            $("#button2").attr("disabled", false);
-        }
-    });
-
-	
-}
 
 function sendCertCode() {
     if ($("#userPhone").val() == "") {
@@ -234,7 +206,7 @@ function check() {
     if ($("#userPhone").val() == "") {
         ShowWrong($("#userPhone"), "请输入手机号码", "");
         isMobileValid = false;
-        return;
+        return false;
     }
 
     if ($("#phoneCert").val() == "") {
@@ -242,24 +214,18 @@ function check() {
         isCodeValid = false;
         return false;
     }
-/*
-    if (!$("agree").checked) {
+    
+    if (!$("#agree_ucenter").prop("checked")) {
         alert("请先选中同意《服务条款》和《隐私权相关政策》");
         return false;
     }
-*/
-    if (!(isnamevalid && ispassvalid && ispass1valid && isCodeValid)) {
+
+    if (!(isNameValid && isPassValid && isPassConfirmValid && isCodeValid)) {
         alert("请按照页面的提示重新填写信息。");
         return false;
     }
-    return false;
-    //return true;
+    return true;
 }
-
-
-
-
-
 
 function check_code(obj) {
 
@@ -279,7 +245,7 @@ function check_code(obj) {
         type: "post",
         async: false,
         url: "check_cert_code.php",
-        data: { "mobile": escape(val(($("#userPhone")))), "vcode": val(($("#phoneCert"))), "num": Math.random().toString() },
+        data: { "userPhone": escape(val(($("#userPhone")))), "vcode": val(($("#phoneCert"))), "num": Math.random().toString() },
         success: function(req) {
             if (req == "200") {
                 isCodeValid = true;  //验证码正确

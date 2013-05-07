@@ -46,6 +46,16 @@ class UserDAO{
 		return $this->db->getQueryExecute($sql);
 	}
 	
+	public function getUserByUserEmail($userEmail){
+		$sql = "select * from ecms_user where userEmail='".$userEmail."'";
+		return $this->db->getQueryValue($sql);
+	}
+	
+	public function getUserByLoginId($loginId){
+		$sql = "select * from ecms_user where userUsername='".$loginId."' or userPhone='".$loginId."' or (userEmail='".$loginId."' and userEmailState=1)";
+		return $this->db->getQueryExecute($sql);
+	}
+	
 	/**
 	 * ���id��ȡ�û���Ϣ
 	 * @param string $username 

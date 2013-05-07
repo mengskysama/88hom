@@ -27,8 +27,6 @@ if(!$result){
 }
 
 $sent = sendSMS($userPhone,$certCode);
-echo "sent->".$sent;
-return;
 if($sent){
 	echo "200";
 	return;

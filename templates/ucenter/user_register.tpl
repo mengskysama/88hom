@@ -94,12 +94,12 @@
 		  </tr>
 					  <tr>
   						  <td height="30" colspan="2" align="right" valign="middle">
-                          <div class="zcjz"><input id="agree" name="agree" type="checkbox" class="message_t01" /><span class="message_t02">同意"<a href="#">服务条款</a>"和"<a href="#">隐私权相关政策</a>"</span></div>
+                          <div class="zcjz"><input id="agree_ucenter" name="agree_ucenter" type="checkbox" class="message_t01" value="yes"/><span class="message_t02">同意"<a href="#">服务条款</a>"和"<a href="#">隐私权相关政策</a>"</span></div>
                           </td>
 		  </tr>
  					 <tr>
  						   <td height="55" colspan="2" align="right" valign="middle" class="z14">
-                           		<div class="dlmm"><input name="button2" type="submit" class="denglu" id="button2" value="立即注册" /></div>
+                           		<div class="dlmm"><input id="register_confirm" name="register_confirm" type="button" class="denglu" value="立即注册"/></div>
                            </td>
 	      </tr>
 			  </table>
