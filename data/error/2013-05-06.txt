@@ -1,0 +1,10 @@
+------------------------2013-05-06 21:59:08
+错误SQL语句：
+insert into ecms_user(userUsername,userPassword,userPhone,userPhoneState,userEmail,userEmailState,userType,userGroupId,userState,userCreateTime,userUpdateTime) values(values('laofan','4ceeVQUJUgZVUlYCBFRQAFEDVwNXAFZQUgMAXFZTCwVRAwc','15986605675',1,'',0,3,0,0,now(),now()
+客户端:127.0.0.1
+时间:2013-05-06 21:59:08
+------------------------2013-05-06 22:01:32
+错误SQL语句：
+insert into ecms_user(userUsername,userPassword,userPhone,userPhoneState,userEmail,userEmailState,userType,userGroupId,userState,userCreateTime,userUpdateTime) values('laofan','c0e2AlJWAlMFAwQHBFEBUQRXVQEFBVIEAlUFAVQDAwICV1A','15986605675',1,'',0,3,0,0,now(),now())
+客户端:127.0.0.1
+时间:2013-05-06 22:01:32

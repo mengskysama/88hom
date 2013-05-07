@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-05-05 15:43:59
+<?php /* Smarty version Smarty-3.1.8, created on 2013-05-06 23:28:08
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_register.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:187565183ceffcb09a2-61316980%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9dbd38769ea73e1e17f9b6c9fa2ee217bebe6a70' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_register.tpl',
-      1 => 1367739836,
+      1 => 1367854038,
       2 => 'file',
     ),
   ),
@@ -46,6 +46,8 @@ ucenter/grzc_03.jpg" />
     <span><a href="#">房不剩房首页</a> | <a href="#">资讯</a> |  <a href="#">新房</a> <a href="#">二手房</a> <a href="#">租房</a> | <a href="#">装修家居</a> | <a href="#">业主论坛</a></span>
 </div>
 <!--中间-->
+<form id="userRegForm" action="register.php" method="post">
+<input type="hidden" name="userType" value="3">
 <div class="gr_zj">
 	<div class="gr_b">
     	<div class="gr_dl">
@@ -118,12 +120,12 @@ ucenter/grzc_03.jpg" />
   					    <td width="105" height="70" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机验证码：</td>
    					    <td height="70">
                        	  <input id="phoneCert" name="phoneCert" type="text" class="sjyz"  value=""/>
-                            <span class="yzm z6">若1分钟后仍未收到验证码短信，<a href="#">请点此重发</a><br /> 若无法收到验证短信，请使用<a href="#">电子邮箱注册</a></span>
+                            <span class="yzm z6">若1分钟后仍未收到验证码短信，<a href="javascript:void(0);" id="a_sendcode">请点此重发</a><br /> 若无法收到验证短信，请使用<a href="#">电子邮箱注册</a></span>
                         </td>
 		  </tr>
 					  <tr>
   						  <td height="30" colspan="2" align="right" valign="middle">
-                          <div class="zcjz"><input name="agreement" type="checkbox" value="" class="message_t01" /><span class="message_t02">同意"<a href="#">服务条款</a>"和"<a href="#">隐私权相关政策</a>"</span></div>
+                          <div class="zcjz"><input id="agree" name="agree" type="checkbox" class="message_t01" /><span class="message_t02">同意"<a href="#">服务条款</a>"和"<a href="#">隐私权相关政策</a>"</span></div>
                           </td>
 		  </tr>
  					 <tr>
@@ -137,6 +139,7 @@ ucenter/grzc_03.jpg" />
         </div>
     </div>
 </div>
+</form>
 <!--底部-->
 <div class="gr_bot">
 	<div class="gr_bot1">

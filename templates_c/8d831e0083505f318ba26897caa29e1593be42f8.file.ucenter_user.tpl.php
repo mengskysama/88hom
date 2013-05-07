@@ -1,11 +1,41 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.8, created on 2013-05-07 22:07:47
+         compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\ucenter_user.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:22515189027e77ae28-05339564%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '8d831e0083505f318ba26897caa29e1593be42f8' => 
+    array (
+      0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\ucenter_user.tpl',
+      1 => 1367935663,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '22515189027e77ae28-05339564',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_5189027e7f43d1_00931818',
+  'variables' => 
+  array (
+    'cfg' => 0,
+    'jsFiles' => 0,
+    'cssFiles' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_5189027e7f43d1_00931818')) {function content_5189027e7f43d1_00931818($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
+" />
 <title>我的房不剩房</title>
 
-<!--{$jsFiles}-->
-<!--{$cssFiles}-->
+<?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
+
+<?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
+
 </head>
 
 <body>
@@ -17,7 +47,8 @@
          </span>
          <div class="logo">
          	<div class="qg_logo">
-            	<img src="<!--{$cfg.web_images}-->ucenter/qg_06.jpg">
+            	<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/qg_06.jpg">
             </div>
             <div class="qg_ss">
             	<div class="qg_ssl">
@@ -43,8 +74,10 @@
 						<select>
 							<option value="">价格范围</option>	
 						</select>
-                        <span class="qg_zf"><img src="<!--{$cfg.web_images}-->ucenter/qg_16.jpg"><a href="#">[地图找房]</a></span>
-                        <span class="qg_zf"><img src="<!--{$cfg.web_images}-->ucenter/qg_19.jpg"><a href="#">[地铁找房]</a></span>
+                        <span class="qg_zf"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/qg_16.jpg"><a href="#">[地图找房]</a></span>
+                        <span class="qg_zf"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/qg_19.jpg"><a href="#">[地铁找房]</a></span>
 </div>
         </div>
     </div>
@@ -92,11 +125,14 @@
         <div class="qgxq2">
         	<div class="zltx">
             	<div class="jr_l">
-                	<img src="<!--{$cfg.web_images}-->ucenter/jry_03.jpg" class="l">
-                    <span class="l"><img src="<!--{$cfg.web_images}-->ucenter/jry_11.jpg">修改个人资料</span>
+                	<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/jry_03.jpg" class="l">
+                    <span class="l"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/jry_11.jpg">修改个人资料</span>
                  </div>
                 <div class="jr_r">
-                	<p class="jr_r1"><b>三国乱舞</b><img src="<!--{$cfg.web_images}-->ucenter/jry_06.jpg" align="middle" class="l"><b>性别：女</b></p>
+                	<p class="jr_r1"><b>三国乱舞</b><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/jry_06.jpg" align="middle" class="l"><b>性别：女</b></p>
                     <p class="jr_r2"><b>买房：</b>找房条件（<a href="#">0</a>） 选房单（<a href="#">1</a>）浏览过房源（<a href="#">1</a>）</p>
                 <p class="jr_r2"><b>租房：</b>找房条件（<a href="#">0</a>） 选房单（<a href="#">1</a>）浏览过房源（<a href="#">1</a>）</p>
                  <p class="jr_r2">论坛（<a href="#">0</a>） 帖子（<a href="#">0</a>）</p>
@@ -129,10 +165,12 @@
                 <div class="zltx2">
                	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td width="150" height="120" align="center" valign="middle" style="border-bottom:1px dotted #dddddd"><img src="<!--{$cfg.web_images}-->ucenter/test/jry_29.jpg" width="120"></td>
+    <td width="150" height="120" align="center" valign="middle" style="border-bottom:1px dotted #dddddd"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/test/jry_29.jpg" width="120"></td>
     <td width="430" align="left" valign="middle" style="border-bottom:1px dotted #dddddd">
     	<b>信义御城 [住宅]</b>
-        <p class="z6">龙岗地铁三号线横岗站B出口<img src="<!--{$cfg.web_images}-->ucenter/jry_25.jpg"><a href="#">查看地图</a></p>
+        <p class="z6">龙岗地铁三号线横岗站B出口<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/jry_25.jpg"><a href="#">查看地图</a></p>
         <p>业主论坛(<a href="#">10407</a>) 团购人数(<a href="#">121</a>) 户型图(<a href="#">10</a>) 房源(<a href="#">1056</a>)</p>
     </td>
     <td align="left" valign="middle" style="border-bottom:1px dotted #dddddd">
@@ -142,10 +180,12 @@
     </td>
   </tr>
   <tr>
-   <td width="150" height="120" align="center" valign="middle" style="border-bottom:1px dotted #dddddd"><img src="<!--{$cfg.web_images}-->ucenter/test/jry_22.jpg" width="120"></td>
+   <td width="150" height="120" align="center" valign="middle" style="border-bottom:1px dotted #dddddd"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/test/jry_22.jpg" width="120"></td>
     <td width="430" align="left" valign="middle" style="border-bottom:1px dotted #dddddd">
     	<b>信义御城 [住宅]</b>
-        <p class="z6">龙岗地铁三号线横岗站B出口<img src="<!--{$cfg.web_images}-->ucenter/jry_25.jpg"><a href="#">查看地图</a></p>
+        <p class="z6">龙岗地铁三号线横岗站B出口<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/jry_25.jpg"><a href="#">查看地图</a></p>
         <p>业主论坛(<a href="#">10407</a>) 团购人数(<a href="#">121</a>) 户型图(<a href="#">10</a>) 房源(<a href="#">1056</a>)</p>
     </td>
     <td align="left" valign="middle" style="border-bottom:1px dotted #dddddd">
@@ -171,10 +211,12 @@
                 <div class="zltx2">
                	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td width="150" height="120" align="center" valign="middle" style="border-bottom:1px dotted #dddddd"><img src="<!--{$cfg.web_images}-->ucenter/test/jry_31.jpg" width="120"></td>
+    <td width="150" height="120" align="center" valign="middle" style="border-bottom:1px dotted #dddddd"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/test/jry_31.jpg" width="120"></td>
     <td width="430" align="left" valign="middle" style="border-bottom:1px dotted #dddddd">
     	<b>信义御城 [住宅]</b>
-        <p class="z6">龙岗地铁三号线横岗站B出口<img src="<!--{$cfg.web_images}-->ucenter/jry_25.jpg"><a href="#">查看地图</a></p>
+        <p class="z6">龙岗地铁三号线横岗站B出口<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/jry_25.jpg"><a href="#">查看地图</a></p>
         <p>业主论坛(<a href="#">10407</a>) 团购人数(<a href="#">121</a>) 户型图(<a href="#">10</a>) 房源(<a href="#">1056</a>)</p>
     </td>
     <td align="left" valign="middle" style="border-bottom:1px dotted #dddddd">
@@ -252,3 +294,4 @@
 	</div>
 </body>
 </html>
+<?php }} ?>
