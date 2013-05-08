@@ -54,10 +54,206 @@ class UserDetailDAO{
 			  where userdetailId=".$user['userdetailId'];
 		return $this->db->getQueryExecute($sql);
 	}
-	
+	//updated by Cheneil
 	public function getUserDetail($userId){
 		$sql = "select * from ecms_user_detail where userId=".$userId;
 		return $this->db->getQueryValue($sql);
 	}
+	
+	public function saveUserDetail($user){
+		$fields = "insert into ecms_user_detail(userId,";
+		$values = "values(".$user['userId'].",";
+		if(isset($user['userdetailName'])){
+			$fields .= "userdetailName,";
+			$values .= "'".$user['userdetailName']."',";
+		}
+		if(isset($user['userdetailGender'])){
+			$fields .= "userdetailGender,";
+			$values .= $user['userdetailGender'].",";
+		}
+		if(isset($user['userdetailPic'])){
+			$fields .= "userdetailPic,";
+			$values .= "'".$user['userdetailPic']."',";
+		}
+		if(isset($user['userdetailPicThumb'])){
+			$fields .= "userdetailPicThumb,";
+			$values .= "'".$user['userdetailPicThumb']."',";
+		}
+		if(isset($user['userdetailTel'])){
+			$fields .= "userdetailTel,";
+			$values .= "'".$user['userdetailTel']."',";
+		}
+		if(isset($user['userdetailAddr'])){
+			$fields .= "userdetailAddr,";
+			$values .= "'".$user['userdetailAddr']."',";
+		}
+		if(isset($user['userdetailPostCode'])){
+			$fields .= "userdetailPostCode,";
+			$values .= "'".$user['userdetailPostCode']."',";
+		}
+		if(isset($user['userdetailQQ'])){
+			$fields .= "userdetailQQ,";
+			$values .= "'".$user['userdetailQQ']."',";
+		}
+		if(isset($user['userdetailMSN'])){
+			$fields .= "userdetailMSN,";
+			$values .= "'".$user['userdetailMSN']."',";
+		}
+		if(isset($user['userdetailProvince'])){
+			$fields .= "userdetailProvince,";
+			$values .= $user['userdetailProvince'].",";
+		}
+		if(isset($user['userdetailCity'])){
+			$fields .= "userdetailCity,";
+			$values .= $user['userdetailCity'].",";
+		}
+		if(isset($user['userdetailDistrict'])){
+			$fields .= "userdetailDistrict,";
+			$values .= $user['userdetailDistrict'].",";
+		}
+		if(isset($user['userdetailArea'])){
+			$fields .= "userdetailArea,";
+			$values .= $user['userdetailArea'].",";
+		}
+		if(isset($user['cardtypeId'])){
+			$fields .= "cardtypeId,";
+			$values .= $user['cardtypeId'].",";
+		}
+		if(isset($user['imcpstoreId'])){
+			$fields .= "imcpstoreId,";
+			$values .= $user['imcpstoreId'].",";
+		}
+		
+		if(isset($user['userdetailCardNumber'])){
+			$fields .= "userdetailCardNumber,";
+			$values .= "'".$user['userdetailCardNumber']."',";
+		}
+		if(isset($user['userdetailIdCard'])){
+			$fields .= "userdetailIdCard,";
+			$values .= "'".$user['userdetailIdCard']."',";
+		}
+		if(isset($user['userdetailIdCardPic'])){
+			$fields .= "userdetailIdCardPic,";
+			$values .= "'".$user['userdetailIdCardPic']."',";
+		}
+		if(isset($user['userdetailIdCardPicThumb'])){
+			$fields .= "userdetailIdCardPicThumb,";
+			$values .= "'".$user['userdetailIdCardPicThumb']."',";
+		}
+		if(isset($user['userdetailCardPic'])){
+			$fields .= "userdetailCardPic,";
+			$values .= "'".$user['userdetailCardPic']."',";
+		}
+		if(isset($user['userdetailCardPicThumb'])){
+			$fields .= "userdetailCardPicThumb,";
+			$values .= "'".$user['userdetailCardPicThumb']."',";
+		}
+		if(isset($user['userdetailCredNumber'])){
+			$fields .= "userdetailCredNumber,";
+			$values .= "'".$user['userdetailCredNumber']."',";
+		}
+		if(isset($user['userdetailCredPic'])){
+			$fields .= "userdetailCredPic,";
+			$values .= "'".$user['userdetailCredPic']."',";
+		}
+		if(isset($user['userdetailCredPicThumb'])){
+			$fields .= "userdetailCredPicThumb,";
+			$values .= "'".$user['userdetailCredPicThumb']."',";
+		}
+		if(isset($user['userdetailState'])){
+			$fields .= "userdetailState,";
+			$values .= $user['userdetailState'].",";
+		}
+		$fields .= "userdetailCreateTime,userdetailUpdateTime)";
+		$values .= "UNIX_TIMESTAMP(),UNIX_TIMESTAMP())";
+		
+		$sql = $fields." ".$values;
+		return $this->db->getQueryExecute($sql);	
+	}
+	
+	public function updateUserDetail($user){
+
+		$fields = "update ecms_user_detail set ";
+		if(isset($user['userdetailName'])){
+			$fields .= "userdetailName='".$user['userdetailName']."',";
+		}
+		if(isset($user['userdetailGender'])){
+			$fields .= "userdetailGender=".$user['userdetailGender'].",";
+		}
+		if(isset($user['userdetailPic'])){
+			$fields .= "userdetailPic='".$user['userdetailPic']."',";
+		}
+		if(isset($user['userdetailPicThumb'])){
+			$fields .= "userdetailPicThumb='".$user['userdetailPicThumb']."',";
+		}
+		if(isset($user['userdetailTel'])){
+			$fields .= "userdetailTel='".$user['userdetailTel']."',";
+		}
+		if(isset($user['userdetailAddr'])){
+			$fields .= "userdetailAddr='".$user['userdetailAddr']."',";
+		}
+		if(isset($user['userdetailPostCode'])){
+			$fields .= "userdetailPostCode='".$user['userdetailPostCode']."',";
+		}
+		if(isset($user['userdetailQQ'])){
+			$fields .= "userdetailQQ='".$user['userdetailQQ']."',";
+		}
+		if(isset($user['userdetailMSN'])){
+			$fields .= "userdetailMSN='".$user['userdetailMSN']."',";
+		}
+		if(isset($user['userdetailProvince'])){
+			$fields .= "userdetailProvince=".$user['userdetailProvince'].",";
+		}
+		if(isset($user['userdetailCity'])){
+			$fields .= "userdetailCity=".$user['userdetailCity'].",";
+		}
+		if(isset($user['userdetailDistrict'])){
+			$fields .= "userdetailDistrict=".$user['userdetailDistrict'].",";
+		}
+		if(isset($user['userdetailArea'])){
+			$fields .= "userdetailArea=".$user['userdetailArea'].",";
+		}
+		if(isset($user['cardtypeId'])){
+			$fields .= "cardtypeId=".$user['cardtypeId'].",";
+		}
+		if(isset($user['imcpstoreId'])){
+			$fields .= "imcpstoreId=".$user['imcpstoreId'].",";
+		}
+		
+		if(isset($user['userdetailCardNumber'])){
+			$fields .= "userdetailCardNumber='".$user['userdetailCardNumber']."',";
+		}
+		if(isset($user['userdetailIdCard'])){
+			$fields .= "userdetailIdCard='".$user['userdetailIdCard']."',";
+		}
+		if(isset($user['userdetailIdCardPic'])){
+			$fields .= "userdetailIdCardPic='".$user['userdetailIdCardPic']."',";
+		}
+		if(isset($user['userdetailIdCardPicThumb'])){
+			$fields .= "userdetailIdCardPicThumb='".$user['userdetailIdCardPicThumb']."',";
+		}
+		if(isset($user['userdetailCardPic'])){
+			$fields .= "userdetailCardPic='".$user['userdetailCardPic']."',";
+		}
+		if(isset($user['userdetailCardPicThumb'])){
+			$fields .= "userdetailCardPicThumb='".$user['userdetailCardPicThumb']."',";
+		}
+		if(isset($user['userdetailCredNumber'])){
+			$fields .= "userdetailCredNumber='".$user['userdetailCredNumber']."',";
+		}
+		if(isset($user['userdetailCredPic'])){
+			$fields .= "userdetailCredPic='".$user['userdetailCredPic']."',";
+		}
+		if(isset($user['userdetailCredPicThumb'])){
+			$fields .= "userdetailCredPicThumb='".$user['userdetailCredPicThumb']."',";
+		}
+		if(isset($user['userdetailState'])){
+			$fields .= "userdetailState=".$user['userdetailState'].",";
+		}
+		$fields .= "userdetailUpdateTime=UNIX_TIMESTAMP() where userId=".$user['userId'];
+		
+		return $this->db->getQueryExecute($fields);
+	}
+	//end to update by Cheneil
 }
 ?>

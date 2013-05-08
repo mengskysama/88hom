@@ -18,6 +18,7 @@ class UserService{
 			return $result;
 		}
 	}
+	//added by Cheneil
 	public function getUserByUserPhone($userPhone){
 		$result=$this->userDAO->getUserByUserPhone($userPhone);
 		if(null==$result||$result==''){
@@ -67,8 +68,14 @@ class UserService{
 	}
 	
 	public function saveUserDetail($user){
-		return $this->userDetailDAO->release($user);
+		return $this->userDetailDAO->saveUserDetail($user);
 	}
+	
+	public function updateUserDetail($user){
+		return $this->userDetailDAO->updateUserDetail($user);
+	}
+	
+	//end to be added by Cheneil
 	
 	//���ID��ȡ�û���Ϣ
 	public function getUserById($id){
