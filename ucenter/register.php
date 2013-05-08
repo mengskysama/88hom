@@ -22,8 +22,4 @@ $result = $register->register();
 if($register == ERR_CODE_REGISTER_SUCCESS){
 	header('Location: register_success.php');
 }
-
-function getParameter($param){
-	return !empty($_POST[$param]) ? $_POST[$param] : "";
-}
 ?>

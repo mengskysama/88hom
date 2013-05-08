@@ -471,4 +471,9 @@ function extend_file($file_name)
 	 $va=count($extend)-1;
 	 return $extend[$va];
  }
+ 
+
+ function getParameter($param){
+ 	return !empty($_POST[$param]) ? $_POST[$param] : "";
+ }
 ?>

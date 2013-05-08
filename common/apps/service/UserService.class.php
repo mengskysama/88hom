@@ -2,9 +2,12 @@
 class UserService{
 	private $db=null;
 	private $userDAO=null;
+	private $userDetailDAO=null;
+	
 	public function __construct($db){
 		$this->db=$db;
 		$this->userDAO=new UserDAO($db);
+		$this->userDetailDAO=new UserDetailDAO($db);
 	}
 	//����û����ȡ�û���Ϣ
 	public function getUserByUserName($username){
@@ -57,6 +60,14 @@ class UserService{
 	
 	public function loginUCenter($loginId){
 		return $this->userDAO->getUserByLoginId($loginId);
+	}
+	
+	public function getUserDetail($userId){
+		return $this->userDAO->getUserDetail($userId);
+	}
+	
+	public function saveUserDetail($user){
+		return $this->userDetailDAO->release($user);
 	}
 	
 	//���ID��ȡ�û���Ϣ

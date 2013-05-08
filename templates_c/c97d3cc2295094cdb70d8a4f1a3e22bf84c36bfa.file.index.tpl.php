@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-05-07 16:47:44
+<?php /* Smarty version Smarty-3.1.8, created on 2013-05-08 09:17:48
          compiled from "E:/workspace/projects/88hom/templates\ucenter\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:45625183520f67df85-16661246%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c97d3cc2295094cdb70d8a4f1a3e22bf84c36bfa' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\index.tpl',
-      1 => 1367916458,
+      1 => 1367917969,
       2 => 'file',
     ),
   ),
@@ -25,6 +25,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'userTagClass' => 0,
     'agentTagClass' => 0,
     'shopTagClass' => 0,
+    'userType' => 0,
     'regFormAction' => 0,
   ),
   'has_nocache_code' => false,
@@ -116,6 +117,8 @@ ucenter/logo.jpg"></a>
              </div>
          <div class="dlnr">
          <form name="loginForm" onsubmit="return check_input();" action="login.php" method="post">
+           <input name="userType" type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['userType']->value;?>
+">
        	   <table width="100%" border="0" cellspacing="0" cellpadding="0">
  		   <tr>
    				 <td width="73" height="40" align="center" valign="middle" class="logo_4">账 户：</td>
@@ -162,6 +165,11 @@ ucenter/dl3.jpg"></a>
     	<span class="bot_l">@2013 <font color="#a0141a">房不剩房</font> 天境文化传播有限公司 <br />粤ICP证编号 B2-20130308 | 技术支持：<a href="#">城旭网络</a></span>
         <span class="bot_r"><a href="#">新房</a> | <a href="#">二手房</a> | <a href="#">家居</a> | <a href="#">社区</a> | <a href="#">关于我们</a> | <a href="#">法律条款</a> | <a href="#">广告投放</a> | <a href="#">网站地图</a><br />投诉电话：400-8888-666</span>
     </div>
+
+<script type="text/javascript">
+alert('用户不存在！');
+</script>
+
 </body>
 </html>
 <?php }} ?>

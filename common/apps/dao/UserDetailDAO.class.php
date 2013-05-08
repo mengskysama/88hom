@@ -1,5 +1,5 @@
 <?php
-class UserDAO{
+class UserDetailDAO{
 	private $db=null;
 	public function __construct($db){
 		$this->db=$db;
@@ -53,6 +53,11 @@ class UserDAO{
 			  userdetailUpdateTime=".time().",
 			  where userdetailId=".$user['userdetailId'];
 		return $this->db->getQueryExecute($sql);
+	}
+	
+	public function getUserDetail($userId){
+		$sql = "select * from ecms_user_detail where userId=".$userId;
+		return $this->db->getQueryValue($sql);
 	}
 }
 ?>

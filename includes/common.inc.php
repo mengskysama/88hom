@@ -18,6 +18,9 @@ $_GET 	 = c_addslashes($_GET);
 if(!$magic_quotes_gpc) {
 	$_FILES = c_addslashes($_FILES);
 }
+
+$cfg['arr'] = require 'arr.inc.php';
+
 //$webset=require ECMS_PATH_CONF.'web/web_'.LANG.'.cfg.php';
 $webset=require ECMS_PATH_CONF.'web/web_zh_CN.cfg.php';
 $cfg['web_keywords']='';
