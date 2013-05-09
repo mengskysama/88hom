@@ -26,7 +26,7 @@ for (i = 0; i < len; i ++){
 
 function FullP(obj){
 	for (i=0;i<P.length;i++){
-		obj.options.add(new Option(P[i],P[i]))
+		obj[0].options.add(new Option(P[i],P[i]))
 	}
 }
 
