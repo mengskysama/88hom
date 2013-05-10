@@ -51,6 +51,11 @@ class UserService{
 		return $userId;
 	}
 	
+	public function saveUser($user){
+		$userId = $this->userDAO->updateUser($user);
+		return $userId;
+	}
+	
 	public function activeUserEmail($userEmail){
 		return $this->userDAO->activeUserEmail($userEmail);
 	}
@@ -64,7 +69,7 @@ class UserService{
 	}
 	
 	public function getUserDetail($userId){
-		return $this->userDAO->getUserDetail($userId);
+		return $this->userDetailDAO->getUserDetail($userId);
 	}
 	
 	public function saveUserDetail($user){

@@ -5,7 +5,21 @@ $tpl_name = $tpl_dir.'userinfo.tpl';
 $actionType = 10; //10insert;11update
 $user = $_SESSION['UCUser'];
 $userId = $user['userId'];
+$userId = 3;
 $userName = $user['userName'];
+$realName = "";
+$rblSex = "";
+$contactPhone = "";
+$contactQQ = "";
+$contactMSN = "";
+$ddlIDCode = "";
+$IDCode = "";
+$userdetailPic = "";
+$contactAddr = "";
+$postCode = "";
+$ddlProvince = "";
+$ddlCity = "";
+$ddlDistrict = "";
 
 $userService = new UserService($db);
 $userDetail = $userService->getUserDetail($userId);
@@ -71,19 +85,22 @@ if(isset($_POST['btn_confirm'])){
 	
 }
 
+$femaleGender = ($rblSex == 1) ? "checked" : "";
+$maleGender = ($rblSex == 0) ? "checked" : "";
+
+
 $html->show();
 
 $smarty->assign('userName',$userName);
 $smarty->assign('actionType',$actionType);
-
 $smarty->assign('realName',$realName);
-$smarty->assign('rblSex',$rblSex);
+$smarty->assign('femaleGender',$femaleGender);
+$smarty->assign('maleGender',$maleGender);
 $smarty->assign('contactPhone',$contactPhone);
 $smarty->assign('contactQQ',$contactQQ);
 $smarty->assign('contactMSN',$contactMSN);
 $smarty->assign('ddlIDCode',$ddlIDCode);
 $smarty->assign('IDCode',$IDCode);
-
 $smarty->assign('userdetailPic',$userdetailPic);
 $smarty->assign('contactAddr',$contactAddr);
 $smarty->assign('postCode',$postCode);

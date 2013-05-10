@@ -1,6 +1,7 @@
 <?php
 require '../path.inc.php';
 require 'Constants.php';
+define('MESSAGE_CENTER_PAGE_SIZE',20);
 
 $tpl_dir = 'ucenter/';
 $smarty->caching = false;

@@ -20,9 +20,9 @@
          <div class="zl_b11">
         	<div class="yhzx1">
 	        <ul class="zl_dh">
-	          <li><a href="#">用户中心</a></li>
-	          <li><a href="#">安全中心</a></li>
-	          <li><a href="#">短信息中心</a></li>
+	          <li><a href="userinfo.php">用户中心</a></li>
+	          <li><a href="secure_reset_password.php">安全中心</a></li>
+	          <li><a href="message_inbox.php">短信息中心</a></li>
             </ul>
              <span class="r f14 aqtc"><a href="logout.php">[安全退出]</a></span>
              </div>
@@ -30,7 +30,7 @@
             	<div class="zl_l">
                 	<span>您好，<font class="red"><!--{$userName}--></font></span>
 <ul class="zlfl">
-                    	<li><a href="#">个人资料修改</a></li>
+                    	<li><a href="userinfo.php">个人资料修改</a></li>
                     </ul>
                 </div>
                 <div class="zl_r">
@@ -43,8 +43,8 @@
  						  <tr>
    							 <td width="120" height="48" align="right" valign="middle" class="f14 z3">性  别：</td>
  						     <td width="450">
-                                    <input name="rblSex" type="radio" value="先生" checked="checked" <!--{$femalGender}-->/>先生
-                                    <input name="rblSex" type="radio" value="女士" <!--{$femalGender}-->/>女士
+                                    <input name="rblSex" type="radio" value="1" checked="checked" <!--{$femaleGender}-->/>先生
+                                    <input name="rblSex" type="radio" value="0" <!--{$maleGender}-->/>女士
                              </td>
 </tr>
  						 <tr>

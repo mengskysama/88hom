@@ -14,7 +14,7 @@ class UserDAO{
 		$sql="select * from ecms_user where userUsername='$username'";
 		return $this->db->getQueryValue($sql);
 	}
-	
+	//added by Cheneil
 	public function getUserByUserPhone($userPhone){
 		$sql = "select * from ecms_user where userPhone='".$userPhone."'";
 		return $this->db->getQueryValue($sql);
@@ -40,6 +40,37 @@ class UserDAO{
 		$userId = $this->db->getInsertNum();
 		return $userId;
 	}
+
+	public function updateUser($user){
+		$sql = "update ecms_user set ";
+		if(isset($user['userPassword'])){
+			$sql .= "userPassword='".$user['userPassword']."',";
+		}
+		if(isset($user['userPhone'])){
+			$sql .= "userPhone='".$user['userPhone']."',";
+		}
+		if(isset($user['userPhoneState'])){
+			$sql .= "userPhoneState=".$user['userPhoneState'].",";
+		}
+		if(isset($user['userEmail'])){
+			$sql .= "userEmail='".$user['userEmail']."',";
+		}
+		if(isset($user['userEmailState'])){
+			$sql .= "userEmailState=".$user['userEmailState'].",";
+		}
+		if(isset($user['userType'])){
+			$sql .= "userType=".$user['userType'].",";
+		}
+		if(isset($user['userGroupId'])){
+			$sql .= "userGroupId=".$user['userGroupId'].",";
+		}
+		if(isset($user['userState'])){
+			$sql .= "userState=".$user['userState'].",";
+		}
+				
+		$sql .= "userUpdateTime=UNIX_TIMESTAMP where user_id=".$user['userId'];
+		return $this->db->getQueryExecute($sql);
+	}
 	
 	public function activeUserEmail($userEmail){
 		$sql = "update ecms_user set userEmailState=1 where userEmail='".$userEmail."'";
@@ -55,6 +86,7 @@ class UserDAO{
 		$sql = "select * from ecms_user where userUsername='".$loginId."' or userPhone='".$loginId."' or (userEmail='".$loginId."' and userEmailState=1)";
 		return $this->db->getQueryExecute($sql);
 	}
+	//end to be added by Cheneil
 	
 	/**
 	 * ���id��ȡ�û���Ϣ

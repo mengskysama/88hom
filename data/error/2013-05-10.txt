@@ -1,0 +1,10 @@
+------------------------2013-05-10 10:01:27
+错误SQL语句：
+select * from ecms_user_detail where userId=
+客户端:127.0.0.1
+时间:2013-05-10 10:01:27
+------------------------2013-05-10 17:05:01
+错误SQL语句：
+select messageId,messageTitle,messageContent,(select userName from ecms_user where userId=messageFromUserId) as sender,messagetypeId,messageState,messageCreateTime from ecms_message where messageToUserId= order by messageCreateTime desc 
+客户端:127.0.0.1
+时间:2013-05-10 17:05:01
