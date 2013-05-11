@@ -1,0 +1,5 @@
+------------------------2013-05-11 10:46:46
+错误SQL语句：
+select messageId,messageContent,(select userName from ecms_user where userId=messageFromUserId) as sender,messageState,from_unixtime(messageCreateTime,'%Y-%m-%d %H:%i:%s') as sentTime from ecms_message where messageToUserId=3 order by messageCreateTime desc limit 0,20
+客户端:127.0.0.1
+时间:2013-05-11 10:46:46

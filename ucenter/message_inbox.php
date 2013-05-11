@@ -1,9 +1,11 @@
 <?php
 require 'path.inc.php';
-$tpl_name = $tpl_dir.'userinfo.tpl';
+$tpl_name = $tpl_dir.'message_inbox.tpl';
 
 $user = $_SESSION['UCUser'];
 $userId = $user['userId'];
+$userName = $user['userName'];
+$userId = 3;
 
 $where = "where messageToUserId=".$userId;
 $msgType = getParameter("type");
@@ -14,7 +16,8 @@ if($msgType == 's'){
 }else if($msgType == 'z'){
 	$where = " and messagetypeId=3";
 }
-$fields = "messageId,messageContent,(select userName from ecms_user where userId=messageFromUserId) as sender,messageState,from_unixtime(messageCreateTime,'%Y-%m-%d %H:%i:%s') as sentTime";
+
+$fields = "messageId,messageContent,(select userUsername from ecms_user where userId=messageFromUserId) as sender,messageState,from_unixtime(messageCreateTime,'%Y-%m-%d %H:%i:%s') as sentTime";
 $order = "order by messageCreateTime desc";
 
 $page = getParameter("page");
@@ -25,7 +28,7 @@ $messageService = new MessageService($db);
 $totalNum = $messageService->countMessage($where);
 
 $messageList = $messageService->getMessageList($fields,$where,$order,$limit);
-$pagination = sysAdminPageInfo($totalNum,MESSAGE_CENTER_PAGE_SIZE,$page,"message_inbox.php?type=".$msgType."&page=".$page,"");
+$pagination = sysAdminPageInfo($totalNum,MESSAGE_CENTER_PAGE_SIZE,$page,"message_inbox.php?type=".$msgType."&page","");
 
 $html->show();
 

@@ -269,7 +269,7 @@ function sysAdminPageInfo($totalNum=0,$pageSize=10,$currentPage=null,$url,$param
 		$currentPage=($currentPage == null ? 1 : $currentPage);
 		//echo $totalNum.'-'.$pageSize.'-'.$currentPage.'-'.$url;
 		//总页数
-		$totalPage = $totalNum%$pageSize==0?$totalNum/$pageSize:(intval($totalNum/$pageSize)+1);
+		$totalPage = $totalNum%$pageSize;//($totalNum%$pageSize==0) ? ($totalNum/$pageSize) : (intval($totalNum/$pageSize)+1);
 		//如果当前页大于总页则取总页数,否则不变
 		$currentPage = $currentPage > $totalPage?$totalPage:$currentPage;
 		//参数
