@@ -1,16 +1,48 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.8, created on 2013-05-12 12:08:09
+         compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\message_send.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:28404518e402574a714-91650917%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '1059e55de58c6e54e32cc534c5aa9d20821ea38c' => 
+    array (
+      0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\message_send.tpl',
+      1 => 1368331681,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '28404518e402574a714-91650917',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_518e40257fe092_82265916',
+  'variables' => 
+  array (
+    'cfg' => 0,
+    'jsFiles' => 0,
+    'cssFiles' => 0,
+    'userName' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_518e40257fe092_82265916')) {function content_518e40257fe092_82265916($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
+" />
 <title>短信息-写信息</title>
-<!--{$jsFiles}-->
-<!--{$cssFiles}-->
+<?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
+
+<?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
+
 </head>
 
 <body>
 <!--头部-->
 <div class="gr_top">
-	<img src="<!--{$cfg.web_images}-->ucenter/grzc_03.jpg" />
+	<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/grzc_03.jpg" />
     <span><a href="#">房不剩房首页</a> | <a href="#">资讯</a> |  <a href="#">新房</a> <a href="#">二手房</a> <a href="#">租房</a> | <a href="#">装修家居</a> | <a href="#">业主论坛</a></span>
 </div>
 <!--中间-->
@@ -28,7 +60,8 @@
              <span class="r f14 aqtc"><a href="logout.php">[安全退出]</a></span>
              </div>
 	        <div class="zl_nr">
-	          <div class="zl_l"> <span>您好，<font class="red"><!--{$userName}--></font></span>
+	          <div class="zl_l"> <span>您好，<font class="red"><?php echo $_smarty_tpl->tpl_vars['userName']->value;?>
+</font></span>
 	            <ul class="zlfl1">
                     <li><a href="message_send.php">写短信息</a></li>
                     <li><a href="message_inbox.php">收件箱</a>
@@ -201,6 +234,72 @@
             
             GetSendCount();
             
+            function onclick(e)
+            {
+                var tofriend = $('#toSendName').val();
+                tofriend = tofriend.replace(/，/g, ",");
+                while (tofriend.indexOf(',,') > -1) {
+                    tofriend = tofriend.replace(/,,/gi, ",");
+                }
+                if (tofriend.indexOf(',') == 0) {
+                    tofriend = tofriend.substring(1, tofriend.length);
+                }
+                if (tofriend.lastIndexOf(',') == tofriend.length - 1) {
+                    tofriend = tofriend.substring(0, tofriend.length - 1);
+                }
+                if (e.target.tagName == "A") {
+                    if ($(e.target).attr("value") == 'yy2y') {
+                        ShowAlertMsg('短消息不能发送给自己!');
+                        return false;
+                    }
+                    if (tofriend == '') {
+                        $('#toSendName').val($(e.target).attr("value"));
+                    }
+                    else {
+                        var addfriend = $(e.target).attr("value");
+                        while (tofriend.indexOf(',,') > -1) {
+                            tofriend = tofriend.replace(/,,/gi, ",");
+                        }
+                        var flag = false;
+                        var strs = [];
+                        strs = tofriend.split(',');
+                        var i = 0;
+                        for (i = 0; i < strs.length; i++) {
+                            if (strs[i] == addfriend) {
+                                strs[i] = "";
+                                flag = true;
+                            }
+                        }
+                        if (flag) {
+                            tofriend = strs.join(',');
+                            ;
+                            while (tofriend.indexOf(',,') > -1) {
+                                tofriend = tofriend.replace(/,,/gi, ",");
+                            }
+                            if (tofriend.indexOf(',') == 0) {
+                                tofriend = tofriend.substring(1, tofriend.length);
+                            }
+                            if (tofriend.lastIndexOf(',') == tofriend.length - 1) {
+                                tofriend = tofriend.substring(0, tofriend.length - 1);
+                            }
+
+                            $('#toSendName').val(tofriend);
+
+                        }
+                        else {
+
+                            if (strs.length >= 5) { ShowAlertMsg('抱歉，系统每次最多发送5人!'); return false; }
+                            $('#toSendName').val(tofriend + ',' + $(e.target).attr("value"));
+                        }
+                    }
+
+                   
+                }
+            }
+            $('#friendlist,#recentflylist').click(function(e) {
+               onclick(e);
+               return false;
+            });
         });
 
 
@@ -228,13 +327,11 @@
         }
         //发送信息
         function SendMessageClick() {
-        /*
             if('False'=='False')
             {
                 ShowAlertMsg('必须通过验证才可以发送短消息!');
                 return false;
             }
-        */
             var toSendName = document.getElementById('toSendName');
             var sendcontent = $('#sendContent').val();
 
@@ -263,7 +360,7 @@
 
             var i = 0;
             for (i = 0; i < strs.length; i++){
-                if (strs[i] == '<!{$userName}-->'){
+                if (strs[i] == 'yy2y'){
                     ShowAlertMsg('短消息不能发送给自己!');
                     return false;
                 }
@@ -372,3 +469,4 @@
 	</div>
 </body>
 </html>
+<?php }} ?>
