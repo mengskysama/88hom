@@ -51,7 +51,7 @@ class UserService{
 		return $userId;
 	}
 	
-	public function saveUser($user){
+	public function updateUser($user){
 		$userId = $this->userDAO->updateUser($user);
 		return $userId;
 	}

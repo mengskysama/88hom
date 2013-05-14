@@ -44,9 +44,8 @@
                 <div class="zl_r">
                 	<div class="xx_r">
 					<div class="sjbt">
-						<h2 class="sj">收件箱</h2>
+						<h2 class="sj">发件箱</h2>
 				  </div>
-                    <div class="sjbt1"><a href="message_inbox.php">全部消息</a> | <a href="message_inbox.php?type=s">私信</a> | <a href="message_inbox.php?type=x">系统提醒</a> | <a href="message_inbox.php?type=z">站长公告</a></div>
                     <div class="sjxz">
                     	<div class="l" style="line-height:27px; margin-top:8px; height:27px;">
                         	<label>
@@ -63,7 +62,7 @@
   							<tr>
  							   <td width="35" height="40" align="center" valign="middle">&nbsp;</td>
 						      <td width="35" align="left" valign="middle">状态</td>
- 							   <td width="165" align="left" valign="middle">发件人</td>
+ 							   <td width="165" align="left" valign="middle">收件人</td>
  							   <td width="410" align="left" valign="middle">消息 </td>
   							  <td align="left" valign="middle">日期</td>
  						 </tr>
@@ -76,7 +75,7 @@
                            		<img src="<!--{$cfg.web_images}-->ucenter/xx_11.jpg">
                            </td>
  							  <td width="165" align="left" valign="middle">
-                              	<a href="#"><!--{$messageList[message].sender}--></a>
+                              	<a href="#"><!--{$messageList[message].receiver}--></a>
                               </td>
    							 <td width="410" align="left" valign="middle">
                              	<a href="message_detail.php?msgid=<!--{$messageList[message].messageId}-->"><!--{$messageList[message].messageContent}--></a>
@@ -170,7 +169,7 @@
                  }).ajaxStop(function(){
                         $(this).hide();
         });
-      	
+    
         $("#msg_table a").each(function(){
         	if($(this).attr("link")=="true"){
             	$(this).click(function(){
@@ -278,10 +277,11 @@
                 }
             }
 		});
+		
         if(msgisnull==""&&parisnull==""){
         	ShowAlert('icon_crySF2',"选项不可以为空!");
         }else{
-        	var option={action:"DelSelectedMessage",msgids:msglist,type:"i"};
+        	var option={action:"DelSelectedMessage",msgids:msglist,type:"o"};
             $.ajax({
                     url:"message_handler.php",
                     dataType:"json",

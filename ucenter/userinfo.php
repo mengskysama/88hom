@@ -1,12 +1,10 @@
 <?php
 require 'path.inc.php';
+require 'check_login.php';
+
 $tpl_name = $tpl_dir.'userinfo.tpl';
 
 $actionType = 10; //10insert;11update
-$user = $_SESSION['UCUser'];
-$userId = $user['userId'];
-$userId = 3;
-$userName = $user['userName'];
 $realName = "";
 $rblSex = "";
 $contactPhone = "";
@@ -61,26 +59,26 @@ if(isset($_POST['btn_confirm'])){
 	$userdetailPicThumb = getParameter("");
 	$userdetailState = getParameter("");
 	
-	$user['userdetailName'] = $realName;
-	$user['userdetailGender'] = $rblSex;
-	$user['userdetailTel'] = $contactPhone;
-	$user['userdetailQQ'] = $contactQQ;
-	$user['userdetailMSN'] = $contactMSN;
-	$user['cardtypeId'] = $ddlIDCode;
-	$user['userdetailCardNumber'] = $IDCode;
+	$UCUser['userdetailName'] = $realName;
+	$UCUser['userdetailGender'] = $rblSex;
+	$UCUser['userdetailTel'] = $contactPhone;
+	$UCUser['userdetailQQ'] = $contactQQ;
+	$UCUser['userdetailMSN'] = $contactMSN;
+	$UCUser['cardtypeId'] = $ddlIDCode;
+	$UCUser['userdetailCardNumber'] = $IDCode;
 
-	$user['userdetailPic'] = $userdetailPic;
-	$user['userdetailAddr'] = $contactAddr;
-	$user['userdetailPostCode'] = $postCode;
-	$user['userdetailProvince'] = $ddlProvince;
-	$user['userdetailCity'] = $ddlCity;
-	$user['userdetailDistrict'] = $ddlDistrict;
-	$user['userdetailState'] = 1;
+	$UCUser['userdetailPic'] = $userdetailPic;
+	$UCUser['userdetailAddr'] = $contactAddr;
+	$UCUser['userdetailPostCode'] = $postCode;
+	$UCUser['userdetailProvince'] = $ddlProvince;
+	$UCUser['userdetailCity'] = $ddlCity;
+	$UCUser['userdetailDistrict'] = $ddlDistrict;
+	$UCUser['userdetailState'] = 1;
 	
 	if($actionType == 10){
-		$userService->saveUserDetail($user);
+		$userService->saveUserDetail($UCUser);
 	}else if($actionType == 11){
-		$userService->updateUserDetail($user);
+		$userService->updateUserDetail($UCUser);
 	}
 	
 }

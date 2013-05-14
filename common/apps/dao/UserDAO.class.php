@@ -84,7 +84,7 @@ class UserDAO{
 	
 	public function getUserByLoginId($loginId){
 		$sql = "select * from ecms_user where userUsername='".$loginId."' or userPhone='".$loginId."' or (userEmail='".$loginId."' and userEmailState=1)";
-		return $this->db->getQueryExecute($sql);
+		return $this->db->getQueryValue($sql);
 	}
 	//end to be added by Cheneil
 	

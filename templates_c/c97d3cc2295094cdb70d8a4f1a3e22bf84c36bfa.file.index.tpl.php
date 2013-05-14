@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-05-08 09:17:48
+<?php /* Smarty version Smarty-3.1.8, created on 2013-05-13 17:53:00
          compiled from "E:/workspace/projects/88hom/templates\ucenter\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:45625183520f67df85-16661246%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c97d3cc2295094cdb70d8a4f1a3e22bf84c36bfa' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\index.tpl',
-      1 => 1367917969,
+      1 => 1368438775,
       2 => 'file',
     ),
   ),
@@ -27,6 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'shopTagClass' => 0,
     'userType' => 0,
     'regFormAction' => 0,
+    'invalidAcc' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -116,7 +117,7 @@ ucenter/logo.jpg"></a>
                 </ul>
              </div>
          <div class="dlnr">
-         <form name="loginForm" onsubmit="return check_input();" action="login.php" method="post">
+         <form name="loginForm" onsubmit="return check_input();" action="index.php" method="post">
            <input name="userType" type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['userType']->value;?>
 ">
        	   <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -167,7 +168,8 @@ ucenter/dl3.jpg"></a>
     </div>
 
 <script type="text/javascript">
-alert('用户不存在！');
+<?php echo $_smarty_tpl->tpl_vars['invalidAcc']->value;?>
+
 </script>
 
 </body>

@@ -1,16 +1,50 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.8, created on 2013-05-14 18:13:06
+         compiled from "E:/workspace/projects/88hom/templates\ucenter\message_outbox.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:113625190673eea0133-00566975%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'a081822fd82a19bcdc662a162203bcddb538f7c7' => 
+    array (
+      0 => 'E:/workspace/projects/88hom/templates\\ucenter\\message_outbox.tpl',
+      1 => 1368525850,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '113625190673eea0133-00566975',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_5190673f032920_92732944',
+  'variables' => 
+  array (
+    'cfg' => 0,
+    'jsFiles' => 0,
+    'cssFiles' => 0,
+    'userName' => 0,
+    'pagination' => 0,
+    'messageList' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_5190673f032920_92732944')) {function content_5190673f032920_92732944($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
+" />
 <title>短信息</title>
-<!--{$jsFiles}-->
-<!--{$cssFiles}-->
+<?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
+
+<?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
+
 </head>
 
 <body>
 <!--头部-->
 <div class="gr_top">
-	<img src="<!--{$cfg.web_images}-->ucenter/grzc_03.jpg" />
+	<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/grzc_03.jpg" />
     <span><a href="#">房不剩房首页</a> | <a href="#">资讯</a> |  <a href="#">新房</a> <a href="#">二手房</a> <a href="#">租房</a> | <a href="#">装修家居</a> | <a href="#">业主论坛</a></span>
 </div>
 <!--中间-->
@@ -28,7 +62,8 @@
              </div>
             <div class="zl_nr">
             	<div class="zl_l">
-                	<span>您好，<font class="red"><!--{$userName}--></font></span>
+                	<span>您好，<font class="red"><?php echo $_smarty_tpl->tpl_vars['userName']->value;?>
+</font></span>
 		  <ul class="zlfl1">
                     		<li><a href="message_send.php">写短信息</a></li>
                             <li><a href="message_inbox.php">收件箱</a>
@@ -44,9 +79,8 @@
                 <div class="zl_r">
                 	<div class="xx_r">
 					<div class="sjbt">
-						<h2 class="sj">收件箱</h2>
+						<h2 class="sj">发件箱</h2>
 				  </div>
-                    <div class="sjbt1"><a href="message_inbox.php">全部消息</a> | <a href="message_inbox.php?type=s">私信</a> | <a href="message_inbox.php?type=x">系统提醒</a> | <a href="message_inbox.php?type=z">站长公告</a></div>
                     <div class="sjxz">
                     	<div class="l" style="line-height:27px; margin-top:8px; height:27px;">
                         	<label>
@@ -55,7 +89,8 @@
                             <a href="javascript:" id="delUp" >删除</a>
                         </div>
                         <div class="r">
-                        	<!--{$pagination}-->
+                        	<?php echo $_smarty_tpl->tpl_vars['pagination']->value;?>
+
                         </div>
                     </div>
                     <div class="xxnr">
@@ -63,27 +98,56 @@
   							<tr>
  							   <td width="35" height="40" align="center" valign="middle">&nbsp;</td>
 						      <td width="35" align="left" valign="middle">状态</td>
- 							   <td width="165" align="left" valign="middle">发件人</td>
+ 							   <td width="165" align="left" valign="middle">收件人</td>
  							   <td width="410" align="left" valign="middle">消息 </td>
   							  <td align="left" valign="middle">日期</td>
  						 </tr>
- 						 <!--{section name=message loop=$messageList}-->
+ 						 <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['message'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['message']);
+$_smarty_tpl->tpl_vars['smarty']->value['section']['message']['name'] = 'message';
+$_smarty_tpl->tpl_vars['smarty']->value['section']['message']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['messageList']->value) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$_smarty_tpl->tpl_vars['smarty']->value['section']['message']['show'] = true;
+$_smarty_tpl->tpl_vars['smarty']->value['section']['message']['max'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['loop'];
+$_smarty_tpl->tpl_vars['smarty']->value['section']['message']['step'] = 1;
+$_smarty_tpl->tpl_vars['smarty']->value['section']['message']['start'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['step'] > 0 ? 0 : $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['loop']-1;
+if ($_smarty_tpl->tpl_vars['smarty']->value['section']['message']['show']) {
+    $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['total'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['loop'];
+    if ($_smarty_tpl->tpl_vars['smarty']->value['section']['message']['total'] == 0)
+        $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['show'] = false;
+} else
+    $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['total'] = 0;
+if ($_smarty_tpl->tpl_vars['smarty']->value['section']['message']['show']):
+
+            for ($_smarty_tpl->tpl_vars['smarty']->value['section']['message']['index'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['start'], $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['iteration'] = 1;
+                 $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['iteration'] <= $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['total'];
+                 $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['index'] += $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['step'], $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['iteration']++):
+$_smarty_tpl->tpl_vars['smarty']->value['section']['message']['rownum'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['iteration'];
+$_smarty_tpl->tpl_vars['smarty']->value['section']['message']['index_prev'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['index'] - $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['step'];
+$_smarty_tpl->tpl_vars['smarty']->value['section']['message']['index_next'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['index'] + $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['step'];
+$_smarty_tpl->tpl_vars['smarty']->value['section']['message']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['message']['iteration'] == 1);
+$_smarty_tpl->tpl_vars['smarty']->value['section']['message']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['message']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['total']);
+?>
 						 <tr>
    							 <td width="35" height="40" align="center" valign="middle">
-                           		  <label><input type="checkbox" value="<!--{$messageList[message].messageId}-->" ></label>
+                           		  <label><input type="checkbox" value="<?php echo $_smarty_tpl->tpl_vars['messageList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['message']['index']]['messageId'];?>
+" ></label>
                             </td>
 					 	   <td width="35" align="center" valign="middle">
-                           		<img src="<!--{$cfg.web_images}-->ucenter/xx_11.jpg">
+                           		<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/xx_11.jpg">
                            </td>
  							  <td width="165" align="left" valign="middle">
-                              	<a href="#"><!--{$messageList[message].sender}--></a>
+                              	<a href="#"><?php echo $_smarty_tpl->tpl_vars['messageList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['message']['index']]['receiver'];?>
+</a>
                               </td>
    							 <td width="410" align="left" valign="middle">
-                             	<a href="message_detail.php?msgid=<!--{$messageList[message].messageId}-->"><!--{$messageList[message].messageContent}--></a>
+                             	<a href="message_detail.php?msgid=<?php echo $_smarty_tpl->tpl_vars['messageList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['message']['index']]['messageId'];?>
+"><?php echo $_smarty_tpl->tpl_vars['messageList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['message']['index']]['messageContent'];?>
+</a>
                             </td>
-						    <td align="left" valign="middle"><!--{$messageList[message].sentTime}--></td>
+						    <td align="left" valign="middle"><?php echo $_smarty_tpl->tpl_vars['messageList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['message']['index']]['sentTime'];?>
+</td>
  						 </tr>
- 						 <!--{/section}-->
+ 						 <?php endfor; endif; ?>
 					</table>
 
                   </div>
@@ -95,7 +159,8 @@
                            <a href="javascript:" id="delDown">删除</a>
                         </div>
                         <div class="r">
-                        	<!--{$pagination}-->
+                        	<?php echo $_smarty_tpl->tpl_vars['pagination']->value;?>
+
                         </div>
                   </div>
                   </div>
@@ -170,7 +235,7 @@
                  }).ajaxStop(function(){
                         $(this).hide();
         });
-      	
+    
         $("#msg_table a").each(function(){
         	if($(this).attr("link")=="true"){
             	$(this).click(function(){
@@ -278,10 +343,11 @@
                 }
             }
 		});
+		
         if(msgisnull==""&&parisnull==""){
         	ShowAlert('icon_crySF2',"选项不可以为空!");
         }else{
-        	var option={action:"DelSelectedMessage",msgids:msglist,type:"i"};
+        	var option={action:"DelSelectedMessage",msgids:msglist,type:"o"};
             $.ajax({
                     url:"message_handler.php",
                     dataType:"json",
@@ -364,3 +430,4 @@
 	</div>
 </body>
 </html>
+<?php }} ?>

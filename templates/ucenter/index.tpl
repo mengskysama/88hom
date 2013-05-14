@@ -77,7 +77,7 @@ function check_input() {
                 </ul>
              </div>
          <div class="dlnr">
-         <form name="loginForm" onsubmit="return check_input();" action="login.php" method="post">
+         <form name="loginForm" onsubmit="return check_input();" action="index.php" method="post">
            <input name="userType" type="hidden" value="<!--{$userType}-->">
        	   <table width="100%" border="0" cellspacing="0" cellpadding="0">
  		   <tr>
@@ -124,7 +124,7 @@ function check_input() {
     </div>
 
 <script type="text/javascript">
-alert('用户不存在！');
+<!--{$invalidAcc}-->
 </script>
 
 </body>

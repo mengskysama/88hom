@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-05-07 14:50:25
+<?php /* Smarty version Smarty-3.1.8, created on 2013-05-13 17:54:12
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_register.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:12090518875df3d0932-71058284%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '77ad58856cf3f5366764eac9e85a279bc778482f' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_register.tpl',
-      1 => 1367909269,
+      1 => 1367975015,
       2 => 'file',
     ),
   ),
@@ -19,16 +19,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_518875df49d7e8_32249980',
   'variables' => 
   array (
+    'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'cfg' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_518875df49d7e8_32249980')) {function content_518875df49d7e8_32249980($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
+" />
 <title>个人注册页面</title>
 
 <?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>

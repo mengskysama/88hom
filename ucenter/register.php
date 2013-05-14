@@ -19,7 +19,7 @@ if($userType == 1){
 	$register = new UserRegister($db,$userName,$userPassword,$confirmUserPass,$userEmail,$userPhone,$phoneCert,$agreement);
 }
 $result = $register->register(); 
-if($register == ERR_CODE_REGISTER_SUCCESS){
+if($result[0] == ERR_CODE_REGISTER_SUCCESS){
 	header('Location: register_success.php');
 }
 ?>

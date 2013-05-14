@@ -264,12 +264,13 @@ function sysPageInfo($totalNum=0,$pageSize=10,$currentPage=null,$url,$params){
 		return $pageInfo;
 }
 //通用分页
+//updated by Cheneil on 14 May
 function sysAdminPageInfo($totalNum=0,$pageSize=10,$currentPage=null,$url,$params){
 		//当前页 
 		$currentPage=($currentPage == null ? 1 : $currentPage);
 		//echo $totalNum.'-'.$pageSize.'-'.$currentPage.'-'.$url;
 		//总页数
-		$totalPage = $totalNum%$pageSize;//($totalNum%$pageSize==0) ? ($totalNum/$pageSize) : (intval($totalNum/$pageSize)+1);
+		$totalPage = ($totalNum%$pageSize==0) ? ($totalNum/$pageSize) : (intval($totalNum/$pageSize)+1);
 		//如果当前页大于总页则取总页数,否则不变
 		$currentPage = $currentPage > $totalPage?$totalPage:$currentPage;
 		//参数
@@ -284,7 +285,7 @@ function sysAdminPageInfo($totalNum=0,$pageSize=10,$currentPage=null,$url,$param
 		if($pageParagraph > 1)
 			$pageInfo .= '<a class="pointer" href="'.$url.'='.(($pageParagraph - 1) * 10).'" title="前十页"><&nbsp;</a>';
 			 
-		$startPage = ($pageParagraph - 1)*10 +1 ;
+		$startPage = ($pageParagraph == 0) ? 1 : ($pageParagraph - 1)*10 +1 ;
 		$endPage = $pageParagraph*10 + 1;
 		for($i=$startPage;$i<$endPage;$i++){
 			if($i == $currentPage)
@@ -473,7 +474,48 @@ function extend_file($file_name)
  }
  
 
- function getParameter($param){
- 	return !empty($_POST[$param]) ? $_POST[$param] : "";
+ function getParameter($param, $method='POST'){
+ 	if($method == 'POST'){
+ 		return !empty($_POST[$param]) ? $_POST[$param] : "";
+ 	}else{
+ 		return !empty($_GET[$param]) ? $_GET[$param] : "";
+ 	}
+ }
+ //解码javascript的escape
+ function unescape($escstr)
+ {
+ 	preg_match_all("/%u[0-9A-Za-z]{4}|%.{2}|[0-9a-zA-Z.+-_]+/", $escstr, $matches);
+ 	$ar = &$matches[0];
+ 	$c = "";
+ 	foreach($ar as $val)
+ 	{
+ 		if (substr($val, 0, 1) != "%")
+ 		{
+ 			$c .= $val;
+ 		} elseif (substr($val, 1, 1) != "u")
+ 		{
+ 			$x = hexdec(substr($val, 1, 2));
+ 			$c .= chr($x);
+ 		}
+ 		else
+ 		{
+ 			$val = intval(substr($val, 2), 16);
+ 			if ($val < 0x7F) // 0000-007F
+ 			{
+ 				$c .= chr($val);
+ 			} elseif ($val < 0x800) // 0080-0800
+ 			{
+ 				$c .= chr(0xC0 | ($val / 64));
+ 				$c .= chr(0x80 | ($val % 64));
+ 			}
+ 			else // 0800-FFFF
+ 			{
+ 				$c .= chr(0xE0 | (($val / 64) / 64));
+ 				$c .= chr(0x80 | (($val / 64) % 64));
+ 				$c .= chr(0x80 | ($val % 64));
+ 			}
+ 		}
+ 	}
+ 	return $c;
  }
 ?>

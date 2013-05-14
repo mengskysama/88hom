@@ -1,6 +1,6 @@
 <?php
 /**
- * ÐÅÏ¢¹ÜÀíÒµÎñ²Ù×÷Àà
+ * ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  * @author David chunliumang@gmail.com
  * @version 1.0
  */
@@ -11,11 +11,11 @@ class MessageService{
 		$this->db=$db;
 		$this->messageDAO=new MessageDAO($db);
 	}
-//=================================ÐÅÏ¢²Ù×÷=============================
+//=================================ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½=============================
 	public function release($message){
 		$msg=true;
 		$result=$this->messageDAO->release($message);
-		if($result<=0)$msg='ÉêÇëÊÔÓÃÊ§°Ü£¡';
+		if($result<=0)$msg='ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½';
 		return $msg;
 	}
 	public function getMessageList($field = '*',$where='',$order='',$limit=''){
@@ -27,14 +27,19 @@ class MessageService{
 	public function changeState($state,$id){
 		$msg=true;
 		$result=$this->messageDAO->changeState($state,$id);
-		if($result<0)$msg='ÏûÏ¢×´Ì¬¸ü¸ÄÊ§°Ü£¡';
+		if($result<0)$msg='ï¿½ï¿½Ï¢×´Ì¬ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½';
 		return $msg;
 	}
 	public function delMessageById($id){
 		$msg=true;
 		$result=$this->messageDAO->delMessageById($id);
-		if($result<0)$msg='ÏûÏ¢É¾³ýÊ§°Ü£¡';
+		if($result<0)$msg='ï¿½ï¿½Ï¢É¾ï¿½ï¿½Ê§ï¿½Ü£ï¿½';
 		return $msg;
 	}
+	//added by Cheneil
+	public function updateBatchMessageState($state,$ids){
+		return $this->messageDAO->updateBatchMessageState($state,$ids);
+	}
+	//end to be added by Cheneil
 }
 ?>

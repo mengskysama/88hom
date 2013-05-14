@@ -96,7 +96,8 @@ class UserRegister{
 			$userService->saveCertCode($this->userEmail, $certCode);			
 			$this->sendEmail($this->userEmail, $this->userName, $userId, $certCode);
 		}
-		return ERR_CODE_REGISTER_SUCCESS;
+		$result[0] = ERR_CODE_REGISTER_SUCCESS;
+		return $result;
 	}
 	
 	public function verifyAccount($userId,$verifyCode){

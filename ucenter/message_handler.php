@@ -1,30 +1,83 @@
 <?php
 require 'path.inc.php';
-$user = $_SESSION['UCUser'];
-$userId = $user['userId'];
+require 'check_login.php';
 
 $action = getParameter("action");
 $messageService = new MessageService($db);
-//var option = { action: "getcount" };
+//get the amount of sent message in a day
 if($action == "getcount"){
 	$msgCountSent = $messageService->countMessage("where messageFromUserId=".$userId." and from_unixtime(messageCreateTime,'%Y-%m-%d')=date_format(now(),'%Y-%m-%d')");
-	return "{\"result\":\"".$msgCountSent."\"}";
+	echo "{\"result\":\"".$msgCountSent."\"}";
+	return;
 }
 
-// var option = { action: "sendMessage", toName: escape(namesp), content: escape(sendcontent)};
+//send message
 if($action == "sendMessage"){
-	$toName = getParameter("toName");
-	$content = getParameter("content");
+	$toName = unescape(getParameter("toName"));
+	$content = unescape(getParameter("content"));
+	
+	if($toName == ""){
+		echo "{\"err\":\"error\",\"msg\":\"请输入收件人\"}";
+		return;
+	}
+	if($content == ""){
+		echo "{\"err\":\"error\",\"msg\":\"请输入信息内容\"}";
+		return;
+	}
+	
+	$message['messageTitle'] = "";
+	$message['messageContent'] = $content;
+	$message['messageFromUserId'] = $userId;
+	$message['messagetypeId'] = 1;
+	$message['messageState'] = 0; 
+	$userService = new UserService($db);
+	$toNameArr = split(",",$toName);
+	foreach($toNameArr as $name){
+		$toUser = $userService->getUserByUserName($name);
+		if($toUser == "") continue;
+
+		$message['messageToUserId'] =$toUser['userId'];
+		$messageService->release($message);
+	}
+	echo "{\"result\":\"1\"}";
+	return;
 }
-//var option={action:"read",messageId:msgid};
+
+//update the message status to READ
 if($action == "read"){
 	$messageId = getParameter("messageId");
 	$result = $messageService->changeState(1,$messageId);
-	return $result;
+	echo "{\"result\":\"".$result."\"}";
+	return;
 }
-//var option={action:"DelSelectedMessage",msgids:msglist,parentids:parentlist};
+
+//delete the message
 if($action == "DelSelectedMessage"){
+	$msgIds = getParameter("msgids");
+	$box = getParameter("type");
+	if($msgIds == "" || $box == "" || ($box != "i" && $box != "o")){
+		echo "{\"result\":\"failure\"}";
+		return;
+	}
+	$length = strlen($msgIds);
+	if(strrpos($msgIds,",") == ($length - 1)){
+		$msgIds = substr($msgIds,0,$length-1);
+	}
 	
+	if($box == "i"){
+		$state = 3;
+	}else{
+		$state = 2;
+	}
+	
+	$result = $messageService->updateBatchMessageState($state,$msgIds);
+	if($result > 0){
+		echo "{\"result\":\"success\"}";
+		return;
+	}else{
+		echo "{\"result\":\"failure\"}";
+		return;
+	}
 }
-//
+
 ?>

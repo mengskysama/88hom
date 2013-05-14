@@ -47,6 +47,7 @@
 	                <h2 class="sj">写信息</h2>
                   </div>
 	              <div class="xxnr1">
+	              <form name="form1" id="form1" action="message_send.php" method="post">
                   		<table width="100%" border="0" cellspacing="0" cellpadding="0">
  							 <tr>
  							   <td width="80" height="60" align="right" valign="middle" class="z14 " style="font-weight:bolder">收件人：</td>
@@ -60,9 +61,8 @@
  							 </tr>
  							 <tr>
 							     <td width="80" height="60" align="right" valign="middle">&nbsp;</td>
-  							   <td><input name="button2" type="submit" class="mddl2" id="button2" value="发送" />
+  							   <td><input name="btnsendMsg" type="button" class="mddl2" id="btnsendMsg" value="发送" />
                                                 <div class="send">
-                                                    <input id="btnsendMsg" value=" " type="button" />
                                                     [按Ctrl+Enter发送]
                                                 </div></td>
 						      </tr>
@@ -73,7 +73,7 @@
   							     ②每天可发送20条短消息(您今日已发送0条)</p></td>
 					      </tr>
 						</table>
-
+				  </form>		
                   </div>
 	              
                 </div>
@@ -263,7 +263,7 @@
 
             var i = 0;
             for (i = 0; i < strs.length; i++){
-                if (strs[i] == '<!{$userName}-->'){
+                if (strs[i] == '<!--{$userName}-->'){
                     ShowAlertMsg('短消息不能发送给自己!');
                     return false;
                 }

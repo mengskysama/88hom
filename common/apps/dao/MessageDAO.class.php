@@ -11,17 +11,18 @@ class MessageDAO  {
 		$this->db=$db;
 	}
 	//发布信息
-	public function release($messageType){
+	public function release($message){
 		$sql="insert into ecms_message(messageTitle,messageContent,messageToUserId,messageFromUserId,messagetypeId,messageState,messageCreateTime,messageUpdateTime) values('"
-										.empty($messageType['messageTitle'])?'':$messageType['messageTitle']
-										."','".empty($messageType['messageContent'])?'':$messageType['messageContent']
-										."',".empty($messageType['messageToUserId'])?0:$messageType['messageToUserId']
-										.",".empty($messageType['messageFromUserId'])?0:$messageType['messageFromUserId']
-										.",".empty($messageType['messagetypeId'])?0:$messageType['messagetypeId']
-										.",".empty($messageType['messageState'])?0:$messageType['messageState']
+										.(isset($message['messageTitle'])?$message['messageTitle']:"")
+										."','".(isset($message['messageContent'])?$message['messageContent']:"")
+										."',".(isset($message['messageToUserId'])?$message['messageToUserId']:0)
+										.",".(isset($message['messageFromUserId'])?$message['messageFromUserId']:0)
+										.",".(isset($message['messagetypeId'])?$message['messagetypeId']:3)
+										.",".(isset($message['messageState'])?$message['messageState']:0)
 										.",".time()
 										.",".time()
 										.")";
+		
 			return $this->db->getQueryExecute($sql);						
 	}
 	//修改信息
@@ -39,9 +40,16 @@ class MessageDAO  {
 	}
 	//删除信息
 	public function delMessageById($id){
-		$sql="delete from  ecms_message where messageId=".$id;
+		$sql="delete from ecms_message where messageId=".$id;
 		return $this->db->getQueryExecute($sql);
 	}
+	//added by Cheneil
+	public function updateBatchMessageState($state,$ids){
+		$sql="update ecms_message set messageState=$state,messageUpdateTime=UNIX_TIMESTAMP() where messageId in(".$ids.")";
+		return $this->db->getQueryExecute($sql);
+	}
+	//end to be added by Cheneil
+	
 	/**
 	 * 获取信息
 	 * @param string $where 
@@ -76,7 +84,8 @@ class MessageDAO  {
 	}
 	public function countMessage($where = ''){
 		$sql="select count(*) as counts from ecms_message $where";
-		return $this->db->getQueryValue($sql);
+		$result = $this->db->getQueryValue($sql);
+		return $result['counts'];
 	}
 
 }

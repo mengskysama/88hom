@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-05-11 12:15:12
+<?php /* Smarty version Smarty-3.1.8, created on 2013-05-14 18:09:33
          compiled from "E:/workspace/projects/88hom/templates\ucenter\message_inbox.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:27769518db2b6902315-57491825%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5f45a6ba3d527637c6f1dcb314ed3ea335ee5b24' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\message_inbox.tpl',
-      1 => 1368245692,
+      1 => 1368525819,
       2 => 'file',
     ),
   ),
@@ -129,10 +129,12 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['last']       = ($
 ?>
 						 <tr>
    							 <td width="35" height="40" align="center" valign="middle">
-                           		  <label><input type="checkbox" id="Checkbox1" value="14" name="iptckb"></label>
+                           		  <label><input type="checkbox" value="<?php echo $_smarty_tpl->tpl_vars['messageList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['message']['index']]['messageId'];?>
+" ></label>
                             </td>
 					 	   <td width="35" align="center" valign="middle">
-                           		<img src="images/xx_11.jpg">
+                           		<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/xx_11.jpg">
                            </td>
  							  <td width="165" align="left" valign="middle">
                               	<a href="#"><?php echo $_smarty_tpl->tpl_vars['messageList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['message']['index']]['sender'];?>
@@ -225,7 +227,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['last']       = ($
 
 <script type="text/javascript">
 	$(document).ready(function() {
-	/*
+	
 		$("#sureDelSelect").jqm({ modal: true, overlay: 0 });
         $("#showMess").jqm({ modal: true, overlay: 0 });
         
@@ -234,7 +236,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['last']       = ($
                  }).ajaxStop(function(){
                         $(this).hide();
         });
-      	*/
+      	
         $("#msg_table a").each(function(){
         	if($(this).attr("link")=="true"){
             	$(this).click(function(){
@@ -314,7 +316,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['last']       = ($
                data:option,
                type: "POST", 
                success:function(msg){
-             }   
+               }   
          });       
     }
     //单击删除
@@ -345,7 +347,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['last']       = ($
         if(msgisnull==""&&parisnull==""){
         	ShowAlert('icon_crySF2',"选项不可以为空!");
         }else{
-        	var option={action:"DelSelectedMessage",msgids:msglist,parentids:parentlist};
+        	var option={action:"DelSelectedMessage",msgids:msglist,type:"i"};
             $.ajax({
                     url:"message_handler.php",
                     dataType:"json",
