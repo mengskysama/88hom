@@ -1,0 +1,1 @@
+{"appid":"100445336","appkey":"3a990c729cd8697f20cea8fda32e2b9e","callback":"http://88hom.seo7788.com/ucenter/qq_callback.php","scope":"get_user_info"}

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-05-13 17:53:00
+<?php /* Smarty version Smarty-3.1.8, created on 2013-05-15 17:46:10
          compiled from "E:/workspace/projects/88hom/templates\ucenter\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:45625183520f67df85-16661246%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c97d3cc2295094cdb70d8a4f1a3e22bf84c36bfa' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\index.tpl',
-      1 => 1368438775,
+      1 => 1368597535,
       2 => 'file',
     ),
   ),
@@ -150,8 +150,8 @@ ucenter/logo.jpg"></a>
         	</form>
         	</div>
              <div class="zc_r">
-        <a href="#"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
-ucenter/dl2.jpg"></a>
+        <a href="login_qq.php"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/Connect_logo_qq.png"></a>
         <a href="#"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
 ucenter/dl3.jpg"></a>
         	</div>
