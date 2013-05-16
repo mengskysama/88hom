@@ -22,15 +22,7 @@ $ms = $c->home_timeline(); // done
 $uid_get = $c->get_uid();
 $uid = $uid_get['uid'];
 $user_message = $c->show_user_by_id( $uid);//根据ID获取用户等基本信息
-		
-$userService = new UserService($db);
-$user = $userService->getUserByUOpenID($uid);
-if($user != ""){
-	$_SESSION['UCUser'] = $user;
-	$next_page = "";
-}else{
-	$_SESSION['weibo_uid'] = $uid;
-	$next_page = "bind_account.php";
-}
-header("Location:".$nextPage);
+
+$_SESSION['UOpenID'] = $uid;		
+header("Location:callback_handler.php");
 ?>
