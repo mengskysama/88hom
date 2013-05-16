@@ -109,7 +109,7 @@ function check_input() {
         	</div>
              <div class="zc_r">
         <a href="login_qq.php"><img src="<!--{$cfg.web_images}-->ucenter/Connect_logo_qq.png"></a>
-        <a href="#"><img src="<!--{$cfg.web_images}-->ucenter/dl3.jpg"></a>
+        <a href="login_weibo.php"><img src="<!--{$cfg.web_images}-->ucenter/dl3.jpg"></a>
         	</div>
         </div>
 	</div>
