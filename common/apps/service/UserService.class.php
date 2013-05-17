@@ -64,6 +64,10 @@ class UserService{
 		return $this->userDAO->getUserByUserEmail($userEmail);
 	}
 	
+	public function getUserByUOpenID($openID){
+		return $this->userDAO->getUserByUOpenID($openID);
+	}
+	
 	public function loginUCenter($loginId){
 		return $this->userDAO->getUserByLoginId($loginId);
 	}

@@ -86,7 +86,6 @@ if(isset($_POST['btn_confirm'])){
 $femaleGender = ($rblSex == 1) ? "checked" : "";
 $maleGender = ($rblSex == 0) ? "checked" : "";
 
-
 $html->show();
 
 $smarty->assign('userName',$userName);

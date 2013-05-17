@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-05-15 17:46:10
+<?php /* Smarty version Smarty-3.1.8, created on 2013-05-17 14:27:23
          compiled from "E:/workspace/projects/88hom/templates\ucenter\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:45625183520f67df85-16661246%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c97d3cc2295094cdb70d8a4f1a3e22bf84c36bfa' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\index.tpl',
-      1 => 1368597535,
+      1 => 1368772032,
       2 => 'file',
     ),
   ),
@@ -97,7 +97,7 @@ function check_input() {
     <a href="#" class="logo1"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
 ucenter/logo.jpg"></a>
     <span class="headerNav">
-    <a href="#">加入收藏</a> | <a href="#">设为首页</a> | <a href="#">官方微博</a><a href="#">&nbsp;&nbsp;登录注册</a>
+    <a  style="cursor:pointer" onclick="bookmarkit();" title="加入收藏夹">加入收藏</a> | <a  style="cursor:pointer" onclick="this.style.behavior=&quot;url(#default#homepage)&quot;;this.sethomepage(&quot;http://localhost/88hom/ucenter/&quot;);return false;" title="设为首页">设为首页</a> | <a href="#">官方微博</a><a href="#">&nbsp;&nbsp;登录注册</a>
     </span>
 </div>
 <!--中间登录部分-->
@@ -152,7 +152,7 @@ ucenter/logo.jpg"></a>
              <div class="zc_r">
         <a href="login_qq.php"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
 ucenter/Connect_logo_qq.png"></a>
-        <a href="#"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+        <a href="login_weibo.php"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
 ucenter/dl3.jpg"></a>
         	</div>
         </div>
@@ -170,7 +170,9 @@ ucenter/dl3.jpg"></a>
 <script type="text/javascript">
 <?php echo $_smarty_tpl->tpl_vars['invalidAcc']->value;?>
 
+function bookmarkit(){window.external.addFavorite('http://localhost/88hom/ucenter/','用户中心-天境')}
 </script>
+
 
 </body>
 </html>

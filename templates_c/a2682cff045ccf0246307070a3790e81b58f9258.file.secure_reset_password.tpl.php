@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-05-10 17:04:59
+<?php /* Smarty version Smarty-3.1.8, created on 2013-05-17 17:27:49
          compiled from "E:/workspace/projects/88hom/templates\ucenter\secure_reset_password.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:28804518c6240c391c6-45573389%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a2682cff045ccf0246307070a3790e81b58f9258' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\secure_reset_password.tpl',
-      1 => 1368169173,
+      1 => 1368782745,
       2 => 'file',
     ),
   ),
@@ -109,49 +109,8 @@ ucenter/grzc_03.jpg" />
     </div>
 </div>
 <!--底部-->
-<div class="gr_bot">
-	<div class="gr_bot1">
-		<div class="c">
-					<div class="c1">
-						<a href="#">今日头条</a>
-						<a href="#">楼市要闻</a><br/>
-						<a href="#">政策解读</a>
-						<a href="#">行情数据</a>
-					</div>
-					<div class="s"></div>
-					<div class="c2">
-						<a href="#">最新开盘</a>
-						<a href="#">热门楼盘</a><br/>
-						<a href="#">优惠团购</a>
-						<a href="#">地图看房</a>
-					</div>
-					<div class="s"></div>
-					<div class="c2">
-						<a href="#">设计修饰</a>
-						<a href="#">促销团购</a><br/>
-						<a href="#">家具卖场</a>
-						<a href="#">装修指南</a>
-					</div>
-                    <div class="s"></div>
-					<div class="c3">
-						<a href="#">设计修饰</a>
-						<a href="#">促销团购</a><br/>
-						<a href="#">家具卖场</a>
-						<a href="#">装修指南</a>
-					</div>
-					<div class="s"></div>
-					<div class="c4">
-						<a href="#">业主论坛</a>
-						<a href="#">论坛热贴</a><br/>
-						<a href="#">人气板块</a>
-					</div>
-				</div>
-             <div class="gr_bot2">
-             广告投放：0755-88886666  投诉邮箱：tousu@tianyue.com  投诉电话：400-6666-888<br/>
-				版权所有2013-2016 房不剩房 天境文化传播有限公司 备粤10110011号 
-             </div>
-		</div>
-	</div>
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['footer']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 </body>
 </html>
 <?php }} ?>

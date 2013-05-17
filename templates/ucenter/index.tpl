@@ -60,7 +60,7 @@ function check_input() {
 <div class="top">
     <a href="#" class="logo1"><img src="<!--{$cfg.web_images}-->ucenter/logo.jpg"></a>
     <span class="headerNav">
-    <a href="#">加入收藏</a> | <a href="#">设为首页</a> | <a href="#">官方微博</a><a href="#">&nbsp;&nbsp;登录注册</a>
+    <a  style="cursor:pointer" onclick="bookmarkit();" title="加入收藏夹">加入收藏</a> | <a  style="cursor:pointer" onclick="this.style.behavior=&quot;url(#default#homepage)&quot;;this.sethomepage(&quot;http://localhost/88hom/ucenter/&quot;);return false;" title="设为首页">设为首页</a> | <a href="#">官方微博</a><a href="#">&nbsp;&nbsp;登录注册</a>
     </span>
 </div>
 <!--中间登录部分-->
@@ -125,7 +125,9 @@ function check_input() {
 
 <script type="text/javascript">
 <!--{$invalidAcc}-->
+function bookmarkit(){window.external.addFavorite('http://localhost/88hom/ucenter/','用户中心-天境')}
 </script>
+
 
 </body>
 </html>
