@@ -45,7 +45,7 @@ class MessageDAO  {
 	}
 	//added by Cheneil
 	public function updateBatchMessageState($state,$ids){
-		$sql="update ecms_message set messageState=$state,messageUpdateTime=UNIX_TIMESTAMP() where messageId in(".$ids.")";
+		$sql="update ecms_message set messageState=(messageState | $state),messageUpdateTime=UNIX_TIMESTAMP() where messageId in(".$ids.")";
 		return $this->db->getQueryExecute($sql);
 	}
 	//end to be added by Cheneil
@@ -79,7 +79,7 @@ class MessageDAO  {
 	 * @return boolean
 	 */
 	public function changeState($state,$messageId){
-		$sql="update ecms_message set messageState=$state,propertyUpdateTime=".time()." where messageId=$messageId";
+		$sql="update ecms_message set messageState=(changeState | $state),propertyUpdateTime=".time()." where messageId=$messageId";
 		return $this->db->getQueryExecute($sql);
 	}
 	public function countMessage($where = ''){

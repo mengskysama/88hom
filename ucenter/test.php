@@ -1,14 +1,5 @@
 <?php 
-$user['id'] = 1234;
-//$user['name'] = "";
-echo $user['id']."|";
-if(isset($user['name'])){
-	echo $user['name'];
-}else{
-	echo 'is not set yet';
-}
-
-if(empty($user['name'])){
-	echo "empty name";
+for($i=0; $i<8; $i++){
+	echo decbin($i)."<br/>";
 }
 ?>

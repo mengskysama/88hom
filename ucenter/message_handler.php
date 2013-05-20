@@ -46,7 +46,7 @@ if($action == "sendMessage"){
 //update the message status to READ
 if($action == "read"){
 	$messageId = getParameter("messageId");
-	$result = $messageService->changeState(1,$messageId);
+	$result = $messageService->changeState(4,$messageId);
 	echo "{\"result\":\"".$result."\"}";
 	return;
 }
@@ -54,8 +54,8 @@ if($action == "read"){
 //delete the message
 if($action == "DelSelectedMessage"){
 	$msgIds = getParameter("msgids");
-	$box = getParameter("type");
-	if($msgIds == "" || $box == "" || ($box != "i" && $box != "o")){
+	$boxType = getParameter("type");
+	if($msgIds == "" || $boxType == "" || ($boxType != "i" && $boxType != "o")){
 		echo "{\"result\":\"failure\"}";
 		return;
 	}
@@ -64,8 +64,8 @@ if($action == "DelSelectedMessage"){
 		$msgIds = substr($msgIds,0,$length-1);
 	}
 	
-	if($box == "i"){
-		$state = 3;
+	if($boxType == "i"){
+		$state = 1;
 	}else{
 		$state = 2;
 	}
