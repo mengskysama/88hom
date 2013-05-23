@@ -43,14 +43,6 @@ if($action == "sendMessage"){
 	return;
 }
 
-//update the message status to READ
-if($action == "read"){
-	$messageId = getParameter("messageId");
-	$result = $messageService->changeState(4,$messageId);
-	echo "{\"result\":\"".$result."\"}";
-	return;
-}
-
 //delete the message
 if($action == "DelSelectedMessage"){
 	$msgIds = getParameter("msgids");

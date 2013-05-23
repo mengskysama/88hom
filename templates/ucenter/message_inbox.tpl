@@ -70,7 +70,11 @@
                            		  <label><input type="checkbox" value="<!--{$messageList[message].messageId}-->" ></label>
                             </td>
 					 	   <td width="35" align="center" valign="middle">
+					 	   <!--{if $messageList[message].messageState eq 0 }-->
+                           		<img src="<!--{$cfg.web_images}-->ucenter/xx_14.jpg">
+                           <!--{else}-->
                            		<img src="<!--{$cfg.web_images}-->ucenter/xx_11.jpg">
+					 	   <!--{/if}-->
                            </td>
  							  <td width="165" align="left" valign="middle">
                               	<a href="#"><!--{$messageList[message].sender}--></a>
@@ -168,22 +172,6 @@
                         $(this).hide();
         });
       	
-        $("#msg_table a").each(function(){
-        	if($(this).attr("link")=="true"){
-            	$(this).click(function(){
-                	var msgid=$(this).attr("msgid");
-                    var isread=$(this).attr('isread');
-                    if(isread!="1"){
-                    	ReadSend(msgid);
-                        $(this).closest("td").removeClass("fontBold");
-                        var tdlist=$(this).closest("tr").find("td");//当前信息所在的行
-                        tdlist.eq(1).find("span").attr('class','icon_unCheck');
-                        tdlist.eq(2).removeClass("fontBold");
-                        $(this).attr('isread',"1");
-                    }
-                });
-            }
-        });
         $("#msg_table input[type='checkbox']").each(function(){
         	$(this).click(function(){
             	var isDelOk=false;
@@ -238,18 +226,7 @@
     function reflash(){
     	window.location.reload();
 	}
-    //设为已读
-    function ReadSend(msgid){
-        var option={action:"read",messageId:msgid};
-           $.ajax({
-               url:"message_handler.php",
-               dataType:"json",
-               data:option,
-               type: "POST", 
-               success:function(msg){
-               }   
-         });       
-    }
+
     //单击删除
     function DelSelectedMessage(){
     	$("#sureDelSelect").jqmHide();

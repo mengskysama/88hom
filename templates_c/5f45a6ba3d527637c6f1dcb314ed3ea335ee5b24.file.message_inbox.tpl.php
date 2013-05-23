@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-05-17 17:31:14
+<?php /* Smarty version Smarty-3.1.8, created on 2013-05-22 15:29:42
          compiled from "E:/workspace/projects/88hom/templates\ucenter\message_inbox.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:27769518db2b6902315-57491825%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5f45a6ba3d527637c6f1dcb314ed3ea335ee5b24' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\message_inbox.tpl',
-      1 => 1368783035,
+      1 => 1369207536,
       2 => 'file',
     ),
   ),
@@ -130,8 +130,13 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['message']['last']       = ($
 " ></label>
                             </td>
 					 	   <td width="35" align="center" valign="middle">
+					 	   <?php if ($_smarty_tpl->tpl_vars['messageList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['message']['index']]['messageState']==0){?>
+                           		<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/xx_14.jpg">
+                           <?php }else{ ?>
                            		<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
 ucenter/xx_11.jpg">
+					 	   <?php }?>
                            </td>
  							  <td width="165" align="left" valign="middle">
                               	<a href="#"><?php echo $_smarty_tpl->tpl_vars['messageList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['message']['index']]['sender'];?>
@@ -234,22 +239,6 @@ ucenter/xx_11.jpg">
                         $(this).hide();
         });
       	
-        $("#msg_table a").each(function(){
-        	if($(this).attr("link")=="true"){
-            	$(this).click(function(){
-                	var msgid=$(this).attr("msgid");
-                    var isread=$(this).attr('isread');
-                    if(isread!="1"){
-                    	ReadSend(msgid);
-                        $(this).closest("td").removeClass("fontBold");
-                        var tdlist=$(this).closest("tr").find("td");//当前信息所在的行
-                        tdlist.eq(1).find("span").attr('class','icon_unCheck');
-                        tdlist.eq(2).removeClass("fontBold");
-                        $(this).attr('isread',"1");
-                    }
-                });
-            }
-        });
         $("#msg_table input[type='checkbox']").each(function(){
         	$(this).click(function(){
             	var isDelOk=false;
@@ -304,18 +293,7 @@ ucenter/xx_11.jpg">
     function reflash(){
     	window.location.reload();
 	}
-    //设为已读
-    function ReadSend(msgid){
-        var option={action:"read",messageId:msgid};
-           $.ajax({
-               url:"message_handler.php",
-               dataType:"json",
-               data:option,
-               type: "POST", 
-               success:function(msg){
-               }   
-         });       
-    }
+
     //单击删除
     function DelSelectedMessage(){
     	$("#sureDelSelect").jqmHide();

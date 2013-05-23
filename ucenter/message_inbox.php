@@ -3,7 +3,7 @@ require 'path.inc.php';
 require 'check_login.php';
 $tpl_name = $tpl_dir.'message_inbox.tpl';
 
-$where = "where messageToUserId=".$userId." and messageState=0 or messageState=1";
+$where = "where messageToUserId=".$userId." and (messageState & 1)=0";
 $msgType = getParameter("type","GET");
 if($msgType == 's'){
 	$where .= " and messagetypeId=1";
@@ -13,7 +13,7 @@ if($msgType == 's'){
 	$where .= " and messagetypeId=3";
 }
 
-$fields = "messageId,messageContent,(select userUsername from ecms_user where userId=messageFromUserId) as sender,messageState,from_unixtime(messageCreateTime,'%Y-%m-%d %H:%i:%s') as sentTime";
+$fields = "messageId,messageContent,(select userUsername from ecms_user where userId=messageFromUserId) as sender,(messageState & 4) as messageState,from_unixtime(messageCreateTime,'%Y-%m-%d %H:%i:%s') as sentTime";
 $order = "order by messageCreateTime desc";
 
 $page = getParameter("page","GET");

@@ -1,0 +1,20 @@
+------------------------2013-05-22 15:29:46
+错误SQL语句：
+update ecms_message set messageState=(changeState | 4),propertyUpdateTime=1369207786 where messageId=
+客户端:127.0.0.1
+时间:2013-05-22 15:29:46
+------------------------2013-05-22 15:30:46
+错误SQL语句：
+update ecms_message set messageState=(changeState | 4),propertyUpdateTime=1369207846 where messageId=
+客户端:127.0.0.1
+时间:2013-05-22 15:30:46
+------------------------2013-05-22 15:31:30
+错误SQL语句：
+update ecms_message set messageState=(changeState | 4),propertyUpdateTime=1369207890 where messageId=6
+客户端:127.0.0.1
+时间:2013-05-22 15:31:30
+------------------------2013-05-22 15:32:43
+错误SQL语句：
+update ecms_message set messageState=(changeState | 4),messageUpdateTime=1369207963 where messageId=6
+客户端:127.0.0.1
+时间:2013-05-22 15:32:43
