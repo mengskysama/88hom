@@ -43,8 +43,9 @@ class CheckCode {
 	private $x_start;
 		
 	function __construct() {
-		$this->font = ECMS_PATH_FONT.'elephant.ttf';
-		
+		//$this->font = ECMS_PATH_FONT.'elephant.ttf';
+		//echo 'font->'.$this->font;
+		$this->font = '../font/elephant.ttf';
 	}
 	
 	/**
@@ -129,7 +130,6 @@ class CheckCode {
 	    }
 	
 	    $end = $start + rand(75, 100);
-	
 	    imagearc($this->img, $this->width * .75, $ypos, $width, $height, $start, $end, $this->font_color);
 	}
 	
@@ -137,7 +137,7 @@ class CheckCode {
 	 * 输出图片
 	 */
 	private function output() {
-		header("content-type:image/png\r\n");
+        header ("Content-type: image/png");
 		imagepng($this->img);
 		imagedestroy($this->img);
 	}
