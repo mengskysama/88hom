@@ -188,7 +188,7 @@ function ajax_mobile() {
             var resu = req.split("|");
             if (resu[0] != "200") {
                 isMobileValid = false;
-                ShowWrong($("#userPhone"), "该手机号已与被用户绑定", "");
+                ShowWrong($("#userPhone"), "该手机号已被用户绑定", "");
                 return false;
             } else {
                 isMobileValid = true;
@@ -245,7 +245,7 @@ function check_code(obj) {
         type: "post",
         async: false,
         url: "check_cert_code.php",
-        data: { "userPhone": escape(val(($("#userPhone")))), "vcode": val(($("#phoneCert"))), "num": Math.random().toString() },
+        data: { "type": "phone", "userPhone": escape(val(($("#userPhone")))), "vcode": val(($("#phoneCert"))), "num": Math.random().toString() },
         success: function(req) {
             if (req == "200") {
                 isCodeValid = true;  //验证码正确

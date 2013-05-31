@@ -86,6 +86,9 @@ if(isset($_POST['btn_confirm'])){
 $femaleGender = ($rblSex == 1) ? "checked" : "";
 $maleGender = ($rblSex == 0) ? "checked" : "";
 
+$html->addJs("ucenter_city.js");
+$html->addJs("ucenter_register_agent.js");
+$html->addCss("ucenter/city.css");
 $html->show();
 
 $smarty->assign('userName',$userName);

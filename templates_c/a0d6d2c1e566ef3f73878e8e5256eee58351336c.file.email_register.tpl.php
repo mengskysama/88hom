@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-05-29 14:58:46
-         compiled from "E:/workspace/projects/88hom/templates\ucenter\user_register.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:12090518875df3d0932-71058284%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.8, created on 2013-05-29 15:13:02
+         compiled from "E:/workspace/projects/88hom/templates\ucenter\email_register.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:1809951a5a72a315ba2-17193188%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '77ad58856cf3f5366764eac9e85a279bc778482f' => 
+    'a0d6d2c1e566ef3f73878e8e5256eee58351336c' => 
     array (
-      0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_register.tpl',
-      1 => 1369809980,
+      0 => 'E:/workspace/projects/88hom/templates\\ucenter\\email_register.tpl',
+      1 => 1369811564,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '12090518875df3d0932-71058284',
+  'nocache_hash' => '1809951a5a72a315ba2-17193188',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_518875df49d7e8_32249980',
+  'unifunc' => 'content_51a5a72a3a7f46_01212462',
   'variables' => 
   array (
     'cfg' => 0,
@@ -25,7 +25,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_518875df49d7e8_32249980')) {function content_518875df49d7e8_32249980($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_51a5a72a3a7f46_01212462')) {function content_51a5a72a3a7f46_01212462($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
@@ -44,7 +44,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['header']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 <!--中间-->
-<form id="userRegForm" action="register.php" method="post">
+<form id="emailregister" action="register.php" method="post">
 <input type="hidden" name="userType" value="3">
 <div class="gr_zj">
 	<div class="gr_b">
@@ -90,35 +90,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                           	<p class="z6">请再次填写密码</p>
                          </td>
 				    <tr>
-   					    <td width="105" height="30" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机号：</td>
- 					    <td height="30">
-                        	<input id="userPhone" name="userPhone" type="text" class="sjh"  value=""/>
-                            <input name="button2" type="button" class="hq b0" id="button2" value="" onclick="return sendCertCode();"/>
-                            
-                                <!--验证弹出 begin -->
-                                <div id="div_mathcode" style="display: none;">
-                                        <div >
-                                            <div>
-                            					<img src='<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_code_web'];?>
-' id='imgcode' name='imgcode'  onClick="this.src=this.src+'?op=login&'+Math.random()" style='cursor:pointer;'>;
-                                                
-                                            </div>
-                                            <div>
-                                                <input type="text" value="" maxlength="4" class="yzboxa01inp" id="txt_mathcode" />
-                                                <input type="button" class="yzboxa01but" value="确认" id="btn_mathcode" />
-                                            </div>
-                                        </div>
- 
-                                </div>
-                                <!--验证弹出 end-->
-                            
+   					    <td width="105" height="30" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>我的邮箱：</td>
+ 					    <td height="30" class="grzc_31">
+                        	<input id="userEmail" name="userEmail" type="text" value="" />                            
                         </td>
 		  </tr>
  					 <tr>
-  					    <td width="105" height="70" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机验证码：</td>
-   					    <td height="70">
-                       	  <input id="phoneCert" name="phoneCert" type="text" class="sjyz"  value=""/>
-                            <span class="yzm z6">若1分钟后仍未收到验证码短信，<a href="javascript:void(0);" id="a_sendcode">请点此重发</a><br /> 若无法收到验证短信，请使用<a href="#">电子邮箱注册</a></span>
+  					    <td width="105" height="70" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>验证码：</td>
+   					    <td height="70" class="grzc_31">
+                       	  <div>
+                            <img src='<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_code_line'];?>
+' id='imgcode' name='imgcode' onClick="this.src=this.src+'?op=login&'+Math.random()" style='cursor:pointer;'>;
+                          	<input type="text" value="" maxlength="4" class="yzboxa01inp" id="txt_mathcode" />
+                          	<a href="javascript:void(0);" onclick="refresh_code();">换一题</a>&nbsp;&nbsp;请输入答案
+                          </div>
                         </td>
 		  </tr>
 					  <tr>

@@ -1,0 +1,5 @@
+------------------------2013-05-30 18:00:07
+错误SQL语句：
+insert into ecms_register_cert_code(cert_channel,cert_code,cert_code_status,create_time) values('fatgod@126.com',dd7423f83a81943d9cd4d73f75a50726,1,now())
+客户端:127.0.0.1
+时间:2013-05-30 18:00:07

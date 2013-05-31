@@ -46,6 +46,7 @@ define('ECMS_WEB_URL', 'http://'.SERVER_NAME.ECMS_PATH);
 $cfg['web_url']=ECMS_WEB_URL;
 $cfg['web_code_admin']=ECMS_WEB_URL.'common/libs/api/codeadmin.php';
 $cfg['web_code_web']=ECMS_WEB_URL.'common/libs/api/codeweb.php';
+$cfg['web_code_line']=ECMS_WEB_URL.'common/libs/api/line_captcha.php';
 
 //smarty模板基本配置
 define('ECMS_SMARTY_TEMPLATES', ECMS_PATH_ROOT.'templates/');//模板物理路径

@@ -19,8 +19,8 @@
 	<div class="gr_b">
     	<div class="gr_dl">
 <ul class="dlqh">
-            	<li class="sjzc"><a href="#">手机号码注册</a></li>
-                <li class="yxzc"><a href="#">电子邮箱注册</a></li>
+            	<li class="sjzc"><a href="user_register.php">手机号码注册</a></li>
+                <li class="yxzc"><a href="email_register.php">电子邮箱注册</a></li>
             </ul>
              <div class="other" id="div_err_msg">
                <div class="">

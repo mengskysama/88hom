@@ -1,7 +1,7 @@
 <?php
 require 'path.inc.php';
 
-$userPhone = !empty($_POST['userPhone']) ? $_POST['userPhone'] : "";
+$userPhone = getParameter("userPhone");
 if($userPhone == ""){
 	echo "203|invalid mobile no";
 	return;

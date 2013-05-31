@@ -23,10 +23,10 @@ $(document).ready(function() {
 
 function onPasswordFocus() {
     if (isUpdate) {
-        ShowWrong(jQuery("#userPassword"), "请输入通行证帐号的登录密码，以便核实您的帐号", "plus_b");
+        ShowWrong($("#userPassword"), "请输入通行证帐号的登录密码，以便核实您的帐号", "plus_b");
     }
     else {
-        ShowWrong(jQuery("#userPassword"), "6-16个半角字符，可为字母、数字及组合，区分大小写", "plus_b");
+        ShowWrong($("#userPassword"), "6-16个半角字符，可为字母、数字及组合，区分大小写", "plus_b");
     }
 }
 
@@ -197,17 +197,17 @@ function check_pass(obj) {
             return false;
         }
         if ((/>|<|,|\[|\]|\{|\}|\?|\/|\+|=|\||\'|\\|\"|:|;|\~|\!|\@|\#|\*|\$|\%|\^|\&|\(|\)|`/i).test(val(obj))) {
-            ShowWrong(obj, "请勿用特殊字符", "plus_c");
+            ShowWrong(obj, "请勿用特殊字符", "");
             isPassValid = false;
             return false;
         }
         if (val(obj).indexOf(" ") > -1) {
-            ShowWrong(obj, "请不要输入空格", "plus_c");
+            ShowWrong(obj, "请不要输入空格", "");
             isPassValid = false;
             return false;
         }
         if (GetStrLen(val(obj)) < 6 || GetStrLen(val(obj)) > 16) {
-            ShowWrong(obj, "长度要求6-16个字符", "plus_c");
+            ShowWrong(obj, "长度要求6-16个字符", "");
             isPassValid = false;
             return false;
         }
