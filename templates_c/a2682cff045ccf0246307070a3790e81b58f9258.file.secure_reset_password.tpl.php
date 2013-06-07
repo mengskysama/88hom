@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-05-17 17:27:49
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-07 15:10:25
          compiled from "E:/workspace/projects/88hom/templates\ucenter\secure_reset_password.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:28804518c6240c391c6-45573389%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a2682cff045ccf0246307070a3790e81b58f9258' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\secure_reset_password.tpl',
-      1 => 1368782745,
+      1 => 1370589023,
       2 => 'file',
     ),
   ),
@@ -40,11 +40,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <body>
 <!--头部-->
-<div class="gr_top">
-	<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
-ucenter/grzc_03.jpg" />
-    <span><a href="#">房不剩房首页</a> | <a href="#">资讯</a> |  <a href="#">新房</a> <a href="#">二手房</a> <a href="#">租房</a> | <a href="#">装修家居</a> | <a href="#">业主论坛</a></span>
-</div>
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['header']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 <!--中间-->
 <div class="gr_zj">
 	<div class="zl_b">
@@ -52,7 +49,8 @@ ucenter/grzc_03.jpg" />
         	 <div class="zl_b11">
           <div class="yhzx1">
 	        <ul class="zl_dh">
-	          <li><a href="userinfo.php">用户中心</a></li>
+	          <li><a href="#">用户中心</a></li>
+	          <li><a href="userinfo.php">个人资料</a></li>
 	          <li><a href="secure_reset_password.php">安全中心</a></li>
 	          <li><a href="message_inbox.php">短信息中心</a></li>
             </ul>

@@ -58,22 +58,23 @@ function check_input() {
 <body>
 <!--头部-->
 <div class="top">
-    <a href="#" class="logo1"><img src="<!--{$cfg.web_images}-->ucenter/logo.jpg"></a>
+    <a href="http://www.88hom.com" class="logo1"><img src="<!--{$cfg.web_images}-->ucenter/logo.jpg"></a>
     <span class="headerNav">
-    <a  style="cursor:pointer" onclick="bookmarkit();" title="加入收藏夹">加入收藏</a> | <a  style="cursor:pointer" onclick="this.style.behavior=&quot;url(#default#homepage)&quot;;this.sethomepage(&quot;http://localhost/88hom/ucenter/&quot;);return false;" title="设为首页">设为首页</a> | <a href="#">官方微博</a><a href="#">&nbsp;&nbsp;登录注册</a>
+    <a onclick="bookmarkit();" title="加入收藏夹">收藏</a> | <a onclick="this.style.behavior=&quot;url(#default#homepage)&quot;;this.sethomepage(&quot;http://localhost/88hom/ucenter/&quot;);return false;" title="设为首页">设为首页</a> | <a href="#">官方微博</a>
     </span>
 </div>
 <!--中间登录部分-->
-<div class="con">
+<div class="<!--{$con_class}-->">
 	<!--banner图-->
-	<div class="lcon">
+	<div class="<!--{$lcon_class}-->">
    		<!--登录部分-->
-    	<div class="dl">
-        	 <div class="dl_1">
+    	<div class="<!--{$dl_class}-->">
+        	 <div class="<!--{$dl_1_class}-->">
              	<ul>
-                	<li><a href="index.php" <!--{$userTagClass}-->>个人登陆</a></li>
-                    <li><a href="index.php?userType=2" <!--{$agentTagClass}-->>经纪人登陆</a></li>
-                    <li><a href="index.php?userType=1" <!--{$shopTagClass}-->>门店登陆</a></li>
+                	<li><a href="<!--{$login_page}-->"><!--{$login_title}--></a></li>
+                	<!--{if $userType == 3}-->
+                    	<li style="float:right"><a href="index.php?userType=2" style="font-size:12px;color:#F00; font-weight:normal; background:none; text-decoration:underline">我是经纪人</a></li>
+                    <!--{/if}-->
                 </ul>
              </div>
          <div class="dlnr">
@@ -82,7 +83,7 @@ function check_input() {
        	   <table width="100%" border="0" cellspacing="0" cellpadding="0">
  		   <tr>
    				 <td width="73" height="40" align="center" valign="middle" class="logo_4">账 户：</td>
-   				 <td width="73" class="logo_31"><input id="loginID" name="loginID" type="text" value="手机号/邮箱/用户名码" /></td>
+   				 <td width="73" class="logo_31"><input id="loginID" name="loginID" type="text"  value="手机号/邮箱/用户名码" /></td>
  		   </tr>
  		   <tr>
  			     <td width="73" height="40" align="center" valign="middle" class="logo_4">密 码：</td>
@@ -95,7 +96,7 @@ function check_input() {
            <tr>
   			     <td height="40" colspan="2" valign="middle">
   		    	 <div class="dlmm"><input name="button2" type="submit" class="denglu" id="button2" value="登  录" />
-     			<a href="#" class="wj f14">忘记密码？</a></div></td>
+     			<a href="get_password.php" class="wj f14">忘记密码？</a></div></td>
           </tr>
 	      </table>
 	    </form>
@@ -108,8 +109,8 @@ function check_input() {
         	</form>
         	</div>
              <div class="zc_r">
-        <a href="login_qq.php"><img src="<!--{$cfg.web_images}-->ucenter/Connect_logo_qq.png"></a>
-        <a href="login_weibo.php"><img src="<!--{$cfg.web_images}-->ucenter/dl3.jpg"></a>
+				<a href="login_qq.php"><img src="<!--{$cfg.web_images}-->ucenter/dl2.jpg"></a>
+				<a href="login_weibo.php"><img src="<!--{$cfg.web_images}-->ucenter/dl3.jpg"></a>
         	</div>
         </div>
 	</div>
@@ -122,12 +123,9 @@ function check_input() {
     	<span class="bot_l">@2013 <font color="#a0141a">房不剩房</font> 天境文化传播有限公司 <br />粤ICP证编号 B2-20130308 | 技术支持：<a href="#">城旭网络</a></span>
         <span class="bot_r"><a href="#">新房</a> | <a href="#">二手房</a> | <a href="#">家居</a> | <a href="#">社区</a> | <a href="#">关于我们</a> | <a href="#">法律条款</a> | <a href="#">广告投放</a> | <a href="#">网站地图</a><br />投诉电话：400-8888-666</span>
     </div>
-
 <script type="text/javascript">
 <!--{$invalidAcc}-->
 function bookmarkit(){window.external.addFavorite('http://localhost/88hom/ucenter/','用户中心-天境')}
 </script>
-
-
 </body>
 </html>

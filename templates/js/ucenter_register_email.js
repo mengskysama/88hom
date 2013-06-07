@@ -114,14 +114,13 @@ function check_mathcode() {
         url: "check_cert_code.php",
         data: { "type": "email", "vcode": jQuery.trim($("#txt_mathcode").val()), "num": Math.random().toString() },
         success: function(req) {
-        	//alert(req);
             if (req == "200") {
                 isCodeValid = true;
                 ShowWrong($("#txt_mathcode"), "", "");
             } else {
                 isCodeValid = false;
                 ShowWrong($("#txt_mathcode"), "验证码错误，请重新输入", "");
-                $("#txt_mathcode").focus();
+                //$("#txt_mathcode").focus();
             }
         }
     });

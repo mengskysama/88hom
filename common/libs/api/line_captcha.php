@@ -1,6 +1,5 @@
 <?php
-//require 'path.inc.php';
-require '../classes/Captcha.class.php';
+require 'path.inc.php';
 
 $Captcha = new Captcha("add");
 $Captcha->set_checkimage_wh(60, 20);

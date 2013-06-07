@@ -2,7 +2,7 @@
 require 'path.inc.php';
 $tpl_name = $tpl_dir.'index.tpl';
 
-$userType = getParameter("userType");
+$userType = getParameter("userType","GET");
 
 //login
 $isValidAccount = true;
@@ -26,27 +26,31 @@ if(isset($_POST['button2'])){
 }
 //default
 $userType = empty($userType) ? 3 : $userType;
-if($userType == 1){
-	$userTagClass = "";
-	$agentTagClass = "";
-	$shopTagClass = "class=current";
-	$regFormAction = "shop_register.php";
-}else if($userType == 2){
-	$userTagClass = "";
-	$agentTagClass = "class=current";
-	$shopTagClass = "";
+if($userType == 2){
+	$con_class = "con2";
+	$lcon_class = "lcon2";
+	$dl_class = "dl1";
+	$dl_1_class = "dl_11";
+	$login_title = "经纪人登陆";
+	$login_page = "index.php?userType=2";
 	$regFormAction = "agent_register.php";
 }else{
-	$userTagClass = "class=current";
-	$agentTagClass = "";
-	$shopTagClass = "";
+	$con_class = "con";
+	$lcon_class = "lcon";
+	$dl_class = "dl";
+	$dl_1_class = "dl_1";
+	$login_title = "个人登陆";
+	$login_page = "index.php";
 	$regFormAction = "user_register.php";
 }
 $html->show();
 
-$smarty->assign('userTagClass',$userTagClass);
-$smarty->assign('agentTagClass',$agentTagClass);
-$smarty->assign('shopTagClass',$shopTagClass);
+$smarty->assign('con_class',$con_class);
+$smarty->assign('lcon_class',$lcon_class);
+$smarty->assign('dl_class',$dl_class);
+$smarty->assign('dl_1_class',$dl_1_class);
+$smarty->assign('login_title',$login_title);
+$smarty->assign('$login_page',$login_page);
 $smarty->assign('regFormAction',$regFormAction);
 $smarty->assign('userType',$userType);
 if(!$isValidAccount){

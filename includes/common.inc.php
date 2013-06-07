@@ -19,7 +19,7 @@ if(!$magic_quotes_gpc) {
 	$_FILES = c_addslashes($_FILES);
 }
 
-$cfg['arr'] = require 'arr.inc.php';
+//$cfg['arr'] = require 'arr.inc.php';
 
 //$webset=require ECMS_PATH_CONF.'web/web_'.LANG.'.cfg.php';
 $webset=require ECMS_PATH_CONF.'web/web_zh_CN.cfg.php';
@@ -123,7 +123,9 @@ require ECMS_PATH_CLASSES.'Html.class.php';
 $html=new Html($smarty);
 
 //自动载入apps,classes,lang
+
 function __autoload($name) {
+	
 	if (file_exists(ECMS_PATH_DAO . $name . '.class.php')) {
 		//echo 'fuck';
 		require ECMS_PATH_DAO . $name . '.class.php';

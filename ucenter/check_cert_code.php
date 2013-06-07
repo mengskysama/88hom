@@ -31,5 +31,5 @@ if($type == "phone"){
 	echo "200";
 	return;
 }
-echo "200";
+echo "202";
 ?>
