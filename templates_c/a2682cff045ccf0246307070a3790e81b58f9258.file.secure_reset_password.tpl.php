@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-07 15:10:25
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-08 17:24:52
          compiled from "E:/workspace/projects/88hom/templates\ucenter\secure_reset_password.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:28804518c6240c391c6-45573389%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a2682cff045ccf0246307070a3790e81b58f9258' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\secure_reset_password.tpl',
-      1 => 1370589023,
+      1 => 1370682465,
       2 => 'file',
     ),
   ),
@@ -23,6 +23,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'jsFiles' => 0,
     'cssFiles' => 0,
     'userName' => 0,
+    'errMsg' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -70,6 +71,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <form name="secure_reset_pwd_form" action="secure_reset_password.php" method="post" onsubmit="return checkform(this);">
 						<table width="90%" border="0" cellspacing="0" cellpadding="0">
 						  <tr>
+  							  <td align="middle" colspan="2"><font color="red"><?php echo $_smarty_tpl->tpl_vars['errMsg']->value;?>
+</font>
+                               </td>
+						  </tr>
+						  <tr>
   							  <td width="120" height="48" align="right" valign="middle" class="f14 z3">输入旧密码：</td>
   							  <td width="450" class="grzc_31">
                              	<input id="oldpass" name="oldpass" type="password"  value="" />
@@ -93,7 +99,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
  						 <tr>
  								   <td height="45" colspan="2">
 									<div class="dlmm1" style=" padding-top:50px; padding-bottom:100px;">
-                                        	<input name="btn_confirm_reset" type="submit" class="denglu1 l" id="button2" value="立即注册" />
+                                        	<input name="btn_confirm_reset" type="submit" class="denglu1 l" id="button2" value="确定" />
                                             <input name="btn_reset" type="reset" class="denglu1 l" id="button2" value="重置" />
                                         </div>
                                    </td>

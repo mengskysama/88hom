@@ -1,0 +1,35 @@
+------------------------2013-06-08 16:17:43
+错误SQL语句：
+select * from ecms_user_detail where userId=
+客户端:127.0.0.1
+时间:2013-06-08 16:17:43
+------------------------2013-06-08 16:38:27
+错误SQL语句：
+update ecms_user set userPassword='1234567',userPhone='15986605675',userPhoneState=1,userEmail='',userEmailState=0,userType=3,userGroupId=0,userState=0,userUpdateTime=UNIX_TIMESTAMP where user_id=6
+客户端:127.0.0.1
+时间:2013-06-08 16:38:27
+------------------------2013-06-08 16:42:22
+错误SQL语句：
+update ecms_user set userPassword='1234567',userPhone='15986605675',userPhoneState=1,userEmail='',userEmailState=0,userType=3,userGroupId=0,userState=0,userUpdateTime=UNIX_TIMESTAMP where userId=6
+客户端:127.0.0.1
+时间:2013-06-08 16:42:22
+------------------------2013-06-08 16:43:28
+错误SQL语句：
+update ecms_user set userPassword='1234567',userPhone='15986605675',userPhoneState=1,userEmail='',userEmailState=0,userType=3,userGroupId=0,userState=0,userUpdateTime=UNIX_TIMESTAMP where userId=6
+客户端:127.0.0.1
+时间:2013-06-08 16:43:28
+------------------------2013-06-08 16:43:52
+错误SQL语句：
+update ecms_user set userPassword='1234567',userPhone='15986605675',userPhoneState=1,userEmail='',userEmailState=0,userType=3,userGroupId=0,userState=0,userUpdateTime=UNIX_TIMESTAMP where userId=6
+客户端:127.0.0.1
+时间:2013-06-08 16:43:52
+------------------------2013-06-08 16:44:11
+错误SQL语句：
+update ecms_user set userPassword='1234567',userPhone='15986605675',userPhoneState=1,userEmail='',userEmailState=0,userType=3,userGroupId=0,userState=0,userUpdateTime=UNIX_TIMESTAMP where userId=6
+客户端:127.0.0.1
+时间:2013-06-08 16:44:11
+------------------------2013-06-08 16:44:28
+错误SQL语句：
+update ecms_user set userPassword='1234567',userPhone='15986605675',userPhoneState=1,userEmail='',userEmailState=0,userType=3,userGroupId=0,userState=0,userUpdateTime=UNIX_TIMESTAMP where userId=6
+客户端:127.0.0.1
+时间:2013-06-08 16:44:28

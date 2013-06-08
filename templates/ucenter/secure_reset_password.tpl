@@ -37,6 +37,10 @@
                 <form name="secure_reset_pwd_form" action="secure_reset_password.php" method="post" onsubmit="return checkform(this);">
 						<table width="90%" border="0" cellspacing="0" cellpadding="0">
 						  <tr>
+  							  <td align="middle" colspan="2"><font color="red"><!--{$errMsg}--></font>
+                               </td>
+						  </tr>
+						  <tr>
   							  <td width="120" height="48" align="right" valign="middle" class="f14 z3">输入旧密码：</td>
   							  <td width="450" class="grzc_31">
                              	<input id="oldpass" name="oldpass" type="password"  value="" />
@@ -60,7 +64,7 @@
  						 <tr>
  								   <td height="45" colspan="2">
 									<div class="dlmm1" style=" padding-top:50px; padding-bottom:100px;">
-                                        	<input name="btn_confirm_reset" type="submit" class="denglu1 l" id="button2" value="立即注册" />
+                                        	<input name="btn_confirm_reset" type="submit" class="denglu1 l" id="button2" value="确定" />
                                             <input name="btn_reset" type="reset" class="denglu1 l" id="button2" value="重置" />
                                         </div>
                                    </td>

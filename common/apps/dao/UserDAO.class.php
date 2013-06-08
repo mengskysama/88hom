@@ -68,7 +68,7 @@ class UserDAO{
 			$sql .= "userState=".$user['userState'].",";
 		}
 				
-		$sql .= "userUpdateTime=UNIX_TIMESTAMP where user_id=".$user['userId'];
+		$sql .= "userUpdateTime=UNIX_TIMESTAMP() where userId=".$user['userId'];
 		return $this->db->getQueryExecute($sql);
 	}
 	

@@ -4,6 +4,7 @@ $tpl_name = $tpl_dir.'get_password.tpl';
 
 $aType = getParameter("aType");
 if($aType == "getPwd"){
+	$err_code = 0;
 	$loginId = getParameter("loginId");
 	$userService = new UserService($db);
 	$user = $userService->getUserByUserName($loginId);
@@ -13,10 +14,11 @@ if($aType == "getPwd"){
 	$userPassword = sysAuth($user['userPassword'],"DECODE");
 	$content = "您的房不剩房账号".$loginId."的密码是".$userPassword."，请登录重设密码。";
 
+	$result = false;
 	$pass_channel = getParameter("pass_channel");	
 	if($pass_channel == "mobile"){
 		$userPhone = $user['userPhone'];
-		sendSMS($userPhone,$content);
+		$result = sendSMS($userPhone,$content);
 	}else if($pass_channel == "email"){
 		$userEmail = $user['userEmail'];
 		$sendMail = new SendMail();
@@ -34,8 +36,15 @@ if($aType == "getPwd"){
 		$sendMail->subject = "房不剩房密码取回邮件";
 		$sendMail->body = $content;
 		$sendMail->SMTPDebug =false;
-		$sendMail->send();
+		$result = $sendMail->send();
 	}
+	$err_code = ($result == 'true') ? 1 : 0;
+	$get_pass_result['err_code'] = $err_code;
+	$get_pass_result['pass_channel'] = $pass_channel;
+	$get_pass_result['userPhone'] = $userPhone;
+	$get_pass_result['userEmail'] = $userEmail;
+	$_SESSION['get_pass_result'] = $get_pass_result;
+	//echo $err_code.'|'.$pass_channel.'|'.$userPhone.'|'.$userEmail;
 	header("Location:get_password_success.php");
 }
 
