@@ -84,8 +84,7 @@
 </div>
 
     <!--发送提示-->
-    <div class="tips_div05 jqmWindow" id="showMess" style="width: 240px; margin-left: -120px;
-        top: 40%">
+    <div class="tips_div05 jqmWindow" id="showMess" style="width: 240px; margin-left: -120px; top: 40%">
         <ul>
             <li class="Rb_3_1">
                 <div>

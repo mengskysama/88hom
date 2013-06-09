@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-07 15:13:42
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-09 16:41:31
          compiled from "E:/workspace/projects/88hom/templates\ucenter\message_send.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:4336518dc9762071e4-45403334%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ab54820f089f9a4e57f64bf0b0c0269c41b4c2db' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\message_send.tpl',
-      1 => 1370589218,
+      1 => 1370767162,
       2 => 'file',
     ),
   ),
@@ -117,8 +117,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </div>
 
     <!--发送提示-->
-    <div class="tips_div05 jqmWindow" id="showMess" style="width: 240px; margin-left: -120px;
-        top: 40%">
+    <div class="tips_div05 jqmWindow" id="showMess" style="width: 240px; margin-left: -120px; top: 40%">
         <ul>
             <li class="Rb_3_1">
                 <div>

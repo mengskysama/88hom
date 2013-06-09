@@ -43,22 +43,22 @@ class MessageDAO  {
 		$sql="delete from ecms_message where messageId=".$id;
 		return $this->db->getQueryExecute($sql);
 	}
-	//added by Cheneil
-	public function updateBatchMessageState($state,$ids){
-		$sql="update ecms_message set messageState=(messageState | $state),messageUpdateTime=UNIX_TIMESTAMP() where messageId in(".$ids.")";
-		return $this->db->getQueryExecute($sql);
-	}
-	//end to be added by Cheneil
-	
+	//added by Cheneil	
 	/**
 	 * 获取信息
 	 * @param string $where 
 	 * @return array
 	 */
 	public function getMessageById($id) {
-		$sql="select * from ecms_message where messageId=$id";
+		$sql="select (select userUsername from ecms_user where userId=messageFromUserId) as fromUserName,msg.* from ecms_message msg where messageId=$id";
 		return $this->db->getQueryValue($sql);
 	}
+	public function updateBatchMessageState($state,$ids){
+		$sql="update ecms_message set messageState=(messageState | $state),messageUpdateTime=UNIX_TIMESTAMP() where messageId in(".$ids.")";
+		return $this->db->getQueryExecute($sql);
+	}
+	//end to be added by Cheneil
+	
 	/**
 	 * 获取信息列表
 	 * @access public

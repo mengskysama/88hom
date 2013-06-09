@@ -22,7 +22,7 @@ if(isset($_POST['btn_confirm_reset'])){
 		}
 		if($errCode == 0){
 			$userService = new UserService($db);
-			$UCUser['userPassword'] = $newPwd;
+			$UCUser['userPassword'] = sysAuth($newPwd);
 			$result = $userService->updateUser($UCUser);
 			if($result>0){
 				$errMsg = "修改密码成功";

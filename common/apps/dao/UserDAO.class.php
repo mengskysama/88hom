@@ -24,6 +24,11 @@ class UserDAO{
 		$sql = "select id from ecms_register_cert_code where cert_channel='".$certChannel."' and cert_code='".$vcode."' and cert_code_status=1";
 		return $this->db->getQueryValue($sql);
 	}
+
+	public function deactiveCertCode($certChannel,$vcode){
+		$sql = "update ecms_register_cert_code set cert_code_status=0 where cert_channel='".$certChannel."' and cert_code='".$vcode."'";
+		return $this->db->getQueryExecute($sql);
+	}
 	
 	public function saveCertCode($certChannel,$vcode){
 		$sql = "update ecms_register_cert_code set cert_code_status=0 where cert_channel='".$certChannel."' and cert_code_status=1";

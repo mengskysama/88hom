@@ -37,6 +37,9 @@ class MessageService{
 		return $msg;
 	}
 	//added by Cheneil
+	public function getMessageById($id){
+		return $this->messageDAO->getMessageById($id);
+	}
 	public function updateBatchMessageState($state,$ids){
 		return $this->messageDAO->updateBatchMessageState($state,$ids);
 	}

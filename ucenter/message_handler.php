@@ -25,6 +25,12 @@ if($action == "sendMessage"){
 		return;
 	}
 	
+	$msg_count_sent = $messageService->countMessage("where messageFromUserId=".$userId." and from_unixtime(messageCreateTime,'%Y-%m-%d')=date_format(now(),'%Y-%m-%d')");
+	if($msg_count_sent > 20){
+		echo "{\"err\":\"error\",\"msg\":\"您今天发送信息已超过20条\"}";
+		return;
+	}
+	
 	$message['messageTitle'] = "";
 	$message['messageContent'] = $content;
 	$message['messageFromUserId'] = $userId;
@@ -36,7 +42,7 @@ if($action == "sendMessage"){
 		$toUser = $userService->getUserByUserName($name);
 		if($toUser == "") continue;
 
-		$message['messageToUserId'] =$toUser['userId'];
+		$message['messageToUserId'] = $toUser['userId'];
 		$messageService->release($message);
 	}
 	echo "{\"result\":\"1\"}";

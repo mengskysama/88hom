@@ -30,7 +30,16 @@ class UserService{
 	
 	public function isValidCertCode($certChannel,$vcode){
 		$result=$this->userDAO->isValidCertCode($certChannel,$vcode);
-		if(null==$result||$result==''){
+		if(!$result){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+	public function deactiveCertCode($certChannel,$vcode){
+		$result=$this->userDAO->deactiveCertCode($certChannel,$vcode);
+		if($result<0){
 			return false;
 		}else{
 			return true;

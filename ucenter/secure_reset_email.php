@@ -5,10 +5,9 @@ $tpl_name = $tpl_dir.'secure_reset_email.tpl';
 
 $errMsg = "";
 $oldUserEmail = $UCUser['userEmail'];
-$userEmail = getParameter("userEmail");	
-if(isset($userEmail)){
+if(isset($_POST['userEmail'])){
 	
-	
+	$userEmail = getParameter("userEmail");	
 	$userService = new UserService($db);
 	$user = $userService->getUserByUserEmail($userEmail);
 	if(!empty($user)){
@@ -17,6 +16,8 @@ if(isset($userEmail)){
 		$UCUser['userEmail'] = $userEmail;
 		$result = $userService->updateUser($UCUser);
 		if($result>0){
+			$_SESSION['UCUser'] = $UCUser;
+			$oldUserEmail = $userEmail;
 			$errMsg = "修改邮箱成功";
 		}else{
 			$errMsg = "修改邮箱失败，请重试";

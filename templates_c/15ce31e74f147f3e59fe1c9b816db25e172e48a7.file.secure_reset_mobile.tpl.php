@@ -1,10 +1,43 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-09 16:11:15
+         compiled from "E:/workspace/projects/88hom/templates\ucenter\secure_reset_mobile.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:2483451b424f38714a8-60124098%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '15ce31e74f147f3e59fe1c9b816db25e172e48a7' => 
+    array (
+      0 => 'E:/workspace/projects/88hom/templates\\ucenter\\secure_reset_mobile.tpl',
+      1 => 1370765463,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '2483451b424f38714a8-60124098',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51b424f39764d9_11653795',
+  'variables' => 
+  array (
+    'cfg' => 0,
+    'jsFiles' => 0,
+    'cssFiles' => 0,
+    'userName' => 0,
+    'errMsg' => 0,
+    'oldUserPhone' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_51b424f39764d9_11653795')) {function content_51b424f39764d9_11653795($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
+" />
 <title>安全中心-手机</title>
-<!--{$jsFiles}-->
-<!--{$cssFiles}-->
+<?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
+
+<?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
+
 <script language="javascript" type="text/javascript">
 
 var ismobilevalid = false;
@@ -126,7 +159,8 @@ function sendCertCode() {
 
 <body>
 <!--头部-->
-<!--{include file="$header"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['header']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 <!--中间-->
 <div class="gr_zj">
 	<div class="zl_b">
@@ -143,7 +177,8 @@ function sendCertCode() {
              </div>
             <div class="zl_nr">
             	<div class="zl_l">
-                	<span>您好，<font class="red"><!--{$userName}--></font></span>
+                	<span>您好，<font class="red"><?php echo $_smarty_tpl->tpl_vars['userName']->value;?>
+</font></span>
 						<ul class="zlfl">
                     		<li><a href="secure_reset_password.php">密码修改</a></li>
                             <li><a href="secure_reset_email.php">邮箱修改</a></li>
@@ -154,15 +189,17 @@ function sendCertCode() {
                 <form id="resetMobileFrm" name="resetMobileFrm" action="secure_reset_mobile.php" method="post">
 					<table width="90%" border="0" cellspacing="0" cellpadding="0">
 						  <tr>
-  							  <td align="middle" colspan="2"><font color="red"><!--{$errMsg}--></font>
+  							  <td align="middle" colspan="2"><font color="red"><?php echo $_smarty_tpl->tpl_vars['errMsg']->value;?>
+</font>
                                </td>
 						  </tr>
-						  <!--{if $oldUserPhone != ''}-->
+						  <?php if ($_smarty_tpl->tpl_vars['oldUserPhone']->value!=''){?>
 						  <tr>
   							  <td width="120" height="48" align="right" valign="middle" class="f14 z3">原始手机号：</td>
-  							  <td width="450" class="p5 z14"><!--{$oldUserPhone}--></td>
+  							  <td width="450" class="p5 z14"><?php echo $_smarty_tpl->tpl_vars['oldUserPhone']->value;?>
+</td>
 						  </tr>
-						  <!--{/if}-->
+						  <?php }?>
  						  <tr>
    							 <td width="120" height="48" align="right" valign="middle" class="f14 z3">输入新手机号：</td>
                                 <td width="450">
@@ -195,6 +232,8 @@ function sendCertCode() {
     </div>
 </div>
 <!--底部-->
-<!--{include file="$footer"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['footer']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 </body>
 </html>
+<?php }} ?>
