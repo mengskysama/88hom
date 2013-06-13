@@ -1,22 +1,20 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-11 10:00:31
-         compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_register.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:187565183ceffcb09a2-61316980%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-11 10:00:34
+         compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\email_register.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:1628151b684c24c63e6-89021455%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '9dbd38769ea73e1e17f9b6c9fa2ee217bebe6a70' => 
+    'c33e894dba7fdfb7c6693c92a294efd006679fb2' => 
     array (
-      0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_register.tpl',
+      0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\email_register.tpl',
       1 => 1370915863,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '187565183ceffcb09a2-61316980',
+  'nocache_hash' => '1628151b684c24c63e6-89021455',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_5183ceffd33847_89850073',
   'variables' => 
   array (
     'cfg' => 0,
@@ -24,13 +22,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cssFiles' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51b684c25cc9d8_26234387',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5183ceffd33847_89850073')) {function content_5183ceffd33847_89850073($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_51b684c25cc9d8_26234387')) {function content_51b684c25cc9d8_26234387($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
 " />
-<title>个人注册页面</title>
+<title>个人注册页面_邮箱</title>
 <?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
@@ -42,7 +42,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['header']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 <!--中间-->
-<form id="userRegForm" action="register.php" method="post">
+<form id="emailregister" action="register.php" method="post">
 <input type="hidden" name="userType" value="3">
 <div class="gr_zj">
 	<div class="gr_b">
@@ -56,22 +56,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                </div>
              </div>
             <div class="sjzc1">
-            	<div class="sjzc1_yz" id="div_mathcode" style="display: none;">
-               	  <table width="180" height="58" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td width="85"><img src='<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_code_line'];?>
-' id='imgcode' name='imgcode'  onClick="this.src=this.src+'?op=login&'+Math.random()" style='cursor:pointer;'></td>
-                            <td width="47"><input type="text" value="" maxlength="4" class="yz_input" id="txt_mathcode" /></td>
-                            <td width="44"><input id="btn_mathcode" type="image" src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
-ucenter/qd.jpg"></td>
-                        </tr>
-                        <tr>
-                            <td><span class="blue"><a href="javascript:void(0);" onclick="refresh_code();">换一题</a></span></td>
-                            <td colspan="2"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
-ucenter/yz_bq.gif" style="vertical-align:middle;"> 请输入答案</td>
-                        </tr>
-                    </table>
-                </div>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 					  <tr>
   						  <td width="105" height="30" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>账户：</td>
@@ -102,18 +86,19 @@ ucenter/yz_bq.gif" style="vertical-align:middle;"> 请输入答案</td>
                           	<p class="z6">请再次填写密码</p>
                          </td>
 				    <tr>
-   					    <td width="105" height="30" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机号：</td>
+   					    <td width="105" height="30" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>我的邮箱：</td>
  					    <td height="30">
-							<input id="userPhone" name="userPhone" type="text" class="sjh"  value=""/>
-                            <input name="button2" type="button" class="hq b0" id="button2" value="" onclick="return sendCertCode();"/>
-							
-                        </td>
+                        	<input id="userEmail" name="userEmail" type="text" class="sjh" value="" /> 
+                            </td>
 		  </tr>
  					 <tr>
-  					    <td width="105" height="70" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机验证码：</td>
-   					    <td height="70">
-                       	  <input id="phoneCert" name="phoneCert" type="text" class="sjyz"  value=""/>
-                            <span class="yzm z6">若1分钟后仍未收到验证码短信，<a href="javascript:void(0);" id="a_sendcode">请点此重发</a><br /> 若无法收到验证短信，请使用<a href="email_register.php">电子邮箱注册</a></span>
+  					    <td width="105" height="56" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>验证码：</td>
+   					    <td height="56" align="right" valign="middle">
+						<img src='<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_code_line'];?>
+' id='imgcode' name='imgcode' onClick="this.src=this.src+'?op=login&'+Math.random()" width="89" style="float:left">;
+						<input type="text" value="" maxlength="4" class="sjyz" style="border:1px solid #ffbdc2" id="txt_mathcode" />
+                        <span class="yzm2 z6"><a href="javascript:void(0);" onclick="refresh_code();" class="yzm2 z6">换一题</a>&nbsp;&nbsp;请输入答案</span>
+							
                         </td>
 		  </tr>
 					  <tr>

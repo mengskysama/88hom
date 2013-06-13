@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-05-12 12:08:09
+<?php /* Smarty version Smarty-3.1.8, created on 2013-05-14 22:44:31
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\message_send.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:28404518e402574a714-91650917%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1059e55de58c6e54e32cc534c5aa9d20821ea38c' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\message_send.tpl',
-      1 => 1368331681,
+      1 => 1368540355,
       2 => 'file',
     ),
   ),
@@ -80,6 +80,7 @@ ucenter/grzc_03.jpg" />
 	                <h2 class="sj">写信息</h2>
                   </div>
 	              <div class="xxnr1">
+	              <form name="form1" id="form1" action="message_send.php" method="post">
                   		<table width="100%" border="0" cellspacing="0" cellpadding="0">
  							 <tr>
  							   <td width="80" height="60" align="right" valign="middle" class="z14 " style="font-weight:bolder">收件人：</td>
@@ -93,9 +94,8 @@ ucenter/grzc_03.jpg" />
  							 </tr>
  							 <tr>
 							     <td width="80" height="60" align="right" valign="middle">&nbsp;</td>
-  							   <td><input name="button2" type="submit" class="mddl2" id="button2" value="发送" />
+  							   <td><input name="btnsendMsg" type="button" class="mddl2" id="btnsendMsg" value="发送" />
                                                 <div class="send">
-                                                    <input id="btnsendMsg" value=" " type="button" />
                                                     [按Ctrl+Enter发送]
                                                 </div></td>
 						      </tr>
@@ -106,7 +106,7 @@ ucenter/grzc_03.jpg" />
   							     ②每天可发送20条短消息(您今日已发送0条)</p></td>
 					      </tr>
 						</table>
-
+				  </form>		
                   </div>
 	              
                 </div>
@@ -234,72 +234,6 @@ ucenter/grzc_03.jpg" />
             
             GetSendCount();
             
-            function onclick(e)
-            {
-                var tofriend = $('#toSendName').val();
-                tofriend = tofriend.replace(/，/g, ",");
-                while (tofriend.indexOf(',,') > -1) {
-                    tofriend = tofriend.replace(/,,/gi, ",");
-                }
-                if (tofriend.indexOf(',') == 0) {
-                    tofriend = tofriend.substring(1, tofriend.length);
-                }
-                if (tofriend.lastIndexOf(',') == tofriend.length - 1) {
-                    tofriend = tofriend.substring(0, tofriend.length - 1);
-                }
-                if (e.target.tagName == "A") {
-                    if ($(e.target).attr("value") == 'yy2y') {
-                        ShowAlertMsg('短消息不能发送给自己!');
-                        return false;
-                    }
-                    if (tofriend == '') {
-                        $('#toSendName').val($(e.target).attr("value"));
-                    }
-                    else {
-                        var addfriend = $(e.target).attr("value");
-                        while (tofriend.indexOf(',,') > -1) {
-                            tofriend = tofriend.replace(/,,/gi, ",");
-                        }
-                        var flag = false;
-                        var strs = [];
-                        strs = tofriend.split(',');
-                        var i = 0;
-                        for (i = 0; i < strs.length; i++) {
-                            if (strs[i] == addfriend) {
-                                strs[i] = "";
-                                flag = true;
-                            }
-                        }
-                        if (flag) {
-                            tofriend = strs.join(',');
-                            ;
-                            while (tofriend.indexOf(',,') > -1) {
-                                tofriend = tofriend.replace(/,,/gi, ",");
-                            }
-                            if (tofriend.indexOf(',') == 0) {
-                                tofriend = tofriend.substring(1, tofriend.length);
-                            }
-                            if (tofriend.lastIndexOf(',') == tofriend.length - 1) {
-                                tofriend = tofriend.substring(0, tofriend.length - 1);
-                            }
-
-                            $('#toSendName').val(tofriend);
-
-                        }
-                        else {
-
-                            if (strs.length >= 5) { ShowAlertMsg('抱歉，系统每次最多发送5人!'); return false; }
-                            $('#toSendName').val(tofriend + ',' + $(e.target).attr("value"));
-                        }
-                    }
-
-                   
-                }
-            }
-            $('#friendlist,#recentflylist').click(function(e) {
-               onclick(e);
-               return false;
-            });
         });
 
 
@@ -327,11 +261,13 @@ ucenter/grzc_03.jpg" />
         }
         //发送信息
         function SendMessageClick() {
+        /*
             if('False'=='False')
             {
                 ShowAlertMsg('必须通过验证才可以发送短消息!');
                 return false;
             }
+        */
             var toSendName = document.getElementById('toSendName');
             var sendcontent = $('#sendContent').val();
 
@@ -360,7 +296,8 @@ ucenter/grzc_03.jpg" />
 
             var i = 0;
             for (i = 0; i < strs.length; i++){
-                if (strs[i] == 'yy2y'){
+                if (strs[i] == '<?php echo $_smarty_tpl->tpl_vars['userName']->value;?>
+'){
                     ShowAlertMsg('短消息不能发送给自己!');
                     return false;
                 }

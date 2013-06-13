@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-05-07 21:32:21
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-11 09:58:06
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:314785183bb739b9338-21159143%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '95add166d95723005b362f1f114ae0b867043f80' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\index.tpl',
-      1 => 1367933060,
+      1 => 1370915863,
       2 => 'file',
     ),
   ),
@@ -22,11 +22,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'userTagClass' => 0,
-    'agentTagClass' => 0,
-    'shopTagClass' => 0,
+    'con_class' => 0,
+    'lcon_class' => 0,
+    'dl_class' => 0,
+    'dl_1_class' => 0,
+    'login_page' => 0,
+    'login_title' => 0,
     'userType' => 0,
     'regFormAction' => 0,
+    'invalidAcc' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -93,36 +97,40 @@ function check_input() {
 <body>
 <!--头部-->
 <div class="top">
-    <a href="#" class="logo1"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+    <a href="http://www.88hom.com" class="logo1"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
 ucenter/logo.jpg"></a>
     <span class="headerNav">
-    <a href="#">加入收藏</a> | <a href="#">设为首页</a> | <a href="#">官方微博</a><a href="#">&nbsp;&nbsp;登录注册</a>
+    <a onclick="bookmarkit();" title="加入收藏夹">收藏</a> | <a onclick="this.style.behavior=&quot;url(#default#homepage)&quot;;this.sethomepage(&quot;http://localhost/88hom/ucenter/&quot;);return false;" title="设为首页">设为首页</a> | <a href="#">官方微博</a>
     </span>
 </div>
 <!--中间登录部分-->
-<div class="con">
+<div class="<?php echo $_smarty_tpl->tpl_vars['con_class']->value;?>
+">
 	<!--banner图-->
-	<div class="lcon">
+	<div class="<?php echo $_smarty_tpl->tpl_vars['lcon_class']->value;?>
+">
    		<!--登录部分-->
-    	<div class="dl">
-        	 <div class="dl_1">
+    	<div class="<?php echo $_smarty_tpl->tpl_vars['dl_class']->value;?>
+">
+        	 <div class="<?php echo $_smarty_tpl->tpl_vars['dl_1_class']->value;?>
+">
              	<ul>
-                	<li><a href="index.php" <?php echo $_smarty_tpl->tpl_vars['userTagClass']->value;?>
->个人登陆</a></li>
-                    <li><a href="index.php?userType=2" <?php echo $_smarty_tpl->tpl_vars['agentTagClass']->value;?>
->经纪人登陆</a></li>
-                    <li><a href="index.php?userType=1" <?php echo $_smarty_tpl->tpl_vars['shopTagClass']->value;?>
->门店登陆</a></li>
+                	<li><a href="<?php echo $_smarty_tpl->tpl_vars['login_page']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['login_title']->value;?>
+</a></li>
+                	<?php if ($_smarty_tpl->tpl_vars['userType']->value==3){?>
+                    	<li style="float:right"><a href="index.php?userType=2" style="font-size:12px;color:#F00; font-weight:normal; background:none; text-decoration:underline">我是经纪人</a></li>
+                    <?php }?>
                 </ul>
              </div>
          <div class="dlnr">
-         <form name="loginForm" onsubmit="return check_input();" action="login.php" method="post">
+         <form name="loginForm" onsubmit="return check_input();" action="index.php" method="post">
            <input name="userType" type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['userType']->value;?>
 ">
        	   <table width="100%" border="0" cellspacing="0" cellpadding="0">
  		   <tr>
    				 <td width="73" height="40" align="center" valign="middle" class="logo_4">账 户：</td>
-   				 <td width="73" class="logo_31"><input id="loginID" name="loginID" type="text" value="手机号/邮箱/用户名码" /></td>
+   				 <td width="73" class="logo_31"><input id="loginID" name="loginID" type="text"  value="手机号/邮箱/用户名码" /></td>
  		   </tr>
  		   <tr>
  			     <td width="73" height="40" align="center" valign="middle" class="logo_4">密 码：</td>
@@ -135,7 +143,7 @@ ucenter/logo.jpg"></a>
            <tr>
   			     <td height="40" colspan="2" valign="middle">
   		    	 <div class="dlmm"><input name="button2" type="submit" class="denglu" id="button2" value="登  录" />
-     			<a href="#" class="wj f14">忘记密码？</a></div></td>
+     			<a href="get_password.php" class="wj f14">忘记密码？</a></div></td>
           </tr>
 	      </table>
 	    </form>
@@ -149,9 +157,9 @@ ucenter/logo.jpg"></a>
         	</form>
         	</div>
              <div class="zc_r">
-        <a href="#"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+				<a href="login_qq.php"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
 ucenter/dl2.jpg"></a>
-        <a href="#"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+				<a href="login_weibo.php"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
 ucenter/dl3.jpg"></a>
         	</div>
         </div>
@@ -165,11 +173,11 @@ ucenter/dl3.jpg"></a>
     	<span class="bot_l">@2013 <font color="#a0141a">房不剩房</font> 天境文化传播有限公司 <br />粤ICP证编号 B2-20130308 | 技术支持：<a href="#">城旭网络</a></span>
         <span class="bot_r"><a href="#">新房</a> | <a href="#">二手房</a> | <a href="#">家居</a> | <a href="#">社区</a> | <a href="#">关于我们</a> | <a href="#">法律条款</a> | <a href="#">广告投放</a> | <a href="#">网站地图</a><br />投诉电话：400-8888-666</span>
     </div>
-
 <script type="text/javascript">
-alert('用户不存在！');
-</script>
+<?php echo $_smarty_tpl->tpl_vars['invalidAcc']->value;?>
 
+function bookmarkit(){window.external.addFavorite('http://localhost/88hom/ucenter/','用户中心-天境')}
+</script>
 </body>
 </html>
 <?php }} ?>

@@ -305,6 +305,50 @@ function sysAdminPageInfo($totalNum=0,$pageSize=10,$currentPage=null,$url,$param
 		$pageInfo .= '<a class="pointer" href="'.$url.'='.$totalPage.'" title="末页">>></a>';
 		return $pageInfo;
 }
+
+function pagination($totalNum=0,$pageSize=10,$currentPage=null,$url,$params){
+	
+	//当前页 
+	$currentPage=(($currentPage == null or $currentPage == 0) ? 1 : $currentPage);
+	//总页数
+	$totalPage = ($totalNum%$pageSize==0) ? ($totalNum/$pageSize) : (intval($totalNum/$pageSize)+1);
+	$totalPage = $totalPage == 0 ? 1 : $totalPage;
+	$prevPage = ($currentPage > 1) ? ($currentPage-1) : 1;
+	$nextPage = ($currentPage < $totalPage) ? ($currentPage+1) : $totalPage;
+	//echo $totalNum.'-'.$pageSize.'-'.$currentPage.'-'.$url;
+	//如果当前页大于总页则取总页数,否则不变
+	$currentPage = $currentPage > $totalPage ? $totalPage : $currentPage;
+	
+	$pageIndexs = "";
+	for($i=1; $i<=$totalPage; $i++){
+		if($i == $currentPage){
+			$pageIndexs .= '['.$i.']';
+		}else{
+			$pageIndexs .= '<a href="'.$url.'='.$i.'">['.$i.']</a>';
+		}
+	}
+
+	$pageInfo = '<div class="r">'.$currentPage.'/'.$totalPage.'页';
+	if($currentPage > 1){
+		$prevPage = $currentPage-1;
+		$pageInfo .= '&nbsp;&nbsp;<a href="'.$url.'=1">首页</a>&nbsp;&nbsp;<a href="'.$url.'='.$prevPage.'">上一页</a>';
+	}else{
+		$pageInfo .= '&nbsp;&nbsp;首页&nbsp;&nbsp;上一页';
+	}
+	$pageInfo .= $pageIndexs;	
+	
+	if($currentPage < $totalPage){
+		$nextPage = $currentPage+1;
+		$pageInfo .= '<a href="'.$url.'='.$nextPage.'">下一页</a>&nbsp;&nbsp;<a href="'.$url.'='.$totalPage.'">尾页</a>';
+	}else{
+		$pageInfo .= '下一页&nbsp;&nbsp;尾页';
+	}
+		
+	$pageInfo .= '</div>';
+	
+	return $pageInfo;
+	
+}
 //二维数组排序
 function arraySort($arr,$keys,$type='asc'){
 	$keysvalue = $newarray = array();

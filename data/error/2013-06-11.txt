@@ -1,0 +1,15 @@
+------------------------2013-06-11 10:00:27
+错误SQL语句：
+select count(*) as counts from ecms_message where messageToUserId= and (messageState & 1)=0
+客户端:127.0.0.1
+时间:2013-06-11 10:00:27
+------------------------2013-06-11 10:00:27
+错误SQL语句：
+select messageId,messageContent,(select userUsername from ecms_user where userId=messageFromUserId) as sender,(messageState & 4) as messageState,from_unixtime(messageCreateTime,'%Y-%m-%d %H:%i:%s') as sentTime from ecms_message where messageToUserId= and (messageState & 1)=0 order by messageCreateTime desc limit 0,20
+客户端:127.0.0.1
+时间:2013-06-11 10:00:27
+------------------------2013-06-11 10:01:05
+错误SQL语句：
+insert into ecms_register_cert_code(cert_channel,cert_code,cert_code_status,create_time) values('laofan@126.com',39bf64322adf18c7ce19ec36faf85ad2,1,now())
+客户端:127.0.0.1
+时间:2013-06-11 10:01:05
