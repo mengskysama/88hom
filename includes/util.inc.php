@@ -306,21 +306,48 @@ function sysAdminPageInfo($totalNum=0,$pageSize=10,$currentPage=null,$url,$param
 		return $pageInfo;
 }
 
-function pagination($totalNum=0,$pageSize=10,$currentPage=null,$url,$params){
+//added by Cheneil
+function pagination($totalNum=0,$pageSize=10,$currentPage=null,$url,$indexLen=5){
 	
 	//当前页 
 	$currentPage=(($currentPage == null or $currentPage == 0) ? 1 : $currentPage);
 	//总页数
 	$totalPage = ($totalNum%$pageSize==0) ? ($totalNum/$pageSize) : (intval($totalNum/$pageSize)+1);
 	$totalPage = $totalPage == 0 ? 1 : $totalPage;
-	$prevPage = ($currentPage > 1) ? ($currentPage-1) : 1;
-	$nextPage = ($currentPage < $totalPage) ? ($currentPage+1) : $totalPage;
-	//echo $totalNum.'-'.$pageSize.'-'.$currentPage.'-'.$url;
 	//如果当前页大于总页则取总页数,否则不变
 	$currentPage = $currentPage > $totalPage ? $totalPage : $currentPage;
 	
+	$prevPage = ($currentPage > 1) ? ($currentPage-1) : 1;
+	$nextPage = ($currentPage < $totalPage) ? ($currentPage+1) : $totalPage;
+	//echo $totalNum.'-'.$pageSize.'-'.$currentPage.'-'.$url;
+		
+	$startIndex = 1;
+	$endIndex = $totalPage;
+	if($totalPage > $indexLen){
+		$_mod = $indexLen%2;
+		$prevLen = $_mod == 0 ? ($indexLen/2 - 1) : floor($indexLen/2);
+		$nextLen = $_mod == 0 ? $indexLen/2 : floor($indexLen/2);
+		//echo $currentPage.'|'.$totalPage.'###'.$prevLen.'|'.$nextLen.'###';  
+		if($currentPage-$prevLen > 1){
+			if($currentPage == $totalPage){
+				$startIndex = $totalPage - $indexLen + 1;
+				$endIndex = $totalPage;
+			}else if($currentPage + $nextLen > $totalPage){
+				$startIndex = $totalPage - $prevLen - $nextLen;
+				$endIndex = $totalPage;
+			}else{
+				$startIndex = $currentPage == $totalPage ? ($totalPage - $indexLen + 1) : ($currentPage - $prevLen);
+				$endIndex = $currentPage + $nextLen;
+			}
+		}else{
+			$startIndex = 1;
+			$endIndex = $indexLen;
+		}
+		//$endIndex = $endIndex>$totalPage ? $totalPage : $endIndex;
+	}
+	//echo $startIndex.'|'.$endIndex;
 	$pageIndexs = "";
-	for($i=1; $i<=$totalPage; $i++){
+	for($i=$startIndex; $i<=$endIndex; $i++){
 		if($i == $currentPage){
 			$pageIndexs .= '['.$i.']';
 		}else{
@@ -349,6 +376,7 @@ function pagination($totalNum=0,$pageSize=10,$currentPage=null,$url,$params){
 	return $pageInfo;
 	
 }
+//end to be added by Cheneil
 //二维数组排序
 function arraySort($arr,$keys,$type='asc'){
 	$keysvalue = $newarray = array();

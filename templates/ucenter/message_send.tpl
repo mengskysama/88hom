@@ -68,7 +68,7 @@
 							     <td width="80" height="100" align="right" valign="middle">&nbsp;</td>
   							   <td height="100"><p class="z6">说明：<br />
   							     ①可以用英文状态下的逗号将用户名隔开实现群发，最多5个用户<br />
-  							     ②每天可发送20条短消息(您今日已发送0条)</p></td>
+  							     ②每天可发送20条短消息(您今日已发送<!--{$msg_count_sent}-->条)</p></td>
 					      </tr>
 						</table>
 				  </form>		

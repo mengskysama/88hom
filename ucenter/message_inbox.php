@@ -24,7 +24,7 @@ $messageService = new MessageService($db);
 $totalNum = $messageService->countMessage($where);
 
 $messageList = $messageService->getMessageList($fields,$where,$order,$limit);
-$pagination = pagination($totalNum,MESSAGE_CENTER_PAGE_SIZE,$page,"message_inbox.php?type=".$msgType."&page","");
+$pagination = pagination($totalNum,MESSAGE_CENTER_PAGE_SIZE,$page,"message_inbox.php?type=".$msgType."&page",5);
 
 $html->addJs("jqModal.js");
 $html->show();
