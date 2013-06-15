@@ -13,6 +13,7 @@ if(!isset($_SESSION['QW_USER'])){
 
 $qw_user = $_SESSION['QW_USER'];
 $login_channel = $qw_user['channel'];
+$html->addJs("ucenter_register_qw.js");
 $html->show();
 $smarty->assign('login_channel',$login_channel);
 $smarty->display($tpl_name);
