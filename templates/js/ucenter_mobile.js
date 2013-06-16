@@ -136,7 +136,7 @@ function sendVcode(mobile, mathcode) {
 function refresh_code() {
     var codefor = $("#userPhone").val();
     var v_random = Math.round(Math.random() * 10000);
-    $("#imgcode").attr("src", 'get_math_code.php?code=' + v_random + '&codefor=' + codefor);
+    $("#imgcode").attr("src", 'http://localhost/88hom/common/libs/api/line_captcha.php?code=' + v_random + '&codefor=' + codefor);
 }
 
 //手机号输入格式检测

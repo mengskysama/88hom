@@ -1,23 +1,58 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-16 17:57:23
+         compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\bind_account.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:968551bc0bcbc13da7-51111676%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '4ba4d0548ac07bb32301d8ba36427b9c7d68094d' => 
+    array (
+      0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\bind_account.tpl',
+      1 => 1371376610,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '968551bc0bcbc13da7-51111676',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51bc0bcd6e2a72_44407611',
+  'variables' => 
+  array (
+    'cfg' => 0,
+    'jsFiles' => 0,
+    'cssFiles' => 0,
+    'login_channel' => 0,
+    'err_message_bind_account' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_51bc0bcd6e2a72_44407611')) {function content_51bc0bcd6e2a72_44407611($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
+" />
 <title>用户登录</title>
-<!--{$jsFiles}-->
-<!--{$cssFiles}-->
+<?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
+
+<?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
+
 
 </head>
 
 <body>
 <!--头部-->
-<!--{include file="$header"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['header']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 <!--中间-->
 <div class="gr_zj">
 	<div class="gr_b">
     	<div class="gr_dl">
         	<div class="dl_tb">
-				<img src="<!--{$cfg.web_images}-->ucenter/QQbd.jpg" width="79" class="l">  
-            	<span class="dl_wz r">亲爱的，您已经用<!--{$login_channel}-->账号成功登陆了房不剩房<br /><br />还差一步，就可以畅游房不剩房网营了！ 赶快简单设置一下吧！加油！</span>      
+				<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/QQbd.jpg" width="79" class="l">  
+            	<span class="dl_wz r">亲爱的，您已经用<?php echo $_smarty_tpl->tpl_vars['login_channel']->value;?>
+账号成功登陆了房不剩房<br /><br />还差一步，就可以畅游房不剩房网营了！ 赶快简单设置一下吧！加油！</span>      
         	</div>
 			<ul class="dlqh">
             	<li class="sjzc2"><a onmouseover="show_menuc('login')">已有账号马上绑定</a></li>
@@ -60,13 +95,16 @@
             <div class="sjzc1_yz" id="div_mathcode" style="display: none;">
             	<table width="180" height="58" border="0" cellspacing="0" cellpadding="0">
                 	<tr>
-                    	<td width="85"><img src='<!--{$cfg.web_code_line}-->' id='imgcode' name='imgcode'  onClick="this.src=this.src+'?op=login&'+Math.random()" style='cursor:pointer;'></td>
+                    	<td width="85"><img src='<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_code_line'];?>
+' id='imgcode' name='imgcode'  onClick="this.src=this.src+'?op=login&'+Math.random()" style='cursor:pointer;'></td>
                         <td width="47"><input type="text" value="" maxlength="4" class="yz_input" id="txt_mathcode" /></td>
-                        <td width="44"><input id="btn_mathcode" type="image" src="<!--{$cfg.web_images}-->ucenter/qd.jpg" onclick="return sendCertCode();"></td>
+                        <td width="44"><input id="btn_mathcode" type="image" src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/qd.jpg" onclick="return sendCertCode();"></td>
                     </tr>
                     <tr>
                     	<td><span class="blue"><a href="javascript:void(0);" onclick="refresh_code();">换一题</a></span></td>
-                        <td colspan="2"><img src="<!--{$cfg.web_images}-->ucenter/yz_bq.gif" style="vertical-align:middle;"> 请输入答案</td>
+                        <td colspan="2"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/yz_bq.gif" style="vertical-align:middle;"> 请输入答案</td>
                     </tr>
                </table>
             </div>
@@ -129,7 +167,8 @@
 						<td width="105" height="70" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>验证码：</td>
 		   				<td height="70">
 		                       	  <input id="email_mathcode" name="email_mathcode" type="text" class="sjyz"  value=""/>
-		                            <span class="yzm"><img id="imgcode" src="<!--{$cfg.web_code_web}-->" onClick="this.src=this.src+'?op=login&'+Math.random()" style='cursor:pointer;'></span>
+		                            <span class="yzm"><img id="imgcode" src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_code_web'];?>
+" onClick="this.src=this.src+'?op=login&'+Math.random()" style='cursor:pointer;'></span>
 		                </td>
 				  	</tr>
 				  			
@@ -151,9 +190,12 @@
     </div>
 </div>
 <script type="text/javascript">
-<!--{$err_message_bind_account}-->
+<?php echo $_smarty_tpl->tpl_vars['err_message_bind_account']->value;?>
+
 </script>
 <!--底部-->
-<!--{include file="$footer"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['footer']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 </body>
 </html>
+<?php }} ?>

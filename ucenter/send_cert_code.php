@@ -13,7 +13,7 @@ if($mathcode == ""){
 	return;
 }
 
-if($mathcode != $_SESSION['codeweb']){
+if($mathcode != $_SESSION['line_captcha']){
 	echo "205";
 	return;
 }
@@ -26,6 +26,8 @@ if(!$result){
 	return;
 }
 
+echo "200";
+return;
 $sent = sendSMS($userPhone,$certCode);
 if($sent){
 	echo "200";

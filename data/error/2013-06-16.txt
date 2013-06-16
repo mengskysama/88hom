@@ -1,0 +1,15 @@
+------------------------2013-06-16 18:07:45
+错误SQL语句：
+insert into ecms_register_cert_code(cert_channel,cert_code,cert_code_status,create_time) values('fatgod@126.com',fba0d6dd8a5e2a6cc0b01309bddab238,1,now())
+客户端:127.0.0.1
+时间:2013-06-16 18:07:45
+------------------------2013-06-16 18:09:21
+错误SQL语句：
+insert into ecms_register_cert_code(cert_channel,cert_code,cert_code_status,create_time) values('tt@126.com',561878b25966ad1b38d380afc98599b3,1,now())
+客户端:127.0.0.1
+时间:2013-06-16 18:09:21
+------------------------2013-06-16 18:13:20
+错误SQL语句：
+insert into ecms_register_cert_code(cert_channel,cert_code,cert_code_status,create_time) values('ss@126.com',39d4569173a3a56c69836d0ce1b65aae,1,now())
+客户端:127.0.0.1
+时间:2013-06-16 18:13:20

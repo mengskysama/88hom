@@ -39,8 +39,8 @@ class UserDAO{
 	}
 	
 	public function saveUser($user){
-		$sql = "insert into ecms_user(userUsername,userPassword,userPhone,userPhoneState,userEmail,userEmailState,userType,userGroupId,userState,userCreateTime,userUpdateTime) ".
-				"values('".$user['userUsername']."','".$user['userPassword']."','".$user['userPhone']."',".$user['userPhoneState'].",'".$user['userEmail']."',".$user['userEmailState'].",".$user['userType'].",".$user['userGroupId'].",".$user['userState'].",UNIX_TIMESTAMP(),UNIX_TIMESTAMP())";
+		$sql = "insert into ecms_user(userUsername,userPassword,userPhone,userPhoneState,userEmail,userEmailState,userType,userGroupId,userState,UOpenId,userCreateTime,userUpdateTime) ".
+				"values('".$user['userUsername']."','".$user['userPassword']."','".$user['userPhone']."',".$user['userPhoneState'].",'".$user['userEmail']."',".$user['userEmailState'].",".$user['userType'].",".$user['userGroupId'].",".$user['userState'].",'".$user['UOpenId']."',UNIX_TIMESTAMP(),UNIX_TIMESTAMP())";
 		$this->db->query($sql);
 		$userId = $this->db->getInsertNum();
 		return $userId;
@@ -72,7 +72,10 @@ class UserDAO{
 		if(isset($user['userState'])){
 			$sql .= "userState=".$user['userState'].",";
 		}
-				
+		if(isset($user['UOpenId'])){
+			$sql .= "UOpenId=".$user['UOpenId'].",";
+		}
+						
 		$sql .= "userUpdateTime=UNIX_TIMESTAMP() where userId=".$user['userId'];
 		return $this->db->getQueryExecute($sql);
 	}
