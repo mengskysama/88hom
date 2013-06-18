@@ -17,7 +17,12 @@ if(isset($_POST['button2'])){
  	if(empty($user) || (sysAuth($user['userPassword'],"DECODE") != $loginPwd)){
 		$isValidAccount = false;
 	}else{
+		$userDetail = $userService->getUserDetail($user['userId']);
+		if($userDetail){
+			$_SESSION['UCUserDetail'] = $userDetail;
+		}
 		$_SESSION['UCUser'] = $user;
+		
 		$userType = $user['userType'];
 		if($userType == 3){
 			header("Location:ucenter_user.php");

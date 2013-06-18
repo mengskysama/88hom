@@ -1,102 +1,29 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
-<title>我的房不剩房</title>
-
+<title>进入页</title>
 <!--{$jsFiles}-->
 <!--{$cssFiles}-->
 </head>
 
 <body>
 <!--求购头部-->
-<div class="qg_tb">
-	<div class="qg_tb1">
-    	<span class="qgtb">
-        	<a href="#">房不剩房首页</a> | <a href="#">资讯</a> |  <a href="#">新房</a> <a href="#">二手房</a> <a href="#">租房</a> | <a href="#">装修家居</a> | <a href="#">业主论坛</a>
-         </span>
-         <div class="logo">
-         	<div class="qg_logo">
-            	<img src="<!--{$cfg.web_images}-->ucenter/qg_06.jpg">
-            </div>
-            <div class="qg_ss">
-            	<div class="qg_ssl">
-    	<ul class="qg_ssfl z3 f14">
-        	<li><a href="#">新房</a></li>
-            <li><a href="#">二手房</a></li>
-            <li><a href="#">租房</a></li>
-            <li><a href="#">家居</a></li>
-            <li><a href="#">资讯</a></li>
-        </ul>
-        <div class="qg_ssk">
-        	<span class="qg_ssk1"><input type="text" id="keyWords" value="搜索小区名、中介、经纪人、网店等"/></span>
-			<span class="qg_ssk2"><a href="#" title="">搜 索</a></span>
-			<div class="qg_ssk3">
-						<select>
-							<option value="">区域/地铁</option>
-						</select>
-						<select>
-							<option value="">物业类型</option>
-							<option value="新房">新房</option>
-							<option value="二手房">二手房</option>
-						</select>
-						<select>
-							<option value="">价格范围</option>	
-						</select>
-                        <span class="qg_zf"><img src="<!--{$cfg.web_images}-->ucenter/qg_16.jpg"><a href="#">[地图找房]</a></span>
-                        <span class="qg_zf"><img src="<!--{$cfg.web_images}-->ucenter/qg_19.jpg"><a href="#">[地铁找房]</a></span>
-</div>
-        </div>
-    </div>
-            </div>
-         </div>
-    </div>
-</div>
+<!--{include file="$header_ucenter_user"}-->
 <!--求购内容-->
 <div class="qg_main">
-	<div class="qg_l">
-    	<p class="qg_bt">我的房不剩房</p>
-        <div class="qg_zc">
-     	   <dl>
-     		   	<dt class="qg_bt1">我要买房</dt>
-          	    <dd class="qg_bt2"><a href="#">我的找房条件</a></dd>
-          	    <dd class="qg_bt2"><a href="#">我的选房单</a></dd>
-         	    <dd class="qg_bt2"><a href="#">我浏览过的房源</a></dd>
-                <dd class="qg_bt2"><a href="#">我要求购</a></dd>
-                <dd class="qg_bt2"><a href="#">管理我的求购信息</a></dd>
-      	  </dl>
-            <dl>
-     		   	<dt class="qg_bt1">我要租房</dt>
-          	    <dd class="qg_bt2"><a href="#">我的租房条件</a></dd>
-          	    <dd class="qg_bt2"><a href="#">我的选房单</a></dd>
-         	    <dd class="qg_bt2"><a href="#">我浏览过的房源</a></dd>
-                <dd class="qg_bt2"><a href="#">我要求租</a></dd>
-                <dd class="qg_bt2"><a href="#">管理我的求租信息</a></dd>
-      	  </dl>
-          <dl>
-     		   	<dt class="qg_bt1">出租出售</dt>
-          	    <dd class="qg_bt2"><a href="#">我要出售</a></dd>
-          	    <dd class="qg_bt2"><a href="#">我要出租</a></dd>
-         	    <dd class="qg_bt2"><a href="#">管理我的出售信息</a></dd>
-                <dd class="qg_bt2"><a href="#">管理我的出租信息</a></dd>
-      	  </dl>
-           <dl>
-     		   	<dt class="qg_bt11">在线客服</dt>
-          	    <dd style="width:145px; padding-left:25px; line-height:24px; font-size:12px;">客服电话:4006308888-2
-                (周一至周五，9:00-17:30)</dd>
-      	  </dl>
-  	   </div>
-    </div>
+	<!--{include file="$ucenter_user_left_menu"}-->
     <div class="qg_r">
     	<p>你的位置： 我的房不剩房</p>
         <div class="qgxq2">
         	<div class="zltx">
             	<div class="jr_l">
                 	<img src="<!--{$cfg.web_images}-->ucenter/jry_03.jpg" class="l">
-                    <span class="l"><img src="<!--{$cfg.web_images}-->ucenter/jry_11.jpg">修改个人资料</span>
+                    <span class="l"><a href="userinfo.php"><img src="<!--{$cfg.web_images}-->ucenter/jry_11.jpg">修改个人资料</a></span>
                  </div>
                 <div class="jr_r">
-                	<p class="jr_r1"><b>三国乱舞</b><img src="<!--{$cfg.web_images}-->ucenter/jry_06.jpg" align="middle" class="l"><b>性别：女</b></p>
+                	<p class="jr_r1"><b><!--{$userName}--></b><img src="<!--{$cfg.web_images}-->ucenter/jry_06.jpg" align="middle" class="l"><b>性别：<!--{$userGender}--></b></p>
                     <p class="jr_r2"><b>买房：</b>找房条件（<a href="#">0</a>） 选房单（<a href="#">1</a>）浏览过房源（<a href="#">1</a>）</p>
                 <p class="jr_r2"><b>租房：</b>找房条件（<a href="#">0</a>） 选房单（<a href="#">1</a>）浏览过房源（<a href="#">1</a>）</p>
                  <p class="jr_r2">论坛（<a href="#">0</a>） 帖子（<a href="#">0</a>）</p>
@@ -207,48 +134,6 @@
     </div>
 
 <!--求购底部-->
-<div class="ss_bot">
-	<div class="gr_bot1">
-		<div class="c">
-					<div class="c1">
-						<a href="#">今日头条</a>
-						<a href="#">楼市要闻</a><br/>
-						<a href="#">政策解读</a>
-						<a href="#">行情数据</a>
-					</div>
-					<div class="s"></div>
-					<div class="c2">
-						<a href="#">最新开盘</a>
-						<a href="#">热门楼盘</a><br/>
-						<a href="#">优惠团购</a>
-						<a href="#">地图看房</a>
-					</div>
-					<div class="s"></div>
-					<div class="c2">
-						<a href="#">设计修饰</a>
-						<a href="#">促销团购</a><br/>
-						<a href="#">家具卖场</a>
-						<a href="#">装修指南</a>
-					</div>
-                    <div class="s"></div>
-					<div class="c3">
-						<a href="#">设计修饰</a>
-						<a href="#">促销团购</a><br/>
-						<a href="#">家具卖场</a>
-						<a href="#">装修指南</a>
-					</div>
-					<div class="s"></div>
-					<div class="c4">
-						<a href="#">业主论坛</a>
-						<a href="#">论坛热贴</a><br/>
-						<a href="#">人气板块</a>
-					</div>
-				</div>
-             <div class="gr_bot2">
-             广告投放：0755-88886666  投诉邮箱：tousu@tianyue.com  投诉电话：400-6666-888<br/>
-				版权所有2013-2016 房不剩房 天境文化传播有限公司 备粤10110011号 
-             </div>
-		</div>
-	</div>
+<!--{include file="$footer"}-->
 </body>
 </html>
