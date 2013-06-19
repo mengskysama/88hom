@@ -5,6 +5,17 @@
 <title>录入住宅出售房源</title>
 <!--{$jsFiles}-->
 <!--{$cssFiles}-->
+<script>
+  $(function() {
+    
+    $("#estName").autocomplete({
+      source: "ajax_get_prop_name.php",
+      select: function(e, ui) {
+      	  $("#estId").val(ui.item.id);    
+      }
+    });
+  });
+  </script>
 </head>
 
 <body>
@@ -25,14 +36,16 @@
    		  </ul>
           <div class="bs_tx">
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
+            <form id="zzForm" name="zzForm" action="property_handler.php" method="post">
+            <input type="hidden" name="prop_type" value="zz">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼盘名称</td>
-			    <td align="left" valign="middle" class="p25 grzc_31"><input name="" type="text"  value="" /> 还可写<font class="red">25</font>个汉字</td>
+			    <td align="left" valign="middle" class="p25 grzc_31"><input type="hidden" id="estId" name="estId"/><input id="estName" name="estName" type="text"  value="" /> 还可写<font class="red">25</font>个汉字</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">房源信息编码</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input name="" type="text"  value="" /> </td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseNumber" name="houseNumber" type="text"  value="" /> </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">内部编码</td>
@@ -40,19 +53,41 @@
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 产权信息</td>
-			    <td align="left" valign="middle" class="p25"><select name="ddlProv" id="ddlProv"><option selected="selected" value="0">个人产权</option></select></td>
+			    <td align="left" valign="middle" class="p25">
+			    <select name="housePayInfo" id="housePayInfo">
+			    	<option value="1">房产证</option>
+			    	<option value="2">预售合同</option>
+			    	<option value="3">抵押合同</option>
+			    	<option value="4">抵债房</option>
+			    	<option value="5">未知产权</option>
+			    	<option value="6">公房/福利房</option>
+			    </select>
+			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">类    别</td>
-			    <td align="left" valign="middle" class="p25"><select name="ddlProv" id="ddlProv"><option selected="selected" value="0">普通住宅</option></select></td>
+			    <td align="left" valign="middle" class="p25">
+			    <select name="houseType" id="houseType">			    
+			    	<option selected="selected" value="1">普通住宅</option>
+			    	<option selected="selected" value="2">商住</option>
+			    	<option selected="selected" value="3">平房</option>
+			    	<option selected="selected" value="4">复式</option>
+			    	<option selected="selected" value="5">跃式</option>
+			    	<option selected="selected" value="6">公寓</option>
+			    	<option selected="selected" value="7">洋房</option>
+			    	<option selected="selected" value="8">公房</option>
+			    	<option selected="selected" value="9">新式里弄</option>
+			    	<option selected="selected" value="10">酒店式公寓 </option>
+			    </select>
+			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  售    价</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input name="" type="text"  value="" /> 万元/套</td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseSellPrice" name="houseSellPrice" type="text"  value="" /> 万元/套</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>户    型</td>
-			    <td align="left" valign="middle" class="p25 grzc_35"><input name="" type="text"  value="" /> 室 <input name="" type="text"  value="" /> 厅 <input name="" type="text"  value="" /> 卫 <input name="" type="text"  value="" /> 厨 <input name="" type="text"  value="" /> 阳台</td>
+			    <td align="left" valign="middle" class="p25 grzc_35"><input id="houseRoom" name="houseRoom" type="text"  value="" /> 室 <input id="houseHall" name="houseHall" type="text"  value="" /> 厅 <input id="houseToilet" name="houseToilet" type="text"  value="" /> 卫 <input id="houseKitchen" name="houseKitchen" type="text"  value="" /> 厨 <input id="houseBalcony" name="houseBalcony" type="text"  value="" /> 阳台</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑形式</td>

@@ -1,6 +1,6 @@
 <?php
 /**
- * ÐÅÏ¢¹ÜÀíÒµÎñ²Ù×÷Àà
+ * ä¿¡æ¯ç®¡ç†ä¸šåŠ¡æ“ä½œç±»
  * @author David chunliumang@gmail.com
  * @version 1.0
  */
@@ -14,29 +14,29 @@ class PropertyService{
 		$this->linkService=new LinkService($db);
 	}
 	/**
-	 * ·¢²¼ÐÅÏ¢
-	 * @param array $info ÐÅÏ¢¶ÔÏó 
+	 * å‘å¸ƒä¿¡æ¯
+	 * @param array $info ä¿¡æ¯å¯¹è±¡ 
 	 * @return boolean
 	 */
 	public function release($info){
 		$msg=true;
 		$result=$this->propertyDAO->release($info);
-		if($result<0) $msg='·¢²¼ÐÅÏ¢Ê§°Ü£¡';
+		if($result<0) $msg='å‘å¸ƒä¿¡æ¯å¤±è´¥ï¼';
 		return $msg;
 	}
 	/**
-	 * ÐÞ¸ÄÐÅÏ¢
-	 * @param array $info ÐÅÏ¢¶ÔÏó 
+	 * ä¿®æ”¹ä¿¡æ¯
+	 * @param array $info ä¿¡æ¯å¯¹è±¡ 
 	 * @return boolean
 	 **/
 	public function save($info){
 		$msg=true;
 		$result=$this->propertyDAO->save($info);
-		if($result<0)throw new Exception('ÐÅÏ¢ÐÞ¸ÄÊ§°Ü£¡');
+		if($result<0)throw new Exception('ä¿¡æ¯ä¿®æ”¹å¤±è´¥ï¼');
 		return $msg;
 	}
 	/**
-	 * ¸ù¾ÝÐÅÏ¢IDÉ¾³ýÐÅÏ¢
+	 * æ ¹æ®ä¿¡æ¯IDåˆ é™¤ä¿¡æ¯
 	 * @access public
 	 * @param string $id
 	 * @return bool
@@ -44,13 +44,13 @@ class PropertyService{
 	public function delInfo($id){
 		$msg=true;
 		$result=$this->propertyDAO->delInfo($id);
-		if($result<0)$msg='ÐÅÏ¢É¾³ýÊ§°Ü£¡';
+		if($result<0)$msg='ä¿¡æ¯åˆ é™¤å¤±è´¥ï¼';
 		return $msg;
 	}
 	/**
-	 * ¸ù¾ÝÐÅÏ¢ID»ñÈ¡ÐÅÏ¢ÏêÇé
+	 * æ ¹æ®ä¿¡æ¯IDèŽ·å–ä¿¡æ¯è¯¦æƒ…
 	 * @access public
-	 * @param int $id ÐÅÏ¢ID
+	 * @param int $id ä¿¡æ¯ID
 	 * @param string $type 'web/admin'
 	 * @return Array
 	 **/
@@ -63,7 +63,7 @@ class PropertyService{
 		return $this->propertyDAO->getInfo($sql);
 	}
 	/**
-	 * »ñÈ¡ÐÅÏ¢ÁÐ±í
+	 * èŽ·å–ä¿¡æ¯åˆ—è¡¨
 	 * @access public
 	 * @return array
 	 **/
@@ -73,8 +73,8 @@ class PropertyService{
 	}
 	
 	/**
-	 * ¼ÆËãÐÅÏ¢ÌõÊý
-	 * @param string $where ¼ÆËãÌõ¼þ
+	 * è®¡ç®—ä¿¡æ¯æ¡æ•°
+	 * @param string $where è®¡ç®—æ¡ä»¶
 	 * @return int
 	 */
 	public function countInfo($where=''){
@@ -82,16 +82,16 @@ class PropertyService{
 		return $this->propertyDAO->countInfo($sql);
 	}
 	/**
-	 * ¸ù¾Ý²úÆ·ID¸ü¸ÄÐÅÏ¢×´Ì¬
+	 * æ ¹æ®äº§å“IDæ›´æ”¹ä¿¡æ¯çŠ¶æ€
 	 * @access public
-	 * @param string $state ×´Ì¬
+	 * @param string $state çŠ¶æ€
 	 * @param string $id
 	 * @return bool
 	 **/
 	public function changeState($state,$id){
 		$msg=true;
 		$result=$this->propertyDAO->changeState($state,$id);
-		if($result<0)$msg='ÐÅÏ¢×´Ì¬¸ü¸ÄÊ§°Ü£¡';
+		if($result<0)$msg='ä¿¡æ¯çŠ¶æ€æ›´æ”¹å¤±è´¥ï¼';
 		return $msg;
 	}
 }
