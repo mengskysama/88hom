@@ -2,49 +2,43 @@
 <head>
   <meta charset="utf-8" />
   <title>jQuery UI Autocomplete - Default functionality</title>
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" /> -->
+  <link rel="stylesheet" href="/88hom/templates/css/ucenter/jquery-ui.css" />
   <script src="/88hom/templates/js/jquery-1.6.js"></script>
   <script src="/88hom/templates/js/jquery-ui-1.8.21.custom.min.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css" />
   <script>
   $(function() {
     var availableTags = [
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
+      { label: "ActionScript", id: "1" },
+      { label: "AppleScript", id: "2" },
+      { label: "Asp", id: "3" },
+      { label: "BASIC", id: "4" },
+      { label: "Clojure", id: "5" },
+      { label: "ColdFusion", id: "6" },
+      { label: "Groovy", id: "7" },
+      { label: "Java", id: "8" },
+      { label: "JavaScript", id: "9" }
     ];
+    
     $( "#tags" ).autocomplete({
-      source: availableTags
+      //source: dd,
+      source: "ajax_get_prop_name.php",
+      select: function(e, ui) {
+      	  $("#tagId").val(ui.item.id);    
+      }
     });
   });
   </script>
 </head>
 <body>
- 
+<form name="testform" action="auto.php" method="post">
 <div class="ui-widget">
   <label for="tags">Tags: </label>
-  <input id="tags" />
+  <input id="tags" name="tagName"/>
+  <input id="tagId" name="tagId" type="hidden"/>
 </div>
- 
+<input type="submit" name="submit" value="Submit">
+ </form>
  
 </body>
 </html>
