@@ -5,6 +5,7 @@
 <title>录入住宅出售房源</title>
 <!--{$jsFiles}-->
 <!--{$cssFiles}-->
+<script language="JavaScript" type="text/javascript" src="<!--{$ckeditLib}-->"></script>
 <script>
   $(function() {
     
@@ -55,12 +56,12 @@
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 产权信息</td>
 			    <td align="left" valign="middle" class="p25">
 			    <select name="housePayInfo" id="housePayInfo">
-			    	<option value="1">房产证</option>
-			    	<option value="2">预售合同</option>
-			    	<option value="3">抵押合同</option>
-			    	<option value="4">抵债房</option>
-			    	<option value="5">未知产权</option>
-			    	<option value="6">公房/福利房</option>
+			    	<option value="1">商品房</option>
+			    	<option value="2">微利房</option>
+			    	<option value="3">军产房</option>
+			    	<option value="4">集资房</option>
+			    	<option value="5">农民房</option>
+			    	<option value="6">福利房</option>			    	
 			    </select>
 			    </td>
 			  </tr>
@@ -68,16 +69,10 @@
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">类    别</td>
 			    <td align="left" valign="middle" class="p25">
 			    <select name="houseType" id="houseType">			    
-			    	<option selected="selected" value="1">普通住宅</option>
-			    	<option selected="selected" value="2">商住</option>
-			    	<option selected="selected" value="3">平房</option>
-			    	<option selected="selected" value="4">复式</option>
-			    	<option selected="selected" value="5">跃式</option>
-			    	<option selected="selected" value="6">公寓</option>
-			    	<option selected="selected" value="7">洋房</option>
-			    	<option selected="selected" value="8">公房</option>
-			    	<option selected="selected" value="9">新式里弄</option>
-			    	<option selected="selected" value="10">酒店式公寓 </option>
+			    	<option value="1">普通住宅</option>
+			    	<option value="2">高档住宅</option>
+			    	<option value="3">酒店式公寓 </option>
+			    	<option value="4">集资房</option>			    	
 			    </select>
 			    </td>
 			  </tr>
@@ -95,65 +90,65 @@
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input name="" type="text"  value="" /> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildArea" name="houseBuildArea" type="text"  value="" /> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">使用面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input name="" type="text"  value="" /><font class="z3">平方米</font></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseUseArea" name="houseUseArea" type="text"  value="" /><font class="z3">平方米</font></td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input name="" type="text"  value="" /><font class="z3">年</font></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildYear" name="houseBuildYear" type="text"  value="" /><font class="z3">年</font></td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼    层</td>
-			    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input name="" type="text"  value="" /> <font class="z3">层</font>   <font class="z3">共</font> <input name="" type="text"  value="" /> <font class="z3">层</font> 地下室请填写负数</td>
+			    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="houseFloor" name="houseFloor" type="text"  value="" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="houseAllFloor" name="houseAllFloor" type="text"  value="" /> <font class="z3">层</font> 地下室请填写负数</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">朝    向</td>
 			    <td align="left" valign="middle" class="p25">
-			   	   <label><input id="" name="radio" type="radio" value="东" checked="checked" />东</label>     
-			      	<label> <input id="" name="radio" type="radio" value="南" /> 南  </label>    
-			        <label><input id="" name="radio" type="radio" value="西" /> 西</label>    
-			        <label><input id="" name="radio" type="radio" value="北" /> 北 </label>  
-			        <label><input id="" name="radio" type="radio" value="东南" /> 东南 </label>
-			        <label> <input id="" name="radio" type="radio" value="西南" /> 西南  </label>    
-			        <label><input id="" name="radio" type="radio" value="西北" /> 西北 </label>    
-			        <label><input id="" name="radio" type="radio" value="东北" /> 东北 </label>  
-			        <label><input id="" name="radio" type="radio" value="南北" /> 南北 </label>
-			         <label><input id="" name="radio" type="radio" value="东西" /> 东西 </label>
+			   	   <label><input id="" name="houseForward" type="radio" value="1" />东</label>     
+			      	<label> <input id="" name="houseForward" type="radio" value="2" /> 南  </label>    
+			        <label><input id="" name="houseForward" type="radio" value="3" /> 西</label>    
+			        <label><input id="" name="houseForward" type="radio" value="4" /> 北 </label>  
+			        <label><input id="" name="houseForward" type="radio" value="5" /> 东南 </label>
+			        <label> <input id="" name="houseForward" type="radio" value="6" /> 西南  </label>    
+			        <label><input id="" name="houseForward" type="radio" value="7" /> 西北 </label>    
+			        <label><input id="" name="houseForward" type="radio" value="8" /> 东北 </label>  
+			        <label><input id="" name="houseForward" type="radio" value="9" /> 南北 </label>
+			         <label><input id="" name="houseForward" type="radio" value="10" /> 东西 </label>
 			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>
 			    <td align="left" valign="middle" class="p25">
-			  	    <label><input id="" name="radio" type="radio" value="豪华装修" checked="checked" /> 豪华装修</label>     
-			      	<label> <input id="" name="radio" type="radio" value="精装修" /> 精装修  </label>    
-			        <label><input id="" name="radio" type="radio" value="中等装修" /> 中等装修</label>    
-			        <label><input id="" name="radio" type="radio" value="简装修" /> 简装修</label>  
-			        <label><input id="" name="radio" type="radio" value="毛坯" /> 毛坯</label>
+			  	    <label><input id="" name="houseFitment" type="radio" value="1" /> 豪华装修</label>     
+			      	<label> <input id="" name="houseFitment" type="radio" value="2" /> 精装修  </label>    
+			        <label><input id="" name="houseFitment" type="radio" value="3" /> 中等装修</label>    
+			        <label><input id="" name="houseFitment" type="radio" value="4" /> 简装修</label>  
+			        <label><input id="" name="houseFitment" type="radio" value="5" /> 毛坯</label>
 			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1">配套设施</td>
 			    <td align="left" valign="middle" class="p25" style="line-height:26px;">
-			    	 <span><input name="" type="checkbox" value="" / > 煤气/天然气</label></span>
-			          <span><input name="" type="checkbox" value="" / > 暖气 </label></span>
-			         <span> <input name="" type="checkbox" value="" / > 电梯 </label></span>
-			          <span><input name="" type="checkbox" value="" / > 车位/车库</label></span>
-			          <span><input name="" type="checkbox" value="" / > 储藏室/地下室</label></span>
-			          <span><input name="" type="checkbox" value="" / > 花园/小院</label></span>
-			         <span> <input name="" type="checkbox" value="" / > 露台</label></span>
-			         <span> <input name="" type="checkbox" value="" / > 阁楼</label></span>
-			         <span><a href="#" class="red">[全选]</a></span>
+			    	 <span><input name="houseBaseService[]" type="checkbox" value="1" / > 煤气/天然气</label></span>
+			          <span><input name="houseBaseService[]" type="checkbox" value="2" / > 暖气 </label></span>
+			         <span> <input name="houseBaseService[]" type="checkbox" value="3" / > 电梯 </label></span>
+			          <span><input name="houseBaseService[]" type="checkbox" value="4" / > 车位/车库</label></span>
+			          <span><input name="houseBaseService[]" type="checkbox" value="5" / > 储藏室/地下室</label></span>
+			          <span><input name="houseBaseService[]" type="checkbox" value="6" / > 花园/小院</label></span>
+			         <span> <input name="houseBaseService[]" type="checkbox" value="7" / > 露台</label></span>
+			         <span> <input name="houseBaseService[]" type="checkbox" value="8" / > 阁楼</label></span>
+			         <span><a href="javascript:void(0);" onclick="return SelAllClick(this,'houseBaseService[]')" class="red">[全选]</a></span>
 			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">看房时间</td>
 			    <td align="left" valign="middle" class="p25">
-			  		 <label><input id="" name="radio" type="radio" value="随时看房" checked="checked" /> 随时看房 </label>     
-			      	<label> <input id="" name="radio" type="radio" value="非工作时间" /> 非工作时间  </label>    
-			        <label><input id="" name="radio" type="radio" value="电话预约" /> 电话预约</label>    
+			  		 <label><input id="" name="houseLookTime" type="radio" value="1" checked="checked" /> 随时看房 </label>     
+			      	<label> <input id="" name="houseLookTime" type="radio" value="2" /> 非工作时间  </label>    
+			        <label><input id="" name="houseLookTime" type="radio" value="3" /> 电话预约</label>    
 			    </td>
 			  </tr>
 			</table>
@@ -164,19 +159,18 @@
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
-			    <td width="280" align="left" valign="middle" class="p25 grzc_31">
-			    	<input name="" type="text"  value="" />
+			    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
+			    	<input name="" type="file"  value="" />
 			    </td>
-			    <td align="left" valign="middle" class="p5"><input name="button2" type="submit" class="yz2 l" id="button2" value="浏览" /></td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
 			    <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
-			    	<input name="" type="text"  value="" /> 还可写<font class="red">30</font>个汉字</td>
+			    	<input id="houseTitle" name="houseTitle" type="text"  value="" /> 还可写<font class="red">30</font>个汉字</td>
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-			    <td colspan="2" align="left" valign="middle" class="p25 bs"><img src="images/test/fy.jpg" width="514" /><span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
+			    <td colspan="2" align="left" valign="middle" class="p25 bs"><textarea id="houseContent" name="houseContent" cols="86" rows="12" ></textarea><span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 			请勿从其它网站或其它房源描述中拷贝。</span>
 			         <span>
 			         <b style="text-indent:0px;">注意事项：</b> <br />
@@ -185,6 +179,9 @@
 			    	
 			    </td>
 			  </tr>
+            <script>
+                CKEDITOR.replace( 'houseContent' );
+            </script>
 			</table>
       </div>
        	<table width="100%" border="0" cellspacing="0" cellpadding="0">

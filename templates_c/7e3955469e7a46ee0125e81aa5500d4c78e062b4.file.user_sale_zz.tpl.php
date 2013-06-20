@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-19 16:59:09
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-20 17:36:08
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_zz.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1071251c0079056ef63-82697093%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7e3955469e7a46ee0125e81aa5500d4c78e062b4' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_zz.tpl',
-      1 => 1371632265,
+      1 => 1371720949,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
+    'ckeditLib' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -35,6 +36,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
+<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
+"></script>
 <script>
   $(function() {
     
@@ -68,6 +71,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
    		  </ul>
           <div class="bs_tx">
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
+            <form id="zzForm" name="zzForm" action="property_handler.php" method="post">
+            <input type="hidden" name="prop_type" value="zz">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼盘名称</td>
@@ -75,7 +80,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">房源信息编码</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input name="" type="text"  value="" /> </td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseNumber" name="houseNumber" type="text"  value="" /> </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">内部编码</td>
@@ -83,19 +88,35 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 产权信息</td>
-			    <td align="left" valign="middle" class="p25"><select name="ddlProv" id="ddlProv"><option selected="selected" value="0">个人产权</option></select></td>
+			    <td align="left" valign="middle" class="p25">
+			    <select name="housePayInfo" id="housePayInfo">
+			    	<option value="1">商品房</option>
+			    	<option value="2">微利房</option>
+			    	<option value="3">军产房</option>
+			    	<option value="4">集资房</option>
+			    	<option value="5">农民房</option>
+			    	<option value="6">福利房</option>			    	
+			    </select>
+			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">类    别</td>
-			    <td align="left" valign="middle" class="p25"><select name="ddlProv" id="ddlProv"><option selected="selected" value="0">普通住宅</option></select></td>
+			    <td align="left" valign="middle" class="p25">
+			    <select name="houseType" id="houseType">			    
+			    	<option value="1">普通住宅</option>
+			    	<option value="2">高档住宅</option>
+			    	<option value="3">酒店式公寓 </option>
+			    	<option value="4">集资房</option>			    	
+			    </select>
+			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  售    价</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input name="" type="text"  value="" /> 万元/套</td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseSellPrice" name="houseSellPrice" type="text"  value="" /> 万元/套</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>户    型</td>
-			    <td align="left" valign="middle" class="p25 grzc_35"><input name="" type="text"  value="" /> 室 <input name="" type="text"  value="" /> 厅 <input name="" type="text"  value="" /> 卫 <input name="" type="text"  value="" /> 厨 <input name="" type="text"  value="" /> 阳台</td>
+			    <td align="left" valign="middle" class="p25 grzc_35"><input id="houseRoom" name="houseRoom" type="text"  value="" /> 室 <input id="houseHall" name="houseHall" type="text"  value="" /> 厅 <input id="houseToilet" name="houseToilet" type="text"  value="" /> 卫 <input id="houseKitchen" name="houseKitchen" type="text"  value="" /> 厨 <input id="houseBalcony" name="houseBalcony" type="text"  value="" /> 阳台</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑形式</td>
@@ -103,65 +124,65 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input name="" type="text"  value="" /> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildArea" name="houseBuildArea" type="text"  value="" /> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">使用面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input name="" type="text"  value="" /><font class="z3">平方米</font></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseUseArea" name="houseUseArea" type="text"  value="" /><font class="z3">平方米</font></td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input name="" type="text"  value="" /><font class="z3">年</font></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildYear" name="houseBuildYear" type="text"  value="" /><font class="z3">年</font></td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼    层</td>
-			    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input name="" type="text"  value="" /> <font class="z3">层</font>   <font class="z3">共</font> <input name="" type="text"  value="" /> <font class="z3">层</font> 地下室请填写负数</td>
+			    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="houseFloor" name="houseFloor" type="text"  value="" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="houseAllFloor" name="houseAllFloor" type="text"  value="" /> <font class="z3">层</font> 地下室请填写负数</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">朝    向</td>
 			    <td align="left" valign="middle" class="p25">
-			   	   <label><input id="" name="radio" type="radio" value="东" checked="checked" />东</label>     
-			      	<label> <input id="" name="radio" type="radio" value="南" /> 南  </label>    
-			        <label><input id="" name="radio" type="radio" value="西" /> 西</label>    
-			        <label><input id="" name="radio" type="radio" value="北" /> 北 </label>  
-			        <label><input id="" name="radio" type="radio" value="东南" /> 东南 </label>
-			        <label> <input id="" name="radio" type="radio" value="西南" /> 西南  </label>    
-			        <label><input id="" name="radio" type="radio" value="西北" /> 西北 </label>    
-			        <label><input id="" name="radio" type="radio" value="东北" /> 东北 </label>  
-			        <label><input id="" name="radio" type="radio" value="南北" /> 南北 </label>
-			         <label><input id="" name="radio" type="radio" value="东西" /> 东西 </label>
+			   	   <label><input id="" name="houseForward" type="radio" value="1" />东</label>     
+			      	<label> <input id="" name="houseForward" type="radio" value="2" /> 南  </label>    
+			        <label><input id="" name="houseForward" type="radio" value="3" /> 西</label>    
+			        <label><input id="" name="houseForward" type="radio" value="4" /> 北 </label>  
+			        <label><input id="" name="houseForward" type="radio" value="5" /> 东南 </label>
+			        <label> <input id="" name="houseForward" type="radio" value="6" /> 西南  </label>    
+			        <label><input id="" name="houseForward" type="radio" value="7" /> 西北 </label>    
+			        <label><input id="" name="houseForward" type="radio" value="8" /> 东北 </label>  
+			        <label><input id="" name="houseForward" type="radio" value="9" /> 南北 </label>
+			         <label><input id="" name="houseForward" type="radio" value="10" /> 东西 </label>
 			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>
 			    <td align="left" valign="middle" class="p25">
-			  	    <label><input id="" name="radio" type="radio" value="豪华装修" checked="checked" /> 豪华装修</label>     
-			      	<label> <input id="" name="radio" type="radio" value="精装修" /> 精装修  </label>    
-			        <label><input id="" name="radio" type="radio" value="中等装修" /> 中等装修</label>    
-			        <label><input id="" name="radio" type="radio" value="简装修" /> 简装修</label>  
-			        <label><input id="" name="radio" type="radio" value="毛坯" /> 毛坯</label>
+			  	    <label><input id="" name="houseFitment" type="radio" value="1" /> 豪华装修</label>     
+			      	<label> <input id="" name="houseFitment" type="radio" value="2" /> 精装修  </label>    
+			        <label><input id="" name="houseFitment" type="radio" value="3" /> 中等装修</label>    
+			        <label><input id="" name="houseFitment" type="radio" value="4" /> 简装修</label>  
+			        <label><input id="" name="houseFitment" type="radio" value="5" /> 毛坯</label>
 			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1">配套设施</td>
 			    <td align="left" valign="middle" class="p25" style="line-height:26px;">
-			    	 <span><input name="" type="checkbox" value="" / > 煤气/天然气</label></span>
-			          <span><input name="" type="checkbox" value="" / > 暖气 </label></span>
-			         <span> <input name="" type="checkbox" value="" / > 电梯 </label></span>
-			          <span><input name="" type="checkbox" value="" / > 车位/车库</label></span>
-			          <span><input name="" type="checkbox" value="" / > 储藏室/地下室</label></span>
-			          <span><input name="" type="checkbox" value="" / > 花园/小院</label></span>
-			         <span> <input name="" type="checkbox" value="" / > 露台</label></span>
-			         <span> <input name="" type="checkbox" value="" / > 阁楼</label></span>
-			         <span><a href="#" class="red">[全选]</a></span>
+			    	 <span><input name="houseBaseService[]" type="checkbox" value="1" / > 煤气/天然气</label></span>
+			          <span><input name="houseBaseService[]" type="checkbox" value="2" / > 暖气 </label></span>
+			         <span> <input name="houseBaseService[]" type="checkbox" value="3" / > 电梯 </label></span>
+			          <span><input name="houseBaseService[]" type="checkbox" value="4" / > 车位/车库</label></span>
+			          <span><input name="houseBaseService[]" type="checkbox" value="5" / > 储藏室/地下室</label></span>
+			          <span><input name="houseBaseService[]" type="checkbox" value="6" / > 花园/小院</label></span>
+			         <span> <input name="houseBaseService[]" type="checkbox" value="7" / > 露台</label></span>
+			         <span> <input name="houseBaseService[]" type="checkbox" value="8" / > 阁楼</label></span>
+			         <span><a href="javascript:void(0);" onclick="return SelAllClick(this,'houseBaseService[]')" class="red">[全选]</a></span>
 			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">看房时间</td>
 			    <td align="left" valign="middle" class="p25">
-			  		 <label><input id="" name="radio" type="radio" value="随时看房" checked="checked" /> 随时看房 </label>     
-			      	<label> <input id="" name="radio" type="radio" value="非工作时间" /> 非工作时间  </label>    
-			        <label><input id="" name="radio" type="radio" value="电话预约" /> 电话预约</label>    
+			  		 <label><input id="" name="houseLookTime" type="radio" value="1" checked="checked" /> 随时看房 </label>     
+			      	<label> <input id="" name="houseLookTime" type="radio" value="2" /> 非工作时间  </label>    
+			        <label><input id="" name="houseLookTime" type="radio" value="3" /> 电话预约</label>    
 			    </td>
 			  </tr>
 			</table>
@@ -172,19 +193,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
-			    <td width="280" align="left" valign="middle" class="p25 grzc_31">
-			    	<input name="" type="text"  value="" />
+			    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
+			    	<input name="" type="file"  value="" />
 			    </td>
-			    <td align="left" valign="middle" class="p5"><input name="button2" type="submit" class="yz2 l" id="button2" value="浏览" /></td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
 			    <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
-			    	<input name="" type="text"  value="" /> 还可写<font class="red">30</font>个汉字</td>
+			    	<input id="houseTitle" name="houseTitle" type="text"  value="" /> 还可写<font class="red">30</font>个汉字</td>
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-			    <td colspan="2" align="left" valign="middle" class="p25 bs"><img src="images/test/fy.jpg" width="514" /><span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
+			    <td colspan="2" align="left" valign="middle" class="p25 bs"><textarea id="houseContent" name="houseContent" cols="86" rows="12" ></textarea><span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 			请勿从其它网站或其它房源描述中拷贝。</span>
 			         <span>
 			         <b style="text-indent:0px;">注意事项：</b> <br />
@@ -193,6 +213,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			    	
 			    </td>
 			  </tr>
+            <script>
+                CKEDITOR.replace( 'houseContent' );
+            </script>
 			</table>
       </div>
        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
