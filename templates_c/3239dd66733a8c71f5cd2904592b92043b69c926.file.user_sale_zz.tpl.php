@@ -1,13 +1,46 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-20 22:14:21
+         compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_zz.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:1429151c30e3d6923a5-03520430%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '3239dd66733a8c71f5cd2904592b92043b69c926' => 
+    array (
+      0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_zz.tpl',
+      1 => 1371737490,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '1429151c30e3d6923a5-03520430',
+  'function' => 
+  array (
+  ),
+  'variables' => 
+  array (
+    'cfg' => 0,
+    'jsFiles' => 0,
+    'cssFiles' => 0,
+    'ckeditLib' => 0,
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51c30e3d70d631_85640992',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_51c30e3d70d631_85640992')) {function content_51c30e3d70d631_85640992($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
+" />
 <title>录入住宅出售房源</title>
-<!--{$jsFiles}-->
-<!--{$cssFiles}-->
-<script language="JavaScript" type="text/javascript" src="<!--{$ckeditLib}-->"></script>
+<?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
+
+<?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
+
+<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
+"></script>
 <script>
-  $(function() {    
+  $(function() {
+    
     $("#estName").autocomplete({
       source: "ajax_get_prop_name.php",
       select: function(e, ui) {
@@ -15,15 +48,17 @@
       }
     });
   });
-</script>
+  </script>
 </head>
 
 <body>
 <!--求购头部-->
-<!--{include file="$header_ucenter_user"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['header_ucenter_user']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 <!--求购内容-->
 <div class="qg_main">
-	<!--{include file="$ucenter_user_left_menu"}-->
+	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_user_left_menu']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
     <div class="qg_r">
     <p>你的位置: <a href="#">房源管理</a></p>
    	<div class="qg_bs">
@@ -36,7 +71,7 @@
    		  </ul>
           <div class="bs_tx">
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
-            <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
+            <form id="zzForm" name="zzForm" action="property_handler.php" method="post">
             <input type="hidden" name="prop_type" value="zz">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
@@ -159,7 +194,7 @@
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
 			    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
-			    	<input id="house" name="" type="file"  value="" />
+			    	<input name="" type="file"  value="" />
 			    </td>
 			  </tr>
 			  <tr>
@@ -195,6 +230,8 @@
     </div>
 
 <!--求购底部-->
-<!--{include file="$footer"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['footer']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 </body>
 </html>
+<?php }} ?>
