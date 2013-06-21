@@ -7,8 +7,7 @@
 <!--{$cssFiles}-->
 <script language="JavaScript" type="text/javascript" src="<!--{$ckeditLib}-->"></script>
 <script>
-  $(function() {
-    
+  $(function() {    
     $("#estName").autocomplete({
       source: "ajax_get_prop_name.php",
       select: function(e, ui) {
@@ -16,7 +15,7 @@
       }
     });
   });
-  </script>
+</script>
 </head>
 
 <body>
@@ -37,7 +36,7 @@
    		  </ul>
           <div class="bs_tx">
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
-            <form id="zzForm" name="zzForm" action="property_handler.php" method="post">
+            <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="zz">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
