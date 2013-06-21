@@ -12,14 +12,14 @@ class PicDAO  {
 	}
 	//发布图片
 	public function release($pic){
-		$sql="insert into ecms_pic(picBuildId,picId,picBuildType,picSellRent,picUrl,picThumb,picIsdelete,picState,picCreateTime,picUpdateTime) values("
+		$sql="insert into ecms_pic(picBuildId,pictypeId,picBuildType,picSellRent,picUrl,picThumb,picState,picCreateTime,picUpdateTime) values("
 										.empty($pic['picBuildId'])?'':$pic['picBuildId']
-										.",".empty($pic['picId'])?0:$pic['picId']
+										.",".empty($pic['pictypeId'])?0:$pic['pictypeId']
 										.",".empty($pic['picBuildType'])?0:$pic['picBuildType']
 										.",".empty($pic['picSellRent'])?0:$pic['picSellRent']
 										.",'".empty($pic['picUrl'])?0:$pic['picUrl']
 										."','".empty($pic['picThumb'])?0:$pic['picThumb']
-										."',".empty($pic['picIsdelete'])?0:$pic['picIsdelete']
+										."','".empty($pic['picState'])?0:$pic['picState']
 										.",".time()
 										.",".time()
 										.")";

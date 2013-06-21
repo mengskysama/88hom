@@ -49,12 +49,12 @@
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">内部编码</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input name="" type="text"  value="" /></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="privateHouseNumber" name="privateHouseNumber" type="text"  value="" /></td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 产权信息</td>
 			    <td align="left" valign="middle" class="p25">
-			    <select name="housePayInfo" id="housePayInfo">
+			    <select id="housePayInfo" name="housePayInfo" id="housePayInfo">
 			    	<option value="1">商品房</option>
 			    	<option value="2">微利房</option>
 			    	<option value="3">军产房</option>
@@ -67,7 +67,7 @@
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">类    别</td>
 			    <td align="left" valign="middle" class="p25">
-			    <select name="houseType" id="houseType">			    
+			    <select id="houseType" name="houseType" id="houseType">			    
 			    	<option value="1">普通住宅</option>
 			    	<option value="2">高档住宅</option>
 			    	<option value="3">酒店式公寓 </option>
@@ -85,7 +85,7 @@
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑形式</td>
-			    <td align="left" valign="middle" class="p25"><select name="ddlProv" id="ddlProv"><option selected="selected" value="0">选择结构 </option></select> &nbsp;<select name="ddlProv" id="ddlProv"><option selected="selected" value="0">选择类别</option></select></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildForm" name="houseBuildForm" type="text"  value="" /> </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
@@ -159,7 +159,7 @@
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
 			    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
-			    	<input id="house" name="" type="file"  value="" />
+			    	<input id="housePhone" name="housePhone" type="file"  value="" />
 			    </td>
 			  </tr>
 			  <tr>
@@ -186,8 +186,8 @@
        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
-            <td width="120" align="center" valign="middle"><input name="button" type="submit" class="mddl1" id="button" value="发布" /></td>
-            <td width="320" height="80" align="center" valign="middle"><input name="button2" type="submit" class="mddl1" id="button2" value="保存待发布" /></td>
+            <td width="120" align="center" valign="middle"><input name="btn_live" type="button" class="mddl1" id="btn_live" value="发布" /></td>
+            <td width="320" height="80" align="center" valign="middle"><input name="btn_save" type="button" class="mddl1" id="btn_save" value="保存待发布" /></td>
 	      </tr>
 	    </table>
     </div>

@@ -16,7 +16,7 @@ class HouseDAO  {
 									houseBuildArea,houseUseArea,houseRentArea,houseType,houseBuildStructure,houseBuildForm,houseForward,houseFitment,
 									houseBaseService,houseEquipment,houseFloor,houseAllFloor,houseBuildYear,houseLookTime,housePayInfo,houseRentType,
 									houseRentRoomType,houseRentDetail,houseLiveTime,houseTags,housePayment,housePayDetailY,housePayDetailF,houseSellRentType,
-									houseState,housePropertyId,houseUserId,houseCreateTime,houseUpdateTime) values('"
+									houseState,houseCommunityId,houseUserId,houseCreateTime,houseUpdateTime) values('"
 									.empty($house['houseTitle'])?'':$house['houseTitle']
 									."','".empty($house['houseContent'])?'':$house['houseContent']
 									."','".empty($house['houseNumber'])?'':$house['houseNumber']
@@ -51,12 +51,14 @@ class HouseDAO  {
 									.",".empty($house['housePayDetailF'])?0:$house['housePayDetailF']
 									.",".empty($house['houseSellRentType'])?0:$house['houseSellRentType']
 									.",".empty($house['houseState'])?0:$house['houseState']
-									.",".empty($house['housePropertyId'])?0:$house['housePropertyId']
+									.",".empty($house['houseCommunityId'])?0:$house['houseCommunityId']
 									.",".empty($house['houseUserId'])?0:$house['houseUserId']
 									.",".time()
 									.",".time()
 									.")";
-			return $this->db->getQueryExecute($sql);						
+		$this->db->query($sql);
+		$houseId = $this->db->getInsertNum();
+		return $houseId;					
 	}
 	//修改住宅房源
 	public function modify($house){

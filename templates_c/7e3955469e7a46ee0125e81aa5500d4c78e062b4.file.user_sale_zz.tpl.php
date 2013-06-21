@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-20 17:36:08
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-21 14:53:49
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_zz.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1071251c0079056ef63-82697093%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7e3955469e7a46ee0125e81aa5500d4c78e062b4' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_zz.tpl',
-      1 => 1371720949,
+      1 => 1371797626,
       2 => 'file',
     ),
   ),
@@ -39,8 +39,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
 "></script>
 <script>
-  $(function() {
-    
+  $(function() {    
     $("#estName").autocomplete({
       source: "ajax_get_prop_name.php",
       select: function(e, ui) {
@@ -48,7 +47,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       }
     });
   });
-  </script>
+</script>
 </head>
 
 <body>
@@ -71,7 +70,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
    		  </ul>
           <div class="bs_tx">
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
-            <form id="zzForm" name="zzForm" action="property_handler.php" method="post">
+            <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="zz">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
@@ -84,12 +83,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">内部编码</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input name="" type="text"  value="" /></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="privateHouseNumber" name="privateHouseNumber" type="text"  value="" /></td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 产权信息</td>
 			    <td align="left" valign="middle" class="p25">
-			    <select name="housePayInfo" id="housePayInfo">
+			    <select id="housePayInfo" name="housePayInfo" id="housePayInfo">
 			    	<option value="1">商品房</option>
 			    	<option value="2">微利房</option>
 			    	<option value="3">军产房</option>
@@ -102,7 +101,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">类    别</td>
 			    <td align="left" valign="middle" class="p25">
-			    <select name="houseType" id="houseType">			    
+			    <select id="houseType" name="houseType" id="houseType">			    
 			    	<option value="1">普通住宅</option>
 			    	<option value="2">高档住宅</option>
 			    	<option value="3">酒店式公寓 </option>
@@ -120,7 +119,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑形式</td>
-			    <td align="left" valign="middle" class="p25"><select name="ddlProv" id="ddlProv"><option selected="selected" value="0">选择结构 </option></select> &nbsp;<select name="ddlProv" id="ddlProv"><option selected="selected" value="0">选择类别</option></select></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildForm" name="houseBuildForm" type="text"  value="" /> </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
@@ -194,7 +193,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
 			    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
-			    	<input name="" type="file"  value="" />
+			    	<input id="housePhone" name="housePhone" type="file"  value="" />
 			    </td>
 			  </tr>
 			  <tr>
@@ -221,8 +220,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
-            <td width="120" align="center" valign="middle"><input name="button" type="submit" class="mddl1" id="button" value="发布" /></td>
-            <td width="320" height="80" align="center" valign="middle"><input name="button2" type="submit" class="mddl1" id="button2" value="保存待发布" /></td>
+            <td width="120" align="center" valign="middle"><input name="btn_live" type="button" class="mddl1" id="btn_live" value="发布" /></td>
+            <td width="320" height="80" align="center" valign="middle"><input name="btn_save" type="button" class="mddl1" id="btn_save" value="保存待发布" /></td>
 	      </tr>
 	    </table>
     </div>
