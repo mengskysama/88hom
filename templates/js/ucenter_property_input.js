@@ -30,6 +30,9 @@ function ShowRight(KeyName,flag,msg)
         }
     }
 }
+function check(){
+	return true;
+}
 function CheckInfoCode(KeyName,flag)
 {
     document.getElementById(KeyName).value = document.getElementById(KeyName).value.toLowerCase();

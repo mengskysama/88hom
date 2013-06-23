@@ -1,0 +1,133 @@
+------------------------2013-06-22 15:10:19
+错误SQL语句：
+,1371885019,1371885019)
+客户端:127.0.0.1
+时间:2013-06-22 15:10:19
+------------------------2013-06-22 15:22:19
+错误SQL语句：
+,1371885739,1371885739)
+客户端:127.0.0.1
+时间:2013-06-22 15:22:19
+------------------------2013-06-22 15:24:02
+错误SQL语句：
+,1371885842,1371885842)
+客户端:127.0.0.1
+时间:2013-06-22 15:24:02
+------------------------2013-06-22 15:26:35
+错误SQL语句：
+,1371885995,1371885995)
+客户端:127.0.0.1
+时间:2013-06-22 15:26:35
+------------------------2013-06-22 15:27:42
+错误SQL语句：
+,1371886062,1371886062)
+客户端:127.0.0.1
+时间:2013-06-22 15:27:42
+------------------------2013-06-22 15:28:57
+错误SQL语句：
+,1371886137,1371886137)
+客户端:127.0.0.1
+时间:2013-06-22 15:28:57
+------------------------2013-06-22 15:39:58
+错误SQL语句：
+insert into ecms_house(houseTitle,houseContent,houseNumber,houseRoom,houseHall,houseToilet,houseKitchen,houseBalcony,houseSellPrice,
+									houseBuildArea,houseUseArea,houseRentArea,houseType,houseBuildStructure,houseBuildForm,houseForward,houseFitment,
+									houseBaseService,houseEquipment,houseFloor,houseAllFloor,houseBuildYear,houseLookTime,housePayInfo,houseRentType,
+									houseRentRoomType,houseRentDetail,houseLiveTime,houseTags,housePayment,housePayDetailY,housePayDetailF,houseSellRentType,
+// 									houseState,houseCommunityId,houseUserId,houseCreateTime,houseUpdateTime) values(',1371886798,1371886798)
+客户端:127.0.0.1
+时间:2013-06-22 15:39:58
+------------------------2013-06-22 15:41:08
+SQL语句错误：SQL查询语句为空
+select * from ecms_community where communityId=157
+客户端:127.0.0.1
+时间:2013-06-22 15:41:08
+------------------------2013-06-22 15:41:08
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-22 15:41:08
+------------------------2013-06-22 15:41:31
+错误SQL语句：
+insert into ecms_house(houseTitle,houseContent,houseNumber,houseRoom,houseHall,houseToilet,houseKitchen,houseBalcony,houseSellPrice,
+									houseBuildArea,houseUseArea,houseRentArea,houseType,houseBuildStructure,houseBuildForm,houseForward,houseFitment,
+									houseBaseService,houseEquipment,houseFloor,houseAllFloor,houseBuildYear,houseLookTime,housePayInfo,houseRentType,
+									houseRentRoomType,houseRentDetail,houseLiveTime,houseTags,housePayment,housePayDetailY,housePayDetailF,houseSellRentType,
+									houseState,houseCommunityId,houseUserId,houseCreateTime,houseUpdateTime) values(',1371886891,1371886891)
+客户端:127.0.0.1
+时间:2013-06-22 15:41:31
+------------------------2013-06-22 15:41:59
+SQL语句错误：SQL查询语句为空
+select * from ecms_community where communityId=157
+客户端:127.0.0.1
+时间:2013-06-22 15:41:59
+------------------------2013-06-22 15:41:59
+错误SQL语句：
+
+客户端:127.0.0.1
+时间:2013-06-22 15:41:59
+------------------------2013-06-22 15:42:26
+错误SQL语句：
+insert into ecms_house(houseTitle,houseContent,houseNumber,houseRoom,houseHall,houseToilet,houseKitchen,houseBalcony,houseSellPrice,
+									houseBuildArea,houseUseArea,houseRentArea,houseType,houseBuildStructure,houseBuildForm,houseForward,houseFitment,
+									houseBaseService,houseEquipment,houseFloor,houseAllFloor,houseBuildYear,houseLookTime,housePayInfo,houseRentType,
+									houseRentRoomType,houseRentDetail,houseLiveTime,houseTags,housePayment,housePayDetailY,housePayDetailF,houseSellRentType,
+									houseState,houseCommunityId,houseUserId,houseCreateTime,houseUpdateTime) values('走过路过不能错过,1371886946,1371886946)
+客户端:127.0.0.1
+时间:2013-06-22 15:42:26
+------------------------2013-06-22 15:43:25
+错误SQL语句：
+insert into ecms_house(houseTitle,houseContent,houseNumber,houseRoom,houseHall,houseToilet,houseKitchen,houseBalcony,houseSellPrice,
+									houseBuildArea,houseUseArea,houseRentArea,houseType,houseBuildStructure,houseBuildForm,houseForward,houseFitment,
+									houseBaseService,houseEquipment,houseFloor,houseAllFloor,houseBuildYear,houseLookTime,housePayInfo,houseRentType,
+									houseRentRoomType,houseRentDetail,houseLiveTime,houseTags,housePayment,housePayDetailY,housePayDetailF,houseSellRentType,
+									houseState,houseCommunityId,houseUserId,houseCreateTime,houseUpdateTime) values('走过路过不能错过','','123456789,1371887005,1371887005)
+客户端:127.0.0.1
+时间:2013-06-22 15:43:25
+------------------------2013-06-22 15:55:35
+错误SQL语句：
+insert into ecms_house(houseTitle,houseContent,houseNumber,houseRoom,houseHall,houseToilet,houseKitchen,houseBalcony,houseSellPrice,
+									houseBuildArea,houseUseArea,houseRentArea,houseType,houseBuildStructure,houseBuildForm,houseForward,houseFitment,
+									houseBaseService,houseEquipment,houseFloor,houseAllFloor,houseBuildYear,houseLookTime,housePayInfo,houseRentType,
+									houseRentRoomType,houseRentDetail,houseLiveTime,houseTags,housePayment,housePayDetailY,housePayDetailF,houseSellRentType,
+									houseState,houseCommunityId,houseUserId,houseCreateTime,houseUpdateTime) values('走过路过不能错过','','123456789',3,2,2,1,2,120,120,100,0,1,0,东东,2,2,',1,2,3,4,5,6,7,8,','',11,23,120,1,0,0,0,0,'','',0,0,0,0,0,157,0,1371887735,1371887735)
+客户端:127.0.0.1
+时间:2013-06-22 15:55:35
+------------------------2013-06-22 15:56:59
+错误SQL语句：
+insert into ecms_house(houseTitle,houseContent,houseNumber,houseRoom,houseHall,houseToilet,houseKitchen,houseBalcony,houseSellPrice,
+									houseBuildArea,houseUseArea,houseRentArea,houseType,houseBuildStructure,houseBuildForm,houseForward,houseFitment,
+									houseBaseService,houseEquipment,houseFloor,houseAllFloor,houseBuildYear,houseLookTime,housePayInfo,houseRentType,
+									houseRentRoomType,houseRentDetail,houseLiveTime,houseTags,housePayment,housePayDetailY,housePayDetailF,houseSellRentType,
+									houseState,houseCommunityId,houseUserId,houseCreateTime,houseUpdateTime) values('走过路过不能错过','','123456789',3,2,2,1,2,120,120,100,0,1,,'东东',2,2,',1,2,3,4,5,6,7,8,','',11,23,120,1,0,0,0,0,'','',0,0,0,0,0,157,0,1371887819,1371887819)
+客户端:127.0.0.1
+时间:2013-06-22 15:56:59
+------------------------2013-06-22 16:03:44
+错误SQL语句：
+insert into ecms_house(houseTitle,houseContent,houseNumber,houseRoom,houseHall,houseToilet,houseKitchen,houseBalcony,houseSellPrice,
+									houseBuildArea,houseUseArea,houseRentArea,houseType,houseBuildStructure,houseBuildForm,houseForward,houseFitment,
+									houseBaseService,houseEquipment,houseFloor,houseAllFloor,houseBuildYear,houseLookTime,housePayInfo,houseRentType,
+									houseRentRoomType,houseRentDetail,houseLiveTime,houseTags,housePayment,housePayDetailY,housePayDetailF,houseSellRentType,
+									houseState,houseCommunityId,houseUserId,houseCreateTime,houseUpdateTime) values('走过路过不能错过','','123456789',3,2,2,1,2,120,120,100,0,1,'','东东',2,2,',1,2,3,4,5,6,7,8,','',11,23,120,1,0,0,0,0,'','',0,0,0,0,0,157,0,1371888224,1371888224)
+客户端:127.0.0.1
+时间:2013-06-22 16:03:44
+------------------------2013-06-22 16:07:33
+SQL语句错误：SQL查询语句为空
+select LAST_INSERT_ID()
+客户端:127.0.0.1
+时间:2013-06-22 16:07:33
+------------------------2013-06-22 16:07:33
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-22 16:07:33
+------------------------2013-06-22 16:10:55
+错误SQL语句：
+insert into ecms_pic(picBuildId,pictypeId,picBuildType,picSellRent,picUrl,picThumb,picState,picCreateTime,picUpdateTime) values(2,0,0,0,'0','0','0,1371888655,1371888655)
+客户端:127.0.0.1
+时间:2013-06-22 16:10:55
+------------------------2013-06-22 16:36:04
+数据库不可用：
+88hom
+客户端:127.0.0.1
+时间:2013-06-22 16:36:04

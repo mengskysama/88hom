@@ -12,50 +12,52 @@ class HouseDAO  {
 	}
 	//发布住宅房源
 	public function release($house){
+		
 		$sql="insert into ecms_house(houseTitle,houseContent,houseNumber,houseRoom,houseHall,houseToilet,houseKitchen,houseBalcony,houseSellPrice,
 									houseBuildArea,houseUseArea,houseRentArea,houseType,houseBuildStructure,houseBuildForm,houseForward,houseFitment,
 									houseBaseService,houseEquipment,houseFloor,houseAllFloor,houseBuildYear,houseLookTime,housePayInfo,houseRentType,
 									houseRentRoomType,houseRentDetail,houseLiveTime,houseTags,housePayment,housePayDetailY,housePayDetailF,houseSellRentType,
 									houseState,houseCommunityId,houseUserId,houseCreateTime,houseUpdateTime) values('"
-									.empty($house['houseTitle'])?'':$house['houseTitle']
-									."','".empty($house['houseContent'])?'':$house['houseContent']
-									."','".empty($house['houseNumber'])?'':$house['houseNumber']
-									."',".empty($house['houseRoom'])?0:$house['houseRoom']
-									.",".empty($house['houseHall'])?0:$house['houseHall']
-									.",".empty($house['houseToilet'])?0:$house['houseToilet']
-									.",".empty($house['houseKitchen'])?0:$house['houseKitchen']
-									.",".empty($house['houseBalcony'])?0:$house['houseBalcony']
-									.",".empty($house['houseSellPrice'])?0:$house['houseSellPrice']
-									.",".empty($house['houseBuildArea'])?0:$house['houseBuildArea']
-									.",".empty($house['houseUseArea'])?0:$house['houseUseArea']
-									.",".empty($house['houseRentArea'])?0:$house['houseRentArea']
-									.",".empty($house['houseType'])?0:$house['houseType']
-									.",".empty($house['houseBuildStructure'])?0:$house['houseBuildStructure']
-									.",".empty($house['houseBuildForm'])?0:$house['houseBuildForm']
-									.",".empty($house['houseForward'])?0:$house['houseForward']
-									.",".empty($house['houseFitment'])?0:$house['houseFitment']
-									.",'".empty($house['houseBaseService'])?'':$house['houseBaseService']
-									."','".empty($house['houseEquipment'])?'':$house['houseEquipment']
-									."',".empty($house['houseFloor'])?0:$house['houseFloor']
-									.",".empty($house['houseAllFloor'])?0:$house['houseAllFloor']
-									.",".empty($house['houseBuildYear'])?0:$house['houseBuildYear']
-									.",".empty($house['houseLookTime'])?0:$house['houseLookTime']
-									.",".empty($house['housePayInfo'])?0:$house['housePayInfo']
-									.",".empty($house['houseRentType'])?0:$house['houseRentType']
-									.",".empty($house['houseRentRoomType'])?0:$house['houseRentRoomType']
-									.",".empty($house['houseRentDetail'])?0:$house['houseRentDetail']
-									.",'".empty($house['houseLiveTime'])?'':$house['houseLiveTime']
-									."','".empty($house['houseTags'])?'':$house['houseTags']
-									."',".empty($house['housePayment'])?0:$house['housePayment']
-									.",".empty($house['housePayDetailY'])?0:$house['housePayDetailY']
-									.",".empty($house['housePayDetailF'])?0:$house['housePayDetailF']
-									.",".empty($house['houseSellRentType'])?0:$house['houseSellRentType']
-									.",".empty($house['houseState'])?0:$house['houseState']
-									.",".empty($house['houseCommunityId'])?0:$house['houseCommunityId']
-									.",".empty($house['houseUserId'])?0:$house['houseUserId']
+									.(empty($house['houseTitle'])?'':$house['houseTitle'])
+									."','".(empty($house['houseContent'])?'':$house['houseContent'])
+									."','".(empty($house['houseNumber'])?'':$house['houseNumber'])
+									."',".(empty($house['houseRoom'])?0:$house['houseRoom'])
+									.",".(empty($house['houseHall'])?0:$house['houseHall'])
+									.",".(empty($house['houseToilet'])?0:$house['houseToilet'])
+									.",".(empty($house['houseKitchen'])?0:$house['houseKitchen'])
+									.",".(empty($house['houseBalcony'])?0:$house['houseBalcony'])
+									.",".(empty($house['houseSellPrice'])?0:$house['houseSellPrice'])
+									.",".(empty($house['houseBuildArea'])?0:$house['houseBuildArea'])
+									.",".(empty($house['houseUseArea'])?0:$house['houseUseArea'])
+									.",".(empty($house['houseRentArea'])?0:$house['houseRentArea'])
+									.",".(empty($house['houseType'])?0:$house['houseType'])
+									.",".(empty($house['houseBuildStructure'])?0:$house['houseBuildStructure'])
+									.",'".(empty($house['houseBuildForm'])?0:$house['houseBuildForm'])
+									."',".(empty($house['houseForward'])?0:$house['houseForward'])
+									.",".(empty($house['houseFitment'])?0:$house['houseFitment'])
+									.",'".(empty($house['houseBaseService'])?'':$house['houseBaseService'])
+									."','".(empty($house['houseEquipment'])?'':$house['houseEquipment'])
+									."',".(empty($house['houseFloor'])?0:$house['houseFloor'])
+									.",".(empty($house['houseAllFloor'])?0:$house['houseAllFloor'])
+									.",".(empty($house['houseBuildYear'])?0:$house['houseBuildYear'])
+									.",".(empty($house['houseLookTime'])?0:$house['houseLookTime'])
+									.",".(empty($house['housePayInfo'])?0:$house['housePayInfo'])
+									.",".(empty($house['houseRentType'])?0:$house['houseRentType'])
+									.",".(empty($house['houseRentRoomType'])?0:$house['houseRentRoomType'])
+									.",".(empty($house['houseRentDetail'])?0:$house['houseRentDetail'])
+									.",'".(empty($house['houseLiveTime'])?'':$house['houseLiveTime'])
+									."','".(empty($house['houseTags'])?'':$house['houseTags'])
+									."',".(empty($house['housePayment'])?0:$house['housePayment'])
+									.",".(empty($house['housePayDetailY'])?0:$house['housePayDetailY'])
+									.",".(empty($house['housePayDetailF'])?0:$house['housePayDetailF'])
+									.",".(empty($house['houseSellRentType'])?0:$house['houseSellRentType'])
+									.",".(empty($house['houseState'])?0:$house['houseState'])
+									.",".(empty($house['houseCommunityId'])?0:$house['houseCommunityId'])
+									.",".(empty($house['houseUserId'])?0:$house['houseUserId'])
 									.",".time()
 									.",".time()
 									.")";
+		//echo 'sql->'.$sql.'<br/>';
 		$this->db->query($sql);
 		$houseId = $this->db->getInsertNum();
 		return $houseId;					

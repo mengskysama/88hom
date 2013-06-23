@@ -26,13 +26,18 @@ if($propType == "zz"){
 	$houseFitment  = getParameter("houseFitment");
 	$houseBaseService  = getParameter("houseBaseService");
 	$houseLookTime  = getParameter("houseLookTime");
-	$housePhoto  = $_FILES["housePhone"];
+	$housePhoto  = $_FILES["housePhoto"];
 	$houseTitle  = getParameter("houseTitle");	
 	$houseContent  = getParameter("houseContent");
-	$houseUserId  = getParameter("houseUserId");
+	$houseUserId  = $userId;
 	$houseBuildForm  = getParameter("houseBuildForm");
 	$houseAllFloor  = getParameter("houseAllFloor");
-	$propHandler = new HousePropertyHandler($db);
+	
+	$propHandler = new HousePropertyHandler($db,$estId,$estName,$houseNumber,$privateHouseNumber,$housePayInfo,
+											$houseType,$houseSellPrice,$houseRoom,$houseHall,$houseToilet,$houseKitchen,
+											$houseBalcony,$houseBuildArea,$houseUseArea,$houseBuildYear,$houseFloor,
+											$houseForward,$houseFitment,$houseBaseService,$houseLookTime,$housePhoto,$houseTitle,
+											$houseContent,$houseUserId,$houseBuildForm,$houseAllFloor);
 }
-$propHandler->handler();
+echo 'result->'.$propHandler->handle();
 ?>

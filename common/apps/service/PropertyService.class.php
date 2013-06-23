@@ -110,9 +110,15 @@ class PropertyService{
 		
 		//save the mapping relation of house & photo
 		$pic['picBuildId'] = $propId;
-		$pic['picBuildType'] = $property['picBuildType'];
-		$pic['picSellRent'] = $property['picSellRent'];
-		$pic['picUrl'] = $property['picUrl'];
+		$pic['picBuildType'] = $property['housePhoto']['picBuildType'];
+		$pic['picSellRent'] = $property['housePhoto']['picSellRent'];
+		$pic['picUrl'] = $property['housePhoto']['picUrl'];
+
+		$pic['pictypeId'] = 0;
+		$pic['picThumb'] = '';
+		$pic['picState'] = 0;
+
+		
 		$this->picDAO->release($pic);
 		return true;
 	}

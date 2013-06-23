@@ -1,5 +1,6 @@
 <?php
-class HousePropertyHandler{
+require 'PropertyHandler.class.php';
+class HousePropertyHandler extends PropertyHandler{
 	private $db;
 	private $estId;
 	private $estName;
@@ -66,27 +67,15 @@ class HousePropertyHandler{
 		$this->houseAllFloor = $houseAllFloor;
 		
 		$this->estateService = new EstateService($db);
-		$this->propertyService = new $propertyService($db);
+		$this->propertyService = new PropertyService($db);
 	}
 	
-	public function handler(){
-		$photoName = $this->uploadPhoto();
+	public function handle(){
+		$photoName = $this->uploadPhoto($this->housePhoto,$this->houseUserId);
 		if(!$photoName) return false;
-				
-		//save the estate if it's a new one
-		if($this->estId == ""){
-			$estate['communityName'] = $this->estName;
-			$this->estId = $this->estateService->saveEstate($estate);
-			if(!$this->estId) return false;
-		}else{
-			//check if the estId is samed. if it's not same, create a new estate
-			$existingEstate = $this->estateService->getEstateById($this->estId);
-			if($existingEstate['communityName'] != $this->estName){
-				$estate['communityName'] = $this->estName;
-				$this->estId = $this->estateService->saveEstate($estate);
-				if(!$this->estId) return false;
-			}
-		}
+		
+		$realEstId = $this->getRealEstateId($this->estateService,$this->estId,$this->estName);
+		if(!$realEstId) return false;
 		
 		//save the property
 		$houseBaseService = "";
@@ -117,36 +106,25 @@ class HousePropertyHandler{
 		$house['houseAllFloor'] = $this->houseAllFloor;
 		$house['houseBuildYear'] = $this->houseBuildArea;
 		$house['houseLookTime'] = $this->houseLookTime;
-		$house['houseCommunityId'] = $this->estId;
+		$house['houseCommunityId'] = $realEstId;
 		$house['houseUserId'] = $this->houseUserId;
 		$house['housePhoto']['picBuildType'] = 1;
 		$house['housePhoto']['picSellRent'] = 2;
 		$house['housePhoto']['picUrl'] = $photoName;		
+		
+		$house['houseRentArea'] = "";
+		$house['houseBuildStructure'] = "";
+		$house['housePayInfo'] = "";
+		$house['houseRentRoomType'] = "";
+		$house['houseLiveTime'] = "";
+		$house['housePayment'] = "";
+		$house['housePayDetailY'] = "";
+		$house['housePayDetailF'] = "";
+		$house['houseState'] = "";
+		
 		$houseId = $this->propertyService->saveProperty($house);
 		if(!$houseId) return false;
 		return true;
 	} 
-	
-	private function uploadPhoto(){
-
-		$targetFolder = ECMS_PATH.'uploads/'; // Relative to the root
-		
-		if((($this->housePhoto["type"] != "image/gif")
-				&& ($this->housePhoto["type"] != "image/jpeg")
-				&& ($this->housePhoto["type"] != "image/pjpeg"))
-				|| ($this->housePhoto["size"] >= 20000)) {
-			return false;
-		}
-			
-		if($this->housePhoto["error"] > 0) return false;
-			
-		$newfileName = $targetFolder.rand(10,20).$this->houseUserId.randon(1000000,9999999).".".$this->housePhoto["type"];
-		$renameResult = move_uploaded_file($_FILES["file"]["tmp_name"],$newfileName);
-		if($renameResult){
-			return $renameResult;
-		}else{
-			return false;
-		}
-	}
 }
 ?>
