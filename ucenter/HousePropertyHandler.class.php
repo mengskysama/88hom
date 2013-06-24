@@ -1,5 +1,5 @@
 <?php
-require 'PropertyHandler.class.php';
+require_once 'PropertyHandler.class.php';
 class HousePropertyHandler extends PropertyHandler{
 	private $db;
 	private $estId;
@@ -67,7 +67,7 @@ class HousePropertyHandler extends PropertyHandler{
 		$this->houseAllFloor = $houseAllFloor;
 		
 		$this->estateService = new EstateService($db);
-		$this->propertyService = new PropertyService($db);
+		$this->propertyService = new SecondHandPropertyService($db);
 	}
 	
 	public function handle(){
@@ -107,10 +107,11 @@ class HousePropertyHandler extends PropertyHandler{
 		$house['houseBuildYear'] = $this->houseBuildArea;
 		$house['houseLookTime'] = $this->houseLookTime;
 		$house['houseCommunityId'] = $realEstId;
+		$house['houseSellRentType'] = 1;
 		$house['houseUserId'] = $this->houseUserId;
-		$house['housePhoto']['picBuildType'] = 1;
-		$house['housePhoto']['picSellRent'] = 2;
-		$house['housePhoto']['picUrl'] = $photoName;		
+		$house['propertyPhoto']['picBuildType'] = 1;
+		$house['propertyPhoto']['picSellRent'] = 1;
+		$house['propertyPhoto']['picUrl'] = $photoName;		
 		
 		$house['houseRentArea'] = "";
 		$house['houseBuildStructure'] = "";
@@ -122,7 +123,7 @@ class HousePropertyHandler extends PropertyHandler{
 		$house['housePayDetailF'] = "";
 		$house['houseState'] = "";
 		
-		$houseId = $this->propertyService->saveProperty($house);
+		$houseId = $this->propertyService->saveHouse($house);
 		if(!$houseId) return false;
 		return true;
 	} 

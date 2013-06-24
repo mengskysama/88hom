@@ -38,7 +38,10 @@ class ShopsDAO{
 			  ".(empty($info['shopsState'])?0:$info['shopsState']).",
 			  ".(empty($info['shopsUserId'])?0:$info['shopsUserId']).",
 			  ".(empty($info['shopsPropertyId'])?0:$info['shopsPropertyId']).",".time().",".time().")";
-		return $this->db->getQueryExecute($sql);
+		
+		$this->db->query($sql);
+		$shopId = $this->db->getInsertNum();
+		return $shopId;					
 	}
 	public function modify($info){
 		$sql="update ecms_shops set 

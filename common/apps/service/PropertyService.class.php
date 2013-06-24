@@ -9,17 +9,10 @@ class PropertyService{
 	private $propertyDAO=null;
 	private $linkService=null;
 	
-	//added by Cheneil
-	private $houseDAO;
-	private $picDAO;
-	
 	public function __construct($db){
 		$this->db=$db;
 		$this->propertyDAO=new PropertyDAO($db);
 		$this->linkService=new LinkService($db);
-		
-		$this->houseDAO = new HouseDAO($db);
-		$this->picDAO = new PicDAO($db);
 	}
 	/**
 	 * 发布信息
@@ -103,25 +96,5 @@ class PropertyService{
 		return $msg;
 	}
 	
-	//added by Cheneil
-	public function saveProperty($property){
-		$propId = $this->houseDAO->release($property);
-		if(!$propId) return false;
-		
-		//save the mapping relation of house & photo
-		$pic['picBuildId'] = $propId;
-		$pic['picBuildType'] = $property['housePhoto']['picBuildType'];
-		$pic['picSellRent'] = $property['housePhoto']['picSellRent'];
-		$pic['picUrl'] = $property['housePhoto']['picUrl'];
-
-		$pic['pictypeId'] = 0;
-		$pic['picThumb'] = '';
-		$pic['picState'] = 0;
-
-		
-		$this->picDAO->release($pic);
-		return true;
-	}
-	//end to be added by Cheneil
 }
 ?>

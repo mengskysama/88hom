@@ -7,7 +7,7 @@ class OfficeDAO{
 	public function release($info){
 		$sql="insert into ecms_office(officeNumber,officeType,officeSellPrice,officeRentPrice,officeRentPriceUnit,officeIncludFee,officeProFee,
 			  officePayment,officePayDetailY,officePayDetailF,officeBuildArea,officeFloor,officeAllFloor,officeDivision,officeFitment,officeLevel,
-			  officeTitle,officeContent,officeSellRentType,officeState,officePropertyId,officeUserId,officeCreateTime,officeUpdateTime) 
+			  officeTitle,officeContent,officeSellRentType,officeState,officeCommunityId,officeUserId,officeCreateTime,officeUpdateTime) 
 			  values('".(empty($info['officeNumber'])?'':$info['officeNumber'])."',
 			  ".(empty($info['officeType'])?0:$info['officeType']).",
 			  ".(empty($info['officeSellPrice'])?0:$info['officeSellPrice']).",
@@ -28,9 +28,12 @@ class OfficeDAO{
 			  '".(empty($info['officeContent'])?'':$info['officeContent'])."',
 			  ".(empty($info['officeSellRentType'])?0:$info['officeSellRentType']).",
 			  ".(empty($info['officeState'])?0:$info['officeState']).",
-			  ".(empty($info['officePropertyId'])?0:$info['officePropertyId']).",
+			  ".(empty($info['officeCommunityId'])?0:$info['officeCommunityId']).",
 			  ".(empty($info['officeUserId'])?0:$info['officeUserId']).",".time().",".time().")";
-		return $this->db->getQueryExecute($sql);
+		echo 'sql->'.$sql;
+		$this->db->query($sql);
+		$officeId = $this->db->getInsertNum();
+		return $officeId;					
 	}
 	public function modify($info){
 		$sql="update ecms_office set 

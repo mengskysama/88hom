@@ -1,6 +1,6 @@
 <?php
 /**
- * µêÆÌ¹ÜÀí
+ * ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½
  * @author David chunliumang@gmail.com
  * @version 1.0
  */
@@ -10,8 +10,8 @@ class ShopDAO{
 		$this->db=$db;
 	}
 	/**
-	 * ·¢²¼ÐÅÏ¢
-	 * @param array $info ÐÅÏ¢¶ÔÏó
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+	 * @param array $info ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 	 * @return boolean
 	 */
 	public function release($info){
@@ -22,7 +22,7 @@ class ShopDAO{
 		return $this->db->getQueryExecute($sql);
 	}
 	/**
-	 * ÐÞ¸ÄÐÅÏ¢
+	 * ï¿½Þ¸ï¿½ï¿½ï¿½Ï¢
 	 * @param array $info
 	 * @return boolean
 	 **/
@@ -34,8 +34,8 @@ class ShopDAO{
 		return $this->db->getQueryExeCute($sql);
 	}
 	/**
-	 * É¾³ýÐÅÏ¢
-	 * @param int $id ÐÅÏ¢ID
+	 * É¾ï¿½ï¿½ï¿½ï¿½Ï¢
+	 * @param int $id ï¿½ï¿½Ï¢ID
 	 * @return boolean
 	 **/
 	public function delInfo($id){
@@ -43,7 +43,7 @@ class ShopDAO{
 		return $this->db->getQueryExecute($sql);
 	}
 	/**
-	 * »ñÈ¡ÐÅÏ¢ÏêÇé
+	 * ï¿½ï¿½È¡ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 	 * @param public
 	 * @return array
 	 */
@@ -51,7 +51,7 @@ class ShopDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	/**
-	 * »ñÈ¡ÐÅÏ¢ÁÐ±í
+	 * ï¿½ï¿½È¡ï¿½ï¿½Ï¢ï¿½Ð±ï¿½
 	 * @access public
 	 * @return array
 	 */
@@ -59,7 +59,7 @@ class ShopDAO{
 		return $this->db->getQueryArray($sql);
 	}
 	/**
-	 * ¼ÆËãÐÅÏ¢ÌõÊý
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 	 * @param public
 	 * @return int
 	 */
@@ -67,9 +67,9 @@ class ShopDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	/**
-	 * ÐÞ¸ÄÐÅÏ¢×´Ì¬
+	 * ï¿½Þ¸ï¿½ï¿½ï¿½Ï¢×´Ì¬
 	 * @param string $state ×´Ì¬
-	 * @param string $id	Ö÷¼ü
+	 * @param string $id	ï¿½ï¿½ï¿½ï¿½
 	 * @return boolean
 	 */
 	public function changeState($state,$id){

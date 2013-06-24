@@ -2,12 +2,13 @@
 require 'path.inc.php';
 require 'check_login.php';
 require 'HousePropertyHandler.class.php';
+require 'OfficePropertyHandler.class.php';
 
 $propType = getParameter("prop_type");
+$estId = getParameter("estId");
+$estName = getParameter("estName");
 if($propType == "zz"){
 	
-	$estId = getParameter("estId");
-	$estName = getParameter("estName");
 	$houseNumber = getParameter("houseNumber");
 	$privateHouseNumber = getParameter("privateHouseNumber");
 	$housePayInfo = getParameter("housePayInfo");
@@ -38,6 +39,52 @@ if($propType == "zz"){
 											$houseBalcony,$houseBuildArea,$houseUseArea,$houseBuildYear,$houseFloor,
 											$houseForward,$houseFitment,$houseBaseService,$houseLookTime,$housePhoto,$houseTitle,
 											$houseContent,$houseUserId,$houseBuildForm,$houseAllFloor);
+}else if($propType == "xzl"){
+	
+	$officeNumber = getParameter("officeNumber");
+	$officeType = getParameter("officeType");
+	$officeSellPrice = getParameter("officeSellPrice");
+	$officeProFee = getParameter("officeProFee");
+	$officeBuildArea = getParameter("officeBuildArea");
+	$officeFloor = getParameter("officeFloor");	
+	$officeAllFloor = getParameter("officeAllFloor");
+	$officeFitment = getParameter("officeFitment");
+	$officePhoto = $_FILES["officePhoto"];
+	$officeTitle = getParameter("officeTitle");	
+	$officeContent = getParameter("officeContent");
+	$officeUserId = $userId;
+	$officeDivision = getParameter("officeDivision");
+	$officeLevel = getParameter("officeLevel");
+	
+	$propHandler = new OfficePropertyHandler($db,$estId,$estName,$officeNumber,$officeType,$officeSellPrice,
+											$officeProFee,$officeBuildArea,$officeFloor,$officeAllFloor,$officeDivision,$officeFitment,
+											$officeLevel,$officePhoto,$officeTitle,$officeContent,$officeUserId);
+}else if($propType == "sp"){
+	
+	$shopsAddress = getParameter("shopsAddress");
+	$shopsType = getParameter("shopsType");
+	$shopsAreaId = getParameter("shopsAreaId");
+	$shopsNumber = getParameter("shopsNumber");
+	$shopsSellPrice = getParameter("shopsSellPrice");
+	$shopsPropFee = getParameter("shopsPropFee");
+	$shopsBuildArea = getParameter("shopsBuildArea");
+	$shopsFloor = getParameter("shopsFloor");
+	$shopsAllFloor = getParameter("shopsAllFloor");
+	$shopsDivision = getParameter("shopsDivision");
+	$shopsFitment = getParameter("shopsFitment");
+	$shopsBaseService = getParameter("shopsBaseService");
+	$shopsAimOperastion = getParameter("shopsAimOperastion");
+	$shopPhoto = getParameter("shopPhoto");
+	$shopsTitle = getParameter("shopsTitle");
+	$shopContent = getParameter("shopContent");
+	$shopUserId = $userId;
+	
+	$propHandler = new ShopPropertyHandler($db,$estId,$estName,$shopsAddress,$shopsType,$shopsAreaId,$shopsNumber,
+											$shopsSellPrice,$shopsPropFee,$shopsBuildArea,$shopsFloor,$shopsAllFloor,$shopsDivision,
+											$shopsFitment,$shopsBaseService,$shopsAimOperastion,$shopPhoto,$shopsTitle,
+											$shopContent,$shopUserId);
+}else if($propType == "cf"){
+	
 }
 echo 'result->'.$propHandler->handle();
 ?>

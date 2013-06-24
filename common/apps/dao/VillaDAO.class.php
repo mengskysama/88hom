@@ -5,7 +5,7 @@
  * @author Sam(semovy@gmail.com)
  * @since 2013-04-09
  */
-class FactoryDAO  {
+class VillaDAO  {
 	private $db=null;
 	public function __construct($db){
 		$this->db=$db;

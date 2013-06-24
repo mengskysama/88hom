@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-21 14:53:49
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-24 14:13:09
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_zz.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1071251c0079056ef63-82697093%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7e3955469e7a46ee0125e81aa5500d4c78e062b4' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_zz.tpl',
-      1 => 1371797626,
+      1 => 1372042002,
       2 => 'file',
     ),
   ),
@@ -46,6 +46,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       	  $("#estId").val(ui.item.id);    
       }
     });
+    
+    
+    $("#btn_live").click(function() {
+        $("#btn_live").attr("disabled", true);
+        if (check()) {
+            document.getElementById("zzForm").submit();
+        } else {
+            $("#btn_live").removeAttr("disabled");
+        }
+    });
   });
 </script>
 </head>
@@ -65,7 +75,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
    			 	<li><a href="user_sale_zz.php">录入住宅出售房源</a></li>
     		    <li><a href="user_sale_bs.php">录入别墅出售房源</a></li>
      		    <li><a href="user_sale_sp.php">录入商铺出售房源</a></li>
-      		 	<li><a href="user_sale_xjl.php">录入写字楼出售房源</a></li>
+      		 	<li><a href="user_sale_xzl.php">录入写字楼出售房源</a></li>
        		    <li><a href="user_sale_cp.php">录入厂房出售房源</a></li>
    		  </ul>
           <div class="bs_tx">
@@ -193,7 +203,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
 			    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
-			    	<input id="housePhone" name="housePhone" type="file"  value="" />
+			    	<input id="housePhoto" name="housePhoto" type="file"  value="" />
 			    </td>
 			  </tr>
 			  <tr>
@@ -203,7 +213,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-			    <td colspan="2" align="left" valign="middle" class="p25 bs"><textarea id="houseContent" name="houseContent" cols="86" rows="12" ></textarea><span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
+			    <td colspan="2" align="left" valign="middle">
+			    <textarea id="houseContent" name="houseContent" cols="86" rows="12" ></textarea>			    
+	            <script>
+	                CKEDITOR.replace( 'houseContent' );
+	            </script>
+            <span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 			请勿从其它网站或其它房源描述中拷贝。</span>
 			         <span>
 			         <b style="text-indent:0px;">注意事项：</b> <br />
@@ -212,9 +227,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			    	
 			    </td>
 			  </tr>
-            <script>
-                CKEDITOR.replace( 'houseContent' );
-            </script>
 			</table>
       </div>
        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -224,10 +236,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <td width="320" height="80" align="center" valign="middle"><input name="btn_save" type="button" class="mddl1" id="btn_save" value="保存待发布" /></td>
 	      </tr>
 	    </table>
+	    </form>
     </div>
     </div>
     </div>
-
+<
 <!--求购底部-->
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['footer']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 

@@ -1,11 +1,43 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-24 15:34:01
+         compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_sp.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:2744051c7f0a56a3478-23197049%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'd003a2e4311d0231366d6cb379966e1c5939056b' => 
+    array (
+      0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_sp.tpl',
+      1 => 1372059218,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '2744051c7f0a56a3478-23197049',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51c7f0a57709c9_03148991',
+  'variables' => 
+  array (
+    'cfg' => 0,
+    'jsFiles' => 0,
+    'cssFiles' => 0,
+    'ckeditLib' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_51c7f0a57709c9_03148991')) {function content_51c7f0a57709c9_03148991($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
+" />
 <title>个人房源_商铺</title>
-<!--{$jsFiles}-->
-<!--{$cssFiles}-->
-<script language="JavaScript" type="text/javascript" src="<!--{$ckeditLib}-->"></script>
+<?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
+
+<?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
+
+<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
+"></script>
 <script>
   $(function() {    
     $("#estName").autocomplete({
@@ -14,7 +46,8 @@
       	  $("#estId").val(ui.item.id);    
       }
     });
-        
+    
+    
     $("#btn_live").click(function() {
         $("#btn_live").attr("disabled", true);
         if (check()) {
@@ -29,10 +62,12 @@
 
 <body>
 <!--求购头部-->
-<!--{include file="$header_ucenter_user"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['header_ucenter_user']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 <!--求购内容-->
 <div class="qg_main">
-	<!--{include file="$ucenter_user_left_menu"}-->
+	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_user_left_menu']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
   	<div class="qg_r">
     <p>你的位置: <a href="#">房源管理</a></p>
    	<div class="qg_bs">
@@ -46,7 +81,7 @@
           <div class="bs_tx">
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
             <form id="spForm" name="spForm" action="property_handler.php" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="prop_type" value="sp">
+            <input type="hidden" name="prop_type" value="xzl">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 商铺名称</td>
@@ -130,13 +165,13 @@
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否可分割</td>
     <td align="left" valign="middle" class="p25">
-    	<label><input id="" name="shopsDivision" type="radio" value="1" /> 可分割</label>     
+    	<label><input id="" name="shopsDivision" type="radio" value="1" checked="checked" /> 可分割</label>     
       	<label> <input id="" name="shopsDivision" type="radio" value="2" /> 不可分割</label>   </td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>
     <td align="left" valign="middle" class="p25">
-    	<label><input id="" name="shopsFitment" type="radio" value="1" /> 精装修</label>     
+    	<label><input id="" name="shopsFitment" type="radio" value="1" checked="checked" /> 精装修</label>     
       	<label> <input id="" name="shopsFitment" type="radio" value="2" /> 简装修</label>
         <label> <input id="" name="shopsFitment" type="radio" value="3" /> 毛坯</label>
         </td>
@@ -217,6 +252,8 @@
     </div>
 
 <!--求购底部-->
-<!--{include file="$footer"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['footer']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 </body>
 </html>
+<?php }} ?>

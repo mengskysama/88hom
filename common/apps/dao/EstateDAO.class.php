@@ -16,7 +16,7 @@ class EstateDAO{
 	}
 	
 	public function saveEstate($estate){
-		$sql = "insert into ecms_community(communityName) valuse('".$estate['communityName']."')";
+		$sql = "insert into ecms_community(communityName) values('".$estate['communityName']."')";
 		$this->db->query($sql);
 		$estId = $this->db->getInsertNum();
 		return $estId;
