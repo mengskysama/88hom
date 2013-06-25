@@ -86,79 +86,56 @@ function CheckLiveArea(KeyName,KeyName1,flag)
 
 function CheckCreateTime(KeyName,flag)
 {
+    if(!flag) return false;
+    
     document.getElementById(KeyName).value = document.getElementById(KeyName).value.toLowerCase();
-    var value=document.getElementById(KeyName).value;
-    if(flag){
-        if(value>=10000||value<1000)
-        {
-            ShowRight(KeyName,false);
-            document.getElementById(KeyName+"_tipo").style.display="none";
-            if(value!="")
-                ShowTip(KeyName,true,"请填写4位数字 如：2008");
-            else
-                ShowTip(KeyName,false);
-            
-        }
-        else
-        {
-            ShowRight(KeyName,true);
-            ShowTip(KeyName,false);
-            document.getElementById(KeyName+"_tipo").style.display="none";
-        }
-   }
+    var value = document.getElementById(KeyName).value;
+    
+    if(trim(value) == "" || !IsInt(KeyName) || value < 1000 || value>= 10000){
+    	alert("请填写4位数字 如：2008");
+    	return false;
+    }
+    return true;
+
 }
 function CheckFloor(KeyName,KeyNameAll,flag)
 {
-//    HideTip(tipName);
+    if(!flag) return false;
+    
     document.getElementById(KeyName).value = document.getElementById(KeyName).value.toLowerCase();
     document.getElementById(KeyNameAll).value = document.getElementById(KeyNameAll).value.toLowerCase();
     var value=document.getElementById(KeyName).value;
     var valueAll=document.getElementById(KeyNameAll).value;
-    if(flag){
-        if(value==""||valueAll=="")
-        {
-            ShowTip(KeyName,true,"请填写楼层");
-            document.getElementById(KeyName+"_Error").style.display="none";
-        }
-        else if(valueAll<=0)
-        {
-            ShowTip(KeyName,true,"总楼层不能为0或负数");
-            document.getElementById(KeyName+"_Error").style.display="none";
-        }
-        else if(parseFloat(value)>parseFloat(valueAll))
-        {
-            document.getElementById(KeyName+"_Error").style.display="";
-            ShowTip(KeyName,false);
-            ShowRight(KeyName,false);
-        }
-        else
-        {
-            ShowRight(KeyName,true);
-            document.getElementById(KeyName+"_Error").style.display="none";
-        }
+
+	if(value==""||valueAll==""){
+    	alert("请填写楼层");
+        return false;
+	}else if(!IsInt(KeyName) || !IsInt(KeyNameAll)){
+        alert("只能填写数字");
+        return false;
+	}else if(valueAll<=0){
+        alert("总楼层不能为0或负数");
+        return false;
+    }else if(parseFloat(value)>parseFloat(valueAll)){
+    	alert("所在楼层不能大于总楼层");
+    	return false;
+    }else{
+       return true;
     }
+
 }
 function CheckTitle(KeyName,flag)
 {
-//    document.getElementById(KeyName).value = document.getElementById(KeyName).value.toLowerCase();
     document.getElementById(KeyName).value = document.getElementById(KeyName).value;
 
     var value=document.getElementById(KeyName).value;
     if(flag){
         if(value=="")
         {
-            $("#"+titleid).val(initContent);
-            $("#"+titleid).attr('class','gray');
-            ShowTip(KeyName,true);
+            alert("请填写标题");
+            return false;
         }
-        else
-        {
-            if(value!=initContent)
-            {
-                $("#"+titleid).removeAttr('class');
-                ShowRight(KeyName,true);
-            }
-        }
+        return true;
     }
 }
 function CheckRoom(KeyName,flag)
