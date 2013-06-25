@@ -42,7 +42,6 @@
     		    <li><a href="user_sale_bs.php">录入别墅出售房源</a></li>
      		    <li><a href="user_sale_sp.php">录入商铺出售房源</a></li>
       		 	<li><a href="user_sale_xzl.php">录入写字楼出售房源</a></li>
-       		    <li><a href="user_sale_cp.php">录入厂房出售房源</a></li>
    		  </ul>
       <div class="bs_tx">
         <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>

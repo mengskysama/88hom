@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-24 14:15:14
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-25 16:07:55
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_xzl.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1874551c7e378b4dbf7-05579691%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8ad4089d35fdccbf91938938319f4c14891cc70c' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_xzl.tpl',
-      1 => 1372054509,
+      1 => 1372145505,
       2 => 'file',
     ),
   ),
@@ -76,7 +76,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     		    <li><a href="user_sale_bs.php">录入别墅出售房源</a></li>
      		    <li><a href="user_sale_sp.php">录入商铺出售房源</a></li>
       		 	<li><a href="user_sale_xzl.php">录入写字楼出售房源</a></li>
-       		    <li><a href="user_sale_cp.php">录入厂房出售房源</a></li>
    		  </ul>
       <div class="bs_tx">
         <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>

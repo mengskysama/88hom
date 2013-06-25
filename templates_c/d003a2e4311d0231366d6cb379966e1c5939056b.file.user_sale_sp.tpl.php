@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-24 15:34:01
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-25 16:07:50
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_sp.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2744051c7f0a56a3478-23197049%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd003a2e4311d0231366d6cb379966e1c5939056b' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_sp.tpl',
-      1 => 1372059218,
+      1 => 1372145921,
       2 => 'file',
     ),
   ),
@@ -46,8 +46,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       	  $("#estId").val(ui.item.id);    
       }
     });
-    
-    
+        
     $("#btn_live").click(function() {
         $("#btn_live").attr("disabled", true);
         if (check()) {
@@ -76,16 +75,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     		    <li><a href="user_sale_bs.php">录入别墅出售房源</a></li>
      		    <li><a href="user_sale_sp.php">录入商铺出售房源</a></li>
       		 	<li><a href="user_sale_xzl.php">录入写字楼出售房源</a></li>
-       		    <li><a href="user_sale_cp.php">录入厂房出售房源</a></li>
    		  </ul>
           <div class="bs_tx">
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
             <form id="spForm" name="spForm" action="property_handler.php" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="prop_type" value="xzl">
+            <input type="hidden" name="prop_type" value="sp">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 商铺名称</td>
-    <td align="left" valign="middle" class="p25 grzc_31"><input type="hidden" id="estId" name="estId"/><input id="estName" name="estName" type="text"  value="" /> 还可写<font class="red">25</font>个汉字</td>
+    <td align="left" valign="middle" class="p25 grzc_31"><input type="hidden" id="estId" name="estId"/><input id="estName" name="estName" type="text"  value="" maxlength="50" /> 还可写<font class="red">25</font>个汉字</td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">商铺地址</td>
@@ -165,13 +163,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否可分割</td>
     <td align="left" valign="middle" class="p25">
-    	<label><input id="" name="shopsDivision" type="radio" value="1" checked="checked" /> 可分割</label>     
+    	<label><input id="" name="shopsDivision" type="radio" value="1" /> 可分割</label>     
       	<label> <input id="" name="shopsDivision" type="radio" value="2" /> 不可分割</label>   </td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>
     <td align="left" valign="middle" class="p25">
-    	<label><input id="" name="shopsFitment" type="radio" value="1" checked="checked" /> 精装修</label>     
+    	<label><input id="" name="shopsFitment" type="radio" value="1" /> 精装修</label>     
       	<label> <input id="" name="shopsFitment" type="radio" value="2" /> 简装修</label>
         <label> <input id="" name="shopsFitment" type="radio" value="3" /> 毛坯</label>
         </td>
