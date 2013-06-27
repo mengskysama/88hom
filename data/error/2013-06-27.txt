@@ -1,0 +1,120 @@
+------------------------2013-06-27 10:06:30
+错误SQL语句：
+insert into ecms_register_cert_code(cert_channel,cert_code,cert_code_status,create_time) values('fcheneil@qq.com',03a355bb3be51c527a5ee208ee317e74,1,now())
+客户端:127.0.0.1
+时间:2013-06-27 10:06:30
+------------------------2013-06-27 15:06:27
+错误SQL语句：
+insert into ecms_shops(shopsName,shopsAddress,shopsTitle,shopsContent,shopsType,shopsSellPrice,shopsRentPrice,
+			  shopsRentPriceUnit,shopsRentState,shopsPayment,shopsPayDetailY,shopsPayDetailF,shopsBuildArea,shopsFloor,shopsAllFloor,shopsDivision,
+			  shopsFitment,shopsBaseService,shopsAimOperasion,shopsIncludFee,shopsPropFee,shopsTransferFee,shopsNumber,shopsSellRentType,
+			  shopsMapX,shopsMapY,shopsState,shopsUserId,shopsPropertyId,shopsCreateTime,shopsUpdateTime) 
+			  values('东门步行街',
+			  '东门步行街22号',
+			  '东门步行街',
+			  '',
+			  2,
+			  33,
+			  0,
+			  0,
+			  0,
+			  0,
+			  0,
+			  0,
+			  22,
+			  2,
+			  10,
+			  1,
+			  1,
+			  'Array',
+			  'Array',
+			  0,
+			  50,
+			  '',
+			  '',
+			  1,
+			  0,
+			  0,
+			  0,
+			  0,
+			  0,1372316787,1372316787)
+客户端:127.0.0.1
+时间:2013-06-27 15:06:27
+------------------------2013-06-27 15:08:16
+错误SQL语句：
+insert into ecms_shops(shopsName,shopsAddress,shopsTitle,shopsContent,shopsType,shopsSellPrice,shopsRentPrice,
+			  shopsRentPriceUnit,shopsRentState,shopsPayment,shopsPayDetailY,shopsPayDetailF,shopsBuildArea,shopsFloor,shopsAllFloor,shopsDivision,
+			  shopsFitment,shopsBaseService,shopsAimOperasion,shopsIncludFee,shopsPropFee,shopsTransferFee,shopsNumber,shopsSellRentType,
+			  shopsMapX,shopsMapY,shopsState,shopsUserId,shopsPropertyId,shopsCreateTime,shopsUpdateTime) 
+			  values('东门步行街',
+			  '东门步行街22号',
+			  '东门步行街',
+			  '<p>
+	<u><strong>哈哈</strong></u></p>
+',
+			  2,
+			  33,
+			  0,
+			  0,
+			  0,
+			  0,
+			  0,
+			  0,
+			  22,
+			  2,
+			  10,
+			  1,
+			  1,
+			  'Array',
+			  'Array',
+			  0,
+			  50,
+			  '',
+			  '',
+			  1,
+			  0,
+			  0,
+			  0,
+			  6,
+			  0,1372316896,1372316896)
+客户端:127.0.0.1
+时间:2013-06-27 15:08:16
+------------------------2013-06-27 15:10:39
+错误SQL语句：
+insert into ecms_shops(shopsName,shopsAddress,shopsTitle,shopsContent,shopsType,shopsSellPrice,shopsRentPrice,
+			  shopsRentPriceUnit,shopsRentState,shopsPayment,shopsPayDetailY,shopsPayDetailF,shopsBuildArea,shopsFloor,shopsAllFloor,shopsDivision,
+			  shopsFitment,shopsBaseService,shopsAimOperastion,shopsIncludFee,shopsPropFee,shopsTransferFee,shopsNumber,shopsSellRentType,
+			  shopsMapX,shopsMapY,shopsState,shopsUserId,shopsPropertyId,shopsCreateTime,shopsUpdateTime) 
+			  values('东门步行街',
+			  '东门步行街22号',
+			  '东门步行街',
+			  '<p>
+	<u><strong>哈哈</strong></u></p>
+',
+			  2,
+			  33,
+			  0,
+			  0,
+			  0,
+			  0,
+			  0,
+			  0,
+			  22,
+			  2,
+			  10,
+			  1,
+			  1,
+			  'Array',
+			  'Array',
+			  0,
+			  50,
+			  '',
+			  '',
+			  1,
+			  0,
+			  0,
+			  0,
+			  6,
+			  0,1372317039,1372317039)
+客户端:127.0.0.1
+时间:2013-06-27 15:10:39

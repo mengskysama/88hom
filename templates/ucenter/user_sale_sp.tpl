@@ -7,7 +7,7 @@
 <!--{$cssFiles}-->
 <script language="JavaScript" type="text/javascript" src="<!--{$ckeditLib}-->"></script>
 <script>
-  $(function() {    
+$(function() {    
     $("#estName").autocomplete({
       source: "ajax_get_prop_name.php",
       select: function(e, ui) {
@@ -23,7 +23,36 @@
             $("#btn_live").removeAttr("disabled");
         }
     });
-  });
+});
+  
+function check(){
+	var estNameValue = $("#estName").val();
+	if(trim(estNameValue) == ''){
+		alert("请填写商铺名称");
+		return false;
+	}
+	
+	if(!CheckInfoCode('shopsNumber',true)) return false;	
+	if(!CheckPrice('shopsSellPrice',true,'CS')) return false;
+	if(!checkPropFee('shopsPropFee',true)) return false;
+	if(!CheckBuildingArea('shopsBuildArea',true)) return false;
+	if(!CheckFloor('shopsFloor','shopsAllFloor',true)) return false;
+	
+	var housePhotoValue = $("#shopPhoto").val();
+	if(trim(housePhotoValue) == ''){
+		alert("请上传图片");
+		return false;
+	}
+	
+	if(!CheckTitle('shopsTitle',true)) return false;
+	var houseContentValue = CKEDITOR.instances.shopsContent.getData(); 
+	if(trim(houseContentValue) == ''){
+		alert("请填写房源描述");
+		return false;
+	}
+	
+	return true;	
+}
 </script>
 </head>
 
@@ -49,7 +78,8 @@
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 商铺名称</td>
-    <td align="left" valign="middle" class="p25 grzc_31"><input type="hidden" id="estId" name="estId"/><input id="estName" name="estName" type="text"  value="" maxlength="50" onkeyup="textCounter(document.getElementById('houseTitle'),document.getElementById('houseTitleAlert'),25);" /> 还可写<font class="red">25</font>个汉字</td>
+    <td align="left" valign="middle" class="p25 grzc_31"><input type="hidden" id="estId" name="estId"/>
+    <input id="estName" name="estName" type="text" maxlength="50" onkeyup="textCounter(document.getElementById('estName'),document.getElementById('estNameAlert'),25);" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字</td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">商铺地址</td>
@@ -99,32 +129,32 @@
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"> 房源信息编码</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsNumber" name="shopsNumber" type="text"  value="" /></td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsNumber" name="shopsNumber" type="text" maxlength="12" onblur="CheckInfoCode('shopsNumber',true)" /></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">类    别</td>
     <td align="left" valign="middle" class="p25"> 
     	<label><input id="" name="shopsType" type="radio" value="1" /> 住宅底商</label>     
-      	<label> <input id="" name="shopsType" type="radio" value="2" /> 商业街商铺  </label>    
+      	<label><input id="" name="shopsType" type="radio" value="2" /> 商业街商铺  </label>    
         <label><input id="" name="shopsType" type="radio" value="3" /> 写字楼配套底商</label>    
         <label><input id="" name="shopsType" type="radio" value="4" /> 购物中心/百货</label>  
         <label><input id="" name="shopsType" type="radio" value="5" /> 其他</label></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  售    价</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsSellPrice" name="shopsSellPrice" type="text"  value="" /> <font class="z3">万元/套</font></td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsSellPrice" name="shopsSellPrice" type="text" onblur="CheckPrice('shopsSellPrice',true,'CS');" /> <font class="z3">万元/套</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 物 业 费</td>
-    <td align="left" valign="middle" class="p25 grzc_32"><input id="shopsPropFee" name="shopsPropFee" type="text"  value="" /> <font class="z3">元/平米</font></td>
+    <td align="left" valign="middle" class="p25 grzc_32"><input id="shopsPropFee" name="shopsPropFee" type="text" onblur="checkPropFee('shopsPropFee',true);" /> <font class="z3">元/平米</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsBuildArea" name="shopsBuildArea" type="text"  value="" /> <font class="z3">平方米</font></td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsBuildArea" name="shopsBuildArea" type="text" maxlength="8" onblur="CheckBuildingArea('shopsBuildArea',true);" /> <font class="z3">平方米</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼    层</td>
-    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="shopsFloor" name="shopsFloor" type="text"  value="" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="shopsAllFloor" name="shopsAllFloor" type="text"  value="" /> <font class="z3">层</font> 地下室请填写负数</td>
+    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="shopsFloor" name="shopsFloor" type="text" onblur="CheckFloor('shopsFloor','shopsAllFloor',true);" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="shopsAllFloor" name="shopsAllFloor" type="text" onblur="CheckFloor('shopsFloor','shopsAllFloor',true);" /> <font class="z3">层</font> 地下室请填写负数</td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否可分割</td>
@@ -183,14 +213,14 @@
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
 			    <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
-			    	<input id="shopsTitle" name="shopsTitle" type="text"  value="" /> 还可写<font class="red">30</font>个汉字</td>
+			    	<input id="shopsTitle" name="shopsTitle" type="text" maxlength="60" onblur="CheckTitle('shopsTitle',true);" onkeyup="textCounter(document.getElementById('shopsTitle'),document.getElementById('shopsTitleAlert'),30);" /> 还可写<span id="shopsTitleAlert"><font class="red">30</font></span>个汉字</td>
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
 			    <td colspan="2" align="left" valign="middle" >
-			    <textarea id="officeContent" name="shopContent" cols="86" rows="12" ></textarea>			    
+			    <textarea id="shopsContent" name="shopsContent" cols="86" rows="12" ></textarea>			    
 				<script>
-					CKEDITOR.replace( 'officeContent' );
+					CKEDITOR.replace( 'shopsContent' );
 				</script>
 				<span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 			请勿从其它网站或其它房源描述中拷贝。</span>

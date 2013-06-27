@@ -7,8 +7,8 @@ class ShopsDAO{
 	public function release($info){
 		$sql="insert into ecms_shops(shopsName,shopsAddress,shopsTitle,shopsContent,shopsType,shopsSellPrice,shopsRentPrice,
 			  shopsRentPriceUnit,shopsRentState,shopsPayment,shopsPayDetailY,shopsPayDetailF,shopsBuildArea,shopsFloor,shopsAllFloor,shopsDivision,
-			  shopsFitment,shopsBaseService,shopsAimOperasion,shopsIncludFee,shopsPropFee,shopsTransferFee,shopsNumber,shopsSellRentType,
-			  shopsMapX,shopsMapY,shopsState,shopsUserId,shopsPropertyId,shopsCreateTime,shopsUpdateTime) 
+			  shopsFitment,shopsBaseService,shopsAimOperastion,shopsIncludFee,shopsPropFee,shopsTransferFee,shopsNumber,shopsSellRentType,
+			  shopsMapX,shopsMapY,shopsState,shopsUserId,shopsCommunityId,shopsCreateTime,shopsUpdateTime) 
 			  values('".(empty($info['shopsName'])?'':$info['shopsName'])."',
 			  '".(empty($info['shopsAddress'])?'':$info['shopsAddress'])."',
 			  '".(empty($info['shopsTitle'])?'':$info['shopsTitle'])."',

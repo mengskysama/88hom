@@ -36,10 +36,6 @@ function textCounter(input,countfield,maxlimit)
 	}	
 }
 
-function check(){
-	return true;
-}
-
 function CheckBuildingArea(KeyName,flag)
 {
     if(!flag) return false;
@@ -91,7 +87,7 @@ function CheckCreateTime(KeyName,flag)
     document.getElementById(KeyName).value = document.getElementById(KeyName).value.toLowerCase();
     var value = document.getElementById(KeyName).value;
     
-    if(trim(value) == "" || !IsInt(KeyName) || value < 1000 || value>= 10000){
+    if(trim(value) != "" && (!IsInt(KeyName) || value < 1000 || value>= 10000 )){
     	alert("请填写4位数字 如：2008");
     	return false;
     }
@@ -107,7 +103,7 @@ function CheckFloor(KeyName,KeyNameAll,flag)
     var value=document.getElementById(KeyName).value;
     var valueAll=document.getElementById(KeyNameAll).value;
 
-	if(value==""||valueAll==""){
+	if(trim(value) =="" || trim(valueAll) == ""){
     	alert("请填写楼层");
         return false;
 	}else if(!IsInt(KeyName) || !IsInt(KeyNameAll)){
@@ -130,36 +126,35 @@ function CheckTitle(KeyName,flag)
 
     var value=document.getElementById(KeyName).value;
     if(flag){
-        if(value=="")
+        if(trim(value) == "")
         {
             alert("请填写标题");
             return false;
         }
         return true;
     }
+    return true;
 }
 function CheckRoom(KeyName,flag)
 {
     var value = document.getElementById(KeyName).value;
     if(flag){
-        if(value==""){
+        if(trim(value)==""){
             alert("请填写户型");
-            return
+            return false;
         }
 
         if(!CheckInput(value)) {
         	alert("只能填写数字");
+        	return false;
         }
     }
+    return true;
 }
 function CheckInput(val) {
     var reg = /^[0-9]*$/;
-    if (!reg.test(trim(val))) {
-        return false;
-    }
-    else {
-        return true;
-    }
+    if (!reg.test(trim(val))) return false;
+    return true;
 }
 
 function SelAllClick(obj,sourceName)
@@ -214,10 +209,12 @@ function CheckInfoCode(KeyName,flag)
     document.getElementById(KeyName).value = document.getElementById(KeyName).value.toLowerCase();
     var value=document.getElementById(KeyName).value;
     if(flag){
-        if(value!="" && !check_length(KeyName, 12)){
+        if(trim(value) != "" && !check_length(KeyName, 12)){
         	alert("请填写12位数字");
+        	return false;
         }
     }
+    return true;
 }
 
 function check_length(objname,length)
@@ -235,25 +232,70 @@ function CheckPrice(KeyName,flag,type)
     if(flag){
         if(value==''){
         	alert("请填写售价");
-        	return;
+        	return false;
         }
 
         if(check_float(KeyName)){
         	if(type=='CS'){
         		if(parseFloat(value)<=2||parseFloat(value)>=100000){
         			alert("售价要大于2万元小于10亿元");
+        			return false;
                 }
         	}else{
         		if(parseFloat(value)<=100||parseFloat(value)>=300000){
                 }
             }
+        	return true;
         }else{
         	alert("只能填写数字");
+        	return false;
         }
+    }
+    return true;
+}
+
+function checkPropFee(KeyName,flag){
+	
+	var value = document.getElementById(KeyName).value;
+	if(trim(value) == "" && flag) {
+    	alert("请填写物业费");
+    	return false;
+	}
+	
+	if(check_float(KeyName)){
+		if(parseFloat(value)<0 || parseFloat(value)>=1000000){
+			alert("物业费要小于100万元");
+            return false;
+		}
+		return true;
+    }else{
+    	alert("只能填写数字");
+    	return false;
+    }
+
+}
+
+function CheckSwatchPriceOffice(KeyNamePrice) {
+    document.getElementById(KeyNamePrice).value = document.getElementById(KeyNamePrice).value.toLowerCase();
+    var valuePrice = document.getElementById(KeyNamePrice).value;
+    if(trim(valuePrice) == ''){
+    	alert("请填写单价");
+    	return false;
+    }
+    
+    if(check_float(KeyNamePrice)){
+    	if(parseFloat(valuePrice)<=0 || parseFloat(valuePrice)>200000){
+    		alert("单价要大于0元小于200000元");
+    		return false;
+    	}
+    	return true;
+    }else{
+    	alert("只能填写数字");
+    	return false;
     }
 }
 
-function check_float(objname,tipname)
+function check_float(objname)
 {  
     if(!IsFloat(objname)) return false; 
     return true;
@@ -310,4 +352,62 @@ function RTrim(str)
 function trim(str)
 {
   return RTrim(LTrim(str));
+}
+function SetValue(type,objName,ovalue)
+{   type=type.toLowerCase()
+    if(type=="group")
+    {
+        var objList=document.getElementsByName(objName);
+        var len=objList.length;
+        for(var i=0;i<len;i++)
+        {
+            if(ovalue.indexOf(objList[i].value)>-1)
+                objList[i].checked=true;
+        }
+    }
+    else if(type=="single")
+    {
+        var objList=document.getElementsByName(objName);
+        var len=objList.length;
+        for(var i=0;i<len;i++)
+        {
+            if(objList[i].value==ovalue)
+               {
+                    objList[i].checked=true;
+                    break;
+                }
+        }
+    }
+    else if(type=="selectchild")
+    {
+        var objList=document.getElementById(objName);
+        var len=objList.length;
+        for(var i=0;i<len;i++)
+        {
+            if(objList.options[i].value==ovalue)
+            {
+                objList.options[i].selected = true;
+                break;
+            }
+        }
+    }
+    else if(type=="all")
+    {
+        var objList=document.getElementsByName(objName);
+        var len=objList.length;
+        for(var i=0;i<len;i++)
+        {            
+           objList[i].checked=true;
+        }        
+    }
+    else if(type=="escall")
+    {
+       var objList=document.getElementsByName(objName);
+        var len=objList.length;
+        for(var i=0;i<len;i++)
+        {            
+           objList[i].checked=false;
+        }          
+    }
+    return false;
 }

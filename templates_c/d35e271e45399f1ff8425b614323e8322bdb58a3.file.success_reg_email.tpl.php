@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-17 17:08:49
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-27 10:06:32
          compiled from "E:/workspace/projects/88hom/templates\ucenter\success_reg_email.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2017551bed1939f58f5-62616835%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd35e271e45399f1ff8425b614323e8322bdb58a3' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\success_reg_email.tpl',
-      1 => 1371460100,
+      1 => 1371519399,
       2 => 'file',
     ),
   ),

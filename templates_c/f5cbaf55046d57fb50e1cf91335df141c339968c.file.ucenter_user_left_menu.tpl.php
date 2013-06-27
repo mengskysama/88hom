@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-18 14:45:25
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-27 17:25:22
          compiled from "E:/workspace/projects/88hom/templates\ucenter\ucenter_user_left_menu.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:959151bfd8c30bcf94-13551492%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f5cbaf55046d57fb50e1cf91335df141c339968c' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\ucenter_user_left_menu.tpl',
-      1 => 1371537566,
+      1 => 1372322407,
       2 => 'file',
     ),
   ),
@@ -43,7 +43,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
      		   	<dt class="qg_bt1">出租出售</dt>
           	    <dd class="qg_bt2"><a href="user_sale.php">我要出售</a></dd>
           	    <dd class="qg_bt2"><a href="#">我要出租</a></dd>
-         	    <dd class="qg_bt2"><a href="#">管理我的出售信息</a></dd>
+         	    <dd class="qg_bt2"><a href="sell_property_list.php">管理我的出售信息</a></dd>
                 <dd class="qg_bt2"><a href="#">管理我的出租信息</a></dd>
       	  </dl>
            <dl>

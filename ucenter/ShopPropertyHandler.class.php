@@ -19,8 +19,9 @@ class ShopPropertyHandler extends PropertyHandler{
 	private $shopsAimOperastion;
 	private $shopPhoto;
 	private $shopsTitle;
-	private $shopContent;
+	private $shopsContent;
 	private $shopUserId;
+	private $shopsState;
 	
 	private $estateService;
 	private $propertyService;
@@ -28,7 +29,7 @@ class ShopPropertyHandler extends PropertyHandler{
 	function __construct($db,$estId,$estName,$shopsAddress,$shopsType,$shopsAreaId,$shopsNumber,
 						$shopsSellPrice,$shopsPropFee,$shopsBuildArea,$shopsFloor,$shopsAllFloor,$shopsDivision,
 						$shopsFitment,$shopsBaseService,$shopsAimOperastion,$shopPhoto,$shopsTitle,
-						$shopContent,$shopUserId){
+						$shopContent,$shopUserId,$shopsState){
 		
 		$this->db = $db;
 		$this->estId = $estId;
@@ -48,21 +49,39 @@ class ShopPropertyHandler extends PropertyHandler{
 		$this->shopsAimOperastion = $shopsAimOperastion;
 		$this->shopPhoto = $shopPhoto;
 		$this->shopsTitle = $shopsTitle;
-		$this->shopContent = $shopContent;
+		$this->shopsContent = $shopContent;
 		$this->shopUserId = $shopUserId;
+		$this->shopsState = $shopsState;
 		
 		$this->estateService = new EstateService($db);
 		$this->propertyService = new SecondHandPropertyService($db);
 	}
 	
 	public function handle(){
-		$photoName = $this->uploadPhoto($this->officePhoto,$this->officeUserId);
+		$photoName = $this->uploadPhoto($this->shopPhoto,$this->shopUserId);
 		if(!$photoName) return false;
 		
 		$realEstId = $this->getRealEstateId($this->estateService,$this->estId,$this->estName);
 		if(!$realEstId) return false;
 		
 		//save the property
+		$shopsBaseService = "";
+		if(!empty($this->shopsBaseService)){
+			$shopsBaseService = ",";
+			$len = count($this->shopsBaseService);
+			for($i=0; $i<$len; $i++){
+				$shopsBaseService .= $this->shopsBaseService[$i].","; 
+			}			
+		}
+		$shopsAimOperastion = "";
+		if(!empty($this->shopsAimOperastion)){
+			$shopsAimOperastion = ",";
+			$len = count($this->shopsAimOperastion);
+			for($i=0; $i<$len; $i++){
+				$shopsAimOperastion .= $this->shopsAimOperastion[$i].","; 
+			}			
+		}
+		
 		$shop['shopsName'] = $this->estName;
 		$shop['shopsAddress'] = $this->shopsAddress;
 		$shop['shopsTitle'] = $this->shopsTitle;
@@ -80,8 +99,8 @@ class ShopPropertyHandler extends PropertyHandler{
 		$shop['shopsAllFloor'] = $this->shopsAllFloor;
 		$shop['shopsDivision'] = $this->shopsDivision;
 		$shop['shopsFitment'] = $this->shopsFitment;
-		$shop['shopsBaseService'] = $this->shopsBaseService;
-		$shop['shopsAimOperasion'] = $this->shopsAimOperastion;
+		$shop['shopsBaseService'] = $shopsBaseService;
+		$shop['shopsAimOperasion'] = $shopsAimOperastion;
 		$shop['shopsIncludFee'] = 0;
 		$shop['shopsPropFee'] = $this->shopsPropFee;
 		$shop['shopsTransferFee'] = 0;
@@ -89,8 +108,8 @@ class ShopPropertyHandler extends PropertyHandler{
 		$shop['shopsSellRentType'] = 1;
 		$shop['shopsMapX'] = 0;
 		$shop['shopsMapY'] = 0;
-		$shop['shopsState'] = 0;
-		$shop['shopsUserId'] = $this->shopsUserId;
+		$shop['shopsState'] = $this->shopsState;
+		$shop['shopsUserId'] = $this->shopUserId;
 		$shop['shopsCommunityId'] = $realEstId;
 
 		$shop['propertyPhoto']['picBuildType'] = 1;

@@ -30,7 +30,7 @@ class OfficeDAO{
 			  ".(empty($info['officeState'])?0:$info['officeState']).",
 			  ".(empty($info['officeCommunityId'])?0:$info['officeCommunityId']).",
 			  ".(empty($info['officeUserId'])?0:$info['officeUserId']).",".time().",".time().")";
-		echo 'sql->'.$sql;
+		//echo 'sql->'.$sql;
 		$this->db->query($sql);
 		$officeId = $this->db->getInsertNum();
 		return $officeId;					

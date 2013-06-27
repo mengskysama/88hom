@@ -7,8 +7,8 @@
 <!--{$cssFiles}-->
 <script language="JavaScript" type="text/javascript" src="<!--{$ckeditLib}-->"></script>
 <script>
-  $(function() {    
-    $("#estName").autocomplete({
+$(function() {    
+	$("#estName").autocomplete({
       source: "ajax_get_prop_name.php",
       select: function(e, ui) {
       	  $("#estId").val(ui.item.id);    
@@ -24,7 +24,42 @@
             $("#btn_live").removeAttr("disabled");
         }
     });
-  });
+});
+  
+function check(){
+	var estNameValue = $("#estName").val();
+	if(trim(estNameValue) == ''){
+		alert("请填写楼盘名称");
+		return false;
+	}
+	
+	if(!CheckInfoCode('houseNumber',true)) return false;
+	if(!CheckPrice('houseSellPrice',true,'CS')) return false;
+	if(!CheckRoom('houseRoom',true)) return false;
+	if(!CheckRoom('houseHall',true)) return false;
+	if(!CheckRoom('houseToilet',true)) return false;
+	if(!CheckRoom('houseKitchen',true)) return false;
+	if(!CheckRoom('houseBalcony',true)) return false;
+	if(!CheckBuildingArea('houseBuildArea',true)) return false;
+	if(!CheckLiveArea('houseUseArea','houseBuildArea',true)) return false;
+	if(!CheckCreateTime('houseBuildYear',true)) return false;
+	if(!CheckFloor('houseFloor','houseAllFloor',true)) return false;
+	
+	var housePhotoValue = $("#housePhoto").val();
+	if(trim(housePhotoValue) == ''){
+		alert("请上传图片");
+		return false;
+	}
+	
+	if(!CheckTitle('houseTitle',true)) return false;
+	var houseContentValue = CKEDITOR.instances.houseContent.getData(); 
+	if(trim(houseContentValue) == ''){
+		alert("请填写房源描述");
+		return false;
+	}
+	
+	return true;	
+}
 </script>
 </head>
 
@@ -51,20 +86,20 @@
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼盘名称</td>
 			    <td align="left" valign="middle" class="p25 grzc_31"><input type="hidden" id="estId" name="estId"/>
-			    <input id="estName" name="estName" type="text"  value="" maxlength="50" onkeyup="textCounter(document.getElementById('estName'),document.getElementById('estNameAlert'),25);" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字</td>
+			    <input id="estName" name="estName" type="text" maxlength="50" onkeyup="textCounter(document.getElementById('estName'),document.getElementById('estNameAlert'),25);" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">房源信息编码</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseNumber" name="houseNumber" type="text"  value="" maxlength="12" onblur="CheckInfoCode('houseNumber',true)" /> </td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseNumber" name="houseNumber" type="text" maxlength="12" onblur="CheckInfoCode('houseNumber',true)" /> </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">内部编码</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="privateHouseNumber" name="privateHouseNumber" type="text"  value="" /></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="privateHouseNumber" name="privateHouseNumber" type="text" /></td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 产权信息</td>
 			    <td align="left" valign="middle" class="p25">
-			    <select id="housePayInfo" name="housePayInfo" id="housePayInfo">
+			    <select id="housePayInfo" name="housePayInfo">
 			    	<option value="1">商品房</option>
 			    	<option value="2">微利房</option>
 			    	<option value="3">军产房</option>
@@ -77,7 +112,7 @@
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">类    别</td>
 			    <td align="left" valign="middle" class="p25">
-			    <select id="houseType" name="houseType" id="houseType">			    
+			    <select id="houseType" name="houseType">			    
 			    	<option value="1">普通住宅</option>
 			    	<option value="2">高档住宅</option>
 			    	<option value="3">酒店式公寓 </option>
@@ -87,11 +122,11 @@
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  售    价</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseSellPrice" name="houseSellPrice" type="text"  value="" onblur="CheckPrice('houseSellPrice',true,'CS');" /> 万元/套</td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseSellPrice" name="houseSellPrice" type="text" onblur="CheckPrice('houseSellPrice',true,'CS');" /> 万元/套</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>户    型</td>
-			    <td align="left" valign="middle" class="p25 grzc_35"><input id="houseRoom" name="houseRoom" type="text" value="" maxlength="1" onblur="CheckRoom('houseRoom',true)"/> 室 <input id="houseHall" name="houseHall" type="text" maxlength="1" onblur="CheckRoom('houseHall',true)"/> 厅 <input id="houseToilet" name="houseToilet" type="text" maxlength="1" onblur="CheckRoom('houseToilet',true);"/> 卫 <input id="houseKitchen" name="houseKitchen" type="text" maxlength="1" onblur="CheckRoom('houseKitchen',true);"/> 厨 <input id="houseBalcony" name="houseBalcony" type="text" maxlength="1" onblur="CheckRoom('houseBalcony',true);"/> 阳台</td>
+			    <td align="left" valign="middle" class="p25 grzc_35"><input id="houseRoom" name="houseRoom" type="text" maxlength="1" onblur="CheckRoom('houseRoom',true)"/> 室 <input id="houseHall" name="houseHall" type="text" maxlength="1" onblur="CheckRoom('houseHall',true)"/> 厅 <input id="houseToilet" name="houseToilet" type="text" maxlength="1" onblur="CheckRoom('houseToilet',true);"/> 卫 <input id="houseKitchen" name="houseKitchen" type="text" maxlength="1" onblur="CheckRoom('houseKitchen',true);"/> 厨 <input id="houseBalcony" name="houseBalcony" type="text" maxlength="1" onblur="CheckRoom('houseBalcony',true);"/> 阳台</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑形式</td>

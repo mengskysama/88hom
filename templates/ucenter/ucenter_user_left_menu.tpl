@@ -22,7 +22,7 @@
      		   	<dt class="qg_bt1">出租出售</dt>
           	    <dd class="qg_bt2"><a href="user_sale.php">我要出售</a></dd>
           	    <dd class="qg_bt2"><a href="#">我要出租</a></dd>
-         	    <dd class="qg_bt2"><a href="#">管理我的出售信息</a></dd>
+         	    <dd class="qg_bt2"><a href="sell_property_list.php">管理我的出售信息</a></dd>
                 <dd class="qg_bt2"><a href="#">管理我的出租信息</a></dd>
       	  </dl>
            <dl>

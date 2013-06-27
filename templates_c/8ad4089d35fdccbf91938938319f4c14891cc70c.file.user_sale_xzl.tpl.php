@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-25 16:07:55
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-27 15:18:27
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_xzl.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1874551c7e378b4dbf7-05579691%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8ad4089d35fdccbf91938938319f4c14891cc70c' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_xzl.tpl',
-      1 => 1372145505,
+      1 => 1372317490,
       2 => 'file',
     ),
   ),
@@ -39,7 +39,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
 "></script>
 <script>
-  $(function() {    
+$(function() {    
     $("#estName").autocomplete({
       source: "ajax_get_prop_name.php",
       select: function(e, ui) {
@@ -56,7 +56,36 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             $("#btn_live").removeAttr("disabled");
         }
     });
-  });
+});
+  
+function check(){
+	var estNameValue = $("#estName").val();
+	if(trim(estNameValue) == ''){
+		alert("请填写楼盘名称");
+		return false;
+	}
+	
+	if(!CheckInfoCode('officeNumber',true)) return false;	
+	if(!CheckSwatchPriceOffice('officeSellPrice')) return false;
+	if(!checkPropFee('officeProFee',true)) return false;
+	if(!CheckBuildingArea('officeBuildArea',true)) return false;
+	if(!CheckFloor('officeFloor','officeAllFloor',true)) return false;
+	
+	var housePhotoValue = $("#officePhoto").val();
+	if(trim(housePhotoValue) == ''){
+		alert("请上传图片");
+		return false;
+	}
+	
+	if(!CheckTitle('officeTitle',true)) return false;
+	var houseContentValue = CKEDITOR.instances.officeContent.getData(); 
+	if(trim(houseContentValue) == ''){
+		alert("请填写房源描述");
+		return false;
+	}
+	
+	return true;	
+}
 </script>
 </head>
 
@@ -84,11 +113,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 写字楼名称</td>
-    <td align="left" valign="middle" class="p25 grzc_31"><input type="hidden" id="estId" name="estId"/><input id="estName" name="estName" type="text"  value="" /> 还可写<font class="red">25</font>个汉字</td>
+    <td align="left" valign="middle" class="p25 grzc_31"><input type="hidden" id="estId" name="estId"/>
+    <input id="estName" name="estName" type="text" maxlength="50" onkeyup="textCounter(document.getElementById('estName'),document.getElementById('estNameAlert'),25);" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字</td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">房源信息编码</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="officeNumber" name="officeNumber" type="text"  value="" />  </td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="officeNumber" name="officeNumber" type="text" maxlength="12" onblur="CheckInfoCode('officeNumber',true)" />  </td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"> 写字楼类型</td>
@@ -101,20 +131,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"> <font class="red">*</font> 单    价</td>
-    <td align="left" valign="middle" class="p25 grzc_32"><input id="officeSellPrice" name="officeSellPrice" type="text"  value="" /> 元/平米</td>
+    <td align="left" valign="middle" class="p25 grzc_32"><input id="officeSellPrice" name="officeSellPrice" type="text" onblur="CheckSwatchPriceOffice('officeSellPrice');" /> 元/平米</td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>物 业 费</td>
-    <td align="left" valign="middle" class="p25 grzc_32"><input id="officeProFee" name="officeProFee" type="text"  value="" /> 元/平米·月
+    <td align="left" valign="middle" class="p25 grzc_32"><input id="officeProFee" name="officeProFee" type="text" onblur="checkPropFee('officeProFee',true);" /> 元/平米·月
     	</td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="officeBuildArea" name="officeBuildArea" type="text"  value="" /> 平方米</td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="officeBuildArea" name="officeBuildArea" type="text" maxlength="8" onblur="CheckBuildingArea('officeBuildArea',true);" /> 平方米</td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼    层</td>
-    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="officeFloor" name="officeFloor" type="text"  value="" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="officeAllFloor" name="officeAllFloor" type="text"  value="" /> <font class="z3">层</font> 地下室请填写负数</td>
+    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="officeFloor" name="officeFloor" type="text" onblur="CheckFloor('officeFloor','officeAllFloor',true);" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="officeAllFloor" name="officeAllFloor" type="text" onblur="CheckFloor('officeFloor','officeAllFloor',true);" /> <font class="z3">层</font> 地下室请填写负数</td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否可分割</td>
@@ -154,7 +184,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
     <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
-    	<input id="officeTitle" name="officeTitle" type="text"  value="" /> 还可写<font class="red">30</font>个汉字</td>
+    	<input id="officeTitle" name="officeTitle" type="text" maxlength="60" onblur="CheckTitle('officeTitle',true);" onkeyup="textCounter(document.getElementById('officeTitle'),document.getElementById('officeTitleAlert'),30);" /> 还可写<span id="officeTitleAlert"><font class="red">30</font></span>个汉字</td>
   </tr>
   <tr>
     <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>

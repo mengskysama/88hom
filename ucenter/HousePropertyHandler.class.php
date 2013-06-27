@@ -28,6 +28,7 @@ class HousePropertyHandler extends PropertyHandler{
 	private $houseUserId;
 	private $houseBuildForm;
 	private $houseAllFloor;
+	private $houseState;
 	
 	private $estateService;
 	private $propertyService;
@@ -36,7 +37,7 @@ class HousePropertyHandler extends PropertyHandler{
 						$houseType,$houseSellPrice,$houseRoom,$houseHall,$houseToilet,$houseKitchen,
 						$houseBalcony,$houseBuildArea,$houseUseArea,$houseBuildYear,$houseFloor,
 						$houseForward,$houseFitment,$houseBaseService,$houseLookTime,$housePhoto,$houseTitle,
-						$houseContent,$houseUserId,$houseBuildForm,$houseAllFloor){
+						$houseContent,$houseUserId,$houseBuildForm,$houseAllFloor,$houseState){
 		
 		$this->db = $db;
 		$this->estId = $estId;
@@ -65,6 +66,7 @@ class HousePropertyHandler extends PropertyHandler{
 		$this->houseUserId = $houseUserId;
 		$this->houseBuildForm = $houseBuildForm;
 		$this->houseAllFloor = $houseAllFloor;
+		$this->houseState = $houseState;
 		
 		$this->estateService = new EstateService($db);
 		$this->propertyService = new SecondHandPropertyService($db);
@@ -121,7 +123,7 @@ class HousePropertyHandler extends PropertyHandler{
 		$house['housePayment'] = "";
 		$house['housePayDetailY'] = "";
 		$house['housePayDetailF'] = "";
-		$house['houseState'] = "";
+		$house['houseState'] = $this->houseState;
 		
 		$houseId = $this->propertyService->saveHouse($house);
 		if(!$houseId) return false;

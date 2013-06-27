@@ -3,10 +3,12 @@ require 'path.inc.php';
 require 'check_login.php';
 require 'HousePropertyHandler.class.php';
 require 'OfficePropertyHandler.class.php';
+require 'ShopPropertyHandler.class.php';
 
 $propType = getParameter("prop_type");
 $estId = getParameter("estId");
 $estName = getParameter("estName");
+$state = (getParameter("btn_live") == "") ? 0 : 1;
 if($propType == "zz"){
 	
 	$houseNumber = getParameter("houseNumber");
@@ -38,7 +40,7 @@ if($propType == "zz"){
 											$houseType,$houseSellPrice,$houseRoom,$houseHall,$houseToilet,$houseKitchen,
 											$houseBalcony,$houseBuildArea,$houseUseArea,$houseBuildYear,$houseFloor,
 											$houseForward,$houseFitment,$houseBaseService,$houseLookTime,$housePhoto,$houseTitle,
-											$houseContent,$houseUserId,$houseBuildForm,$houseAllFloor);
+											$houseContent,$houseUserId,$houseBuildForm,$houseAllFloor,$state);
 }else if($propType == "xzl"){
 	
 	$officeNumber = getParameter("officeNumber");
@@ -58,7 +60,8 @@ if($propType == "zz"){
 	
 	$propHandler = new OfficePropertyHandler($db,$estId,$estName,$officeNumber,$officeType,$officeSellPrice,
 											$officeProFee,$officeBuildArea,$officeFloor,$officeAllFloor,$officeDivision,$officeFitment,
-											$officeLevel,$officePhoto,$officeTitle,$officeContent,$officeUserId);
+											$officeLevel,$officePhoto,$officeTitle,$officeContent,$officeUserId,
+											$state);
 }else if($propType == "sp"){
 	
 	$shopsAddress = getParameter("shopsAddress");
@@ -74,15 +77,15 @@ if($propType == "zz"){
 	$shopsFitment = getParameter("shopsFitment");
 	$shopsBaseService = getParameter("shopsBaseService");
 	$shopsAimOperastion = getParameter("shopsAimOperastion");
-	$shopPhoto = getParameter("shopPhoto");
+	$shopPhoto = $_FILES["shopPhoto"];
 	$shopsTitle = getParameter("shopsTitle");
-	$shopContent = getParameter("shopContent");
+	$shopContent = getParameter("shopsContent");
 	$shopUserId = $userId;
 	
 	$propHandler = new ShopPropertyHandler($db,$estId,$estName,$shopsAddress,$shopsType,$shopsAreaId,$shopsNumber,
 											$shopsSellPrice,$shopsPropFee,$shopsBuildArea,$shopsFloor,$shopsAllFloor,$shopsDivision,
 											$shopsFitment,$shopsBaseService,$shopsAimOperastion,$shopPhoto,$shopsTitle,
-											$shopContent,$shopUserId);
+											$shopContent,$shopUserId,$state);
 }else if($propType == "cf"){
 	
 }

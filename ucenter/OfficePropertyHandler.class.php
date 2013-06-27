@@ -18,13 +18,14 @@ class OfficePropertyHandler extends PropertyHandler{
 	private $officeTitle;
 	private $officeContent;
 	private $officeUserId;
+	private $officeState;
 	
 	private $estateService;
 	private $propertyService;
 	
 	function __construct($db,$estId,$estName,$officeNumber,$officeType,$officeSellPrice,
 						$officeProFee,$officeBuildArea,$officeFloor,$officeAllFloor,$officeDivision,$officeFitment,
-						$officeLevel,$officePhoto,$officeTitle,$officeContent,$officeUserId){
+						$officeLevel,$officePhoto,$officeTitle,$officeContent,$officeUserId,$officeState){
 		
 		$this->db = $db;
 		$this->estId = $estId;
@@ -43,6 +44,7 @@ class OfficePropertyHandler extends PropertyHandler{
 		$this->officeTitle = $officeTitle;
 		$this->officeContent = $officeContent;
 		$this->officeUserId = $officeUserId;
+		$this->officeState = $officeState;
 		
 		$this->estateService = new EstateService($db);
 		$this->propertyService = new SecondHandPropertyService($db);
@@ -74,7 +76,7 @@ class OfficePropertyHandler extends PropertyHandler{
 		$office['officeTitle'] = $this->officeTitle;
 		$office['officeContent'] = $this->officeContent;
 		$office['officeSellRentType'] = 1;
-		$office['officeState'] = 0;
+		$office['officeState'] = $this->officeState;
 		$office['officeCommunityId'] = $realEstId;
 		$office['officeUserId'] = $this->officeUserId;
 
