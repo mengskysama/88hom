@@ -18,14 +18,14 @@
    	<div class="qg_bs">
       <div class="bs_tx" style="border:0">
             <p><b>管理出售房源</b></p>
-            <div class="bs_tx1">发 布 量：已使用 <a href="#">3</a>    还可使用<a href="#">10</a><br />               
+            <div class="bs_tx1">发 布 量：已使用 <!--{$livePropsCount}-->    还可使用<a href="#">10</a><br />               
 即将过期房源：<a href="#">0</a>  本月过期房源 已重新发布 <a href="#">0</a> 还可重新发布 <a href="#">1</a></div>
 <div style="width:700px; border-bottom:1px solid #ddd">
 			<ul style="width:584px; font-size:14px; font-weight:bolder;">
-   			 	<li><a href="#">已发布房源</a></li>
-    		    <li><a href="#">待发布房源(5)</a></li>
-     		    <li><a href="#">已过期房源(0) </a></li>
-      		 	<li><a href="#">违规房源(0)</a></li>
+   			 	<li><a onclick="gotolink(1)">已发布房源</a></li>
+    		    <li><a onclick="gotolink(0)">待发布房源(<!--{$unlivePropsCount}-->)</a></li>
+     		    <li><a onclick="gotolink(3)">已过期房源(<!--{$expiredPropsCount}-->) </a></li>
+      		 	<li><a onclick="gotolink(4)">违规房源(<!--{$illegalPropsCount}-->)</a></li>
    		  </ul>
           </div>
           <form id="searchFrm" name="searchFrm" action="sell_property_list.php" method="post">
@@ -33,11 +33,11 @@
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
 			  <tr>
 			    <td width="204" height="38" align="left" valign="middle" class="grzc_32" style="color:#333">房源编号：
-			      <input name="input" type="text"  value="" style="height:20px;" /></td>
+			      <input id="propNum" name="propNum" type="text" style="height:20px;" /></td>
 			    <td width="175" align="center" valign="middle"  class="grzc_36" style="color:#333">价格：
-			    <input name="" type="text"  value="" / >—<input name="" type="text"  value="" />万元</td>
+			    <input id="propPriceFrom" name="propPriceFrom" type="text" / >—<input id="propPriceTo" name="propPriceTo" type="text" />万元</td>
 			    <td width="151" align="center" valign="middle"> 户型：
-			      <select name="ddlProv2" id="ddlProv2">
+			      <select name="propRoom" id="propRoom">
 			        <option selected="selected" value="0">不限</option>
 					<option value="1">1室</option>
 			        <option value="2">2室</option>
@@ -47,7 +47,7 @@
 			        <option value="99">5室以上</option>        
 			      </select></td>
 			    <td width="140" align="center" valign="middle">类型： 
-			    <select name="ddlProv2" id="ddlProv2">
+			    <select name="propKind" id="propKind">
 			      	<option selected="selected" value="0">不限</option>
 					<option value="1">住宅</option>
 			        <option value="2">别墅</option>
@@ -59,7 +59,7 @@
 		  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 			  <tr>
 			    <td width="124" height="38" align="left" valign="middle">
-			    <select name="ddlProv3" id="ddlProv3">
+			    <select name="propOrder" id="propOrder" onchange="gotolink(52)">
 			      <option selected="selected" value="0">默认排序</option>
 				  <option value="addtimedesc">最后录入时间</option>
 			      <option value="addtimeasc">最早录入时间</option>
@@ -69,8 +69,8 @@
 			      <option value="areadown">面积由大到小</option>
 			    </select></td>
 			    <td width="342" align="left" valign="middle" class="grzc_31" style="color:#333">名称： 
-			      <input name="" type="text"  value=""/></td>
-			    <td width="204" colspan="2" align="left" valign="middle"> <a href="#" class="xx0">搜索</a></td>
+			      <input name="propName" type="text"  value=""/></td>
+			    <td width="204" colspan="2" align="left" valign="middle"> <a onclick="gotolink(50)" class="xx0">搜索</a></td>
 			    </tr>
 		  </table>
 		  </div>
@@ -113,11 +113,11 @@
 			    <td align="center" valign="middle"><a href="#" class="xx0" style="margin:8px 12px;">批量删除</a></td>
 			  </tr>
 		  </table>
-		  <div class="page"><a href="#" class="prev">上一页</a><a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a href="#" class="next">下一页</a>&nbsp;&nbsp;共20页&nbsp;到第
-		  	<input type="text" />页 <a href="#" class="next">确定</a>
+		  <div class="page"><!--{$pagination}-->&nbsp;到第<input type="text" id="destNo" name="destNo"/>页 <a onclick="gotolink(51)" class="next">确定</a>
 		  </div>
         </div>
-        <input type="hidden" id="pageNo" name="pageNo"/>
+        <input type="hidden" id="pageNo" name="pageNo" value="<!--{$pageNo}-->"/>
+        <input type="hidden" id="propState" name="propState" value="<!--{$propState}-->"/>
         </form>
 		<div style=" width:680px; padding:35px 15px 20px; line-height:25px; color:#999">
         	房源管理使用说明：<br />

@@ -1,6 +1,5 @@
 <?php
 require 'path.inc.php';
-require 'check_login.php';
 require 'UserRegister.class.php';
 require 'BindAccountRegister.class.php';
 

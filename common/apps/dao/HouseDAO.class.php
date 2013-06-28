@@ -11,6 +11,7 @@ class HouseDAO  {
 		$this->db=$db;
 	}
 	//发布住宅房源
+	//added by Cheneil
 	public function release($house){
 		
 		$sql="insert into ecms_house(houseTitle,houseContent,houseNumber,houseRoom,houseHall,houseToilet,houseKitchen,houseBalcony,houseSellPrice,
@@ -62,6 +63,13 @@ class HouseDAO  {
 		$houseId = $this->db->getInsertNum();
 		return $houseId;					
 	}
+	
+	public function countProperty($userId,$state){
+		$sql = "select count(houseId) as propTotal from ecms_house where houseUserId=".$userId." and houseState=".$state;
+		$result = $this->db->getQueryValue($sql);
+		return $result['propTotal'];
+	}
+	//end to be added by Cheneil
 	//修改住宅房源
 	public function modify($house){
 		$sql="update ecms_house set houseTitle='"

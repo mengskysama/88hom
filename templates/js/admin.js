@@ -1215,47 +1215,395 @@ function exeAdminUserModify(){
 	return true;
 }
 function exeAdminPropertyRelease(){
-	var propertyId=$.trim($('#propertyId').val());
+	var reg=new RegExps();
 	var propertyName=$.trim($('#propertyName').val());
-	var areaId=$.trim($('#areaId').val());
-	if(null==propertyId || propertyId==''){
-		alert('楼盘编号不能为空！');
-		$('#propertyId').focus();
-		return false;
-	}
+	var propertyVolRate=$.trim($('#propertyVolRate').val());
+	var propertyGreenRate=$.trim($('#propertyGreenRate').val());
+	var propertyLandArea=$.trim($('#propertyLandArea').val());
+	var propertyBuildArea=$.trim($('#propertyBuildArea').val());
+	var propertyRight=$.trim($('#propertyRight').val());
+	var propertyOpenPrice=$.trim($('#propertyOpenPrice').val());
+	var propertyMapXY=$.trim($('#propertyMapXY').val());
+	var propertyCompanyFee=$.trim($('#propertyCompanyFee').val());
+	var propertyGbuyPrice=$.trim($('#propertyGbuyPrice').val());
+	var propertyGbuyTitle=$.trim($('#propertyGbuyTitle').val());
+	var propertyGbuyTime=$.trim($('#propertyGbuyTime').val());
+	var propertyDiscountsPrice=$.trim($('#propertyDiscountsPrice').val());
+	var propertyDiscountsTitle=$.trim($('#propertyDiscountsTitle').val());
+	var propertyPreferentialPrice=$.trim($('#propertyPreferentialPrice').val());
+	var propertyPreferentialTitle=$.trim($('#propertyPreferentialTitle').val());
+	
 	if(null==propertyName || propertyName==''){
 		alert('楼盘名称不能为空！');
 		$('#propertyName').focus();
 		return false;
 	}
-	if(null==areaId || areaId==''){
-		alert('请选择楼盘区域！');
+	if($('div#propertyIs input[type="checkbox"]:checked').length == 0){
+		alert('请至少选择一种物业类型！');
+		$('#propertyIsHouseType').focus();
 		return false;
 	}
-	$('#propertyId').val(propertyId);
+	if($('#txtCity').val()=='选择城市'){
+		alert('请选择区域！');
+		$('#txtCity').focus();
+		return false;
+	}
+	if($('#txtDistrict').val()=='选择区域' || $('#txtDistrict').val()=='选择区县' || $('#txtDistrict').val()==''){
+		alert('请选择区域！');
+		$('#txtDistrict').focus();
+		return false;
+	}
+	if($('#txtComareas').val()=='选择商圈' || $('#txtComareas').val()==''){
+		alert('请选择区域！');
+		$('#txtComareas').focus();
+		return false;
+	}
+	if(propertyVolRate!=''&&!reg.isMoney.exec(propertyVolRate)){
+		alert('容积率必须为大于0小于100的数值！');
+		$('#propertyVolRate').focus();
+		return false;
+	}
+	if(propertyVolRate<0||propertyVolRate>100){
+		alert('容积率必须为大于0小于100的数值！');
+		$('#propertyVolRate').focus();
+		return false;
+	}
+	if(propertyGreenRate!=''&&!reg.isMoney.exec(propertyGreenRate)){
+		alert('绿化率必须为大于0小于100的数值！');
+		$('#propertyGreenRate').focus();
+		return false;
+	}
+	if(propertyGreenRate<0||propertyGreenRate>100){
+		alert('绿化率必须为大于0小于100的数值！');
+		$('#propertyGreenRate').focus();
+		return false;
+	}
+	if(propertyLandArea!=''&&!reg.isMoney.exec(propertyLandArea)){
+		alert('占地面积必须为大于小于10000000的数值！');
+		$('#propertyLandArea').focus();
+		return false;
+	}
+	if(propertyLandArea<0||propertyLandArea>10000000){
+		alert('占地面积必须为大于0小于10000000的数值！');
+		$('#propertyLandArea').focus();
+		return false;
+	}
+	if(propertyBuildArea!=''&&!reg.isMoney.exec(propertyBuildArea)){
+		alert('建筑面积必须为大于0小于10000000的数值！');
+		$('#propertyBuildArea').focus();
+		return false;
+	}
+	if(propertyBuildArea<0||propertyBuildArea>10000000){
+		alert('建筑面积必须为大于0小于10000000的数值！');
+		$('#propertyBuildArea').focus();
+		return false;
+	}
+	if(propertyRight!=''&&!reg.isInt.exec(propertyRight)){
+		alert('产权年限必须为大于0小于等于70的数值！');
+		$('#propertyRight').focus();
+		return false;
+	}
+	if(propertyRight<0||propertyRight>70){
+		alert('产权年限必须为大于0小于等于70的数值！');
+		$('#propertyRight').focus();
+		return false;
+	}
+	if(propertyOpenPrice!=''&&!reg.isInt.exec(propertyOpenPrice)){
+		alert('参考均价必须为大于0小于1000000的数值！');
+		$('#propertyOpenPrice').focus();
+		return false;
+	}
+	if(propertyOpenPrice<0||propertyOpenPrice>1000000){
+		alert('参考均价必须为大于0小于1000000的数值！');
+		$('#propertyOpenPrice').focus();
+		return false;
+	}
+	if(propertyMapXY==''){
+		alert('经纬度为必填选项,格式为116.463404,39.876646形式,请用百度地图坐标拾取器获取19级层数数值！');
+		$('#propertyMapXY').focus();
+		return false;
+	}
+	if(propertyMapXY!=''&&!/^\d+(\.\d+)?\,\d+(\.\d+)?$/.test(propertyMapXY)){
+		alert('经纬度为必填选项,格式为116.463404,39.876646形式,请用百度地图坐标拾取器获取19级层数数值！');
+		$('#propertyMapXY').focus();
+		return false;
+	}
+	if(propertyCompanyFee!=''&&!reg.isMoney.exec(propertyCompanyFee)){
+		alert('物业管理费必须为大于0小于1000的数值！');
+		$('#propertyCompanyFee').focus();
+		return false;
+	}
+	if(propertyCompanyFee<0||propertyCompanyFee>1000){
+		alert('物业管理费必须为大于0小于1000的数值！');
+		$('#propertyCompanyFee').focus();
+		return false;
+	}
+	if($("#propertyIsGbuy").attr("checked")=="checked"){
+		if(propertyGbuyPrice==''){
+			alert('选择团购后，团购市场均价即为必填选项！');
+			$('#propertyGbuyPrice').focus();
+			return false;
+		}
+		if(propertyGbuyTitle==''){
+			alert('选择团购后，团购小标语即为必填选项！');
+			$('#propertyGbuyTitle').focus();
+			return false;
+		}
+		if(propertyGbuyTime==''){
+			alert('选择团购后，团购过期时间即为必填选项，且必须为大于0小于1000的正整数！');
+			$('#propertyGbuyTime').focus();
+			return false;
+		}
+		if(propertyGbuyTime!=''&&!reg.isInt.exec(propertyGbuyTime)){
+			alert('选择团购后，团购过期时间即为必填选项，且必须为大于0小于1000的正整数！');
+			$('#propertyGbuyTime').focus();
+			return false;
+		}
+		if(propertyGbuyTime<0||propertyGbuyTime>1000){
+			alert('选择团购后，团购过期时间即为必填选项，且必须为大于0小于1000的正整数！');
+			$('#propertyGbuyTime').focus();
+			return false;
+		}
+	}
+	if($("#propertyIsDiscounts").attr("checked")=="checked"){
+		if(propertyDiscountsPrice==''){
+			alert('选择打折促销后，打折促销市场均价即为必填选项！');
+			$('#propertyDiscountsPrice').focus();
+			return false;
+		}
+		if(propertyDiscountsTitle==''){
+			alert('选择打折促销后，打折促销小标语即为必填选项！');
+			$('#propertyDiscountsTitle').focus();
+			return false;
+		}
+	}
+	if($("#propertyIsPreferential").attr("checked")=="checked"){
+		if(propertyPreferentialPrice==''){
+			alert('选择独家特惠后，独家特惠市场均价即为必填选项！');
+			$('#propertyPreferentialPrice').focus();
+			return false;
+		}
+		if(propertyPreferentialTitle==''){
+			alert('选择独家特惠后，独家特惠小标语即为必填选项！');
+			$('#propertyPreferentialTitle').focus();
+			return false;
+		}
+	}
+
 	$('#propertyName').val(propertyName);
+	$('#propertyVolRate').val(propertyVolRate);
+	$('#propertyGreenRate').val(propertyGreenRate);
+	$('#propertyLandArea').val(propertyLandArea);
+	$('#propertyLandArea').val(propertyLandArea);
+	$('#propertyBuildArea').val(propertyBuildArea);
+	$('#propertyRight').val(propertyRight);
+	$('#propertyOpenPrice').val(propertyOpenPrice);
+	$('#propertyMapXY').val(propertyMapXY);
+	$('#propertyCompanyFee').val(propertyCompanyFee);
+	$('#propertyGbuyPrice').val(propertyGbuyPrice);
+	$('#propertyGbuyTitle').val(propertyGbuyTitle);
+	$('#propertyGbuyTime').val(propertyGbuyTime);
+	$('#propertyDiscountsPrice').val(propertyDiscountsPrice);
+	$('#propertyDiscountsTitle').val(propertyDiscountsTitle);
+	$('#propertyPreferentialPrice').val(propertyPreferentialPrice);
+	$('#propertyPreferentialTitle').val(propertyPreferentialTitle);
+	
 	return true;
 }
 function exeAdminPropertyModify(){
-	var propertyId=$.trim($('#propertyId').val());
+	var reg=new RegExps();
 	var propertyName=$.trim($('#propertyName').val());
-	var areaId=$.trim($('#areaId').val());
-	if(null==propertyId || propertyId==''){
-		alert('楼盘编号不能为空！');
-		$('#propertyId').focus();
-		return false;
-	}
+	var propertyVolRate=$.trim($('#propertyVolRate').val());
+	var propertyGreenRate=$.trim($('#propertyGreenRate').val());
+	var propertyLandArea=$.trim($('#propertyLandArea').val());
+	var propertyBuildArea=$.trim($('#propertyBuildArea').val());
+	var propertyRight=$.trim($('#propertyRight').val());
+	var propertyOpenPrice=$.trim($('#propertyOpenPrice').val());
+	var propertyMapXY=$.trim($('#propertyMapXY').val());
+	var propertyCompanyFee=$.trim($('#propertyCompanyFee').val());
+	var propertyGbuyPrice=$.trim($('#propertyGbuyPrice').val());
+	var propertyGbuyTitle=$.trim($('#propertyGbuyTitle').val());
+	var propertyGbuyTime=$.trim($('#propertyGbuyTime').val());
+	var propertyDiscountsPrice=$.trim($('#propertyDiscountsPrice').val());
+	var propertyDiscountsTitle=$.trim($('#propertyDiscountsTitle').val());
+	var propertyPreferentialPrice=$.trim($('#propertyPreferentialPrice').val());
+	var propertyPreferentialTitle=$.trim($('#propertyPreferentialTitle').val());
+	
 	if(null==propertyName || propertyName==''){
 		alert('楼盘名称不能为空！');
 		$('#propertyName').focus();
 		return false;
 	}
-	if(null==areaId || areaId==''){
-		alert('请选择楼盘区域！');
+	if($('div#propertyIs input[type="checkbox"]:checked').length == 0){
+		alert('请至少选择一种物业类型！');
+		$('#propertyIsHouseType').focus();
 		return false;
 	}
-	$('#propertyId').val(propertyId);
+	if($('#txtCity').val()=='选择城市'){
+		alert('请选择区域！');
+		$('#txtCity').focus();
+		return false;
+	}
+	if($('#txtDistrict').val()=='选择区域' || $('#txtDistrict').val()=='选择区县' || $('#txtDistrict').val()==''){
+		alert('请选择区域！');
+		$('#txtDistrict').focus();
+		return false;
+	}
+	if($('#txtComareas').val()=='选择商圈' || $('#txtComareas').val()==''){
+		alert('请选择区域！');
+		$('#txtComareas').focus();
+		return false;
+	}
+	if(propertyVolRate!=''&&!reg.isMoney.exec(propertyVolRate)){
+		alert('容积率必须为大于0小于100的数值！');
+		$('#propertyVolRate').focus();
+		return false;
+	}
+	if(propertyVolRate<0||propertyVolRate>100){
+		alert('容积率必须为大于0小于100的数值！');
+		$('#propertyVolRate').focus();
+		return false;
+	}
+	if(propertyGreenRate!=''&&!reg.isMoney.exec(propertyGreenRate)){
+		alert('绿化率必须为大于0小于100的数值！');
+		$('#propertyGreenRate').focus();
+		return false;
+	}
+	if(propertyGreenRate<0||propertyGreenRate>100){
+		alert('绿化率必须为大于0小于100的数值！');
+		$('#propertyGreenRate').focus();
+		return false;
+	}
+	if(propertyLandArea!=''&&!reg.isMoney.exec(propertyLandArea)){
+		alert('占地面积必须为大于小于1000000的数值！');
+		$('#propertyLandArea').focus();
+		return false;
+	}
+	if(propertyLandArea<0||propertyLandArea>1000000){
+		alert('占地面积必须为大于0小于1000000的数值！');
+		$('#propertyLandArea').focus();
+		return false;
+	}
+	if(propertyBuildArea!=''&&!reg.isMoney.exec(propertyBuildArea)){
+		alert('建筑面积必须为大于0小于1000000的数值！');
+		$('#propertyBuildArea').focus();
+		return false;
+	}
+	if(propertyBuildArea<0||propertyBuildArea>1000000){
+		alert('建筑面积必须为大于0小于1000000的数值！');
+		$('#propertyBuildArea').focus();
+		return false;
+	}
+	if(propertyRight!=''&&!reg.isInt.exec(propertyRight)){
+		alert('产权年限必须为大于0小于等于70的数值！');
+		$('#propertyRight').focus();
+		return false;
+	}
+	if(propertyRight<0||propertyRight>70){
+		alert('产权年限必须为大于0小于等于70的数值！');
+		$('#propertyRight').focus();
+		return false;
+	}
+	if(propertyOpenPrice!=''&&!reg.isInt.exec(propertyOpenPrice)){
+		alert('参考均价必须为大于0小于1000000的数值！');
+		$('#propertyOpenPrice').focus();
+		return false;
+	}
+	if(propertyOpenPrice<0||propertyOpenPrice>1000000){
+		alert('参考均价必须为大于0小于1000000的数值！');
+		$('#propertyOpenPrice').focus();
+		return false;
+	}
+	if(propertyMapXY==''){
+		alert('经纬度为必填选项,格式为116.463404,39.876646形式,请用百度地图坐标拾取器获取19级层数数值！');
+		$('#propertyMapXY').focus();
+		return false;
+	}
+	if(propertyMapXY!=''&&!/^\d+(\.\d+)?\,\d+(\.\d+)?$/.test(propertyMapXY)){
+		alert('经纬度为必填选项,格式为116.463404,39.876646形式,请用百度地图坐标拾取器获取19级层数数值！');
+		$('#propertyMapXY').focus();
+		return false;
+	}
+	if(propertyCompanyFee!=''&&!reg.isMoney.exec(propertyCompanyFee)){
+		alert('物业管理费必须为大于0小于1000的数值！');
+		$('#propertyCompanyFee').focus();
+		return false;
+	}
+	if(propertyCompanyFee<0||propertyCompanyFee>1000){
+		alert('物业管理费必须为大于0小于1000的数值！');
+		$('#propertyCompanyFee').focus();
+		return false;
+	}
+	if($("#propertyIsGbuy").attr("checked")=="checked"){
+		if(propertyGbuyPrice==''){
+			alert('选择团购后，团购市场均价即为必填选项！');
+			$('#propertyGbuyPrice').focus();
+			return false;
+		}
+		if(propertyGbuyTitle==''){
+			alert('选择团购后，团购小标语即为必填选项！');
+			$('#propertyGbuyTitle').focus();
+			return false;
+		}
+		if(propertyGbuyTime==''){
+			alert('选择团购后，团购过期时间即为必填选项，且必须为大于0小于1000的正整数！');
+			$('#propertyGbuyTime').focus();
+			return false;
+		}
+		if(propertyGbuyTime!=''&&!reg.isInt.exec(propertyGbuyTime)){
+			alert('选择团购后，团购过期时间即为必填选项，且必须为大于0小于1000的正整数！');
+			$('#propertyGbuyTime').focus();
+			return false;
+		}
+		if(propertyGbuyTime<0||propertyGbuyTime>1000){
+			alert('选择团购后，团购过期时间即为必填选项，且必须为大于0小于1000的正整数！');
+			$('#propertyGbuyTime').focus();
+			return false;
+		}
+	}
+	if($("#propertyIsDiscounts").attr("checked")=="checked"){
+		if(propertyDiscountsPrice==''){
+			alert('选择打折促销后，打折促销市场均价即为必填选项！');
+			$('#propertyDiscountsPrice').focus();
+			return false;
+		}
+		if(propertyDiscountsTitle==''){
+			alert('选择打折促销后，打折促销小标语即为必填选项！');
+			$('#propertyDiscountsTitle').focus();
+			return false;
+		}
+	}
+	if($("#propertyIsPreferential").attr("checked")=="checked"){
+		if(propertyPreferentialPrice==''){
+			alert('选择独家特惠后，独家特惠市场均价即为必填选项！');
+			$('#propertyPreferentialPrice').focus();
+			return false;
+		}
+		if(propertyPreferentialTitle==''){
+			alert('选择独家特惠后，独家特惠小标语即为必填选项！');
+			$('#propertyPreferentialTitle').focus();
+			return false;
+		}
+	}
+
 	$('#propertyName').val(propertyName);
+	$('#propertyVolRate').val(propertyVolRate);
+	$('#propertyGreenRate').val(propertyGreenRate);
+	$('#propertyLandArea').val(propertyLandArea);
+	$('#propertyLandArea').val(propertyLandArea);
+	$('#propertyBuildArea').val(propertyBuildArea);
+	$('#propertyRight').val(propertyRight);
+	$('#propertyOpenPrice').val(propertyOpenPrice);
+	$('#propertyMapXY').val(propertyMapXY);
+	$('#propertyCompanyFee').val(propertyCompanyFee);
+	$('#propertyGbuyPrice').val(propertyGbuyPrice);
+	$('#propertyGbuyTitle').val(propertyGbuyTitle);
+	$('#propertyGbuyTime').val(propertyGbuyTime);
+	$('#propertyDiscountsPrice').val(propertyDiscountsPrice);
+	$('#propertyDiscountsTitle').val(propertyDiscountsTitle);
+	$('#propertyPreferentialPrice').val(propertyPreferentialPrice);
+	$('#propertyPreferentialTitle').val(propertyPreferentialTitle);
+	
 	return true;
 }
 function exeAdminChangeAreaForShop(){

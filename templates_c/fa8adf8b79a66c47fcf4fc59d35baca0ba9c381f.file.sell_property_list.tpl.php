@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-27 18:06:17
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-28 11:35:18
          compiled from "E:/workspace/projects/88hom/templates\ucenter\sell_property_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24351cc05070ec3d9-96504959%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fa8adf8b79a66c47fcf4fc59d35baca0ba9c381f' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\sell_property_list.tpl',
-      1 => 1372327571,
+      1 => 1372327644,
       2 => 'file',
     ),
   ),
@@ -149,6 +149,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		  	<input type="text" />页 <a href="#" class="next">确定</a>
 		  </div>
         </div>
+        <input type="hidden" id="pageNo" name="pageNo"/>
         </form>
 		<div style=" width:680px; padding:35px 15px 20px; line-height:25px; color:#999">
         	房源管理使用说明：<br />

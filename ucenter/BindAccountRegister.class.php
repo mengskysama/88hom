@@ -82,7 +82,7 @@ class BindAccountRegister{
 		$user['userEmailState'] = 0;
 		$user['userType'] = 3;
 		$user['userGroupId'] = 0;
-		$user['userState'] = 0;
+		$user['userState'] = 1;
 		$user['UOpenId'] = $this->qw_user['openID'];
 		$userService = new UserService($this->db);
 		$userId = $userService->saveUser($user);		

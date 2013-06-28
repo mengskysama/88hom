@@ -1,26 +1,18 @@
 <?php
-set_include_path(ECMS_PATH_ROOT.'includes/');
 require 'config.inc.php';
-require 'phpini.inc.php';
-
-//全程开启session
-session_start();
-
-$magic_quotes_gpc = get_magic_quotes_gpc();
-
 require 'ecms.inc.php';
 require 'util.inc.php';
 
 //
+$magic_quotes_gpc = get_magic_quotes_gpc();
+
 $_COOKIE = c_addslashes($_COOKIE);
 $_POST 	 = c_addslashes($_POST);
 $_GET 	 = c_addslashes($_GET);
+
 if(!$magic_quotes_gpc) {
 	$_FILES = c_addslashes($_FILES);
 }
-
-//$cfg['arr'] = require 'arr.inc.php';
-
 //$webset=require ECMS_PATH_CONF.'web/web_'.LANG.'.cfg.php';
 $webset=require ECMS_PATH_CONF.'web/web_zh_CN.cfg.php';
 $cfg['web_keywords']='';
@@ -87,6 +79,7 @@ require ECMS_PATH_LANG.LANG.'/footer.lang.php';
 //加载FCK编辑工具
 require ECMS_PATH_FCK.'ckeditor/ckeditor.php';
 
+
 //数据库连接
 require ECMS_PATH_APPS.'db/DBForMySql.class.php';
 $db=null;
@@ -123,9 +116,7 @@ require ECMS_PATH_CLASSES.'Html.class.php';
 $html=new Html($smarty);
 
 //自动载入apps,classes,lang
-
 function __autoload($name) {
-	
 	if (file_exists(ECMS_PATH_DAO . $name . '.class.php')) {
 		//echo 'fuck';
 		require ECMS_PATH_DAO . $name . '.class.php';

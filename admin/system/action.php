@@ -238,10 +238,10 @@ switch ($action){
 		if(isset($_POST)&&!empty($_POST)){
 			$pwdOld=$_POST['pwdOld'];
 			$pwdNew=sysAuth($_POST['pwdNew']);
-			if(sysAuth($Admin_User['passwd'],'DECODE')==$pwdOld){
-				$result=$userService->editpwd($Admin_User['user_id'], $pwdNew);
+			if(sysAuth($Admin_User['userPassword'],'DECODE')==$pwdOld){
+				$result=$userService->editpwd($Admin_User['userId'], $pwdNew);
 				if($result===true){
-					$Admin_User['passwd']=$pwdNew;
+					$Admin_User['userPassword']=$pwdNew;
 					$_SESSION['Admin_User']=$Admin_User;
 					$html->replaceUrl('editpwd.php','修改密码成功！');
 				}else{

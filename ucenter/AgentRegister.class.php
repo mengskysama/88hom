@@ -92,7 +92,7 @@ class AgentRegister{
 		$user['userEmailState'] = 0;
 		$user['userType'] = 2;
 		$user['userGroupId'] = 0;
-		$user['userState'] = 0;
+		$user['userState'] = 1;
 		$userService = new UserService($this->db);
 		$userId = $userService->saveUser($user);
 		

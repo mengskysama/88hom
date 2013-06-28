@@ -5,10 +5,10 @@
  * 广告类别管理，控制类
  */
 require 'path.inc.php';
-//$userService=new UserService($db);
-//$userService->checkAdminUserExpired();//登陆是否期
-//$permissionsState=sysPermissionsChecking('adType');//是否有对广告类别管理的权限
-//if(!$permissionsState)$html->backUrl('您没有权限进行此项操作！');
+$userService=new UserService($db);
+$userService->checkAdminUserExpired();//登陆是否期
+$permissionsState=sysPermissionsChecking('adType');//是否有对广告类别管理的权限
+if(!$permissionsState)$html->backUrl('您没有权限进行此项操作！');
 
 $action=empty($_REQUEST['action'])?'list':$_REQUEST['action'];
 

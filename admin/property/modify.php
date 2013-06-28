@@ -1,38 +1,60 @@
 <?php
 require 'path.inc.php';
 $tpl_name=$tpl_dir.'modify.tpl';
-$html->title='ĞÅÏ¢ĞŞ¸Ä';
+$html->title='ä¿¡æ¯ä¿®æ”¹';
 $userService=new UserService($db);
 $userService->checkAdminUserExpired();
 $permissionsState=sysPermissionsChecking('propertyModify');
 if(!$permissionsState)$tpl_name='admin/error.tpl';
-$fid=0;
+
+$picTypeList=$cfg['arr_pic']['propertyPicType'];
+
 if(isset($_GET['id'])&&!empty($_GET['id'])){
 	$id=$_GET['id'];
 }else{
-	$html->backUrl('²ÎÊı´íÎó£¡');
+	$html->backUrl('å‚æ•°é”™è¯¯ï¼');
 }
 $propertyService=new PropertyService($db);
-$areaService=new AreaService($db);
-$propertyDetail=$propertyService->getInfoDetail($id,'admin');
+
+$info['id']=$id;
+$info['type']='admin';
+
+$propertyDetail=null;
+$propertyDetail=$propertyService->getPropertyById($info);
 if(empty($propertyDetail)){
-	$html->backUrl('Ã»ÓĞÕÒµ½¸ÃĞÅÏ¢£¡');
+	$html->backUrl('æ²¡æœ‰æ‰¾åˆ°è¯¥ä¿¡æ¯ï¼');
 }else{
-	$propertyDetail['propertyId']=htmlspecialchars($propertyDetail['propertyId'], ENT_QUOTES, 'ISO-8859-1', true);
-	$propertyDetail['propertyName']=htmlspecialchars($propertyDetail['propertyName'], ENT_QUOTES, 'ISO-8859-1', true);
-	$propertyDetail['propertyAddress']=htmlspecialchars($propertyDetail['propertyAddress'], ENT_QUOTES, 'ISO-8859-1', true);
+	$propertyDetail['propertyMapXY']=$propertyDetail['propertyMapX'].','.$propertyDetail['propertyMapY'];
+//	$propertyDetail['propertyId']=htmlspecialchars($propertyDetail['propertyId'], ENT_QUOTES, 'ISO-8859-1', true);
+//	$propertyDetail['propertyName']=htmlspecialchars($propertyDetail['propertyName'], ENT_QUOTES, 'ISO-8859-1', true);
+//	$propertyDetail['propertyAddress']=htmlspecialchars($propertyDetail['propertyAddress'], ENT_QUOTES, 'ISO-8859-1', true);
 }
-$areaDetail=$areaService->getArea($propertyDetail['areaId']);
-if($areaDetail['fatherId']==$fid){
-	$spanArea='<span id="span_areaId" style="display: none;"><a id="a_areaId" href="">·µ»ØÉÏÒ»¼¶Àà±ğ</a></span>';
-}else{
-	$spanArea='<span id="span_areaId" style="display: block;"><a id="a_areaId" href="javascript:exeAdminBackArea('.$areaDetail['fatherId'].');">·µ»ØÉÏÒ»¼¶Àà±ğ</a></span>';
+$picInfo['picBuildId']=$propertyDetail['propertyId'];
+$picInfo['picBuildFatherType']=2;//æ–°ç›˜
+$propertyDetailPicList=null;
+$propertyDetailPicCount=0;
+$propertyDetailPicList=$propertyService->getPropertyPicList($picInfo);
+if(!empty($propertyDetailPicList)){
+	$propertyDetailPicCount=count($propertyDetailPicList);
 }
-$areaList=$areaService->getAreaListByCache($areaDetail['fatherId']);
-$FCKeditor=createCKeditor('remark',1,400,200,$propertyDetail['remark']);
-$smarty->assign('spanArea',$spanArea);
-$smarty->assign('areaList',$areaList);
-$smarty->assign('FCKeditor',$FCKeditor);
+//echo $propertyDetailPicCount;
+//echo $propertyDetailPicList[0]['picId'];
+
+$FCKeditorTraffic=createCKeditor('propertyTraffic',0,400,150,$propertyDetail['propertyTraffic']);
+$FCKeditorPeriInfo=createCKeditor('propertyPeriInfo',0,400,150,$propertyDetail['propertyPeriInfo']);
+$FCKeditorIntroduction=createCKeditor('propertyIntroduction',0,400,150,$propertyDetail['propertyIntroduction']);
+
+$timestamp=time();
+$token=md5('unique_salt' . $timestamp);
+
+$smarty->assign('timestamp',$timestamp);
+$smarty->assign('token',$token);
+$smarty->assign('picTypeList',$picTypeList);
+$smarty->assign('propertyDetailPicList',$propertyDetailPicList);
+$smarty->assign('propertyDetailPicCount',$propertyDetailPicCount);
+$smarty->assign('FCKeditorTraffic',$FCKeditorTraffic);
+$smarty->assign('FCKeditorPeriInfo',$FCKeditorPeriInfo);
+$smarty->assign('FCKeditorIntroduction',$FCKeditorIntroduction);
 $smarty->assign('propertyDetail',$propertyDetail);
 $html->show();
 $smarty->display($tpl_name);

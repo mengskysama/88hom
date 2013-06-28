@@ -1,7 +1,7 @@
 /**
  * 
  */
-// Í·²¿µ¼º½ÇĞ»»
+// å¤´éƒ¨å¯¼èˆªåˆ‡æ¢
 function switchNavigation(id) {
 	$('#'+id).addClass("current");
 }
@@ -10,17 +10,17 @@ function exeWebLogin(){
 	var password=$.trim($('#password').val());
 	var valideCode=$.trim($('#valideCode').val());
 	if(null==username || username==''){
-		alert('ÓÃ»§Ãû²»ÄÜÎª¿Õ£¡');
+		alert('ç”¨æˆ·åä¸èƒ½ä¸ºç©ºï¼');
 		$('#username').focus();
 		return false;
 	}
 	if(null==password || password==''){
-		alert('ÃÜÂë²»ÄÜÎª¿Õ£¡');
+		alert('å¯†ç ä¸èƒ½ä¸ºç©ºï¼');
 		$('#password').focus();
 		return false;
 	}
 	if(null==valideCode || valideCode==''){
-		alert('ÇëÊäÈëÑéÖ¤Âë£¡');
+		alert('è¯·è¾“å…¥éªŒè¯ç ï¼');
 		$('#valideCode').focus();
 		return false;
 	}
@@ -36,7 +36,7 @@ function exeWebLogin(){
 		dataType:'json',
 		success:function (data){
 			if(data!=''){
-				var obj=eval(data);//·µ»ØjsonÊı×é
+				var obj=eval(data);//è¿”å›jsonæ•°ç»„
 				if(obj.result=='success'){
 					location.reload();
 				}else{
@@ -55,7 +55,7 @@ function exeWebCheckLogin(){
 		dataType:'json',
 		success:function (data){
 			if(data!=''){
-				var obj=eval(data);//·µ»ØjsonÊı×é
+				var obj=eval(data);//è¿”å›jsonæ•°ç»„
 				if(obj.result=='success'){
 					location.href=domain+'bbs/index.htm';
 				}else{
@@ -67,23 +67,23 @@ function exeWebCheckLogin(){
 }
 function exeWebBbsRelease(){
 	var title=$.trim($('#title').val());
-	var content=editor.document.getBody().getText(); //È¡µÃ´¿ÎÄ±¾
+	var content=editor.document.getBody().getText(); //å–å¾—çº¯æ–‡æœ¬
 	if(null==title || title==''){
-		alert('±êÌâ²»ÄÜÎª¿Õ£¡');
+		alert('æ ‡é¢˜ä¸èƒ½ä¸ºç©ºï¼');
 		$('#title').focus();
 		return false;
 	}
 	if(null==content || content==''){
-		alert('ÄÚÈİ²»ÄÜÎª¿Õ£¡');
+		alert('å†…å®¹ä¸èƒ½ä¸ºç©ºï¼');
 		return false;
 	}
 	$('#title').val(title);
 	$('#releaseForm').submit();
 }
 function exeWebBbsReply(){
-	var content=editor.document.getBody().getText(); //È¡µÃ´¿ÎÄ±¾
+	var content=editor.document.getBody().getText(); //å–å¾—çº¯æ–‡æœ¬
 	if(null==content || content==''){
-		alert('ÄÚÈİ²»ÄÜÎª¿Õ£¡');
+		alert('å†…å®¹ä¸èƒ½ä¸ºç©ºï¼');
 		return false;
 	}
 	$('#replyForm').submit();
@@ -97,7 +97,7 @@ function exeWebSupportWorks(id){
 		dataType:'json',
 		success:function (data){
 			if(data!=''){
-				var obj=eval(data);//·µ»ØjsonÊı×é
+				var obj=eval(data);//è¿”å›jsonæ•°ç»„
 				$('#span_'+id).html(obj.click_count);
 			}
 		}
@@ -114,7 +114,7 @@ function exeWebChangeTypeSearch(){
 			dataType:'json',
 			success:function (data){
 				if(data!=null&&data!=''){
-					var obj=eval(data);//·µ»ØjsonÊı×é
+					var obj=eval(data);//è¿”å›jsonæ•°ç»„
 					//alert(obj[0][2]);
 					$('#food-list-moreshop1').empty();
 					for(var i=0;i<obj.length;i++){
@@ -137,7 +137,7 @@ function exeWebShowSearch(type,id){
 			dataType:'json',
 			success:function (data){
 				if(data!=null&&data!=''){
-					var obj=eval(data);//·µ»ØjsonÊı×é
+					var obj=eval(data);//è¿”å›jsonæ•°ç»„
 					$('#show_search').html('');
 					var html='';
 					for(var i=0;i<obj.length;i++){
@@ -173,26 +173,26 @@ function exeWebCheersbuddysRelease(){
 	var address=$.trim($('#address').val());
 	var pCount=$.trim($('#pCount').val());
 	if(null==name || name==''){
-		alert('ĞÕÃû²»ÄÜÎª¿Õ£¡');
+		alert('å§“åä¸èƒ½ä¸ºç©ºï¼');
 		$('#name').focus();
 		return false;
 	}
 	if(null==tel || tel==''){
-		alert('µç»°²»ÄÜÎª¿Õ£¡');
+		alert('ç”µè¯ä¸èƒ½ä¸ºç©ºï¼');
 		$('#tel').focus();
 		return false;
 	}
 	if(null==address || address==''){
-		alert('µØÖ·²»ÄÜÎª¿Õ£¡');
+		alert('åœ°å€ä¸èƒ½ä¸ºç©ºï¼');
 		$('#address').focus();
 		return false;
 	}
 	if(null==pCount || pCount==''){
-		alert('ÊıÁ¿²»ÄÜÎª¿Õ£¡');
+		alert('æ•°é‡ä¸èƒ½ä¸ºç©ºï¼');
 		$('#pCount').focus();
 		return false;
 	}else if(!reg.isInt.exec(pCount)){
-		alert('ÇëÌîĞ´ÕûÊıÊıÁ¿£¡');
+		alert('è¯·å¡«å†™æ•´æ•°æ•°é‡ï¼');
 		$('#pCount').focus();
 		return false;
 	}
@@ -212,32 +212,32 @@ function exeWebMessageRelease(){
 	var address=$.trim($('#address').val());
 	var companyAddress=$.trim($('#companyAddress').val());
 	if(null==name || name==''){
-		alert('ĞÕÃû²»ÄÜÎª¿Õ£¡');
+		alert('å§“åä¸èƒ½ä¸ºç©ºï¼');
 		$('#name').focus();
 		return false;
 	}
 //	if(null==post || post==''){
-//		alert('Ö°Î»²»ÄÜÎª¿Õ£¡');
+//		alert('èŒä½ä¸èƒ½ä¸ºç©ºï¼');
 //		$('#post').focus();
 //		return false;
 //	}
 	if(null==companyName || companyName==''){
-		alert('¹«Ë¾Ãû³Æ²»ÄÜÎª¿Õ£¡');
+		alert('å…¬å¸åç§°ä¸èƒ½ä¸ºç©ºï¼');
 		$('#companyName').focus();
 		return false;
 	}
 	if(null==tel || tel==''){
-		alert('µç»°²»ÄÜÎª¿Õ£¡');
+		alert('ç”µè¯ä¸èƒ½ä¸ºç©ºï¼');
 		$('#tel').focus();
 		return false;
 	}
 //	if(null==email || email==''){
-//		alert('E-mail²»ÄÜÎª¿Õ£¡');
+//		alert('E-mailä¸èƒ½ä¸ºç©ºï¼');
 //		$('#email').focus();
 //		return false;
 //	}
 //	if(null==address || address==''){
-//		alert('µØÖ·²»ÄÜÎª¿Õ£¡');
+//		alert('åœ°å€ä¸èƒ½ä¸ºç©ºï¼');
 //		$('#address').focus();
 //		return false;
 //	}
@@ -256,17 +256,17 @@ function exeWebMediaLogin(){
 	var password=$.trim($('#password').val());
 	var valideCode=$.trim($('#valideCode').val());
 	if(null==username || username==''){
-		alert('ÓÃ»§Ãû²»ÄÜÎª¿Õ£¡');
+		alert('ç”¨æˆ·åä¸èƒ½ä¸ºç©ºï¼');
 		$('#username').focus();
 		return false;
 	}
 	if(null==password || password==''){
-		alert('ÃÜÂë²»ÄÜÎª¿Õ£¡');
+		alert('å¯†ç ä¸èƒ½ä¸ºç©ºï¼');
 		$('#password').focus();
 		return false;
 	}
 	if(null==valideCode || valideCode==''){
-		alert('ÇëÊäÈëÑéÖ¤Âë£¡');
+		alert('è¯·è¾“å…¥éªŒè¯ç ï¼');
 		$('#valideCode').focus();
 		return false;
 	}

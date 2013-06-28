@@ -4,6 +4,7 @@ class OfficeDAO{
 	public function __construct($db){
 		$this->db=$db;
 	}
+	//added by Cheneil
 	public function release($info){
 		$sql="insert into ecms_office(officeNumber,officeType,officeSellPrice,officeRentPrice,officeRentPriceUnit,officeIncludFee,officeProFee,
 			  officePayment,officePayDetailY,officePayDetailF,officeBuildArea,officeFloor,officeAllFloor,officeDivision,officeFitment,officeLevel,
@@ -35,6 +36,13 @@ class OfficeDAO{
 		$officeId = $this->db->getInsertNum();
 		return $officeId;					
 	}
+
+	public function countProperty($userId,$state){
+		$sql = "select count(officeId) as propTotal from ecms_office where officeUserId=".$userId." and officeState=".$state;
+		$result = $this->db->getQueryValue($sql);
+		return $result['propTotal'];
+	}
+	//end to be added by Cheneil
 	public function modify($info){
 		$sql="update ecms_office set 
 			  officeNumber='".(empty($info['officeNumber'])?'':$info['officeNumber'])."',

@@ -1,56 +1,142 @@
 <?php
 require 'path.inc.php';
 $tpl_name=$tpl_dir.'list.tpl';
-$html->title='��Ϣ����';
+$html->title='新盘列表';
 $userService=new UserService($db);
 $userService->checkAdminUserExpired();
 $permissionsState=sysPermissionsChecking('propertyModify');
 if(!$permissionsState)$tpl_name='admin/error.tpl';
 $propertyService=new PropertyService($db);
-$areaService=new AreaService($db);
-$fid=0;
-if(isset($_GET['areaId'])&&!empty($_GET['areaId'])){
-	$areaId=$_GET['areaId'];
+
+if(isset($_REQUEST['propertyIsHouseType'])&&!empty($_REQUEST['propertyIsHouseType'])){
+	$propertyIsHouseType=$_REQUEST['propertyIsHouseType'];
 }else{
-	$areaId='';
+	$propertyIsHouseType=0;
 }
-if(isset($_GET['page'])&&!empty($_GET['page'])){
-	$page=$_GET['page'];
+if(isset($_REQUEST['propertyIsBusinessType'])&&!empty($_REQUEST['propertyIsBusinessType'])){
+	$propertyIsBusinessType=$_REQUEST['propertyIsBusinessType'];
+}else{
+	$propertyIsBusinessType=0;
+}
+if(isset($_REQUEST['propertyIsOfficeType'])&&!empty($_REQUEST['propertyIsOfficeType'])){
+	$propertyIsOfficeType=$_REQUEST['propertyIsOfficeType'];
+}else{
+	$propertyIsOfficeType=0;
+}
+if(isset($_REQUEST['propertyIsVillaType'])&&!empty($_REQUEST['propertyIsVillaType'])){
+	$propertyIsVillaType=$_REQUEST['propertyIsVillaType'];
+}else{
+	$propertyIsVillaType=0;
+}
+if(isset($_REQUEST['propertyIsHot'])&&!empty($_REQUEST['propertyIsHot'])){
+	$propertyIsHot=$_REQUEST['propertyIsHot'];
+}else{
+	$propertyIsHot=0;
+}
+if(isset($_REQUEST['propertyIsBusiness'])&&!empty($_REQUEST['propertyIsBusiness'])){
+	$propertyIsBusiness=$_REQUEST['propertyIsBusiness'];
+}else{
+	$propertyIsBusiness=0;
+}
+if(isset($_REQUEST['propertyIsSmallAmt'])&&!empty($_REQUEST['propertyIsSmallAmt'])){
+	$propertyIsSmallAmt=$_REQUEST['propertyIsSmallAmt'];
+}else{
+	$propertyIsSmallAmt=0;
+}
+if(isset($_REQUEST['propertyIsSubwayLine'])&&!empty($_REQUEST['propertyIsSubwayLine'])){
+	$propertyIsSubwayLine=$_REQUEST['propertyIsSubwayLine'];
+}else{
+	$propertyIsSubwayLine=0;
+}
+if(isset($_REQUEST['propertyIsPark'])&&!empty($_REQUEST['propertyIsPark'])){
+	$propertyIsPark=$_REQUEST['propertyIsPark'];
+}else{
+	$propertyIsPark=0;
+}
+if(isset($_REQUEST['propertyIsInvestment'])&&!empty($_REQUEST['propertyIsInvestment'])){
+	$propertyIsInvestment=$_REQUEST['propertyIsInvestment'];
+}else{
+	$propertyIsInvestment=0;
+}
+if(isset($_REQUEST['propertyIsRecommend'])&&!empty($_REQUEST['propertyIsRecommend'])){
+	$propertyIsRecommend=$_REQUEST['propertyIsRecommend'];
+}else{
+	$propertyIsRecommend=0;
+}
+if(isset($_REQUEST['propertyIsFine'])&&!empty($_REQUEST['propertyIsFine'])){
+	$propertyIsFine=$_REQUEST['propertyIsFine'];
+}else{
+	$propertyIsFine=0;
+}
+if(isset($_REQUEST['propertyIsGbuy'])&&!empty($_REQUEST['propertyIsGbuy'])){
+	$propertyIsGbuy=$_REQUEST['propertyIsGbuy'];
+}else{
+	$propertyIsGbuy=0;
+}
+if(isset($_REQUEST['propertyIsDiscounts'])&&!empty($_REQUEST['propertyIsDiscounts'])){
+	$propertyIsDiscounts=$_REQUEST['propertyIsDiscounts'];
+}else{
+	$propertyIsDiscounts=0;
+}
+if(isset($_REQUEST['propertyIsPreferential'])&&!empty($_REQUEST['propertyIsPreferential'])){
+	$propertyIsPreferential=$_REQUEST['propertyIsPreferential'];
+}else{
+	$propertyIsPreferential=0;
+}
+$areaIndex = (!isset($_REQUEST['areaIndex'])||isset($_REQUEST['areaIndex'])&&empty($_REQUEST['areaIndex']))?'':$_REQUEST['areaIndex'];//区域下标,前台与area.js,后台与area.php对应
+if(isset($_REQUEST['page'])&&!empty($_REQUEST['page'])){
+	$page=$_REQUEST['page'];
 }else{
 	$page=1;
 }
-$fileName='';
-$lines=20;
-$begin=$lines*($page-1);
-$where='';
-$order='';
-$limit='limit '.$begin.','.$lines;
-if(!empty($areaId)){
-	$fileName='list.php?areaId='.$areaId.'&page';
-	$areaStr=$areaService->getAllAreaChByFatherId($areaId);
-	$strNum=strlen($areaStr);
-	if(substr($areaStr,$strNum-1)==','){
-		$areaStr=substr($areaStr,0,$strNum-1);
-	}
-	$where .= "where p.areaId in ($areaStr)";
+if(isset($_REQUEST['search'])&&!empty($_REQUEST['search'])){
+	$search=$_REQUEST['search'];
 }else{
-	$fileName='list.php?page';
+	$search='';
 }
+$fileName='';
+$type='propertyAndUser';
+$step=20;
+$begin=$step*($page-1);
 
-$areaList=$areaService->getAreaListByCache($fid);
-$propertyList=$propertyService->getInfoList($where,$order,$limit);
-$propertyCount=$propertyService->countInfo($where);
+$fileName='list.php?propertyIsHouseType='.$propertyIsHouseType.'&propertyIsBusinessType='.$propertyIsBusinessType.'&propertyIsOfficeType='.$propertyIsOfficeType.'&propertyIsVillaType='.$propertyIsVillaType.'&propertyIsHot='.$propertyIsHot.'&propertyIsBusiness='.$propertyIsBusiness.'&$propertyIsSmallAmt='.$propertyIsSmallAmt.'&propertyIsSubwayLine='.$propertyIsSubwayLine.'&propertyIsPark='.$propertyIsPark.'&propertyIsInvestment='.$propertyIsInvestment.'&propertyIsRecommend='.$propertyIsRecommend.'&propertyIsFine='.$propertyIsFine.'&propertyIsGbuy='.$propertyIsGbuy.'&propertyIsDiscounts='.$propertyIsDiscounts.'&propertyIsPreferential='.$propertyIsPreferential.'&areaIndex='.$areaIndex.'&page';
 
+//echo $fileName;
+
+$info['type']=$type;
+$info['begin']=$begin;
+$info['step']=$step;
+$info['search']=$search;
+$info['propertyIsHouseType']=$propertyIsHouseType;
+$info['propertyIsBusinessType']=$propertyIsBusinessType;
+$info['propertyIsOfficeType']=$propertyIsOfficeType;
+$info['propertyIsVillaType']=$propertyIsVillaType;
+$info['propertyIsHot']=$propertyIsHot;
+$info['propertyIsBusiness']=$propertyIsBusiness;
+$info['propertyIsSmallAmt']=$propertyIsSmallAmt;
+$info['propertyIsSubwayLine']=$propertyIsSubwayLine;
+$info['propertyIsPark']=$propertyIsPark;
+$info['propertyIsInvestment']=$propertyIsInvestment;
+$info['propertyIsRecommend']=$propertyIsRecommend;
+$info['propertyIsFine']=$propertyIsFine;
+$info['propertyIsGbuy']=$propertyIsGbuy;
+$info['propertyIsDiscounts']=$propertyIsDiscounts;
+$info['propertyIsPreferential']=$propertyIsPreferential;
+$info['areaIndex']=$areaIndex;
+
+$propertyList=$propertyService->getPropertyList($info);
+$propertyCount=$propertyService->countProperty($info);
+//
 $divPage='';
 if(!empty($propertyCount)&&$propertyCount['counts']>0){
-	$divPage=sysAdminPageInfo($propertyCount['counts'],$lines,$page,$fileName,'');
+	$divPage=sysAdminPageInfo($propertyCount['counts'],$step,$page,$fileName,'');
 }else{
 	$divPage='';
 }
 
-$smarty->assign('areaList',$areaList);
 $smarty->assign('propertyList',$propertyList);
 $smarty->assign('divPage',$divPage);
+$smarty->assign('info',$info);
 $html->show();
 $smarty->display($tpl_name);
 ?>

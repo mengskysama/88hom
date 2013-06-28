@@ -11,6 +11,7 @@ class FactoryDAO  {
 		$this->db=$db;
 	}
 	//发布厂房
+	//added by Cheneil
 	public function release($factory){
 		$sql="insert into ecms_factory(factoryNumber,factoryName,factoryAddress,factoryType,factorySellPrice,factoryProFee,factoryManagentUnits,factoryPayInfo,
 										factoryFloorArea,factoryBuildArea,factoryOfficeArea,factoryWorkshopArea,factorySpaceArea,factoryDormitory,factoryBuildYear,
@@ -57,6 +58,13 @@ class FactoryDAO  {
 										.")";
 			return $this->db->getQueryExecute($sql);						
 	}
+
+	public function countProperty($userId,$state){
+		$sql = "select count(factoryId) as propTotal from ecms_factory where factoryUserId=".$userId." and factoryState=".$state;
+		$result = $this->db->getQueryValue($sql);
+		return $result['propTotal'];
+	}
+	//end to be added by Cheneil
 	//修改厂房
 	public function modify($factory){
 		$sql="update ecms_factory set factoryNumber='"

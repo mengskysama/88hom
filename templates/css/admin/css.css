@@ -278,6 +278,16 @@ table td,table th{
 	color:#666;
 	border:1px solid #ddd;
 }
+.input_long{
+	width:360px;
+	height:22px;
+	border:1px solid #666;
+}
+.input_short{
+	width:60px;
+	height:22px;
+	border:1px solid #666;
+}
 .input{
 	width:160px;
 	height:22px;

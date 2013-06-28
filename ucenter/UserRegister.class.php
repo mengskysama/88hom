@@ -85,7 +85,7 @@ class UserRegister{
 		$user['userEmail'] = $this->userEmail;
 		$user['userEmailState'] = 0;
 		$user['userType'] = 3;
-		$user['userGroupId'] = 0;
+		$user['userGroupId'] = 1;
 		$user['userState'] = 0;
 		$userService = new UserService($this->db);
 		$userId = $userService->saveUser($user);

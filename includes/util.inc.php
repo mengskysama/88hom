@@ -264,7 +264,46 @@ function sysPageInfo($totalNum=0,$pageSize=10,$currentPage=null,$url,$params){
 		return $pageInfo;
 }
 //通用分页
-//updated by Cheneil on 14 May
+//function sysAdminPageInfo($totalNum=0,$pageSize=10,$currentPage=null,$url,$params){
+//		//当前页 
+//		$currentPage=($currentPage == null ? 1 : $currentPage);
+//		//echo $totalNum.'-'.$pageSize.'-'.$currentPage.'-'.$url;
+//		//总页数
+//		$totalPage = $totalNum%$pageSize==0?$totalNum/$pageSize:(intval($totalNum/$pageSize)+1);
+//		//如果当前页大于总页则取总页数,否则不变
+//		$currentPage = $currentPage > $totalPage?$totalPage:$currentPage;
+//		//参数
+//		$params = $params==null?'':'&'.$params;
+//		//页段,上10页,下10页
+//		$pageParagraph = ceil($currentPage/10);
+//		//最大页段
+//		$maxPageParagraph = ceil($totalPage/10);
+//		//页信息
+//		$pageInfo = '<label class="pagingInfo">'.$currentPage.'/'.$totalPage.',&nbsp;'.$pageSize.'/页,&nbsp;&nbsp;共:&nbsp;'.$totalNum
+//		.'&nbsp;&nbsp;</label><a class="pointer" href="'.$url.'=1" title="首页"><<</a>';
+//		if($pageParagraph > 1)
+//			$pageInfo .= '<a class="pointer" href="'.$url.'='.(($pageParagraph - 1) * 10).'" title="前十页"><&nbsp;</a>';
+//			 
+//		$startPage = ($pageParagraph - 1)*10 +1 ;
+//		$endPage = $pageParagraph*10 + 1;
+//		for($i=$startPage;$i<$endPage;$i++){
+//			if($i == $currentPage)
+//			{
+//				$pageInfo.='<a class="currentPage">'.$i.'</a>';
+//			}else{
+//				if($i <= $totalPage){
+//					$pageInfo .= '<a href="'.$url.'='.$i.'">'.$i.'</a>';
+//				}
+//			}
+//		}
+//		
+//		if($pageParagraph < $maxPageParagraph)
+//		{
+//			$pageInfo .= '<a class="pointer" href="'.$url.'='.($pageParagraph *10+1).'" title="下十页">&nbsp;></a>';
+//		}
+//		$pageInfo .= '<a class="pointer" href="'.$url.'='.$totalPage.'" title="末页">>></a>';
+//		return $pageInfo;
+//}
 function sysAdminPageInfo($totalNum=0,$pageSize=10,$currentPage=null,$url,$params){
 		//当前页 
 		$currentPage=($currentPage == null ? 1 : $currentPage);
@@ -305,7 +344,6 @@ function sysAdminPageInfo($totalNum=0,$pageSize=10,$currentPage=null,$url,$param
 		$pageInfo .= '<a class="pointer" href="'.$url.'='.$totalPage.'" title="末页">>></a>';
 		return $pageInfo;
 }
-
 //added by Cheneil
 function pagination($totalNum=0,$pageSize=10,$currentPage=null,$url,$indexLen=5){
 	
@@ -373,6 +411,75 @@ function pagination($totalNum=0,$pageSize=10,$currentPage=null,$url,$indexLen=5)
 		
 	$pageInfo .= '</div>';
 	
+	return $pageInfo;
+	
+}
+function pagination2($totalNum=0,$pageSize=10,$currentPage=null,$url,$indexLen=5){
+	
+	//当前页 
+	$currentPage=(($currentPage == null or $currentPage == 0) ? 1 : $currentPage);
+	//总页数
+	$totalPage = ($totalNum%$pageSize==0) ? ($totalNum/$pageSize) : (intval($totalNum/$pageSize)+1);
+	$totalPage = $totalPage == 0 ? 1 : $totalPage;
+	//如果当前页大于总页则取总页数,否则不变
+	$currentPage = $currentPage > $totalPage ? $totalPage : $currentPage;
+	
+	$prevPage = ($currentPage > 1) ? ($currentPage-1) : 1;
+	$nextPage = ($currentPage < $totalPage) ? ($currentPage+1) : $totalPage;
+	//echo $totalNum.'-'.$pageSize.'-'.$currentPage.'-'.$url;
+		
+	$startIndex = 1;
+	$endIndex = $totalPage;
+	if($totalPage > $indexLen){
+		$_mod = $indexLen%2;
+		$prevLen = $_mod == 0 ? ($indexLen/2 - 1) : floor($indexLen/2);
+		$nextLen = $_mod == 0 ? $indexLen/2 : floor($indexLen/2);
+		//echo $currentPage.'|'.$totalPage.'###'.$prevLen.'|'.$nextLen.'###';  
+		if($currentPage-$prevLen > 1){
+			if($currentPage == $totalPage){
+				$startIndex = $totalPage - $indexLen + 1;
+				$endIndex = $totalPage;
+			}else if($currentPage + $nextLen > $totalPage){
+				$startIndex = $totalPage - $prevLen - $nextLen;
+				$endIndex = $totalPage;
+			}else{
+				$startIndex = $currentPage == $totalPage ? ($totalPage - $indexLen + 1) : ($currentPage - $prevLen);
+				$endIndex = $currentPage + $nextLen;
+			}
+		}else{
+			$startIndex = 1;
+			$endIndex = $indexLen;
+		}
+		//$endIndex = $endIndex>$totalPage ? $totalPage : $endIndex;
+	}
+	//echo $startIndex.'|'.$endIndex;
+	$pageIndexs = "";
+	for($i=$startIndex; $i<=$endIndex; $i++){
+		if($i == $currentPage){
+			$pageIndexs .= '['.$i.']';
+		}else{
+			$pageIndexs .= '<a onclik="gotopage('.$i.')">'.$i.'</a>';
+		}
+	}
+
+	$pageInfo = '';
+	if($currentPage > 1){
+		$prevPage = $currentPage-1;
+		$pageInfo .= '<a onclick="gotopage('.$prevPage.')" class="prev">上一页</a>';
+	}else{
+		$pageInfo .= '<a class="prev">上一页</a>';
+	}
+	$pageInfo .= $pageIndexs;	
+	
+	if($currentPage < $totalPage){
+		$nextPage = $currentPage+1;
+		$pageInfo .= '<a href="gotopage('.$nextPage.')" class="next">下一页</a>';
+	}else{
+		$pageInfo .= '<a class="prev">下一页</a>';
+	}
+		
+	$pageInfo .= '&nbsp;&nbsp;共'.$totalPage.'页';
+	//<a href="#" class="prev">上一页</a><a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a href="#" class="next">下一页</a>&nbsp;&nbsp;共20页
 	return $pageInfo;
 	
 }
@@ -538,14 +645,11 @@ function spiderName($type){
 	}
 	return $name;
 }
-function extend_file($file_name)
- {
-	 $extend =explode("." , $file_name);
-	 $va=count($extend)-1;
-	 return $extend[$va];
- }
- 
-
+function extend_file($file_name){
+	$extend =explode("." , $file_name);
+	$va=count($extend)-1;
+	return $extend[$va];
+}
  function getParameter($param, $method='POST'){
  	if($method == 'POST'){
  		return !empty($_POST[$param]) ? $_POST[$param] : "";

@@ -11,6 +11,7 @@ class VillaDAO  {
 		$this->db=$db;
 	}
 	//发布厂房
+	//added by Cheneil
 	public function release($villa){
 		$sql="insert into ecms_villa(villaTitle,villaContent,villaNumber,villaRoom,villaHall,villaToilet,villaKitchen,villaBalcony,villaBuildArea,
 									villaUseArea,villaForward,villaFitment,villaBuildYear,villaBaseService,villaEquipment,villaLookTime,villaLiveTime,
@@ -62,6 +63,13 @@ class VillaDAO  {
 										.")";
 			return $this->db->getQueryExecute($sql);						
 	}
+
+	public function countProperty($userId,$state){
+		$sql = "select count(villaId) as propTotal from ecms_villa where villaUserId=".$userId." and villaState=".$state;
+		$result = $this->db->getQueryValue($sql);
+		return $result['propTotal'];
+	}
+	//end to be added by Cheneil
 	//修改别墅
 	public function modify($villa){
 		$sql="update ecms_villa set villaTitle='"

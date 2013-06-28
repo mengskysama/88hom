@@ -1,5 +1,9 @@
 <?php
-//
+//全程开启session
+session_start();
+
+require 'phpini.inc.php';
+
 define('SERVER_NAME', $_SERVER ['SERVER_NAME']);
 define('HTTP_HOST', $_SERVER ['HTTP_HOST']);
 if(SERVER_NAME=='localhost'||SERVER_NAME=='127.0.0.1'||SERVER_NAME=='192.168.0.27'){
@@ -18,13 +22,14 @@ if(SERVER_NAME=='localhost'||SERVER_NAME=='192.168.0.27'){
 	define('ECMS_DB_PCONNECT', 0); //0 或1，是否使用持久连接
 	define('ECMS_DB_PROVIDER', 'mysql'); //数据库类型
 	define('LANG', 'zh_CN');
+	
 }else{
-	define('ECMS_DB_HOST', 'localhost'); //数据库服务器主机地址
-	define('ECMS_DB_USER', 'g-cre'); //数据库帐号
-	define('ECMS_DB_PW', 'g-cre110'); //数据库密码
-	define('ECMS_DB_NAME', 'g-cre'); //数据库名
+	define('ECMS_DB_HOST', '118.123.13.251:53406'); //数据库服务器主机地址
+	define('ECMS_DB_USER', '88hom'); //数据库帐号
+	define('ECMS_DB_PW', '88hom110'); //数据库密码
+	define('ECMS_DB_NAME', '88hom'); //数据库名
 	define('ECMS_DB_PRE', 'ecms_'); //数据库表前缀，同一数据库安装多套Phpcms时，请修改表前缀
-	define('ECMS_DB_CHARSET', 'gbk'); //数据库字符集
+	define('ECMS_DB_CHARSET', 'utf8'); //数据库字符集
 	define('ECMS_DB_PCONNECT', 0); //0 或1，是否使用持久连接
 	define('ECMS_DB_PROVIDER', 'mysql'); //数据库类型
 	define('LANG', 'zh_CN');
@@ -60,6 +65,16 @@ define('ECMS_SMARTY_CACHE_LIFETIME', 600);//数据缓存死亡周期600秒
 define('ECMS_SMARTY_LEFT_DELIMITER', '<!--{');//设置左边界符号
 define('ECMS_SMARTY_RIGHT_DELIMITER', '}-->');//设置右边界符号
 
+//Sphinx服务器配置
+define('SPHINX_SERVER_HOST','118.123.13.251');//sphinx服务器IP地址
+define('SPHINX_SERVER_PORT',53407);//端口号
+define('SPHINX_LIMIT_OFFSET',0);//查询偏移量
+define('SPHINX_LIMIT_LIMIT',10);//查询返回匹配条目限制
+define('SPHINX_LIMIT_MAX_MATCHES',1000);//当前查询结果集大限
+define('SPHINX_LIMIT_CUTOFF',500);//阀值，当匹配数超过阀值时将停止检查
+define('SPHINX_MAXQUERYTIME',3000);//检索查询最大时间限制，单位毫秒
+define('SPHINX_CONNECTTIMEOUT',5000);//设置超时时间,单位毫秒
+define('SPHINX_ARRAYRESULT',true);//设置结果返回格式,true为普通数组，false为hash格式
 
 //网站相应文件夹物理路径配置
 define('ECMS_PATH_COMMON', ECMS_PATH_ROOT.'common/'); //公共类库目录
@@ -87,14 +102,17 @@ define('ECMS_PATH_JS', ECMS_PATH.'templates/js/'); //通用js目录
 
 
 define('ECMS_PATH_AD_FILE', ECMS_PATH_ROOT.'uploads/ad/'); //广告文件目录
-define('ECMS_PATH_AD_URL', ECMS_WEB_URL.'uploads/ad/'); //广告文件目录
+define('ECMS_PATH_AD_URL', ECMS_WEB_URL.'uploads/ad/'); //广告文件Web目录
 
 $cfg['web_path'] = ECMS_PATH;
 $cfg['web_css'] = ECMS_PATH_CSS;
 $cfg['web_images'] = ECMS_PATH_IMAGES;
 $cfg['web_js'] = ECMS_PATH_JS;
 $cfg['web_common'] = ECMS_PATH.'templates/common/';
-
+$cfg['arr_pic']=require_once 'pic.inc.php';//公共数据
+$cfg['arr_build']=require_once 'build.inc.php';//公共数据
+$cfg['arr_info']=require_once 'info.inc.php';//公共数据
+$cfg['file_path_upload']=ECMS_PATH_UPLOADS;
 //其他一般配置
 define('ECMS_TIME',time());
 $cfg['web_charset']='UTF-8';
@@ -108,7 +126,7 @@ $cfg['web_useragent'] = 'LiuMang+Mozilla/5.0 (Windows NT 5.1; rv:7.0.1) Gecko/20
 
 //Session配置
 define('ECMS_SESSION_STORAGE', 'files'); //Session 存储方式（files, mysql, apc, eaccelerator, memcache, shmop）
-define('ECMS_SESSION_TTL', 20); //Session 生命周期（秒）
+define('ECMS_SESSION_TTL', 60); //Session 生命周期（秒）
 define('ECMS_SESSION_SAVEPATH', ECMS_PATH_ROOT.'data/sessions/'); //Session 保存路径（files）
 define('ECMS_SESSION_N', 0); //Session 文件分布的目录深度（files）
 

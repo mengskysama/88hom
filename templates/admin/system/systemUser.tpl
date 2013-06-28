@@ -17,7 +17,7 @@
 	<div class="title">系统用户管理</div>
 </div>
 <ul class="list_panel">
-	<li><a href="systemUser.php?action=release">添加用户</a> |</li>
+	<li><a href="systemUser.php?action=release">添加用户</a> </li>
 </ul>
 <div class="title_panel">
 	<div class="title">用户列表</div>
@@ -27,8 +27,9 @@
 		<tr>
 			<th width="10%">选中</th>
 			<th width="15%">用户名</th>
-			<th width="15%">用户组</th>
-			<th width="45%">E-mail</th>
+			<th width="10%">用户组</th>
+			<th width="25%">E-mail</th>
+			<th width="25%">电话</th>
 			<th width="15%">操作</th>
 		</tr>
 		<!--{foreach from=$userList item=item key=key}-->
@@ -37,7 +38,17 @@
 			<td><!--{$item.userUsername}--></td>
 			<td><!--{$item.group.groupName}--></td>
 			<td><!--{$item.userEmail}--></td>
-			<td><a href="permissions.php?action=systemUser&id=<!--{$item.userId}-->">权限</a> <a href="#">修改</a> <a href="#">删除</a> </td>
+			<td><!--{$item.userPhone}--></td>
+			<td>
+				<a href="permissions.php?action=systemUser&id=<!--{$item.userId}-->">权限</a> 
+				
+				<a href="systemUser.php?action=modify&id=<!--{$item.userId}-->">修改</a> 
+			<!--{if $item.userState eq 1}-->	
+				<a href="systemUser.php?action=changeState&state=0&id=<!--{$item.userId}-->">删除</a> 
+			<!--{else}-->
+				<a href="systemUser.php?action=changeState&state=1&id=<!--{$item.userId}-->">恢复</a> 
+			<!--{/if}-->	
+			</td>
 		</tr>
 		<!--{/foreach}-->
 	</table>

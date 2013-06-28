@@ -5,47 +5,47 @@ $userService->checkAdminUserExpired();
 if(isset($_GET['action'])&&!empty($_GET['action'])){
 	$action=$_GET['action'];
 }else{
-	$html->backUrl('ÇëÇó³ö´í,Ã»ÓĞÇëÇó ²ÎÊıaction£¡');
+	$html->backUrl('è¯·æ±‚å‡ºé”™,æ²¡æœ‰è¯·æ±‚ å‚æ•°actionï¼');
 }
 $propertyService=new PropertyService($db);
 switch ($action){
 	case 'release':
 		$permissionsState=sysPermissionsChecking('propertyRelease');
-		if(!$permissionsState)$html->backUrl('ÄúÃ»ÓĞÈ¨ÏŞ½øĞĞ´ËÏî²Ù×÷£¡');
+		if(!$permissionsState)$html->backUrl('æ‚¨æ²¡æœ‰æƒé™è¿›è¡Œæ­¤é¡¹æ“ä½œï¼');
 		$result=$propertyService->release($_POST);
 		if($result===true){
-			$html->replaceUrl('release.php','·¢²¼ĞÅÏ¢³É¹¦£¡');
+			$html->replaceUrl('release.php','å‘å¸ƒä¿¡æ¯æˆåŠŸï¼');
 		}else{
 			$html->backUrl($result);
 		}
 	break;
 	case 'modify':
 		$permissionsState=sysPermissionsChecking('propertyModify');
-		if(!$permissionsState)$html->backUrl('ÄúÃ»ÓĞÈ¨ÏŞ½øĞĞ´ËÏî²Ù×÷£¡');
-		$result=$propertyService->save($_POST);
+		if(!$permissionsState)$html->backUrl('æ‚¨æ²¡æœ‰æƒé™è¿›è¡Œæ­¤é¡¹æ“ä½œï¼');
+		$result=$propertyService->modify($_POST);
 		if($result===true){
-			$html->gotoUrl('list.php','ĞÅÏ¢ĞŞ¸Ä³É¹¦£¡');
+			$html->gotoUrl('list.php','ä¿¡æ¯ä¿®æ”¹æˆåŠŸï¼');
 		}else{
 			$html->backUrl($result);
 		}
 	break;
 	case 'delById':
 		$permissionsState=sysPermissionsChecking('propertyModify');
-		if(!$permissionsState)$html->backUrl('ÄúÃ»ÓĞÈ¨ÏŞ½øĞĞ´ËÏî²Ù×÷£¡');
+		if(!$permissionsState)$html->backUrl('æ‚¨æ²¡æœ‰æƒé™è¿›è¡Œæ­¤é¡¹æ“ä½œï¼');
 		if(isset($_GET['id'])&&!empty($_GET['id'])){
 			$result=$propertyService->delInfo($_GET['id']);
 			if($result===true){
-				$html->replaceUrl('list.php','ĞÅÏ¢É¾³ı³É¹¦£¡');
+				$html->replaceUrl('list.php','ä¿¡æ¯åˆ é™¤æˆåŠŸï¼');
 			}else{
 				$html->backUrl($result);
 			}
 		}else{
-			$html->backUrl('²ÎÊı´íÎó');
+			$html->backUrl('å‚æ•°é”™è¯¯');
 		}
 	break;
 	case 'changeState':
 		$permissionsState=sysPermissionsChecking('propertyModify');
-		if(!$permissionsState)$html->backUrl('ÄúÃ»ÓĞÈ¨ÏŞ½øĞĞ´ËÏî²Ù×÷£¡');
+		if(!$permissionsState)$html->backUrl('æ‚¨æ²¡æœ‰æƒé™è¿›è¡Œæ­¤é¡¹æ“ä½œï¼');
 		if(isset($_GET['state'])&&$_GET['state']!=''&&isset($_GET['id'])&&!empty($_GET['id'])){
 			$result=$propertyService->changeState($_GET['state'],$_GET['id']);
 			if($result===true){
@@ -54,7 +54,7 @@ switch ($action){
 				$html->backUrl($result);
 			}
 		}else{
-			$html->backUrl('²ÎÊı´íÎó');
+			$html->backUrl('å‚æ•°é”™è¯¯');
 		}
 	break;
 }

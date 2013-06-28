@@ -4,6 +4,7 @@ class ShopsDAO{
 	public function __construct($db){
 		$this->db=$db;
 	}
+	//added by Cheneil
 	public function release($info){
 		$sql="insert into ecms_shops(shopsName,shopsAddress,shopsTitle,shopsContent,shopsType,shopsSellPrice,shopsRentPrice,
 			  shopsRentPriceUnit,shopsRentState,shopsPayment,shopsPayDetailY,shopsPayDetailF,shopsBuildArea,shopsFloor,shopsAllFloor,shopsDivision,
@@ -43,6 +44,13 @@ class ShopsDAO{
 		$shopId = $this->db->getInsertNum();
 		return $shopId;					
 	}
+
+	public function countProperty($userId,$state){
+		$sql = "select count(shopsId) as propTotal from ecms_shops where shopsUserId=".$userId." and shopsState=".$state;
+		$result = $this->db->getQueryValue($sql);
+		return $result['propTotal'];
+	}
+	//end to be added by Cheneil
 	public function modify($info){
 		$sql="update ecms_shops set 
 			  shopsName='".(empty($info['shopsName'])?'':$info['shopsName'])."',
