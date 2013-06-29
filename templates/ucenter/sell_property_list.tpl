@@ -49,10 +49,10 @@
 			    <td width="140" align="center" valign="middle">类型： 
 			    <select name="propKind" id="propKind">
 			      	<option selected="selected" value="0">不限</option>
-					<option value="1">住宅</option>
-			        <option value="2">别墅</option>
-					<option value="3">商铺</option>
-					<option value="4">写字楼</option>     
+					<option value="zz">住宅</option>
+			        <option value="bs">别墅</option>
+					<option value="sp">商铺</option>
+					<option value="xzl">写字楼</option>     
 			    </select></td>
 			  </tr>
 		  </table>
@@ -61,12 +61,10 @@
 			    <td width="124" height="38" align="left" valign="middle">
 			    <select name="propOrder" id="propOrder" onchange="gotolink(52)">
 			      <option selected="selected" value="0">默认排序</option>
-				  <option value="addtimedesc">最后录入时间</option>
-			      <option value="addtimeasc">最早录入时间</option>
-			      <option value="freshdesc">最后刷新时间</option>
-			      <option value="freshasc">最早刷新时间</option>
-			      <option value="areaup">面积由小到大</option>
-			      <option value="areadown">面积由大到小</option>
+				  <option value="1">最后录入时间</option>
+			      <option value="2">最早录入时间</option>
+			      <option value="3">面积由小到大</option>
+			      <option value="4">面积由大到小</option>
 			    </select></td>
 			    <td width="342" align="left" valign="middle" class="grzc_31" style="color:#333">名称： 
 			      <input name="propName" type="text"  value=""/></td>
@@ -86,24 +84,32 @@
 			  </tr>
 		  </table>
 		  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+		  
+			  <!--{section name=prop loop=$propList}-->
 			  <tr>
-			    <td width="55" height="80" align="center" valign="middle" class="bor"><label><input name="" type="checkbox" value="" / ></label></td>
+			    <td width="55" height="80" align="center" valign="middle" class="bor">
+			    	<label><input name="" type="checkbox" value="<!--{$propList[prop].propKind}--><!--{$propList[prop].propId}-->" / ></label></td>
 			    <td width="225" align="left" valign="middle" class="bor">
-			    	<img src="images/test/111.jpg" class="l">
+			    	<img src="http://localhost/88hom/uploads/<!--{$propList[prop].propPhoto}-->" class="l">
 			        <span class="l wz">
-			        	名称：梧桐山新居<br /> 
-						户型：2室1厅 面积：60M2<br />
-						单价：20000/M2<br />
+			        	名称：<!--{$propList[prop].propName}--><br /> 			        	
+					 	<!--{if $propList[prop].propKind eq 'zz' }-->
+						户型：<!--{$propList[prop].room}-->室<!--{$propList[prop].hall}-->厅 面积：<!--{$propList[prop].propArea}--><sup>2</sup><br />
+						单价：<!--{$propList[prop].perPriceArea}-->/<sup>2</sup><br />
+                        <!--{else}-->
+						售价：<!--{$propList[prop].propPrice}-->万 面积：<!--{$propList[prop].propArea}--><sup>2</sup><br />
+					 	<!--{/if}-->
 			        </span>
 			        </td>
-			    <td width="120" align="center" valign="middle" style="line-height:22px;" class="bor">2013-04-08<br />14:00</td>
-			    <td width="120" align="center" valign="middle" class="bor">2013-04-08<br />14:00</td>
+			    <td width="120" align="center" valign="middle" style="line-height:22px;" class="bor"><!--{$propList[prop].updateDate}--><br /><!--{$propList[prop].updateTime}--></td>
+			    <td width="120" align="center" valign="middle" class="bor"><!--{$propList[prop].createDate}--><br /><!--{$propList[prop].createTime}--></td>
 			    <td width="92" align="center" valign="middle" class="bor"><font class="red">100</font> 次</td>
 			    <td align="center" valign="middle" class="bor">
 			    <a href="#">编辑</a> <a href="#">删除</a><br />
 			    	<a href="#" class="xx0" style="margin:8px 12px;">去委托</a>
 			    </td>
 			  </tr>
+			  <!--{/section}-->
 			  <tr>
 			    <td height="30" align="center" valign="middle">&nbsp;</td>
 			    <td align="center" valign="middle">&nbsp;</td>

@@ -414,7 +414,7 @@ function pagination($totalNum=0,$pageSize=10,$currentPage=null,$url,$indexLen=5)
 	return $pageInfo;
 	
 }
-function pagination2($totalNum=0,$pageSize=10,$currentPage=null,$url,$indexLen=5){
+function pagination2($totalNum=0,$pageSize=10,$currentPage=null,$indexLen=5){
 	
 	//当前页 
 	$currentPage=(($currentPage == null or $currentPage == 0) ? 1 : $currentPage);

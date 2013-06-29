@@ -2,6 +2,7 @@
 require '../path.inc.php';
 
 define('MESSAGE_CENTER_PAGE_SIZE',5);
+define('USER_SELL_PROPERTY_LIST_PAGE_SIZE',5);
 
 $tpl_dir = 'ucenter/';
 $smarty->caching = false;

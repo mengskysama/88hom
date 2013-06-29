@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-28 11:35:18
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-29 12:27:36
          compiled from "E:/workspace/projects/88hom/templates\ucenter\sell_property_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24351cc05070ec3d9-96504959%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fa8adf8b79a66c47fcf4fc59d35baca0ba9c381f' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\sell_property_list.tpl',
-      1 => 1372327644,
+      1 => 1372480045,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
+    'livePropsCount' => 0,
+    'unlivePropsCount' => 0,
+    'expiredPropsCount' => 0,
+    'illegalPropsCount' => 0,
+    'propList' => 0,
+    'pagination' => 0,
+    'pageNo' => 0,
+    'propState' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -50,14 +58,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
    	<div class="qg_bs">
       <div class="bs_tx" style="border:0">
             <p><b>管理出售房源</b></p>
-            <div class="bs_tx1">发 布 量：已使用 <a href="#">3</a>    还可使用<a href="#">10</a><br />               
+            <div class="bs_tx1">发 布 量：已使用 <?php echo $_smarty_tpl->tpl_vars['livePropsCount']->value;?>
+    还可使用<a href="#">10</a><br />               
 即将过期房源：<a href="#">0</a>  本月过期房源 已重新发布 <a href="#">0</a> 还可重新发布 <a href="#">1</a></div>
 <div style="width:700px; border-bottom:1px solid #ddd">
 			<ul style="width:584px; font-size:14px; font-weight:bolder;">
-   			 	<li><a href="#">已发布房源</a></li>
-    		    <li><a href="#">待发布房源(5)</a></li>
-     		    <li><a href="#">已过期房源(0) </a></li>
-      		 	<li><a href="#">违规房源(0)</a></li>
+   			 	<li><a onclick="gotolink(1)">已发布房源</a></li>
+    		    <li><a onclick="gotolink(0)">待发布房源(<?php echo $_smarty_tpl->tpl_vars['unlivePropsCount']->value;?>
+)</a></li>
+     		    <li><a onclick="gotolink(3)">已过期房源(<?php echo $_smarty_tpl->tpl_vars['expiredPropsCount']->value;?>
+) </a></li>
+      		 	<li><a onclick="gotolink(4)">违规房源(<?php echo $_smarty_tpl->tpl_vars['illegalPropsCount']->value;?>
+)</a></li>
    		  </ul>
           </div>
           <form id="searchFrm" name="searchFrm" action="sell_property_list.php" method="post">
@@ -65,11 +77,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
 			  <tr>
 			    <td width="204" height="38" align="left" valign="middle" class="grzc_32" style="color:#333">房源编号：
-			      <input name="input" type="text"  value="" style="height:20px;" /></td>
+			      <input id="propNum" name="propNum" type="text" style="height:20px;" /></td>
 			    <td width="175" align="center" valign="middle"  class="grzc_36" style="color:#333">价格：
-			    <input name="" type="text"  value="" / >—<input name="" type="text"  value="" />万元</td>
+			    <input id="propPriceFrom" name="propPriceFrom" type="text" / >—<input id="propPriceTo" name="propPriceTo" type="text" />万元</td>
 			    <td width="151" align="center" valign="middle"> 户型：
-			      <select name="ddlProv2" id="ddlProv2">
+			      <select name="propRoom" id="propRoom">
 			        <option selected="selected" value="0">不限</option>
 					<option value="1">1室</option>
 			        <option value="2">2室</option>
@@ -79,30 +91,28 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			        <option value="99">5室以上</option>        
 			      </select></td>
 			    <td width="140" align="center" valign="middle">类型： 
-			    <select name="ddlProv2" id="ddlProv2">
+			    <select name="propKind" id="propKind">
 			      	<option selected="selected" value="0">不限</option>
-					<option value="1">住宅</option>
-			        <option value="2">别墅</option>
-					<option value="3">商铺</option>
-					<option value="4">写字楼</option>     
+					<option value="zz">住宅</option>
+			        <option value="bs">别墅</option>
+					<option value="sp">商铺</option>
+					<option value="xzl">写字楼</option>     
 			    </select></td>
 			  </tr>
 		  </table>
 		  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 			  <tr>
 			    <td width="124" height="38" align="left" valign="middle">
-			    <select name="ddlProv3" id="ddlProv3">
+			    <select name="propOrder" id="propOrder" onchange="gotolink(52)">
 			      <option selected="selected" value="0">默认排序</option>
-				  <option value="addtimedesc">最后录入时间</option>
-			      <option value="addtimeasc">最早录入时间</option>
-			      <option value="freshdesc">最后刷新时间</option>
-			      <option value="freshasc">最早刷新时间</option>
-			      <option value="areaup">面积由小到大</option>
-			      <option value="areadown">面积由大到小</option>
+				  <option value="1">最后录入时间</option>
+			      <option value="2">最早录入时间</option>
+			      <option value="3">面积由小到大</option>
+			      <option value="4">面积由大到小</option>
 			    </select></td>
 			    <td width="342" align="left" valign="middle" class="grzc_31" style="color:#333">名称： 
-			      <input name="" type="text"  value=""/></td>
-			    <td width="204" colspan="2" align="left" valign="middle"> <a href="#" class="xx0">搜索</a></td>
+			      <input name="propName" type="text"  value=""/></td>
+			    <td width="204" colspan="2" align="left" valign="middle"> <a onclick="gotolink(50)" class="xx0">搜索</a></td>
 			    </tr>
 		  </table>
 		  </div>
@@ -118,24 +128,69 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			  </tr>
 		  </table>
 		  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+		  
+			  <?php if (isset($_smarty_tpl->tpl_vars['smarty']->value['section']['prop'])) unset($_smarty_tpl->tpl_vars['smarty']->value['section']['prop']);
+$_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['name'] = 'prop';
+$_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['loop'] = is_array($_loop=$_smarty_tpl->tpl_vars['propList']->value) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
+$_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['show'] = true;
+$_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['max'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['loop'];
+$_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['step'] = 1;
+$_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['start'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['step'] > 0 ? 0 : $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['loop']-1;
+if ($_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['show']) {
+    $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['total'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['loop'];
+    if ($_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['total'] == 0)
+        $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['show'] = false;
+} else
+    $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['total'] = 0;
+if ($_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['show']):
+
+            for ($_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['index'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['start'], $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['iteration'] = 1;
+                 $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['iteration'] <= $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['total'];
+                 $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['index'] += $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['step'], $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['iteration']++):
+$_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['rownum'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['iteration'];
+$_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['index_prev'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['index'] - $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['step'];
+$_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['index_next'] = $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['index'] + $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['step'];
+$_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['iteration'] == 1);
+$_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['total']);
+?>
 			  <tr>
-			    <td width="55" height="80" align="center" valign="middle" class="bor"><label><input name="" type="checkbox" value="" / ></label></td>
+			    <td width="55" height="80" align="center" valign="middle" class="bor">
+			    	<label><input name="" type="checkbox" value="<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind'];?>
+<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
+" / ></label></td>
 			    <td width="225" align="left" valign="middle" class="bor">
-			    	<img src="images/test/111.jpg" class="l">
+			    	<img src="http://localhost/88hom/uploads/<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propPhoto'];?>
+" class="l">
 			        <span class="l wz">
-			        	名称：梧桐山新居<br /> 
-						户型：2室1厅 面积：60M2<br />
-						单价：20000/M2<br />
+			        	名称：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propName'];?>
+<br /> 			        	
+					 	<?php if ($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='zz'){?>
+						户型：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['room'];?>
+室<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['hall'];?>
+厅 面积：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propArea'];?>
+<sup>2</sup><br />
+						单价：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['perPriceArea'];?>
+/<sup>2</sup><br />
+                        <?php }else{ ?>
+						售价：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propPrice'];?>
+万 面积：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propArea'];?>
+<sup>2</sup><br />
+					 	<?php }?>
 			        </span>
 			        </td>
-			    <td width="120" align="center" valign="middle" style="line-height:22px;" class="bor">2013-04-08<br />14:00</td>
-			    <td width="120" align="center" valign="middle" class="bor">2013-04-08<br />14:00</td>
+			    <td width="120" align="center" valign="middle" style="line-height:22px;" class="bor"><?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['updateDate'];?>
+<br /><?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['updateTime'];?>
+</td>
+			    <td width="120" align="center" valign="middle" class="bor"><?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['createDate'];?>
+<br /><?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['createTime'];?>
+</td>
 			    <td width="92" align="center" valign="middle" class="bor"><font class="red">100</font> 次</td>
 			    <td align="center" valign="middle" class="bor">
 			    <a href="#">编辑</a> <a href="#">删除</a><br />
 			    	<a href="#" class="xx0" style="margin:8px 12px;">去委托</a>
 			    </td>
 			  </tr>
+			  <?php endfor; endif; ?>
 			  <tr>
 			    <td height="30" align="center" valign="middle">&nbsp;</td>
 			    <td align="center" valign="middle">&nbsp;</td>
@@ -145,11 +200,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			    <td align="center" valign="middle"><a href="#" class="xx0" style="margin:8px 12px;">批量删除</a></td>
 			  </tr>
 		  </table>
-		  <div class="page"><a href="#" class="prev">上一页</a><a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a href="#" class="next">下一页</a>&nbsp;&nbsp;共20页&nbsp;到第
-		  	<input type="text" />页 <a href="#" class="next">确定</a>
+		  <div class="page"><?php echo $_smarty_tpl->tpl_vars['pagination']->value;?>
+&nbsp;到第<input type="text" id="destNo" name="destNo"/>页 <a onclick="gotolink(51)" class="next">确定</a>
 		  </div>
         </div>
-        <input type="hidden" id="pageNo" name="pageNo"/>
+        <input type="hidden" id="pageNo" name="pageNo" value="<?php echo $_smarty_tpl->tpl_vars['pageNo']->value;?>
+"/>
+        <input type="hidden" id="propState" name="propState" value="<?php echo $_smarty_tpl->tpl_vars['propState']->value;?>
+"/>
         </form>
 		<div style=" width:680px; padding:35px 15px 20px; line-height:25px; color:#999">
         	房源管理使用说明：<br />

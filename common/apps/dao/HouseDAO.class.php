@@ -69,6 +69,17 @@ class HouseDAO  {
 		$result = $this->db->getQueryValue($sql);
 		return $result['propTotal'];
 	}
+	
+	public function countPropertyList($query_where){
+		$sql = "select count(*) as propTotal from vw_get_sell_property_list ".$query_where;
+		$result = $this->db->getQueryValue($sql);
+		return $result['propTotal'];
+	}
+	
+	public function getPropertyList($query_fields,$query_where,$query_order,$query_limit){
+		$sql = "select ".$query_fields." from vw_get_sell_property_list ".$query_where." ".$query_order." ".$query_limit;
+		return $this->db->getQueryArray($sql);
+	}
 	//end to be added by Cheneil
 	//修改住宅房源
 	public function modify($house){

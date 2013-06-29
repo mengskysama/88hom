@@ -71,17 +71,60 @@ class SecondHandPropertyService{
 		return $house_count + $villa_count + $office_count + $shop_count + $factory_count;
 	}
 	
-	public function getPropertyList($condition){
-
-		$condition['userId'] = $userId;
-		$condition['propState'] = $propState;
-		$condition['propNum'] = $propNum;
-		$condition['propPriceFrom'] = $propPriceFrom;
-		$condition['propPriceTo'] = $propPriceTo;
-		$condition['propRoom'] = $propRoom;
-		$condition['propKind'] = $propKind;
-		$condition['propOrder'] = $propOrder;
-		$condition['propName'] = $propName;
-		$condition['currentPageNo'] = $pageNo;
+	public function getSellPropertyList($condition){
+		
+		//where
+		$query_where = "where userId=".$condition['userId']; 
+		if($condition['propState'] != "" && $condition['propState'] != 2){
+			$query_where .= " and propState=".$condition['propState'];
+		}else{
+			$query_where .= " and propState!=2";
+		}
+		if($condition['propKind'] != ""){
+			$query_where .= " and propKind='".$condition['propKind']."'";
+		}
+		if($condition['propNum'] != ""){
+			$query_where .= " and propNumber='".$condition['propNum']."'";
+		}
+		if($condition['propPriceFrom'] != ""){
+			$query_where .= " and propPrice>=".$condition['propPriceFrom'];
+		}
+		if($condition['propPriceTo'] != ""){
+			$query_where .= " and propPrice<=".$condition['propPriceTo'];
+		}
+		if($condition['propRoom'] > 0){
+			if($condition['propRoom'] == 99){
+				$query_where .= " and room>".$condition['propRoom'];
+			}else{
+				$query_where .= " and room=".$condition['propRoom'];
+			}
+		}
+		if($condition['propName'] != ""){
+			$query_where .= " and propName like '".$condition['propName']."%";
+		}
+		//order
+		$query_order = "";
+		if($condition['propOrder'] == 1){
+			$query_order = " order by createTime desc";
+		}else if($condition['propOrder'] == 2){
+			$query_order = " order by createTime asc";
+		}else if($condition['propOrder'] == 3){
+			$query_order = " order by propArea asc";
+		}else if($condition['propOrder'] == 4){
+			$query_order = " order by propArea desc";
+		} 
+		//limit
+		$page = $condition['currentPageNo'];
+		$page = ($page == "" || $page == 0) ? 1 : $page;
+		$query_limit = "limit ".(($page - 1) * USER_SELL_PROPERTY_LIST_PAGE_SIZE).",".USER_SELL_PROPERTY_LIST_PAGE_SIZE;		
+		//fields
+		$query_fields = "propId,propKind,propName,propNumber,propPrice,propArea,floor(propPrice*10000/propArea) as perPriceArea,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto";
+		
+		$totalNum = $this->houseDAO->countPropertyList($query_where);
+		$propList = $this->houseDAO->getPropertyList($query_fields,$query_where,$query_order,$query_limit);
+		$pagination = pagination2($totalNum,USER_SELL_PROPERTY_LIST_PAGE_SIZE,$page,5);
+		$props['data'] = $propList;
+		$props['pagination'] = $pagination;
+		return $props;
 	}
 }
