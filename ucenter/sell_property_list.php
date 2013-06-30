@@ -9,11 +9,15 @@ $propNum = getParameter("propNum");
 $propPriceFrom = getParameter("propPriceFrom");
 $propPriceTo = getParameter("propPriceTo");
 $propRoom = getParameter("propRoom");
+$propRoom = $propRoom == "" ? 0 : $propRoom;
 $propKind = getParameter("propKind");
+$propKind = $propKind == "" ? 'vv' : $propKind;
 $propOrder = getParameter("propOrder");
+$propOrder = $propOrder == "" ? 0 : $propOrder;
 $propName = getParameter("propName");
+$destNo = getParameter("destNo");
 $pageNo = getParameter("pageNo");
-$pageNo = $pageNo == "" ? 1 : $pageNo;
+$pageNo = $destNo == "" ? ($pageNo == "" ? 1 : $pageNo) : $destNo;
 
 $secondPropertyService = new SecondHandPropertyService($db);
 $unlivePropsCount = $secondPropertyService->countPropertiesByState($userId,0);
@@ -45,5 +49,14 @@ $smarty->assign("propList",$propList);
 $smarty->assign("pagination",$pagination);
 $smarty->assign("propState",$propState);
 $smarty->assign("pageNo",$pageNo);
+
+$smarty->assign("propNum",$propNum);
+$smarty->assign("propPriceFrom",$propPriceFrom);
+$smarty->assign("propPriceTo",$propPriceTo);
+$smarty->assign("propRoom",$propRoom);
+$smarty->assign("propKind",$propKind);
+$smarty->assign("propOrder",$propOrder);
+$smarty->assign("destNo",$destNo);
+$smarty->assign("propName",$propName);
 $smarty->display($tpl_name);
 ?>

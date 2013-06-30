@@ -42,6 +42,11 @@ class OfficeDAO{
 		$result = $this->db->getQueryValue($sql);
 		return $result['propTotal'];
 	}
+
+	public function delete($officeId){
+		$sql="update ecms_office set officeState=2 where officeId=".$officeId;
+		return $this->db->getQueryExecute($sql);
+	}
 	//end to be added by Cheneil
 	public function modify($info){
 		$sql="update ecms_office set 
@@ -70,9 +75,6 @@ class OfficeDAO{
 		return $this->db->getQueryExeCute($sql);
 	}
 	public function getDetail(){
-		
-	}
-	public function delete(){
 		
 	}
 }

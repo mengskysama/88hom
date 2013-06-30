@@ -78,7 +78,13 @@ class HouseDAO  {
 	
 	public function getPropertyList($query_fields,$query_where,$query_order,$query_limit){
 		$sql = "select ".$query_fields." from vw_get_sell_property_list ".$query_where." ".$query_order." ".$query_limit;
+		echo $sql;
 		return $this->db->getQueryArray($sql);
+	}
+	
+	public function delete($houseId){
+		$sql="update ecms_house set houseState=2 where houseId=".$houseId;
+		return $this->db->getQueryExecute($sql);
 	}
 	//end to be added by Cheneil
 	//修改住宅房源

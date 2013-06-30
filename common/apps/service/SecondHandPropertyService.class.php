@@ -80,7 +80,7 @@ class SecondHandPropertyService{
 		}else{
 			$query_where .= " and propState!=2";
 		}
-		if($condition['propKind'] != ""){
+		if($condition['propKind'] != "" && $condition['propKind'] != "vv"){
 			$query_where .= " and propKind='".$condition['propKind']."'";
 		}
 		if($condition['propNum'] != ""){
@@ -94,7 +94,7 @@ class SecondHandPropertyService{
 		}
 		if($condition['propRoom'] > 0){
 			if($condition['propRoom'] == 99){
-				$query_where .= " and room>".$condition['propRoom'];
+				$query_where .= " and room>5";
 			}else{
 				$query_where .= " and room=".$condition['propRoom'];
 			}
@@ -119,12 +119,44 @@ class SecondHandPropertyService{
 		$query_limit = "limit ".(($page - 1) * USER_SELL_PROPERTY_LIST_PAGE_SIZE).",".USER_SELL_PROPERTY_LIST_PAGE_SIZE;		
 		//fields
 		$query_fields = "propId,propKind,propName,propNumber,propPrice,propArea,floor(propPrice*10000/propArea) as perPriceArea,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto";
-		
 		$totalNum = $this->houseDAO->countPropertyList($query_where);
 		$propList = $this->houseDAO->getPropertyList($query_fields,$query_where,$query_order,$query_limit);
 		$pagination = pagination2($totalNum,USER_SELL_PROPERTY_LIST_PAGE_SIZE,$page,5);
 		$props['data'] = $propList;
 		$props['pagination'] = $pagination;
 		return $props;
+	}
+	
+	public function deletePropertyList($propIds){
+		if($propIds == "") return false;
+		$propIds = substr($propIds, 0, (strlen($propIds) - 1));
+		
+		$ids = explode(",",$propIds);
+		$len = count($ids);
+		for($i=0; $i<$len; $i++){
+			$id = $ids[$i];
+			$dao = "";
+			$offset = 0;
+			if(strstr($id,'zz') == 0){
+				$dao = $this->houseDAO;
+				$offset = 2;
+			}else if(strstr($id,'bs')){
+				$dao = $this->villaDAO;
+				$offset = 2;
+			}else if(strstr($id,'sp')){
+				$dao = $this->shopsDAO;
+				$offset = 2;
+			}else if(strstr($id,'xzl')){
+				$dao = $this->officeDAO;
+				$offset = 3;
+			}else if(strstr($id,'gc')){
+				$dao = $this->factoryDAO;
+				$offset = 2;
+			}
+			if($dao == "") return false;
+			
+			$dao->delete(substr($id,$offset));
+		}
+		return true;
 	}
 }

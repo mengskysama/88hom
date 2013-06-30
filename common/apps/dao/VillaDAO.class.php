@@ -69,6 +69,11 @@ class VillaDAO  {
 		$result = $this->db->getQueryValue($sql);
 		return $result['propTotal'];
 	}
+	
+	public function delete($villaId){
+		$sql="update ecms_villa set villaState=2 where villaId=".$villaId;
+		return $this->db->getQueryExecute($sql);
+	}
 	//end to be added by Cheneil
 	//修改别墅
 	public function modify($villa){

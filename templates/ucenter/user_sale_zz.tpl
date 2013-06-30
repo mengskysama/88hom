@@ -14,14 +14,27 @@ $(function() {
       	  $("#estId").val(ui.item.id);    
       }
     });
-    
-    
+        
     $("#btn_live").click(function() {
         $("#btn_live").attr("disabled", true);
+        $("#btn_save").attr("disabled", true);
+        if (check()) {
+        	$("#action_to_go").val(1);
+            document.getElementById("zzForm").submit();
+        } else {
+            $("#btn_live").removeAttr("disabled");
+            $("#btn_save").removeAttr("disabled");
+        }
+    });
+        
+    $("#btn_save").click(function() {
+        $("#btn_live").attr("disabled", true);
+        $("#btn_save").attr("disabled", true);
         if (check()) {
             document.getElementById("zzForm").submit();
         } else {
             $("#btn_live").removeAttr("disabled");
+            $("#btn_save").removeAttr("disabled");
         }
     });
 });
@@ -237,6 +250,7 @@ function check(){
             <td width="320" height="80" align="center" valign="middle"><input name="btn_save" type="button" class="mddl1" id="btn_save" value="保存待发布" /></td>
 	      </tr>
 	    </table>
+	    <input type="hidden" id="action_to_go" name="action_to_go" value="0"/>
 	    </form>
     </div>
     </div>

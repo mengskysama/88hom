@@ -22,10 +22,10 @@
 即将过期房源：<a href="#">0</a>  本月过期房源 已重新发布 <a href="#">0</a> 还可重新发布 <a href="#">1</a></div>
 <div style="width:700px; border-bottom:1px solid #ddd">
 			<ul style="width:584px; font-size:14px; font-weight:bolder;">
-   			 	<li><a onclick="gotolink(1)">已发布房源</a></li>
-    		    <li><a onclick="gotolink(0)">待发布房源(<!--{$unlivePropsCount}-->)</a></li>
-     		    <li><a onclick="gotolink(3)">已过期房源(<!--{$expiredPropsCount}-->) </a></li>
-      		 	<li><a onclick="gotolink(4)">违规房源(<!--{$illegalPropsCount}-->)</a></li>
+   			 	<li><a href="javascript:void(0)" onclick="gotolink(1)">已发布房源</a></li>
+    		    <li><a href="javascript:void(0)" onclick="gotolink(0)">待发布房源(<!--{$unlivePropsCount}-->)</a></li>
+     		    <li><a href="javascript:void(0)" onclick="gotolink(3)">已过期房源(<!--{$expiredPropsCount}-->) </a></li>
+      		 	<li><a href="javascript:void(0)" onclick="gotolink(4)">违规房源(<!--{$illegalPropsCount}-->)</a></li>
    		  </ul>
           </div>
           <form id="searchFrm" name="searchFrm" action="sell_property_list.php" method="post">
@@ -33,26 +33,26 @@
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
 			  <tr>
 			    <td width="204" height="38" align="left" valign="middle" class="grzc_32" style="color:#333">房源编号：
-			      <input id="propNum" name="propNum" type="text" style="height:20px;" /></td>
+			      <input id="propNum" name="propNum" type="text" style="height:20px;" value="<!--{$propNum}-->"/></td>
 			    <td width="175" align="center" valign="middle"  class="grzc_36" style="color:#333">价格：
-			    <input id="propPriceFrom" name="propPriceFrom" type="text" / >—<input id="propPriceTo" name="propPriceTo" type="text" />万元</td>
+			    <input id="propPriceFrom" name="propPriceFrom" type="text" value="<!--{$propPriceFrom}-->" />—<input id="propPriceTo" name="propPriceTo" type="text" value="<!--{$propPriceTo}-->" />万元</td>
 			    <td width="151" align="center" valign="middle"> 户型：
 			      <select name="propRoom" id="propRoom">
-			        <option selected="selected" value="0">不限</option>
-					<option value="1">1室</option>
-			        <option value="2">2室</option>
-			        <option value="3">3室</option>
-			        <option value="4">4室</option>
-			        <option value="5">5室</option>
-			        <option value="99">5室以上</option>        
+			        <option <!--{if $propRoom eq 0 }--> selected="selected" <!--{/if}--> value="0">不限</option>
+					<option <!--{if $propRoom eq 1 }--> selected="selected" <!--{/if}--> value="1">1室</option>
+			        <option <!--{if $propRoom eq 2 }--> selected="selected" <!--{/if}--> value="2">2室</option>
+			        <option <!--{if $propRoom eq 3 }--> selected="selected" <!--{/if}--> value="3">3室</option>
+			        <option <!--{if $propRoom eq 4 }--> selected="selected" <!--{/if}--> value="4">4室</option>
+			        <option <!--{if $propRoom eq 5 }--> selected="selected" <!--{/if}--> value="5">5室</option>
+			        <option <!--{if $propRoom eq 99 }--> selected="selected" <!--{/if}--> value="99">5室以上</option>        
 			      </select></td>
 			    <td width="140" align="center" valign="middle">类型： 
-			    <select name="propKind" id="propKind">
-			      	<option selected="selected" value="0">不限</option>
-					<option value="zz">住宅</option>
-			        <option value="bs">别墅</option>
-					<option value="sp">商铺</option>
-					<option value="xzl">写字楼</option>     
+			    <select name="propKind" id="propKind" onchange="gotolink(52)">
+			      	<option <!--{if $propKind == "vv" }--> selected="selected" <!--{/if}--> value="vv">不限</option>
+					<option <!--{if $propKind == "zz" }--> selected="selected" <!--{/if}--> value="zz">住宅</option>
+			        <option <!--{if $propKind == "bs" }--> selected="selected" <!--{/if}--> value="bs">别墅</option>
+					<option <!--{if $propKind == "sp" }--> selected="selected" <!--{/if}--> value="sp">商铺</option>
+					<option <!--{if $propKind == "xzl" }--> selected="selected" <!--{/if}--> value="xzl">写字楼</option>     
 			    </select></td>
 			  </tr>
 		  </table>
@@ -60,22 +60,22 @@
 			  <tr>
 			    <td width="124" height="38" align="left" valign="middle">
 			    <select name="propOrder" id="propOrder" onchange="gotolink(52)">
-			      <option selected="selected" value="0">默认排序</option>
-				  <option value="1">最后录入时间</option>
-			      <option value="2">最早录入时间</option>
-			      <option value="3">面积由小到大</option>
-			      <option value="4">面积由大到小</option>
+			      <option <!--{if $propOrder eq 0 }--> selected="selected" <!--{/if}--> value="0">默认排序</option>
+				  <option <!--{if $propOrder eq 1 }--> selected="selected" <!--{/if}--> value="1">最后录入时间</option>
+			      <option <!--{if $propOrder eq 2 }--> selected="selected" <!--{/if}--> value="2">最早录入时间</option>
+			      <option <!--{if $propOrder eq 3 }--> selected="selected" <!--{/if}--> value="3">面积由小到大</option>
+			      <option <!--{if $propOrder eq 4 }--> selected="selected" <!--{/if}--> value="4">面积由大到小</option>
 			    </select></td>
 			    <td width="342" align="left" valign="middle" class="grzc_31" style="color:#333">名称： 
-			      <input name="propName" type="text"  value=""/></td>
-			    <td width="204" colspan="2" align="left" valign="middle"> <a onclick="gotolink(50)" class="xx0">搜索</a></td>
+			      <input id="propName" name="propName" type="text" value="<!--{$propName}-->"/></td>
+			    <td width="204" colspan="2" align="left" valign="middle"> <a href="javascript:void(0)" onclick="gotolink(50)" class="xx0">搜索</a></td>
 			    </tr>
 		  </table>
 		  </div>
         <div class="glcx">
        	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 			  <tr>
-			    <td width="55" height="50" align="center" valign="middle" bgcolor="#eeece1"><label><input name="" type="checkbox" value="" / >选中</label></td>
+			    <td width="55" height="50" align="center" valign="middle" bgcolor="#eeece1"><label><input id="checkall" name="checkall" type="checkbox" value="" / >选中</label></td>
 			    <td width="225" height="50" align="center" valign="middle" bgcolor="#eeece1">房源基本信息</td>
 			    <td width="120" height="50" align="center" valign="middle" bgcolor="#eeece1">最后更新</td>
 			    <td width="120" height="50" align="center" valign="middle" bgcolor="#eeece1">录入时间</td>
@@ -83,21 +83,21 @@
 			    <td height="50" align="center" valign="middle" bgcolor="#eeece1">房源管理</td>
 			  </tr>
 		  </table>
-		  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+		  <table id="prop_table" width="100%" border="0" cellspacing="0" cellpadding="0">
 		  
 			  <!--{section name=prop loop=$propList}-->
 			  <tr>
 			    <td width="55" height="80" align="center" valign="middle" class="bor">
 			    	<label><input name="" type="checkbox" value="<!--{$propList[prop].propKind}--><!--{$propList[prop].propId}-->" / ></label></td>
 			    <td width="225" align="left" valign="middle" class="bor">
-			    	<img src="http://localhost/88hom/uploads/<!--{$propList[prop].propPhoto}-->" class="l">
+			    	<img src="http://localhost/88hom/uploads/community/<!--{$propList[prop].propPhoto}-->" class="l">
 			        <span class="l wz">
 			        	名称：<!--{$propList[prop].propName}--><br /> 			        	
 					 	<!--{if $propList[prop].propKind eq 'zz' }-->
-						户型：<!--{$propList[prop].room}-->室<!--{$propList[prop].hall}-->厅 面积：<!--{$propList[prop].propArea}--><sup>2</sup><br />
-						单价：<!--{$propList[prop].perPriceArea}-->/<sup>2</sup><br />
+						户型：<!--{$propList[prop].room}-->室<!--{$propList[prop].hall}-->厅 面积：<!--{$propList[prop].propArea}-->m<sup>2</sup><br />
+						单价：<!--{$propList[prop].perPriceArea}-->/m<sup>2</sup><br />
                         <!--{else}-->
-						售价：<!--{$propList[prop].propPrice}-->万 面积：<!--{$propList[prop].propArea}--><sup>2</sup><br />
+						售价：<!--{$propList[prop].propPrice}-->万 面积：<!--{$propList[prop].propArea}-->m<sup>2</sup><br />
 					 	<!--{/if}-->
 			        </span>
 			        </td>
@@ -105,7 +105,7 @@
 			    <td width="120" align="center" valign="middle" class="bor"><!--{$propList[prop].createDate}--><br /><!--{$propList[prop].createTime}--></td>
 			    <td width="92" align="center" valign="middle" class="bor"><font class="red">100</font> 次</td>
 			    <td align="center" valign="middle" class="bor">
-			    <a href="#">编辑</a> <a href="#">删除</a><br />
+			    <a href="#">编辑</a> <a href="javascript:void(0);" onclick="deleteProp('<!--{$propList[prop].propKind}--><!--{$propList[prop].propId}-->')">删除</a><br />
 			    	<a href="#" class="xx0" style="margin:8px 12px;">去委托</a>
 			    </td>
 			  </tr>
@@ -116,10 +116,10 @@
 			    <td align="center" valign="middle">&nbsp;</td>
 			    <td align="center" valign="middle">&nbsp;</td>
 			    <td align="center" valign="middle">&nbsp;</td>
-			    <td align="center" valign="middle"><a href="#" class="xx0" style="margin:8px 12px;">批量删除</a></td>
+			    <td align="center" valign="middle"><a href="javascript:void(0);" onclick="DelSelectedProp()" class="xx0" style="margin:8px 12px;">批量删除</a></td>
 			  </tr>
 		  </table>
-		  <div class="page"><!--{$pagination}-->&nbsp;到第<input type="text" id="destNo" name="destNo"/>页 <a onclick="gotolink(51)" class="next">确定</a>
+		  <div class="page"><!--{$pagination}-->&nbsp;到第<input type="text" id="destNo" name="destNo" value="<!--{$destNo}-->"/>页 <a href="javascript:void(0)" onclick="gotolink(51)" class="next">确定</a>
 		  </div>
         </div>
         <input type="hidden" id="pageNo" name="pageNo" value="<!--{$pageNo}-->"/>
@@ -140,6 +140,110 @@
     </div>
     </div>
 
+<script type="text/javascript">
+	$(document).ready(function() {
+	
+        $("#checkall").click(function(){
+        	var ischecked = this.checked;
+            $("#prop_table input[type='checkbox'],#checkall").each(function(){
+            	this.checked = ischecked;
+                $(this).click(function(){
+                	if(!this.checked){
+                    	$('#checkall').get(0).checked=false;
+                    }
+                });
+            });
+		});
+	});
+	
+    //页面刷新
+    function reflash(){
+    	window.location.reload();
+	}
+	
+	function deleteProp(propId){
+	
+    	if(!confirm("确认删除房源？")) return false;
+    	
+		var option={action:"delProp",propIds:propId+","};
+        $.ajax({
+				url:"property_handler.php",
+				dataType:"json",
+                data:option,
+                type:"post",
+                success:function(msg){
+					if(msg.result=="success"){
+						alert("删除成功!");
+                        window.setTimeout(function(){location.reload();}, 1000);
+                    }else{
+                        alert("删除失败!");
+                    }
+                },
+                error:function(){
+					alert("提示:删除失败!");
+                }
+        })
+	}
+
+    //单击批量删除
+    function DelSelectedProp(){
+    	
+    	if(!confirm("确认删除选中房源？")) return false;
+    	
+    	
+        var proplist = "";
+        $("#prop_table input:checked").each(function(){
+            proplist += $(this).val()+",";
+		});
+		
+        if(proplist==""){
+        	alert("选项不可以为空!");
+        	return false;
+        }
+		
+		var option={action:"delProp",propIds:proplist};
+        $.ajax({
+				url:"property_handler.php",
+				dataType:"json",
+                data:option,
+                type:"post",
+                success:function(msg){
+					if(msg.result=="success"){
+						alert("删除成功!");
+                        window.setTimeout(function(){location.reload();}, 1000);
+                    }else{
+                        alert("删除失败!");
+                    }
+                },
+                error:function(){
+					alert("提示:删除失败!");
+                }
+        })
+	}
+	
+	function gotolink(id){
+		if(id >= 0 && id < 5){
+			$("#propState").val(id);
+			$("#propNum").val("");
+			$("#propPriceFrom").val("");
+			$("#propPriceTo").val("");
+			$("#propRoom").val(0);
+			$("#propKind").val("vv");
+			$("#propOrder").val(0);
+			$("#pageNo").val("");
+			$("#propName").val("");
+			$("#destNo").val("");
+		}else if(id == 51){
+			$("#pageNo").val($("#destNo").val());
+		}
+		$("#searchFrm").submit();		
+	}
+	
+	function gotopage(id){
+		$("#pageNo").val(id);
+		$("#searchFrm").submit();
+	}
+</script>
 <!--求购底部-->
 <!--{include file="$footer"}-->
 </body>

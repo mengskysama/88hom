@@ -456,9 +456,9 @@ function pagination2($totalNum=0,$pageSize=10,$currentPage=null,$indexLen=5){
 	$pageIndexs = "";
 	for($i=$startIndex; $i<=$endIndex; $i++){
 		if($i == $currentPage){
-			$pageIndexs .= '['.$i.']';
+			$pageIndexs .= '<a href="javascript:void(0)">'.$i.'</a>';
 		}else{
-			$pageIndexs .= '<a onclik="gotopage('.$i.')">'.$i.'</a>';
+			$pageIndexs .= '<a href="javascript:void(0)" onclick="gotopage('.$i.')">'.$i.'</a>';
 		}
 	}
 
@@ -467,19 +467,18 @@ function pagination2($totalNum=0,$pageSize=10,$currentPage=null,$indexLen=5){
 		$prevPage = $currentPage-1;
 		$pageInfo .= '<a onclick="gotopage('.$prevPage.')" class="prev">上一页</a>';
 	}else{
-		$pageInfo .= '<a class="prev">上一页</a>';
+		$pageInfo .= '<a href="javascript:void(0)" class="prev">上一页</a>';
 	}
 	$pageInfo .= $pageIndexs;	
 	
 	if($currentPage < $totalPage){
 		$nextPage = $currentPage+1;
-		$pageInfo .= '<a href="gotopage('.$nextPage.')" class="next">下一页</a>';
+		$pageInfo .= '<a href="javascript:void(0)" onclick="gotopage('.$nextPage.')" class="next">下一页</a>';
 	}else{
-		$pageInfo .= '<a class="prev">下一页</a>';
+		$pageInfo .= '<a href="javascript:void(0)" class="prev">下一页</a>';
 	}
 		
 	$pageInfo .= '&nbsp;&nbsp;共'.$totalPage.'页';
-	//<a href="#" class="prev">上一页</a><a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a href="#" class="next">下一页</a>&nbsp;&nbsp;共20页
 	return $pageInfo;
 	
 }
@@ -652,9 +651,9 @@ function extend_file($file_name){
 }
  function getParameter($param, $method='POST'){
  	if($method == 'POST'){
- 		return !empty($_POST[$param]) ? $_POST[$param] : "";
+ 		return isset($_POST[$param]) ? $_POST[$param] : "";
  	}else{
- 		return !empty($_GET[$param]) ? $_GET[$param] : "";
+ 		return isset($_GET[$param]) ? $_GET[$param] : "";
  	}
  }
  //解码javascript的escape

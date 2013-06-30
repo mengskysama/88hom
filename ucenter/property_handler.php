@@ -8,7 +8,9 @@ require 'ShopPropertyHandler.class.php';
 $propType = getParameter("prop_type");
 $estId = getParameter("estId");
 $estName = getParameter("estName");
-$state = (getParameter("btn_live") == "") ? 0 : 1;
+$state = getParameter("action_to_go");
+$action = getParameter("action");
+
 if($propType == "zz"){
 	
 	$houseNumber = getParameter("houseNumber");
@@ -88,6 +90,16 @@ if($propType == "zz"){
 											$shopContent,$shopUserId,$state);
 }else if($propType == "cf"){
 	
+}else if($action == "delProp"){
+	$propIds = getParameter("propIds");
+	$secondPropService = new SecondHandPropertyService($db);
+	$delResult = $secondPropService->deletePropertyList($propIds);
+	if($delResult){
+		echo "{\"result\":\"success\"}";
+	}else{
+		echo "{\"result\":\"failure\"}";
+	}
+	return;
 }
 echo 'result->'.$propHandler->handle();
 ?>

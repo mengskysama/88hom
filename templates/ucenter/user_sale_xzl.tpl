@@ -14,14 +14,27 @@ $(function() {
       	  $("#estId").val(ui.item.id);    
       }
     });
-    
-    
+        
     $("#btn_live").click(function() {
         $("#btn_live").attr("disabled", true);
+        $("#btn_save").attr("disabled", true);
         if (check()) {
-            document.getElementById("zzForm").submit();
+        	$("#action_to_go").val(1);
+            document.getElementById("xzlForm").submit();
         } else {
             $("#btn_live").removeAttr("disabled");
+            $("#btn_save").removeAttr("disabled");
+        }
+    });
+        
+    $("#btn_save").click(function() {
+        $("#btn_live").attr("disabled", true);
+        $("#btn_save").attr("disabled", true);
+        if (check()) {
+            document.getElementById("xzlForm").submit();
+        } else {
+            $("#btn_live").removeAttr("disabled");
+            $("#btn_save").removeAttr("disabled");
         }
     });
 });
@@ -74,7 +87,7 @@ function check(){
    		  </ul>
       <div class="bs_tx">
         <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
-            <form id="zzForm" name="xzlForm" action="property_handler.php" method="post" enctype="multipart/form-data">
+            <form id="xzlForm" name="xzlForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="xzl">
         <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
   <tr>
@@ -177,6 +190,7 @@ function check(){
             <td width="320" height="80" align="center" valign="middle"><input name="btn_save" type="button" class="mddl1" id="btn_save" value="保存待发布" /></td>
 	      </tr>
 	    </table>
+	    <input type="hidden" id="action_to_go" name="action_to_go" value="0"/>
 	    </form>
     </div>
     </div>

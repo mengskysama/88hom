@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-05-14 22:44:31
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-29 16:31:38
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\message_send.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:28404518e402574a714-91650917%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1059e55de58c6e54e32cc534c5aa9d20821ea38c' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\message_send.tpl',
-      1 => 1368540355,
+      1 => 1371277937,
       2 => 'file',
     ),
   ),
@@ -23,6 +23,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'jsFiles' => 0,
     'cssFiles' => 0,
     'userName' => 0,
+    'msg_count_sent' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -40,11 +41,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <body>
 <!--头部-->
-<div class="gr_top">
-	<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
-ucenter/grzc_03.jpg" />
-    <span><a href="#">房不剩房首页</a> | <a href="#">资讯</a> |  <a href="#">新房</a> <a href="#">二手房</a> <a href="#">租房</a> | <a href="#">装修家居</a> | <a href="#">业主论坛</a></span>
-</div>
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['header']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 <!--中间-->
 <div class="gr_zj">
 	<div class="zl_b">
@@ -53,7 +51,8 @@ ucenter/grzc_03.jpg" />
 	      <div class="zl_b11">
           <div class="yhzx1">
 	        <ul class="zl_dh">
-	          <li><a href="userinfo.php">用户中心</a></li>
+	          <li><a href="#">用户中心</a></li>
+	          <li><a href="userinfo.php">个人资料</a></li>
 	          <li><a href="secure_reset_password.php">安全中心</a></li>
 	          <li><a href="message_inbox.php">短信息中心</a></li>
             </ul>
@@ -103,7 +102,8 @@ ucenter/grzc_03.jpg" />
 							     <td width="80" height="100" align="right" valign="middle">&nbsp;</td>
   							   <td height="100"><p class="z6">说明：<br />
   							     ①可以用英文状态下的逗号将用户名隔开实现群发，最多5个用户<br />
-  							     ②每天可发送20条短消息(您今日已发送0条)</p></td>
+  							     ②每天可发送20条短消息(您今日已发送<?php echo $_smarty_tpl->tpl_vars['msg_count_sent']->value;?>
+条)</p></td>
 					      </tr>
 						</table>
 				  </form>		
@@ -119,8 +119,7 @@ ucenter/grzc_03.jpg" />
 </div>
 
     <!--发送提示-->
-    <div class="tips_div05 jqmWindow" id="showMess" style="width: 240px; margin-left: -120px;
-        top: 40%">
+    <div class="tips_div05 jqmWindow" id="showMess" style="width: 240px; margin-left: -120px; top: 40%">
         <ul>
             <li class="Rb_3_1">
                 <div>
@@ -361,49 +360,8 @@ ucenter/grzc_03.jpg" />
 
 
 <!--底部-->
-<div class="gr_bot">
-	<div class="gr_bot1">
-		<div class="c">
-					<div class="c1">
-						<a href="#">今日头条</a>
-						<a href="#">楼市要闻</a><br/>
-						<a href="#">政策解读</a>
-						<a href="#">行情数据</a>
-					</div>
-					<div class="s"></div>
-					<div class="c2">
-						<a href="#">最新开盘</a>
-						<a href="#">热门楼盘</a><br/>
-						<a href="#">优惠团购</a>
-						<a href="#">地图看房</a>
-					</div>
-					<div class="s"></div>
-					<div class="c2">
-						<a href="#">设计修饰</a>
-						<a href="#">促销团购</a><br/>
-						<a href="#">家具卖场</a>
-						<a href="#">装修指南</a>
-					</div>
-                    <div class="s"></div>
-					<div class="c3">
-						<a href="#">设计修饰</a>
-						<a href="#">促销团购</a><br/>
-						<a href="#">家具卖场</a>
-						<a href="#">装修指南</a>
-					</div>
-					<div class="s"></div>
-					<div class="c4">
-						<a href="#">业主论坛</a>
-						<a href="#">论坛热贴</a><br/>
-						<a href="#">人气板块</a>
-					</div>
-				</div>
-             <div class="gr_bot2">
-             广告投放：0755-88886666  投诉邮箱：tousu@tianyue.com  投诉电话：400-6666-888<br/>
-				版权所有2013-2016 房不剩房 天境文化传播有限公司 备粤10110011号 
-             </div>
-		</div>
-	</div>
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['footer']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 </body>
 </html>
 <?php }} ?>

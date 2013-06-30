@@ -64,6 +64,11 @@ class FactoryDAO  {
 		$result = $this->db->getQueryValue($sql);
 		return $result['propTotal'];
 	}
+
+	public function delete($factoryId){
+		$sql="update ecms_factory set factoryState=2 where factoryId=".$factoryId;
+		return $this->db->getQueryExecute($sql);
+	}
 	//end to be added by Cheneil
 	//修改厂房
 	public function modify($factory){

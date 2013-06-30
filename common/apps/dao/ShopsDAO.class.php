@@ -38,7 +38,7 @@ class ShopsDAO{
 			  ".(empty($info['shopsMapY'])?0:$info['shopsMapY']).",
 			  ".(empty($info['shopsState'])?0:$info['shopsState']).",
 			  ".(empty($info['shopsUserId'])?0:$info['shopsUserId']).",
-			  ".(empty($info['shopsPropertyId'])?0:$info['shopsPropertyId']).",".time().",".time().")";
+			  ".(empty($info['shopsCommunityId'])?0:$info['shopsCommunityId']).",".time().",".time().")";
 		
 		$this->db->query($sql);
 		$shopId = $this->db->getInsertNum();
@@ -49,6 +49,11 @@ class ShopsDAO{
 		$sql = "select count(shopsId) as propTotal from ecms_shops where shopsUserId=".$userId." and shopsState=".$state;
 		$result = $this->db->getQueryValue($sql);
 		return $result['propTotal'];
+	}
+
+	public function delete($shopsId){
+		$sql="update ecms_shops set shopsState=2 where shopsId=".$shopsId;
+		return $this->db->getQueryExecute($sql);
 	}
 	//end to be added by Cheneil
 	public function modify($info){
@@ -87,9 +92,6 @@ class ShopsDAO{
 		return $this->db->getQueryExeCute($sql);
 	}
 	public function getDetail(){
-		
-	}
-	public function delete(){
 		
 	}
 }

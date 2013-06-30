@@ -1,11 +1,43 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-30 22:17:01
+         compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_sp.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:3086051d02e2a08f659-39317030%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '72d7e6d07b0051ed191aa90cf5dff817c222a4aa' => 
+    array (
+      0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_sp.tpl',
+      1 => 1372601749,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '3086051d02e2a08f659-39317030',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51d02e2a196c36_59099786',
+  'variables' => 
+  array (
+    'cfg' => 0,
+    'jsFiles' => 0,
+    'cssFiles' => 0,
+    'ckeditLib' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_51d02e2a196c36_59099786')) {function content_51d02e2a196c36_59099786($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
+" />
 <title>个人房源_商铺</title>
-<!--{$jsFiles}-->
-<!--{$cssFiles}-->
-<script language="JavaScript" type="text/javascript" src="<!--{$ckeditLib}-->"></script>
+<?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
+
+<?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
+
+<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
+"></script>
 <script>
 $(function() {    
     $("#estName").autocomplete({
@@ -71,10 +103,12 @@ function check(){
 
 <body>
 <!--求购头部-->
-<!--{include file="$header_ucenter_user"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['header_ucenter_user']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 <!--求购内容-->
 <div class="qg_main">
-	<!--{include file="$ucenter_user_left_menu"}-->
+	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_user_left_menu']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
   	<div class="qg_r">
     <p>你的位置: <a href="#">房源管理</a></p>
    	<div class="qg_bs">
@@ -260,6 +294,8 @@ function check(){
     </div>
 
 <!--求购底部-->
-<!--{include file="$footer"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['footer']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 </body>
 </html>
+<?php }} ?>

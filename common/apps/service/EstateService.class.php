@@ -12,6 +12,10 @@ class EstateService{
 		return $this->estateDAO->getEstatesByLikeName($estName);
 	}
 	
+	public function getEstateByName($estName){
+		return $this->estateDAO->getEstateByName($estName);
+	}
+	
 	public function getEstateById($estId){
 		return $this->estateDAO->getEstateById($estId);
 	}

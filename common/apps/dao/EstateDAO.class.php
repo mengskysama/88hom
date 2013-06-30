@@ -10,6 +10,11 @@ class EstateDAO{
 		return $this->db->getQueryArray($sql);
 	}
 	
+	public function getEstateByName($estName){
+		$sql = "select * from ecms_community where communityName='".$estName."'";
+		return $this->db->getQueryValue($sql);
+	}
+	
 	public function getEstateById($estId){
 		$sql = "select * from ecms_community where communityId=".$estId;
 		return $this->db->getQueryValue($sql);
