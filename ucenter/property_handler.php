@@ -101,5 +101,6 @@ if($propType == "zz"){
 	}
 	return;
 }
-echo 'result->'.$propHandler->handle();
+$propHandler->handle();
+header("Location:sell_property_list.php");
 ?>
