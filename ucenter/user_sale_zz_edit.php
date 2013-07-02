@@ -3,9 +3,16 @@ require 'path.inc.php';
 require 'check_login.php';
 $tpl_name = $tpl_dir.'user_sale_zz_edit.tpl';
 
+$html->addJs('jquery-ui-1.8.21.custom.min.js');
+$html->addJs('ucenter_property_input.js');
+$html->addCss('ucenter/jquery-ui.css');
+$html->addCss('ucenter/public.css');
+$html->show();
+
 $propId = getParameter("propId","GET");
 $propService = new SecondHandPropertyService($db);
-$property = $propService->getHousePropertyById($propId);
+$property = $propService->getHousePropertyById($userId,$propId);
+print_r($property);
 if($property){
 	$estName = $property['estName'];
 	$houseNumber = $property['houseNumber'];
@@ -62,12 +69,6 @@ if($property){
 	$smarty->assign("propPhoto",$propPhoto);
 	$smarty->assign("houseContent",$houseContent);
 }
-
-$html->addJs('jquery-ui-1.8.21.custom.min.js');
-$html->addJs('ucenter_property_input.js');
-$html->addCss('ucenter/jquery-ui.css');
-$html->addCss('ucenter/public.css');
-$html->show();
 $smarty->assign('ucenter_user_left_menu',$tpl_dir.'ucenter_user_left_menu.tpl');
 $smarty->assign('ckeditLib','../common/libs/fck/ckeditor/ckeditor.js');
 $smarty->display($tpl_name);

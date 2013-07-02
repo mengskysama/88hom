@@ -86,6 +86,22 @@ class HouseDAO  {
 		$sql="update ecms_house set houseState=2 where houseId=".$houseId;
 		return $this->db->getQueryExecute($sql);
 	}
+	
+	public function getPropertyById($userId,$propId){
+		$sql = "select houseTitle,houseContent,houseNumber,houseRoom,houseHall,houseToilet,houseKitchen,houseBalcony,houseSellPrice,".
+				"houseBuildArea,houseUseArea,houseRentArea,houseType,houseBuildStructure,houseBuildForm,houseForward,houseFitment,".
+				"houseBaseService,houseEquipment,houseFloor,houseAllFloor,houseBuildYear,houseLookTime,housePayInfo,houseRentType,".
+				"houseRentRoomType,houseRentDetail,houseLiveTime,houseTags,housePayment,housePayDetailY,housePayDetailF,houseSellRentType,".
+				"houseState,(select communityName from ecms_community where communityId=houseCommunityId) as propName,houseCommunityId,".
+				"(select picUrl from ecms_pic where picBuildType=1 and picBuildId=houseId limit 1) as propPhoto,houseCreateTime,houseUpdateTime ".
+				"from ecms_house ".
+				"where houseId=".$propId;
+		if($userId > 0){
+			$sql .= " and houseUserId=".$userId;
+		}
+		return $this->db->getQueryArray($sql);
+	}
+	
 	//end to be added by Cheneil
 	//修改住宅房源
 	public function modify($house){

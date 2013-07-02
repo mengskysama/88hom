@@ -55,6 +55,19 @@ class ShopsDAO{
 		$sql="update ecms_shops set shopsState=2 where shopsId=".$shopsId;
 		return $this->db->getQueryExecute($sql);
 	}
+
+	public function getPropertyById($userId,$propId){
+		$sql = "select shopsName,shopsAddress,shopsTitle,shopsContent,shopsType,shopsSellPrice,shopsRentPrice,".
+			   "shopsRentPriceUnit,shopsRentState,shopsPayment,shopsPayDetailY,shopsPayDetailF,shopsBuildArea,shopsFloor,shopsAllFloor,shopsDivision,".
+			   "shopsFitment,shopsBaseService,shopsAimOperastion,shopsIncludFee,shopsPropFee,shopsTransferFee,shopsNumber,shopsSellRentType,".
+			   "shopsMapX,shopsMapY,shopsState,shopsUserId,(select picUrl from ecms_pic where picBuildType=2 and picBuildId=shopsId limit 1) as propPhoto,shopsCreateTime,shopsUpdateTime ". 
+				"from ecms_shops ".
+				"where shopsId=".$propId;
+		if($userId > 0){
+			$sql .= " and shopsUserId=".$userId;
+		}
+		return $this->db->getQueryArray($sql);
+	}
 	//end to be added by Cheneil
 	public function modify($info){
 		$sql="update ecms_shops set 

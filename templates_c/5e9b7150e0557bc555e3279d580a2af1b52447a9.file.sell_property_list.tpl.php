@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-30 21:39:46
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-02 22:52:22
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\sell_property_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1757751ce7fb296f1b1-35968700%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5e9b7150e0557bc555e3279d580a2af1b52447a9' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\sell_property_list.tpl',
-      1 => 1372599549,
+      1 => 1372776718,
       2 => 'file',
     ),
   ),
@@ -176,7 +176,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['last']       = ($_sm
 			        <span class="l wz">
 			        	名称：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propName'];?>
 <br /> 			        	
-					 	<?php if ($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='zz'){?>
+					 	<?php if ($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='zz'||$_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='bs'){?>
 						户型：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['room'];?>
 室<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['hall'];?>
 厅 面积：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propArea'];?>
@@ -198,7 +198,23 @@ m<sup>2</sup><br />
 </td>
 			    <td width="92" align="center" valign="middle" class="bor"><font class="red">100</font> 次</td>
 			    <td align="center" valign="middle" class="bor">
-			    <a href="#">编辑</a> <a href="javascript:void(0);" onclick="deleteProp('<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind'];?>
+			    <?php if ($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='zz'){?>
+			    <a href="user_sale_zz_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
+">编辑</a>
+			    <?php }elseif($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='bs'){?>
+			    <a href="user_sale_bs_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
+">编辑</a>
+			    <?php }elseif($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='sp'){?>
+			    <a href="user_sale_sp_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
+">编辑</a>
+			    <?php }elseif($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='xzl'){?>
+			    <a href="user_sale_xzl_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
+">编辑</a>
+			    <?php }elseif($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='gc'){?>
+			    <a href="user_sale_gc_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
+">编辑</a>
+			    <?php }?>			    
+			     <a href="javascript:void(0);" onclick="deleteProp('<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind'];?>
 <?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
 ')">删除</a><br />
 			    	<a href="#" class="xx0" style="margin:8px 12px;">去委托</a>

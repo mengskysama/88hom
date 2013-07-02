@@ -47,6 +47,21 @@ class OfficeDAO{
 		$sql="update ecms_office set officeState=2 where officeId=".$officeId;
 		return $this->db->getQueryExecute($sql);
 	}
+
+	public function getPropertyById($userId,$propId){ 
+		$sql = "select officeNumber,officeType,officeSellPrice,officeRentPrice,officeRentPriceUnit,officeIncludFee,officeProFee,".
+			   "officePayment,officePayDetailY,officePayDetailF,officeBuildArea,officeFloor,officeAllFloor,officeDivision,officeFitment,officeLevel,".
+			   "officeTitle,officeContent,officeSellRentType,officeState,".
+			   "(select communityName from ecms_community where communityId=officeCommunityId) as propName,officeCommunityId,".
+			   "(select picUrl from ecms_pic where picBuildType=3 and picBuildId=officeId limit 1) as propPhoto,officeUserId,officeCreateTime,officeUpdateTime ".
+	 
+				"from ecms_office ".
+				"where officeId=".$propId;
+		if($userId > 0){
+			$sql .= " and officeUserId=".$userId;
+		}
+		return $this->db->getQueryArray($sql);
+	}
 	//end to be added by Cheneil
 	public function modify($info){
 		$sql="update ecms_office set 

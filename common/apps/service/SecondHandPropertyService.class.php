@@ -62,6 +62,26 @@ class SecondHandPropertyService{
 		return $this->saveProperty($this->villaDAO, $villa);
 	}
 	
+	public function getHousePropertyById($userId,$propId){
+		return $this->houseDAO->getPropertyById($userId,$propId);
+	}
+	
+	public function getVillaPropertyById($userId,$propId){
+		return $this->villaDAO->getPropertyById($userId,$propId);
+	}
+	
+	public function getShopPropertyById($userId,$propId){
+		return $this->shopsDAO->getPropertyById($userId,$propId);
+	}
+	
+	public function getOfficePropertyById($userId,$propId){
+		return $this->officeDAO->getPropertyById($userId,$propId);
+	}
+	
+	public function getFactoryPropertyById($userId,$propId){
+		return $this->factoryDAO->getPropertyById($userId,$propId);
+	}
+	
 	public function countPropertiesByState($userId,$propState){
 		$house_count = $this->houseDAO->countProperty($userId,$propState);
 		$villa_count = $this->villaDAO->countProperty($userId,$propState);

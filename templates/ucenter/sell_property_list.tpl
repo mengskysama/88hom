@@ -105,7 +105,18 @@
 			    <td width="120" align="center" valign="middle" class="bor"><!--{$propList[prop].createDate}--><br /><!--{$propList[prop].createTime}--></td>
 			    <td width="92" align="center" valign="middle" class="bor"><font class="red">100</font> 次</td>
 			    <td align="center" valign="middle" class="bor">
-			    <a href="#">编辑</a> <a href="javascript:void(0);" onclick="deleteProp('<!--{$propList[prop].propKind}--><!--{$propList[prop].propId}-->')">删除</a><br />
+			    <!--{if $propList[prop].propKind eq 'zz'}-->
+			    <a href="user_sale_zz_edit.php?propId=<!--{$propList[prop].propId}-->">编辑</a>
+			    <!--{elseif $propList[prop].propKind eq 'bs'}-->
+			    <a href="user_sale_bs_edit.php?propId=<!--{$propList[prop].propId}-->">编辑</a>
+			    <!--{elseif $propList[prop].propKind eq 'sp'}-->
+			    <a href="user_sale_sp_edit.php?propId=<!--{$propList[prop].propId}-->">编辑</a>
+			    <!--{elseif $propList[prop].propKind eq 'xzl'}-->
+			    <a href="user_sale_xzl_edit.php?propId=<!--{$propList[prop].propId}-->">编辑</a>
+			    <!--{elseif $propList[prop].propKind eq 'gc'}-->
+			    <a href="user_sale_gc_edit.php?propId=<!--{$propList[prop].propId}-->">编辑</a>
+			    <!--{/if}-->			    
+			     <a href="javascript:void(0);" onclick="deleteProp('<!--{$propList[prop].propKind}--><!--{$propList[prop].propId}-->')">删除</a><br />
 			    	<a href="#" class="xx0" style="margin:8px 12px;">去委托</a>
 			    </td>
 			  </tr>

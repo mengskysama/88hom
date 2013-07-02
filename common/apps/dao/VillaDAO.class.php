@@ -77,6 +77,21 @@ class VillaDAO  {
 		$sql="update ecms_villa set villaState=2 where villaId=".$villaId;
 		return $this->db->getQueryExecute($sql);
 	}
+	
+	public function getPropertyById($userId,$propId){
+		$sql = "select villaTitle,villaContent,villaNumber,villaRoom,villaHall,villaToilet,villaKitchen,villaBalcony,villaBuildArea,".
+				"villaUseArea,villaForward,villaFitment,villaBuildYear,villaBaseService,villaEquipment,villaLookTime,villaLiveTime,".
+				"villaSellPrice,villaRentPrice,villaRentType,villaPayment,villaPayDetailY,villaPayDetailF,villaAllFloor,villaBuildForm,".
+				"villaBuildStructure,villaCellar,villaCellarArea,villaCellarType,villaGarden,villaGardenArea,villaGarage,villaGarageCount,".
+				"villaParkingPlace,villaParkingPlaceCount,villaSellRentType,villaState,(select communityName from ecms_community where communityId=villaCommunityId) as propName,".
+				"villaCommunityId,(select picUrl from ecms_pic where picBuildType=4 and picBuildId=villaId limit 1) as propPhoto,villaCreateTime,villaUpdateTime ".
+				"from ecms_villa ".
+				"where villaId=".$propId;
+		if($userId > 0){
+			$sql .= " and villaUserId=".$userId;
+		}
+		return $this->db->getQueryArray($sql);
+	}
 	//end to be added by Cheneil
 	//修改别墅
 	public function modify($villa){

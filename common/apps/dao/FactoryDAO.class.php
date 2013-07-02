@@ -69,6 +69,21 @@ class FactoryDAO  {
 		$sql="update ecms_factory set factoryState=2 where factoryId=".$factoryId;
 		return $this->db->getQueryExecute($sql);
 	}
+	
+	public function getPropertyById($userId,$propId){ 
+		$sql = "select factoryNumber,factoryName,factoryAddress,factoryType,factorySellPrice,factoryProFee,factoryManagentUnits,factoryPayInfo,".
+			   "factoryFloorArea,factoryBuildArea,factoryOfficeArea,factoryWorkshopArea,factorySpaceArea,factoryDormitory,factoryBuildYear,".
+			   "factorySpan,factoryAllFloor,factoryFloorHeight,factoryLoadBearing,factoryBuildStructure,factoryWater,factoryHasCapacityNow,".
+			   "factoryHasCapacityMax,factoryRentPrice,factoryIncludFee,factoryPayment,factoryPayDetailY,factoryPayDetailF,factoryLeastYear,".
+			   "factorySellRentType,factoryMapX,factoryMapY,factoryAreaId,factoryState,".
+			   "(select picUrl from ecms_pic where picBuildType=5 and picBuildId=factoryId limit 1) as propPhoto,factoryUserId,factoryCreateTime,factoryUpdateTime ".	 
+				"from ecms_factory ".
+				"where factoryId=".$propId;
+		if($userId > 0){
+			$sql .= " and factoryUserId=".$userId;
+		}
+		return $this->db->getQueryArray($sql);
+	}
 	//end to be added by Cheneil
 	//修改厂房
 	public function modify($factory){

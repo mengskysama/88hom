@@ -108,3 +108,8 @@ select count(*) as propTotal from vw_get_sell_property_list where userId= and pr
 select propId,propKind,propName,propNumber,propPrice,propArea,floor(propPrice*10000/propArea) as perPriceArea,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto from vw_get_sell_property_list where userId= and propState=1  limit 0,5
 客户端:127.0.0.1
 时间:2013-07-02 09:41:05
+------------------------2013-07-02 23:38:35
+错误SQL语句：
+select houseTitle,houseContent,houseNumber,houseRoom,houseHall,houseToilet,houseKitchen,houseBalcony,houseSellPrice,houseBuildArea,houseUseArea,houseRentArea,houseType,houseBuildStructure,houseBuildForm,houseForward,houseFitment,houseBaseService,houseEquipment,houseFloor,houseAllFloor,houseBuildYear,houseLookTime,housePayInfo,houseRentType,houseRentRoomType,houseRentDetail,houseLiveTime,houseTags,housePayment,housePayDetailY,housePayDetailF,houseSellRentType,houseState,(select communityName from ecms_community where communityId=houseCommunityId) as propName,houseCommunityId,(select picUrl from ecms_pic where picBuildType=1 and picBuildId=houseId limit 1) as propPhoto,houseCreateTime,houseUpdateTime from ecms_house where houseId= and houseUserId=24
+客户端:127.0.0.1
+时间:2013-07-02 23:38:35
