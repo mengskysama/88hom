@@ -80,7 +80,7 @@ class OfficePropertyHandler extends PropertyHandler{
 		$office['officeCommunityId'] = $realEstId;
 		$office['officeUserId'] = $this->officeUserId;
 
-		$office['propertyPhoto']['picBuildType'] = 1;
+		$office['propertyPhoto']['picBuildType'] = 3;
 		$office['propertyPhoto']['picSellRent'] = 1;
 		$office['propertyPhoto']['picUrl'] = $photoName;		
 				

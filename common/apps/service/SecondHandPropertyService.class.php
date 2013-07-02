@@ -133,23 +133,25 @@ class SecondHandPropertyService{
 		
 		$ids = explode(",",$propIds);
 		$len = count($ids);
+		
 		for($i=0; $i<$len; $i++){
 			$id = $ids[$i];
 			$dao = "";
 			$offset = 0;
-			if(strstr($id,'zz') == 0){
+			
+			if(!substr($id,'zz')){
 				$dao = $this->houseDAO;
 				$offset = 2;
-			}else if(strstr($id,'bs')){
+			}else if(!strpos($id,'bs')){
 				$dao = $this->villaDAO;
 				$offset = 2;
-			}else if(strstr($id,'sp')){
+			}else if(!strpos($id,'sp')){
 				$dao = $this->shopsDAO;
 				$offset = 2;
-			}else if(strstr($id,'xzl')){
+			}else if(!strpos($id,'xzl')){
 				$dao = $this->officeDAO;
 				$offset = 3;
-			}else if(strstr($id,'gc')){
+			}else if(!strpos($id,'gc')){
 				$dao = $this->factoryDAO;
 				$offset = 2;
 			}

@@ -36,6 +36,50 @@ function textCounter(input,countfield,maxlimit)
 	}	
 }
 
+function CheckGardenArea(keyName,flag){
+	if(!flag) return false;
+    
+    document.getElementById(keyName).value = document.getElementById(keyName).value.toLowerCase();
+    var value=document.getElementById(keyName).value;
+    
+    if(value==''){
+    	alert("请填写花园面积");
+        return false;
+    }
+        
+    if(check_float(keyName)){
+    	if(parseFloat(value)<=2||parseFloat(value)>=10000){
+    		alert("花园面积必须大于2且小于10000");
+    		return false;
+    	}
+    	return true;
+	}else{
+        alert("只能填写数字");
+        return false;
+	}
+}
+function CheckCellarArea(keyName,flag){
+	if(!flag) return false;
+    
+    document.getElementById(keyName).value = document.getElementById(keyName).value.toLowerCase();
+    var value=document.getElementById(keyName).value;
+    
+    if(value==''){
+    	alert("请填写地下室面积");
+        return false;
+    }
+        
+    if(check_float(keyName)){
+    	if(parseFloat(value)<=2||parseFloat(value)>=10000){
+    		alert("地下室面积必须大于2且小于10000");
+    		return false;
+    	}
+    	return true;
+	}else{
+        alert("只能填写数字");
+        return false;
+	}
+}
 function CheckBuildingArea(KeyName,flag)
 {
     if(!flag) return false;

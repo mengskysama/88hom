@@ -29,7 +29,7 @@ class PropertyHandler{
 	protected function uploadPhoto($photo,$userId){
 	
 		$targetFolder = ECMS_PATH_ROOT.'uploads/community/'; // Relative to the root
-	
+
 		if((($photo["type"] != "image/gif")
 				&& ($photo["type"] != "image/jpeg")
 				&& ($photo["type"] != "image/pjpeg"))

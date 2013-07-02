@@ -183,7 +183,7 @@ label{vertical-align:middle}
 .wtx{ width:500px; margin-top:20px; height:230px; float:left}
 .yz{ background:url(../../images/ucenter/qg_43.jpg) no-repeat; width:133px; height:25px; font-size:12px; color:#333;line-height:35px; float:left; border:0;cursor: pointer; text-align:center; line-height:25px;}
 .yz1{ background:url(../../images/ucenter/qg_img3.jpg) no-repeat; width:83px; height:26px; display:block; text-align:center; line-height:26px; color:#333; margin-left:6px;}
-.yz2{ background:url(../../images/ucenter/fy_15.jpg) no-repeat; width:73px; height:21px; display:block; text-align:center; line-height:21px; color:#333; margin-left:6px;}
+.yz2{ background:url(../../images/ucenter/fy_15.jpg) no-repeat; width:73px; height:21px; display:block; text-align:center; line-height:21px; color:#333; margin-right:6px;}
 .pj a{ width:106px; height:20px; background:url(../../images/ucenter/pj.jpg); display:block; color:#FFF; text-align:center; line-height:20px; margin-top:10px;}
 .pj p{ line-height:18px;}
 .pj img{ margin-left:4px;}
@@ -236,8 +236,10 @@ label{vertical-align:middle}
 .bs_tx{ width:730px; margin-top:20px; padding-bottom:15px; border-bottom:1px solid #dddddd;}
 .bs_tx p{ width:728px; line-height:30px; height:30px; background:url(../../images/ucenter/fy_10.jpg) 0 no-repeat; border-bottom:1px solid #e8340e; margin-left:2px; margin-bottom:10px;}
 .bs_tx b{ width:100px; text-indent:20px; float:left}
-.bs span{ width:500px; padding:10px; line-height:28px; display:block; border-bottom:1px dotted #bf1e2e;}
+.bs span{ width:500px; padding:10px; line-height:20px; color:#999999; display:block; border-bottom:1px dashed #bf1e2e;}
 .bs_tx1{ width:680px; padding:10px; line-height:28px; border-bottom:1px solid #dddddd; margin-bottom:15px;}
+.bs01{ width:500px; padding:10px; color:#999999; line-height:20px; border-bottom:1px #bf1e2e dashed;}
+
 
 /*我的找房条件*/
 .zftj{ width:749px; border:1px solid #dddddd; margin-bottom:25px;}
@@ -268,4 +270,7 @@ label{vertical-align:middle}
 .green{ font-size:18px; color:#03b610; font-weight:bold; padding-left:10px;}
 .jhyj_bg{ width:634px; height:140px; background:url(../../images/ucenter/jhyj_bg.gif) no-repeat; margin:10px 0px; font-size:14px; text-align:center; line-height:28px; padding-top:35px;}
 
-
+.xgzl_tx{ width:120px; height:152px; border:1px solid #dbdbdb;}
+.input01{ width:80px; border:1px solid #CCC; height:18px; line-height:18px;}
+.mt10{ margin-top:10px;}
+.red24{ font-weight:bold; font-size:24px; color:#BB2129;}

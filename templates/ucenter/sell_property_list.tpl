@@ -93,7 +93,7 @@
 			    	<img src="http://localhost/88hom/uploads/community/<!--{$propList[prop].propPhoto}-->" class="l">
 			        <span class="l wz">
 			        	名称：<!--{$propList[prop].propName}--><br /> 			        	
-					 	<!--{if $propList[prop].propKind eq 'zz' }-->
+					 	<!--{if $propList[prop].propKind eq 'zz' or $propList[prop].propKind eq 'bs'}-->
 						户型：<!--{$propList[prop].room}-->室<!--{$propList[prop].hall}-->厅 面积：<!--{$propList[prop].propArea}-->m<sup>2</sup><br />
 						单价：<!--{$propList[prop].perPriceArea}-->/m<sup>2</sup><br />
                         <!--{else}-->

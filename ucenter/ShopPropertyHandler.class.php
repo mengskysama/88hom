@@ -112,7 +112,7 @@ class ShopPropertyHandler extends PropertyHandler{
 		$shop['shopsUserId'] = $this->shopUserId;
 		$shop['shopsCommunityId'] = $realEstId;
 
-		$shop['propertyPhoto']['picBuildType'] = 1;
+		$shop['propertyPhoto']['picBuildType'] = 2;
 		$shop['propertyPhoto']['picSellRent'] = 1;
 		$shop['propertyPhoto']['picUrl'] = $photoName;		
 				

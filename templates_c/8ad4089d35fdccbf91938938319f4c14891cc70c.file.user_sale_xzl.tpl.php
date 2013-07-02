@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-27 15:18:27
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-02 14:55:26
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_xzl.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1874551c7e378b4dbf7-05579691%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8ad4089d35fdccbf91938938319f4c14891cc70c' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_xzl.tpl',
-      1 => 1372317490,
+      1 => 1372661976,
       2 => 'file',
     ),
   ),
@@ -46,14 +46,27 @@ $(function() {
       	  $("#estId").val(ui.item.id);    
       }
     });
-    
-    
+        
     $("#btn_live").click(function() {
         $("#btn_live").attr("disabled", true);
+        $("#btn_save").attr("disabled", true);
         if (check()) {
-            document.getElementById("zzForm").submit();
+        	$("#action_to_go").val(1);
+            document.getElementById("xzlForm").submit();
         } else {
             $("#btn_live").removeAttr("disabled");
+            $("#btn_save").removeAttr("disabled");
+        }
+    });
+        
+    $("#btn_save").click(function() {
+        $("#btn_live").attr("disabled", true);
+        $("#btn_save").attr("disabled", true);
+        if (check()) {
+            document.getElementById("xzlForm").submit();
+        } else {
+            $("#btn_live").removeAttr("disabled");
+            $("#btn_save").removeAttr("disabled");
         }
     });
 });
@@ -61,7 +74,7 @@ $(function() {
 function check(){
 	var estNameValue = $("#estName").val();
 	if(trim(estNameValue) == ''){
-		alert("请填写楼盘名称");
+		alert("请填写写字楼名称");
 		return false;
 	}
 	
@@ -108,7 +121,7 @@ function check(){
    		  </ul>
       <div class="bs_tx">
         <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
-            <form id="zzForm" name="xzlForm" action="property_handler.php" method="post" enctype="multipart/form-data">
+            <form id="xzlForm" name="xzlForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="xzl">
         <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
   <tr>
@@ -211,6 +224,7 @@ function check(){
             <td width="320" height="80" align="center" valign="middle"><input name="btn_save" type="button" class="mddl1" id="btn_save" value="保存待发布" /></td>
 	      </tr>
 	    </table>
+	    <input type="hidden" id="action_to_go" name="action_to_go" value="0"/>
 	    </form>
     </div>
     </div>

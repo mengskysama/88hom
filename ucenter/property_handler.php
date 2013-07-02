@@ -4,6 +4,7 @@ require 'check_login.php';
 require 'HousePropertyHandler.class.php';
 require 'OfficePropertyHandler.class.php';
 require 'ShopPropertyHandler.class.php';
+require 'VillaPropertyHandler.class.php';
 
 $propType = getParameter("prop_type");
 $estId = getParameter("estId");
@@ -43,6 +44,43 @@ if($propType == "zz"){
 											$houseBalcony,$houseBuildArea,$houseUseArea,$houseBuildYear,$houseFloor,
 											$houseForward,$houseFitment,$houseBaseService,$houseLookTime,$housePhoto,$houseTitle,
 											$houseContent,$houseUserId,$houseBuildForm,$houseAllFloor,$state);
+}else if($propType == "bs"){
+
+	$villaNumber = getParameter("villaNumber");
+	$privateHouseNumber = getParameter("privateVillaNumber");
+	$villaBuildForm  = getParameter("villaBuildForm");
+	$villaSellPrice = getParameter("villaSellPrice");
+	$villaRoom = getParameter("villaRoom");
+	$villaHall = getParameter("villaHall");
+	$villaToilet = getParameter("villaToilet");
+	$villaKitchen = getParameter("villaKitchen");
+	$villaBalcony = getParameter("villaBalcony");
+	$villaBuildArea  = getParameter("villaBuildArea");
+	$villaUseArea  = getParameter("villaUseArea");
+	$villaBuildYear  = getParameter("villaBuildYear");
+	$villaForward  = getParameter("villaForward");
+	$villaAllFloor  = getParameter("villaAllFloor");
+	$villaCellar  = getParameter("villaCellar");
+	$villaCellarArea  = getParameter("villaCellarArea");
+	$villaCellarType  = getParameter("villaCellarType");
+	$villaGarden  = getParameter("villaGarden");
+	$villaGardenArea  = getParameter("villaGardenArea");
+	$villaGarage  = getParameter("villaGarage");
+	$villaGarageCount  = getParameter("villaGarageCount");	
+	$villaFitment  = getParameter("villaFitment");
+	$villaBaseService  = getParameter("villaBaseService");	
+	$villaLookTime  = getParameter("villaLookTime");
+	
+	$villaPhoto  = $_FILES["villaPhoto"];
+	$villaTitle  = getParameter("villaTitle");
+	$villaContent  = getParameter("villaContent");
+	$villaUserId  = $userId;
+	
+	$propHandler = new VillaPropertyHandler($db,$estId,$estName,$villaNumber,$privateHouseNumber,$villaBuildForm,$villaSellPrice,$villaRoom,$villaHall,
+											$villaToilet,$villaKitchen,$villaBalcony,$villaBuildArea,$villaUseArea,$villaBuildYear,
+											$villaForward,$villaAllFloor,$villaCellar,$villaCellarArea,$villaCellarType,$villaGarden,
+											$villaGardenArea,$villaGarage,$villaGarageCount,$villaFitment,$villaBaseService,$villaLookTime,
+											$villaPhoto,$villaTitle,$villaContent,$villaUserId,$state);
 }else if($propType == "xzl"){
 	
 	$officeNumber = getParameter("officeNumber");
@@ -101,6 +139,6 @@ if($propType == "zz"){
 	}
 	return;
 }
-$propHandler->handle();
+//echo 'result->'.$propHandler->handle();
 header("Location:sell_property_list.php");
 ?>

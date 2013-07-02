@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-27 15:01:07
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-02 14:17:55
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_zz.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1071251c0079056ef63-82697093%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7e3955469e7a46ee0125e81aa5500d4c78e062b4' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_zz.tpl',
-      1 => 1372316090,
+      1 => 1372661976,
       2 => 'file',
     ),
   ),
@@ -46,14 +46,27 @@ $(function() {
       	  $("#estId").val(ui.item.id);    
       }
     });
-    
-    
+        
     $("#btn_live").click(function() {
         $("#btn_live").attr("disabled", true);
+        $("#btn_save").attr("disabled", true);
+        if (check()) {
+        	$("#action_to_go").val(1);
+            document.getElementById("zzForm").submit();
+        } else {
+            $("#btn_live").removeAttr("disabled");
+            $("#btn_save").removeAttr("disabled");
+        }
+    });
+        
+    $("#btn_save").click(function() {
+        $("#btn_live").attr("disabled", true);
+        $("#btn_save").attr("disabled", true);
         if (check()) {
             document.getElementById("zzForm").submit();
         } else {
             $("#btn_live").removeAttr("disabled");
+            $("#btn_save").removeAttr("disabled");
         }
     });
 });
@@ -271,6 +284,7 @@ function check(){
             <td width="320" height="80" align="center" valign="middle"><input name="btn_save" type="button" class="mddl1" id="btn_save" value="保存待发布" /></td>
 	      </tr>
 	    </table>
+	    <input type="hidden" id="action_to_go" name="action_to_go" value="0"/>
 	    </form>
     </div>
     </div>

@@ -1,0 +1,110 @@
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId= and houseState=0
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(villaId) as propTotal from ecms_villa where villaUserId= and villaState=0
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(officeId) as propTotal from ecms_office where officeUserId= and officeState=0
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(shopsId) as propTotal from ecms_shops where shopsUserId= and shopsState=0
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(factoryId) as propTotal from ecms_factory where factoryUserId= and factoryState=0
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId= and houseState=1
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(villaId) as propTotal from ecms_villa where villaUserId= and villaState=1
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(officeId) as propTotal from ecms_office where officeUserId= and officeState=1
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(shopsId) as propTotal from ecms_shops where shopsUserId= and shopsState=1
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(factoryId) as propTotal from ecms_factory where factoryUserId= and factoryState=1
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId= and houseState=3
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(villaId) as propTotal from ecms_villa where villaUserId= and villaState=3
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(officeId) as propTotal from ecms_office where officeUserId= and officeState=3
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(shopsId) as propTotal from ecms_shops where shopsUserId= and shopsState=3
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(factoryId) as propTotal from ecms_factory where factoryUserId= and factoryState=3
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId= and houseState=4
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(villaId) as propTotal from ecms_villa where villaUserId= and villaState=4
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(officeId) as propTotal from ecms_office where officeUserId= and officeState=4
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(shopsId) as propTotal from ecms_shops where shopsUserId= and shopsState=4
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(factoryId) as propTotal from ecms_factory where factoryUserId= and factoryState=4
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select count(*) as propTotal from vw_get_sell_property_list where userId= and propState=1
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
+------------------------2013-07-02 09:41:05
+错误SQL语句：
+select propId,propKind,propName,propNumber,propPrice,propArea,floor(propPrice*10000/propArea) as perPriceArea,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto from vw_get_sell_property_list where userId= and propState=1  limit 0,5
+客户端:127.0.0.1
+时间:2013-07-02 09:41:05
