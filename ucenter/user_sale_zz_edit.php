@@ -34,13 +34,12 @@ if($property){
 	$houseForward = $property['houseForward'];
 	$houseFitment = $property['houseFitment'];
 	$houseBaseService = $property['houseBaseService'];
-	if($houseBaseService){
-		for($i=1; $i<9; $i++){
-			if(strpos($houseBaseService,','.$i.',')>=0){
-				$smarty->assign("houseBaseService".$i,"checked=\"checked\"");
-			}else{
-				$smarty->assign("houseBaseService".$i,"");
-			}	
+	for($i=1; $i<9; $i++){
+		$index = strpos($houseBaseService,','.$i.',');
+		if($index !== false){
+			$smarty->assign("houseBaseService".$i,"checked=\"checked\"");
+		}else{
+			$smarty->assign("houseBaseService".$i,"");
 		}
 	}
 	$houseLookTime = $property['houseLookTime'];

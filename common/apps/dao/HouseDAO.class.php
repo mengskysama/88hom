@@ -123,42 +123,61 @@ class HouseDAO  {
 		if(isset($house['houseHall'])){
 			$sql .= "houseHall=".$house['houseHall'].",";
 		}
-		
-				."',=".empty($house[''])?0:$house['houseRoom']
-				.",=".empty($house[''])?0:$house['houseHall']
-				.",houseToilet=".empty($house['houseToilet'])?0:$house['houseToilet']
-				.",houseKitchen=".empty($house['houseKitchen'])?0:$house['houseKitchen']
-				.",houseBalcony=".empty($house['houseBalcony'])?0:$house['houseBalcony']
-				.",houseSellPrice=".empty($house['houseSellPrice'])?0:$house['houseSellPrice']
-				.",houseBuildArea=".empty($house['houseBuildArea'])?0:$house['houseBuildArea']
-				.",houseUseArea=".empty($house['houseUseArea'])?0:$house['houseUseArea']
-				.",houseRentArea=".empty($house['houseRentArea'])?0:$house['houseRentArea']
-				.",houseType=".empty($house['houseType'])?0:$house['houseType']
-				.",houseBuildStructure=".empty($house['houseBuildStructure'])?0:$house['houseBuildStructure']
-				.",houseBuildForm=".empty($house['houseBuildForm'])?0:$house['houseBuildForm']
-				.",houseForward=".empty($house['houseForward'])?0:$house['houseForward']
-				.",houseFitment=".empty($house['houseFitment'])?0:$house['houseFitment']
-				.",houseBaseService='".empty($house['houseBaseService'])?'':$house['houseBaseService']
-				."',houseEquipment='".empty($house['houseEquipment'])?'':$house['houseEquipment']
-				."',houseFloor=".empty($house['houseFloor'])?0:$house['houseFloor']
-				.",houseAllFloor=".empty($house['houseAllFloor'])?0:$house['houseAllFloor']
-				.",houseBuildYear=".empty($house['houseBuildYear'])?0:$house['houseBuildYear']
-				.",houseLookTime=".empty($house['houseLookTime'])?0:$house['houseLookTime']
-				.",housePayInfo=".empty($house['housePayInfo'])?0:$house['housePayInfo']
-				."',houseRentType=".empty($house['houseRentType'])?0:$house['houseRentType']
-				.",houseRentRoomType=".empty($house['houseRentRoomType'])?0:$house['houseRentRoomType']
-				.",houseRentDetail=".empty($house['houseRentDetail'])?0:$house['houseRentDetail']
-				.",houseLiveTime='".empty($house['houseLiveTime'])?'':$house['houseLiveTime']
-				."',houseTags='".empty($house['houseTags'])?'':$house['houseTags']
-				."',housePayment=".empty($house['housePayment'])?0:$house['housePayment']
-				.",housePayDetailY=".empty($house['housePayDetailY'])?0:$house['housePayDetailY']
-				.",housePayDetailF=".empty($house['housePayDetailF'])?0:$house['housePayDetailF']
-				.",houseSellRentType=".empty($house['houseSellRentType'])?0:$house['houseSellRentType']
-				.",houseState=".empty($house['houseState'])?0:$house['houseState']
-				.",housePropertyId=".empty($house['housePropertyId'])?0:$house['housePropertyId']
-				.",houseUserId=".empty($house['houseUserId'])?0:$house['houseUserId']
-				.",houseUpdateTime=".time()
-				." where houseId=".$house['houseId'];
+		if(isset($house['houseToilet'])){
+			$sql .= "houseToilet=".$house['houseToilet'].",";
+		}
+		if(isset($house['houseKitchen'])){
+			$sql .= "houseKitchen=".$house['houseKitchen'].",";
+		}
+		if(isset($house['houseBalcony'])){
+			$sql .= "houseBalcony=".$house['houseBalcony'].",";
+		}
+		if(isset($house['houseSellPrice'])){
+			$sql .= "houseSellPrice=".$house['houseSellPrice'].",";
+		}
+		if(isset($house['houseBuildArea'])){
+			$sql .= "houseBuildArea=".$house['houseBuildArea'].",";
+		}
+		if(isset($house['houseUseArea'])){
+			$sql .= "houseUseArea=".$house['houseUseArea'].",";
+		}
+		if(isset($house['houseType'])){
+			$sql .= "houseType=".$house['houseType'].",";
+		}
+		if(isset($house['houseForward'])){
+			$sql .= "houseBuildForm=".$house['houseForward'].",";
+		}
+		if(isset($house['houseFitment'])){
+			$sql .= "houseFitment=".$house['houseFitment'].",";
+		}
+		if(isset($house['houseBaseService'])){
+			$sql .= "houseBaseService='".$house['houseBaseService']."',";
+		}
+		if(isset($house['houseFloor'])){
+			$sql .= "houseFloor=".$house['houseFloor'].",";
+		}
+		if(isset($house['houseAllFloor'])){
+			$sql .= "houseAllFloor=".$house['houseAllFloor'].",";
+		}
+		if(isset($house['houseBuildYear'])){
+			$sql .= "houseBuildYear=".$house['houseBuildYear'].",";
+		}
+		if(isset($house['houseLookTime'])){
+			$sql .= "houseLookTime=".$house['houseLookTime'].",";
+		}
+		if(isset($house['housePayInfo'])){
+			$sql .= "housePayInfo=".$house['housePayInfo'].",";
+		}
+		if(isset($house['houseLiveTime'])){
+			$sql .= "houseLiveTime=".$house['houseLiveTime'].",";
+		}
+		if(isset($house['houseSellRentType'])){
+			$sql .= "houseSellRentType=".$house['houseSellRentType'].",";
+		}
+		if(isset($house['houseState'])){
+			$sql .= "houseState=".$house['houseState'].",";
+		}
+		$sql .= "houseUpdateTime=".time()." where houseId=".$house['houseId'];
 		return $this->db->getQueryExeCute($sql);
 	}
 	//end to be added by Cheneil

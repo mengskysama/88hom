@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-02 23:38:35
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-03 22:53:25
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_zz_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1636251d2f3fbecd172-19764708%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '55b46a0f7d399c9446d5885d5b8138b7d0137d65' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_zz_edit.tpl',
-      1 => 1372775447,
+      1 => 1372862599,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51d2f3fc1d1bb9_75381605',
   'variables' => 
   array (
     'cfg' => 0,
@@ -51,12 +53,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'houseBaseService8' => 0,
     'houseLookTime' => 0,
     'propPhoto' => 0,
+    'picId' => 0,
     'houseTitle' => 0,
     'houseContent' => 0,
+    'propId' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_51d2f3fc1d1bb9_75381605',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51d2f3fc1d1bb9_75381605')) {function content_51d2f3fc1d1bb9_75381605($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -124,10 +126,10 @@ function check(){
 	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_user_left_menu']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
     <div class="qg_r">
-    <p>你的位置: <a href="#">房源管理</a></p>
+    <p>你的位置: <a href="#">编辑房源</a></p>
    	<div class="qg_bs">
           <div class="bs_tx">
-            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
+            <p><b>基本资料</b></p>
             <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="zz">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
@@ -282,8 +284,9 @@ function check(){
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
 			    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
 			    	<input id="housePhoto" name="housePhoto" type="file"  value="" /><br>
-			    	<img src="http://localhost/88hom/uploads/community/<?php echo $_smarty_tpl->tpl_vars['propPhoto']->value;?>
-" class="l">
+			    	<div id="showPic"><img src="http://localhost/88hom/uploads/community/<?php echo $_smarty_tpl->tpl_vars['propPhoto']->value;?>
+" class="l">&nbsp;&nbsp;<!--<a href="javascript:void(0);" onclick="deletePic(<?php echo $_smarty_tpl->tpl_vars['picId']->value;?>
+) ">删除</a>--></div>
 			    </td>
 			  </tr>
 			  <tr>
@@ -314,11 +317,13 @@ function check(){
        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
-            <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_live" value="确认无误，修改" /></td>
+            <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_live" value="修改" /></td>
             <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
 	      </tr>
 	    </table>
-	    <input type="hidden" id="action_to_go" name="action_to_go" value="update"/>
+	    <input type="hidden" id="actionType" name="actionType" value="update"/>
+	    <input type="hidden" id="propId" name="propId" value="<?php echo $_smarty_tpl->tpl_vars['propId']->value;?>
+"/>
 	    </form>
     </div>
     </div>
