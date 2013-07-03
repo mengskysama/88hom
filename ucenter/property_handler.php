@@ -11,6 +11,7 @@ $estId = getParameter("estId");
 $estName = getParameter("estName");
 $state = getParameter("action_to_go");
 $action = getParameter("action");
+$actionType = getParameter("actionType");
 
 if($propType == "zz"){
 	
@@ -38,12 +39,13 @@ if($propType == "zz"){
 	$houseUserId  = $userId;
 	$houseBuildForm  = getParameter("houseBuildForm");
 	$houseAllFloor  = getParameter("houseAllFloor");
+	$houseId = getParameter("propId");
 	
 	$propHandler = new HousePropertyHandler($db,$estId,$estName,$houseNumber,$privateHouseNumber,$housePayInfo,
 											$houseType,$houseSellPrice,$houseRoom,$houseHall,$houseToilet,$houseKitchen,
 											$houseBalcony,$houseBuildArea,$houseUseArea,$houseBuildYear,$houseFloor,
 											$houseForward,$houseFitment,$houseBaseService,$houseLookTime,$housePhoto,$houseTitle,
-											$houseContent,$houseUserId,$houseBuildForm,$houseAllFloor,$state);
+											$houseContent,$houseUserId,$houseBuildForm,$houseAllFloor,$state,$actionType,$houseId);
 }else if($propType == "bs"){
 
 	$villaNumber = getParameter("villaNumber");
@@ -138,7 +140,18 @@ if($propType == "zz"){
 		echo "{\"result\":\"failure\"}";
 	}
 	return;
+}else if($action == "delPic"){
+	$picId = getParameter("picId");
+	$secondPropService = new SecondHandPropertyService($db);
+	$delResult = $secondPropService->deletePropPic($picId);
+	if($delResult){
+		echo "{\"result\":\"success\"}";
+	}else{
+		echo "{\"result\":\"failure\"}";
+	}
+	return;
 }
 //echo 'result->'.$propHandler->handle();
+$propHandler->handle();
 header("Location:sell_property_list.php");
 ?>

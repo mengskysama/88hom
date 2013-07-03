@@ -12,11 +12,11 @@ $html->show();
 $propId = getParameter("propId","GET");
 $propService = new SecondHandPropertyService($db);
 $property = $propService->getHousePropertyById($userId,$propId);
-print_r($property);
 if($property){
-	$estName = $property['estName'];
+	$estId = $property['houseCommunityId'];
+	$estName = $property['propName'];
 	$houseNumber = $property['houseNumber'];
-	$privateHouseNumber = $property['privateHouseNumber'];
+	$privateHouseNumber = $property['houseNumber'];
 	$housePayInfo = $property['housePayInfo'];
 	$houseType = $property['houseType'];
 	$houseSellPrice = $property['houseSellPrice'];
@@ -28,6 +28,7 @@ if($property){
 	$houseBuildForm = $property['houseBuildForm'];
 	$houseBuildArea = $property['houseBuildArea'];
 	$houseUseArea = $property['houseUseArea'];
+	$houseBuildYear = $property['houseBuildYear'];
 	$houseFloor = $property['houseFloor'];
 	$houseAllFloor = $property['houseAllFloor'];
 	$houseForward = $property['houseForward'];
@@ -35,7 +36,7 @@ if($property){
 	$houseBaseService = $property['houseBaseService'];
 	if($houseBaseService){
 		for($i=1; $i<9; $i++){
-			if(strpos($houseBaseService,','.$i.',')){
+			if(strpos($houseBaseService,','.$i.',')>=0){
 				$smarty->assign("houseBaseService".$i,"checked=\"checked\"");
 			}else{
 				$smarty->assign("houseBaseService".$i,"");
@@ -43,10 +44,12 @@ if($property){
 		}
 	}
 	$houseLookTime = $property['houseLookTime'];
+	$picId = $property['picId'];
 	$propPhoto = $property['propPhoto'];
+	$houseTitle = $property['houseTitle'];
 	$houseContent = $property['houseContent'];
 
-	$smarty->assign("estId",$propId);
+	$smarty->assign("estId",$estId);
 	$smarty->assign("estName",$estName);
 	$smarty->assign("houseNumber",$houseNumber);
 	$smarty->assign("privateHouseNumber",$privateHouseNumber);
@@ -61,13 +64,18 @@ if($property){
 	$smarty->assign("houseBuildForm",$houseBuildForm);
 	$smarty->assign("houseBuildArea",$houseBuildArea);
 	$smarty->assign("houseUseArea",$houseUseArea);
+	$smarty->assign("houseBuildYear",$houseBuildYear);	
 	$smarty->assign("houseFloor",$houseFloor);
 	$smarty->assign("houseAllFloor",$houseAllFloor);
 	$smarty->assign("houseForward",$houseForward);
 	$smarty->assign("houseFitment",$houseFitment);
 	$smarty->assign("houseLookTime",$houseLookTime);
+	$smarty->assign("picId",$picId);
 	$smarty->assign("propPhoto",$propPhoto);
+	$smarty->assign("houseTitle",$houseTitle);
 	$smarty->assign("houseContent",$houseContent);
+	$smarty->assign("propKind","zz");
+	$smarty->assign("propId",$propId);
 }
 $smarty->assign('ucenter_user_left_menu',$tpl_dir.'ucenter_user_left_menu.tpl');
 $smarty->assign('ckeditLib','../common/libs/fck/ckeditor/ckeditor.js');

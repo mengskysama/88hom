@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-02 16:03:36
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-03 11:28:25
          compiled from "E:/workspace/projects/88hom/templates\ucenter\sell_property_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24351cc05070ec3d9-96504959%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fa8adf8b79a66c47fcf4fc59d35baca0ba9c381f' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\sell_property_list.tpl',
-      1 => 1372752201,
+      1 => 1372821152,
       2 => 'file',
     ),
   ),
@@ -198,7 +198,23 @@ m<sup>2</sup><br />
 </td>
 			    <td width="92" align="center" valign="middle" class="bor"><font class="red">100</font> 次</td>
 			    <td align="center" valign="middle" class="bor">
-			    <a href="#">编辑</a> <a href="javascript:void(0);" onclick="deleteProp('<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind'];?>
+			    <?php if ($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='zz'){?>
+			    <a href="user_sale_zz_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
+">编辑</a>
+			    <?php }elseif($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='bs'){?>
+			    <a href="user_sale_bs_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
+">编辑</a>
+			    <?php }elseif($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='sp'){?>
+			    <a href="user_sale_sp_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
+">编辑</a>
+			    <?php }elseif($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='xzl'){?>
+			    <a href="user_sale_xzl_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
+">编辑</a>
+			    <?php }elseif($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='gc'){?>
+			    <a href="user_sale_gc_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
+">编辑</a>
+			    <?php }?>			    
+			     <a href="javascript:void(0);" onclick="deleteProp('<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind'];?>
 <?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
 ')">删除</a><br />
 			    	<a href="#" class="xx0" style="margin:8px 12px;">去委托</a>
@@ -258,30 +274,6 @@ m<sup>2</sup><br />
     //页面刷新
     function reflash(){
     	window.location.reload();
-	}
-	
-	function deleteProp(propId){
-	
-    	if(!confirm("确认删除房源？")) return false;
-    	
-		var option={action:"delProp",propIds:propId+","};
-        $.ajax({
-				url:"property_handler.php",
-				dataType:"json",
-                data:option,
-                type:"post",
-                success:function(msg){
-					if(msg.result=="success"){
-						alert("删除成功!");
-                        window.setTimeout(function(){location.reload();}, 1000);
-                    }else{
-                        alert("删除失败!");
-                    }
-                },
-                error:function(){
-					alert("提示:删除失败!");
-                }
-        })
 	}
 
     //单击批量删除

@@ -29,6 +29,8 @@ class HousePropertyHandler extends PropertyHandler{
 	private $houseBuildForm;
 	private $houseAllFloor;
 	private $houseState;
+	private $actionType;
+	private $houseId;
 	
 	private $estateService;
 	private $propertyService;
@@ -37,7 +39,7 @@ class HousePropertyHandler extends PropertyHandler{
 						$houseType,$houseSellPrice,$houseRoom,$houseHall,$houseToilet,$houseKitchen,
 						$houseBalcony,$houseBuildArea,$houseUseArea,$houseBuildYear,$houseFloor,
 						$houseForward,$houseFitment,$houseBaseService,$houseLookTime,$housePhoto,$houseTitle,
-						$houseContent,$houseUserId,$houseBuildForm,$houseAllFloor,$houseState){
+						$houseContent,$houseUserId,$houseBuildForm,$houseAllFloor,$houseState,$actionType,$houseId){
 		
 		$this->db = $db;
 		$this->estId = $estId;
@@ -67,25 +69,54 @@ class HousePropertyHandler extends PropertyHandler{
 		$this->houseBuildForm = $houseBuildForm;
 		$this->houseAllFloor = $houseAllFloor;
 		$this->houseState = $houseState;
+		$this->actionType = $actionType;
+		$this->houseId = $houseId;
 		
 		$this->estateService = new EstateService($db);
 		$this->propertyService = new SecondHandPropertyService($db);
 	}
 	
 	public function handle(){
+		if($this->actionType == "update"){
+			$this->updateProperty();
+		}else{
+			$this->createProperty();
+		}
+	}
+	
+	private function updateProperty(){
+		$photoName = "";
+		if(!empty($this->housePhoto)){
+			$photoName = $this->uploadPhoto($this->housePhoto,$this->houseUserId);
+			if(!$photoName) return false;
+		}
+
+		$house = $this->genPropEntity($this->estId,$photoName);
+		$house["houseId"] = $this->houseId;
+		return $this->propertyService->updateHouse($house);
+	}
+	
+	private function createProperty(){
 		$photoName = $this->uploadPhoto($this->housePhoto,$this->houseUserId);
 		if(!$photoName) return false;
 		
 		$realEstId = $this->getRealEstateId($this->estateService,$this->estId,$this->estName);
 		if(!$realEstId) return false;
 		
+		$house = $this->genPropEntity($realEstId,$photoName);
+		$houseId = $this->propertyService->saveHouse($house);
+		if(!$houseId) return false;
+		return true;
+	} 
+	
+	private function genPropEntity($realEstId,$photoName){
 		//save the property
 		$houseBaseService = "";
 		if(!empty($this->houseBaseService)){
 			$houseBaseService = ",";
 			$len = count($this->houseBaseService);
 			for($i=0; $i<$len; $i++){
-				$houseBaseService .= $this->houseBaseService[$i].","; 
+				$houseBaseService .= $this->houseBaseService[$i].",";
 			}
 		}
 		$house['houseTitle'] = $this->houseTitle;
@@ -106,14 +137,19 @@ class HousePropertyHandler extends PropertyHandler{
 		$house['houseBaseService'] = $houseBaseService;
 		$house['houseFloor'] = $this->houseFloor;
 		$house['houseAllFloor'] = $this->houseAllFloor;
-		$house['houseBuildYear'] = $this->houseBuildArea;
+		$house['houseBuildYear'] = $this->houseBuildYear;
 		$house['houseLookTime'] = $this->houseLookTime;
-		$house['houseCommunityId'] = $realEstId;
+		if($realEstId){
+			$house['houseCommunityId'] = $realEstId;
+		}
 		$house['houseSellRentType'] = 1;
 		$house['houseUserId'] = $this->houseUserId;
-		$house['propertyPhoto']['picBuildType'] = 1;
-		$house['propertyPhoto']['picSellRent'] = 1;
-		$house['propertyPhoto']['picUrl'] = $photoName;		
+		
+		if($photoName){
+			$house['propertyPhoto']['picBuildType'] = 1;
+			$house['propertyPhoto']['picSellRent'] = 1;
+			$house['propertyPhoto']['picUrl'] = $photoName;
+		}
 		
 		$house['houseRentArea'] = "";
 		$house['houseBuildStructure'] = "";
@@ -124,10 +160,7 @@ class HousePropertyHandler extends PropertyHandler{
 		$house['housePayDetailY'] = "";
 		$house['housePayDetailF'] = "";
 		$house['houseState'] = $this->houseState;
-		
-		$houseId = $this->propertyService->saveHouse($house);
-		if(!$houseId) return false;
-		return true;
-	} 
+		return $house;
+	}
 }
 ?>

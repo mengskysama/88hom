@@ -171,30 +171,6 @@
     function reflash(){
     	window.location.reload();
 	}
-	
-	function deleteProp(propId){
-	
-    	if(!confirm("确认删除房源？")) return false;
-    	
-		var option={action:"delProp",propIds:propId+","};
-        $.ajax({
-				url:"property_handler.php",
-				dataType:"json",
-                data:option,
-                type:"post",
-                success:function(msg){
-					if(msg.result=="success"){
-						alert("删除成功!");
-                        window.setTimeout(function(){location.reload();}, 1000);
-                    }else{
-                        alert("删除失败!");
-                    }
-                },
-                error:function(){
-					alert("提示:删除失败!");
-                }
-        })
-	}
 
     //单击批量删除
     function DelSelectedProp(){

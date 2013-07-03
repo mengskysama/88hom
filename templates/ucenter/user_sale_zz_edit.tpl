@@ -58,10 +58,10 @@ function check(){
 <div class="qg_main">
 	<!--{include file="$ucenter_user_left_menu"}-->
     <div class="qg_r">
-    <p>你的位置: <a href="#">房源管理</a></p>
+    <p>你的位置: <a href="#">编辑房源</a></p>
    	<div class="qg_bs">
           <div class="bs_tx">
-            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
+            <p><b>基本资料</b></p>
             <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="zz">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
@@ -192,7 +192,7 @@ function check(){
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
 			    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
 			    	<input id="housePhoto" name="housePhoto" type="file"  value="" /><br>
-			    	<img src="http://localhost/88hom/uploads/community/<!--{$propPhoto}-->" class="l">
+			    	<div id="showPic"><img src="http://localhost/88hom/uploads/community/<!--{$propPhoto}-->" class="l">&nbsp;&nbsp;<!--<a href="javascript:void(0);" onclick="deletePic(<!--{$picId}-->) ">删除</a>--></div>
 			    </td>
 			  </tr>
 			  <tr>
@@ -221,11 +221,12 @@ function check(){
        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
-            <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_live" value="确认无误，修改" /></td>
+            <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_live" value="修改" /></td>
             <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
 	      </tr>
 	    </table>
-	    <input type="hidden" id="action_to_go" name="action_to_go" value="update"/>
+	    <input type="hidden" id="actionType" name="actionType" value="update"/>
+	    <input type="hidden" id="propId" name="propId" value="<!--{$propId}-->"/>
 	    </form>
     </div>
     </div>

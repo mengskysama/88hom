@@ -93,59 +93,75 @@ class HouseDAO  {
 				"houseBaseService,houseEquipment,houseFloor,houseAllFloor,houseBuildYear,houseLookTime,housePayInfo,houseRentType,".
 				"houseRentRoomType,houseRentDetail,houseLiveTime,houseTags,housePayment,housePayDetailY,housePayDetailF,houseSellRentType,".
 				"houseState,(select communityName from ecms_community where communityId=houseCommunityId) as propName,houseCommunityId,".
-				"(select picUrl from ecms_pic where picBuildType=1 and picBuildId=houseId limit 1) as propPhoto,houseCreateTime,houseUpdateTime ".
-				"from ecms_house ".
+				"picId,picURl as propPhoto,houseCreateTime,houseUpdateTime ".
+				"from ecms_house prop left join ecms_pic pic on picBuildType=1 and picBuildId=houseId and picState=1 ".
 				"where houseId=".$propId;
 		if($userId > 0){
 			$sql .= " and houseUserId=".$userId;
 		}
-		return $this->db->getQueryArray($sql);
+		return $this->db->getQueryValue($sql);
 	}
-	
-	//end to be added by Cheneil
+
 	//修改住宅房源
 	public function modify($house){
-		$sql="update ecms_house set houseTitle='"
-			.empty($house['houseTitle'])?'':$house['houseTitle']
-			."',houseContent='".empty($house['houseContent'])?'':$house['houseContent']
-			."',houseNumber='".empty($house['houseNumber'])?'':$house['houseNumber']
-			."',houseRoom=".empty($house['houseRoom'])?0:$house['houseRoom']
-			.",houseHall=".empty($house['houseHall'])?0:$house['houseHall']
-			.",houseToilet=".empty($house['houseToilet'])?0:$house['houseToilet']
-			.",houseKitchen=".empty($house['houseKitchen'])?0:$house['houseKitchen']
-			.",houseBalcony=".empty($house['houseBalcony'])?0:$house['houseBalcony']
-			.",houseSellPrice=".empty($house['houseSellPrice'])?0:$house['houseSellPrice']
-			.",houseBuildArea=".empty($house['houseBuildArea'])?0:$house['houseBuildArea']
-			.",houseUseArea=".empty($house['houseUseArea'])?0:$house['houseUseArea']
-			.",houseRentArea=".empty($house['houseRentArea'])?0:$house['houseRentArea']
-			.",houseType=".empty($house['houseType'])?0:$house['houseType']
-			.",houseBuildStructure=".empty($house['houseBuildStructure'])?0:$house['houseBuildStructure']
-			.",houseBuildForm=".empty($house['houseBuildForm'])?0:$house['houseBuildForm']
-			.",houseForward=".empty($house['houseForward'])?0:$house['houseForward']
-			.",houseFitment=".empty($house['houseFitment'])?0:$house['houseFitment']
-			.",houseBaseService='".empty($house['houseBaseService'])?'':$house['houseBaseService']
-			."',houseEquipment='".empty($house['houseEquipment'])?'':$house['houseEquipment']
-			."',houseFloor=".empty($house['houseFloor'])?0:$house['houseFloor']
-			.",houseAllFloor=".empty($house['houseAllFloor'])?0:$house['houseAllFloor']
-			.",houseBuildYear=".empty($house['houseBuildYear'])?0:$house['houseBuildYear']
-			.",houseLookTime=".empty($house['houseLookTime'])?0:$house['houseLookTime']
-			.",housePayInfo=".empty($house['housePayInfo'])?0:$house['housePayInfo']
-			."',houseRentType=".empty($house['houseRentType'])?0:$house['houseRentType']
-			.",houseRentRoomType=".empty($house['houseRentRoomType'])?0:$house['houseRentRoomType']
-			.",houseRentDetail=".empty($house['houseRentDetail'])?0:$house['houseRentDetail']
-			.",houseLiveTime='".empty($house['houseLiveTime'])?'':$house['houseLiveTime']
-			."',houseTags='".empty($house['houseTags'])?'':$house['houseTags']
-			."',housePayment=".empty($house['housePayment'])?0:$house['housePayment']
-			.",housePayDetailY=".empty($house['housePayDetailY'])?0:$house['housePayDetailY']
-			.",housePayDetailF=".empty($house['housePayDetailF'])?0:$house['housePayDetailF']
-			.",houseSellRentType=".empty($house['houseSellRentType'])?0:$house['houseSellRentType']
-			.",houseState=".empty($house['houseState'])?0:$house['houseState']
-			.",housePropertyId=".empty($house['housePropertyId'])?0:$house['housePropertyId']
-			.",houseUserId=".empty($house['houseUserId'])?0:$house['houseUserId']
-			.",houseUpdateTime=".time()
-			." where houseId=".$house['houseId'];
+		$sql = "update ecms_house set ";
+		if(isset($house['houseTitle'])){
+			$sql .= "houseTitle='".$house['houseTitle']."',";
+		}
+		if(isset($house['houseContent'])){
+			$sql .= "houseContent='".$house['houseContent']."',";
+		}
+		if(isset($house['houseNumber'])){
+			$sql .= "houseNumber='".$house['houseNumber']."',";
+		}			
+		if(isset($house['houseRoom'])){
+			$sql .= "houseRoom=".$house['houseRoom'].",";
+		}
+		if(isset($house['houseHall'])){
+			$sql .= "houseHall=".$house['houseHall'].",";
+		}
+		if(isset($house['houseHall'])){
+			$sql .= "houseHall=".$house['houseHall'].",";
+		}
+		
+				."',=".empty($house[''])?0:$house['houseRoom']
+				.",=".empty($house[''])?0:$house['houseHall']
+				.",houseToilet=".empty($house['houseToilet'])?0:$house['houseToilet']
+				.",houseKitchen=".empty($house['houseKitchen'])?0:$house['houseKitchen']
+				.",houseBalcony=".empty($house['houseBalcony'])?0:$house['houseBalcony']
+				.",houseSellPrice=".empty($house['houseSellPrice'])?0:$house['houseSellPrice']
+				.",houseBuildArea=".empty($house['houseBuildArea'])?0:$house['houseBuildArea']
+				.",houseUseArea=".empty($house['houseUseArea'])?0:$house['houseUseArea']
+				.",houseRentArea=".empty($house['houseRentArea'])?0:$house['houseRentArea']
+				.",houseType=".empty($house['houseType'])?0:$house['houseType']
+				.",houseBuildStructure=".empty($house['houseBuildStructure'])?0:$house['houseBuildStructure']
+				.",houseBuildForm=".empty($house['houseBuildForm'])?0:$house['houseBuildForm']
+				.",houseForward=".empty($house['houseForward'])?0:$house['houseForward']
+				.",houseFitment=".empty($house['houseFitment'])?0:$house['houseFitment']
+				.",houseBaseService='".empty($house['houseBaseService'])?'':$house['houseBaseService']
+				."',houseEquipment='".empty($house['houseEquipment'])?'':$house['houseEquipment']
+				."',houseFloor=".empty($house['houseFloor'])?0:$house['houseFloor']
+				.",houseAllFloor=".empty($house['houseAllFloor'])?0:$house['houseAllFloor']
+				.",houseBuildYear=".empty($house['houseBuildYear'])?0:$house['houseBuildYear']
+				.",houseLookTime=".empty($house['houseLookTime'])?0:$house['houseLookTime']
+				.",housePayInfo=".empty($house['housePayInfo'])?0:$house['housePayInfo']
+				."',houseRentType=".empty($house['houseRentType'])?0:$house['houseRentType']
+				.",houseRentRoomType=".empty($house['houseRentRoomType'])?0:$house['houseRentRoomType']
+				.",houseRentDetail=".empty($house['houseRentDetail'])?0:$house['houseRentDetail']
+				.",houseLiveTime='".empty($house['houseLiveTime'])?'':$house['houseLiveTime']
+				."',houseTags='".empty($house['houseTags'])?'':$house['houseTags']
+				."',housePayment=".empty($house['housePayment'])?0:$house['housePayment']
+				.",housePayDetailY=".empty($house['housePayDetailY'])?0:$house['housePayDetailY']
+				.",housePayDetailF=".empty($house['housePayDetailF'])?0:$house['housePayDetailF']
+				.",houseSellRentType=".empty($house['houseSellRentType'])?0:$house['houseSellRentType']
+				.",houseState=".empty($house['houseState'])?0:$house['houseState']
+				.",housePropertyId=".empty($house['housePropertyId'])?0:$house['housePropertyId']
+				.",houseUserId=".empty($house['houseUserId'])?0:$house['houseUserId']
+				.",houseUpdateTime=".time()
+				." where houseId=".$house['houseId'];
 		return $this->db->getQueryExeCute($sql);
 	}
+	//end to be added by Cheneil
 	//删除住宅房源
 	public function delHouseById($id){
 		$sql="delete from  ecms_house where houseId=".$id;

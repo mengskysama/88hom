@@ -27,7 +27,7 @@ class SecondHandPropertyService{
 	
 		$pic['pictypeId'] = 0;
 		$pic['picThumb'] = '';
-		$pic['picState'] = 0;	
+		$pic['picState'] = 1;	
 	
 		$this->picDAO->release($pic);
 	}
@@ -44,6 +44,18 @@ class SecondHandPropertyService{
 
 	public function saveHouse($house){
 		return $this->saveProperty($this->houseDAO, $house);
+	}
+
+	public function updateHouse($house){
+		
+		if(isset($house['propertyPhoto'])){
+			$this->picDAO->delPicByPropIdAndType(1,$house['houseId']);
+			
+			$property = $house;
+			$property['propId'] = $house['houseId'];
+			$this->savePhoto($house);
+		}
+		return $this->houseDAO-($house);
 	}
 	
 	public function saveOffice($office){
@@ -158,27 +170,40 @@ class SecondHandPropertyService{
 			$id = $ids[$i];
 			$dao = "";
 			$offset = 0;
-			
-			if(!substr($id,'zz')){
+			$picBuildType = 0;
+			//echo $id."|";
+			if(!strpos($id,'zz')){
 				$dao = $this->houseDAO;
 				$offset = 2;
+				$picBuildType = 1;
 			}else if(!strpos($id,'bs')){
 				$dao = $this->villaDAO;
 				$offset = 2;
+				$picBuildType = 4;
 			}else if(!strpos($id,'sp')){
 				$dao = $this->shopsDAO;
 				$offset = 2;
+				$picBuildType = 2;
 			}else if(!strpos($id,'xzl')){
 				$dao = $this->officeDAO;
 				$offset = 3;
-			}else if(!strpos($id,'gc')){
+				$picBuildType = 3;
+			}else if(!strpos($id,'cf')){
 				$dao = $this->factoryDAO;
 				$offset = 2;
+				$picBuildType = 5;
 			}
 			if($dao == "") return false;
-			
-			$dao->delete(substr($id,$offset));
+
+			//echo $offset."|".$picBuildType;
+			$id = substr($id,$offset);
+			$dao->delete($id);
+			$this->picDAO->delPicByPropIdAndType($picBuildType,$id);
 		}
 		return true;
+	}
+	
+	public function deletePropPic($picId){
+		return $this->picDAO->delPicById($picId);
 	}
 }

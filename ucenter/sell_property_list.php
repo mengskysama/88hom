@@ -39,6 +39,7 @@ $props = $secondPropertyService->getSellPropertyList($condition);
 $propList = $props['data'];
 $pagination = $props['pagination'];
 
+$html->addJs("ucenter_property_input.js");
 $html->show();
 $smarty->assign('ucenter_user_left_menu',$tpl_dir.'ucenter_user_left_menu.tpl');
 $smarty->assign("unlivePropsCount",$unlivePropsCount);

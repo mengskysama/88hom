@@ -40,11 +40,18 @@ class PicDAO  {
 			." where picId=".$pic['picId'];
 		return $this->db->getQueryExeCute($sql);
 	}
+	//added by Cheneil
 	//删除图片
 	public function delPicById($id){
-		$sql="delete from  ecms_pic where picId=".$id;
+		$sql="update ecms_pic set picState=0 where picId=".$id;
 		return $this->db->getQueryExecute($sql);
 	}
+	public function delPicByPropIdAndType($picBuildType,$propId){
+		$sql="update ecms_pic set picState=0 where picBuildType=".$picBuildType." and picBuildId=".$propId;
+		return $this->db->getQueryExecute($sql);
+	}
+	//end to be added by Cheneil
+	
 	/**
 	 * 获取图片
 	 * @param string $where 
