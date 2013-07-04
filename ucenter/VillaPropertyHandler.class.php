@@ -34,6 +34,8 @@ class VillaPropertyHandler extends PropertyHandler{
 	private $villaContent;
 	private $villaUserId;
 	private $villaState;
+	private $actionType;
+	private $villaId;
 	
 	private $estateService;
 	private $propertyService;
@@ -42,7 +44,7 @@ class VillaPropertyHandler extends PropertyHandler{
 						$villaToilet,$villaKitchen,$villaBalcony,$villaBuildArea,$villaUseArea,$villaBuildYear,
 						$villaForward,$villaAllFloor,$villaCellar,$villaCellarArea,$villaCellarType,$villaGarden,
 						$villaGardenArea,$villaGarage,$villaGarageCount,$villaFitment,$villaBaseService,$villaLookTime,
-						$villaPhoto,$villaTitle,$villaContent,$villaUserId,$villaState){
+						$villaPhoto,$villaTitle,$villaContent,$villaUserId,$villaState,$actionType,$villaId){
 		
 		$this->db = $db;
 		$this->estId = $estId;
@@ -77,18 +79,47 @@ class VillaPropertyHandler extends PropertyHandler{
 		$this->villaContent = $villaContent;
 		$this->villaUserId = $villaUserId;
 		$this->villaState = $villaState;
+		$this->actionType = $actionType;
+		$this->villaId = $villaId;
 		
 		$this->estateService = new EstateService($db);
 		$this->propertyService = new SecondHandPropertyService($db);
 	}
 	
 	public function handle(){
+		if($this->actionType == "update"){
+			$this->updateProperty();
+		}else{
+			$this->createProperty();
+		}
+	}
+	
+	private function updateProperty(){
+		$photoName = "";
+		if(!empty($this->villaPhoto)){
+			$photoName = $this->uploadPhoto($this->villaPhoto,$this->villaUserId);
+			if(!$photoName) return false;
+		}
+
+		$villa = $this->genPropEntity($this->estId,$photoName,"");
+		$villa["villaId"] = $this->villaId;
+		return $this->propertyService->updateVilla($villa);
+	}
+	
+	public function createProperty(){
 		$photoName = $this->uploadPhoto($this->villaPhoto,$this->villaUserId);
 		if(!$photoName) return false;
 		
 		$realEstId = $this->getRealEstateId($this->estateService,$this->estId,$this->estName);
 		if(!$realEstId) return false;
-		
+
+		$villa = $this->genPropEntity($realEstId,$photoName,$this->villaState);
+		$houseId = $this->propertyService->saveVilla($villa);
+		if(!$houseId) return false;
+		return true;
+	} 
+	
+	private function genPropEntity($realEstId,$photoName,$houseState){
 		//save the property
 		$villaBaseService = "";
 		if(!empty($this->villaBaseService)){
@@ -134,19 +165,18 @@ class VillaPropertyHandler extends PropertyHandler{
 		$villa['villaGarageCount'] = $this->villaGarageCount;
 		$villa['villaParkingPlace'] = '';
 		$villa['villaParkingPlaceCount'] = 0;
-		$villa['villaSellRentType'] = '';
 		$villa['villaState'] = $this->villaState;
-		$villa['villaCommunityId'] = $realEstId;
+		if($realEstId){
+			$villa['villaCommunityId'] = $realEstId;
+		}
 		$villa['villaUserId'] = $this->villaUserId;
 		$villa['villaSellRentType'] = 1;
-		
-		$villa['propertyPhoto']['picBuildType'] = 4;
-		$villa['propertyPhoto']['picSellRent'] = 1;
-		$villa['propertyPhoto']['picUrl'] = $photoName;		
-		
-		$houseId = $this->propertyService->saveVilla($villa);
-		if(!$houseId) return false;
-		return true;
-	} 
+
+		if($photoName){
+			$villa['propertyPhoto']['picBuildType'] = 4;
+			$villa['propertyPhoto']['picSellRent'] = 1;
+			$villa['propertyPhoto']['picUrl'] = $photoName;	
+		}	
+	}
 }
 ?>

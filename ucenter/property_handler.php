@@ -77,12 +77,13 @@ if($propType == "zz"){
 	$villaTitle  = getParameter("villaTitle");
 	$villaContent  = getParameter("villaContent");
 	$villaUserId  = $userId;
+	$villaId = getParameter("propId");
 	
 	$propHandler = new VillaPropertyHandler($db,$estId,$estName,$villaNumber,$privateHouseNumber,$villaBuildForm,$villaSellPrice,$villaRoom,$villaHall,
 											$villaToilet,$villaKitchen,$villaBalcony,$villaBuildArea,$villaUseArea,$villaBuildYear,
 											$villaForward,$villaAllFloor,$villaCellar,$villaCellarArea,$villaCellarType,$villaGarden,
 											$villaGardenArea,$villaGarage,$villaGarageCount,$villaFitment,$villaBaseService,$villaLookTime,
-											$villaPhoto,$villaTitle,$villaContent,$villaUserId,$state);
+											$villaPhoto,$villaTitle,$villaContent,$villaUserId,$state,$actionType,$villaId);
 }else if($propType == "xzl"){
 	
 	$officeNumber = getParameter("officeNumber");

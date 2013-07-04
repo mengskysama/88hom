@@ -91,7 +91,7 @@ class HousePropertyHandler extends PropertyHandler{
 			if(!$photoName) return false;
 		}
 
-		$house = $this->genPropEntity($this->estId,$photoName);
+		$house = $this->genPropEntity($this->estId,$photoName,"");
 		$house["houseId"] = $this->houseId;
 		return $this->propertyService->updateHouse($house);
 	}
@@ -103,13 +103,13 @@ class HousePropertyHandler extends PropertyHandler{
 		$realEstId = $this->getRealEstateId($this->estateService,$this->estId,$this->estName);
 		if(!$realEstId) return false;
 		
-		$house = $this->genPropEntity($realEstId,$photoName);
+		$house = $this->genPropEntity($realEstId,$photoName,$this->houseState);
 		$houseId = $this->propertyService->saveHouse($house);
 		if(!$houseId) return false;
 		return true;
 	} 
 	
-	private function genPropEntity($realEstId,$photoName){
+	private function genPropEntity($realEstId,$photoName,$houseState){
 		//save the property
 		$houseBaseService = "";
 		if(!empty($this->houseBaseService)){
@@ -151,15 +151,17 @@ class HousePropertyHandler extends PropertyHandler{
 			$house['propertyPhoto']['picUrl'] = $photoName;
 		}
 		
-		$house['houseRentArea'] = "";
-		$house['houseBuildStructure'] = "";
-		$house['housePayInfo'] = "";
-		$house['houseRentRoomType'] = "";
+		$house['houseRentArea'] = 0;
+		$house['houseBuildStructure'] = 0;
+		$house['housePayInfo'] = $this->housePayInfo;
+		$house['houseRentRoomType'] = 0;
 		$house['houseLiveTime'] = "";
-		$house['housePayment'] = "";
-		$house['housePayDetailY'] = "";
-		$house['housePayDetailF'] = "";
-		$house['houseState'] = $this->houseState;
+		$house['housePayment'] = 0;
+		$house['housePayDetailY'] = 0;
+		$house['housePayDetailF'] = 0;
+		if($houseState){
+			$house['houseState'] = $houseState;
+		}
 		return $house;
 	}
 }

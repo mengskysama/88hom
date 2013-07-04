@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-03 14:41:29
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-04 15:02:21
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_zz_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1358351d38ca9487b12-24388418%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '18d69a02eadb0be1e2b964a248c3dcd99b677f2f' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_zz_edit.tpl',
-      1 => 1372833686,
+      1 => 1372920639,
       2 => 'file',
     ),
   ),
@@ -98,12 +98,13 @@ function check(){
 	if(!CheckLiveArea('houseUseArea','houseBuildArea',true)) return false;
 	if(!CheckCreateTime('houseBuildYear',true)) return false;
 	if(!CheckFloor('houseFloor','houseAllFloor',true)) return false;
-	
+	/*
 	var housePhotoValue = $("#housePhoto").val();
 	if(trim(housePhotoValue) == ''){
 		alert("请上传图片");
 		return false;
 	}
+	*/
 	
 	if(!CheckTitle('houseTitle',true)) return false;
 	var houseContentValue = CKEDITOR.instances.houseContent.getData(); 
@@ -129,7 +130,7 @@ function check(){
     <p>你的位置: <a href="#">编辑房源</a></p>
    	<div class="qg_bs">
           <div class="bs_tx">
-            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
+            <p><b>基本资料</b></p>
             <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="zz">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
@@ -317,11 +318,11 @@ function check(){
        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
-            <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_live" value="修改" /></td>
+            <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_update" value="修改" /></td>
             <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
 	      </tr>
 	    </table>
-	    <input type="hidden" id="action_to_go" name="action_to_go" value="update"/>
+	    <input type="hidden" id="actionType" name="actionType" value="update"/>
 	    <input type="hidden" id="propId" name="propId" value="<?php echo $_smarty_tpl->tpl_vars['propId']->value;?>
 "/>
 	    </form>

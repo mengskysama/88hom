@@ -144,8 +144,11 @@ class HouseDAO  {
 		if(isset($house['houseType'])){
 			$sql .= "houseType=".$house['houseType'].",";
 		}
+		if(isset($house['houseBuildForm'])){
+			$sql .= "houseBuildForm='".$house['houseBuildForm']."',";
+		}		
 		if(isset($house['houseForward'])){
-			$sql .= "houseBuildForm=".$house['houseForward'].",";
+			$sql .= "houseForward=".$house['houseForward'].",";
 		}
 		if(isset($house['houseFitment'])){
 			$sql .= "houseFitment=".$house['houseFitment'].",";
@@ -169,7 +172,7 @@ class HouseDAO  {
 			$sql .= "housePayInfo=".$house['housePayInfo'].",";
 		}
 		if(isset($house['houseLiveTime'])){
-			$sql .= "houseLiveTime=".$house['houseLiveTime'].",";
+			$sql .= "houseLiveTime='".$house['houseLiveTime']."',";
 		}
 		if(isset($house['houseSellRentType'])){
 			$sql .= "houseSellRentType=".$house['houseSellRentType'].",";
@@ -178,6 +181,7 @@ class HouseDAO  {
 			$sql .= "houseState=".$house['houseState'].",";
 		}
 		$sql .= "houseUpdateTime=".time()." where houseId=".$house['houseId'];
+		//echo $sql;
 		return $this->db->getQueryExeCute($sql);
 	}
 	//end to be added by Cheneil

@@ -84,63 +84,102 @@ class VillaDAO  {
 				"villaSellPrice,villaRentPrice,villaRentType,villaPayment,villaPayDetailY,villaPayDetailF,villaAllFloor,villaBuildForm,".
 				"villaBuildStructure,villaCellar,villaCellarArea,villaCellarType,villaGarden,villaGardenArea,villaGarage,villaGarageCount,".
 				"villaParkingPlace,villaParkingPlaceCount,villaSellRentType,villaState,(select communityName from ecms_community where communityId=villaCommunityId) as propName,".
-				"villaCommunityId,(select picUrl from ecms_pic where picBuildType=4 and picBuildId=villaId limit 1) as propPhoto,villaCreateTime,villaUpdateTime ".
-				"from ecms_villa ".
+				"villaCommunityId,picId,picURl as propPhoto,villaCreateTime,villaUpdateTime ".
+				"from ecms_villa prop left join ecms_pic pic on picBuildType=4 and picBuildId=villaId and picState=1 ".
 				"where villaId=".$propId;
 		if($userId > 0){
 			$sql .= " and villaUserId=".$userId;
 		}
-		return $this->db->getQueryArray($sql);
+		return $this->db->getQueryValue($sql);
 	}
-	//end to be added by Cheneil
 	//修改别墅
 	public function modify($villa){
-		$sql="update ecms_villa set villaTitle='"
-			.(empty($villa['villaTitle'])?'':$villa['villaTitle'])
-			."',villaContent='".(empty($villa['villaContent'])?'':$villa['villaContent'])
-			."',villaNumber='".(empty($villa['villaNumber'])?'':$villa['villaNumber'])
-			."',villaRoom=".(empty($villa['villaRoom'])?0:$villa['villaRoom'])
-			.",villaHall=".(empty($villa['villaHall'])?0:$villa['villaHall'])
-			.",villaToilet=".(empty($villa['villaToilet'])?0:$villa['villaToilet'])
-			.",villaKitchen=".(empty($villa['villaKitchen'])?0:$villa['villaKitchen'])
-			.",villaBalcony=".(empty($villa['villaBalcony'])?0:$villa['villaBalcony'])
-			.",villaBuildArea=".(empty($villa['villaBuildArea'])?0:$villa['villaBuildArea'])
-			.",villaUseArea=".(empty($villa['villaUseArea'])?0:$villa['villaUseArea'])
-			.",villaForward=".(empty($villa['villaForward'])?0:$villa['villaForward'])
-			.",villaFitment=".(empty($villa['villaFitment'])?0:$villa['villaFitment'])
-			.",villaBuildYear=".(empty($villa['villaBuildYear'])?0:$villa['villaBuildYear'])
-			.",villaBaseService='".(empty($villa['villaBaseService'])?'':$villa['villaBaseService'])
-			."',villaEquipment='".(empty($villa['villaEquipment'])?'':$villa['villaEquipment'])
-			."',villaLookTime=".(empty($villa['villaLookTime'])?0:$villa['villaLookTime'])
-			.",villaLiveTime='".(empty($villa['villaLiveTime'])?'':$villa['villaLiveTime'])
-			."',villaSellPrice=".(empty($villa['villaSellPrice'])?0:$villa['villaSellPrice'])
-			.",villaRentPrice=".(empty($villa['villaRentPrice'])?0:$villa['villaRentPrice'])
-			."',villaRentType=".(empty($villa['villaRentType'])?0:$villa['villaRentType'])
-			.",villaPayment=".(empty($villa['villaPayment'])?0:$villa['villaPayment'])
-			.",villaPayDetailY=".(empty($villa['villaPayDetailY'])?0:$villa['villaPayDetailY'])
-			.",villaPayDetailF=".(empty($villa['villaPayDetailF'])?0:$villa['villaPayDetailF'])
-			."',villaAllFloor=".(empty($villa['villaAllFloor'])?0:$villa['villaAllFloor'])
-			.",villaBuildForm=".(empty($villa['villaBuildForm'])?0:$villa['villaBuildForm'])
-			.",villaAllFloor=".(empty($villa['villaAllFloor'])?0:$villa['villaAllFloor'])
-			.",villaBuildForm=".(empty($villa['villaBuildForm'])?0:$villa['villaBuildForm'])
-			.",villaBuildStructure=".(empty($villa['villaBuildStructure'])?0:$villa['villaBuildStructure'])
-			.",villaCellar=".(empty($villa['villaCellar'])?0:$villa['villaCellar'])
-			.",villaCellarArea=".(empty($villa['villaCellarArea'])?0:$villa['villaCellarArea'])
-			.",villaCellarType=".(empty($villa['villaCellarType'])?'':$villa['villaCellarType'])
-			.",villaGarden=".(empty($villa['villaGarden'])?0:$villa['villaGarden'])
-			.",villaGardenArea=".(empty($villa['villaGardenArea'])?0:$villa['villaGardenArea'])
-			.",villaGarage=".(empty($villa['villaGarage'])?0:$villa['villaGarage'])
-			.",villaGarageCount=".(empty($villa['villaGarageCount'])?0:$villa['villaGarageCount'])
-			.",villaParkingPlace=".(empty($villa['villaParkingPlace'])?0:$villa['villaParkingPlace'])
-			.",villaParkingPlaceCount=".(empty($villa['villaParkingPlaceCount'])?0:$villa['villaParkingPlaceCount'])
-			.",villaSellRentType=".(empty($villa['villaSellRentType'])?0:$villa['villaSellRentType'])
-			.",villaState=".(empty($villa['villaState'])?0:$villa['villaState'])
-			.",villaPropertyId=".(empty($villa['villaPropertyId'])?0:$villa['villaPropertyId'])
-			.",villaUserId=".(empty($villa['villaUserId'])?0:$villa['villaUserId'])
-			.",villaUpdateTime=".time()
-			." where villaId=".$villa['villaId'];
+		$sql = "update ecms_villa set ";
+		if(isset($villa['villaTitle'])){
+			$sql .= "villaTitle='".$villa['villaTitle']."',";
+		}
+		if(isset($villa['villaContent'])){
+			$sql .= "villaContent='".$villa['villaContent']."',";
+		}
+		if(isset($villa['villaNumber'])){
+			$sql .= "villaNumber='".$villa['villaNumber']."',";
+		}
+		if(isset($villa['villaRoom'])){
+			$sql .= "villaRoom=".$villa['villaRoom'].",";
+		}
+		if(isset($villa['villaHall'])){
+			$sql .= "villaHall=".$villa['villaHall'].",";
+		}
+		if(isset($villa['villaToilet'])){
+			$sql .= "villaToilet=".$villa['villaToilet'].",";
+		}
+		if(isset($villa['villaKitchen'])){
+			$sql .= "villaKitchen=".$villa['villaKitchen'].",";
+		}
+		if(isset($villa['villaBalcony'])){
+			$sql .= "villaBalcony=".$villa['villaBalcony'].",";
+		}
+		if(isset($villa['villaBuildArea'])){
+			$sql .= "villaBuildArea=".$villa['villaBuildArea'].",";
+		}
+		if(isset($villa['villaUseArea'])){
+			$sql .= "villaUseArea=".$villa['villaUseArea'].",";
+		}
+		if(isset($villa['villaForward'])){
+			$sql .= "villaForward=".$villa['villaForward'].",";
+		}
+		if(isset($villa['villaFitment'])){
+			$sql .= "villaFitment=".$villa['villaFitment'].",";
+		}
+		if(isset($villa['villaBuildYear'])){
+			$sql .= "villaBuildYear=".$villa['villaBuildYear'].",";
+		}
+		if(isset($villa['villaBaseService'])){
+			$sql .= "villaBaseService='".$villa['villaBaseService']."',";
+		}
+		if(isset($villa['villaLookTime'])){
+			$sql .= "villaLookTime=".$villa['villaLookTime'].",";
+		}
+		if(isset($villa['villaSellPrice'])){
+			$sql .= "villaSellPrice=".$villa['villaSellPrice'].",";
+		}
+		if(isset($villa['villaAllFloor'])){
+			$sql .= "villaAllFloor=".$villa['villaAllFloor'].",";
+		}
+		if(isset($villa['villaBuildForm'])){
+			$sql .= "villaBuildForm=".$villa['villaBuildForm'].",";
+		}
+		if(isset($villa['villaCellar'])){
+			$sql .= "villaCellar=".$villa['villaCellar'].",";
+		}
+		if(isset($villa['villaCellarArea'])){
+			$sql .= "villaCellarArea=".$villa['villaCellarArea'].",";
+		}
+		if(isset($villa['villaCellarType'])){
+			$sql .= "villaCellarType=".$villa['villaCellarType'].",";
+		}
+		if(isset($villa['villaGarden'])){
+			$sql .= "villaGarden=".$villa['villaGarden'].",";
+		}
+		if(isset($villa['villaGardenArea'])){
+			$sql .= "villaGardenArea=".$villa['villaGardenArea'].",";
+		}
+		if(isset($villa['villaGarage'])){
+			$sql .= "villaGarage=".$villa['villaGarage'].",";
+		}
+		if(isset($villa['villaGarageCount'])){
+			$sql .= "villaGarageCount=".$villa['villaGarageCount'].",";
+		}
+		if(isset($villa['villaSellRentType'])){
+			$sql .= "villaSellRentType=".$villa['villaSellRentType'].",";
+		}
+		if(isset($villa['villaState'])){
+			$sql .= "villaState=".$villa['villaState'].",";
+		}
+		$sql .= "villaUpdateTime=".time()." where villaId=".$villa['villaId'];
 		return $this->db->getQueryExeCute($sql);
 	}
+	//end to be added by Cheneil
 	//删除别墅
 	public function delVillaById($id){
 		$sql="delete from  ecms_villa where villaId=".$id;

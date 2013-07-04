@@ -32,12 +32,13 @@ function check(){
 	if(!CheckLiveArea('houseUseArea','houseBuildArea',true)) return false;
 	if(!CheckCreateTime('houseBuildYear',true)) return false;
 	if(!CheckFloor('houseFloor','houseAllFloor',true)) return false;
-	
+	/*
 	var housePhotoValue = $("#housePhoto").val();
 	if(trim(housePhotoValue) == ''){
 		alert("请上传图片");
 		return false;
 	}
+	*/
 	
 	if(!CheckTitle('houseTitle',true)) return false;
 	var houseContentValue = CKEDITOR.instances.houseContent.getData(); 
@@ -221,7 +222,7 @@ function check(){
        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
-            <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_live" value="修改" /></td>
+            <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_update" value="修改" /></td>
             <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
 	      </tr>
 	    </table>

@@ -1,0 +1,33 @@
+------------------------2013-07-04 14:29:28
+错误SQL语句：
+insert into ecms_pic(picBuildId,pictypeId,picBuildType,picSellRent,picUrl,picThumb,picState,picCreateTime,picUpdateTime) values(,0,1,1,'1165071258.jpg','0',1,1372919368,1372919368)
+客户端:127.0.0.1
+时间:2013-07-04 14:29:28
+------------------------2013-07-04 14:31:49
+错误SQL语句：
+update ecms_house set houseTitle='TCL雅馨居超笋盘1',houseContent='<p>
+	TCL雅馨居超笋盘1</p>
+',houseNumber='123456789854',houseRoom=2,houseHall=1,houseHall=1,houseToilet=1,houseKitchen=2,houseBalcony=1,houseSellPrice=120,houseBuildArea=100,houseUseArea=90,houseType=2,houseBuildForm=2,houseFitment=2,houseBaseService=',1,2,3,7,',houseFloor=10,houseAllFloor=22,houseBuildYear=2010,houseLookTime=2,housePayInfo=,houseLiveTime=,houseSellRentType=1,houseState=,houseUpdateTime=1372919509 where houseId=2
+客户端:127.0.0.1
+时间:2013-07-04 14:31:49
+------------------------2013-07-04 14:36:34
+错误SQL语句：
+update ecms_house set houseTitle='TCL雅馨居超笋盘1',houseContent='<p>
+	TCL雅馨居超笋盘1</p>
+',houseNumber='123456789652',houseRoom=2,houseHall=1,houseHall=1,houseToilet=1,houseKitchen=2,houseBalcony=1,houseSellPrice=100,houseBuildArea=100,houseUseArea=90,houseType=2,houseBuildForm=2,houseFitment=2,houseBaseService=',1,2,3,6,7,',houseFloor=10,houseAllFloor=22,houseBuildYear=2010,houseLookTime=2,housePayInfo=,houseLiveTime=,houseSellRentType=1,houseState=,houseUpdateTime=1372919794 where houseId=2
+客户端:127.0.0.1
+时间:2013-07-04 14:36:34
+------------------------2013-07-04 14:40:09
+错误SQL语句：
+update ecms_house set houseTitle='TCL雅馨居超笋盘1',houseContent='<p>
+	TCL雅馨居超笋盘1</p>
+',houseNumber='123456789652',houseRoom=2,houseHall=1,houseHall=1,houseToilet=1,houseKitchen=2,houseBalcony=1,houseSellPrice=100,houseBuildArea=100,houseUseArea=90,houseType=2,houseBuildForm=2,houseFitment=2,houseBaseService=',1,2,3,6,7,',houseFloor=10,houseAllFloor=22,houseBuildYear=2010,houseLookTime=2,housePayInfo=,houseLiveTime=,houseSellRentType=1,houseUpdateTime=1372920009 where houseId=2
+客户端:127.0.0.1
+时间:2013-07-04 14:40:09
+------------------------2013-07-04 14:42:11
+错误SQL语句：
+update ecms_house set houseTitle='TCL雅馨居超笋盘1',houseContent='<p>
+	TCL雅馨居超笋盘1</p>
+',houseNumber='123456789652',houseRoom=2,houseHall=1,houseHall=1,houseToilet=1,houseKitchen=2,houseBalcony=1,houseSellPrice=100,houseBuildArea=100,houseUseArea=90,houseType=2,houseBuildForm=2,houseFitment=2,houseBaseService=',1,2,3,6,7,',houseFloor=10,houseAllFloor=22,houseBuildYear=2010,houseLookTime=2,housePayInfo=,houseLiveTime='',houseSellRentType=1,houseUpdateTime=1372920131 where houseId=2
+客户端:127.0.0.1
+时间:2013-07-04 14:42:11

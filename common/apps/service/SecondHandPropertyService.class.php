@@ -49,13 +49,13 @@ class SecondHandPropertyService{
 	public function updateHouse($house){
 		
 		if(isset($house['propertyPhoto'])){
-			$this->picDAO->delPicByPropIdAndType(1,$house['houseId']);
+			$propId = $house['houseId'];
+			$this->picDAO->delPicByPropIdAndType(1,$propId);
 			
-			$property = $house;
-			$property['propId'] = $house['houseId'];
+			$house['propId'] = $propId;
 			$this->savePhoto($house);
 		}
-		return $this->houseDAO-($house);
+		return $this->houseDAO->modify($house);
 	}
 	
 	public function saveOffice($office){
@@ -72,6 +72,18 @@ class SecondHandPropertyService{
 	
 	public function saveVilla($villa){
 		return $this->saveProperty($this->villaDAO, $villa);
+	}
+
+	public function updateVilla($villa){
+		
+		if(isset($villa['propertyPhoto'])){
+			$propId = $villa['villaId'];
+			$this->picDAO->delPicByPropIdAndType(4,$propId);
+			
+			$villa['propId'] = $propId;
+			$this->savePhoto($villa);
+		}
+		return $this->villaDAO->modify($villa);
 	}
 	
 	public function getHousePropertyById($userId,$propId){

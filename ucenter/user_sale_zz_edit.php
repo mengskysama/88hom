@@ -16,7 +16,7 @@ if($property){
 	$estId = $property['houseCommunityId'];
 	$estName = $property['propName'];
 	$houseNumber = $property['houseNumber'];
-	$privateHouseNumber = $property['houseNumber'];
+	$privateHouseNumber = '';//$property['privateHouseNumber'];
 	$housePayInfo = $property['housePayInfo'];
 	$houseType = $property['houseType'];
 	$houseSellPrice = $property['houseSellPrice'];
@@ -73,7 +73,6 @@ if($property){
 	$smarty->assign("propPhoto",$propPhoto);
 	$smarty->assign("houseTitle",$houseTitle);
 	$smarty->assign("houseContent",$houseContent);
-	$smarty->assign("propKind","zz");
 	$smarty->assign("propId",$propId);
 }
 $smarty->assign('ucenter_user_left_menu',$tpl_dir.'ucenter_user_left_menu.tpl');
