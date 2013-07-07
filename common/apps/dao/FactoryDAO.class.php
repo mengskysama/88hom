@@ -59,8 +59,8 @@ class FactoryDAO  {
 			return $this->db->getQueryExecute($sql);						
 	}
 
-	public function countProperty($userId,$state){
-		$sql = "select count(factoryId) as propTotal from ecms_factory where factoryUserId=".$userId." and factoryState=".$state;
+	public function countProperty($userId,$state,$txType=1){
+		$sql = "select count(factoryId) as propTotal from ecms_factory where factoryUserId=".$userId." and factoryState=".$state." and factorySellRentType=".$txType;
 		$result = $this->db->getQueryValue($sql);
 		return $result['propTotal'];
 	}

@@ -36,6 +36,12 @@ class VillaPropertyHandler extends PropertyHandler{
 	private $villaState;
 	private $actionType;
 	private $villaId;
+	private $propTxType;
+	private $villaRentPrice;
+	private $villaRentType;
+	private $villaPayment;
+	private $villaPayDetailY;
+	private $villaPayDetailF;
 	
 	private $estateService;
 	private $propertyService;
@@ -44,7 +50,8 @@ class VillaPropertyHandler extends PropertyHandler{
 						$villaToilet,$villaKitchen,$villaBalcony,$villaBuildArea,$villaUseArea,$villaBuildYear,
 						$villaForward,$villaAllFloor,$villaCellar,$villaCellarArea,$villaCellarType,$villaGarden,
 						$villaGardenArea,$villaGarage,$villaGarageCount,$villaFitment,$villaBaseService,$villaLookTime,
-						$villaPhoto,$villaTitle,$villaContent,$villaUserId,$villaState,$actionType,$villaId){
+						$villaPhoto,$villaTitle,$villaContent,$villaUserId,$villaState,$actionType,$villaId,
+						$propTxType,$villaRentPrice,$villaRentType,$villaPayment,$villaPayDetailY,$villaPayDetailF){
 		
 		$this->db = $db;
 		$this->estId = $estId;
@@ -81,22 +88,28 @@ class VillaPropertyHandler extends PropertyHandler{
 		$this->villaState = $villaState;
 		$this->actionType = $actionType;
 		$this->villaId = $villaId;
-		
+		$this->propTxType = $propTxType;
+		$this->villaRentPrice = $villaRentPrice;
+		$this->villaRentType = $villaRentType;
+		$this->villaPayment = $villaPayment;
+		$this->villaPayDetailY = $villaPayDetailY;
+		$this->villaPayDetailF = $villaPayDetailF;
 		$this->estateService = new EstateService($db);
 		$this->propertyService = new SecondHandPropertyService($db);
 	}
 	
 	public function handle(){
 		if($this->actionType == "update"){
-			$this->updateProperty();
+			return $this->updateProperty();
 		}else{
-			$this->createProperty();
+			return $this->createProperty();
 		}
 	}
 	
 	private function updateProperty(){
 		$photoName = "";
-		if(!empty($this->villaPhoto)){
+		if($this->villaPhoto['error'] == 0){
+	
 			$photoName = $this->uploadPhoto($this->villaPhoto,$this->villaUserId);
 			if(!$photoName) return false;
 		}
@@ -106,7 +119,7 @@ class VillaPropertyHandler extends PropertyHandler{
 		return $this->propertyService->updateVilla($villa);
 	}
 	
-	public function createProperty(){
+	private function createProperty(){
 		$photoName = $this->uploadPhoto($this->villaPhoto,$this->villaUserId);
 		if(!$photoName) return false;
 		
@@ -119,7 +132,7 @@ class VillaPropertyHandler extends PropertyHandler{
 		return true;
 	} 
 	
-	private function genPropEntity($realEstId,$photoName,$houseState){
+	private function genPropEntity($realEstId,$photoName,$villaState){
 		//save the property
 		$villaBaseService = "";
 		if(!empty($this->villaBaseService)){
@@ -139,44 +152,47 @@ class VillaPropertyHandler extends PropertyHandler{
 		$villa['villaKitchen'] = $this->villaKitchen;
 		$villa['villaBalcony'] = $this->villaBalcony;
 		$villa['villaBuildArea'] = $this->villaBuildArea;
-		$villa['villaUseArea'] = $this->villaUseArea;
+		$villa['villaUseArea'] = $this->villaUseArea == "" ? 0 : $this->villaUseArea;
 		$villa['villaForward'] = $this->villaForward;
 		$villa['villaFitment'] = $this->villaFitment;
-		$villa['villaBuildYear'] = $this->villaBuildYear;
+		$villa['villaBuildYear'] = $this->villaBuildYear == "" ? 0 : $this->villaBuildYear;
 		$villa['villaBaseService'] = $villaBaseService;
 		$villa['villaEquipment'] = '';
-		$villa['villaLookTime'] = $this->villaLookTime;
+		$villa['villaLookTime'] = $this->villaLookTime == "" ? 0 : $this->villaLookTime;
 		$villa['villaLiveTime'] = '';
-		$villa['villaSellPrice'] = $this->villaSellPrice;
-		$villa['villaRentPrice'] = 0;
-		$villa['villaRentType'] = 0;
-		$villa['villaPayment'] = 0;
-		$villa['villaPayDetailY'] = 0;
-		$villa['villaPayDetailF'] = 0;
+		$villa['villaSellPrice'] = $this->villaSellPrice == "" ? 0 : $this->villaSellPrice;
+		$villa['villaRentPrice'] = $this->villaRentPrice == "" ? 0 : $this->villaRentPrice;
+		$villa['villaRentType'] = $this->villaRentType == "" ? 0 : $this->villaRentType;
+		$villa['villaPayment'] = $this->villaPayment == "" ? 0 : $this->villaPayment;
+		$villa['villaPayDetailY'] = $this->villaPayDetailY == "" ? 0 : $this->villaPayDetailY;
+		$villa['villaPayDetailF'] = $this->villaPayDetailF == "" ? 0 : $this->villaPayDetailF;
 		$villa['villaAllFloor'] = $this->villaAllFloor;
 		$villa['villaBuildForm'] = $this->villaBuildForm;
 		$villa['villaBuildStructure'] = '';
-		$villa['villaCellar'] = $this->villaCellar;
-		$villa['villaCellarArea'] = $this->villaCellarArea;
-		$villa['villaCellarType'] = $this->villaCellarType;
-		$villa['villaGarden'] = $this->villaGarden;
-		$villa['villaGardenArea'] = $this->villaGardenArea;
-		$villa['villaGarage'] = $this->villaGarage;
-		$villa['villaGarageCount'] = $this->villaGarageCount;
+		$villa['villaCellar'] = $this->villaCellar == "" ? 0 : $this->villaCellar;
+		$villa['villaCellarArea'] = $this->villaCellarArea == "" ? 0 : $this->villaCellarArea;
+		$villa['villaCellarType'] = $this->villaCellarType == "" ? 0 : $this->villaCellarType;
+		$villa['villaGarden'] = $this->villaGarden == "" ? 0 : $this->villaGarden;
+		$villa['villaGardenArea'] = $this->villaGardenArea == "" ? 0 : $this->villaGardenArea;
+		$villa['villaGarage'] = $this->villaGarage == "" ? 0 : $this->villaGarage;
+		$villa['villaGarageCount'] = $this->villaGarageCount == "" ? 0 : $this->villaGarageCount;
 		$villa['villaParkingPlace'] = '';
 		$villa['villaParkingPlaceCount'] = 0;
-		$villa['villaState'] = $this->villaState;
+		if($villaState){
+			$villa['villaState'] = $villaState;
+		}
 		if($realEstId){
 			$villa['villaCommunityId'] = $realEstId;
 		}
 		$villa['villaUserId'] = $this->villaUserId;
-		$villa['villaSellRentType'] = 1;
-
+		$villa['villaSellRentType'] = $this->propTxType;
+	
 		if($photoName){
 			$villa['propertyPhoto']['picBuildType'] = 4;
 			$villa['propertyPhoto']['picSellRent'] = 1;
 			$villa['propertyPhoto']['picUrl'] = $photoName;	
 		}	
+		return $villa;
 	}
 }
 ?>

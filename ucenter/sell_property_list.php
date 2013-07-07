@@ -18,12 +18,13 @@ $propName = getParameter("propName");
 $destNo = getParameter("destNo");
 $pageNo = getParameter("pageNo");
 $pageNo = $destNo == "" ? ($pageNo == "" ? 1 : $pageNo) : $destNo;
+$txType = 1;
 
 $secondPropertyService = new SecondHandPropertyService($db);
-$unlivePropsCount = $secondPropertyService->countPropertiesByState($userId,0);
-$livePropsCount = $secondPropertyService->countPropertiesByState($userId,1);
-$expiredPropsCount = $secondPropertyService->countPropertiesByState($userId,3);
-$illegalPropsCount = $secondPropertyService->countPropertiesByState($userId,4);
+$unlivePropsCount = $secondPropertyService->countPropertiesByState($userId,0,$txType);
+$livePropsCount = $secondPropertyService->countPropertiesByState($userId,1,$txType);
+$expiredPropsCount = $secondPropertyService->countPropertiesByState($userId,3,$txType);
+$illegalPropsCount = $secondPropertyService->countPropertiesByState($userId,4,$txType);
 //fill the condition
 $condition['userId'] = $userId;
 $condition['propState'] = $propState;
@@ -35,6 +36,7 @@ $condition['propKind'] = $propKind;
 $condition['propOrder'] = $propOrder;
 $condition['propName'] = $propName;
 $condition['currentPageNo'] = $pageNo;
+$condition['txType'] = $txType;
 $props = $secondPropertyService->getSellPropertyList($condition);
 $propList = $props['data'];
 $pagination = $props['pagination'];

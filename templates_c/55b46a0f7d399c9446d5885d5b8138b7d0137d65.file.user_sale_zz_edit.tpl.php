@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-03 22:53:25
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-04 21:56:34
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_zz_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1636251d2f3fbecd172-19764708%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '55b46a0f7d399c9446d5885d5b8138b7d0137d65' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_zz_edit.tpl',
-      1 => 1372862599,
+      1 => 1372945890,
       2 => 'file',
     ),
   ),
@@ -98,12 +98,13 @@ function check(){
 	if(!CheckLiveArea('houseUseArea','houseBuildArea',true)) return false;
 	if(!CheckCreateTime('houseBuildYear',true)) return false;
 	if(!CheckFloor('houseFloor','houseAllFloor',true)) return false;
-	
+	/*
 	var housePhotoValue = $("#housePhoto").val();
 	if(trim(housePhotoValue) == ''){
 		alert("请上传图片");
 		return false;
 	}
+	*/
 	
 	if(!CheckTitle('houseTitle',true)) return false;
 	var houseContentValue = CKEDITOR.instances.houseContent.getData(); 
@@ -317,7 +318,7 @@ function check(){
        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
-            <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_live" value="修改" /></td>
+            <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_update" value="修改" /></td>
             <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
 	      </tr>
 	    </table>

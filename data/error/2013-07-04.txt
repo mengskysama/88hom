@@ -31,3 +31,17 @@ update ecms_house set houseTitle='TCL雅馨居超笋盘1',houseContent='<p>
 ',houseNumber='123456789652',houseRoom=2,houseHall=1,houseHall=1,houseToilet=1,houseKitchen=2,houseBalcony=1,houseSellPrice=100,houseBuildArea=100,houseUseArea=90,houseType=2,houseBuildForm=2,houseFitment=2,houseBaseService=',1,2,3,6,7,',houseFloor=10,houseAllFloor=22,houseBuildYear=2010,houseLookTime=2,housePayInfo=,houseLiveTime='',houseSellRentType=1,houseUpdateTime=1372920131 where houseId=2
 客户端:127.0.0.1
 时间:2013-07-04 14:42:11
+------------------------2013-07-04 22:37:19
+错误SQL语句：
+update ecms_villa set villaTitle='别墅1号超笋盘1',villaContent='<p>
+	别墅1号超笋盘1</p>
+',villaNumber='123456789431',villaRoom=6,villaHall=3,villaToilet=2,villaKitchen=1,villaBalcony=4,villaBuildArea=201,villaUseArea=181,villaForward=4,villaFitment=2,villaBuildYear=2011,villaBaseService=',1,3,4,5,6,',villaLookTime=1,villaSellPrice=401,villaAllFloor=2,villaBuildForm=2,villaCellar=1,villaCellarArea=90,villaCellarType=2,villaGarden=1,villaGardenArea=80,villaGarage=1,villaGarageCount=1,villaSellRentType=1,villaState=,villaUpdateTime=1372948639 where villaId=5
+客户端:127.0.0.1
+时间:2013-07-04 22:37:19
+------------------------2013-07-04 22:41:20
+错误SQL语句：
+update ecms_villa set villaTitle='别墅1号超笋盘1',villaContent='<p>
+	别墅1号超笋盘1</p>
+',villaNumber='123456789431',villaRoom=6,villaHall=3,villaToilet=2,villaKitchen=1,villaBalcony=4,villaBuildArea=201,villaUseArea=181,villaForward=4,villaFitment=2,villaBuildYear=2011,villaBaseService=',1,3,4,5,6,',villaLookTime=1,villaSellPrice=401,villaAllFloor=2,villaBuildForm=2,villaCellar=1,villaCellarArea=90,villaCellarType=2,villaGarden=1,villaGardenArea=80,villaGarage=1,villaGarageCount=1,villaSellRentType=1,villaState=,villaUpdateTime=1372948880 where villaId=5
+客户端:127.0.0.1
+时间:2013-07-04 22:41:20

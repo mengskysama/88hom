@@ -1,3 +1,4 @@
+
 function deletePic(picId){
 	if(!confirm("确认删除这张照片？")) return false;
     	

@@ -134,6 +134,7 @@ function checkVillaGarageCount(){
         <p><b>基本资料</b></p>
         <form id="bsForm" name="bsForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="bs">
+            <input type="hidden" name="prop_tx_type" value="1">
         <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼盘名称</td>
@@ -289,8 +290,8 @@ function checkVillaGarageCount(){
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
     <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
-    	<input id="villaPhoto" name="villaPhoto" type="file"  value="" />
-    	<div id="showPic"><img src="http://localhost/88hom/uploads/community/<!--{$propPhoto}-->" class="l">
+    	<input id="villaPhoto" name="villaPhoto" type="file"  value="" /><br>
+    	<img src="http://localhost/88hom/uploads/community/<!--{$propPhoto}-->" class="l">
     </td>
   </tr>
   <tr>

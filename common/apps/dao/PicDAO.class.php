@@ -48,6 +48,7 @@ class PicDAO  {
 	}
 	public function delPicByPropIdAndType($picBuildType,$propId){
 		$sql="update ecms_pic set picState=0 where picBuildType=".$picBuildType." and picBuildId=".$propId;
+		//echo $sql;
 		return $this->db->getQueryExecute($sql);
 	}
 	//end to be added by Cheneil

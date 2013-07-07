@@ -1,0 +1,50 @@
+------------------------2013-07-07 14:59:16
+错误SQL语句：
+update ecms_house set houseTitle='大地花园出租1',houseContent='<p>
+	出租大地花园1</p>
+',houseNumber='213456787654',houseRoom=4,houseHall=3,houseHall=3,houseToilet=2,houseKitchen=2,houseBalcony=1,houseSellPrice=4300,houseBuildArea=,houseUseArea=,houseType=,houseBuildForm='',houseForward=4,houseFitment=1,houseBaseService=',1,2,3,4,6,',houseFloor=3,houseAllFloor=9,houseBuildYear=,houseLookTime=,housePayInfo=0,houseLiveTime='',houseSellRentType=2,houseUpdateTime=1373180356 where houseId=28
+客户端:127.0.0.1
+时间:2013-07-07 14:59:16
+------------------------2013-07-07 15:00:27
+错误SQL语句：
+update ecms_house set houseTitle='大地花园出租1',houseContent='<p>
+	出租大地花园1</p>
+',houseNumber='213456787654',houseRoom=4,houseHall=3,houseHall=3,houseToilet=2,houseKitchen=2,houseBalcony=1,houseSellPrice=4300,houseBuildArea=,houseUseArea=,houseType=0,houseBuildForm='',houseForward=4,houseFitment=1,houseBaseService=',1,2,3,4,6,',houseFloor=3,houseAllFloor=9,houseBuildYear=,houseLookTime=,housePayInfo=0,houseLiveTime='',houseSellRentType=2,houseUpdateTime=1373180427 where houseId=28
+客户端:127.0.0.1
+时间:2013-07-07 15:00:27
+------------------------2013-07-07 15:02:31
+错误SQL语句：
+update ecms_house set houseTitle='大地花园出租1',houseContent='<p>
+	出租大地花园1</p>
+',houseNumber='213456787654',houseRoom=4,houseHall=3,houseHall=3,houseToilet=2,houseKitchen=2,houseBalcony=1,houseSellPrice=4300,houseBuildArea=0,houseUseArea=0,houseType=0,houseBuildForm='',houseForward=4,houseFitment=1,houseBaseService=',1,2,3,4,6,',houseFloor=3,houseAllFloor=9,houseBuildYear=,houseLookTime=,housePayInfo=0,houseLiveTime='',houseSellRentType=2,houseUpdateTime=1373180551 where houseId=28
+客户端:127.0.0.1
+时间:2013-07-07 15:02:31
+------------------------2013-07-07 15:03:09
+错误SQL语句：
+update ecms_house set houseTitle='大地花园出租1',houseContent='<p>
+	出租大地花园1</p>
+',houseNumber='213456787654',houseRoom=4,houseHall=3,houseHall=3,houseToilet=2,houseKitchen=2,houseBalcony=1,houseSellPrice=4300,houseBuildArea=0,houseUseArea=0,houseType=0,houseBuildForm='',houseForward=4,houseFitment=1,houseBaseService=',1,2,3,4,6,',houseFloor=3,houseAllFloor=9,houseBuildYear=,houseLookTime=0,housePayInfo=0,houseLiveTime='',houseSellRentType=2,houseUpdateTime=1373180589 where houseId=28
+客户端:127.0.0.1
+时间:2013-07-07 15:03:09
+------------------------2013-07-07 17:30:11
+错误SQL语句：
+update ecms_villa set villaTitle='别墅3号1',villaContent='<p>
+	地对地导弹1</p>
+',villaNumber='123456789434',villaRoom=4,villaHall=3,villaToilet=3,villaKitchen=2,villaBalcony=3,villaBuildArea=288,villaUseArea=0,villaForward=1,villaFitment=1,villaBuildYear=0,villaBaseService=',1,4,5,',villaLookTime=1,villaSellPrice=0,villaAllFloor=2,villaBuildForm=3,villaCellar=0,villaCellarArea=,villaCellarType=,villaGarden=0,villaGardenArea=,villaGarage=0,villaGarageCount=,villaSellRentType=2,villaRentPrice=6600,villaRentType=1,villaPayment=1,villaPayDetailY=2,villaPayDetailF=1,villaUpdateTime=1373189411 where villaId=7
+客户端:127.0.0.1
+时间:2013-07-07 17:30:11
+------------------------2013-07-07 22:31:12
+错误SQL语句：
+select propId,propKind,propName,propNumber,propPrice,propArea,propPriceUnit,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto from vw_get_sell_property_list where userId=17 and propState=1  limit 0,5
+客户端:127.0.0.1
+时间:2013-07-07 22:31:12
+------------------------2013-07-07 22:31:42
+错误SQL语句：
+select propId,propKind,propName,propNumber,propPrice,propArea,propPriceUnit,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto from vw_get_sell_property_list where userId=17 and propState=1  limit 0,5
+客户端:127.0.0.1
+时间:2013-07-07 22:31:42
+------------------------2013-07-07 22:34:26
+错误SQL语句：
+select where userId=17 and propState=1 from propId,propKind,propName,propNumber,propPrice,propArea,floor(propPrice*10000/propArea) as perPriceArea,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto  limit 0,5 
+客户端:127.0.0.1
+时间:2013-07-07 22:34:26

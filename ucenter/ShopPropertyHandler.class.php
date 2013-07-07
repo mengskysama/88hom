@@ -22,6 +22,11 @@ class ShopPropertyHandler extends PropertyHandler{
 	private $shopsContent;
 	private $shopUserId;
 	private $shopsState;
+	private $actionType;
+	private $shopId;
+	private $propTxType;
+	private $shopsRentPrice;
+	private $shopsRentPriceUnit;
 	
 	private $estateService;
 	private $propertyService;
@@ -29,7 +34,7 @@ class ShopPropertyHandler extends PropertyHandler{
 	function __construct($db,$estId,$estName,$shopsAddress,$shopsType,$shopsAreaId,$shopsNumber,
 						$shopsSellPrice,$shopsPropFee,$shopsBuildArea,$shopsFloor,$shopsAllFloor,$shopsDivision,
 						$shopsFitment,$shopsBaseService,$shopsAimOperastion,$shopPhoto,$shopsTitle,
-						$shopContent,$shopUserId,$shopsState){
+						$shopContent,$shopUserId,$shopsState,$actionType,$shopId,$propTxType,$shopsRentPrice,$shopsRentPriceUnit){
 		
 		$this->db = $db;
 		$this->estId = $estId;
@@ -52,34 +57,69 @@ class ShopPropertyHandler extends PropertyHandler{
 		$this->shopsContent = $shopContent;
 		$this->shopUserId = $shopUserId;
 		$this->shopsState = $shopsState;
+		$this->actionType = $actionType;
+		$this->shopId = $shopId;
+		$this->propTxType = $propTxType;
+		$this->shopsRentPrice = $shopsRentPrice;
+		$this->shopsRentPriceUnit = $shopsRentPriceUnit;
 		
 		$this->estateService = new EstateService($db);
 		$this->propertyService = new SecondHandPropertyService($db);
 	}
 	
 	public function handle(){
+		if($this->actionType == "update"){
+			return $this->updateProperty();
+		}else{
+			return $this->createProperty();
+		}
+	}
+	
+	private function updateProperty(){
+		$photoName = "";
+		if($this->shopPhoto['error'] == 0){
+	
+			$photoName = $this->uploadPhoto($this->shopPhoto,$this->shopUserId);
+			if(!$photoName) return false;
+		}
+		//echo $photoName;
+
+		$shop = $this->genPropEntity($this->estId,$photoName,"");
+		$shop["shopId"] = $this->shopId;
+		return $this->propertyService->updateShop($shop);
+	}
+	
+	private function createProperty(){
 		$photoName = $this->uploadPhoto($this->shopPhoto,$this->shopUserId);
 		if(!$photoName) return false;
 		
 		$realEstId = $this->getRealEstateId($this->estateService,$this->estId,$this->estName);
 		if(!$realEstId) return false;
-		
+
+		$shop = $this->genPropEntity($realEstId,$photoName,$this->shopsState);
+		$shopId = $this->propertyService->saveShop($shop);
+		if(!$shopId) return false;
+		return true;
+	} 
+
+	private function genPropEntity($realEstId,$photoName,$shopState){
+
 		//save the property
 		$shopsBaseService = "";
 		if(!empty($this->shopsBaseService)){
 			$shopsBaseService = ",";
 			$len = count($this->shopsBaseService);
 			for($i=0; $i<$len; $i++){
-				$shopsBaseService .= $this->shopsBaseService[$i].","; 
-			}			
+				$shopsBaseService .= $this->shopsBaseService[$i].",";
+			}
 		}
 		$shopsAimOperastion = "";
 		if(!empty($this->shopsAimOperastion)){
 			$shopsAimOperastion = ",";
 			$len = count($this->shopsAimOperastion);
 			for($i=0; $i<$len; $i++){
-				$shopsAimOperastion .= $this->shopsAimOperastion[$i].","; 
-			}			
+				$shopsAimOperastion .= $this->shopsAimOperastion[$i].",";
+			}
 		}
 		
 		$shop['shopsName'] = $this->estName;
@@ -87,9 +127,9 @@ class ShopPropertyHandler extends PropertyHandler{
 		$shop['shopsTitle'] = $this->shopsTitle;
 		$shop['shopsContent'] = $this->shopsContent;
 		$shop['shopsType'] = $this->shopsType;
-		$shop['shopsSellPrice'] = $this->shopsSellPrice;
-		$shop['shopsRentPrice'] = 0;
-		$shop['shopsRentPriceUnit'] = 0;
+		$shop['shopsSellPrice'] = $this->shopsSellPrice == "" ? 0 : $this->shopsSellPrice;
+		$shop['shopsRentPrice'] = $this->shopsRentPrice == "" ? 0 : $this->shopsRentPrice;
+		$shop['shopsRentPriceUnit'] = $this->shopsRentPriceUnit == "" ? 0 : $this->shopsRentPriceUnit;
 		$shop['shopsRentState'] = 0;
 		$shop['shopsPayment'] = 0;
 		$shop['shopsPayDetailY'] = 0;
@@ -100,25 +140,28 @@ class ShopPropertyHandler extends PropertyHandler{
 		$shop['shopsDivision'] = $this->shopsDivision;
 		$shop['shopsFitment'] = $this->shopsFitment;
 		$shop['shopsBaseService'] = $shopsBaseService;
-		$shop['shopsAimOperasion'] = $shopsAimOperastion;
+		$shop['shopsAimOperastion'] = $shopsAimOperastion;
 		$shop['shopsIncludFee'] = 0;
 		$shop['shopsPropFee'] = $this->shopsPropFee;
 		$shop['shopsTransferFee'] = 0;
 		$shop['shopsNumber'] = $this->shopsNumber;
-		$shop['shopsSellRentType'] = 1;
+		$shop['shopsSellRentType'] = $this->propTxType;
 		$shop['shopsMapX'] = 0;
 		$shop['shopsMapY'] = 0;
-		$shop['shopsState'] = $this->shopsState;
 		$shop['shopsUserId'] = $this->shopUserId;
-		$shop['shopsCommunityId'] = $realEstId;
 
-		$shop['propertyPhoto']['picBuildType'] = 2;
-		$shop['propertyPhoto']['picSellRent'] = 1;
-		$shop['propertyPhoto']['picUrl'] = $photoName;		
-				
-		$shopId = $this->propertyService->saveShop($shop);
-		if(!$shopId) return false;
-		return true;
-	} 
+		if($shopState){
+			$shop['shopsState'] = $shopState;
+		}
+		if($realEstId){
+			$shop['shopsCommunityId'] = $realEstId;
+		}
+		if($photoName){
+			$shop['propertyPhoto']['picBuildType'] = 2;
+			$shop['propertyPhoto']['picSellRent'] = 1;
+			$shop['propertyPhoto']['picUrl'] = $photoName;
+		}
+		return $shop;
+	}
 }
 ?>

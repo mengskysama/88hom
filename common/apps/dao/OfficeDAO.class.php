@@ -37,8 +37,8 @@ class OfficeDAO{
 		return $officeId;					
 	}
 
-	public function countProperty($userId,$state){
-		$sql = "select count(officeId) as propTotal from ecms_office where officeUserId=".$userId." and officeState=".$state;
+	public function countProperty($userId,$state,$txType=1){
+		$sql = "select count(officeId) as propTotal from ecms_office where officeUserId=".$userId." and officeState=".$state." and officeSellRentType=".$txType;
 		$result = $this->db->getQueryValue($sql);
 		return $result['propTotal'];
 	}
@@ -53,42 +53,75 @@ class OfficeDAO{
 			   "officePayment,officePayDetailY,officePayDetailF,officeBuildArea,officeFloor,officeAllFloor,officeDivision,officeFitment,officeLevel,".
 			   "officeTitle,officeContent,officeSellRentType,officeState,".
 			   "(select communityName from ecms_community where communityId=officeCommunityId) as propName,officeCommunityId,".
-			   "(select picUrl from ecms_pic where picBuildType=3 and picBuildId=officeId limit 1) as propPhoto,officeUserId,officeCreateTime,officeUpdateTime ".
-	 
-				"from ecms_office ".
+			   "picId,picURl as propPhoto,officeUserId,officeCreateTime,officeUpdateTime ".	 
+				"from ecms_office prop left join ecms_pic pic on picBuildType=3 and picBuildId=officeId and picState=1 ".
 				"where officeId=".$propId;
 		if($userId > 0){
 			$sql .= " and officeUserId=".$userId;
 		}
-		return $this->db->getQueryArray($sql);
+		return $this->db->getQueryValue($sql);
 	}
-	//end to be added by Cheneil
 	public function modify($info){
-		$sql="update ecms_office set 
-			  officeNumber='".(empty($info['officeNumber'])?'':$info['officeNumber'])."',
-			  officeType=".(empty($info['officeType'])?0:$info['officeType']).",
-			  officeSellPrice=".(empty($info['officeSellPrice'])?0:$info['officeSellPrice']).",
-			  officeRentPrice=".(empty($info['officeRentPrice'])?0:$info['officeRentPrice']).",
-			  officeRentPriceUnit=".(empty($info['officeRentPriceUnit'])?0:$info['officeRentPriceUnit']).",
-			  officeIncludFee=".(empty($info['officeIncludFee'])?0:$info['officeIncludFee']).",
-			  officeProFee=".(empty($info['officeProFee'])?0:$info['officeProFee']).",
-			  officePayment=".(empty($info['officePayment'])?0:$info['officePayment']).",
-			  officePayDetailY=".(empty($info['officePayDetailY'])?0:$info['officePayDetailY']).",
-			  officePayDetailF=".(empty($info['officePayDetailF'])?0:$info['officePayDetailF']).",
-			  officeBuildArea=".(empty($info['officeBuildArea'])?0:$info['officeBuildArea']).",
-			  officeFloor=".(empty($info['officeFloor'])?0:$info['officeFloor']).",
-			  officeAllFloor=".(empty($info['officeAllFloor'])?0:$info['officeAllFloor']).",
-			  officeDivision=".(empty($info['officeDivision'])?0:$info['officeDivision']).",
-			  officeFitment=".(empty($info['officeFitment'])?0:$info['officeFitment']).",
-			  officeLevel=".(empty($info['officeLevel'])?0:$info['officeLevel']).",
-			  officeTitle='".(empty($info['officeTitle'])?0:$info['officeTitle'])."',
-			  officeContent='".(empty($info['officeContent'])?0:$info['officeContent'])."',
-			  officeSellRentType=".(empty($info['officeSellRentType'])?0:$info['officeSellRentType']).",
-			  officeState=".(empty($info['officeState'])?0:$info['officeState']).",
-			  officeUpdateTime=".time()." 
-			  where officeId=".$info['officeId'];
+		$sql = "update ecms_office set ";
+		if(isset($info['officeNumber'])){
+			$sql .= "officeNumber='".$info['officeNumber']."',";
+		} 
+		if(isset($info['officeType'])){
+			$sql .= "officeType=".$info['officeType'].",";
+		} 
+		if(isset($info['officeNumber'])){
+			$sql .= "officeNumber='".$info['officeNumber']."',";
+		} 
+		if(isset($info['officeSellPrice']) && $info['officeSellPrice'] > 0){
+			$sql .= "officeSellPrice=".$info['officeSellPrice'].",";
+		} 
+		if(isset($info['officeRentPrice']) && $info['officeRentPrice'] > 0){
+			$sql .= "officeRentPrice=".$info['officeRentPrice'].",";
+		} 
+		if(isset($info['officeRentPriceUnit']) && $info['officeRentPriceUnit'] > 0){
+			$sql .= "officeRentPriceUnit=".$info['officeRentPriceUnit'].",";
+		} 
+		
+		if(isset($info['officeProFee'])){
+			$sql .= "officeProFee=".$info['officeProFee'].",";
+		} 
+		if(isset($info['officeBuildArea'])){
+			$sql .= "officeBuildArea=".$info['officeBuildArea'].",";
+		} 
+		if(isset($info['officeFloor'])){
+			$sql .= "officeFloor=".$info['officeFloor'].",";
+		} 
+		if(isset($info['officeFloor'])){
+			$sql .= "officeFloor=".$info['officeFloor'].",";
+		} 
+		if(isset($info['officeAllFloor'])){
+			$sql .= "officeAllFloor=".$info['officeAllFloor'].",";
+		} 
+		if(isset($info['officeDivision'])){
+			$sql .= "officeDivision=".$info['officeDivision'].",";
+		} 
+		if(isset($info['officeFitment'])){
+			$sql .= "officeFitment=".$info['officeFitment'].",";
+		} 
+		if(isset($info['officeLevel'])){
+			$sql .= "officeLevel=".$info['officeLevel'].",";
+		} 
+		if(isset($info['officeTitle'])){
+			$sql .= "officeTitle='".$info['officeTitle']."',";
+		} 
+		if(isset($info['officeContent'])){
+			$sql .= "officeContent='".$info['officeContent']."',";
+		} 
+		if(isset($info['officeSellRentType'])){
+			$sql .= "officeSellRentType=".$info['officeSellRentType'].",";
+		} 
+		if(isset($info['officeState'])){
+			$sql .= "officeState=".$info['officeState'].",";
+		} 
+		$sql .= "officeUpdateTime=".time()." where officeId=".$info['officeId'];
 		return $this->db->getQueryExeCute($sql);
 	}
+	//end to be added by Cheneil
 	public function getDetail(){
 		
 	}

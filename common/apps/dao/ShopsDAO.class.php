@@ -45,8 +45,8 @@ class ShopsDAO{
 		return $shopId;					
 	}
 
-	public function countProperty($userId,$state){
-		$sql = "select count(shopsId) as propTotal from ecms_shops where shopsUserId=".$userId." and shopsState=".$state;
+	public function countProperty($userId,$state,$txType=1){
+		$sql = "select count(shopsId) as propTotal from ecms_shops where shopsUserId=".$userId." and shopsState=".$state." and shopsSellRentType=".$txType;
 		$result = $this->db->getQueryValue($sql);
 		return $result['propTotal'];
 	}
@@ -59,51 +59,72 @@ class ShopsDAO{
 	public function getPropertyById($userId,$propId){
 		$sql = "select shopsName,shopsAddress,shopsTitle,shopsContent,shopsType,shopsSellPrice,shopsRentPrice,".
 			   "shopsRentPriceUnit,shopsRentState,shopsPayment,shopsPayDetailY,shopsPayDetailF,shopsBuildArea,shopsFloor,shopsAllFloor,shopsDivision,".
-			   "shopsFitment,shopsBaseService,shopsAimOperastion,shopsIncludFee,shopsPropFee,shopsTransferFee,shopsNumber,shopsSellRentType,".
-			   "shopsMapX,shopsMapY,shopsState,shopsUserId,(select picUrl from ecms_pic where picBuildType=2 and picBuildId=shopsId limit 1) as propPhoto,shopsCreateTime,shopsUpdateTime ". 
-				"from ecms_shops ".
+			   "shopsFitment,shopsBaseService,shopsAimOperastion,shopsIncludFee,shopsPropFee,shopsTransferFee,shopsNumber,shopsSellRentType,(select communityName from ecms_community where communityId=shopsCommunityId) as propName,".
+			   "shopsMapX,shopsMapY,shopsState,shopsUserId,shopsCommunityId,picId,picURl as propPhoto,shopsCreateTime,shopsUpdateTime ". 
+				"from ecms_shops prop left join ecms_pic pic on picBuildType=2 and picBuildId=shopsId and picState=1 ".
 				"where shopsId=".$propId;
 		if($userId > 0){
 			$sql .= " and shopsUserId=".$userId;
 		}
-		return $this->db->getQueryArray($sql);
+		return $this->db->getQueryValue($sql);
 	}
-	//end to be added by Cheneil
 	public function modify($info){
-		$sql="update ecms_shops set 
-			  shopsName='".(empty($info['shopsName'])?'':$info['shopsName'])."',
-			  shopsAddress='".(empty($info['shopsAddress'])?0:$info['shopsAddress'])."',
-			  shopsTitle='".(empty($info['shopsTitle'])?0:$info['shopsTitle'])."',
-			  shopsContent='".(empty($info['shopsContent'])?0:$info['shopsContent'])."',
-			  shopsType=".(empty($info['shopsType'])?0:$info['shopsType']).",
-			  shopsSellPrice=".(empty($info['shopsSellPrice'])?0:$info['shopsSellPrice']).",
-			  shopsRentPrice=".(empty($info['shopsRentPrice'])?0:$info['shopsRentPrice']).",
-			  shopsRentPriceUnit=".(empty($info['shopsRentPriceUnit'])?0:$info['shopsRentPriceUnit']).",
-			  shopsRentState=".(empty($info['shopsRentState'])?0:$info['shopsRentState']).",
-			  shopsPayment=".(empty($info['shopsPayment'])?0:$info['shopsPayment']).",
-			  shopsPayDetailY=".(empty($info['shopsPayDetailY'])?0:$info['shopsPayDetailY']).",
-			  shopsPayDetailF=".(empty($info['shopsPayDetailF'])?0:$info['shopsPayDetailF']).",
-			  shopsBuildArea=".(empty($info['shopsBuildArea'])?0:$info['shopsBuildArea']).",
-			  shopsFloor=".(empty($info['shopsFloor'])?0:$info['shopsFloor']).",
-			  shopsAllFloor=".(empty($info['shopsAllFloor'])?0:$info['shopsAllFloor']).",
-			  shopsDivision=".(empty($info['shopsDivision'])?0:$info['shopsDivision']).",
-			  shopsFitment=".(empty($info['shopsFitment'])?0:$info['shopsFitment']).",
-			  shopsBaseService='".(empty($info['shopsBaseService'])?0:$info['shopsBaseService'])."',
-			  shopsAimOperasion='".(empty($info['shopsAimOperasion'])?0:$info['shopsAimOperasion'])."',
-			  shopsIncludFee=".(empty($info['shopsIncludFee'])?0:$info['shopsIncludFee']).",
-			  shopsPropFee=".(empty($info['shopsPropFee'])?0:$info['shopsPropFee']).",
-			  shopsTransferFee=".(empty($info['shopsTransferFee'])?0:$info['shopsTransferFee']).",
-			  shopsNumber='".(empty($info['shopsNumber'])?0:$info['shopsNumber'])."',
-			  shopsSellRentType=".(empty($info['shopsSellRentType'])?0:$info['shopsSellRentType']).",
-			  shopsMapX=".(empty($info['shopsMapX'])?0:$info['shopsMapX']).",
-			  shopsMapY=".(empty($info['shopsMapY'])?0:$info['shopsMapY']).",
-			  shopsState=".(empty($info['shopsState'])?0:$info['shopsState']).",
-			  shopsUserId=".(empty($info['shopsUserId'])?0:$info['shopsUserId']).",
-			  shopsPropertyId=".(empty($info['shopsPropertyId'])?0:$info['shopsPropertyId']).",
-			  shopsUpdateTime=".time()." 
-			  where officeId=".$info['officeId'];
+		$sql = "update ecms_shops set ";
+		if(isset($info['shopsAddress'])){
+			$sql .= "shopsAddress='".$info['shopsAddress']."',";
+		}
+		if(isset($info['shopsTitle'])){
+			$sql .= "shopsTitle='".$info['shopsTitle']."',";
+		} 
+		if(isset($info['shopsContent'])){
+			$sql .= "shopsContent='".$info['shopsContent']."',";
+		} 
+		if(isset($info['shopsType'])){
+			$sql .= "shopsType=".$info['shopsType'].",";
+		} 
+		if(isset($info['shopsSellPrice'])){
+			$sql .= "shopsSellPrice=".$info['shopsSellPrice'].",";
+		} 
+		if(isset($info['shopsBuildArea'])){
+			$sql .= "shopsBuildArea=".$info['shopsBuildArea'].",";
+		} 
+		if(isset($info['shopsFloor'])){
+			$sql .= "shopsFloor=".$info['shopsFloor'].",";
+		} 
+		if(isset($info['shopsAllFloor'])){
+			$sql .= "shopsAllFloor=".$info['shopsAllFloor'].",";
+		} 
+		if(isset($info['shopsDivision'])){
+			$sql .= "shopsDivision=".$info['shopsDivision'].",";
+		} 
+		if(isset($info['shopsFitment'])){
+			$sql .= "shopsFitment=".$info['shopsFitment'].",";
+		} 
+		if(isset($info['shopsBaseService'])){
+			$sql .= "shopsBaseService='".$info['shopsBaseService']."',";
+		}
+		if(isset($info['shopsAimOperastion'])){
+			$sql .= "shopsAimOperastion='".$info['shopsAimOperastion']."',";
+		}
+		if(isset($info['shopsPropFee'])){
+			$sql .= "shopsPropFee=".$info['shopsPropFee'].",";
+		}
+		if(isset($info['shopsNumber'])){
+			$sql .= "shopsNumber='".$info['shopsNumber']."',";
+		}
+		if(isset($info['shopsState'])){
+			$sql .= "shopsState=".$info['shopsState'].",";
+		}
+		if(isset($info['shopsRentPrice'])){
+			$sql .= "shopsRentPrice=".$info['shopsRentPrice'].",";
+		}
+		if(isset($info['shopsRentPriceUnit'])){
+			$sql .= "shopsRentPriceUnit=".$info['shopsRentPriceUnit'].",";
+		}
+		$sql .= "shopsUpdateTime=".time()." where shopsId=".$info['shopId'];
 		return $this->db->getQueryExeCute($sql);
 	}
+	//end to be added by Cheneil
 	public function getDetail(){
 		
 	}

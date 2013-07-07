@@ -1,0 +1,19 @@
+------------------------2013-07-06 12:43:55
+错误SQL语句：
+select officeNumber,officeType,officeSellPrice,officeRentPrice,officeRentPriceUnit,officeIncludFee,officeProFee,officePayment,officePayDetailY,officePayDetailF,officeBuildArea,officeFloor,officeAllFloor,officeDivision,officeFitment,officeLevel,officeTitle,officeContent,officeSellRentType,officeState,(select communityName from ecms_community where communityId=officeCommunityId) as propName,officeCommunityId,picId,picURl as propPhoto,officeUserId,officeCreateTime,officeUpdateTime from ecms_office prop left join ecms_pic pic on picBuildType=3 and picBuildId=shopsId and picState=1 where officeId=1 and officeUserId=17
+客户端:127.0.0.1
+时间:2013-07-06 12:43:55
+------------------------2013-07-06 17:38:57
+错误SQL语句：
+update ecms_office set officeNumber='123456789874',officeType=2,officeNumber='123456789874',officeSellPrice=,officeProFee=301,officeBuildArea=401,officeFloor=10,officeFloor=10,officeAllFloor=29,officeDivision=1,officeFitment=1,officeLevel=1,officeTitle='世界金融中心出租盘2',officeContent='<p>
+	士大夫2</p>
+',officeSellRentType=1,officeUpdateTime=1373103537 where officeId=3
+客户端:127.0.0.1
+时间:2013-07-06 17:38:57
+------------------------2013-07-06 17:42:09
+错误SQL语句：
+update ecms_office set officeNumber='123456789877',officeType=3,officeNumber='123456789877',officeSellPrice=,officeProFee=301,officeBuildArea=401,officeFloor=13,officeFloor=13,officeAllFloor=31,officeDivision=1,officeFitment=1,officeLevel=1,officeTitle='世界金融中心出租盘1',officeContent='<p>
+	士大夫1</p>
+',officeSellRentType=1,officeUpdateTime=1373103729 where officeId=3
+客户端:127.0.0.1
+时间:2013-07-06 17:42:09

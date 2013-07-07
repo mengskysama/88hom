@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-30 22:17:01
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-07 23:05:19
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_sp.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3086051d02e2a08f659-39317030%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '72d7e6d07b0051ed191aa90cf5dff817c222a4aa' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_sp.tpl',
-      1 => 1372601749,
+      1 => 1373088593,
       2 => 'file',
     ),
   ),
@@ -122,6 +122,7 @@ function check(){
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
             <form id="spForm" name="spForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="sp">
+            <input type="hidden" name="prop_tx_type" value="1">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 商铺名称</td>

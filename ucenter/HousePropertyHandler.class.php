@@ -31,6 +31,14 @@ class HousePropertyHandler extends PropertyHandler{
 	private $houseState;
 	private $actionType;
 	private $houseId;
+	private $propTxType;
+	private $houseRentType;
+	private $houseRentRoomType;
+	private $houseRentDetail;
+	private $housePayment; 
+	private $housePayDetailY;
+	private $housePayDetailF;
+	private $houseRentArea;
 	
 	private $estateService;
 	private $propertyService;
@@ -39,7 +47,9 @@ class HousePropertyHandler extends PropertyHandler{
 						$houseType,$houseSellPrice,$houseRoom,$houseHall,$houseToilet,$houseKitchen,
 						$houseBalcony,$houseBuildArea,$houseUseArea,$houseBuildYear,$houseFloor,
 						$houseForward,$houseFitment,$houseBaseService,$houseLookTime,$housePhoto,$houseTitle,
-						$houseContent,$houseUserId,$houseBuildForm,$houseAllFloor,$houseState,$actionType,$houseId){
+						$houseContent,$houseUserId,$houseBuildForm,$houseAllFloor,$houseState,$actionType,$houseId,
+						$propTxType,$houseRentType,$houseRentRoomType,$houseRentDetail,$housePayment,$housePayDetailY,
+						$housePayDetailF,$houseRentArea){
 		
 		$this->db = $db;
 		$this->estId = $estId;
@@ -71,6 +81,14 @@ class HousePropertyHandler extends PropertyHandler{
 		$this->houseState = $houseState;
 		$this->actionType = $actionType;
 		$this->houseId = $houseId;
+		$this->propTxType = $propTxType;
+		$this->houseRentType = $houseRentType;
+		$this->houseRentRoomType = $houseRentRoomType;
+		$this->houseRentDetail = $houseRentDetail;
+		$this->housePayment = $housePayment; 
+		$this->housePayDetailY = $housePayDetailY;
+		$this->housePayDetailF = $housePayDetailF;
+		$this->houseRentArea = $houseRentArea;
 		
 		$this->estateService = new EstateService($db);
 		$this->propertyService = new SecondHandPropertyService($db);
@@ -78,19 +96,18 @@ class HousePropertyHandler extends PropertyHandler{
 	
 	public function handle(){
 		if($this->actionType == "update"){
-			$this->updateProperty();
+			return $this->updateProperty();
 		}else{
-			$this->createProperty();
+			return $this->createProperty();
 		}
 	}
 	
 	private function updateProperty(){
 		$photoName = "";
-		if(!empty($this->housePhoto)){
+		if($this->housePhoto['error'] == 0){
 			$photoName = $this->uploadPhoto($this->housePhoto,$this->houseUserId);
 			if(!$photoName) return false;
 		}
-
 		$house = $this->genPropEntity($this->estId,$photoName,"");
 		$house["houseId"] = $this->houseId;
 		return $this->propertyService->updateHouse($house);
@@ -128,21 +145,21 @@ class HousePropertyHandler extends PropertyHandler{
 		$house['houseKitchen'] = $this->houseKitchen;
 		$house['houseBalcony'] = $this->houseBalcony;
 		$house['houseSellPrice'] = $this->houseSellPrice;
-		$house['houseBuildArea'] = $this->houseBuildArea;
-		$house['houseUseArea'] = $this->houseUseArea;
-		$house['houseType'] = $this->houseType;
-		$house['houseBuildForm'] = $this->houseBuildForm;
+		$house['houseBuildArea'] = $this->houseBuildArea == "" ? 0 : $this->houseBuildArea;
+		$house['houseUseArea'] = $this->houseUseArea == "" ? 0 : $this->houseUseArea;
+		$house['houseType'] = $this->houseType == "" ? 0 : $this->houseType	;
+		$house['houseBuildForm'] = $this->houseBuildForm ;
 		$house['houseForward'] = $this->houseForward;
 		$house['houseFitment'] = $this->houseFitment;
 		$house['houseBaseService'] = $houseBaseService;
 		$house['houseFloor'] = $this->houseFloor;
 		$house['houseAllFloor'] = $this->houseAllFloor;
-		$house['houseBuildYear'] = $this->houseBuildYear;
-		$house['houseLookTime'] = $this->houseLookTime;
+		$house['houseBuildYear'] = $this->houseBuildYear == "" ? 0 : $this->houseBuildYear;
+		$house['houseLookTime'] = $this->houseLookTime == "" ? 0 : $this->houseLookTime;
 		if($realEstId){
 			$house['houseCommunityId'] = $realEstId;
 		}
-		$house['houseSellRentType'] = 1;
+		$house['houseSellRentType'] = $this->propTxType;
 		$house['houseUserId'] = $this->houseUserId;
 		
 		if($photoName){
@@ -150,15 +167,17 @@ class HousePropertyHandler extends PropertyHandler{
 			$house['propertyPhoto']['picSellRent'] = 1;
 			$house['propertyPhoto']['picUrl'] = $photoName;
 		}
-		
-		$house['houseRentArea'] = 0;
+		$house['houseRentType'] = $this->houseRentType == "" ? 0 : $this->houseRentType;
+		$house['houseRentArea'] = $this->houseRentArea == "" ? 0 : $this->houseRentArea;
 		$house['houseBuildStructure'] = 0;
-		$house['housePayInfo'] = $this->housePayInfo;
-		$house['houseRentRoomType'] = 0;
+		$house['housePayInfo'] = $this->housePayInfo == "" ? 0 : $this->housePayInfo;
+		$house['houseRentRoomType'] = $this->houseRentRoomType == "" ? 0 : $this->houseRentRoomType;
+		$house['houseRentDetail'] = $this->houseRentDetail == "" ? 0 : $this->houseRentDetail;
+		
 		$house['houseLiveTime'] = "";
-		$house['housePayment'] = 0;
-		$house['housePayDetailY'] = 0;
-		$house['housePayDetailF'] = 0;
+		$house['housePayment'] = $this->housePayment == "" ? 0 : $this->housePayment;
+		$house['housePayDetailY'] = $this->housePayDetailY == "" ? 0 : $this->housePayDetailY;
+		$house['housePayDetailF'] = $this->housePayDetailF == "" ? 0 : $this->housePayDetailF;
 		if($houseState){
 			$house['houseState'] = $houseState;
 		}

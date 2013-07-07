@@ -1,0 +1,17 @@
+------------------------2013-07-05 22:49:29
+错误SQL语句：
+select shopsName,shopsAddress,shopsTitle,shopsContent,shopsType,shopsSellPrice,shopsRentPrice,shopsRentPriceUnit,shopsRentState,shopsPayment,shopsPayDetailY,shopsPayDetailF,shopsBuildArea,shopsFloor,shopsAllFloor,shopsDivision,shopsFitment,shopsBaseService,shopsAimOperastion,shopsIncludFee,shopsPropFee,shopsTransferFee,shopsNumber,shopsSellRentType,(select communityName from ecms_community where communityId=villaCommunityId) as propName,shopsMapX,shopsMapY,shopsState,shopsUserId,villaCommunityId,picId,picURl as propPhoto,shopsCreateTime,shopsUpdateTime from ecms_shops prop left join ecms_pic pic on picBuildType=2 and picBuildId=villaId and picState=1 where shopsId=5 and shopsUserId=17
+客户端:127.0.0.1
+时间:2013-07-05 22:49:29
+------------------------2013-07-05 22:50:12
+错误SQL语句：
+select shopsName,shopsAddress,shopsTitle,shopsContent,shopsType,shopsSellPrice,shopsRentPrice,shopsRentPriceUnit,shopsRentState,shopsPayment,shopsPayDetailY,shopsPayDetailF,shopsBuildArea,shopsFloor,shopsAllFloor,shopsDivision,shopsFitment,shopsBaseService,shopsAimOperastion,shopsIncludFee,shopsPropFee,shopsTransferFee,shopsNumber,shopsSellRentType,(select communityName from ecms_community where communityId=shopsCommunityId) as propName,shopsMapX,shopsMapY,shopsState,shopsUserId,shopsCommunityId,picId,picURl as propPhoto,shopsCreateTime,shopsUpdateTime from ecms_shops prop left join ecms_pic pic on picBuildType=2 and picBuildId=villaId and picState=1 where shopsId=5 and shopsUserId=17
+客户端:127.0.0.1
+时间:2013-07-05 22:50:12
+------------------------2013-07-05 23:00:42
+错误SQL语句：
+update ecms_shops set shopsAddress='东门步行街1',shopsTitle='某某街旺铺',shopsContent='<p>
+	是打发士大夫1</p>
+',shopsType=1,shopsSellPrice=89,shopsBuildArea=34,shopsFloor=2,shopsAllFloor=7,shopsDivision=2,shopsFitment=2,shopsBaseService=',1,2,3,5,6,',shopsAimOperasion=',1,2,4,5,',shopsPropFee=22,shopsNumber='123456789876',shopsUpdateTime=1373036442 where shopsId=5
+客户端:127.0.0.1
+时间:2013-07-05 23:00:42

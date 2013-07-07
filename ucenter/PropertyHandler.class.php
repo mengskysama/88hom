@@ -19,7 +19,7 @@ class PropertyHandler{
 			$existingEstate = $estateService->getEstateById($estId);
 			if($existingEstate['communityName'] != $estName){
 				$estate['communityName'] = $estName;
-				$realEstId = $estateServicee->saveEstate($estate);
+				$realEstId = $estateService->saveEstate($estate);
 				if(!$realEstId) return false;
 			}
 		}
@@ -29,7 +29,6 @@ class PropertyHandler{
 	protected function uploadPhoto($photo,$userId){
 	
 		$targetFolder = ECMS_PATH_ROOT.'uploads/community/'; // Relative to the root
-
 		if((($photo["type"] != "image/gif")
 				&& ($photo["type"] != "image/jpeg")
 				&& ($photo["type"] != "image/pjpeg"))

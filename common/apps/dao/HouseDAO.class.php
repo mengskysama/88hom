@@ -64,20 +64,20 @@ class HouseDAO  {
 		return $houseId;					
 	}
 	
-	public function countProperty($userId,$state){
-		$sql = "select count(houseId) as propTotal from ecms_house where houseUserId=".$userId." and houseState=".$state;
+	public function countProperty($userId,$state,$txType=1){
+		$sql = "select count(houseId) as propTotal from ecms_house where houseUserId=".$userId." and houseState=".$state." and houseSellRentType=".$txType;
 		$result = $this->db->getQueryValue($sql);
 		return $result['propTotal'];
 	}
 	
-	public function countPropertyList($query_where){
-		$sql = "select count(*) as propTotal from vw_get_sell_property_list ".$query_where;
+	public function countPropertyList($table,$query_where){
+		$sql = "select count(*) as propTotal from ".$table." ".$query_where;
 		$result = $this->db->getQueryValue($sql);
 		return $result['propTotal'];
 	}
 	
-	public function getPropertyList($query_fields,$query_where,$query_order,$query_limit){
-		$sql = "select ".$query_fields." from vw_get_sell_property_list ".$query_where." ".$query_order." ".$query_limit;
+	public function getPropertyList($table,$query_fields,$query_where,$query_order,$query_limit){
+		$sql = "select ".$query_fields." from ".$table." ".$query_where." ".$query_order." ".$query_limit;
 		//echo $sql;
 		return $this->db->getQueryArray($sql);
 	}
@@ -180,6 +180,28 @@ class HouseDAO  {
 		if(isset($house['houseState'])){
 			$sql .= "houseState=".$house['houseState'].",";
 		}
+		if(isset($house['houseRentArea'])){
+			$sql .= "houseRentArea=".$house['houseRentArea'].",";
+		}
+		if(isset($house['housePayDetailF'])){
+			$sql .= "housePayDetailF=".$house['housePayDetailF'].",";
+		}
+		if(isset($house['housePayDetailY'])){
+			$sql .= "housePayDetailY=".$house['housePayDetailY'].",";
+		}
+		if(isset($house['housePayment'])){
+			$sql .= "housePayment=".$house['housePayment'].",";
+		}
+		if(isset($house['houseRentType'])){
+			$sql .= "houseRentType=".$house['houseRentType'].",";
+		}
+		if(isset($house['houseRentDetail'])){
+			$sql .= "houseRentDetail=".$house['houseRentDetail'].",";
+		}
+		if(isset($house['houseRentRoomType'])){
+			$sql .= "houseRentRoomType=".$house['houseRentRoomType'].",";
+		}
+	
 		$sql .= "houseUpdateTime=".time()." where houseId=".$house['houseId'];
 		//echo $sql;
 		return $this->db->getQueryExeCute($sql);

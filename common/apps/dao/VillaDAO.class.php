@@ -67,8 +67,8 @@ class VillaDAO  {
 		return $houseId;						
 	}
 
-	public function countProperty($userId,$state){
-		$sql = "select count(villaId) as propTotal from ecms_villa where villaUserId=".$userId." and villaState=".$state;
+	public function countProperty($userId,$state,$txType=1){
+		$sql = "select count(villaId) as propTotal from ecms_villa where villaUserId=".$userId." and villaState=".$state." and villaSellRentType=".$txType;
 		$result = $this->db->getQueryValue($sql);
 		return $result['propTotal'];
 	}
@@ -90,6 +90,7 @@ class VillaDAO  {
 		if($userId > 0){
 			$sql .= " and villaUserId=".$userId;
 		}
+		//echo $sql;
 		return $this->db->getQueryValue($sql);
 	}
 	//修改别墅
@@ -176,7 +177,24 @@ class VillaDAO  {
 		if(isset($villa['villaState'])){
 			$sql .= "villaState=".$villa['villaState'].",";
 		}
+		if(isset($villa['villaRentPrice'])){
+			$sql .= "villaRentPrice=".$villa['villaRentPrice'].",";
+		}
+		if(isset($villa['villaRentType'])){
+			$sql .= "villaRentType=".$villa['villaRentType'].",";
+		}
+		if(isset($villa['villaPayment'])){
+			$sql .= "villaPayment=".$villa['villaPayment'].",";
+		}
+		if(isset($villa['villaPayDetailY'])){
+			$sql .= "villaPayDetailY=".$villa['villaPayDetailY'].",";
+		}
+		if(isset($villa['villaPayDetailF'])){
+			$sql .= "villaPayDetailF=".$villa['villaPayDetailF'].",";
+		}
+		
 		$sql .= "villaUpdateTime=".time()." where villaId=".$villa['villaId'];
+		//echo $sql;
 		return $this->db->getQueryExeCute($sql);
 	}
 	//end to be added by Cheneil
