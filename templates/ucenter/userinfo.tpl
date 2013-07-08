@@ -7,8 +7,9 @@
 <!--{$cssFiles}-->
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('#bnt').click(function(){
-				$('form:first').submit();
+
+		$('#btn_confirm').click(function(){
+				$('#frm_userinfo').submit();
 		});
 		//初始化区域插件
 		if($('#areaIndex').val() != ''){
@@ -184,6 +185,7 @@
 <div class="dlmm1">
                                         	<input name="btn_confirm" type="button" class="denglu1 l" id="btn_confirm" value="立即注册" />
                                             <input name="btn_reset" type="reset" class="denglu1 l" id="btn_reset" value="重置" />
+                                            <input name="updateInfo" type="hidden" value="ok"/>
                                         </div>
                                    </td>
 		    </tr>

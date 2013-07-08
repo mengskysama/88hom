@@ -89,6 +89,9 @@ class BindAccountRegister{
 		$userId = $userService->saveUser($user);		
 		$userService->deactiveCertCode($this->userPhone,$this->phoneCert);
 		$this->sendRegMessage($userId,$defaultUserUserName, $defaultUserPassword);
+
+		$user['userId'] = $userId;
+		$_SESSION['UCUser'] = $user;
 		return $result;
 		
 	}
@@ -115,8 +118,10 @@ class BindAccountRegister{
 		$userService->saveCertCode($this->userEmail, $certCode);			
 		$this->sendEmail($this->userEmail, $defaultUserName, $userId, $certCode);
 		$this->sendRegMessage($userId,$defaultUserName, $defaultUserPassword);
-		return $result;
 		
+		$user['userId'] = $userId;
+		$_SESSION['UCUser'] = $user;
+		return $result;		
 	}
 	
 	private function bindingWithExistingAcc($userId){

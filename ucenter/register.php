@@ -41,9 +41,10 @@ if($userType == 3){
 $result = $register->register(); 
 $callback = "index.php";
 if($result[0] == ERR_CODE_REGISTER_SUCCESS){
-	if($userType == 1 && $userPhone != ""){
+	//echo $userType.'|'.$userEmail.'|'.$userPhone.'<br/>';
+	if($userType == 3 && $userPhone != ""){
 		$callback = "success_reg_mobile.php?userType=".$userType;
-	}else if($userType == 1 && $userEmail != ""){
+	}else if($userType == 3 && $userEmail != ""){
 		$callback = "success_reg_email.php?email=".$userEmail;
 	}else if($userType == 10){ //binding the existing account and QQ/Weibo account
 		$callback = "userinfo.php";
@@ -57,8 +58,10 @@ if($result[0] == ERR_CODE_REGISTER_SUCCESS){
 	$_SESSION['ERR_MSG_FAIL_TO_REG'] = $result[1];
 	$callback = "fail_reg.php?userType=".$userType;
 }
-//print_r($result);
-//echo "<br>";
-//echo $callback;
+/*
+print_r($result);
+echo "<br>";
+echo $callback;
+*/
 header('Location: '.$callback);
 ?>

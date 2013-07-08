@@ -41,11 +41,8 @@ if($userDetail){
 	
 }
 
-if(isset($_POST['btn_confirm'])){
+if(isset($_POST['updateInfo'])){
 	$rblSex = getParameter("rblSex");
-	$ddlProvince = getParameter("ddlProvince");
-	$ddlCity = getParameter("ddlCity");
-	$ddlDistrict = getParameter("ddlDistrict");
 	$realName = getParameter("realName");
 	$ddlIDCode = getParameter("ddlIDCode");
 	$IDCode = getParameter("IDCode");
@@ -58,6 +55,12 @@ if(isset($_POST['btn_confirm'])){
 	$userdetailPic = getParameter("");
 	$userdetailPicThumb = getParameter("");
 	$userdetailState = getParameter("");
+
+// 	$ddlProvince = getParameter("ddlProvince");
+// 	$ddlCity = getParameter("ddlCity");
+// 	$ddlDistrict = getParameter("ddlDistrict");
+	$areaIndex = getParameter("areaIndex");
+	echo 'areaindex->'.$areaIndex;return;
 	
 	$UCUser['userdetailName'] = $realName;
 	$UCUser['userdetailGender'] = $rblSex;
