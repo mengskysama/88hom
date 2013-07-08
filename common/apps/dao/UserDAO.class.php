@@ -24,6 +24,14 @@ class UserDAO{
 		$sql = "select id from ecms_register_cert_code where cert_channel='".$certChannel."' and cert_code='".$vcode."' and cert_code_status=1";
 		return $this->db->getQueryValue($sql);
 	}
+	
+	public function verifyEmailReg($email,$vcode){
+		$sql = "select id from ecms_register_cert_code ".
+			   "where cert_channel='".$email."' and cert_code='".$vcode."' and cert_code_status=1 ".
+			   "and create_time>=date_add(now(), interval -48 hour)";
+		//echo $sql;
+		return $this->db->getQueryValue($sql);
+	}
 
 	public function deactiveCertCode($certChannel,$vcode){
 		$sql = "update ecms_register_cert_code set cert_code_status=0 where cert_channel='".$certChannel."' and cert_code='".$vcode."'";
@@ -34,7 +42,7 @@ class UserDAO{
 		$sql = "update ecms_register_cert_code set cert_code_status=0 where cert_channel='".$certChannel."' and cert_code_status=1";
 		$this->db->getQueryExecute($sql);
 		
-		$sql = "insert into ecms_register_cert_code(cert_channel,cert_code,cert_code_status,create_time) values('".$certChannel."',".$vcode.",1,now())";
+		$sql = "insert into ecms_register_cert_code(cert_channel,cert_code,cert_code_status,create_time) values('".$certChannel."','".$vcode."',1,now())";
 		return $this->db->getQueryExecute($sql);
 	}
 	
@@ -82,6 +90,7 @@ class UserDAO{
 	
 	public function activeUserEmail($userEmail){
 		$sql = "update ecms_user set userEmailState=1 where userEmail='".$userEmail."'";
+		//echo $sql;
 		return $this->db->getQueryExecute($sql);
 	}
 	

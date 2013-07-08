@@ -1,4 +1,5 @@
 <?php
+/*
 require 'path.inc.php';
 require 'includes/xml.inc.php';
 $smarty->setTemplateDir(ECMS_SMARTY_TEMPLATES.'web/'.LANG.'/');
@@ -14,13 +15,13 @@ $html->addJs('jquery.cycle.all.js');
 $html->addJs('common.js');
 $html->addJs('web.js');
 $html->addCss('web/'.LANG.'/css.css');
-$html->title=$cfg['web_keywords_str'].$webset['siteName'];//Õ¾µã±êÌâ
-$html->keyword=$webset['keywords'];					//Õ¾µã¹Ø¼ü×Ö
-$html->description=$webset['description'];			//Õ¾µã¹ØÃèÊö
+$html->title=$cfg['web_keywords_str'].$webset['siteName'];//Õ¾ï¿½ï¿½ï¿½ï¿½ï¿½
+$html->keyword=$webset['keywords'];					//Õ¾ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½
+$html->description=$webset['description'];			//Õ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 require 'left.php';
 
-//Ê×Ò³ÐÂÎÅÁÐ±í
+//ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 $curl=curl_init();
 $url='http://www.chngalaxy.com/API/news.asmx/NewsList';
 $post_data="AuthCode='7f811343960162de'&PageSize=6&PageIndex=1";
@@ -60,4 +61,15 @@ $smarty->assign('jobClass',$jobClass);
 $smarty->assign('contactClass',$contactClass);
 $html->show();
 $smarty->display($tpl_name);
+*/
 ?>
+<html>
+<head>
+<title>Welcome to 88Hom</title>
+<meta property="qc:admins" content="240146042746000756375" />
+<meta property="wb:webmaster" content="a0541f77ff216f15" />
+</head>
+<body>
+Welcome to 88home
+</body>
+</html>

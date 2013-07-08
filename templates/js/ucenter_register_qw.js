@@ -321,12 +321,6 @@ function sendVcode(mobile, mathcode) {
             	alert("验证码不正确");
                 document.getElementById("div_mathcode").style.display = "";
                 $("#txt_mathcode").focus();
-            } else {
-                if (req.length > 14) {
-                    alert(req);
-                }else {
-                    alert(req);
-                }
             }
         }
     });
@@ -335,7 +329,7 @@ function sendVcode(mobile, mathcode) {
 function refresh_code() {
     var codefor = val($("#userPhone"));
     var v_random = Math.round(Math.random() * 10000);
-    $("#imgcode").attr("src", 'http://localhost/88hom/common/libs/api/line_captcha.php?code=' + v_random + '&codefor=' + codefor);
+    $("#imgcode").attr("src", 'http://test.88hom.com/common/libs/api/line_captcha.php?code=' + v_random + '&codefor=' + codefor);
 }
 
 

@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: text/html; charset=UTF-8');
 
-define( "WB_AKEY" , '302910591' );
-define( "WB_SKEY" , '5f2f699697f5efd2edd4c05ff3b002b9' );
-define( "WB_CALLBACK_URL" , 'http://88hom.seo7788.com/ucenter/weibo_callback.php' );
+define( "WB_AKEY" , '2973799352' );
+define( "WB_SKEY" , '080f3ce2f41207ca43fa8dea9377053e' );
+define( "WB_CALLBACK_URL" , 'http://test.88hom.com/ucenter/weibo_callback.php' );

@@ -93,6 +93,25 @@ class UserService{
 		return $this->userDetailDAO->updateUserDetail($user);
 	}
 	
+	public function verifyEmailReg($userId,$vcode){
+		$user = $this->getUserById($userId);
+		if(!$user) return $user;
+		
+		$userEmail = $user['userEmail'];
+		$result = $this->userDAO->verifyEmailReg($userEmail,$vcode);
+		if($result){
+			$this->activeUserEmail($userEmail);
+			$userState['userId'] = $userId;
+			$userState['userState'] = 1;
+			$this->updateUser($userState);
+			$this->deactiveCertCode($userEmail, $vcode);
+			
+			return $user;
+		}else{
+			return '';
+		}
+	}
+	
 	//end to be added by Cheneil
 	
 	//���ID��ȡ�û���Ϣ

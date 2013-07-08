@@ -1,6 +1,7 @@
 <?php
 require 'path.inc.php';
 require 'UserRegister.class.php';
+require 'AgentRegister.class.php';
 require 'BindAccountRegister.class.php';
 
 $userType = getParameter('userType');
@@ -15,13 +16,13 @@ if($userType == 3){
 	$phoneCert = getParameter('phoneCert');
 	$register = new UserRegister($db,$userName,$userPassword,$confirmUserPass,$userEmail,$userPhone,$phoneCert,$agreement);
 }else if($userType == 2){
+	$userPhone = "";
 	$txtUserPhone = getParameter('txtUserPhone');
 	$userRealName = getParameter('userRealName');
 	$userTel = getParameter('userTel');
-	$province = getParameter('userTel');
-	$city = getParameter('userTel');
-	$dist = getParameter('userTel');
-	$register = new AgentRegister($db,$userName,$userPassword,$confirmUserPass,$userEmail,$txtUserPhone,$userRealName,$userTel,$agreement);
+	$areaIndex = getParameter('areaIndex');
+	
+	$register = new AgentRegister($db,$userName,$userPassword,$confirmUserPass,$userEmail,$txtUserPhone,$userRealName,$areaIndex,$userTel,$agreement);
 }else if($userType == 10){
 	if(!isset($_SESSION['QW_USER'])){
 		header("location:index.php");
@@ -40,16 +41,24 @@ if($userType == 3){
 $result = $register->register(); 
 $callback = "index.php";
 if($result[0] == ERR_CODE_REGISTER_SUCCESS){
-	if($userPhone != ""){
-		$callback = "success_reg_mobile.php";
-	}else if($userEmail != ""){
+	if($userType == 1 && $userPhone != ""){
+		$callback = "success_reg_mobile.php?userType=".$userType;
+	}else if($userType == 1 && $userEmail != ""){
 		$callback = "success_reg_email.php?email=".$userEmail;
-	}else if($userType == 10 && $userName != ""){ //binding the existing account and QQ/Weibo account
+	}else if($userType == 10){ //binding the existing account and QQ/Weibo account
 		$callback = "userinfo.php";
+	}else if($userType == 2){
+		$callback = "success_reg_mobile.php?userType=2";
 	}
 }else if($userType == 10){
 	$_SESSION['err_msg_bind_account'] = $result[1];
 	$callback = "bind_account.php";
+}else{
+	$_SESSION['ERR_MSG_FAIL_TO_REG'] = $result[1];
+	$callback = "fail_reg.php?userType=".$userType;
 }
+//print_r($result);
+//echo "<br>";
+//echo $callback;
 header('Location: '.$callback);
 ?>

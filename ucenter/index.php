@@ -14,7 +14,11 @@ if(isset($_POST['button2'])){
 	
 	$userService = new UserService($db);
 	$user = $userService->loginUCenter($loginId);
- 	if(empty($user) || (sysAuth($user['userPassword'],"DECODE") != $loginPwd)){
+ 	if(empty($user) 
+ 			|| (sysAuth($user['userPassword'],"DECODE") != $loginPwd 
+ 			|| $user['userState'] != 1 
+ 			|| $user['userType'] != $userType)){
+ 		
 		$isValidAccount = false;
 	}else{
 		$userDetail = $userService->getUserDetail($user['userId']);
@@ -22,7 +26,7 @@ if(isset($_POST['button2'])){
 			$_SESSION['UCUserDetail'] = $userDetail;
 		}
 		$_SESSION['UCUser'] = $user;
-		
+			
 		$userType = $user['userType'];
 		if($userType == 3){
 			header("Location:ucenter_user.php");

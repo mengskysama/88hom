@@ -73,8 +73,9 @@ class BindAccountRegister{
 	private function bindingWithMobile(){
 		$result[0] = ERR_CODE_REGISTER_SUCCESS;
 
-		$defaultUserPassword = $this->genDefaultUserPassword;
-		$user['userUsername'] = $this->genDefaultUserName();
+		$defaultUserPassword = $this->genDefaultUserPassword();
+		$defaultUserUserName = $this->genDefaultUserName();
+		$user['userUsername'] = $defaultUserUserName;
 		$user['userPassword'] = sysAuth($defaultUserPassword);
 		$user['userPhone'] = $this->userPhone;
 		$user['userPhoneState'] = 1;
@@ -87,6 +88,7 @@ class BindAccountRegister{
 		$userService = new UserService($this->db);
 		$userId = $userService->saveUser($user);		
 		$userService->deactiveCertCode($this->userPhone,$this->phoneCert);
+		$this->sendRegMessage($userId,$defaultUserUserName, $defaultUserPassword);
 		return $result;
 		
 	}
@@ -112,6 +114,7 @@ class BindAccountRegister{
 		$certCode = md5(uniqid(rand()));
 		$userService->saveCertCode($this->userEmail, $certCode);			
 		$this->sendEmail($this->userEmail, $defaultUserName, $userId, $certCode);
+		$this->sendRegMessage($userId,$defaultUserName, $defaultUserPassword);
 		return $result;
 		
 	}
@@ -140,6 +143,20 @@ class BindAccountRegister{
 	private function genDefaultUserPassword(){
 		return rand(100000, 999999);
 	}
+	private function sendRegMessage($userId,$userName,$password){
+		$message['messageTitle'] = "用户注册信息";
+		$message['messageContent'] = $userName." 用户，欢迎您在 ".date("Y年m月d日")." 注册成功，如果您已对信息了解完整，为了安全请即时删除此邮件。".
+									 "注册选择类型：个人（不可修改）".
+									  "用户名：".$userName."（不可修改）".
+									    "密码：".$password."（可修改）";
+		$message['messageFromUserId'] = 9999999;
+		$message['messagetypeId'] = 2;
+		$message['messageState'] = 0;
+		$userService = new UserService($this->db);
+		$message['messageToUserId'] = $userId;
+		$messageService = new MessageService($this->db);
+		$messageService->release($message);
+	}
 	
 	private function sendEmail($to,$userName,$userId,$vcode){
 
@@ -158,7 +175,7 @@ class BindAccountRegister{
 		$sendMail->subject = "欢迎注册房不剩房通行证，请验证您的邮箱";
 		$body = "亲爱的用户".$userName."，您好：<br/>".
 				"感谢您注册房不剩房，点击以下链接验证您的邮箱，只需一步即可尽享房不剩房服务！<br/>".		
-				"http://www.88hom.com/email_check.php?UserID=".$userId."&VerifyCode=".$vcode."<br/>".		
+				"http://test.88hom.com/ucenter/v_email_check.php?UserID=".$userId."&VerifyCode=".$vcode."<br/>".		
 				"请在48小时内完成验证，如果无法点击上面的链接，您可以复制该地址，并粘帖在浏览器的地址栏中访问。<br/>".
 				"这只是一封系统自动发出的邮件，请不要直接回复。";
 		$sendMail->body = $body;

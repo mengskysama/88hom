@@ -26,9 +26,8 @@ if(!$result){
 	return;
 }
 
-echo "200";
-return;
-$sent = sendSMS($userPhone,$certCode);
+$smsSender = new SMSSender();
+$sent = $smsSender->send($userPhone, '房不胜房注册码是'.$certCode);
 if($sent){
 	echo "200";
 	return;

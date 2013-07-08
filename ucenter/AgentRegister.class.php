@@ -7,13 +7,11 @@ class AgentRegister{
 	private $userPhone;
 	private $userRealName;
 	private $userTel;
-	private $province;
-	private $city;
-	private $dist;
+	private $areaIndex;
 	private $agreement;
 	private $db;
 	
-	function __construct($db,$userName,$userPassword,$confirmUserPass,$userEmail,$userPhone,$userRealName,$userTel,$province,$city,$dist,$agreement){
+	function __construct($db,$userName,$userPassword,$confirmUserPass,$userEmail,$userPhone,$userRealName,$areaIndex,$userTel,$agreement){
 		$this->db = $db;
 		$this->userName = $userName;
 		$this->userPassword = $userPassword;
@@ -22,9 +20,7 @@ class AgentRegister{
 		$this->userPhone = $userPhone;
 		$this->userRealName = $userRealName;
 		$this->userTel = $userTel;
-		$this->province = $province;
-		$this->city = $city;
-		$this->dist = $dist;
+		$this->areaIndex = $areaIndex;
 		$this->agreement = $agreement;
 	}
 	
@@ -34,20 +30,32 @@ class AgentRegister{
 		
 		if($this->userName == ""){
 			$result[0] = 203;
-			$result[1] = "invalid account";
+			$result[1] = "用户名不合法";
 			return $result;
 		}
 		$userService = new UserService($this->db);
 		$user = $userService->getUserByUserName($this->userName);
 		if(!empty($user)){
 			$result[0] = 201;
-			$result[1] = "the acount found";
+			$result[1] = "该用户名已经被使用";
 			return $result;
 		}
 		
 		if($this->userPassword == "" || $this->confirmUserPass == "" || $this->userPassword != $this->confirmUserPass){
 			$result[0] = 206;
-			$result[1] = "Password is incorrect";
+			$result[1] = "两次密码不相同";
+			return $result;
+		}
+		
+		if($this->areaIndex == ""){
+			$result[0] = 207;
+			$result[1] = "没有选择所在地区";
+			return $result;
+		}
+		$a = explode("-", $this->areaIndex);
+		if(count($a) != 4){
+			$result[0] = 207;
+			$result[1] = "没有选择所在地区";
 			return $result;
 		}
 		
@@ -55,7 +63,7 @@ class AgentRegister{
 			$user = $userService->getUserByUserPhone($this->userPhone);
 			if(!empty($user)){
 				$result[0] = 201;
-				$result[1] = "the phone already exist";
+				$result[1] = "该手机号码已经被绑定";
 				return $result;				
 			}
 		}
@@ -64,14 +72,14 @@ class AgentRegister{
 			$user = $userService->getUserByUserEmail($this->userEmail);
 			if(!empty($user)){
 				$result[0] = 201;
-				$result[1] = "the email already exist";
+				$result[1] = "该邮箱地址已经被绑定";
 				return $result;				
 			}
 		}
 		
 		if($this->agreement != "yes"){
 			$result[0] = 207;
-			$result[1] = "do not agree the related privacy";
+			$result[1] = "没有同意\"服务条款\"和\"隐私权相关政策\"";
 			return $result;
 		}
 		return $result;
@@ -93,16 +101,19 @@ class AgentRegister{
 		$user['userType'] = 2;
 		$user['userGroupId'] = 0;
 		$user['userState'] = 1;
+		$user['UOpenId'] = "";
 		$userService = new UserService($this->db);
 		$userId = $userService->saveUser($user);
 		
 		//save the detail information in the database
+		$a = explode("-", $this->areaIndex);
 		$userDetail['userId'] = $userId;
 		$userDetail['userdetailName'] = $this->userRealName;
 		$userDetail['userdetailTel'] = $this->userTel;
-		$userDetail['userdetailProvince'] = $this->province;
-		$userDetail['userdetailCity'] = $this->city;
-		$userDetail['userdetailDistrict'] = $this->dist;
+		$userDetail['userdetailProvince'] = $a[0];
+		$userDetail['userdetailCity'] = $a[1];
+		$userDetail['userdetailDistrict'] = $a[2];
+		$userDetail['userdetailArea'] = $a[3];		
 		$userDetail['userdetailState'] = 0;
 		$userService->saveUserDetail($userDetail);
 		

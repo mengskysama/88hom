@@ -28,20 +28,20 @@ class UserRegister{
 		
 		if($this->userName == ""){
 			$result[0] = 203;
-			$result[1] = "invalid account";
+			$result[1] = "用户名不合法";
 			return $result;
 		}
 		$userService = new UserService($this->db);
 		$user = $userService->getUserByUserName($this->userName);
 		if(!empty($user)){
 			$result[0] = 201;
-			$result[1] = "the acount found";
+			$result[1] = "该用户名已被使用";
 			return $result;
 		}
 		
 		if($this->userPassword == "" || $this->confirmUserPass == "" || $this->userPassword != $this->confirmUserPass){
 			$result[0] = 206;
-			$result[1] = "Password is incorrect";
+			$result[1] = "两次密码不相同";
 			return $result;
 		}
 		
@@ -49,7 +49,7 @@ class UserRegister{
 			$user = $userService->getUserByUserPhone($this->userPhone);
 			if(!empty($user)){
 				$result[0] = 201;
-				$result[1] = "the phone already exist";
+				$result[1] = "该手机号码已被绑定";
 				return $result;				
 			}
 		}
@@ -58,14 +58,14 @@ class UserRegister{
 			$user = $userService->getUserByUserEmail($this->userEmail);
 			if(!empty($user)){
 				$result[0] = 201;
-				$result[1] = "the email already exist";
+				$result[1] = "该邮箱地址已被绑定";
 				return $result;				
 			}
 		}
 		
 		if($this->agreement != "yes"){
 			$result[0] = 207;
-			$result[1] = "do not agree the related privacy";
+			$result[1] = "没有同意\"服务条款\"和\"隐私权相关政策\"";
 			return $result;
 		}
 		return $result;
@@ -86,7 +86,8 @@ class UserRegister{
 		$user['userEmailState'] = 0;
 		$user['userType'] = 3;
 		$user['userGroupId'] = 1;
-		$user['userState'] = 0;
+		$user['userState'] = !empty($this->userPhone) ? 1 : 0;
+		$user['UOpenId'] = "";
 		$userService = new UserService($this->db);
 		$userId = $userService->saveUser($user);
 		
@@ -128,7 +129,7 @@ class UserRegister{
 		$sendMail->subject = "欢迎注册房不剩房通行证，请验证您的邮箱";
 		$body = "亲爱的用户".$userName."，您好：<br/>".
 				"感谢您注册房不剩房，点击以下链接验证您的邮箱，只需一步即可尽享房不剩房服务！<br/>".		
-				"http://www.88hom.com/email_check.php?UserID=".$userId."&VerifyCode=".$vcode."<br/>".		
+				"http://test.88hom.com/ucenter/v_email_check.php?UserID=".$userId."&VerifyCode=".$vcode."<br/>".		
 				"请在48小时内完成验证，如果无法点击上面的链接，您可以复制该地址，并粘帖在浏览器的地址栏中访问。<br/>".
 				"这只是一封系统自动发出的邮件，请不要直接回复。";
 		$sendMail->body = $body;
