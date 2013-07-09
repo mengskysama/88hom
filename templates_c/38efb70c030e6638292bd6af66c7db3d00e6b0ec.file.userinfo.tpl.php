@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-08 23:50:47
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-09 22:38:22
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\userinfo.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1133251bd839b1da0c3-12759871%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '38efb70c030e6638292bd6af66c7db3d00e6b0ec' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\userinfo.tpl',
-      1 => 1373298625,
+      1 => 1373380699,
       2 => 'file',
     ),
   ),
@@ -25,14 +25,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'userName' => 0,
     'maleGender' => 0,
     'femaleGender' => 0,
-    'info' => 0,
+    'areaIndex' => 0,
     'realName' => 0,
+    'cardtypeId' => 0,
     'IDCode' => 0,
     'contactAddr' => 0,
     'postCode' => 0,
     'contactPhone' => 0,
     'contactQQ' => 0,
     'contactMSN' => 0,
+    'userdetailPic' => 0,
+    'operation_msg' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -50,7 +53,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	$(document).ready(function(){
 
 		$('#btn_confirm').click(function(){
+			if(checkform()){
 				$('#frm_userinfo').submit();
+			}
 		});
 		//初始化区域插件
 		if($('#areaIndex').val() != ''){
@@ -61,6 +66,39 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				$('#txtComareas').val(A[areaIndex[0]][areaIndex[1]][areaIndex[2]][areaIndex[3]]);//片区,表面文字
 		}
 	});
+	
+	function checkform(){
+		if(!chkEmpty('IDCode','请填写证件号码')) return false;
+		if(!chkEmpty('contactAddr','请填写联系地址')) return false;
+		if(!chkNumber('postCode','邮政编码',false)) return false;
+		if(!chkNumber('contactQQ','QQ',false)) return false;
+		return true;
+	}
+	
+	function chkEmpty(keyId,msg){
+		var value = document.getElementById(keyId).value;
+		if(trim(value) == ""){
+			alert(msg);
+			return false;
+		}
+		return true;
+	}
+	function chkNumber(keyId,keyName,tag){
+		var value = document.getElementById(keyId).value;
+		if(trim(value) == ""){
+			if(tag){
+				alert('请填写' + keyName);
+				return false;
+			}
+			return true;
+		}
+
+		if(!IsInt(keyId)){
+			alert(keyName + "只能是数字");
+			return false;
+		}
+		return true;
+	}
 </script>
 </head>
 
@@ -75,7 +113,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
          <div class="zl_b11">
         	<div class="yhzx1">
 	        <ul class="zl_dh">
-	          <li><a href="#">用户中心</a></li>
+	          <li><a href="ucenter_user.php">用户中心</a></li>
 	          <li><a href="userinfo.php">个人资料</a></li>
 	          <li><a href="secure_reset_password.php">安全中心</a></li>
               <li><a href="message_inbox.php">短信息中心</a></li>
@@ -91,7 +129,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     </ul>
                 </div>
                 <div class="zl_r">
-                <form id="frm_userinfo" name="frm_userinfo" action="userinfo.php" method="post">
+                <form id="frm_userinfo" name="frm_userinfo" action="userinfo.php" method="post" enctype="multipart/form-data">
 <table width="90%" border="0" cellspacing="0" cellpadding="0">
 						  <tr>
   							  <td width="120" height="48" align="right" valign="middle" class="f14 z3">用户名：</td>
@@ -101,9 +139,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
  						  <tr>
    							 <td width="120" height="48" align="right" valign="middle" class="f14 z3">性  别：</td>
  						     <td width="450">
-                                    <input name="rblSex" type="radio" value="先生" <?php echo $_smarty_tpl->tpl_vars['maleGender']->value;?>
+                                    <input name="rblSex" type="radio" value="1" <?php echo $_smarty_tpl->tpl_vars['maleGender']->value;?>
  />男
-                                    <input name="rblSex" type="radio" value="女士" <?php echo $_smarty_tpl->tpl_vars['femaleGender']->value;?>
+                                    <input name="rblSex" type="radio" value="0" <?php echo $_smarty_tpl->tpl_vars['femaleGender']->value;?>
 />女
                              </td>
 </tr>
@@ -168,7 +206,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		                                onkeydown="SelectonKeyDown('txtComareas',event,'search_c')" style="width: 95px;" /><input
 		                                    type="button" class="but_input_cs" id="CheckCity" name="CheckCity" onclick="ShowComareas()" />
 		                             <!--省，市，区域，片区下标,以"-"隔开 -->
-									<input type="hidden" name="areaIndex"	id="areaIndex" value="<?php echo $_smarty_tpl->tpl_vars['info']->value['areaIndex'];?>
+									<input type="hidden" name="areaIndex" id="areaIndex" value="<?php echo $_smarty_tpl->tpl_vars['areaIndex']->value;?>
 "/>	
 		                            <div class="search_select01 left230" id="search_c" >
 		                                <dl id="search_c_value">
@@ -180,46 +218,46 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   						 <tr>
   	      				     <td width="120" height="48" align="right" valign="middle" class="f14 z3">真实姓名：</td>
    							 <td width="450" class="grzc_31">
-                             	<input id="realName" name="realName" type="text"  value="<?php echo $_smarty_tpl->tpl_vars['realName']->value;?>
+                             	<input id="userdetailName" name="userdetailName" maxlength="6" type="text"  value="<?php echo $_smarty_tpl->tpl_vars['realName']->value;?>
 " />
                                </td>
 	        </tr>
  						  <tr>
    							 <td width="120" height="48" align="right" valign="middle" class="f14 z3">证件类型：</td>
    							 <td width="450">
-                             		<select name="ddlIDCode" id="ddlIDCode" class="select2">
-                                	    <option selected="selected" value="0">请选择</option>
-										<option value="身份证">身份证</option>
-										<option value="工作证">工作证</option>
-										<option value="军官证">军官证</option>
-										<option value="学生证">学生证</option>
+                             		<select name="cardtypeId" id="cardtypeId" class="select2">
+                                	    <option value="0">请选择</option>
+										<option <?php if ($_smarty_tpl->tpl_vars['cardtypeId']->value==1){?>selected="selected"<?php }?> value="1">身份证</option>
+										<option <?php if ($_smarty_tpl->tpl_vars['cardtypeId']->value==2){?>selected="selected"<?php }?> value="2">工作证</option>
+										<option <?php if ($_smarty_tpl->tpl_vars['cardtypeId']->value==3){?>selected="selected"<?php }?> value="3">军官证</option>
+										<option <?php if ($_smarty_tpl->tpl_vars['cardtypeId']->value==4){?>selected="selected"<?php }?> value="4">学生证</option>
           				    		 </select>
                               </td>
 		    </tr>
  						 <tr>
   							  <td width="120" height="48" align="right" valign="middle" class="f14 z3">证件号码：</td>
  							  <td width="450" class="grzc_31"><input id="IDCode" name="IDCode" type="text" value="<?php echo $_smarty_tpl->tpl_vars['IDCode']->value;?>
-" />&nbsp;<font class="red">*</font></td>
+" onblur="chkEmpty('IDCode','请填写证件号码')" />&nbsp;<font class="red">*</font></td>
 	        </tr>
  						 <tr>
  							  <td width="120" height="48" align="right" valign="middle" class="f14 z3">联系地址：</td>
   							  <td width="450" class="grzc_31"><input id="contactAddr" name="contactAddr" type="text"  value="<?php echo $_smarty_tpl->tpl_vars['contactAddr']->value;?>
-" />&nbsp;<font class="red">*</font></td>
+" onblur="chkEmpty('contactAddr','请填写联系地址')" />&nbsp;<font class="red">*</font></td>
 	        </tr>
  						 <tr>
 						   <td width="120" height="48" align="right" valign="middle" class="f14 z3">邮  编：</td>
-   							 <td width="450" class="grzc_31"><input name="postCode" type="text"  value="<?php echo $_smarty_tpl->tpl_vars['postCode']->value;?>
-" /></td>
+   							 <td width="450" class="grzc_31"><input id="postCode" name="postCode" type="text" maxlength="6" value="<?php echo $_smarty_tpl->tpl_vars['postCode']->value;?>
+" onblur="chkNumber('postCode','邮政编码',false);" /></td>
 		    </tr>
 						  <tr>
   							 <td width="120" height="48" align="right" valign="middle" class="f14 z3">联系电话：</td>
    							 <td width="450" class="grzc_31"><input id="contactPhone" name="contactPhone" type="text"  value="<?php echo $_smarty_tpl->tpl_vars['contactPhone']->value;?>
-" />&nbsp;<font class="red">*</font></td>
+" onblur="chkNumber('contactPhone','联系电话',true);" />&nbsp;<font class="red">*</font></td>
 		    </tr>
   						 <tr>
    							 <td width="120" height="48" align="right" valign="middle" class="f14 z3">QQ：</td>
    							 <td width="450" class="grzc_31"><input id="contactQQ" name="contactQQ" type="text" value="<?php echo $_smarty_tpl->tpl_vars['contactQQ']->value;?>
-" /></td>
+" onblur="chkNumber('contactQQ','QQ',false);" /></td>
 		    </tr>
   						 <tr>
   								  <td width="120" height="48" align="right" valign="middle" class="f14 z3">MSN：</td>
@@ -229,9 +267,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
  						 <tr>
    								 <td width="120" height="48" align="right" valign="middle" class="f14 z3">上传靓照：</td>
    								 <td width="450">
-                                 <span class="grzc_31"><input name="" type="text"  value="" /></span> 
-									<input class="form01" type="file" value="浏览">
-                                    <input class="form01" id="btn_upload_file" name="btn_upload_file" type="button" value="上传">
+    								<input id="userdetailPic" name="userdetailPic" type="file"  value="" /><br>
+    								<?php if ($_smarty_tpl->tpl_vars['userdetailPic']->value!=''){?>
+    								<img src="../uploads/agent/<?php echo $_smarty_tpl->tpl_vars['userdetailPic']->value;?>
+" style="padding-bottom:5px; height:128px; margin-left:-10px;">
+    								<?php }?>
                                   </td>
 		    </tr>
  						 <tr>
@@ -252,6 +292,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         </div>
     </div>
 </div>
+<script>
+<?php echo $_smarty_tpl->tpl_vars['operation_msg']->value;?>
+
+</script>
 <!--底部-->
 <?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['footer']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 

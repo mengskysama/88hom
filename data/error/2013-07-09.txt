@@ -23,3 +23,8 @@ insert into ecms_user_detail(userId,userdetailName,userdetailGender,userdetailPi
 update ecms_user_detail set userdetailName='某某',userdetailGender=,userdetailPic='',userdetailTel='12365487',userdetailAddr='呵呵呵额呵呵',userdetailPostCode='12345687',userdetailQQ='112233',userdetailMSN='ss@hotmail.com',userdetailProvince=4,userdetailCity=8,userdetailDistrict=4,userdetailArea=0,cardtypeId=2,userdetailCardNumber='123456789',userdetailState=1,userdetailUpdateTime=UNIX_TIMESTAMP() where userId=6
 客户端:127.0.0.1
 时间:2013-07-09 14:55:26
+------------------------2013-07-09 21:55:07
+错误SQL语句：
+insert into ecms_user_detail(userId,userdetailName,userdetailGender,userdetailPic,userdetailTel,userdetailAddr,userdetailPostCode,userdetailQQ,userdetailMSN,userdetailProvince,userdetailCity,userdetailDistrict,userdetailArea,cardtypeId,userdetailCardNumber,userdetailState,userdetailCreateTime,userdetailUpdateTime) values(17,'',1,'','','','','','',,,,,0,'',1,UNIX_TIMESTAMP(),UNIX_TIMESTAMP())
+客户端:127.0.0.1
+时间:2013-07-09 21:55:07

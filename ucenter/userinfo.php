@@ -15,10 +15,10 @@ $IDCode = "";
 $userdetailPic = "";
 $contactAddr = "";
 $postCode = "";
-$ddlProvince = "";
-$ddlCity = "";
-$ddlDistrict = "";
-$userdetailArea = "";
+$ddlProvince = -1;
+$ddlCity = -1;
+$ddlDistrict = -1;
+$userdetailArea = -1;
 $operation_msg = "";
 $areaIndex = "";
 
@@ -127,6 +127,7 @@ if($rblSex == 1){
 
 $html->addJs("ucenter_city.js");
 $html->addJs("ucenter_register_agent.js");
+$html->addJs("ucenter_property_input.js");
 $html->addCss("ucenter/city.css");
 $html->show();
 

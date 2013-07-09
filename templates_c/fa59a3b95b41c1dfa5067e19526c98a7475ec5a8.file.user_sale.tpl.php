@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-20 22:14:19
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-09 22:46:09
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2400251c30e3b79fb88-19006858%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fa59a3b95b41c1dfa5067e19526c98a7475ec5a8' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale.tpl',
-      1 => 1371566740,
+      1 => 1373378031,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51c30e3b962232_65556672',
   'variables' => 
   array (
     'cfg' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cssFiles' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_51c30e3b962232_65556672',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51c30e3b962232_65556672')) {function content_51c30e3b962232_65556672($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -55,7 +55,7 @@ ucenter/qg_img1.jpg" /></a></dt>
               		  <dd>
    					  <b class="title">委托中介网店找房</b>
                       <p>足不出户，委托房源信息，推优中介网店帮您售房租房！高效、免骚扰。</p>
-  					  <p style=" margin-top:15px;"><a href="#">去委托</a></p>
+  					  <p style=" margin-top:15px;"><a href="user_sale_prop_agent.php">去委托</a></p>
   					 </dd>
 				</dl>
 				<dl>
@@ -64,7 +64,7 @@ ucenter/qg_img2.jpg" /></a></dt>
               		  <dd>
    					  <b class="title">自己直接发布</b>
                       <p>您可以直接发布出售/出租信息，让业主联系您，买房过程，自主掌握。</p>
-  					  <p style=" margin-top:15px;"><a href="user_sale_zz.php">去委托</a></p>
+  					  <p style=" margin-top:15px;"><a href="user_sale_zz.php">去发布</a></p>
   					 </dd>
 				</dl>
             </div>

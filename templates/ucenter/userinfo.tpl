@@ -9,7 +9,9 @@
 	$(document).ready(function(){
 
 		$('#btn_confirm').click(function(){
+			if(checkform()){
 				$('#frm_userinfo').submit();
+			}
 		});
 		//初始化区域插件
 		if($('#areaIndex').val() != ''){
@@ -20,6 +22,40 @@
 				$('#txtComareas').val(A[areaIndex[0]][areaIndex[1]][areaIndex[2]][areaIndex[3]]);//片区,表面文字
 		}
 	});
+	
+	function checkform(){
+		if(!chkEmpty('IDCode','请填写证件号码')) return false;
+		if(!chkEmpty('contactAddr','请填写联系地址')) return false;
+		if(!chkNumber('contactPhone','联系电话',true)) return false;
+		if(!chkNumber('postCode','邮政编码',false)) return false;
+		if(!chkNumber('contactQQ','QQ',false)) return false;
+		return true;
+	}
+	
+	function chkEmpty(keyId,msg){
+		var value = document.getElementById(keyId).value;
+		if(trim(value) == ""){
+			alert(msg);
+			return false;
+		}
+		return true;
+	}
+	function chkNumber(keyId,keyName,tag){
+		var value = document.getElementById(keyId).value;
+		if(trim(value) == ""){
+			if(tag){
+				alert('请填写' + keyName);
+				return false;
+			}
+			return true;
+		}
+
+		if(!IsInt(keyId)){
+			alert(keyName + "只能是数字");
+			return false;
+		}
+		return true;
+	}
 </script>
 </head>
 
@@ -133,7 +169,7 @@
   						 <tr>
   	      				     <td width="120" height="48" align="right" valign="middle" class="f14 z3">真实姓名：</td>
    							 <td width="450" class="grzc_31">
-                             	<input id="userdetailName" name="userdetailName" type="text"  value="<!--{$realName}-->" />
+                             	<input id="userdetailName" name="userdetailName" maxlength="6" type="text"  value="<!--{$realName}-->" />
                                </td>
 	        </tr>
  						  <tr>
@@ -150,23 +186,23 @@
 		    </tr>
  						 <tr>
   							  <td width="120" height="48" align="right" valign="middle" class="f14 z3">证件号码：</td>
- 							  <td width="450" class="grzc_31"><input id="IDCode" name="IDCode" type="text" value="<!--{$IDCode}-->" />&nbsp;<font class="red">*</font></td>
+ 							  <td width="450" class="grzc_31"><input id="IDCode" name="IDCode" type="text" value="<!--{$IDCode}-->" onblur="chkEmpty('IDCode','请填写证件号码')" />&nbsp;<font class="red">*</font></td>
 	        </tr>
  						 <tr>
  							  <td width="120" height="48" align="right" valign="middle" class="f14 z3">联系地址：</td>
-  							  <td width="450" class="grzc_31"><input id="contactAddr" name="contactAddr" type="text"  value="<!--{$contactAddr}-->" />&nbsp;<font class="red">*</font></td>
+  							  <td width="450" class="grzc_31"><input id="contactAddr" name="contactAddr" type="text"  value="<!--{$contactAddr}-->" onblur="chkEmpty('contactAddr','请填写联系地址')" />&nbsp;<font class="red">*</font></td>
 	        </tr>
  						 <tr>
 						   <td width="120" height="48" align="right" valign="middle" class="f14 z3">邮  编：</td>
-   							 <td width="450" class="grzc_31"><input name="postCode" type="text"  value="<!--{$postCode}-->" /></td>
+   							 <td width="450" class="grzc_31"><input id="postCode" name="postCode" type="text" maxlength="6" value="<!--{$postCode}-->" onblur="chkNumber('postCode','邮政编码',false);" /></td>
 		    </tr>
 						  <tr>
   							 <td width="120" height="48" align="right" valign="middle" class="f14 z3">联系电话：</td>
-   							 <td width="450" class="grzc_31"><input id="contactPhone" name="contactPhone" type="text"  value="<!--{$contactPhone}-->" />&nbsp;<font class="red">*</font></td>
+   							 <td width="450" class="grzc_31"><input id="contactPhone" name="contactPhone" type="text"  value="<!--{$contactPhone}-->" onblur="chkNumber('contactPhone','联系电话',true);" />&nbsp;<font class="red">*</font></td>
 		    </tr>
   						 <tr>
    							 <td width="120" height="48" align="right" valign="middle" class="f14 z3">QQ：</td>
-   							 <td width="450" class="grzc_31"><input id="contactQQ" name="contactQQ" type="text" value="<!--{$contactQQ}-->" /></td>
+   							 <td width="450" class="grzc_31"><input id="contactQQ" name="contactQQ" type="text" value="<!--{$contactQQ}-->" onblur="chkNumber('contactQQ','QQ',false);" /></td>
 		    </tr>
   						 <tr>
   								  <td width="120" height="48" align="right" valign="middle" class="f14 z3">MSN：</td>

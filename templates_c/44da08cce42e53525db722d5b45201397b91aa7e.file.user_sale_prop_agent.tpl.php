@@ -1,10 +1,40 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-09 23:53:25
+         compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_prop_agent.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:2947251dc2233f17266-14946463%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '44da08cce42e53525db722d5b45201397b91aa7e' => 
+    array (
+      0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_prop_agent.tpl',
+      1 => 1373385202,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '2947251dc2233f17266-14946463',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51dc2234097635_06201311',
+  'variables' => 
+  array (
+    'cfg' => 0,
+    'jsFiles' => 0,
+    'cssFiles' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_51dc2234097635_06201311')) {function content_51dc2234097635_06201311($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
+" />
 <title>委托出售房源</title>
-<!--{$jsFiles}-->
-<!--{$cssFiles}-->
+<?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
+
+<?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
+
 <script>
 $(function() {    
     $("#estName").autocomplete({
@@ -14,28 +44,15 @@ $(function() {
       }
     });
 });
-function checkmobile(mobile){
-    if(trim(mobile) == ""){
-    	alert("请填写手机号码");
-    	return false;
-    }
-    
-    var pat = /^1\d{10}$/;
-    if (!pat.test(mobile)) {
-    	alert("手机号码格式不正确");
-        return false;
-    }
-    return true;
-}
+
 function sendVcode() {
     $("#btn_get_code").attr("disabled", true);
-    
     var mobile = $("#contactMobile").val();
-    if(!checkmobile(mobile)){
+    if(trim(mobile) == ""){
+    	alert("请填写手机号码");
     	$("#btn_get_code").attr("disabled", false);
     	return;
     }
-    	
     jQuery.ajax({
         type: "post",
         url: "get_cert_code.php",
@@ -70,14 +87,17 @@ function updateTimeLabel(time) {
 
 <body>
 <!--求购头部-->
-<!--{include file="$header_ucenter_user"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['header_ucenter_user']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 <!--求购内容-->
 <div class="qg_main">
-	<!--{include file="$ucenter_user_left_menu"}-->
+	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_user_left_menu']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
     <div class="qg_r">
     	<p>你的位置： 我的房不剩房 > <a href="user_sale.php">我要出售</a> > 委托出售房源</p>
         <div class="qgxq">
-       		 <b class="wyqg f14 z3"><img src="<!--{$cfg.web_images}-->ucenter/qg_32.jpg"> 我要出售</b>
+       		 <b class="wyqg f14 z3"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/qg_32.jpg"> 我要出售</b>
              <div class="qgxq3"><span style="color:#FFF">1.填写委托信</span><a href="user_sale_prop_agent_target.php"><span>2.选择中介网店</span></a><a href="user_sale_prop_agent_success.php"><span>3.委托发布成功</span></a></div>
         </div>
         <div class="qgxq2">
@@ -139,6 +159,8 @@ function updateTimeLabel(time) {
     </div>
 
 <!--求购底部-->
-<!--{include file="$footer"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['footer']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 </body>
 </html>
+<?php }} ?>
