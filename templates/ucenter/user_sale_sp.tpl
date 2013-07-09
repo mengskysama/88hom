@@ -100,48 +100,6 @@ function check(){
     <td align="left" valign="middle" class="p25 grzc_31"><input id="shopsAddress" name="shopsAddress" type="text"  value="" />  </td>
   </tr>
   <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 区    域</td>
-    <td align="left" valign="middle" class="p25">
-		<div>
-			<div id="showselectdc">
- 				<table style="display: block;">
-					<tr>
-						<td width="120">
-							<combobox id="input_y_str_DISTRICT0" width="100" labelposition="top" columns="3"
-								groupclass="group" itemclass="item999" itemoverclass="itemOver" itemselectedclass="itemFocus"
-                        		text="请选择区县" value="">
-                                       
-								<tip position="frameTop"><div align="center" class="tip">请选择区县</div></tip>
-								
-							</combobox>
-                  		</td>
-            			<td width="100">
-                    		<combobox id="input_y_str_COMAREA0" width="100" labelposition="left" columns="3"
-                           		groupclass="group" itemclass="item999" itemoverclass="itemOver" itemselectedclass="itemFocus"
-                            	text="请选择商圈" value="">
-								<tip position="frameTop"><div align="center" class="tip">请先选择区县</div></tip>	
-							</combobox>
-                         </td>
-          				<td><span class="alert01" style=" display: none" id="input_DISTRICT_tip">请选择区县</span></td>
-                        <td><span class="alert01" style=" display: none" id="input_COMAREA_tip">请选择商圈</span></td>
-					</tr>
-				</table>
-			</div>
-            <div id="showprojdc" style="display: none">
-            </div>
-                                
-            <div style="display: none;" id="uHouseDicDiv" >
-                <a id="AddHouseAliasHref" target="_blank">完善楼盘信息</a>
-            </div>
-                                  
-            <input type="hidden" id="input_DISTRICT" name="input_y_str_DISTRICT" />
-            <input type="hidden" id="input_COMAREA" name="input_y_str_COMAREA" />
-            <input type="hidden" id="hdHouseDicCity" name="hdHouseDicCity" value="1" />
-
-		</div>
-    </td>
-  </tr>
-  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"> 房源信息编码</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsNumber" name="shopsNumber" type="text" maxlength="12" onblur="CheckInfoCode('shopsNumber',true)" /></td>
   </tr>

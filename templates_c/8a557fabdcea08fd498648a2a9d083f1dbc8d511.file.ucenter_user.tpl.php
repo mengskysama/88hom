@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-18 12:01:22
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-09 15:39:56
          compiled from "E:/workspace/projects/88hom/templates\ucenter\ucenter_user.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:232295189a7c9112ed6-31517725%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8a557fabdcea08fd498648a2a9d083f1dbc8d511' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\ucenter_user.tpl',
-      1 => 1371527573,
+      1 => 1373355594,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
+    'userdetailPic' => 0,
     'userName' => 0,
     'userGender' => 0,
   ),
@@ -53,8 +54,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <div class="qgxq2">
         	<div class="zltx">
             	<div class="jr_l">
+				<?php if ($_smarty_tpl->tpl_vars['userdetailPic']->value!=''){?>
+    				<img src="../uploads/agent/<?php echo $_smarty_tpl->tpl_vars['userdetailPic']->value;?>
+" style="padding-bottom:5px; height:128px; margin-left:-10px;">
+    			<?php }else{ ?>
                 	<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
 ucenter/jry_03.jpg" class="l">
+				<?php }?>
                     <span class="l"><a href="userinfo.php"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
 ucenter/jry_11.jpg">修改个人资料</a></span>
                  </div>

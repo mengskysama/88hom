@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-08 18:01:02
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-09 15:28:29
          compiled from "E:/workspace/projects/88hom/templates\ucenter\secure_reset_email.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2119951b2f97fc47962-79388821%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '07867d02790ff1ed3cfee296b009b1f6f361fd02' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\secure_reset_email.tpl',
-      1 => 1370685658,
+      1 => 1373354868,
       2 => 'file',
     ),
   ),
@@ -109,7 +109,7 @@ function ajax_email() {
         	 <div class="zl_b11">
           <div class="yhzx1">
 	        <ul class="zl_dh">
-	          <li><a href="#">用户中心</a></li>
+	          <li><a href="ucenter_user.php">用户中心</a></li>
 	          <li><a href="userinfo.php">个人资料</a></li>
 	          <li><a href="secure_reset_password.php">安全中心</a></li>
 	          <li><a href="message_inbox.php">短信息中心</a></li>

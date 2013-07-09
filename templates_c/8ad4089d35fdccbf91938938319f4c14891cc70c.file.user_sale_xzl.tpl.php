@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-02 14:55:26
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-09 16:11:23
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_xzl.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1874551c7e378b4dbf7-05579691%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8ad4089d35fdccbf91938938319f4c14891cc70c' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_xzl.tpl',
-      1 => 1372661976,
+      1 => 1373244576,
       2 => 'file',
     ),
   ),
@@ -83,7 +83,12 @@ function check(){
 	if(!checkPropFee('officeProFee',true)) return false;
 	if(!CheckBuildingArea('officeBuildArea',true)) return false;
 	if(!CheckFloor('officeFloor','officeAllFloor',true)) return false;
-	
+		
+	var officeLevel = $('input:radio[name="officeLevel"]:checked').val();
+    if(officeLevel==null){
+    	alert("请选择写字楼级别");
+        return false;
+	}
 	var housePhotoValue = $("#officePhoto").val();
 	if(trim(housePhotoValue) == ''){
 		alert("请上传图片");
@@ -123,6 +128,7 @@ function check(){
         <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
             <form id="xzlForm" name="xzlForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="xzl">
+            <input type="hidden" name="prop_tx_type" value="1">
         <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 写字楼名称</td>

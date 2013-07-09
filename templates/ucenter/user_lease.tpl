@@ -30,7 +30,7 @@
               		  <dd>
    					  <b class="title">自己直接发布</b>
                       <p>您可以直接发布出售/出租信息，让业主联系您，买房过程，自主掌握。</p>
-  					  <p style=" margin-top:15px;"><a href="user_lease_zz.php">去委托</a></p>
+  					  <p style=" margin-top:15px;"><a href="user_lease_zz.php">去发布</a></p>
   					 </dd>
 				</dl>
             </div>

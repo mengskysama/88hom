@@ -18,7 +18,7 @@
 	      <div class="zl_b11">
           <div class="yhzx1">
 	        <ul class="zl_dh">
-	          <li><a href="#">用户中心</a></li>
+	          <li><a href="ucenter_user.php">用户中心</a></li>
 	          <li><a href="userinfo.php">个人资料</a></li>
 	          <li><a href="secure_reset_password.php">安全中心</a></li>
 	          <li><a href="message_inbox.php">短信息中心</a></li>

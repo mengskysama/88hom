@@ -10,7 +10,7 @@ $rblSex = "";
 $contactPhone = "";
 $contactQQ = "";
 $contactMSN = "";
-$ddlIDCode = "";
+$cardtypeId = "";
 $IDCode = "";
 $userdetailPic = "";
 $contactAddr = "";
@@ -18,6 +18,9 @@ $postCode = "";
 $ddlProvince = "";
 $ddlCity = "";
 $ddlDistrict = "";
+$userdetailArea = "";
+$operation_msg = "";
+$areaIndex = "";
 
 $userService = new UserService($db);
 $userDetail = $userService->getUserDetail($userId);
@@ -29,7 +32,7 @@ if($userDetail){
 	$contactPhone = $userDetail['userdetailTel'];
 	$contactQQ = $userDetail['userdetailQQ'];
 	$contactMSN = $userDetail['userdetailMSN'];
-	$ddlIDCode = $userDetail['cardtypeId'];
+	$cardtypeId = $userDetail['cardtypeId'];
 	$IDCode = $userDetail['userdetailCardNumber'];
 	
 	$userdetailPic = $userDetail['userdetailPic'];
@@ -38,13 +41,14 @@ if($userDetail){
 	$ddlProvince = $userDetail['userdetailProvince'];
 	$ddlCity = $userDetail['userdetailCity'];
 	$ddlDistrict = $userDetail['userdetailDistrict'];
-	
+	$userdetailArea = $userDetail['userdetailArea'];
+	$areaIndex = $ddlProvince.'-'.$ddlCity.'-'.$ddlDistrict.'-'.$userdetailArea;
 }
 
 if(isset($_POST['updateInfo'])){
 	$rblSex = getParameter("rblSex");
-	$realName = getParameter("realName");
-	$ddlIDCode = getParameter("ddlIDCode");
+	$realName = getParameter("userdetailName");
+	$cardtypeId = getParameter("cardtypeId");
 	$IDCode = getParameter("IDCode");
 	$contactAddr = getParameter("contactAddr");
 	$postCode = getParameter("postCode");
@@ -52,42 +56,74 @@ if(isset($_POST['updateInfo'])){
 	$contactQQ = getParameter("contactQQ");
 	$contactMSN = getParameter("contactMSN");
 
-	$userdetailPic = getParameter("");
-	$userdetailPicThumb = getParameter("");
-	$userdetailState = getParameter("");
-
-// 	$ddlProvince = getParameter("ddlProvince");
-// 	$ddlCity = getParameter("ddlCity");
-// 	$ddlDistrict = getParameter("ddlDistrict");
-	$areaIndex = getParameter("areaIndex");
-	echo 'areaindex->'.$areaIndex;return;
-	
-	$UCUser['userdetailName'] = $realName;
-	$UCUser['userdetailGender'] = $rblSex;
-	$UCUser['userdetailTel'] = $contactPhone;
-	$UCUser['userdetailQQ'] = $contactQQ;
-	$UCUser['userdetailMSN'] = $contactMSN;
-	$UCUser['cardtypeId'] = $ddlIDCode;
-	$UCUser['userdetailCardNumber'] = $IDCode;
-
-	$UCUser['userdetailPic'] = $userdetailPic;
-	$UCUser['userdetailAddr'] = $contactAddr;
-	$UCUser['userdetailPostCode'] = $postCode;
-	$UCUser['userdetailProvince'] = $ddlProvince;
-	$UCUser['userdetailCity'] = $ddlCity;
-	$UCUser['userdetailDistrict'] = $ddlDistrict;
-	$UCUser['userdetailState'] = 1;
-	
-	if($actionType == 10){
-		$userService->saveUserDetail($UCUser);
-	}else if($actionType == 11){
-		$userService->updateUserDetail($UCUser);
+	$userdetailPic = "";
+	if(isset($_FILES['userdetailPic']) && $_FILES['userdetailPic']['error'] == 0){
+		if((($_FILES['userdetailPic']["type"] != "image/gif")
+				&& ($_FILES['userdetailPic']["type"] != "image/jpeg")
+				&& ($_FILES['userdetailPic']["type"] != "image/pjpeg"))
+				|| ($_FILES['userdetailPic']["size"] >= 200000)) {
+			$operation_msg .= "alert('图片必须是gif、jgp格式的，并且小于2M');";
+		}else{
+			$fileName = $_FILES['userdetailPic']['name'];
+			$imageSuffix = substr($fileName,strrpos($fileName,'.'));
+			$userdetailPic = rand(10,20).$userId.rand(1000000,9999999).$imageSuffix;
+			$renameResult = copy($_FILES['userdetailPic']["tmp_name"],ECMS_PATH_ROOT.'uploads/agent/'.$userdetailPic);
+			//echo ECMS_PATH_ROOT.'uploads/agent/'.$userdetailPic.'->'.$renameResult;return;
+			if(!$renameResult){
+				$operation_msg .= "alert('图片上传失败，请重试');";
+			}
+		}		
 	}
-	
-}
 
-$femaleGender = ($rblSex == 1) ? "checked" : "";
-$maleGender = ($rblSex == 0) ? "checked" : "";
+	if(isset($_POST['areaIndex'])){
+		$areaIndex = getParameter("areaIndex");
+		if($areaIndex){
+			$areas = explode("-", $areaIndex);
+			if(count($areas) != 4){
+				$operation_msg .= "alert('请选齐城市、区域和商圈');";
+			}else{
+				$ddlProvince = $areas[0];
+				$ddlCity = $areas[1];
+				$ddlDistrict = $areas[2];
+				$userdetailArea = $areas[3];
+			}
+		}
+	}
+	if($operation_msg == ""){		
+		$UCUser['userdetailName'] = $realName;
+		$UCUser['userdetailGender'] = $rblSex;
+		$UCUser['userdetailTel'] = $contactPhone;
+		$UCUser['userdetailQQ'] = $contactQQ;
+		$UCUser['userdetailMSN'] = $contactMSN;
+		$UCUser['cardtypeId'] = $cardtypeId;
+		$UCUser['userdetailCardNumber'] = $IDCode;
+	
+		$UCUser['userdetailPic'] = $userdetailPic;
+		$UCUser['userdetailAddr'] = $contactAddr;
+		$UCUser['userdetailPostCode'] = $postCode;
+		$UCUser['userdetailProvince'] = $ddlProvince;
+		$UCUser['userdetailCity'] = $ddlCity;
+		$UCUser['userdetailDistrict'] = $ddlDistrict;
+		$UCUser['userdetailArea'] = $userdetailArea;
+		$UCUser['userdetailState'] = 1;
+		
+		if($actionType == 10){
+			$userService->saveUserDetail($UCUser);
+		}else if($actionType == 11){
+			$userService->updateUserDetail($UCUser);
+		}		
+		$operation_msg = "alert('注册成功');";
+	}	
+}
+$femaleGender = "";
+$maleGender = "";
+if($rblSex == 1){
+	$femaleGender = "";
+	$maleGender = "checked";
+}else{
+	$femaleGender = "checked";
+	$maleGender = "";
+}
 
 $html->addJs("ucenter_city.js");
 $html->addJs("ucenter_register_agent.js");
@@ -102,7 +138,7 @@ $smarty->assign('maleGender',$maleGender);
 $smarty->assign('contactPhone',$contactPhone);
 $smarty->assign('contactQQ',$contactQQ);
 $smarty->assign('contactMSN',$contactMSN);
-$smarty->assign('ddlIDCode',$ddlIDCode);
+$smarty->assign('cardtypeId',$cardtypeId);
 $smarty->assign('IDCode',$IDCode);
 $smarty->assign('userdetailPic',$userdetailPic);
 $smarty->assign('contactAddr',$contactAddr);
@@ -110,6 +146,9 @@ $smarty->assign('postCode',$postCode);
 $smarty->assign('ddlProvince',$ddlProvince);
 $smarty->assign('ddlCity',$ddlCity);
 $smarty->assign('ddlDistrict',$ddlDistrict);
+$smarty->assign('ddlArea',$userdetailArea);
+$smarty->assign('operation_msg',$operation_msg);
+$smarty->assign('areaIndex',$areaIndex);
 
 $smarty->display($tpl_name);
 

@@ -33,7 +33,7 @@
          <div class="zl_b11">
         	<div class="yhzx1">
 	        <ul class="zl_dh">
-	          <li><a href="#">用户中心</a></li>
+	          <li><a href="ucenter_user.php">用户中心</a></li>
 	          <li><a href="userinfo.php">个人资料</a></li>
 	          <li><a href="secure_reset_password.php">安全中心</a></li>
               <li><a href="message_inbox.php">短信息中心</a></li>
@@ -48,7 +48,7 @@
                     </ul>
                 </div>
                 <div class="zl_r">
-                <form id="frm_userinfo" name="frm_userinfo" action="userinfo.php" method="post">
+                <form id="frm_userinfo" name="frm_userinfo" action="userinfo.php" method="post" enctype="multipart/form-data">
 <table width="90%" border="0" cellspacing="0" cellpadding="0">
 						  <tr>
   							  <td width="120" height="48" align="right" valign="middle" class="f14 z3">用户名：</td>
@@ -57,8 +57,8 @@
  						  <tr>
    							 <td width="120" height="48" align="right" valign="middle" class="f14 z3">性  别：</td>
  						     <td width="450">
-                                    <input name="rblSex" type="radio" value="先生" <!--{$maleGender}--> />男
-                                    <input name="rblSex" type="radio" value="女士" <!--{$femaleGender}-->/>女
+                                    <input name="rblSex" type="radio" value="1" <!--{$maleGender}--> />男
+                                    <input name="rblSex" type="radio" value="0" <!--{$femaleGender}-->/>女
                              </td>
 </tr>
  						 <tr>
@@ -122,7 +122,7 @@
 		                                onkeydown="SelectonKeyDown('txtComareas',event,'search_c')" style="width: 95px;" /><input
 		                                    type="button" class="but_input_cs" id="CheckCity" name="CheckCity" onclick="ShowComareas()" />
 		                             <!--省，市，区域，片区下标,以"-"隔开 -->
-									<input type="hidden" name="areaIndex"	id="areaIndex" value="<!--{$info.areaIndex}-->"/>	
+									<input type="hidden" name="areaIndex" id="areaIndex" value="<!--{$areaIndex}-->"/>	
 		                            <div class="search_select01 left230" id="search_c" >
 		                                <dl id="search_c_value">
 		                                </dl>
@@ -133,18 +133,18 @@
   						 <tr>
   	      				     <td width="120" height="48" align="right" valign="middle" class="f14 z3">真实姓名：</td>
    							 <td width="450" class="grzc_31">
-                             	<input id="realName" name="realName" type="text"  value="<!--{$realName}-->" />
+                             	<input id="userdetailName" name="userdetailName" type="text"  value="<!--{$realName}-->" />
                                </td>
 	        </tr>
  						  <tr>
    							 <td width="120" height="48" align="right" valign="middle" class="f14 z3">证件类型：</td>
    							 <td width="450">
-                             		<select name="ddlIDCode" id="ddlIDCode" class="select2">
-                                	    <option selected="selected" value="0">请选择</option>
-										<option value="身份证">身份证</option>
-										<option value="工作证">工作证</option>
-										<option value="军官证">军官证</option>
-										<option value="学生证">学生证</option>
+                             		<select name="cardtypeId" id="cardtypeId" class="select2">
+                                	    <option value="0">请选择</option>
+										<option <!--{if $cardtypeId eq 1 }-->selected="selected"<!--{/if}--> value="1">身份证</option>
+										<option <!--{if $cardtypeId eq 2 }-->selected="selected"<!--{/if}--> value="2">工作证</option>
+										<option <!--{if $cardtypeId eq 3 }-->selected="selected"<!--{/if}--> value="3">军官证</option>
+										<option <!--{if $cardtypeId eq 4 }-->selected="selected"<!--{/if}--> value="4">学生证</option>
           				    		 </select>
                               </td>
 		    </tr>
@@ -175,9 +175,10 @@
  						 <tr>
    								 <td width="120" height="48" align="right" valign="middle" class="f14 z3">上传靓照：</td>
    								 <td width="450">
-                                 <span class="grzc_31"><input name="" type="text"  value="" /></span> 
-									<input class="form01" type="file" value="浏览">
-                                    <input class="form01" id="btn_upload_file" name="btn_upload_file" type="button" value="上传">
+    								<input id="userdetailPic" name="userdetailPic" type="file"  value="" /><br>
+    								<!--{if $userdetailPic ne '' }-->
+    								<img src="../uploads/agent/<!--{$userdetailPic}-->" style="padding-bottom:5px; height:128px; margin-left:-10px;">
+    								<!--{/if}-->
                                   </td>
 		    </tr>
  						 <tr>
@@ -198,6 +199,9 @@
         </div>
     </div>
 </div>
+<script>
+<!--{$operation_msg}-->
+</script>
 <!--底部-->
 <!--{include file="$footer"}-->
 </body>

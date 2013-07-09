@@ -1,1 +1,1 @@
-{"appid":"100445336","appkey":"3a990c729cd8697f20cea8fda32e2b9e","callback":"http://test.88hom.com/ucenter/qq_callback.php","scope":"get_user_info"}
+{"appid":"100481033","appkey":"3a6ad02e697a7fa0539253eae9540088","callback":"test.88hom.com/ucenter/qq_callback.php","scope":"get_user_info","errorReport":true,"storageType":"file","host":"localhost","user":"root","password":"root","database":"test"}

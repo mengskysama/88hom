@@ -1,11 +1,43 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-09 16:11:17
+         compiled from "E:/workspace/projects/88hom/templates\ucenter\user_lease_bs.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:3211451dbc5a569ea99-89138770%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '4f6ea351f6a44df302bb3ce87723437c05137521' => 
+    array (
+      0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_lease_bs.tpl',
+      1 => 1373244575,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '3211451dbc5a569ea99-89138770',
+  'function' => 
+  array (
+  ),
+  'variables' => 
+  array (
+    'cfg' => 0,
+    'jsFiles' => 0,
+    'cssFiles' => 0,
+    'ckeditLib' => 0,
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51dbc5a5741a47_25812656',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_51dbc5a5741a47_25812656')) {function content_51dbc5a5741a47_25812656($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
-<title>个人出售别墅房源</title>
-<!--{$jsFiles}-->
-<!--{$cssFiles}-->
-<script language="JavaScript" type="text/javascript" src="<!--{$ckeditLib}-->"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
+" />
+<title>录入别墅出租房源</title>
+<?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
+
+<?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
+
+<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
+"></script>
 <script>
 $(function() {    
 	$("#estName").autocomplete({
@@ -47,15 +79,13 @@ function check(){
 	}
 	
 	if(!CheckInfoCode('villaNumber',true)) return false;
-	if(!CheckPrice('villaSellPrice',true,'CS')) return false;
+	if(!checkRentPrice()) return false;
 	if(!CheckRoom('villaRoom',true)) return false;
 	if(!CheckRoom('villaHall',true)) return false;
 	if(!CheckRoom('villaToilet',true)) return false;
 	if(!CheckRoom('villaKitchen',true)) return false;
 	if(!CheckRoom('villaBalcony',true)) return false;
-	if(!CheckBuildingArea('villaBuildArea',true)) return false;
-	if(!CheckLiveArea('villaUseArea','villaBuildArea',true)) return false;
-	if(!CheckCreateTime('villaBuildYear',true)) return false;
+	if(!CheckRentArea()) return false;
 	if(!checkVillaAllFloor()) return false;
 
 	if($("input[name='villaCellar']:checked").val() == 1 && !CheckCellarArea('villaCellarArea',true)) return false;	
@@ -78,6 +108,27 @@ function check(){
 	return true;	
 }
 
+function CheckRentArea()
+{
+	var KeyName = "villaBuildArea";
+    var value=document.getElementById(KeyName).value;
+    
+    if(value==''){
+    	alert("请填写出租面积");
+        return false;
+    }
+        
+    if(check_float(KeyName)){
+    	if(parseFloat(value)<=2||parseFloat(value)>=10000){
+    		alert("出租面积必须大于2且小于10000");
+    		return false;
+    	}
+    	return true;
+	}else{
+        alert("只能填写数字");
+        return false;
+	}
+}
 function selectCellar(visible){
 	if(visible==1){
 		$("#tr_villaCellarArea").css("display","");
@@ -146,34 +197,64 @@ function checkVillaGarageCount(){
     return true;
 }
 
+function changepaydetail() {
+	var val = $('input:radio[name="villaPayment"]:checked').val();
+    if (val == 2) {
+        document.getElementById("villaPayDetailY").value = "";
+        document.getElementById("villaPayDetailF").value = "";
+        document.getElementById("villaPayDetailY").disabled = "disabled"
+        document.getElementById("villaPayDetailF").disabled = "disabled"
+    }
+    else {
+        document.getElementById("villaPayDetailY").disabled = ""
+        document.getElementById("villaPayDetailF").disabled = ""
+    }
+}
+function checkRentPrice(){
+	
+    var value=document.getElementById("villaRentPrice").value;
+    if(trim(value) == ''){
+		alert("请填写租金");
+        return false;
+    }
+
+    if(check_float("villaRentPrice")){
+        if(parseFloat(value)<=100||parseFloat(value)>=300000){
+            alert("租金要大于100元小于30万元");
+        	return false;
+        }
+		return true;
+    }else{
+		alert("只能填写数字");
+		return false;
+    }
+}
 </script>
 </head>
 
 <body>
 <!--求购头部-->
-<!--{include file="$header_ucenter_user"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['header_ucenter_user']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 <!--求购内容-->
 <div class="qg_main">
-	<!--{include file="$ucenter_user_left_menu"}-->
+	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_user_left_menu']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
   <div class="qg_r">
     <p>你的位置: <a href="#">房源管理</a></p>
    	<div class="qg_bs">
  		   <ul>
-   			 	<li><a href="user_sale_zz.php">录入住宅出售房源</a></li>
-    		    <li><a href="user_sale_bs.php">录入别墅出售房源</a></li>
-     		    <li><a href="user_sale_sp.php">录入商铺出售房源</a></li>
-      		 	<li><a href="user_sale_xzl.php">录入写字楼出售房源</a></li>
+   			 	<li><a href="user_lease_zz.php">录入住宅出租房源</a></li>
+    		    <li><a href="user_lease_bs.php">录入别墅出租房源</a></li>
+     		    <li><a href="user_lease_sp.php">录入商铺出租房源</a></li>
+      		 	<li><a href="user_lease_xzl.php">录入写字楼出租房源</a></li>
    		  </ul>
       <div class="bs_tx">
         <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
         <form id="bsForm" name="bsForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="bs">
-            <input type="hidden" name="prop_tx_type" value="1">
+            <input type="hidden" name="prop_tx_type" value="2">
         <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
-  <tr>
-    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">房源模板</td>
-    <td align="left" valign="middle" class="p25">还可保存6套 <span class="redlink"><a href="#">使用说明</a></span></td>
-  </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼盘名称</td>
     <td align="left" valign="middle" class="p25 grzc_31">
@@ -197,8 +278,8 @@ function checkVillaGarageCount(){
     <input id="" name="villaBuildForm" type="radio" value="4" /> 叠加 </td>
   </tr>
   <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  售    价</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaSellPrice" name="villaSellPrice" type="text" onblur="CheckPrice('villaSellPrice',true,'CS');" /> <font class="z3">万元/套</font></td>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  租    金</td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaRentPrice" name="villaRentPrice" type="text" onblur="checkRentPrice();" /> <font class="z3">元/月</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>户    型</td>
@@ -209,19 +290,40 @@ function checkVillaGarageCount(){
     <input id="villaKitchen" name="villaKitchen" type="text" maxlength="1" onblur="CheckRoom('villaKitchen',true);"/> <font class="z3">厨</font> 
     <input id="villaBalcony" name="villaBalcony" type="text" maxlength="1" onblur="CheckRoom('villaBalcony',true);"/> <font class="z3">阳台</font></td>
   </tr>
+			  <tr>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>租赁方式</td>
+			    <td align="left" valign="middle" class="p25">
+				<input type="radio" name="villaRentType" id="" value="1" checked="checked" /> 整租
+                <input type="radio" name="villaRentType" id="" value="2"  /> 合租				
+				</td>
+			  </tr>
+			  <tr>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
+			    <td align="left" valign="middle" class="p25 grzc_35">
+			    <input id="villaPayment" checked="checked" name="villaPayment" type="radio" value="1" onclick="changepaydetail()"/>押&nbsp;
+				<select name="villaPayDetailY" id="villaPayDetailY" style=" vertical-align:middle">
+				<option selected="selected" value="">请选择</option>
+				<option value="0">零</option>
+				<option value="1">一个月</option>
+				<option value="2">两个月</option>
+				<option value="3">三个月</option>
+				<option value="6">六个月</option>
+				</select>
+                                                       付&nbsp;
+				<select name="villaPayDetailF" id="villaPayDetailF" style=" vertical-align:middle">
+                                    <option selected="selected" value="">请选择</option>
+                                    <option value="1" >一个月</option>
+                                    <option value="2">两个月</option>
+                                    <option value="3">三个月</option>
+                                    <option value="6">六个月</option>
+                                    <option value="12">十二个月</option>
+ 				</select>
+			    <input id="villaPayment" name="villaPayment" type="radio" value="2" onclick="changepaydetail();" />面议
+				</td>
+			  </tr>
   <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaBuildArea" name="villaBuildArea" type="text" maxlength="8" onblur="CheckBuildingArea('villaBuildArea',true);"/> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
-  </tr>
-  <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">使用面积</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaUseArea" name="villaUseArea" type="text" maxlength="8" onblur="CheckLiveArea('villaUseArea','villaBuildArea',true)" />
-      <font class="z3"> 平方米</font></td>
-  </tr>
-  <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaBuildYear" name="villaBuildYear" type="text" maxlength="4" onblur="CheckCreateTime('villaBuildYear',true)" />
-      <font class="z3"> 年</font></td>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 出租面积</td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaBuildArea" name="villaBuildArea" type="text" maxlength="8" onblur="CheckRentArea();"/> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">朝    向</td>
@@ -347,6 +449,8 @@ function checkVillaGarageCount(){
     </div>
 
 <!--求购底部-->
-<!--{include file="$footer"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['footer']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 </body>
 </html>
+<?php }} ?>

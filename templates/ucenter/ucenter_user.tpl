@@ -19,7 +19,11 @@
         <div class="qgxq2">
         	<div class="zltx">
             	<div class="jr_l">
+				<!--{if $userdetailPic ne '' }-->
+    				<img src="../uploads/agent/<!--{$userdetailPic}-->" style="padding-bottom:5px; height:128px; margin-left:-10px;">
+    			<!--{else}-->
                 	<img src="<!--{$cfg.web_images}-->ucenter/jry_03.jpg" class="l">
+				<!--{/if}-->
                     <span class="l"><a href="userinfo.php"><img src="<!--{$cfg.web_images}-->ucenter/jry_11.jpg">修改个人资料</a></span>
                  </div>
                 <div class="jr_r">

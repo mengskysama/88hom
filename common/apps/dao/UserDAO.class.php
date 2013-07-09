@@ -81,7 +81,7 @@ class UserDAO{
 			$sql .= "userState=".$user['userState'].",";
 		}
 		if(isset($user['UOpenId'])){
-			$sql .= "UOpenId=".$user['UOpenId'].",";
+			$sql .= "UOpenId='".$user['UOpenId']."',";
 		}
 						
 		$sql .= "userUpdateTime=UNIX_TIMESTAMP() where userId=".$user['userId'];

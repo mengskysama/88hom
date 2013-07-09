@@ -1,22 +1,20 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-09 16:12:22
-         compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_sp.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2744051c7f0a56a3478-23197049%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-09 16:11:20
+         compiled from "E:/workspace/projects/88hom/templates\ucenter\user_lease_sp.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:2195551dbc5a847e5a1-01965641%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'd003a2e4311d0231366d6cb379966e1c5939056b' => 
+    '929f50b5be0f23b35cd66b5fb0ee9d8f32b81937' => 
     array (
-      0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_sp.tpl',
-      1 => 1373357535,
+      0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_lease_sp.tpl',
+      1 => 1373244575,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2744051c7f0a56a3478-23197049',
+  'nocache_hash' => '2195551dbc5a847e5a1-01965641',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_51c7f0a57709c9_03148991',
   'variables' => 
   array (
     'cfg' => 0,
@@ -25,13 +23,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ckeditLib' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51dbc5a8538e69_68227021',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51c7f0a57709c9_03148991')) {function content_51c7f0a57709c9_03148991($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_51dbc5a8538e69_68227021')) {function content_51dbc5a8538e69_68227021($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
 " />
-<title>个人房源_商铺</title>
+<title>个人商铺房源出租</title>
 <?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
@@ -78,7 +78,7 @@ function check(){
 	}
 	
 	if(!CheckInfoCode('shopsNumber',true)) return false;	
-	if(!CheckPrice('shopsSellPrice',true,'CS')) return false;
+	if(!checkRentPrice()) return false;
 	if(!checkPropFee('shopsPropFee',true)) return false;
 	if(!CheckBuildingArea('shopsBuildArea',true)) return false;
 	if(!CheckFloor('shopsFloor','shopsAllFloor',true)) return false;
@@ -97,6 +97,63 @@ function check(){
 	}
 	
 	return true;	
+}
+function checkPrice(num,isChk){
+	var rNum = num;
+	if(isChk){
+		var chkedUnit = $('input:radio[name="shopsRentPriceUnit"]:checked').val();
+		if(chkedUnit == null){
+			alert("请选择租金单位");
+			return false;
+		}
+		if(chkedUnit == 1){
+			rNum = 30;
+		}else if(chkedUnit == 2){
+			rNum = 900;
+		}else{
+			rNum = 1000000000;
+		} 			
+	}
+	
+	var value = $("#shopsRentPrice").val();
+	if(trim(value) == ""){
+    	alert("请填写租金");
+    	document.getElementById("shopsRentPrice").focus()
+    	return false;
+    }
+    
+    if(check_float("shopsRentPrice")){
+    	var p = rNum;
+    	if(p=='1000000000') p='10亿';
+    	if(parseFloat(value)<=0 || parseFloat(value)>rNum){
+    		alert("租金要大于0元小于" + p + "元");
+    		document.getElementById("shopsRentPrice").focus()
+    		return false;
+    	}
+    	return true;
+    }else{
+    	alert("租金只能填写数字和小数点");
+    	document.getElementById("shopsRentPrice").focus()
+    	return false;
+    }    
+}
+function checkRentPrice(){
+	var value = $("#shopsRentPrice").val(); 
+    if(trim(value) == ""){
+    	alert("请填写租金");
+    	return false;
+    }
+    
+    if(check_float("shopsRentPrice")){
+    	if(parseFloat(value)<=0 || parseFloat(value)>1000000000){
+    		alert("租金要大于0元小于10亿元");
+    		return false;
+    	}
+    	return true;
+    }else{
+    	alert("租金只能填写数字和小数点");
+    	return false;
+    }    
 }
 </script>
 </head>
@@ -122,7 +179,7 @@ function check(){
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
             <form id="spForm" name="spForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="sp">
-            <input type="hidden" name="prop_tx_type" value="1">
+            <input type="hidden" name="prop_tx_type" value="2">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 商铺名称</td>
@@ -132,6 +189,48 @@ function check(){
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">商铺地址</td>
     <td align="left" valign="middle" class="p25 grzc_31"><input id="shopsAddress" name="shopsAddress" type="text"  value="" />  </td>
+  </tr>
+  <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 区    域</td>
+    <td align="left" valign="middle" class="p25">
+		<div>
+			<div id="showselectdc">
+ 				<table style="display: block;">
+					<tr>
+						<td width="120">
+							<combobox id="input_y_str_DISTRICT0" width="100" labelposition="top" columns="3"
+								groupclass="group" itemclass="item999" itemoverclass="itemOver" itemselectedclass="itemFocus"
+                        		text="请选择区县" value="">
+                                       
+								<tip position="frameTop"><div align="center" class="tip">请选择区县</div></tip>
+								
+							</combobox>
+                  		</td>
+            			<td width="100">
+                    		<combobox id="input_y_str_COMAREA0" width="100" labelposition="left" columns="3"
+                           		groupclass="group" itemclass="item999" itemoverclass="itemOver" itemselectedclass="itemFocus"
+                            	text="请选择商圈" value="">
+								<tip position="frameTop"><div align="center" class="tip">请先选择区县</div></tip>	
+							</combobox>
+                         </td>
+          				<td><span class="alert01" style=" display: none" id="input_DISTRICT_tip">请选择区县</span></td>
+                        <td><span class="alert01" style=" display: none" id="input_COMAREA_tip">请选择商圈</span></td>
+					</tr>
+				</table>
+			</div>
+            <div id="showprojdc" style="display: none">
+            </div>
+                                
+            <div style="display: none;" id="uHouseDicDiv" >
+                <a id="AddHouseAliasHref" target="_blank">完善楼盘信息</a>
+            </div>
+                                  
+            <input type="hidden" id="input_DISTRICT" name="input_y_str_DISTRICT" />
+            <input type="hidden" id="input_COMAREA" name="input_y_str_COMAREA" />
+            <input type="hidden" id="hdHouseDicCity" name="hdHouseDicCity" value="1" />
+
+		</div>
+    </td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"> 房源信息编码</td>
@@ -147,8 +246,11 @@ function check(){
         <label><input id="" name="shopsType" type="radio" value="5" /> 其他</label></td>
   </tr>
   <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  售    价</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsSellPrice" name="shopsSellPrice" type="text" onblur="CheckPrice('shopsSellPrice',true,'CS');" /> <font class="z3">万元/套</font></td>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  租    金</td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsRentPrice" name="shopsRentPrice" type="text" onblur="checkRentPrice();" />
+    <label><input id="" name="shopsRentPriceUnit" type="radio" onclick="checkPrice('30',false)" value="1" />元/平米·天</label>
+    <label><input id="" name="shopsRentPriceUnit" type="radio" onclick="checkPrice('900',false)" value="2" />元/平米·月</label>
+    <label><input id="" name="shopsRentPriceUnit" type="radio" onclick="checkPrice('1000000000',false)" value="3" />元/月</label></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 物 业 费</td>
