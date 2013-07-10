@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
 <title>经纪人-房源厂房出售</title>
 <link rel="stylesheet"  type="text/css" href="../gr/css/loading.css" />
 <link rel="stylesheet"  type="text/css" href="../gr/css/public.css" />
@@ -10,20 +10,7 @@
 
 <body>
 <!--头部-->
-<div class="jjr_tb">
-	<div class="qg_tb1">
-    	<span class="qgtb">
-        	<a href="#">房不剩房首页</a> | <a href="#">资讯</a> |  <a href="#">新房</a> <a href="#">二手房</a> <a href="#">租房</a> | <a href="#">装修家居</a> | <a href="#">业主论坛</a>
-      </span>
-<div class="jjr_logo">
-         	<div class="jjr_logo1">
-            	<img src="../gr/images/grzc_03.jpg" width="164" height="92"> 
-</div>
-            <div class="jjr2"><font style="font-size:16px; font-weight:bolder">XX</font> 欢迎你！</div>
-            <span><a href="#">查看我的店铺 </a>| <a href="#">管理我的店铺</a>| <a href="#">短消息</a>[<a href="#">0</a>]| <a href="#" class="red">安全退出</a></span>
-      </div>
-    </div>
-</div>
+<!--{include file="$ucenter_agent_header"}-->
 <!--中间内容部分-->
 <div class="qg_main">
 	<div class="jjr_l">
@@ -158,48 +145,6 @@
     </div>
 </div>
 <!--底部-->
-<div class="gr_bot">
-	<div class="gr_bot1">
-		<div class="c">
-					<div class="c1">
-						<a href="#">今日头条</a>
-						<a href="#">楼市要闻</a><br/>
-						<a href="#">政策解读</a>
-						<a href="#">行情数据</a>
-					</div>
-					<div class="s"></div>
-					<div class="c2">
-						<a href="#">最新开盘</a>
-						<a href="#">热门楼盘</a><br/>
-						<a href="#">优惠团购</a>
-						<a href="#">地图看房</a>
-					</div>
-					<div class="s"></div>
-					<div class="c2">
-						<a href="#">设计修饰</a>
-						<a href="#">促销团购</a><br/>
-						<a href="#">家具卖场</a>
-						<a href="#">装修指南</a>
-					</div>
-                    <div class="s"></div>
-					<div class="c3">
-						<a href="#">设计修饰</a>
-						<a href="#">促销团购</a><br/>
-						<a href="#">家具卖场</a>
-						<a href="#">装修指南</a>
-					</div>
-					<div class="s"></div>
-					<div class="c4">
-						<a href="#">业主论坛</a>
-						<a href="#">论坛热贴</a><br/>
-						<a href="#">人气板块</a>
-					</div>
-	  </div>
-             <div class="gr_bot2">
-             广告投放：0755-88886666  投诉邮箱：tousu@tianyue.com  投诉电话：400-6666-888<br/>
-				版权所有2013-2016 房不剩房 天境文化传播有限公司 备粤10110011号 
-             </div>
-  </div>
-</div>
+<!--{include file="$footer"}-->
 </body>
 </html>

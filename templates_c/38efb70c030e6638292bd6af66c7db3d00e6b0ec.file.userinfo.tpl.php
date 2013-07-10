@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-09 22:38:22
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-10 22:27:03
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\userinfo.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1133251bd839b1da0c3-12759871%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '38efb70c030e6638292bd6af66c7db3d00e6b0ec' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\userinfo.tpl',
-      1 => 1373380699,
+      1 => 1373380916,
       2 => 'file',
     ),
   ),
@@ -70,6 +70,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	function checkform(){
 		if(!chkEmpty('IDCode','请填写证件号码')) return false;
 		if(!chkEmpty('contactAddr','请填写联系地址')) return false;
+		if(!chkNumber('contactPhone','联系电话',true)) return false;
 		if(!chkNumber('postCode','邮政编码',false)) return false;
 		if(!chkNumber('contactQQ','QQ',false)) return false;
 		return true;

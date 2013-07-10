@@ -23,28 +23,6 @@ $operation_msg = "";
 $areaIndex = "";
 
 $userService = new UserService($db);
-$userDetail = $userService->getUserDetail($userId);
-if($userDetail){
-	$actionType = 11;
-
-	$realName = $userDetail['userdetailName'];
-	$rblSex = $userDetail['userdetailGender'];
-	$contactPhone = $userDetail['userdetailTel'];
-	$contactQQ = $userDetail['userdetailQQ'];
-	$contactMSN = $userDetail['userdetailMSN'];
-	$cardtypeId = $userDetail['cardtypeId'];
-	$IDCode = $userDetail['userdetailCardNumber'];
-	
-	$userdetailPic = $userDetail['userdetailPic'];
-	$contactAddr = $userDetail['userdetailAddr'];
-	$postCode = $userDetail['userdetailPostCode'];
-	$ddlProvince = $userDetail['userdetailProvince'];
-	$ddlCity = $userDetail['userdetailCity'];
-	$ddlDistrict = $userDetail['userdetailDistrict'];
-	$userdetailArea = $userDetail['userdetailArea'];
-	$areaIndex = $ddlProvince.'-'.$ddlCity.'-'.$ddlDistrict.'-'.$userdetailArea;
-}
-
 if(isset($_POST['updateInfo'])){
 	$rblSex = getParameter("rblSex");
 	$realName = getParameter("userdetailName");
@@ -55,6 +33,8 @@ if(isset($_POST['updateInfo'])){
 	$contactPhone = getParameter("contactPhone");
 	$contactQQ = getParameter("contactQQ");
 	$contactMSN = getParameter("contactMSN");
+	//echo 'rblsex->'.$rblSex;
+	//return ;
 
 	$userdetailPic = "";
 	if(isset($_FILES['userdetailPic']) && $_FILES['userdetailPic']['error'] == 0){
@@ -97,8 +77,10 @@ if(isset($_POST['updateInfo'])){
 		$UCUser['userdetailMSN'] = $contactMSN;
 		$UCUser['cardtypeId'] = $cardtypeId;
 		$UCUser['userdetailCardNumber'] = $IDCode;
-	
-		$UCUser['userdetailPic'] = $userdetailPic;
+		if($userdetailPic != ""){
+			$UCUser['userdetailPic'] = $userdetailPic;
+		}
+		//echo 'pic->'.$userdetailPic;return;
 		$UCUser['userdetailAddr'] = $contactAddr;
 		$UCUser['userdetailPostCode'] = $postCode;
 		$UCUser['userdetailProvince'] = $ddlProvince;
@@ -115,6 +97,30 @@ if(isset($_POST['updateInfo'])){
 		$operation_msg = "alert('注册成功');";
 	}	
 }
+
+$userDetail = $userService->getUserDetail($userId);
+if($userDetail){
+	$actionType = 11;
+
+	$realName = $userDetail['userdetailName'];
+	$rblSex = $userDetail['userdetailGender'];
+	$contactPhone = $userDetail['userdetailTel'];
+	$contactQQ = $userDetail['userdetailQQ'];
+	$contactMSN = $userDetail['userdetailMSN'];
+	$cardtypeId = $userDetail['cardtypeId'];
+	$IDCode = $userDetail['userdetailCardNumber'];
+
+	$userdetailPic = $userDetail['userdetailPic'];
+	$contactAddr = $userDetail['userdetailAddr'];
+	$postCode = $userDetail['userdetailPostCode'];
+	$ddlProvince = $userDetail['userdetailProvince'];
+	$ddlCity = $userDetail['userdetailCity'];
+	$ddlDistrict = $userDetail['userdetailDistrict'];
+	$userdetailArea = $userDetail['userdetailArea'];
+	$areaIndex = $ddlProvince.'-'.$ddlCity.'-'.$ddlDistrict.'-'.$userdetailArea;
+	//echo 'userdetailPic###-'.$userdetailPic.'<br>';
+}
+
 $femaleGender = "";
 $maleGender = "";
 if($rblSex == 1){
@@ -141,6 +147,8 @@ $smarty->assign('contactQQ',$contactQQ);
 $smarty->assign('contactMSN',$contactMSN);
 $smarty->assign('cardtypeId',$cardtypeId);
 $smarty->assign('IDCode',$IDCode);
+
+//echo 'userdetailPic-'.$userdetailPic;
 $smarty->assign('userdetailPic',$userdetailPic);
 $smarty->assign('contactAddr',$contactAddr);
 $smarty->assign('postCode',$postCode);

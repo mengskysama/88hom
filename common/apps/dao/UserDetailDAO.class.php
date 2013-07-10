@@ -180,7 +180,7 @@ class UserDetailDAO{
 		if(isset($user['userdetailGender'])){
 			$fields .= "userdetailGender=".$user['userdetailGender'].",";
 		}
-		if(isset($user['userdetailPic'])){
+		if(isset($user['userdetailPic']) && $user['userdetailPic'] != ""){
 			$fields .= "userdetailPic='".$user['userdetailPic']."',";
 		}
 		if(isset($user['userdetailPicThumb'])){
