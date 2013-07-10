@@ -1,0 +1,20 @@
+------------------------2013-07-10 14:35:55
+错误SQL语句：
+insert into ecms_agent_property(propUserId,agentUserId,communityId,txType,propPrice,remarks,contactName,contactGender,contactMobile,propState,createTime) values(,,,,150,托尔斯泰','等等',1,15986605676,,UNIX_TIMESTAMP())
+客户端:127.0.0.1
+时间:2013-07-10 14:35:55
+------------------------2013-07-10 14:37:47
+错误SQL语句：
+insert into ecms_agent_property(propUserId,agentUserId,communityId,txType,propPrice,remarks,contactName,contactGender,contactMobile,propState,createTime) values(,,,,130,等待','的',1,15986605676,,UNIX_TIMESTAMP())
+客户端:127.0.0.1
+时间:2013-07-10 14:37:47
+------------------------2013-07-10 14:42:06
+错误SQL语句：
+insert into ecms_agent_property(propUserId,agentUserId,communityId,txType,propPrice,remarks,contactName,contactGender,contactMobile,propState,createTime) values(6,0,25,1,130,等待','的',1,15986605676,1,UNIX_TIMESTAMP())
+客户端:127.0.0.1
+时间:2013-07-10 14:42:06
+------------------------2013-07-10 14:42:41
+错误SQL语句：
+insert into ecms_agent_property(propUserId,agentUserId,communityId,txType,propPrice,remarks,contactName,contactGender,contactMobile,propState,createTime) values(6,0,25,1,130,'等待','的',1,15986605676,1,UNIX_TIMESTAMP())
+客户端:127.0.0.1
+时间:2013-07-10 14:42:41

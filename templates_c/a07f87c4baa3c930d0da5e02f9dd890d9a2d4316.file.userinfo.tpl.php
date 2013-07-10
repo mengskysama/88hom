@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-09 15:40:23
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-10 10:49:46
          compiled from "E:/workspace/projects/88hom/templates\ucenter\userinfo.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:268025189e9ba8dc2e9-62378949%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a07f87c4baa3c930d0da5e02f9dd890d9a2d4316' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\userinfo.tpl',
-      1 => 1373355620,
+      1 => 1373419571,
       2 => 'file',
     ),
   ),
@@ -53,7 +53,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	$(document).ready(function(){
 
 		$('#btn_confirm').click(function(){
+			if(checkform()){
 				$('#frm_userinfo').submit();
+			}
 		});
 		//初始化区域插件
 		if($('#areaIndex').val() != ''){
@@ -64,6 +66,40 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				$('#txtComareas').val(A[areaIndex[0]][areaIndex[1]][areaIndex[2]][areaIndex[3]]);//片区,表面文字
 		}
 	});
+	
+	function checkform(){
+		if(!chkEmpty('IDCode','请填写证件号码')) return false;
+		if(!chkEmpty('contactAddr','请填写联系地址')) return false;
+		if(!chkNumber('contactPhone','联系电话',true)) return false;
+		if(!chkNumber('postCode','邮政编码',false)) return false;
+		if(!chkNumber('contactQQ','QQ',false)) return false;
+		return true;
+	}
+	
+	function chkEmpty(keyId,msg){
+		var value = document.getElementById(keyId).value;
+		if(trim(value) == ""){
+			alert(msg);
+			return false;
+		}
+		return true;
+	}
+	function chkNumber(keyId,keyName,tag){
+		var value = document.getElementById(keyId).value;
+		if(trim(value) == ""){
+			if(tag){
+				alert('请填写' + keyName);
+				return false;
+			}
+			return true;
+		}
+
+		if(!IsInt(keyId)){
+			alert(keyName + "只能是数字");
+			return false;
+		}
+		return true;
+	}
 </script>
 </head>
 
@@ -183,7 +219,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   						 <tr>
   	      				     <td width="120" height="48" align="right" valign="middle" class="f14 z3">真实姓名：</td>
    							 <td width="450" class="grzc_31">
-                             	<input id="userdetailName" name="userdetailName" type="text"  value="<?php echo $_smarty_tpl->tpl_vars['realName']->value;?>
+                             	<input id="userdetailName" name="userdetailName" maxlength="6" type="text"  value="<?php echo $_smarty_tpl->tpl_vars['realName']->value;?>
 " />
                                </td>
 	        </tr>
@@ -202,27 +238,27 @@ $_valid = $_smarty_tpl->decodeProperties(array (
  						 <tr>
   							  <td width="120" height="48" align="right" valign="middle" class="f14 z3">证件号码：</td>
  							  <td width="450" class="grzc_31"><input id="IDCode" name="IDCode" type="text" value="<?php echo $_smarty_tpl->tpl_vars['IDCode']->value;?>
-" />&nbsp;<font class="red">*</font></td>
+" onblur="chkEmpty('IDCode','请填写证件号码')" />&nbsp;<font class="red">*</font></td>
 	        </tr>
  						 <tr>
  							  <td width="120" height="48" align="right" valign="middle" class="f14 z3">联系地址：</td>
   							  <td width="450" class="grzc_31"><input id="contactAddr" name="contactAddr" type="text"  value="<?php echo $_smarty_tpl->tpl_vars['contactAddr']->value;?>
-" />&nbsp;<font class="red">*</font></td>
+" onblur="chkEmpty('contactAddr','请填写联系地址')" />&nbsp;<font class="red">*</font></td>
 	        </tr>
  						 <tr>
 						   <td width="120" height="48" align="right" valign="middle" class="f14 z3">邮  编：</td>
-   							 <td width="450" class="grzc_31"><input name="postCode" type="text"  value="<?php echo $_smarty_tpl->tpl_vars['postCode']->value;?>
-" /></td>
+   							 <td width="450" class="grzc_31"><input id="postCode" name="postCode" type="text" maxlength="6" value="<?php echo $_smarty_tpl->tpl_vars['postCode']->value;?>
+" onblur="chkNumber('postCode','邮政编码',false);" /></td>
 		    </tr>
 						  <tr>
   							 <td width="120" height="48" align="right" valign="middle" class="f14 z3">联系电话：</td>
    							 <td width="450" class="grzc_31"><input id="contactPhone" name="contactPhone" type="text"  value="<?php echo $_smarty_tpl->tpl_vars['contactPhone']->value;?>
-" />&nbsp;<font class="red">*</font></td>
+" onblur="chkNumber('contactPhone','联系电话',true);" />&nbsp;<font class="red">*</font></td>
 		    </tr>
   						 <tr>
    							 <td width="120" height="48" align="right" valign="middle" class="f14 z3">QQ：</td>
    							 <td width="450" class="grzc_31"><input id="contactQQ" name="contactQQ" type="text" value="<?php echo $_smarty_tpl->tpl_vars['contactQQ']->value;?>
-" /></td>
+" onblur="chkNumber('contactQQ','QQ',false);" /></td>
 		    </tr>
   						 <tr>
   								  <td width="120" height="48" align="right" valign="middle" class="f14 z3">MSN：</td>

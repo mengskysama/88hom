@@ -1,6 +1,6 @@
 
 	<div class="qg_l">
-    	<p class="qg_bt">我的房不剩房</p>
+    	<p class="qg_bt"><a href="ucenter_user.php">我的房不剩房</a></p>
         <div class="qg_zc">
      	   <dl>
      		   	<dt class="qg_bt1">我要买房</dt>

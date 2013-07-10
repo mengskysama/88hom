@@ -2,7 +2,7 @@
 class PropertyHandler{
 
 
-	protected function getRealEstateId($estateService,$estId,$estName){
+	public function getRealEstateId($estateService,$estId,$estName){
 		$realEstId = $estId;
 		//save the estate if it's a new one
 		if($estId == ""){

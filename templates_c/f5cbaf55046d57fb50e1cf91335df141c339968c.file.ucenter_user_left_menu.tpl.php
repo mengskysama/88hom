@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-09 13:55:05
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-10 10:49:37
          compiled from "E:/workspace/projects/88hom/templates\ucenter\ucenter_user_left_menu.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:959151bfd8c30bcf94-13551492%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f5cbaf55046d57fb50e1cf91335df141c339968c' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\ucenter_user_left_menu.tpl',
-      1 => 1373244575,
+      1 => 1373424573,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51bfd8c30c07b9_05762990')) {function content_51bfd8c30c07b9_05762990($_smarty_tpl) {?>
 	<div class="qg_l">
-    	<p class="qg_bt">我的房不剩房</p>
+    	<p class="qg_bt"><a href="ucenter_user.php">我的房不剩房</a></p>
         <div class="qg_zc">
      	   <dl>
      		   	<dt class="qg_bt1">我要买房</dt>

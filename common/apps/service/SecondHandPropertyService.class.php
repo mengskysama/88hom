@@ -7,6 +7,8 @@ class SecondHandPropertyService{
 	private $shopsDAO;
 	private $factoryDAO;
 	private $villaDAO;
+	private $agentPropertyDAO;
+	private $userDAO;
 	
 	public function __construct($db){
 		$this->db=$db;
@@ -17,6 +19,8 @@ class SecondHandPropertyService{
 		$this->shopsDAO = new ShopsDAO($db);
 		$this->factoryDAO = new FactoryDAO($db);
 		$this->villaDAO = new VillaDAO($db);
+		$this->agentPropertyDAO = new AgentPropertyDAO($db);
+		$this->userDAO = new UserDAO($db);
 	}	
 	
 	private function savePhoto($property){
@@ -299,5 +303,15 @@ class SecondHandPropertyService{
 	
 	public function deletePropPic($picId){
 		return $this->picDAO->delPicById($picId);
+	}
+	
+	public function sendPropToAgent($prop){
+
+		$propId = $this->agentPropertyDAO->save($prop);
+		if($propId){
+			$this->userDAO->deactiveCertCode($prop['contactMobile'],$prop['certcode']);
+			return $propId;
+		}
+		return '';
 	}
 }
