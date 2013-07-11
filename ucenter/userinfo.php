@@ -23,7 +23,7 @@ $operation_msg = "";
 $areaIndex = "";
 
 $userService = new UserService($db);
-if(isset($_POST['updateInfo'])){
+if(isset($_POST['actionType'])){
 	$rblSex = getParameter("rblSex");
 	$realName = getParameter("userdetailName");
 	$cardtypeId = getParameter("cardtypeId");
@@ -33,8 +33,7 @@ if(isset($_POST['updateInfo'])){
 	$contactPhone = getParameter("contactPhone");
 	$contactQQ = getParameter("contactQQ");
 	$contactMSN = getParameter("contactMSN");
-	//echo 'rblsex->'.$rblSex;
-	//return ;
+	$actionType = getParameter("actionType");
 
 	$userdetailPic = "";
 	if(isset($_FILES['userdetailPic']) && $_FILES['userdetailPic']['error'] == 0){
@@ -100,8 +99,6 @@ if(isset($_POST['updateInfo'])){
 
 $userDetail = $userService->getUserDetail($userId);
 if($userDetail){
-	$actionType = 11;
-
 	$realName = $userDetail['userdetailName'];
 	$rblSex = $userDetail['userdetailGender'];
 	$contactPhone = $userDetail['userdetailTel'];
@@ -118,16 +115,16 @@ if($userDetail){
 	$ddlDistrict = $userDetail['userdetailDistrict'];
 	$userdetailArea = $userDetail['userdetailArea'];
 	$areaIndex = $ddlProvince.'-'.$ddlCity.'-'.$ddlDistrict.'-'.$userdetailArea;
-	//echo 'userdetailPic###-'.$userdetailPic.'<br>';
+	$actionType = 11;
 }
 
 $femaleGender = "";
 $maleGender = "";
 if($rblSex == 1){
 	$femaleGender = "";
-	$maleGender = "checked";
+	$maleGender = "checked=checked";
 }else{
-	$femaleGender = "checked";
+	$femaleGender = "checked=checked";
 	$maleGender = "";
 }
 
@@ -158,6 +155,7 @@ $smarty->assign('ddlDistrict',$ddlDistrict);
 $smarty->assign('ddlArea',$userdetailArea);
 $smarty->assign('operation_msg',$operation_msg);
 $smarty->assign('areaIndex',$areaIndex);
+$smarty->assign('actionType',$actionType);
 
 $smarty->display($tpl_name);
 

@@ -1,11 +1,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>录入住宅出售房源</title>
-<!--{$jsFiles}-->
-<!--{$cssFiles}-->
-<script language="JavaScript" type="text/javascript" src="<!--{$ckeditLib}-->"></script>
+<script language="JavaScript" type="text/javascript" src="/88hom/templates/js/jquery-1.6.js"></script>
+<script language="JavaScript" type="text/javascript" src="/88hom/templates/js/jquery.uploadify.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="/88hom/templates/js/jquery-ui-1.8.21.custom.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="/88hom/templates/js/ucenter_property_input.js"></script>
+
+<link href="/88hom/templates/css/ucenter/loading.css" type="text/css" rel="stylesheet"/>
+<link href="/88hom/templates/css/ucenter/public.css" type="text/css" rel="stylesheet"/>
+<link href="/88hom/templates/css/common/uploadify/uploadify.css" type="text/css" rel="stylesheet"/>
+<link href="/88hom/templates/css/ucenter/jquery-ui.css" type="text/css" rel="stylesheet"/>
+
+<script language="JavaScript" type="text/javascript" src="../common/libs/fck/ckeditor/ckeditor.js"></script>
 <script>
 $(function() {    
 	$("#estName").autocomplete({
@@ -42,9 +50,12 @@ $(function() {
 });
   
 function check(){
-	return true;;
-	//alert(document.getElementsByName("picPath")[0].value);
-	//return false;
+
+	return true;
+	alert(document.getElementsByName("path")[0].value);
+	var housePhotoValue = $("#housePhoto").val();
+	alert(housePhotoValue);
+	return false;
 
 	var estNameValue = $("#estName").val();
 	if(trim(estNameValue) == ''){
@@ -82,8 +93,8 @@ function initPicUp(){
 		'method':'post',
 		'debug':false,
 		'formData'     : {
-			'timestamp' : '<!--{$timestamp}-->',
-			'token'     : '<!--{$token}-->',
+			'timestamp' : '1373531440',
+			'token'     : '1bac52367dad4ce17f44c56502308eae',
 			'thumb'     : 1,//是否生成缩略图
 			'resizeType': 1,//通过文字替换钮扣上的文字
 			'width'     : 1200,
@@ -92,7 +103,7 @@ function initPicUp(){
 			'thumbWidth': 150,
 			'thumbHeight': 120,
 			'watermark' : 1,
-			'watermarkPic': '<!--{$cfg.file_path_upload}-->watermark.png',
+			'watermarkPic': 'E:/workspace/projects/88hom/uploads/watermark.png',
 			'watermarkPos': 9,
 			'thumbDir'    : '2hand/',
 			'originalPath': '2hand/',
@@ -114,14 +125,14 @@ function initPicUp(){
 		'removeTimeout' : 1,//上传完成后队列多长时间后消失。默认 3秒	需要：'removeCompleted' : true,时使用
 		'progressData' : 'speed',//进度条上显示的进度:有百分比percentage和速度speed。默认百分比
 		'preventCaching' : false,//随机缓存值 默认true ，可选true和false.如果选true,那么在上传时会加入一个随机数来使每次的URL都不同,以防止缓存.但是可能与正常URL产生冲突
-		'checkExisting':'<!--{$cfg.web_path}-->common/libs/uploadify/check-exists.php',//在目录中检查文件是否已上传成功（1 ture,0 false）
-		'swf':'<!--{$cfg.web_common}-->uploadify/uploadify.swf',//所需要的flash文件
-	 	'uploader':'<!--{$cfg.web_path}-->common/libs/uploadify/uploadify.php',//所需要的flash文件
+		'checkExisting':'/88hom/common/libs/uploadify/check-exists.php',//在目录中检查文件是否已上传成功（1 ture,0 false）
+		'swf':'/88hom/templates/common/uploadify/uploadify.swf',//所需要的flash文件
+	 	'uploader':'/88hom/common/libs/uploadify/uploadify.php',//所需要的flash文件
 		'onUploadSuccess' : function(file, data, response) {
 			var obj=eval(data);//返回json数组
     		if(response==true && obj[0].result==1){
-        		var html='<span style="float:left;margin:5px;line-height:25px;" id="pic_'+pictureIndex+'"><a target="_blank" href="<!--{$cfg.web_url}-->uploads/'+obj[0].path+'">'
-        				+'<img height="200px" src="<!--{$cfg.web_url}-->uploads/'+obj[0].pathThumb+'"/>'
+        		var html='<span style="float:left;margin:5px;line-height:25px;" id="pic_'+pictureIndex+'"><a target="_blank" href="http://localhost/88hom/uploads/'+obj[0].path+'">'
+        				+'<img height="200px" src="http://localhost/88hom/uploads/'+obj[0].pathThumb+'"/>'
         				+'</a><br/>描述：<input type="text" name="picName[]" /><br/>序号：<input type="text" name="picLayer[]" value="1"/>'
         				+'<input type="button" name="deletePic_'+pictureIndex+'" onclick="dropContainer(\'pic_'+pictureIndex+'\')" value="删除">'
         				+'<input type="hidden" name="picPath[]" value="'+obj[0].path+'"/><input type="hidden" name="picPathThumb[]" value="'
@@ -143,14 +154,91 @@ function dropContainer(containerId){
 
 <body>
 <!--求购头部-->
-<!--{include file="$header_ucenter_user"}-->
+<div class="qg_tb">
+	<div class="qg_tb1">
+    	<span class="qgtb">
+        	<a href="#">房不剩房首页</a> | <a href="#">资讯</a> |  <a href="#">新房</a> <a href="#">二手房</a> <a href="#">租房</a> | <a href="#">装修家居</a> | <a href="#">业主论坛</a>
+         </span>
+         <div class="logo">
+         	<div class="qg_logo">
+            	<img src="/88hom/templates/images/ucenter/qg_06.jpg">
+            </div>
+            <div class="qg_ss">
+            	<div class="qg_ssl">
+    	<ul class="qg_ssfl z3 f14">
+        	<li><a href="#">新房</a></li>
+            <li><a href="#">二手房</a></li>
+            <li><a href="#">租房</a></li>
+            <li><a href="#">家居</a></li>
+            <li><a href="#">资讯</a></li>
+        </ul>
+        <div class="qg_ssk">
+        	<span class="qg_ssk1"><input type="text" id="keyWords" value="搜索小区名、中介、经纪人、网店等"/></span>
+			<span class="qg_ssk2"><a href="#" title="">搜 索</a></span>
+			<div class="qg_ssk3">
+						<select>
+							<option value="">区域/地铁</option>
+						</select>
+						<select>
+							<option value="">物业类型</option>
+							<option value="新房">新房</option>
+							<option value="二手房">二手房</option>
+						</select>
+						<select>
+							<option value="">价格范围</option>	
+						</select>
+                        <span class="qg_zf"><img src="/88hom/templates/images/ucenter/qg_16.jpg"><a href="#">[地图找房]</a></span>
+                        <span class="qg_zf"><img src="/88hom/templates/images/ucenter/qg_19.jpg"><a href="#">[地铁找房]</a></span>
+			</div>
+        </div>
+    </div>
+            </div>
+         </div>
+    </div>
+</div>
 <!--求购内容-->
 <div class="qg_main">
-	<!--{include file="$ucenter_user_left_menu"}-->
+		<div class="qg_l">
+    	<p class="qg_bt"><a href="ucenter_user.php">我的房不剩房</a></p>
+        <div class="qg_zc">
+     	   <dl>
+     		   	<dt class="qg_bt1">我要买房</dt>
+          	    <dd class="qg_bt2"><a href="#">我的找房条件</a></dd>
+          	    <dd class="qg_bt2"><a href="#">我的选房单</a></dd>
+         	    <dd class="qg_bt2"><a href="#">我浏览过的房源</a></dd>
+                <dd class="qg_bt2"><a href="#">我要求购</a></dd>
+                <dd class="qg_bt2"><a href="#">管理我的求购信息</a></dd>
+      	  </dl>
+            <dl>
+     		   	<dt class="qg_bt1">我要租房</dt>
+          	    <dd class="qg_bt2"><a href="#">我的租房条件</a></dd>
+          	    <dd class="qg_bt2"><a href="#">我的选房单</a></dd>
+         	    <dd class="qg_bt2"><a href="#">我浏览过的房源</a></dd>
+                <dd class="qg_bt2"><a href="#">我要求租</a></dd>
+                <dd class="qg_bt2"><a href="#">管理我的求租信息</a></dd>
+      	  </dl>
+          <dl>
+     		   	<dt class="qg_bt1">出租出售</dt>
+          	    <dd class="qg_bt2"><a href="user_sale.php">我要出售</a></dd>
+          	    <dd class="qg_bt2"><a href="user_lease.php">我要出租</a></dd>
+         	    <dd class="qg_bt2"><a href="sell_property_list.php">管理我的出售信息</a></dd>
+                <dd class="qg_bt2"><a href="lease_property_list.php">管理我的出租信息</a></dd>
+      	  </dl>
+           <dl>
+     		   	<dt class="qg_bt1">我要招标</dt>
+          	    <dd class="qg_bt2"><a href="#">我要招标</a></dd>
+          	    <dd class="qg_bt2"><a href="#">设计招标</a></dd>
+      	  </dl>
+           <dl>
+     		   	<dt class="qg_bt11">在线客服</dt>
+          	    <dd style="width:145px; padding-left:25px; line-height:24px; font-size:12px;">客服电话:4006308888-2
+                (周一至周五，9:00-17:30)</dd>
+      	  </dl>
+  	   </div>
+    </div>
     <div class="qg_r">
     <p>你的位置: <a href="#">房源管理</a></p>
    	<div class="qg_bs">
-            <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
  		   <ul>
    			 	<li><a href="user_sale_zz.php">录入住宅出售房源</a></li>
     		    <li><a href="user_sale_bs.php">录入别墅出售房源</a></li>
@@ -159,6 +247,7 @@ function dropContainer(containerId){
    		  </ul>
           <div class="bs_tx">
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
+            <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="zz">
             <input type="hidden" name="prop_tx_type" value="1">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
@@ -282,7 +371,7 @@ function dropContainer(containerId){
 			</table>
 	
           </div>
-      	  <div class=" bs_tx">
+      <div class=" bs_tx">
     		<p><b>图文信息</b></p>
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
@@ -305,31 +394,73 @@ function dropContainer(containerId){
 	            <script>
 	                CKEDITOR.replace( 'houseContent' );
 	            </script>
-	            <span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
-				请勿从其它网站或其它房源描述中拷贝。</span>
-				         <span>
-				         <b style="text-indent:0px;">注意事项：</b> <br />
-				1.上传宽度大于600像素，比例为5:4的图片可获得更好的展示效果。<br />
-				2.请勿上传有水印、盖章等任何侵犯他人版权或含有广告信息的图片。</span>
+            <span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
+			请勿从其它网站或其它房源描述中拷贝。</span>
+			         <span>
+			         <b style="text-indent:0px;">注意事项：</b> <br />
+			1.上传宽度大于600像素，比例为5:4的图片可获得更好的展示效果。<br />
+			2.请勿上传有水印、盖章等任何侵犯他人版权或含有广告信息的图片。</span>
 			    	
 			    </td>
 			  </tr>
 			</table>
-      	  </div>
-       	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      </div>
+       	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
             <td width="120" align="center" valign="middle"><input name="btn_live" type="button" class="mddl1" id="btn_live" value="发布" /></td>
             <td width="320" height="80" align="center" valign="middle"><input name="btn_save" type="button" class="mddl1" id="btn_save" value="保存待发布" /></td>
 	      </tr>
-	      </table>
-	      <input type="hidden" id="action_to_go" name="action_to_go" value="0"/>
-	      </form>
+	    </table>
+	    <input type="hidden" id="action_to_go" name="action_to_go" value="0"/>
+	    </form>
     </div>
     </div>
     </div>
 <
 <!--求购底部-->
-<!--{include file="$footer"}-->
+<div class="gr_bot">
+	<div class="gr_bot1">
+		<div class="c">
+					<div class="c1">
+						<a href="#">今日头条</a>
+						<a href="#">楼市要闻</a><br/>
+						<a href="#">政策解读</a>
+						<a href="#">行情数据</a>
+					</div>
+					<div class="s"></div>
+					<div class="c2">
+						<a href="#">最新开盘</a>
+						<a href="#">热门楼盘</a><br/>
+						<a href="#">优惠团购</a>
+						<a href="#">地图看房</a>
+					</div>
+					<div class="s"></div>
+					<div class="c2">
+						<a href="#">设计修饰</a>
+						<a href="#">促销团购</a><br/>
+						<a href="#">家具卖场</a>
+						<a href="#">装修指南</a>
+					</div>
+                    <div class="s"></div>
+					<div class="c3">
+						<a href="#">设计修饰</a>
+						<a href="#">促销团购</a><br/>
+						<a href="#">家具卖场</a>
+						<a href="#">装修指南</a>
+					</div>
+					<div class="s"></div>
+					<div class="c4">
+						<a href="#">业主论坛</a>
+						<a href="#">论坛热贴</a><br/>
+						<a href="#">人气板块</a>
+					</div>
+				</div>
+             <div class="gr_bot2">
+             广告投放：0755-88886666  投诉邮箱：tousu@tianyue.com  投诉电话：400-6666-888<br/>
+				版权所有2013-2016 房不剩房 天境文化传播有限公司 备粤10110011号 
+             </div>
+		</div>
+	</div>
 </body>
 </html>

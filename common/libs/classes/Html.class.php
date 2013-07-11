@@ -1,5 +1,5 @@
 <?php
-//htmlÒ³ÃæjsºÍcss¼ÓÔØÀà
+//htmlé¡µé¢jså’ŒcssåŠ è½½ç±»
 class Html{
 	private $tpl='';
 	private $jsFiles='';
@@ -24,9 +24,9 @@ class Html{
 		$this->cssFiles=$this->cssFiles.'<link href="'.ECMS_PATH_CSS.$file.'" type="text/css" rel="stylesheet"/>'.$cfg['line_tag'];
 	}
 	/**
-	 * Ìí¼Ójs´úÂë
-	 * @param string $jscode js´úÂë
-	 * @param bool $end ÊÇ·ñ¹Ø±Õjs ´úÂë¿é
+	 * æ·»åŠ jsä»£ç 
+	 * @param string $jscode jsä»£ç 
+	 * @param bool $end æ˜¯å¦å…³é—­js ä»£ç å—
 	 * @return void
 	 */
 	public function js($jscode = NULL, $end = false) {
@@ -47,17 +47,17 @@ class Html{
 		return;
 	}
 	/**
-	 * Ìí¼ÓjsÌáÊ¾´úÂë
-	 * @param string $message ÌáÊ¾ÄÚÈİ
-	 * @param bool $end ÊÇ·ñ¹Ø±Õjs ´úÂë¿é
+	 * æ·»åŠ jsæç¤ºä»£ç 
+	 * @param string $message æç¤ºå†…å®¹
+	 * @param bool $end æ˜¯å¦å…³é—­js ä»£ç å—
 	 * @return void
 	 */
 	public function jsAlert($message, $end = false) {
 		$this->js('alert("' . strtr($message, '"', '\\"') . '");', $end);
 	}
 	/**
-	 * Êä³öhtmlÄÚÈİ
-	 * @param bool $print ÊÇ·ñÖ±½ÓÊä³ö£¬¿ÉÑ¡£¬Ä¬ÈÏ·µ»Ø
+	 * è¾“å‡ºhtmlå†…å®¹
+	 * @param bool $print æ˜¯å¦ç›´æ¥è¾“å‡ºï¼Œå¯é€‰ï¼Œé»˜è®¤è¿”å›
 	 * @return void
 	 */
 	public function output($print = false) {
@@ -73,9 +73,9 @@ class Html{
 		}
 	}
 	/**
-	 * ×ªµ½URL,²¢ÌáÊ¾ĞÅÏ¢
+	 * è½¬åˆ°URL,å¹¶æç¤ºä¿¡æ¯
 	 * @param string $url URL
-	 * @param string $msg ÌáÊ¾ĞÅÏ¢
+	 * @param string $msg æç¤ºä¿¡æ¯
 	 * @access public
 	 * @return void
 	 */
@@ -88,9 +88,9 @@ class Html{
 		exit;
 	}
 	/**
-	 * ×ªµ½URLÌø³öFrame,²¢ÌáÊ¾ĞÅÏ¢
+	 * è½¬åˆ°URLè·³å‡ºFrame,å¹¶æç¤ºä¿¡æ¯
 	 * @param string $url URL
-	 * @param string $msg ÌáÊ¾ĞÅÏ¢
+	 * @param string $msg æç¤ºä¿¡æ¯
 	 * @access public
 	 * @return void
 	 */
@@ -103,9 +103,9 @@ class Html{
 		exit;
 	}
 	/**
-	 * replace·½Ê½×ªµ½URL,²¢ÌáÊ¾ĞÅÏ¢
+	 * replaceæ–¹å¼è½¬åˆ°URL,å¹¶æç¤ºä¿¡æ¯
 	 * @param string $url URL
-	 * @param string $msg ÌáÊ¾ĞÅÏ¢
+	 * @param string $msg æç¤ºä¿¡æ¯
 	 * @access public
 	 * @return void
 	 */
@@ -118,8 +118,8 @@ class Html{
 		exit;
 	}
 	/**
-	 * ·µ»Ø,²¢ÌáÊ¾ĞÅÏ¢
-	 * @param string $msg ÌáÊ¾ĞÅÏ¢
+	 * è¿”å›,å¹¶æç¤ºä¿¡æ¯
+	 * @param string $msg æç¤ºä¿¡æ¯
 	 * @access public
 	 * @return void
 	 */

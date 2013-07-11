@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-02 14:17:55
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-11 17:42:20
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_zz.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1071251c0079056ef63-82697093%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7e3955469e7a46ee0125e81aa5500d4c78e062b4' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_zz.tpl',
-      1 => 1372661976,
+      1 => 1373535719,
       2 => 'file',
     ),
   ),
@@ -23,6 +23,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'jsFiles' => 0,
     'cssFiles' => 0,
     'ckeditLib' => 0,
+    'timestamp' => 0,
+    'token' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -46,6 +48,8 @@ $(function() {
       	  $("#estId").val(ui.item.id);    
       }
     });
+    
+    initPicUp();
         
     $("#btn_live").click(function() {
         $("#btn_live").attr("disabled", true);
@@ -72,9 +76,14 @@ $(function() {
 });
   
 function check(){
+	return true;;
+	//alert(document.getElementsByName("picPath")[0].value);
+	//return false;
+
 	var estNameValue = $("#estName").val();
 	if(trim(estNameValue) == ''){
 		alert("请填写楼盘名称");
+		$("#estName").focus();
 		return false;
 	}
 	
@@ -89,22 +98,88 @@ function check(){
 	if(!CheckLiveArea('houseUseArea','houseBuildArea',true)) return false;
 	if(!CheckCreateTime('houseBuildYear',true)) return false;
 	if(!CheckFloor('houseFloor','houseAllFloor',true)) return false;
-	
-	var housePhotoValue = $("#housePhoto").val();
-	if(trim(housePhotoValue) == ''){
-		alert("请上传图片");
-		return false;
-	}
-	
+		
 	if(!CheckTitle('houseTitle',true)) return false;
 	var houseContentValue = CKEDITOR.instances.houseContent.getData(); 
 	if(trim(houseContentValue) == ''){
 		alert("请填写房源描述");
+		$("#houseContent").focus();
 		return false;
 	}
 	
 	return true;	
 }
+var pictureIndex=0;//初始图片标识号，多张图片上传时，这个标识号自增长
+function initPicUp(){
+	$("#file_upload").uploadify({
+		'auto':true,//自动上传
+		'method':'post',
+		'debug':false,
+		'formData'     : {
+			'timestamp' : '<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
+',
+			'token'     : '<?php echo $_smarty_tpl->tpl_vars['token']->value;?>
+',
+			'thumb'     : 1,//是否生成缩略图
+			'resizeType': 1,//通过文字替换钮扣上的文字
+			'width'     : 1200,
+			'height'    : 1200,
+			'thumbResizeType': 1,
+			'thumbWidth': 150,
+			'thumbHeight': 120,
+			'watermark' : 1,
+			'watermarkPic': '<?php echo $_smarty_tpl->tpl_vars['cfg']->value['file_path_upload'];?>
+watermark.png',
+			'watermarkPos': 9,
+			'thumbDir'    : '2hand/',
+			'originalPath': '2hand/',
+			'allowType':'jpeg,jpg,gif,bmp,png'
+		},
+		'buttonText' :'选择上传',//通过文字替换钮扣上的文字
+		'fileSizeLimit' : '10MB',//设置允许上传文件最大值B, KB, MB, GB 比如：'fileSizeLimit' : '20MB'
+		'fileTypeDesc' : 'Image Files',//对话框的文件类型描述
+		'fileTypeExts' : '*.jpeg; *.gif; *.jpg; *.bmp; *.png',//可上传的文件类型
+	  	'fileObjName' : 'Filedata',//设置一个名字，在服务器处理程序中根据该名字来取上传文件的数据。默认为Filedata，$tempFile = $_FILES['Filedata']['tmp_name']
+	  	'width': 80,//buttonImg的宽
+		'height': 20,//buttonImg的高
+		'multi': true,//选择文件时是否可以【选择多个】。默认：可以true
+		'queueSizeLimit' : 5,//允许多文件上传的数量。默认：999
+		'uploadLimit' : 5,//限制总上传文件数,默认是999。指同一时间，如果关闭浏览器后重新打开又可上传。
+		'successTimeout' : 30,//上传超时时间。文件上传完成后,等待服务器返回信息的时间(秒).超过时间没有返回的话,插件认为返回了成功。 默认：30秒
+		'removeCompleted' : true,//上传完成后队列是否自动消失。默认：true
+		'requeueErrors' : false,//队列上传出错，是否继续回滚队列，即反复尝试上传。默认：false
+		'removeTimeout' : 1,//上传完成后队列多长时间后消失。默认 3秒	需要：'removeCompleted' : true,时使用
+		'progressData' : 'speed',//进度条上显示的进度:有百分比percentage和速度speed。默认百分比
+		'preventCaching' : false,//随机缓存值 默认true ，可选true和false.如果选true,那么在上传时会加入一个随机数来使每次的URL都不同,以防止缓存.但是可能与正常URL产生冲突
+		'checkExisting':'<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_path'];?>
+common/libs/uploadify/check-exists.php',//在目录中检查文件是否已上传成功（1 ture,0 false）
+		'swf':'<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_common'];?>
+uploadify/uploadify.swf',//所需要的flash文件
+	 	'uploader':'<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_path'];?>
+common/libs/uploadify/uploadify.php',//所需要的flash文件
+		'onUploadSuccess' : function(file, data, response) {
+			var obj=eval(data);//返回json数组
+    		if(response==true && obj[0].result==1){
+        		var html='<span style="float:left;margin:5px;line-height:25px;" id="pic_'+pictureIndex+'"><a target="_blank" href="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+uploads/'+obj[0].path+'">'
+        				+'<img height="200px" src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+uploads/'+obj[0].pathThumb+'"/>'
+        				+'</a><br/>描述：<input type="text" name="picName[]" /><br/>序号：<input type="text" name="picLayer[]" value="1"/>'
+        				+'<input type="button" name="deletePic_'+pictureIndex+'" onclick="dropContainer(\'pic_'+pictureIndex+'\')" value="删除">'
+        				+'<input type="hidden" name="picPath[]" value="'+obj[0].path+'"/><input type="hidden" name="picPathThumb[]" value="'
+        				+obj[0].pathThumb+'"/><input type="hidden" name="picTypeId[]" value="3"/></span>';
+				$('#showImg').append(html);
+				pictureIndex++;
+    		}else{
+				alert(obj[0].msg);
+    		}
+		}
+	 });
+}
+function dropContainer(containerId){
+	$('#'+containerId).remove();
+}
+
 </script>
 </head>
 
@@ -119,6 +194,7 @@ function check(){
     <div class="qg_r">
     <p>你的位置: <a href="#">房源管理</a></p>
    	<div class="qg_bs">
+            <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
  		   <ul>
    			 	<li><a href="user_sale_zz.php">录入住宅出售房源</a></li>
     		    <li><a href="user_sale_bs.php">录入别墅出售房源</a></li>
@@ -127,8 +203,8 @@ function check(){
    		  </ul>
           <div class="bs_tx">
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
-            <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="zz">
+            <input type="hidden" name="prop_tx_type" value="1">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼盘名称</td>
@@ -137,7 +213,7 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">房源信息编码</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseNumber" name="houseNumber" type="text" maxlength="12" onblur="CheckInfoCode('houseNumber',true)" /> </td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseNumber" name="houseNumber" type="text" maxlength="12" /> </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">内部编码</td>
@@ -169,11 +245,16 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  售    价</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseSellPrice" name="houseSellPrice" type="text" onblur="CheckPrice('houseSellPrice',true,'CS');" /> 万元/套</td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseSellPrice" name="houseSellPrice" type="text" /> 万元/套</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>户    型</td>
-			    <td align="left" valign="middle" class="p25 grzc_35"><input id="houseRoom" name="houseRoom" type="text" maxlength="1" onblur="CheckRoom('houseRoom',true)"/> 室 <input id="houseHall" name="houseHall" type="text" maxlength="1" onblur="CheckRoom('houseHall',true)"/> 厅 <input id="houseToilet" name="houseToilet" type="text" maxlength="1" onblur="CheckRoom('houseToilet',true);"/> 卫 <input id="houseKitchen" name="houseKitchen" type="text" maxlength="1" onblur="CheckRoom('houseKitchen',true);"/> 厨 <input id="houseBalcony" name="houseBalcony" type="text" maxlength="1" onblur="CheckRoom('houseBalcony',true);"/> 阳台</td>
+			    <td align="left" valign="middle" class="p25 grzc_35">
+			    <input id="houseRoom" name="houseRoom" type="text" maxlength="1"/> 室 
+			    <input id="houseHall" name="houseHall" type="text" maxlength="1"/> 厅 
+			    <input id="houseToilet" name="houseToilet" type="text" maxlength="1"/> 卫 
+			    <input id="houseKitchen" name="houseKitchen" type="text" maxlength="1"/> 厨 
+			    <input id="houseBalcony" name="houseBalcony" type="text" maxlength="1"/> 阳台</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑形式</td>
@@ -181,19 +262,19 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildArea" name="houseBuildArea" type="text" maxlength="8" onblur="CheckBuildingArea('houseBuildArea',true);"/> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildArea" name="houseBuildArea" type="text" maxlength="8"/> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">使用面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseUseArea" name="houseUseArea" type="text" maxlength="8" onblur="CheckLiveArea('houseUseArea','houseBuildArea',true)" /><font class="z3">平方米</font></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseUseArea" name="houseUseArea" type="text" maxlength="8" /><font class="z3">平方米</font></td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildYear" name="houseBuildYear" type="text" maxlength="4" onblur="CheckCreateTime('houseBuildYear',true)" /><font class="z3">年</font></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildYear" name="houseBuildYear" type="text" maxlength="4"/><font class="z3">年</font></td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼    层</td>
-			    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="houseFloor" name="houseFloor" type="text" onblur="CheckFloor('houseFloor','houseAllFloor',true);" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="houseAllFloor" name="houseAllFloor" type="text" onblur="CheckFloor('houseFloor','houseAllFloor',true);" /> <font class="z3">层</font> 地下室请填写负数</td>
+			    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="houseFloor" name="houseFloor" type="text" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="houseAllFloor" name="houseAllFloor" type="text" /> <font class="z3">层</font> 地下室请填写负数</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">朝    向</td>
@@ -245,19 +326,21 @@ function check(){
 			</table>
 	
           </div>
-      <div class=" bs_tx">
+      	  <div class=" bs_tx">
     		<p><b>图文信息</b></p>
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
-			    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
-			    	<input id="housePhoto" name="housePhoto" type="file"  value="" />
+			    <td><input type="file" name="file_upload" id="file_upload"/></td>
+			    <td>
+			    	<div id="showImg" style="float: left;">			
+					</div>
 			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
 			    <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
-			    	<input id="houseTitle" name="houseTitle" type="text"  value="" maxlength="60" onblur="CheckTitle('houseTitle',true);" onkeyup="textCounter(document.getElementById('houseTitle'),document.getElementById('houseTitleAlert'),30);" /> 还可写<span id="houseTitleAlert"><font class="red">30</font></span>个汉字</td>
+			    	<input id="houseTitle" name="houseTitle" type="text"  value="" maxlength="60" onkeyup="textCounter(document.getElementById('houseTitle'),document.getElementById('houseTitleAlert'),30);" /> 还可写<span id="houseTitleAlert"><font class="red">30</font></span>个汉字</td>
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
@@ -266,26 +349,26 @@ function check(){
 	            <script>
 	                CKEDITOR.replace( 'houseContent' );
 	            </script>
-            <span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
-			请勿从其它网站或其它房源描述中拷贝。</span>
-			         <span>
-			         <b style="text-indent:0px;">注意事项：</b> <br />
-			1.上传宽度大于600像素，比例为5:4的图片可获得更好的展示效果。<br />
-			2.请勿上传有水印、盖章等任何侵犯他人版权或含有广告信息的图片。</span>
+	            <span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
+				请勿从其它网站或其它房源描述中拷贝。</span>
+				         <span>
+				         <b style="text-indent:0px;">注意事项：</b> <br />
+				1.上传宽度大于600像素，比例为5:4的图片可获得更好的展示效果。<br />
+				2.请勿上传有水印、盖章等任何侵犯他人版权或含有广告信息的图片。</span>
 			    	
 			    </td>
 			  </tr>
 			</table>
-      </div>
-       	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+      	  </div>
+       	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
             <td width="120" align="center" valign="middle"><input name="btn_live" type="button" class="mddl1" id="btn_live" value="发布" /></td>
             <td width="320" height="80" align="center" valign="middle"><input name="btn_save" type="button" class="mddl1" id="btn_save" value="保存待发布" /></td>
 	      </tr>
-	    </table>
-	    <input type="hidden" id="action_to_go" name="action_to_go" value="0"/>
-	    </form>
+	      </table>
+	      <input type="hidden" id="action_to_go" name="action_to_go" value="0"/>
+	      </form>
     </div>
     </div>
     </div>

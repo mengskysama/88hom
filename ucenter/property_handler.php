@@ -14,6 +14,19 @@ $action = getParameter("action");
 $actionType = getParameter("actionType");
 $propTxType = getParameter("prop_tx_type");
 
+$propPhoto = "";
+if(!empty($_POST['picPath'])){
+	foreach($_POST['picPath'] as $key=>$value){
+		$propPhoto[$key]['pictypeId'] = $_POST['picTypeId'][$key];
+		$propPhoto[$key]['picSellRent'] = $propTxType;
+		$propPhoto[$key]['picUrl'] = $_POST['picPath'][$key];
+		$propPhoto[$key]['picThumb'] = $_POST['picPathThumb'][$key];
+		$propPhoto[$key]['picInfo'] = $_POST['picName'][$key];
+		$propPhoto[$key]['picLayer'] = $_POST['picLayer'][$key];
+		$propPhoto[$key]['picState'] = 1;
+	}
+}
+
 if($propType == "zz"){
 	
 	$houseNumber = getParameter("houseNumber");
@@ -33,8 +46,7 @@ if($propType == "zz"){
 	$houseForward  = getParameter("houseForward");
 	$houseFitment  = getParameter("houseFitment");
 	$houseBaseService  = getParameter("houseBaseService");
-	$houseLookTime  = getParameter("houseLookTime");
-	$housePhoto  = $_FILES["housePhoto"];
+	$houseLookTime  = getParameter("houseLookTime");		
 	$houseTitle  = getParameter("houseTitle");	
 	$houseContent  = getParameter("houseContent");
 	$houseUserId  = $userId;
@@ -48,11 +60,12 @@ if($propType == "zz"){
 	$housePayDetailY = getParameter("housePayDetailY");
 	$housePayDetailF = getParameter("housePayDetailF");
 	$houseRentArea = getParameter("houseRentArea");
-	
+
+	$propPhoto['picBuildType'] = 1;
 	$propHandler = new HousePropertyHandler($db,$estId,$estName,$houseNumber,$privateHouseNumber,$housePayInfo,
 											$houseType,$houseSellPrice,$houseRoom,$houseHall,$houseToilet,$houseKitchen,
 											$houseBalcony,$houseBuildArea,$houseUseArea,$houseBuildYear,$houseFloor,
-											$houseForward,$houseFitment,$houseBaseService,$houseLookTime,$housePhoto,$houseTitle,
+											$houseForward,$houseFitment,$houseBaseService,$houseLookTime,$propPhoto,$houseTitle,
 											$houseContent,$houseUserId,$houseBuildForm,$houseAllFloor,$state,$actionType,$houseId,
 											$propTxType,$houseRentType,$houseRentRoomType,$houseRentDetail,$housePayment,$housePayDetailY,
 											$housePayDetailF,$houseRentArea);
@@ -83,7 +96,6 @@ if($propType == "zz"){
 	$villaBaseService  = getParameter("villaBaseService");	
 	$villaLookTime  = getParameter("villaLookTime");
 	
-	$villaPhoto  = $_FILES["villaPhoto"];
 	$villaTitle  = getParameter("villaTitle");
 	$villaContent  = getParameter("villaContent");
 	$villaUserId  = $userId;
@@ -98,7 +110,7 @@ if($propType == "zz"){
 											$villaToilet,$villaKitchen,$villaBalcony,$villaBuildArea,$villaUseArea,$villaBuildYear,
 											$villaForward,$villaAllFloor,$villaCellar,$villaCellarArea,$villaCellarType,$villaGarden,
 											$villaGardenArea,$villaGarage,$villaGarageCount,$villaFitment,$villaBaseService,$villaLookTime,
-											$villaPhoto,$villaTitle,$villaContent,$villaUserId,$state,$actionType,$villaId,
+											$propPhoto,$villaTitle,$villaContent,$villaUserId,$state,$actionType,$villaId,
 											$propTxType,$villaRentPrice,$villaRentType,$villaPayment,$villaPayDetailY,$villaPayDetailF);
 }else if($propType == "xzl"){
 	
@@ -110,7 +122,6 @@ if($propType == "zz"){
 	$officeFloor = getParameter("officeFloor");	
 	$officeAllFloor = getParameter("officeAllFloor");
 	$officeFitment = getParameter("officeFitment");
-	$officePhoto = $_FILES["officePhoto"];
 	$officeTitle = getParameter("officeTitle");	
 	$officeContent = getParameter("officeContent");
 	$officeUserId = $userId;
@@ -121,7 +132,7 @@ if($propType == "zz"){
 	$officeRentPriceUnit = getParameter("officeRentPriceUnit");
 	$propHandler = new OfficePropertyHandler($db,$estId,$estName,$officeNumber,$officeType,$officeSellPrice,
 											$officeProFee,$officeBuildArea,$officeFloor,$officeAllFloor,$officeDivision,$officeFitment,
-											$officeLevel,$officePhoto,$officeTitle,$officeContent,$officeUserId,
+											$officeLevel,$propPhoto,$officeTitle,$officeContent,$officeUserId,
 											$state,$actionType,$officeId,$propTxType,$officeRentPrice,$officeRentPriceUnit);
 }else if($propType == "sp"){
 	
@@ -138,7 +149,6 @@ if($propType == "zz"){
 	$shopsFitment = getParameter("shopsFitment");
 	$shopsBaseService = getParameter("shopsBaseService");
 	$shopsAimOperastion = getParameter("shopsAimOperastion");
-	$shopPhoto = $_FILES["shopPhoto"];
 	$shopsTitle = getParameter("shopsTitle");
 	$shopContent = getParameter("shopsContent");
 	$shopUserId = $userId;
@@ -148,7 +158,7 @@ if($propType == "zz"){
 	
 	$propHandler = new ShopPropertyHandler($db,$estId,$estName,$shopsAddress,$shopsType,$shopsAreaId,$shopsNumber,
 											$shopsSellPrice,$shopsPropFee,$shopsBuildArea,$shopsFloor,$shopsAllFloor,$shopsDivision,
-											$shopsFitment,$shopsBaseService,$shopsAimOperastion,$shopPhoto,$shopsTitle,
+											$shopsFitment,$shopsBaseService,$shopsAimOperastion,$propPhoto,$shopsTitle,
 											$shopContent,$shopUserId,$state,$actionType,$shopId,$propTxType,$shopsRentPrice,$shopsRentPriceUnit);
 }else if($propType == "cf"){
 	
@@ -173,7 +183,7 @@ if($propType == "zz"){
 	}
 	return;
 }
-//echo 'result->'.$propHandler->handle();
-$propHandler->handle();
-header("Location:sell_property_list.php");
+echo 'result->'.$propHandler->handle();
+//$propHandler->handle();
+//header("Location:sell_property_list.php");
 ?>

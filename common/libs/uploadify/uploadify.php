@@ -27,12 +27,12 @@ $allowType = strtolower($_POST['allowType']);
 if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 	$result=array();
 	$data=array();
-	$upload = new UploadFile();//ÊµÀý»¯ÉÏ´«¶ÔÏó
+	$upload = new UploadFile();//Êµï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½
 	$targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder . $originalPath;
 	if(!file_exists($targetPath)){
 		if(!mkdir($targetPath,0777,true)){
 			$data['result']=0;
-			$data['msg']='ÎÄ¼þÄ¿Â¼´´½¨Ê§°Ü£¡';
+			$data['msg']='ï¿½Ä¼ï¿½Ä¿Â¼ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½';
 			$result[]=charsetIconv($data,'GBK','UTF-8');
 			echo json_encode($result);
 			exit;
@@ -45,29 +45,29 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 	if (in_array($fileParts['extension'],$fileTypes)) {
 		try{
 			$fileName = $upload->upload($_FILES['Filedata'],ECMS_PATH_ROOT.'uploads/'.$originalPath, 1);
-			//ÏÈËõÂÔµ½Ö¸¶¨´óÐ¡
+			//ï¿½ï¿½ï¿½ï¿½ï¿½Ôµï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ð¡
 			$image = new Image(ECMS_PATH_ROOT.'uploads/'.$originalPath.$fileName);
 			$isBig=$image->resizeImage($width,$height,$resizeType);
-			//½â¾ö²»ÐèÒªËõ·ÅÊ±µÄÍ¼Æ¬Ê§ÕæÎÊÌâ
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Í¼Æ¬Ê§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			if($isBig==1){
 				$image->save();
 			}
 			$path=$originalPath.$fileName;
-			//¼ÓË®Ó¡
+			//ï¿½ï¿½Ë®Ó¡
 			if($watermark==1){
 				$image = new Image(ECMS_PATH_ROOT.'uploads/'.$originalPath.$fileName);
 				$image->waterMark($watermarkPic,$watermarkPos);
 				$image->save();
 			}
-			//½ØÈ¡Ñ¡¶¨ÇøÓò
+			//ï¿½ï¿½È¡Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //			$image = new Image(ECMS_PATH_ROOT.'uploads/'.$originalPath.$fileName);
 //			$image->cutimg($srcimgurl, $endimgurl, $x, $y, $endimg_w, $endimg_h, $border_w, $border_h);
-			//Èç¹ûÐèÒªÔÙÉú³ÉËõÂÔÍ¼
+			//ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼
 			if($thumb==1){
 				$image = new Image(ECMS_PATH_ROOT.'uploads/'.$originalPath.$fileName);
 				$image->resizeImage($thumbWidth,$thumbHeight,$thumbResizeType);
 				if($originalPath==$thumbDir){
-					//·ÀÖ¹´æ´¢Ä¿Â¼ÏàÍ¬Ê±¸²¸ÇÔ­ÓÐµÄÍ¼Æ¬£¬²»´æ´¢ËõÂÔÍ¼Ö±½ÓÉèÖÃ thumb ÊôÐÔÎª¿Õ
+					//ï¿½ï¿½Ö¹ï¿½æ´¢Ä¿Â¼ï¿½ï¿½Í¬Ê±ï¿½ï¿½ï¿½ï¿½Ô­ï¿½Ðµï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½Í¼Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ thumb ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½
 					$image->save(2,ECMS_PATH_ROOT.'uploads/'.$thumbDir,'_thumb');
 					$thumb_path = $thumbDir.FileSystem::getBasicName($fileName, false).'_thumb'.FileSystem::fileExt($fileName, true);
 				}else{
@@ -76,7 +76,7 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 				}
 			}
 			$data['result']=1;
-			$data['msg']='ÎÄ¼þÉÏ´«³É¹¦£¡';
+			$data['msg']='ï¿½Ä¼ï¿½ï¿½Ï´ï¿½ï¿½É¹ï¿½ï¿½ï¿½';
 			$data['path']=$path;
 			$data['pathThumb']=$thumb_path;
 			$result[]=charsetIconv($data,'GBK','UTF-8');
@@ -91,7 +91,7 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 		}
 	} else {
 		$data['result']=0;
-		$data['msg']='ÉÏ´«ÎÄ¼þÀàÐÍ´íÎó£¡';
+		$data['msg']='ï¿½Ï´ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Í´ï¿½ï¿½ï¿½';
 		$result[]=charsetIconv($data,'GBK','UTF-8');
 		echo json_encode($result);
 		exit;

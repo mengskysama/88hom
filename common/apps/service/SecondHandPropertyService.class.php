@@ -24,16 +24,24 @@ class SecondHandPropertyService{
 	}	
 	
 	private function savePhoto($property){
-		$pic['picBuildId'] = $property['propId'];
-		$pic['picBuildType'] = $property['propertyPhoto']['picBuildType'];
-		$pic['picSellRent'] = $property['propertyPhoto']['picSellRent'];
-		$pic['picUrl'] = $property['propertyPhoto']['picUrl'];
-	
-		$pic['pictypeId'] = 0;
-		$pic['picThumb'] = '';
-		$pic['picState'] = 1;	
-	
-		$this->picDAO->release($pic);
+		$propId = $property['propId'];
+		if(!empty($property['propertyPhoto'])){
+			$photos = $property['propertyPhoto'];
+			$picBuildType = $photos['picBuildType'];
+			
+			foreach($_POST['picPath'] as $key=>$value){
+				$pic['picBuildId'] = $propId;
+				$pic['picBuildType'] = $picBuildType;
+				$pic['pictypeId'] = $photos[$key]['pictypeId'];
+				$pic['picSellRent'] = $photos[$key]['picSellRent'];
+				$pic['picUrl'] = $photos[$key]['picUrl'];
+				$pic['picThumb'] = $photos[$key]['picThumb'];
+				$pic['picInfo'] = $photos[$key]['picInfo'];
+				$pic['picLayer'] = $photos[$key]['picLayer'];
+				$pic['picState'] = $photos[$key]['picState'];
+				$this->picDAO->release($pic);
+			}
+		}
 	}
 	
 	private function saveProperty($dao,$property){

@@ -1,106 +1,106 @@
 <?php
 
 /**
- * SendMail ·¢ËÍÓÊ¼şÀà
+ * SendMail å‘é€é‚®ä»¶ç±»
  * @package Util
  */
 class SendMail
 {
     /**
-	 * ÓÊ¼şÓÅÏÈ¼¶ (1 = ¸ß, 3 = ÆÕÍ¨, 5 = µÍ).
+	 * é‚®ä»¶ä¼˜å…ˆçº§ (1 = é«˜, 3 = æ™®é€š, 5 = ä½).
      * @var int $priority
      */
     public $priority          = 3;
 
     /**
-     * ÓÊ¼ş×Ö·û±àÂëÉèÖÃ
+     * é‚®ä»¶å­—ç¬¦ç¼–ç è®¾ç½®
      * @var string $charSet
      */
-    public $charSet           = 'gb2312';
+    public $charSet           = 'UTF-8';
 
     /**
-     * ÉèÖÃÓÊ¼şµÄÄÚÈİÀàĞÍ
+     * è®¾ç½®é‚®ä»¶çš„å†…å®¹ç±»å‹
      * @var string $contentType
      */
     public $contentType        = "text/plain";
 
     /**
-     * ÉèÖÃÓÊ¼şĞÅÏ¢µÄ±àÂë Ñ¡ÏîÊÇÓĞÒÔÏÂÕâĞ© "8bit",
-     * "7bit", "binary", "base64", ºÍ "quoted-printable".
+     * è®¾ç½®é‚®ä»¶ä¿¡æ¯çš„ç¼–ç  é€‰é¡¹æ˜¯æœ‰ä»¥ä¸‹è¿™äº› "8bit",
+     * "7bit", "binary", "base64", å’Œ "quoted-printable".
      * @var string  $encoding
      */
     public $encoding          = "8bit";
 
     /**
-     * ±£´æĞÂµÄ·¢ÓÊ¼şµÄ´íÎóĞÅÏ¢
+     * ä¿å­˜æ–°çš„å‘é‚®ä»¶çš„é”™è¯¯ä¿¡æ¯
      * @var string $errorInfo
      */
     public $errorInfo         = '';
 
     /**
-     * ÉèÖÃ·¢ÓÊ¼şÕßµÄEmail.
+     * è®¾ç½®å‘é‚®ä»¶è€…çš„Email.
      * @var string $from
      */
     public $from               = "root@localhost";
 
     /**
-     * ÉèÖÃ·¢ÓÊ¼şÕßµÄÃû×Ö.
+     * è®¾ç½®å‘é‚®ä»¶è€…çš„åå­—.
      * @var string $fromName
      */
     public $fromName           = "Root User";
 
     /**
-     * ÉèÖÃÓÊ¼ş·¢ËÍÆ÷  If not empty,
+     * è®¾ç½®é‚®ä»¶å‘é€å™¨  If not empty,
      * will be sent via -f to sendmail or as 'MAIL FROM' in smtp mode.
      * @var string $sender
      */
     public $sender            = '';
 
     /**
-     * ÓÊ¼şÖ÷Ìâ
+     * é‚®ä»¶ä¸»é¢˜
      * @var string $subject
      */
     public $subject           = '';
 
     /**
-     * ÓÊ¼şÄÚÈİ.
+     * é‚®ä»¶å†…å®¹.
      * @var string $body
      */
     public $body               = '';
 
     /**
-     * ÉèÖÃÎÄ±¾ÀàĞÍµÄÓÊ¼şÄÚÈİĞÅÏ¢
+     * è®¾ç½®æ–‡æœ¬ç±»å‹çš„é‚®ä»¶å†…å®¹ä¿¡æ¯
 	 * @var string $altBody
      */
     public $altBody           = '';
 
     /**
-     * ÉèÖÃĞÅÏ¢Ìå»»ĞĞµÄ×Ö·ûÊı
+     * è®¾ç½®ä¿¡æ¯ä½“æ¢è¡Œçš„å­—ç¬¦æ•°
      * @var int $wordWrap
      */
     public $wordWrap          = 0;
 
     /**
-     * ·¢ËÍÓÊ¼şµÄ·½·¨("mail", "sendmail", "qmail", or "smtp").
-     * @var string¡¡$mailer
+     * å‘é€é‚®ä»¶çš„æ–¹æ³•("mail", "sendmail", "qmail", or "smtp").
+     * @var stringã€€$mailer
      */
     public $mailer            = "mail";
 
     /**
-     * ÉèÖÃsendmailÃüÁîµÄÂ·¾¶.
+     * è®¾ç½®sendmailå‘½ä»¤çš„è·¯å¾„.
      * @var string $sendmail
      */
     public $sendmail          = "/usr/sbin/sendmail";
     
     /**
-     * ²å¼şµÄÂ·¾¶
-     * @var string¡¡$pluginDir
+     * æ’ä»¶çš„è·¯å¾„
+     * @var stringã€€$pluginDir
      */
     public $pluginDir         = '';
 
     /**
-     *  °æ±¾ºÅ
-     *  @var string¡¡$version
+     *  ç‰ˆæœ¬å·
+     *  @var stringã€€$version
      */
     public $version           = "1.0";
 
@@ -111,61 +111,61 @@ class SendMail
     public $confirmReadingTo  = '';
 
     /**
-     *  ·¢ËÍÓÊ¼şµÄÖ÷»úÃû
-     *  @var string¡¡$hostname
+     *  å‘é€é‚®ä»¶çš„ä¸»æœºå
+     *  @var stringã€€$hostname
      */
     public $hostname          = '';
 
     /**
-     *  smtp¡¡µÄÖ÷»úµØÖ·
+     *  smtpã€€çš„ä¸»æœºåœ°å€
      *  @var string $host
      */
     public $host        = "localhost";
 
     /**
-     *  smtp¡¡·şÎñÆ÷Ä¬ÈÏ¶Ë¿Ú
+     *  smtpã€€æœåŠ¡å™¨é»˜è®¤ç«¯å£
      *  @var int $port
      */
     public $port        = 25;
 
     /**
-     *  SMTP HELO(Ä¬ÈÏÎª$hostname).
+     *  SMTP HELO(é»˜è®¤ä¸º$hostname).
      *  @var string $helo
      */
     public $helo        = '';
 
     /**
-     *  ÉèÖÃ SMTP ÈÏÖ¤£¬Ê¹ÓÃÓÃ»§ÃûºÍÃÜÂë.
+     *  è®¾ç½® SMTP è®¤è¯ï¼Œä½¿ç”¨ç”¨æˆ·åå’Œå¯†ç .
      *  @var bool $SMTPAuth
      */
     public $SMTPAuth     = false;
 
     /**
-     *  SMTPÓÃ»§Ãû.
+     *  SMTPç”¨æˆ·å.
      *  @var string $username
      */
     public $username     = '';
 
     /**
-     *  SMTP ÃÜÂë.
+     *  SMTP å¯†ç .
      *  @var string $password
      */
     public $password     = '';
 
     /**
-     *  ÉèÖÃSMTP·şÎñÆ÷³¬Ê±¼ä£¬µ¥Î»Ãë
+     *  è®¾ç½®SMTPæœåŠ¡å™¨è¶…æ—¶é—´ï¼Œå•ä½ç§’
      *  @var int $timeout
      */
     public $timeout      = 10;
 
     /**
-     *  ÊÇ·ñ´ò¿ªSMTPµ÷ÊÔ
-     *  @var bool¡¡$SMTPDebug
+     *  æ˜¯å¦æ‰“å¼€SMTPè°ƒè¯•
+     *  @var boolã€€$SMTPDebug
      */
     public $SMTPDebug    = false;
 
     /**
-     * ±£³ÖSMTPµÄÁ¬½ÓÎª»î¶¯×´Ì¬
+     * ä¿æŒSMTPçš„è¿æ¥ä¸ºæ´»åŠ¨çŠ¶æ€
      * @var bool $SMTPKeepAlive
      */
     public $SMTPKeepAlive = false;
@@ -188,7 +188,7 @@ class SendMail
     /**#@-*/
     
     /**
-     * ÉèÖÃĞÅÏ¢ÀàĞÍÎª HTML.  
+     * è®¾ç½®ä¿¡æ¯ç±»å‹ä¸º HTML.  
      * @param bool $bool
      * @return void
      */
@@ -200,7 +200,7 @@ class SendMail
     }
 
     /**
-     * ÉèÖÃÊ¹ÓÃSMTP·¢ËÍÓÊ¼ş.
+     * è®¾ç½®ä½¿ç”¨SMTPå‘é€é‚®ä»¶.
      * @return void
      */
     function isSMTP() {
@@ -208,7 +208,7 @@ class SendMail
     }
 
     /**
-     * ÉèÖÃÊ¹ÓÃmail() º¯Êı·¢ËÍÓÊ¼ş.
+     * è®¾ç½®ä½¿ç”¨mail() å‡½æ•°å‘é€é‚®ä»¶.
      * @return void
      */
     function isMail() {
@@ -216,7 +216,7 @@ class SendMail
     }
 
     /**
-     * ÉèÖÃÊ¹ÓÃsendmail ÃüÁî·¢ËÍÓÊ¼ş.
+     * è®¾ç½®ä½¿ç”¨sendmail å‘½ä»¤å‘é€é‚®ä»¶.
      * @return void
      */
     function isSendmail() {
@@ -224,7 +224,7 @@ class SendMail
     }
 
     /**
-     * ÉèÖÃÊ¹ÓÃqmailÃüÁî·¢ËÍÓÊ¼ş.
+     * è®¾ç½®ä½¿ç”¨qmailå‘½ä»¤å‘é€é‚®ä»¶.
      * @return void
      */
     function isQmail() {
@@ -233,7 +233,7 @@ class SendMail
     }
 
     /**
-     * Ìí¼ÓÓÊ¼ş½ÓÊÕÕß
+     * æ·»åŠ é‚®ä»¶æ¥æ”¶è€…
      * @param string $address
      * @param string $name
      * @return void
@@ -245,7 +245,7 @@ class SendMail
     }
 
     /**
-     * Ìí¼Ó³­ËÍµØÖ·
+     * æ·»åŠ æŠ„é€åœ°å€
      * @param string $address
      * @param string $name
      * @return void
@@ -257,7 +257,7 @@ class SendMail
     }
 
     /**
-     * Ìí¼ÓÃÜËÍµØÖ·
+     * æ·»åŠ å¯†é€åœ°å€
      * @param string $address
      * @param string $name
      * @return void
@@ -269,7 +269,7 @@ class SendMail
     }
 
     /**
-     * Ìí¼Ó»Ø¸´µØÖ·
+     * æ·»åŠ å›å¤åœ°å€
      * @param string $address
      * @param string $name
      * @return void
@@ -282,7 +282,7 @@ class SendMail
 
 
     /**
-     * ·¢ËÍÓÊ¼ş
+     * å‘é€é‚®ä»¶
      * @return bool
      */
     function send() {
@@ -328,7 +328,7 @@ class SendMail
     }
     
     /**
-     * Ê¹ÓÃSendmail ÃüÁî·¢ËÍÓÊ¼ş.  
+     * ä½¿ç”¨Sendmail å‘½ä»¤å‘é€é‚®ä»¶.  
      * @access private
      * @return bool
      */
@@ -358,7 +358,7 @@ class SendMail
     }
 
     /**
-     * Ê¹ÓÃ¡¡mail()º¯Êı·¢ËÍÓÊ¼ş.  
+     * ä½¿ç”¨ã€€mail()å‡½æ•°å‘é€é‚®ä»¶.  
      * @access private
      * @return bool
      */
@@ -394,7 +394,7 @@ class SendMail
     }
 
     /**
-     * Ê¹ÓÃsmtp·¢ËÍÓÊ¼ş
+     * ä½¿ç”¨smtpå‘é€é‚®ä»¶
      * @access private
      * @return bool
      */
@@ -460,7 +460,7 @@ class SendMail
     }
 
     /**
-     * ³õÊ¼»¯Ò»¸ösmtpÁ¬½Ó
+     * åˆå§‹åŒ–ä¸€ä¸ªsmtpè¿æ¥
      * @access private
      * @return bool
      */
@@ -511,7 +511,7 @@ class SendMail
     }
 
     /**
-     * ½áÊøSMTP»á»°.
+     * ç»“æŸSMTPä¼šè¯.
      * @return void
      */
     function smtpClose() {
@@ -526,7 +526,7 @@ class SendMail
     }
 
     /**
-     * ÉèÖÃËùÓĞ´íÎóĞÅÏ¢µÄÓïÑÔ
+     * è®¾ç½®æ‰€æœ‰é”™è¯¯ä¿¡æ¯çš„è¯­è¨€
      * @param string $lang_type Type of language (e.g. Portuguese: "br")
      * @param string $lang_path Path to the language file directory
      * @access public
@@ -560,25 +560,25 @@ class SendMail
 		$PHPMAILER_LANG["encoding"] = 'Unknown encoding: ';*/
 		$PHPMAILER_LANG = array();
 
-		$PHPMAILER_LANG["provide_address"] = 'Äú±ØĞëÌá¹©ÖÁÉÙÒ»¸öµç×ÓÓÊ¼şµØÖ·¡£';
-		$PHPMAILER_LANG["mailer_not_supported"] = ' ²»Ö§³ÖÓÊ¼ş¿Í»§¶Ë¡£';
-		$PHPMAILER_LANG["execute"] = '²»ÄÜÔËĞĞ: ';
-		$PHPMAILER_LANG["instantiate"] = '²»ÄÜÊµÀı»¯mailº¯Êı¡£';
-		$PHPMAILER_LANG["authenticate"] = 'SMTP ´íÎó: ²»ÄÜÍ¨¹ıÈÏÖ¤¡£';
-		$PHPMAILER_LANG["from_failed"] = 'ÏÂÁĞµØÖ·´íÎó: ';
-		$PHPMAILER_LANG["recipients_failed"] = 'SMTP ´íÎó: ÏÂÁĞÊÕ¼şÈË´íÎó: ';
-		$PHPMAILER_LANG["data_not_accepted"] = 'SMTP ´íÎó: Êı¾İ²»±»½ÓÊÕ¡£';
-		$PHPMAILER_LANG["connect_host"] = 'SMTP ´íÎó: ²»ÄÜÁ¬½Óµ½SMTPÖ÷»ú¡£';
-		$PHPMAILER_LANG["file_access"] = '²»ÄÜ·ÃÎÊÎÄ¼ş: ';
-		$PHPMAILER_LANG["file_open"] = 'ÎÄ¼ş´íÎó: ²»ÄÜ´ò¿ªÎÄ¼ş: ';
-		$PHPMAILER_LANG["encoding"] = 'Î´Öª±àÂë: ';
+		$PHPMAILER_LANG["provide_address"] = 'æ‚¨å¿…é¡»æä¾›è‡³å°‘ä¸€ä¸ªç”µå­é‚®ä»¶åœ°å€ã€‚';
+		$PHPMAILER_LANG["mailer_not_supported"] = ' ä¸æ”¯æŒé‚®ä»¶å®¢æˆ·ç«¯ã€‚';
+		$PHPMAILER_LANG["execute"] = 'ä¸èƒ½è¿è¡Œ: ';
+		$PHPMAILER_LANG["instantiate"] = 'ä¸èƒ½å®ä¾‹åŒ–mailå‡½æ•°ã€‚';
+		$PHPMAILER_LANG["authenticate"] = 'SMTP é”™è¯¯: ä¸èƒ½é€šè¿‡è®¤è¯ã€‚';
+		$PHPMAILER_LANG["from_failed"] = 'ä¸‹åˆ—åœ°å€é”™è¯¯: ';
+		$PHPMAILER_LANG["recipients_failed"] = 'SMTP é”™è¯¯: ä¸‹åˆ—æ”¶ä»¶äººé”™è¯¯: ';
+		$PHPMAILER_LANG["data_not_accepted"] = 'SMTP é”™è¯¯: æ•°æ®ä¸è¢«æ¥æ”¶ã€‚';
+		$PHPMAILER_LANG["connect_host"] = 'SMTP é”™è¯¯: ä¸èƒ½è¿æ¥åˆ°SMTPä¸»æœºã€‚';
+		$PHPMAILER_LANG["file_access"] = 'ä¸èƒ½è®¿é—®æ–‡ä»¶: ';
+		$PHPMAILER_LANG["file_open"] = 'æ–‡ä»¶é”™è¯¯: ä¸èƒ½æ‰“å¼€æ–‡ä»¶: ';
+		$PHPMAILER_LANG["encoding"] = 'æœªçŸ¥ç¼–ç : ';
         $this->language = $PHPMAILER_LANG;
     
         return true;
     }
 
     /**
-     * ´´½¨Ò»¸öĞÅÏ¢Í·ÈİÆ÷
+     * åˆ›å»ºä¸€ä¸ªä¿¡æ¯å¤´å®¹å™¨
      * @access private
      * @return string
      */
@@ -596,7 +596,7 @@ class SendMail
     }
     
     /**
-     * ¸ñÊ½»¯Ò»¸öÕıÈ·µÄµØÖ·. 
+     * æ ¼å¼åŒ–ä¸€ä¸ªæ­£ç¡®çš„åœ°å€. 
      * @access private
      * @return string
      */
@@ -613,7 +613,7 @@ class SendMail
     }
 
     /**
-     * ½«ÎÄ±¾»»ĞĞ
+     * å°†æ–‡æœ¬æ¢è¡Œ
      * @access private
      * @return string
      */
@@ -691,7 +691,7 @@ class SendMail
     }
     
     /**
-     * ÉèÖÃÖ÷Ìå×Ö·û»»ĞĞ
+     * è®¾ç½®ä¸»ä½“å­—ç¬¦æ¢è¡Œ
      * @access private
      * @return void
      */
@@ -713,7 +713,7 @@ class SendMail
     }
 
     /**
-     * ´´½¨ĞÅÏ¢Í·
+     * åˆ›å»ºä¿¡æ¯å¤´
      * @access private
      * @return string
      */
@@ -811,7 +811,7 @@ class SendMail
     }
 
     /**
-     * ´´½¨ÄÚÈİÌå
+     * åˆ›å»ºå†…å®¹ä½“
      * @access private
      * @return string
      */
@@ -878,7 +878,7 @@ class SendMail
     }
 
     /**
-     * ·µ»ØĞÅÏ¢±ß½çµÄ¿ªÊ¼
+     * è¿”å›ä¿¡æ¯è¾¹ç•Œçš„å¼€å§‹
      * @access private
      */
     function getBoundary($boundary, $charSet, $contentType, $encoding) {
@@ -898,7 +898,7 @@ class SendMail
     }
     
     /**
-     * ·µ»ØĞÅÏ¢±ß½çµÄ½áÊø
+     * è¿”å›ä¿¡æ¯è¾¹ç•Œçš„ç»“æŸ
      * @access private
      */
     function endBoundary($boundary) {
@@ -906,7 +906,7 @@ class SendMail
     }
     
     /**
-     * ÉèÖÃĞÅÏ¢ÀàĞÍ
+     * è®¾ç½®ä¿¡æ¯ç±»å‹
      * @access private
      * @return void
      */
@@ -925,7 +925,7 @@ class SendMail
     }
 
     /**
-     * ·µ»ØÒ»¸ö¸ñÊ½Í·ĞĞ.
+     * è¿”å›ä¸€ä¸ªæ ¼å¼å¤´è¡Œ.
      * @access private
      * @return string
      */
@@ -943,7 +943,7 @@ class SendMail
     }
 
     /**
-     * Ìí¼Ó¸½¼ş
+     * æ·»åŠ é™„ä»¶
      * @param string $path Path to the attachment.
      * @param string $name Overrides the attachment name.
      * @param string $encoding File encoding (see $Encoding).
@@ -1442,7 +1442,7 @@ class SendMail
     }
 
     /**
-     * Ìí¼Ó×Ô¶¨ÒåÍ·. 
+     * æ·»åŠ è‡ªå®šä¹‰å¤´. 
      * @return void
      */
     function addCustomHeader($custom_header) {

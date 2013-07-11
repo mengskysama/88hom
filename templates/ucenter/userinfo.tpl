@@ -222,7 +222,7 @@
 <div class="dlmm1">
                                         	<input name="btn_confirm" type="button" class="denglu1 l" id="btn_confirm" value="立即注册" />
                                             <input name="btn_reset" type="reset" class="denglu1 l" id="btn_reset" value="重置" />
-                                            <input name="updateInfo" type="hidden" value="ok"/>
+                                            <input name="actionType" type="hidden" value="<!--{$actionType}-->"/>
                                         </div>
                                    </td>
 		    </tr>

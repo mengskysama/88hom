@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-10 10:49:46
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-11 15:28:27
          compiled from "E:/workspace/projects/88hom/templates\ucenter\userinfo.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:268025189e9ba8dc2e9-62378949%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a07f87c4baa3c930d0da5e02f9dd890d9a2d4316' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\userinfo.tpl',
-      1 => 1373419571,
+      1 => 1373527370,
       2 => 'file',
     ),
   ),
@@ -35,6 +35,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'contactQQ' => 0,
     'contactMSN' => 0,
     'userdetailPic' => 0,
+    'actionType' => 0,
     'operation_msg' => 0,
   ),
   'has_nocache_code' => false,
@@ -280,7 +281,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <div class="dlmm1">
                                         	<input name="btn_confirm" type="button" class="denglu1 l" id="btn_confirm" value="立即注册" />
                                             <input name="btn_reset" type="reset" class="denglu1 l" id="btn_reset" value="重置" />
-                                            <input name="updateInfo" type="hidden" value="ok"/>
+                                            <input name="actionType" type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['actionType']->value;?>
+"/>
                                         </div>
                                    </td>
 		    </tr>

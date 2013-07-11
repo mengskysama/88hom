@@ -136,17 +136,20 @@ function CheckBuildingArea(KeyName,flag)
     
     if(value==''){
     	alert("请填写建筑面积");
+		$("#"+KeyName).focus();
         return false;
     }
         
     if(check_float(KeyName)){
     	if(parseFloat(value)<=2||parseFloat(value)>=10000){
     		alert("建筑面积必须大于2且小于10000");
+    		$("#"+KeyName).focus();
     		return false;
     	}
     	return true;
 	}else{
         alert("只能填写数字");
+		$("#"+KeyName).focus();
         return false;
 	}
 }
@@ -162,11 +165,13 @@ function CheckLiveArea(KeyName,KeyName1,flag)
 	if(check_float(KeyName)){
 		if(parseFloat(value)>=parseFloat(value1)){
 			alert("使用面积应该小于建筑面积");
+    		$("#"+KeyName).focus();
             return false;
 		}
 		return true;
 	}else{
     	alert("只能填写数字");
+		$("#"+KeyName).focus();
         return false;
     }
 }
@@ -180,6 +185,7 @@ function CheckCreateTime(KeyName,flag)
     
     if(trim(value) != "" && (!IsInt(KeyName) || value < 1000 || value>= 10000 )){
     	alert("请填写4位数字 如：2008");
+		$("#"+KeyName).focus();
     	return false;
     }
     return true;
@@ -193,18 +199,32 @@ function CheckFloor(KeyName,KeyNameAll,flag)
     document.getElementById(KeyNameAll).value = document.getElementById(KeyNameAll).value.toLowerCase();
     var value=document.getElementById(KeyName).value;
     var valueAll=document.getElementById(KeyNameAll).value;
-
-	if(trim(value) =="" || trim(valueAll) == ""){
-    	alert("请填写楼层");
+    
+    if(trim(valueAll) == ""){
+    	alert("请填写总楼层");
+		$("#"+KeyNameAll).focus();
         return false;
-	}else if(!IsInt(KeyName) || !IsInt(KeyNameAll)){
+    }else if(!IsInt(KeyNameAll)){
         alert("只能填写数字");
+		$("#"+KeyNameAll).focus();
         return false;
-	}else if(valueAll<=0){
+    }else if(valueAll<=0){
         alert("总楼层不能为0或负数");
+		$("#"+KeyNameAll).focus();
         return false;
-    }else if(parseFloat(value)>parseFloat(valueAll)){
+    }
+    
+	if(trim(value) == ""){
+    	alert("请填写楼层");
+		$("#"+KeyName).focus();
+        return false;
+	}else if(!IsInt(KeyName)){
+        alert("只能填写数字");
+		$("#"+KeyName).focus();
+        return false;
+	}else if(parseFloat(value)>parseFloat(valueAll)){
     	alert("所在楼层不能大于总楼层");
+		$("#"+KeyName).focus();
     	return false;
     }else{
        return true;
@@ -217,9 +237,9 @@ function CheckTitle(KeyName,flag)
 
     var value=document.getElementById(KeyName).value;
     if(flag){
-        if(trim(value) == "")
-        {
+        if(trim(value) == ""){
             alert("请填写标题");
+    		$("#"+KeyName).focus();
             return false;
         }
         return true;
@@ -232,11 +252,13 @@ function CheckRoom(KeyName,flag)
     if(flag){
         if(trim(value)==""){
             alert("请填写户型");
+    		$("#"+KeyName).focus();
             return false;
         }
 
         if(!CheckInput(value)) {
         	alert("只能填写数字");
+    		$("#"+KeyName).focus();
         	return false;
         }
     }
@@ -302,6 +324,7 @@ function CheckInfoCode(KeyName,flag)
     if(flag){
         if(trim(value) != "" && !check_length(KeyName, 12)){
         	alert("请填写12位数字");
+    		$("#"+KeyName).focus();
         	return false;
         }
     }
@@ -323,6 +346,7 @@ function CheckPrice(KeyName,flag,type)
     if(flag){
         if(value==''){
         	alert("请填写售价");
+    		$("#"+KeyName).focus();
         	return false;
         }
 
@@ -330,6 +354,7 @@ function CheckPrice(KeyName,flag,type)
         	if(type=='CS'){
         		if(parseFloat(value)<=2||parseFloat(value)>=100000){
         			alert("售价要大于2万元小于10亿元");
+            		$("#"+KeyName).focus();
         			return false;
                 }
         	}else{
@@ -339,6 +364,7 @@ function CheckPrice(KeyName,flag,type)
         	return true;
         }else{
         	alert("只能填写数字");
+    		$("#"+KeyName).focus();
         	return false;
         }
     }

@@ -109,6 +109,7 @@ class Image {
 	 */
     public function createImageFromFile($fileName = NULL)
     {
+    	$imgType = null;
 		if (!$fileName) {
 			$fileName = $this->fileName;
 			$imgType = $this->imageType;
