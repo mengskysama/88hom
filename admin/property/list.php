@@ -122,6 +122,7 @@ $info['propertyIsFine']=$propertyIsFine;
 $info['propertyIsGbuy']=$propertyIsGbuy;
 $info['propertyIsDiscounts']=$propertyIsDiscounts;
 $info['propertyIsPreferential']=$propertyIsPreferential;
+$info['propertyState']='';
 $info['areaIndex']=$areaIndex;
 
 $propertyList=$propertyService->getPropertyList($info);

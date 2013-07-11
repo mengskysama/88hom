@@ -13,9 +13,9 @@ class PicTypeDAO  {
 	//发布图片类别
 	public function release($picType){
 		$sql="insert into ecms_pic_type(pictypeName,pictypeLayer,pictypeState,pictypeCreateTime,pictypeUpdateTime) values('"
-										.empty($picType['pictypeName'])?'':$picType['pictypeName']
-										."',".empty($picType['pictypeLayer'])?0:$picType['pictypeLayer']
-										.",".empty($picType['pictypeState'])?0:$picType['pictypeState']
+										.(empty($picType['pictypeName'])?'':$picType['pictypeName'])
+										."',".(empty($picType['pictypeLayer'])?0:$picType['pictypeLayer'])
+										.",".(empty($picType['pictypeState'])?0:$picType['pictypeState'])
 										.",".time()
 										.",".time()
 										.")";
@@ -24,9 +24,9 @@ class PicTypeDAO  {
 	//修改图片类别
 	public function modify($picType){
 		$sql="update ecms_pic_type set pictypeName='"
-			.empty($picType['pictypeName'])?'':$picType['pictypeName']
-			."',pictypeLayer=".empty($picType['pictypeLayer'])?0:$picType['pictypeLayer']
-			.",pictypeState=".empty($picType['pictypeState'])?0:$picType['pictypeState']
+			.(empty($picType['pictypeName'])?'':$picType['pictypeName'])
+			."',pictypeLayer=".(empty($picType['pictypeLayer'])?0:$picType['pictypeLayer'])
+			.",pictypeState=".(empty($picType['pictypeState'])?0:$picType['pictypeState'])
 			.",pictypeUpdateTime=".time()
 			." where pictypeId=".$picType['pictypeId'];
 		return $this->db->getQueryExeCute($sql);

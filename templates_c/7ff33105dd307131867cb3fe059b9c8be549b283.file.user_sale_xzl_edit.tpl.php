@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-07 19:30:53
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-11 23:33:28
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_xzl_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2185951d79f85c6c657-43680696%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7ff33105dd307131867cb3fe059b9c8be549b283' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_xzl_edit.tpl',
-      1 => 1373102726,
+      1 => 1373556762,
       2 => 'file',
     ),
   ),
@@ -23,6 +23,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'jsFiles' => 0,
     'cssFiles' => 0,
     'ckeditLib' => 0,
+    'timestamp' => 0,
+    'token' => 0,
     'estId' => 0,
     'estName' => 0,
     'officeNumber' => 0,
@@ -35,7 +37,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'officeDivision' => 0,
     'officeFitment' => 0,
     'officeLevel' => 0,
-    'propPhoto' => 0,
+    'propertyDetailPicList' => 0,
+    'key_' => 0,
+    'item_' => 0,
+    'key' => 0,
     'officeTitle' => 0,
     'officeContent' => 0,
     'propId' => 0,
@@ -65,6 +70,14 @@ $(function() {
             $("#btn_update").removeAttr("disabled");
         }
     });
+    initPicUp('<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['token']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['file_path_upload'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_path'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_common'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+');
+        
 });
   
 function check(){
@@ -103,9 +116,9 @@ function check(){
     <div class="qg_r">
     <p>你的位置: <a href="#">编辑商铺出售房源</a></p>
    	<div class="qg_bs">
+            <form id="xzlForm" name="xzlForm" action="property_handler.php" method="post" enctype="multipart/form-data">
       <div class="bs_tx">
         <p><b>基本资料</b></p>
-            <form id="xzlForm" name="xzlForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="xzl">
             <input type="hidden" name="prop_tx_type" value="1">
         <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
@@ -183,10 +196,41 @@ function check(){
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
-    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
-		<input id="officePhoto" name="officePhoto" type="file"  value="" /><br>
-    	<img src="http://localhost/88hom/uploads/community/<?php echo $_smarty_tpl->tpl_vars['propPhoto']->value;?>
-" class="l">
+	<td><input type="file" name="file_upload" id="file_upload"/></td>
+    <td >
+		<div id="showImg" style="float: left;">		
+			<?php  $_smarty_tpl->tpl_vars['item_'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item_']->_loop = false;
+ $_smarty_tpl->tpl_vars['key_'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['propertyDetailPicList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item_']->key => $_smarty_tpl->tpl_vars['item_']->value){
+$_smarty_tpl->tpl_vars['item_']->_loop = true;
+ $_smarty_tpl->tpl_vars['key_']->value = $_smarty_tpl->tpl_vars['item_']->key;
+?>
+			<span style="float:left;margin:5px;line-height:25px;" id="pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
+">
+			<a target="_blank" href="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+uploads/<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
+">
+        	<img height="200px" src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+uploads/<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
+"/>
+       		</a><br/>
+       		描述：<input type="text" name="picName[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picInfo'];?>
+"/><br/>
+       		序号：<input type="text" name="picLayer[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picLayer'];?>
+"/>
+        	<input type="button" name="deletePic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
+" onclick="dropContainer('pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
+');" value="删除"/>
+        	<input type="hidden" name="picPath[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
+"/>
+        	<input type="hidden" name="picPathThumb[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
+"/>
+        	<input type="hidden" name="picTypeId[]" value="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"/>
+        	</span>
+			<?php } ?>	
+		</div>
     </td>
   </tr>
   <tr>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-06 13:46:53
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-11 21:01:26
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_zz.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1429151c30e3d6923a5-03520430%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3239dd66733a8c71f5cd2904592b92043b69c926' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_zz.tpl',
-      1 => 1373088628,
+      1 => 1373547312,
       2 => 'file',
     ),
   ),
@@ -23,6 +23,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'jsFiles' => 0,
     'cssFiles' => 0,
     'ckeditLib' => 0,
+    'timestamp' => 0,
+    'token' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -46,6 +48,15 @@ $(function() {
       	  $("#estId").val(ui.item.id);    
       }
     });
+    
+    //initPicUp();
+    initPicUp('<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['token']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['file_path_upload'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_path'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_common'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+');
         
     $("#btn_live").click(function() {
         $("#btn_live").attr("disabled", true);
@@ -72,9 +83,14 @@ $(function() {
 });
   
 function check(){
+	return true;;
+	//alert(document.getElementsByName("picPath")[0].value);
+	//return false;
+
 	var estNameValue = $("#estName").val();
 	if(trim(estNameValue) == ''){
 		alert("请填写楼盘名称");
+		$("#estName").focus();
 		return false;
 	}
 	
@@ -89,17 +105,12 @@ function check(){
 	if(!CheckLiveArea('houseUseArea','houseBuildArea',true)) return false;
 	if(!CheckCreateTime('houseBuildYear',true)) return false;
 	if(!CheckFloor('houseFloor','houseAllFloor',true)) return false;
-	
-	var housePhotoValue = $("#housePhoto").val();
-	if(trim(housePhotoValue) == ''){
-		alert("请上传图片");
-		return false;
-	}
-	
+		
 	if(!CheckTitle('houseTitle',true)) return false;
 	var houseContentValue = CKEDITOR.instances.houseContent.getData(); 
 	if(trim(houseContentValue) == ''){
 		alert("请填写房源描述");
+		$("#houseContent").focus();
 		return false;
 	}
 	
@@ -119,6 +130,7 @@ function check(){
     <div class="qg_r">
     <p>你的位置: <a href="#">房源管理</a></p>
    	<div class="qg_bs">
+            <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
  		   <ul>
    			 	<li><a href="user_sale_zz.php">录入住宅出售房源</a></li>
     		    <li><a href="user_sale_bs.php">录入别墅出售房源</a></li>
@@ -127,7 +139,6 @@ function check(){
    		  </ul>
           <div class="bs_tx">
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
-            <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="zz">
             <input type="hidden" name="prop_tx_type" value="1">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
@@ -138,7 +149,7 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">房源信息编码</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseNumber" name="houseNumber" type="text" maxlength="12" onblur="CheckInfoCode('houseNumber',true)" /> </td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseNumber" name="houseNumber" type="text" maxlength="12" /> </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">内部编码</td>
@@ -170,11 +181,16 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  售    价</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseSellPrice" name="houseSellPrice" type="text" onblur="CheckPrice('houseSellPrice',true,'CS');" /> 万元/套</td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseSellPrice" name="houseSellPrice" type="text" /> 万元/套</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>户    型</td>
-			    <td align="left" valign="middle" class="p25 grzc_35"><input id="houseRoom" name="houseRoom" type="text" maxlength="1" onblur="CheckRoom('houseRoom',true)"/> 室 <input id="houseHall" name="houseHall" type="text" maxlength="1" onblur="CheckRoom('houseHall',true)"/> 厅 <input id="houseToilet" name="houseToilet" type="text" maxlength="1" onblur="CheckRoom('houseToilet',true);"/> 卫 <input id="houseKitchen" name="houseKitchen" type="text" maxlength="1" onblur="CheckRoom('houseKitchen',true);"/> 厨 <input id="houseBalcony" name="houseBalcony" type="text" maxlength="1" onblur="CheckRoom('houseBalcony',true);"/> 阳台</td>
+			    <td align="left" valign="middle" class="p25 grzc_35">
+			    <input id="houseRoom" name="houseRoom" type="text" maxlength="1"/> 室 
+			    <input id="houseHall" name="houseHall" type="text" maxlength="1"/> 厅 
+			    <input id="houseToilet" name="houseToilet" type="text" maxlength="1"/> 卫 
+			    <input id="houseKitchen" name="houseKitchen" type="text" maxlength="1"/> 厨 
+			    <input id="houseBalcony" name="houseBalcony" type="text" maxlength="1"/> 阳台</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑形式</td>
@@ -182,19 +198,19 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildArea" name="houseBuildArea" type="text" maxlength="8" onblur="CheckBuildingArea('houseBuildArea',true);"/> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildArea" name="houseBuildArea" type="text" maxlength="8"/> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">使用面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseUseArea" name="houseUseArea" type="text" maxlength="8" onblur="CheckLiveArea('houseUseArea','houseBuildArea',true)" /><font class="z3">平方米</font></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseUseArea" name="houseUseArea" type="text" maxlength="8" /><font class="z3">平方米</font></td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildYear" name="houseBuildYear" type="text" maxlength="4" onblur="CheckCreateTime('houseBuildYear',true)" /><font class="z3">年</font></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildYear" name="houseBuildYear" type="text" maxlength="4"/><font class="z3">年</font></td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼    层</td>
-			    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="houseFloor" name="houseFloor" type="text" onblur="CheckFloor('houseFloor','houseAllFloor',true);" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="houseAllFloor" name="houseAllFloor" type="text" onblur="CheckFloor('houseFloor','houseAllFloor',true);" /> <font class="z3">层</font> 地下室请填写负数</td>
+			    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="houseFloor" name="houseFloor" type="text" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="houseAllFloor" name="houseAllFloor" type="text" /> <font class="z3">层</font> 地下室请填写负数</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">朝    向</td>
@@ -246,19 +262,21 @@ function check(){
 			</table>
 	
           </div>
-      <div class=" bs_tx">
+      	  <div class=" bs_tx">
     		<p><b>图文信息</b></p>
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
-			    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
-			    	<input id="housePhoto" name="housePhoto" type="file"  value="" />
+			    <td><input type="file" name="file_upload" id="file_upload"/></td>
+			    <td>
+			    	<div id="showImg" style="float: left;">			
+					</div>
 			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
 			    <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
-			    	<input id="houseTitle" name="houseTitle" type="text"  value="" maxlength="60" onblur="CheckTitle('houseTitle',true);" onkeyup="textCounter(document.getElementById('houseTitle'),document.getElementById('houseTitleAlert'),30);" /> 还可写<span id="houseTitleAlert"><font class="red">30</font></span>个汉字</td>
+			    	<input id="houseTitle" name="houseTitle" type="text"  value="" maxlength="60" onkeyup="textCounter(document.getElementById('houseTitle'),document.getElementById('houseTitleAlert'),30);" /> 还可写<span id="houseTitleAlert"><font class="red">30</font></span>个汉字</td>
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
@@ -267,26 +285,26 @@ function check(){
 	            <script>
 	                CKEDITOR.replace( 'houseContent' );
 	            </script>
-            <span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
-			请勿从其它网站或其它房源描述中拷贝。</span>
-			         <span>
-			         <b style="text-indent:0px;">注意事项：</b> <br />
-			1.上传宽度大于600像素，比例为5:4的图片可获得更好的展示效果。<br />
-			2.请勿上传有水印、盖章等任何侵犯他人版权或含有广告信息的图片。</span>
+	            <span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
+				请勿从其它网站或其它房源描述中拷贝。</span>
+				         <span>
+				         <b style="text-indent:0px;">注意事项：</b> <br />
+				1.上传宽度大于600像素，比例为5:4的图片可获得更好的展示效果。<br />
+				2.请勿上传有水印、盖章等任何侵犯他人版权或含有广告信息的图片。</span>
 			    	
 			    </td>
 			  </tr>
 			</table>
-      </div>
-       	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+      	  </div>
+       	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
             <td width="120" align="center" valign="middle"><input name="btn_live" type="button" class="mddl1" id="btn_live" value="发布" /></td>
             <td width="320" height="80" align="center" valign="middle"><input name="btn_save" type="button" class="mddl1" id="btn_save" value="保存待发布" /></td>
 	      </tr>
-	    </table>
-	    <input type="hidden" id="action_to_go" name="action_to_go" value="0"/>
-	    </form>
+	      </table>
+	      <input type="hidden" id="action_to_go" name="action_to_go" value="0"/>
+	      </form>
     </div>
     </div>
     </div>

@@ -70,33 +70,23 @@ class OfficePropertyHandler extends PropertyHandler{
 	}
 	
 	private function updateProperty(){
-		$photoName = "";
-		if($this->officePhoto['error'] == 0){
-	
-			$photoName = $this->uploadPhoto($this->officePhoto,$this->officeUserId);
-			if(!$photoName) return false;
-		}
-		//echo $photoName;
 
-		$office = $this->genPropEntity($this->estId,$photoName,"");
+		$office = $this->genPropEntity($this->estId,"");
 		$office["officeId"] = $this->officeId;
 		return $this->propertyService->updateOffice($office);
 	}	
 	
 	public function createProperty(){
-		$photoName = $this->uploadPhoto($this->officePhoto,$this->officeUserId);
-		if(!$photoName) return false;
-		
 		$realEstId = $this->getRealEstateId($this->estateService,$this->estId,$this->estName);
 		if(!$realEstId) return false;
 
-		$office = $this->genPropEntity($this->estId,$photoName,$this->officeState);
+		$office = $this->genPropEntity($this->estId,$this->officeState);
 		$officeId = $this->propertyService->saveOffice($office);
 		if(!$officeId) return false;
 		return true;
 	} 
 	
-	private function genPropEntity($realEstId,$photoName,$officeState){
+	private function genPropEntity($realEstId,$officeState){
 
 		//save the property
 		$office['officeNumber'] = $this->officeNumber;
@@ -125,11 +115,7 @@ class OfficePropertyHandler extends PropertyHandler{
 			$office['officeCommunityId'] = $realEstId;
 		}
 		$office['officeUserId'] = $this->officeUserId;
-		if($photoName){
-			$office['propertyPhoto']['picBuildType'] = 3;
-			$office['propertyPhoto']['picSellRent'] = 1;
-			$office['propertyPhoto']['picUrl'] = $photoName;
-		}
+		$office['propertyPhoto'] = $this->officePhoto;
 		return $office;
 	}
 }

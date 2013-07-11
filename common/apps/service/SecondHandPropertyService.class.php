@@ -25,11 +25,11 @@ class SecondHandPropertyService{
 	
 	private function savePhoto($property){
 		$propId = $property['propId'];
+		$picBuildType = $property['picBuildType'];
 		if(!empty($property['propertyPhoto'])){
 			$photos = $property['propertyPhoto'];
-			$picBuildType = $photos['picBuildType'];
 			
-			foreach($_POST['picPath'] as $key=>$value){
+			foreach($photos['picPath'] as $key=>$value){
 				$pic['picBuildId'] = $propId;
 				$pic['picBuildType'] = $picBuildType;
 				$pic['pictypeId'] = $photos[$key]['pictypeId'];
@@ -53,8 +53,15 @@ class SecondHandPropertyService{
 		$this->savePhoto($property);
 		return $propId;
 	}
+	
+	private function updateProperty($dao,$property){
+		$result = $this->officeDAO->modify($office);
+		
+	}
+	
 
 	public function saveHouse($house){
+		$house['picBuildType'] = 1;
 		return $this->saveProperty($this->houseDAO, $house);
 	}
 
@@ -71,22 +78,47 @@ class SecondHandPropertyService{
 	}
 	
 	public function saveOffice($office){
+		$office['picBuildType'] = 3;
 		return $this->saveProperty($this->officeDAO, $office);
 	}
 
 	public function updateOffice($office){
+		$result = $this->officeDAO->modify($office);
+		if($result>0){
+			$where="where picBuildId=".$office['officeId']." and picBuildType=3";
+			$result=$this->picDAO->delPic($where);
+			if($result<0) return false;
 		
-		if(isset($office['propertyPhoto'])){
-			$propId = $office['officeId'];
-			$this->picDAO->delPicByPropIdAndType(3,$propId);
-			
-			$office['propId'] = $propId;
-			$this->savePhoto($office);
+			if(!empty($office['propertyPhoto'])){
+				$photos = $office['propertyPhoto'];
+				$len = count($photos);
+				echo 'len='.$len."<br/>";
+				for($key=0; $key<$len; $key++){
+					$pic['picBuildId'] = $office['officeId'];
+					$pic['picBuildType'] = 3;
+					$pic['pictypeId'] = $photos[$key]['pictypeId'];
+					$pic['picSellRent'] = $photos[$key]['picSellRent'];
+					$pic['picUrl'] = $photos[$key]['picUrl'];
+					$pic['picThumb'] = $photos[$key]['picThumb'];
+					$pic['picInfo'] = $photos[$key]['picInfo'];
+					$pic['picLayer'] = $photos[$key]['picLayer'];
+					$pic['picState'] = $photos[$key]['picState'];
+					$pic['picBuildFatherType'] = 0;
+					print_r($pic).'<br/>';
+					$this->picDAO->release($pic);
+							
+					
+					if($result<0){
+						return false;
+					} 
+				}
+			}
 		}
-		return $this->officeDAO->modify($office);
+		return false;
 	}
 	
 	public function saveShop($shop){
+		$shop['picBuildType'] = 2;
 		return $this->saveProperty($this->shopsDAO, $shop);
 	}
 
@@ -103,10 +135,12 @@ class SecondHandPropertyService{
 	}
 	
 	public function saveFactory($factory){
+		$factory['picBuildType'] = 5;
 		return $this->saveProperty($this->factoryDAO, $factory);
 	}
 	
 	public function saveVilla($villa){
+		$villa['picBuildType'] = 4;
 		return $this->saveProperty($this->villaDAO, $villa);
 	}
 
@@ -140,6 +174,13 @@ class SecondHandPropertyService{
 	
 	public function getFactoryPropertyById($userId,$propId){
 		return $this->factoryDAO->getPropertyById($userId,$propId);
+	}
+	
+	public function getPropPhotos($photo){
+		return $this->picDAO->getPicList("picId,picBuildId,picBuildId,picBuildType,picSellRent,picUrl,picThumb,picInfo,picLayer",
+				"where picBuildId=".$photo['picBuildIdId']." and picBuildType=".$photo['picBuildType']." and picState=1",
+				"order by picState",
+				"");
 	}
 	
 	public function countPropertiesByState($userId,$propState){

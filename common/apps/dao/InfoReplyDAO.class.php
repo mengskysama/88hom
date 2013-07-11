@@ -13,10 +13,10 @@ class InfoReplyDAO  {
 	//发布新闻回复
 	public function release($infoReply){
 		$sql="insert into ecms_info_reply(inforeplyContent,infoId,userId,inforeplyState,inforeplyCreateTime,inforeplyUpdateTime) values('"
-										.empty($infoReply['inforeplyContent'])?'':$infoReply['inforeplyContent']
-										."','".empty($infoReply['infoId'])?'':$infoReply['infoId']
-										."','".empty($infoReply['userId'])?'':$infoReply['userId']
-										."','".empty($infoReply['inforeplyState'])?'':$infoReply['inforeplyState']
+										.(empty($infoReply['inforeplyContent'])?'':$infoReply['inforeplyContent'])
+										."','".(empty($infoReply['infoId'])?'':$infoReply['infoId'])
+										."','".(empty($infoReply['userId'])?'':$infoReply['userId'])
+										."','".(empty($infoReply['inforeplyState'])?'':$infoReply['inforeplyState'])
 										.",".time()
 										.",".time()
 										.")";
@@ -25,10 +25,10 @@ class InfoReplyDAO  {
 	//修改新闻回复
 	public function modify($infoReply){
 		$sql="update ecms_info_reply set inforeplyContent='"
-			.empty($infoReply['inforeplyContent'])?'':$infoReply['inforeplyContent']
-			."',infoId=".empty($infoReply['infoId'])?0:$infoReply['infoId']
-			.",userId=".empty($infoReply['userId'])?0:$infoReply['userId']
-			.",inforeplyState=".empty($infoReply['inforeplyState'])?0:$infoReply['inforeplyState']
+			.(empty($infoReply['inforeplyContent'])?'':$infoReply['inforeplyContent'])
+			."',infoId=".(empty($infoReply['infoId'])?0:$infoReply['infoId'])
+			.",userId=".(empty($infoReply['userId'])?0:$infoReply['userId'])
+			.",inforeplyState=".(empty($infoReply['inforeplyState'])?0:$infoReply['inforeplyState'])
 			.",inforeplyUpdateTime=".time()
 			." where inforeplyId=".$infoReply['inforeplyId'];
 		return $this->db->getQueryExeCute($sql);

@@ -1,15 +1,14 @@
-
-var pictureIndex=0;//³õÊ¼Í¼Æ¬±êÊ¶ºÅ£¬¶àÕÅÍ¼Æ¬ÉÏ´«Ê±£¬Õâ¸ö±êÊ¶ºÅ×ÔÔö³¤
+var pictureIndex=0;//åˆå§‹å›¾ç‰‡æ ‡è¯†å·ï¼Œå¤šå¼ å›¾ç‰‡ä¸Šä¼ æ—¶ï¼Œè¿™ä¸ªæ ‡è¯†å·è‡ªå¢é•¿
 function initPicUp(v_timestamp,v_token,v_file_path_upload,v_web_path,v_web_common,v_web_url){
 	$("#file_upload").uploadify({
-		'auto':true,//×Ô¶¯ÉÏ´«
+		'auto':true,//è‡ªåŠ¨ä¸Šä¼ 
 		'method':'post',
 		'debug':false,
 		'formData'     : {
 			'timestamp' : v_timestamp,
-			'token'     : 'v_token',
-			'thumb'     : 1,//ÊÇ·ñÉú³ÉËõÂÔÍ¼
-			'resizeType': 1,//Í¨¹ıÎÄ×ÖÌæ»»Å¥¿ÛÉÏµÄÎÄ×Ö
+			'token'     : v_token,
+			'thumb'     : 1,//æ˜¯å¦ç”Ÿæˆç¼©ç•¥å›¾
+			'resizeType': 1,//é€šè¿‡æ–‡å­—æ›¿æ¢é’®æ‰£ä¸Šçš„æ–‡å­—
 			'width'     : 1200,
 			'height'    : 1200,
 			'thumbResizeType': 1,
@@ -22,32 +21,32 @@ function initPicUp(v_timestamp,v_token,v_file_path_upload,v_web_path,v_web_commo
 			'originalPath': '2hand/',
 			'allowType':'jpeg,jpg,gif,bmp,png'
 		},
-		'buttonText' :'Ñ¡ÔñÉÏ´«',//Í¨¹ıÎÄ×ÖÌæ»»Å¥¿ÛÉÏµÄÎÄ×Ö
-		'fileSizeLimit' : '10MB',//ÉèÖÃÔÊĞíÉÏ´«ÎÄ¼ş×î´óÖµB, KB, MB, GB ±ÈÈç£º'fileSizeLimit' : '20MB'
-		'fileTypeDesc' : 'Image Files',//¶Ô»°¿òµÄÎÄ¼şÀàĞÍÃèÊö
-		'fileTypeExts' : '*.jpeg; *.gif; *.jpg; *.bmp; *.png',//¿ÉÉÏ´«µÄÎÄ¼şÀàĞÍ
-	  	'fileObjName' : 'Filedata',//ÉèÖÃÒ»¸öÃû×Ö£¬ÔÚ·şÎñÆ÷´¦Àí³ÌĞòÖĞ¸ù¾İ¸ÃÃû×ÖÀ´È¡ÉÏ´«ÎÄ¼şµÄÊı¾İ¡£Ä¬ÈÏÎªFiledata£¬$tempFile = $_FILES['Filedata']['tmp_name']
-	  	'width': 80,//buttonImgµÄ¿í
-		'height': 20,//buttonImgµÄ¸ß
-		'multi': true,//Ñ¡ÔñÎÄ¼şÊ±ÊÇ·ñ¿ÉÒÔ¡¾Ñ¡Ôñ¶à¸ö¡¿¡£Ä¬ÈÏ£º¿ÉÒÔtrue
-		'queueSizeLimit' : 5,//ÔÊĞí¶àÎÄ¼şÉÏ´«µÄÊıÁ¿¡£Ä¬ÈÏ£º999
-		'uploadLimit' : 5,//ÏŞÖÆ×ÜÉÏ´«ÎÄ¼şÊı,Ä¬ÈÏÊÇ999¡£Ö¸Í¬Ò»Ê±¼ä£¬Èç¹û¹Ø±Õä¯ÀÀÆ÷ºóÖØĞÂ´ò¿ªÓÖ¿ÉÉÏ´«¡£
-		'successTimeout' : 30,//ÉÏ´«³¬Ê±Ê±¼ä¡£ÎÄ¼şÉÏ´«Íê³Éºó,µÈ´ı·şÎñÆ÷·µ»ØĞÅÏ¢µÄÊ±¼ä(Ãë).³¬¹ıÊ±¼äÃ»ÓĞ·µ»ØµÄ»°,²å¼şÈÏÎª·µ»ØÁË³É¹¦¡£ Ä¬ÈÏ£º30Ãë
-		'removeCompleted' : true,//ÉÏ´«Íê³Éºó¶ÓÁĞÊÇ·ñ×Ô¶¯ÏûÊ§¡£Ä¬ÈÏ£ºtrue
-		'requeueErrors' : false,//¶ÓÁĞÉÏ´«³ö´í£¬ÊÇ·ñ¼ÌĞø»Ø¹ö¶ÓÁĞ£¬¼´·´¸´³¢ÊÔÉÏ´«¡£Ä¬ÈÏ£ºfalse
-		'removeTimeout' : 1,//ÉÏ´«Íê³Éºó¶ÓÁĞ¶à³¤Ê±¼äºóÏûÊ§¡£Ä¬ÈÏ 3Ãë	ĞèÒª£º'removeCompleted' : true,Ê±Ê¹ÓÃ
-		'progressData' : 'speed',//½ø¶ÈÌõÉÏÏÔÊ¾µÄ½ø¶È:ÓĞ°Ù·Ö±ÈpercentageºÍËÙ¶Èspeed¡£Ä¬ÈÏ°Ù·Ö±È
-		'preventCaching' : false,//Ëæ»ú»º´æÖµ Ä¬ÈÏtrue £¬¿ÉÑ¡trueºÍfalse.Èç¹ûÑ¡true,ÄÇÃ´ÔÚÉÏ´«Ê±»á¼ÓÈëÒ»¸öËæ»úÊıÀ´Ê¹Ã¿´ÎµÄURL¶¼²»Í¬,ÒÔ·ÀÖ¹»º´æ.µ«ÊÇ¿ÉÄÜÓëÕı³£URL²úÉú³åÍ»
-		'checkExisting':v_web_path+'common/libs/uploadify/check-exists.php',//ÔÚÄ¿Â¼ÖĞ¼ì²éÎÄ¼şÊÇ·ñÒÑÉÏ´«³É¹¦£¨1 ture,0 false£©
-		'swf':v_web_common+'uploadify/uploadify.swf',//ËùĞèÒªµÄflashÎÄ¼ş
-	 	'uploader':v_web_path+'common/libs/uploadify/uploadify.php',//ËùĞèÒªµÄflashÎÄ¼ş
+		'buttonText' :'é€‰æ‹©ä¸Šä¼ ',//é€šè¿‡æ–‡å­—æ›¿æ¢é’®æ‰£ä¸Šçš„æ–‡å­—
+		'fileSizeLimit' : '10MB',//è®¾ç½®å…è®¸ä¸Šä¼ æ–‡ä»¶æœ€å¤§å€¼B, KB, MB, GB æ¯”å¦‚ï¼š'fileSizeLimit' : '20MB'
+		'fileTypeDesc' : 'Image Files',//å¯¹è¯æ¡†çš„æ–‡ä»¶ç±»å‹æè¿°
+		'fileTypeExts' : '*.jpeg; *.gif; *.jpg; *.bmp; *.png',//å¯ä¸Šä¼ çš„æ–‡ä»¶ç±»å‹
+	  	'fileObjName' : 'Filedata',//è®¾ç½®ä¸€ä¸ªåå­—ï¼Œåœ¨æœåŠ¡å™¨å¤„ç†ç¨‹åºä¸­æ ¹æ®è¯¥åå­—æ¥å–ä¸Šä¼ æ–‡ä»¶çš„æ•°æ®ã€‚é»˜è®¤ä¸ºFiledataï¼Œ$tempFile = $_FILES['Filedata']['tmp_name']
+	  	'width': 80,//buttonImgçš„å®½
+		'height': 20,//buttonImgçš„é«˜
+		'multi': true,//é€‰æ‹©æ–‡ä»¶æ—¶æ˜¯å¦å¯ä»¥ã€é€‰æ‹©å¤šä¸ªã€‘ã€‚é»˜è®¤ï¼šå¯ä»¥true
+		'queueSizeLimit' : 5,//å…è®¸å¤šæ–‡ä»¶ä¸Šä¼ çš„æ•°é‡ã€‚é»˜è®¤ï¼š999
+		'uploadLimit' : 5,//é™åˆ¶æ€»ä¸Šä¼ æ–‡ä»¶æ•°,é»˜è®¤æ˜¯999ã€‚æŒ‡åŒä¸€æ—¶é—´ï¼Œå¦‚æœå…³é—­æµè§ˆå™¨åé‡æ–°æ‰“å¼€åˆå¯ä¸Šä¼ ã€‚
+		'successTimeout' : 30,//ä¸Šä¼ è¶…æ—¶æ—¶é—´ã€‚æ–‡ä»¶ä¸Šä¼ å®Œæˆå,ç­‰å¾…æœåŠ¡å™¨è¿”å›ä¿¡æ¯çš„æ—¶é—´(ç§’).è¶…è¿‡æ—¶é—´æ²¡æœ‰è¿”å›çš„è¯,æ’ä»¶è®¤ä¸ºè¿”å›äº†æˆåŠŸã€‚ é»˜è®¤ï¼š30ç§’
+		'removeCompleted' : true,//ä¸Šä¼ å®Œæˆåé˜Ÿåˆ—æ˜¯å¦è‡ªåŠ¨æ¶ˆå¤±ã€‚é»˜è®¤ï¼štrue
+		'requeueErrors' : false,//é˜Ÿåˆ—ä¸Šä¼ å‡ºé”™ï¼Œæ˜¯å¦ç»§ç»­å›æ»šé˜Ÿåˆ—ï¼Œå³åå¤å°è¯•ä¸Šä¼ ã€‚é»˜è®¤ï¼šfalse
+		'removeTimeout' : 1,//ä¸Šä¼ å®Œæˆåé˜Ÿåˆ—å¤šé•¿æ—¶é—´åæ¶ˆå¤±ã€‚é»˜è®¤ 3ç§’	éœ€è¦ï¼š'removeCompleted' : true,æ—¶ä½¿ç”¨
+		'progressData' : 'speed',//è¿›åº¦æ¡ä¸Šæ˜¾ç¤ºçš„è¿›åº¦:æœ‰ç™¾åˆ†æ¯”percentageå’Œé€Ÿåº¦speedã€‚é»˜è®¤ç™¾åˆ†æ¯”
+		'preventCaching' : false,//éšæœºç¼“å­˜å€¼ é»˜è®¤true ï¼Œå¯é€‰trueå’Œfalse.å¦‚æœé€‰true,é‚£ä¹ˆåœ¨ä¸Šä¼ æ—¶ä¼šåŠ å…¥ä¸€ä¸ªéšæœºæ•°æ¥ä½¿æ¯æ¬¡çš„URLéƒ½ä¸åŒ,ä»¥é˜²æ­¢ç¼“å­˜.ä½†æ˜¯å¯èƒ½ä¸æ­£å¸¸URLäº§ç”Ÿå†²çª
+		'checkExisting':v_web_path+'common/libs/uploadify/check-exists.php',//åœ¨ç›®å½•ä¸­æ£€æŸ¥æ–‡ä»¶æ˜¯å¦å·²ä¸Šä¼ æˆåŠŸï¼ˆ1 ture,0 falseï¼‰
+		'swf':v_web_common+'uploadify/uploadify.swf',//æ‰€éœ€è¦çš„flashæ–‡ä»¶
+	 	'uploader':v_web_path+'common/libs/uploadify/uploadify.php',//æ‰€éœ€è¦çš„flashæ–‡ä»¶
 		'onUploadSuccess' : function(file, data, response) {
-			var obj=eval(data);//·µ»ØjsonÊı×é
+			var obj=eval(data);//è¿”å›jsonæ•°ç»„
     		if(response==true && obj[0].result==1){
         		var html='<span style="float:left;margin:5px;line-height:25px;" id="pic_'+pictureIndex+'"><a target="_blank" href="'+v_web_url+'uploads/'+obj[0].path+'">'
         				+'<img height="200px" src="'+v_web_url+'uploads/'+obj[0].pathThumb+'"/>'
-        				+'</a><br/>ÃèÊö£º<input type="text" name="picName[]" /><br/>ĞòºÅ£º<input type="text" name="picLayer[]" value="1"/>'
-        				+'<input type="button" name="deletePic_'+pictureIndex+'" onclick="dropContainer(\'pic_'+pictureIndex+'\')" value="É¾³ı">'
+        				+'</a><br/>æè¿°ï¼š<input type="text" name="picName[]" /><br/>åºå·ï¼š<input type="text" name="picLayer[]" value="1"/>'
+        				+'<input type="button" name="deletePic_'+pictureIndex+'" onclick="dropContainer(\'pic_'+pictureIndex+'\')" value="åˆ é™¤">'
         				+'<input type="hidden" name="picPath[]" value="'+obj[0].path+'"/><input type="hidden" name="picPathThumb[]" value="'
         				+obj[0].pathThumb+'"/><input type="hidden" name="picTypeId[]" value="3"/></span>';
 				$('#showImg').append(html);

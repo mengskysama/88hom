@@ -1,9 +1,4 @@
 <?php
-/**
- * ��Ϣ����ҵ�������
- * @author David chunliumang@gmail.com
- * @version 1.0
- */
 class MessageService{
 	private $db=null;
 	private $messageDAO=null;
@@ -11,11 +6,10 @@ class MessageService{
 		$this->db=$db;
 		$this->messageDAO=new MessageDAO($db);
 	}
-//=================================��Ϣ����=============================
 	public function release($message){
 		$msg=true;
 		$result=$this->messageDAO->release($message);
-		if($result<=0)$msg='��������ʧ�ܣ�';
+		if($result<=0)$msg='信息发布失败！';
 		return $msg;
 	}
 	public function getMessageList($field = '*',$where='',$order='',$limit=''){
@@ -27,13 +21,13 @@ class MessageService{
 	public function changeState($state,$id){
 		$msg=true;
 		$result=$this->messageDAO->changeState($state,$id);
-		if($result<0)$msg='��Ϣ״̬���ʧ�ܣ�';
+		if($result<0)$msg='状态更改失败！';
 		return $msg;
 	}
 	public function delMessageById($id){
 		$msg=true;
 		$result=$this->messageDAO->delMessageById($id);
-		if($result<0)$msg='��Ϣɾ��ʧ�ܣ�';
+		if($result<0)$msg='信息删除失败！';
 		return $msg;
 	}
 	//added by Cheneil

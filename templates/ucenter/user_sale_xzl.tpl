@@ -14,6 +14,7 @@ $(function() {
       	  $("#estId").val(ui.item.id);    
       }
     });
+    initPicUp('<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
         
     $("#btn_live").click(function() {
         $("#btn_live").attr("disabled", true);
@@ -57,11 +58,6 @@ function check(){
     	alert("请选择写字楼级别");
         return false;
 	}
-	var housePhotoValue = $("#officePhoto").val();
-	if(trim(housePhotoValue) == ''){
-		alert("请上传图片");
-		return false;
-	}
 	
 	if(!CheckTitle('officeTitle',true)) return false;
 	var houseContentValue = CKEDITOR.instances.officeContent.getData(); 
@@ -84,6 +80,7 @@ function check(){
     <div class="qg_r">
     <p>你的位置: <a href="#">房源管理</a></p>
    	<div class="qg_bs">
+            <form id="xzlForm" name="xzlForm" action="property_handler.php" method="post" enctype="multipart/form-data">
  		   <ul>
    			 	<li><a href="user_sale_zz.php">录入住宅出售房源</a></li>
     		    <li><a href="user_sale_bs.php">录入别墅出售房源</a></li>
@@ -92,7 +89,6 @@ function check(){
    		  </ul>
       <div class="bs_tx">
         <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
-            <form id="xzlForm" name="xzlForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="xzl">
             <input type="hidden" name="prop_tx_type" value="1">
         <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
@@ -103,7 +99,7 @@ function check(){
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">房源信息编码</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="officeNumber" name="officeNumber" type="text" maxlength="12" onblur="CheckInfoCode('officeNumber',true)" />  </td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="officeNumber" name="officeNumber" type="text" maxlength="12"/>  </td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"> 写字楼类型</td>
@@ -116,20 +112,20 @@ function check(){
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"> <font class="red">*</font> 单    价</td>
-    <td align="left" valign="middle" class="p25 grzc_32"><input id="officeSellPrice" name="officeSellPrice" type="text" onblur="CheckSwatchPriceOffice('officeSellPrice');" /> 元/平米</td>
+    <td align="left" valign="middle" class="p25 grzc_32"><input id="officeSellPrice" name="officeSellPrice" type="text" /> 元/平米</td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>物 业 费</td>
-    <td align="left" valign="middle" class="p25 grzc_32"><input id="officeProFee" name="officeProFee" type="text" onblur="checkPropFee('officeProFee',true);" /> 元/平米·月
+    <td align="left" valign="middle" class="p25 grzc_32"><input id="officeProFee" name="officeProFee" type="text" /> 元/平米·月
     	</td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="officeBuildArea" name="officeBuildArea" type="text" maxlength="8" onblur="CheckBuildingArea('officeBuildArea',true);" /> 平方米</td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="officeBuildArea" name="officeBuildArea" type="text" maxlength="8" /> 平方米</td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼    层</td>
-    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="officeFloor" name="officeFloor" type="text" onblur="CheckFloor('officeFloor','officeAllFloor',true);" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="officeAllFloor" name="officeAllFloor" type="text" onblur="CheckFloor('officeFloor','officeAllFloor',true);" /> <font class="z3">层</font> 地下室请填写负数</td>
+    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="officeFloor" name="officeFloor" type="text" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="officeAllFloor" name="officeAllFloor" type="text" /> <font class="z3">层</font> 地下室请填写负数</td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否可分割</td>
@@ -162,14 +158,16 @@ function check(){
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
-    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
-		<input id="officePhoto" name="officePhoto" type="file"  value="" />
-    </td>
+			    <td><input type="file" name="file_upload" id="file_upload"/></td>
+			    <td>
+			    	<div id="showImg" style="float: left;">			
+					</div>
+			    </td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
     <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
-    	<input id="officeTitle" name="officeTitle" type="text" maxlength="60" onblur="CheckTitle('officeTitle',true);" onkeyup="textCounter(document.getElementById('officeTitle'),document.getElementById('officeTitleAlert'),30);" /> 还可写<span id="officeTitleAlert"><font class="red">30</font></span>个汉字</td>
+    	<input id="officeTitle" name="officeTitle" type="text" maxlength="60" onkeyup="textCounter(document.getElementById('officeTitle'),document.getElementById('officeTitleAlert'),30);" /> 还可写<span id="officeTitleAlert"><font class="red">30</font></span>个汉字</td>
   </tr>
   <tr>
     <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>

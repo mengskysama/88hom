@@ -5,13 +5,13 @@ class UserDAO{
 		$this->db=$db;
 	}
 	/**
-	 * ï¿½ï¿½ï¿½usernameï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
+	 * ¸ù¾İusername»ñÈ¡ÓÃ»§ĞÅÏ¢
 	 * @param string $username 
 	 * @access public
 	 * @return array
 	 */
 	public function getUserByUserName($username){
-		$sql="select * from ecms_user where userUsername='$username'";
+		$sql="select * from ecms_user where userState=1 and userType=0 and userUsername='$username'";
 		return $this->db->getQueryValue($sql);
 	}
 	//added by Cheneil
@@ -110,9 +110,8 @@ class UserDAO{
 	}
 	
 	//end to be added by Cheneil
-	
 	/**
-	 * ï¿½ï¿½ï¿½idï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
+	 * ¸ù¾İid»ñÈ¡ÓÃ»§ĞÅÏ¢
 	 * @param string $username 
 	 * @access public
 	 * @return array
@@ -122,7 +121,7 @@ class UserDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	/**
-	 * ï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½Ğ±ï¿½
+	 * »ñÈ¡ÓÃ»§ĞÅÏ¢ÁĞ±í
 	 * @param array $user 
 	 * @access public
 	 * @return array
@@ -136,7 +135,7 @@ class UserDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	/**
-	 * ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ï¿½Ï¢×´Ì¬
+	 * ¸ù¾İID¸ü¸ÄĞÅÏ¢×´Ì¬
 	 * @access public
 	 * @param int $state ×´Ì¬
 	 * @param int $id
@@ -147,22 +146,30 @@ class UserDAO{
 		return $this->db->getQueryExecute($sql);
 	}
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
+	 * ·¢²¼ÓÃ»§ĞÅÏ¢
 	 * @param array $user 
 	 * @access public
 	 * @return array
 	 */
 	public function release($user){
-		$sql="insert into ecms_user(username,passwd,email,userGroupId,shopIds,level,type,status)
-			  values('".$user['username']."','".$user['password']."','".(empty($user['email'])?'':$user['email'])."',".$user['groupId'].",
-			  '".(empty($user['shopIds'])?'':$user['shopIds'])."',".(empty($user['level'])?0:$user['level']).",
-			  '".(empty($user['type'])?'admin':$user['type'])."','".(empty($user['status'])?'admin':$user['status'])."')";
+		$sql="insert into ecms_user(userUsername,userPassword,userPhone,userPhoneState,userEmail,userEmailState,
+			  userType,userGroupId,userState,userCreateTime,userUpdateTime) 
+			  values('".(empty($user['userUsername'])?'':$user['userUsername'])."',
+			  '".(empty($user['userPassword'])?'':$user['userPassword'])."',
+			  '".(empty($user['userPhone'])?'':$user['userPhone'])."',
+			  ".(empty($user['userPhoneState'])?0:$user['userPhoneState']).",
+			  '".(empty($user['userEmail'])?'':$user['userEmail'])."',
+			  ".(empty($user['userEmailState'])?0:$user['userEmailState']).",
+			  ".(empty($user['userType'])?0:$user['userType']).",
+			   ".(empty($user['userGroupId'])?0:$user['userGroupId']).",
+			  ".(empty($user['userState'])?0:$user['userState']).",
+			  ".time().",".time().")";
 		return $this->db->getQueryExecute($sql);
 	}
 	public function save($user){
-		$sql="update ecms_users set passwd='".$user['password']."',email='".(empty($user['email'])?'':$user['email'])."',
-			  userGroupId=".$user['groupId'].",shopIds='".(empty($user['shopIds'])?'':$user['shopIds'])."',
-			  level=".(empty($user['level'])?0:$user['level'])." where user_id=".$user['id'];
+		$sql="update ecms_user set userUsername='".$user['userUsername']."',userPhone='".(empty($user['userPhone'])?'':$user['userPhone'])."',
+			  userGroupId=".$user['userGroupId'].",userEmail='".(empty($user['userEmail'])?'':$user['userEmail'])."'
+			  "." where userId=".$user['userId'];
 		return $this->db->getQueryExecute($sql);
 	}
 	public function del($id){
@@ -174,17 +181,17 @@ class UserDAO{
 		return $this->db->getQueryExecute($sql);
 	}
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+	 * ·¢²¼¹ÜÀíÓÃ»§×éĞÅÏ¢
 	 * @param array $user 
 	 * @access public
 	 * @return array
 	 */
 	public function releaseGroup($group){
-		$sql="insert into ecms_group(group_name) values('".$group['groupName']."')";
+		$sql="insert into ecms_group(groupName) values('".$group['groupName']."')";
 		return $this->db->getQueryExecute($sql);
 	}
 	/**
-	 * ï¿½Ş¸Ä¹ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+	 * ĞŞ¸Ä¹ÜÀíÓÃ»§×éĞÅÏ¢
 	 * @param array $user 
 	 * @access public
 	 * @return array
@@ -194,8 +201,8 @@ class UserDAO{
 		return $this->db->getQueryExecute($sql);
 	}
 	/**
-	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	 * @param string $id ï¿½ï¿½Ï¢ID
+	 * »ñÈ¡×é±ğÏêÇé
+	 * @param string $id ĞÅÏ¢ID
 	 * @return array
 	 */
 	public function getGroupDetailById($id) {
@@ -203,7 +210,7 @@ class UserDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	/**
-	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½
+	 * »ñÈ¡×é±ğÁĞ±í
 	 * @access public
 	 * @return array
 	 */
@@ -212,8 +219,8 @@ class UserDAO{
 		return $this->db->getQueryArray($sql);
 	}
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¨Ò»ï¿½ï¿½
-	 * @param int $info ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+	 * ¼ì²é¹ÜÀí×é±ğÎ¨Ò»ĞÔ
+	 * @param int $info ×ÖµäÏîĞÅÏ¢
 	 * @return string
 	 **/
 	public function checkGroupUnique($groupName) {
@@ -221,8 +228,8 @@ class UserDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	/**
-	 * ï¿½ï¿½ï¿½ÏµÍ³ï¿½Ã»ï¿½ï¿½Ëºï¿½Î¨Ò»ï¿½ï¿½
-	 * @param int $info ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+	 * ¼ì²éÏµÍ³ÓÃ»§ÕËºÅÎ¨Ò»ĞÔ
+	 * @param int $info ×ÖµäÏîĞÅÏ¢
 	 * @return string
 	 **/
 	public function checkUsersUnique($userName) {
@@ -230,8 +237,8 @@ class UserDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	/**
-	 * ï¿½ï¿½È¡webï¿½ï¿½Õ¾ï¿½ï¿½ï¿½ï¿½
-	 * @param int $info ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+	 * »ñÈ¡webÍøÕ¾ÅäÖÃ
+	 * @param int $info ×ÖµäÏîĞÅÏ¢
 	 * @return string
 	 **/
 	public function getWebSet(){
@@ -266,52 +273,6 @@ class UserDAO{
 			fputs($fp, '<?php return array(); ?>');
 		}
 		fclose($fp);
-	}
-	public function releaseWebUser($webUser){
-		$sql="insert into ecms_users_web(username,password,uname,sex,dept,tel,address,path,path_thumb,create_time,update_time)
-			  values('".$webUser['username']."','".$webUser['password']."','".(empty($webUser['uname'])?'':$webUser['uname'])."',
-			  ".(empty($webUser['sex'])?1:$webUser['sex']).",'".(empty($webUser['dept'])?'':$webUser['dept'])."','".(empty($webUser['tel'])?'':$webUser['tel'])."','".(empty($webUser['address'])?'':$webUser['address'])."',
-			  '".(empty($webUser['path'])?'':$webUser['path'])."','".(empty($webUser['pathThumb'])?'':$webUser['pathThumb'])."',".time().",".time().")";
-		return $this->db->getQueryExecute($sql);
-	}
-	public function getWebUserById($id){
-		$sql="select * from ecms_users_web where id=$id";
-		return $this->db->getQueryValue($sql);
-	}
-	public function getWebUserByUserName($userName){
-		$sql="select * from ecms_users_web where username='".$userName."'";
-		return $this->db->getQueryValue($sql);
-	}
-	/**
-	 * ï¿½ï¿½ï¿½WEBï¿½Ã»ï¿½ï¿½Ëºï¿½Î¨Ò»ï¿½ï¿½
-	 * @param int $info ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
-	 * @return string
-	 **/
-	public function checkWebUsersUnique($userName) {
-		$sql="select count(*) as counts from ecms_users_web where username='$userName'";
-		return $this->db->getQueryValue($sql);
-	}
-	public function saveWebUser($webUser){
-		$sql="update ecms_users_web set password='".$webUser['password']."',uname='".(empty($webUser['uname'])?'':$webUser['uname'])."',sex=".(empty($webUser['sex'])?1:$webUser['sex']).",dept='".(empty($webUser['dept'])?'':$webUser['dept'])."',
-			  tel='".(empty($webUser['tel'])?'':$webUser['tel'])."',address='".(empty($webUser['address'])?'':$webUser['address'])."',path='".(empty($webUser['path'])?'':$webUser['path'])."',path_thumb='".(empty($webUser['pathThumb'])?'':$webUser['pathThumb'])."',
-			  update_time=".time()." where id=".$webUser['id'];
-		return $this->db->getQueryExecute($sql);
-	}
-	public function getWebUserList($where='',$order='',$limit=''){
-		$sql="select * from ecms_users_web $where $order $limit";
-		return $this->db->getQueryArray($sql);
-	}
-	public function countWebUser($where=''){
-		$sql="select count(*) as counts from ecms_users_web $where";
-		return $this->db->getQueryValue($sql);
-	}
-	public function changeWebUserState($id,$state){
-		$sql="update ecms_users_web set state=$state where id=$id";
-		return $this->db->getQueryExecute($sql);
-	}
-	public function delWebUserById($id){
-		$sql="delete from ecms_users_web where id=$id";
-		return $this->db->getQueryExecute($sql);
 	}
 }
 ?>

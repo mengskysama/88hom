@@ -16,7 +16,9 @@ $propTxType = getParameter("prop_tx_type");
 
 $propPhoto = "";
 if(!empty($_POST['picPath'])){
-	foreach($_POST['picPath'] as $key=>$value){
+	$len = count($_POST['picPath']);
+	//print_r($_POST['picPath']);
+	for($key=0; $key<$len; $key++){
 		$propPhoto[$key]['pictypeId'] = $_POST['picTypeId'][$key];
 		$propPhoto[$key]['picSellRent'] = $propTxType;
 		$propPhoto[$key]['picUrl'] = $_POST['picPath'][$key];
@@ -105,6 +107,7 @@ if($propType == "zz"){
 	$villaPayment = getParameter("villaPayment");
 	$villaPayDetailY = getParameter("villaPayDetailY");
 	$villaPayDetailF = getParameter("villaPayDetailF");
+	$propPhoto['picBuildType'] = 4;
 	
 	$propHandler = new VillaPropertyHandler($db,$estId,$estName,$villaNumber,$privateHouseNumber,$villaBuildForm,$villaSellPrice,$villaRoom,$villaHall,
 											$villaToilet,$villaKitchen,$villaBalcony,$villaBuildArea,$villaUseArea,$villaBuildYear,
@@ -113,7 +116,8 @@ if($propType == "zz"){
 											$propPhoto,$villaTitle,$villaContent,$villaUserId,$state,$actionType,$villaId,
 											$propTxType,$villaRentPrice,$villaRentType,$villaPayment,$villaPayDetailY,$villaPayDetailF);
 }else if($propType == "xzl"){
-	
+
+	print_r($propPhoto).'<br/>';
 	$officeNumber = getParameter("officeNumber");
 	$officeType = getParameter("officeType");
 	$officeSellPrice = getParameter("officeSellPrice");
@@ -155,6 +159,7 @@ if($propType == "zz"){
 	$shopId = getParameter("propId");
 	$shopsRentPrice = getParameter("shopsRentPrice");
 	$shopsRentPriceUnit = getParameter("shopsRentPriceUnit");
+	$propPhoto['picBuildType'] = 2;
 	
 	$propHandler = new ShopPropertyHandler($db,$estId,$estName,$shopsAddress,$shopsType,$shopsAreaId,$shopsNumber,
 											$shopsSellPrice,$shopsPropFee,$shopsBuildArea,$shopsFloor,$shopsAllFloor,$shopsDivision,

@@ -15,42 +15,48 @@ class AdService{
 		$this->adDAO = new AdDAO($db);
 	}
 	/**
-	 * 根据广告位置获取某条广告
+	 * 根据广告位置获取一条或多条广告,按序号倒序返回数组
 	 * @param $site 广告位置
 	 * @return 广告详细html代码
 	 */
 	public function getAdBySite($site){
 		$sql = "select adtypeKey,adTitle,adUrl,adPic,adFiles,adSite,adSiteDesc,adEId,adEClass,width,height 
-				from ecms_ad_type t,ecms_ad a where t.adtypeId=a.adtypeId and t.adtypeState=1 and a.adState=1 and a.adSite=".$site." limit 1";
+				from ecms_ad_type t,ecms_ad a where t.adtypeId=a.adtypeId and t.adtypeState=1 and a.adState=1 and a.adSite=".$site." order by adLayer desc ";
 		$ad = $this->db->getQueryValue($sql);
-		$html = '';
-		$attr = $ad['adEId']==''?'':' id="'.$ad['adEId'].'"';
-		$attr .= $ad['adEClass']==''?'':' class="'.$ad['adEClass'].'"';
-		$width = ($ad['width'] == '' || $ad['width'] == 0)?'':'width="'.$ad['width'].'"';
-		$height = ($ad['height'] == '' || $ad['height'] == 0)?'':'height="'.$ad['height'].'"';
-		
-		if($ad['adtypeKey'] == 'url')//一般文本链接
-			$html ='<a '.$attr.' target="_blank" href="'.$ad['adUrl'].'">'.$ad['adTitle'].'</a>';
-		else if($ad['adtypeKey'] == 'pic')//图片
+		$adArr = array();
+		for($i=0;$i<count($ad);$i++)
 		{
-			if($ad['adUrl'] != '')
+			$html = '';
+			$attr = $ad[$i]['adEId']==''?'':' id="'.$ad[$i]['adEId'].'"';
+			$attr .= $ad[$i]['adEClass']==''?'':' class="'.$ad[$i]['adEClass'].'"';
+			$width = ($ad[$i]['width'] == '' || $ad[$i]['width'] == 0)?'':'width="'.$ad[$i]['width'].'"';
+			$height = ($ad[$i]['height'] == '' || $ad[$i]['height'] == 0)?'':'height="'.$ad[$i]['height'].'"';
+			
+			if($ad[$i]['adtypeKey'] == 'url')//一般文本链接
+				$html ='<a '.$attr.' target="_blank" href="'.$ad[$i]['adUrl'].'">'.$ad[$i]['adTitle'].'</a>';
+			else if($ad[$i]['adtypeKey'] == 'pic')//图片
 			{
-				$html ='<a '.$attr.' target="_blank" href="'.$ad['adUrl'].'"><img '.$width.' '.$height.' src="'.ECMS_PATH_AD_URL.'/'.$ad['adPic'].'"/></a>';
+				if($ad[$i]['adUrl'] != '')
+				{
+					$html ='<a '.$attr.' target="_blank" href="'.$ad[$i]['adUrl'].'"><img '.$width.' '.$height.' src="'.ECMS_PATH_AD_URL.'/'.$ad[$i]['adPic'].'"/></a>';
+				}
+				else {
+					$html ='<img '.$attr.'  '.$width.' '.$height.'  src="'.ECMS_PATH_AD_URL.'/'.$ad[$i]['adPic'].'">';
+				}
 			}
-			else {
-				$html ='<img '.$attr.'  '.$width.' '.$height.'  src="'.ECMS_PATH_AD_URL.'/'.$ad['adPic'].'">';
+			else if($ad[$i]['adtypeKey'] == 'swf')//swf的flash
+			{
+				$html ='<object '.$attr.' classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"  '.$width.' '.$height.'  >';
+				$html .='<param name="movie" value="'.ECMS_PATH_AD_URL.'/'.$ad[$i]['adFiles'].'" />';
+				$html .='<param name="wmode" value="transparent" />';
+				$html .='<param name="quality" value="high" />';
+				$html .='<embed wmode="transparent" src="'.ECMS_PATH_AD_URL.'/'.$ad[$i]['adFiles'].'" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"   '.$width.' '.$height.'  ></embed>';
+				$html .='</object>';
 			}
-		}
-		else if($ad['adtypeKey'] == 'swf')//swf的flash
-		{
-			$html ='<object '.$attr.' classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"  '.$width.' '.$height.'  >';
-			$html .='<param name="movie" value="'.ECMS_PATH_AD_URL.'/'.$ad['adFiles'].'" />';
-			$html .='<param name="wmode" value="transparent" />';
-			$html .='<param name="quality" value="high" />';
-			$html .='<embed wmode="transparent" src="'.ECMS_PATH_AD_URL.'/'.$ad['adFiles'].'" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"   '.$width.' '.$height.'  ></embed>';
-			$html .='</object>';
-		}
-		return $html;
+			
+			$adArr[$i] = $html;
+		}	
+		return $adArr;
 	}
 	/**
 	 * 根据广告Id获取某条广告

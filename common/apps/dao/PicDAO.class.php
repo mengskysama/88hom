@@ -12,47 +12,56 @@ class PicDAO  {
 	}
 	//发布图片
 	public function release($pic){
-		$sql="insert into ecms_pic(picBuildId,pictypeId,picBuildType,picSellRent,picUrl,picThumb,picState,picCreateTime,picUpdateTime) values("
-										.(empty($pic['picBuildId'])?'':$pic['picBuildId'])
+		$sql="insert into ecms_pic(picBuildId,pictypeId,picBuildFatherType,picBuildType,picSellRent,picUrl,picThumb,picInfo,picLayer,picState,picCreateTime,picUpdateTime) values("
+										.(empty($pic['picBuildId'])?0:$pic['picBuildId'])
 										.",".(empty($pic['pictypeId'])?0:$pic['pictypeId'])
+										.",".(empty($pic['picBuildFatherType'])?0:$pic['picBuildFatherType'])
 										.",".(empty($pic['picBuildType'])?0:$pic['picBuildType'])
 										.",".(empty($pic['picSellRent'])?0:$pic['picSellRent'])
-										.",'".(empty($pic['picUrl'])?0:$pic['picUrl'])
-										."','".(empty($pic['picThumb'])?0:$pic['picThumb'])
-										."',".(empty($pic['picState'])?0:$pic['picState'])
+										.",'".(empty($pic['picUrl'])?'':$pic['picUrl'])
+										."','".(empty($pic['picThumb'])?'':$pic['picThumb'])
+										."','".(empty($pic['picInfo'])?'':$pic['picInfo'])
+										."',".(empty($pic['picLayer'])?0:$pic['picLayer'])
+										.",".(empty($pic['picState'])?0:$pic['picState'])
 										.",".time()
 										.",".time()
 										.")";
+		echo '|'.$sql.'|<br/>';
 			return $this->db->getQueryExecute($sql);						
 	}
 	//修改图片
 	public function modify($pic){
 		$sql="update ecms_pic set picBuildId="
-			.empty($pic['picBuildId'])?0:$pic['picBuildId']
-			.",picId=".empty($pic['picId'])?0:$pic['picId']
-			.",picBuildType=".empty($pic['picBuildType'])?0:$pic['picBuildType']
-			.",picSellRent=".empty($pic['picSellRent'])?0:$pic['picSellRent']
-			.",picUrl='".empty($pic['picUrl'])?'':$pic['picUrl']
-			."',picThumb='".empty($pic['picThumb'])?'':$pic['picThumb']
-			."',picIsdelete=".empty($pic['picIsdelete'])?0:$pic['picIsdelete']
-			.",picState=".empty($pic['picState'])?0:$pic['picState']
+			.(empty($pic['picBuildId'])?0:$pic['picBuildId'])
+			.",pictypeId=".(empty($pic['pictypeId'])?0:$pic['pictypeId'])
+			.",picBuildFatherType=".(empty($pic['picBuildFatherType'])?0:$pic['picBuildFatherType'])
+			.",picBuildType=".(empty($pic['picBuildType'])?0:$pic['picBuildType'])
+			.",picSellRent=".(empty($pic['picSellRent'])?0:$pic['picSellRent'])
+			.",picUrl='".(empty($pic['picUrl'])?'':$pic['picUrl'])
+			."',picThumb='".(empty($pic['picThumb'])?'':$pic['picThumb'])
+			."',picInfo='".(empty($pic['picInfo'])?'':$pic['picInfo'])
+			."',picLayer=".(empty($pic['picLayer'])?0:$pic['picLayer'])
+			.",picState=".(empty($pic['picState'])?0:$pic['picState'])
 			.",picUpdateTime=".time()
 			." where picId=".$pic['picId'];
 		return $this->db->getQueryExeCute($sql);
 	}
-	//added by Cheneil
 	//删除图片
 	public function delPicById($id){
-		$sql="update ecms_pic set picState=0 where picId=".$id;
+		$sql="delete from  ecms_pic where picId=".$id;
 		return $this->db->getQueryExecute($sql);
 	}
+	//added by Cheneil
 	public function delPicByPropIdAndType($picBuildType,$propId){
 		$sql="update ecms_pic set picState=0 where picBuildType=".$picBuildType." and picBuildId=".$propId;
 		//echo $sql;
 		return $this->db->getQueryExecute($sql);
 	}
 	//end to be added by Cheneil
-	
+	public function delPic($where){
+		$sql="delete from ecms_pic $where";
+		return $this->db->getQueryExecute($sql);
+	}
 	/**
 	 * 获取图片
 	 * @param string $where 
