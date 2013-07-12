@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-05 23:16:30
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-12 22:59:20
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_sp_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:584351d6dc4d842336-99623726%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd0e1796bb38779642044483dd16e10cace941006' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_sp_edit.tpl',
-      1 => 1373037360,
+      1 => 1373637310,
       2 => 'file',
     ),
   ),
@@ -23,6 +23,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'jsFiles' => 0,
     'cssFiles' => 0,
     'ckeditLib' => 0,
+    'timestamp' => 0,
+    'token' => 0,
     'estId' => 0,
     'estName' => 0,
     'shopsAddress' => 0,
@@ -53,7 +55,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'shopsAimOperastion7' => 0,
     'shopsAimOperastion8' => 0,
     'shopsAimOperastion9' => 0,
-    'propPhoto' => 0,
+    'propertyDetailPicList' => 0,
+    'key_' => 0,
+    'item_' => 0,
     'shopsTitle' => 0,
     'shopsContent' => 0,
     'propId' => 0,
@@ -83,6 +87,13 @@ $(function() {
             $("#btn_update").removeAttr("disabled");
         }
     });
+    initPicUp('<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['token']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['file_path_upload'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_path'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_common'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+');
 });
   
 function check(){
@@ -92,13 +103,6 @@ function check(){
 	if(!checkPropFee('shopsPropFee',true)) return false;
 	if(!CheckBuildingArea('shopsBuildArea',true)) return false;
 	if(!CheckFloor('shopsFloor','shopsAllFloor',true)) return false;
-	/*
-	var housePhotoValue = $("#shopPhoto").val();
-	if(trim(housePhotoValue) == ''){
-		alert("请上传图片");
-		return false;
-	}
-	*/
 	if(!CheckTitle('shopsTitle',true)) return false;
 	var houseContentValue = CKEDITOR.instances.shopsContent.getData(); 
 	if(trim(houseContentValue) == ''){
@@ -122,10 +126,11 @@ function check(){
   	<div class="qg_r">
     <p>你的位置: <a href="#">编辑商铺出售房源</a></p>
    	<div class="qg_bs">
+            <form id="spForm" name="spForm" action="property_handler.php" method="post" enctype="multipart/form-data">
           <div class="bs_tx">
             <p><b>基本资料</b></p>
-            <form id="spForm" name="spForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="sp">
+            <input type="hidden" name="prop_tx_type" value="1">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 商铺名称</td>
@@ -140,51 +145,9 @@ function check(){
 " />  </td>
   </tr>
   <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 区    域</td>
-    <td align="left" valign="middle" class="p25">
-		<div>
-			<div id="showselectdc">
- 				<table style="display: block;">
-					<tr>
-						<td width="120">
-							<combobox id="input_y_str_DISTRICT0" width="100" labelposition="top" columns="3"
-								groupclass="group" itemclass="item999" itemoverclass="itemOver" itemselectedclass="itemFocus"
-                        		text="请选择区县" value="">
-                                       
-								<tip position="frameTop"><div align="center" class="tip">请选择区县</div></tip>
-								
-							</combobox>
-                  		</td>
-            			<td width="100">
-                    		<combobox id="input_y_str_COMAREA0" width="100" labelposition="left" columns="3"
-                           		groupclass="group" itemclass="item999" itemoverclass="itemOver" itemselectedclass="itemFocus"
-                            	text="请选择商圈" value="">
-								<tip position="frameTop"><div align="center" class="tip">请先选择区县</div></tip>	
-							</combobox>
-                         </td>
-          				<td><span class="alert01" style=" display: none" id="input_DISTRICT_tip">请选择区县</span></td>
-                        <td><span class="alert01" style=" display: none" id="input_COMAREA_tip">请选择商圈</span></td>
-					</tr>
-				</table>
-			</div>
-            <div id="showprojdc" style="display: none">
-            </div>
-                                
-            <div style="display: none;" id="uHouseDicDiv" >
-                <a id="AddHouseAliasHref" target="_blank">完善楼盘信息</a>
-            </div>
-                                  
-            <input type="hidden" id="input_DISTRICT" name="input_y_str_DISTRICT" />
-            <input type="hidden" id="input_COMAREA" name="input_y_str_COMAREA" />
-            <input type="hidden" id="hdHouseDicCity" name="hdHouseDicCity" value="1" />
-
-		</div>
-    </td>
-  </tr>
-  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"> 房源信息编码</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsNumber" name="shopsNumber" type="text" value="<?php echo $_smarty_tpl->tpl_vars['shopsNumber']->value;?>
-" maxlength="12" onblur="CheckInfoCode('shopsNumber',true)" /></td>
+" maxlength="12" /></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">类    别</td>
@@ -198,23 +161,23 @@ function check(){
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  售    价</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsSellPrice" name="shopsSellPrice" type="text" value="<?php echo $_smarty_tpl->tpl_vars['shopsSellPrice']->value;?>
-" onblur="CheckPrice('shopsSellPrice',true,'CS');" /> <font class="z3">万元/套</font></td>
+" /> <font class="z3">万元/套</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 物 业 费</td>
     <td align="left" valign="middle" class="p25 grzc_32"><input id="shopsPropFee" name="shopsPropFee" type="text" value="<?php echo $_smarty_tpl->tpl_vars['shopsPropFee']->value;?>
-" onblur="checkPropFee('shopsPropFee',true);" /> <font class="z3">元/平米</font></td>
+" /> <font class="z3">元/平米</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsBuildArea" name="shopsBuildArea" type="text" value="<?php echo $_smarty_tpl->tpl_vars['shopsBuildArea']->value;?>
-" maxlength="8" onblur="CheckBuildingArea('shopsBuildArea',true);" /> <font class="z3">平方米</font></td>
+" maxlength="8" /> <font class="z3">平方米</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼    层</td>
     <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="shopsFloor" name="shopsFloor" type="text" value="<?php echo $_smarty_tpl->tpl_vars['shopsFloor']->value;?>
-" onblur="CheckFloor('shopsFloor','shopsAllFloor',true);" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="shopsAllFloor" name="shopsAllFloor" type="text" value="<?php echo $_smarty_tpl->tpl_vars['shopsAllFloor']->value;?>
-" onblur="CheckFloor('shopsFloor','shopsAllFloor',true);" /> <font class="z3">层</font> 地下室请填写负数</td>
+" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="shopsAllFloor" name="shopsAllFloor" type="text" value="<?php echo $_smarty_tpl->tpl_vars['shopsAllFloor']->value;?>
+" /> <font class="z3">层</font> 地下室请填写负数</td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否可分割</td>
@@ -284,17 +247,48 @@ function check(){
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
-			    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
-					<input id="shopPhoto" name="shopPhoto" type="file" value="" /><br>
-    				<img src="http://localhost/88hom/uploads/community/<?php echo $_smarty_tpl->tpl_vars['propPhoto']->value;?>
-" class="l">
+				<td><input type="file" name="file_upload" id="file_upload"/></td>
+			    <td >
+					<div id="showImg" style="float: left;">		
+						<?php  $_smarty_tpl->tpl_vars['item_'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item_']->_loop = false;
+ $_smarty_tpl->tpl_vars['key_'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['propertyDetailPicList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item_']->key => $_smarty_tpl->tpl_vars['item_']->value){
+$_smarty_tpl->tpl_vars['item_']->_loop = true;
+ $_smarty_tpl->tpl_vars['key_']->value = $_smarty_tpl->tpl_vars['item_']->key;
+?>
+						<span style="float:left;margin:5px;line-height:25px;" id="pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
+">
+						<a target="_blank" href="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+uploads/<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
+">
+			        	<img height="200px" src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+uploads/<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
+"/>
+			       		</a><br/>
+			       		描述：<input type="text" name="picName[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picInfo'];?>
+"/><br/>
+			       		序号：<input type="text" name="picLayer[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picLayer'];?>
+"/>
+			        	<input type="button" name="deletePic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
+" onclick="dropContainer('pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
+');" value="删除"/>
+			        	<input type="hidden" name="picPath[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
+"/>
+			        	<input type="hidden" name="picPathThumb[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
+"/>
+			        	<input type="hidden" name="picTypeId[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['pictypeId'];?>
+"/>
+			        	</span>
+						<?php } ?>	
+					</div>
 			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
 			    <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
 			    	<input id="shopsTitle" name="shopsTitle" type="text" value="<?php echo $_smarty_tpl->tpl_vars['shopsTitle']->value;?>
-" maxlength="60" onblur="CheckTitle('shopsTitle',true);" onkeyup="textCounter(document.getElementById('shopsTitle'),document.getElementById('shopsTitleAlert'),30);" /> 还可写<span id="shopsTitleAlert"><font class="red">30</font></span>个汉字</td>
+" maxlength="60" onkeyup="textCounter(document.getElementById('shopsTitle'),document.getElementById('shopsTitleAlert'),30);" /> 还可写<span id="shopsTitleAlert"><font class="red">30</font></span>个汉字</td>
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>

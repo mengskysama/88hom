@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-11 23:33:28
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-12 22:17:57
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_xzl_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2185951d79f85c6c657-43680696%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7ff33105dd307131867cb3fe059b9c8be549b283' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_xzl_edit.tpl',
-      1 => 1373556762,
+      1 => 1373637310,
       2 => 'file',
     ),
   ),
@@ -40,7 +40,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'propertyDetailPicList' => 0,
     'key_' => 0,
     'item_' => 0,
-    'key' => 0,
     'officeTitle' => 0,
     'officeContent' => 0,
     'propId' => 0,
@@ -52,7 +51,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
 " />
-<title>个人房源_写字楼</title>
+<title>编辑写字楼出售房源</title>
 <?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
@@ -226,7 +225,7 @@ uploads/<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
 "/>
         	<input type="hidden" name="picPathThumb[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
 "/>
-        	<input type="hidden" name="picTypeId[]" value="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+        	<input type="hidden" name="picTypeId[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['pictypeId'];?>
 "/>
         	</span>
 			<?php } ?>	

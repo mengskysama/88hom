@@ -58,7 +58,39 @@ class SecondHandPropertyService{
 	}
 	
 	private function updateProperty($dao,$property){
-		$result = $this->officeDAO->modify($office);
+
+		$result = $dao->modify($property);
+		if($result>0){
+			$where="where picBuildId=".$property['propId']." and picBuildType=".$property['picBuildType'];
+			$result=$this->picDAO->delPic($where);
+			if($result<0) return false;
+		
+			if(!empty($property['propertyPhoto'])){
+				$photos = $property['propertyPhoto'];
+				$len = count($photos);
+				//echo 'len='.$len."<br/>";
+				for($key=0; $key<$len; $key++){
+					$pic['picBuildId'] = $property['propId'];
+					$pic['picBuildType'] = $property['picBuildType'];
+					$pic['pictypeId'] = $photos[$key]['pictypeId'];
+					$pic['picSellRent'] = $photos[$key]['picSellRent'];
+					$pic['picUrl'] = $photos[$key]['picUrl'];
+					$pic['picThumb'] = $photos[$key]['picThumb'];
+					$pic['picInfo'] = $photos[$key]['picInfo'];
+					$pic['picLayer'] = $photos[$key]['picLayer'];
+					$pic['picState'] = $photos[$key]['picState'];
+					$pic['picBuildFatherType'] = 0;
+					//print_r($pic).'<br/>';
+					$this->picDAO->release($pic);
+						
+						
+					if($result<0){
+						return false;
+					}
+				}
+			}
+		}
+		return false;
 		
 	}
 	
@@ -69,15 +101,9 @@ class SecondHandPropertyService{
 	}
 
 	public function updateHouse($house){
-		
-		if(isset($house['propertyPhoto'])){
-			$propId = $house['houseId'];
-			$this->picDAO->delPicByPropIdAndType(1,$propId);
-			
-			$house['propId'] = $propId;
-			$this->savePhoto($house);
-		}
-		return $this->houseDAO->modify($house);
+		$house['picBuildType'] = 1;
+		$house['propId'] = $house['houseId'];
+		return $this->updateProperty($this->houseDAO, $house);
 	}
 	
 	public function saveOffice($office){
@@ -86,38 +112,9 @@ class SecondHandPropertyService{
 	}
 
 	public function updateOffice($office){
-		$result = $this->officeDAO->modify($office);
-		if($result>0){
-			$where="where picBuildId=".$office['officeId']." and picBuildType=3";
-			$result=$this->picDAO->delPic($where);
-			if($result<0) return false;
-		
-			if(!empty($office['propertyPhoto'])){
-				$photos = $office['propertyPhoto'];
-				$len = count($photos);
-				echo 'len='.$len."<br/>";
-				for($key=0; $key<$len; $key++){
-					$pic['picBuildId'] = $office['officeId'];
-					$pic['picBuildType'] = 3;
-					$pic['pictypeId'] = $photos[$key]['pictypeId'];
-					$pic['picSellRent'] = $photos[$key]['picSellRent'];
-					$pic['picUrl'] = $photos[$key]['picUrl'];
-					$pic['picThumb'] = $photos[$key]['picThumb'];
-					$pic['picInfo'] = $photos[$key]['picInfo'];
-					$pic['picLayer'] = $photos[$key]['picLayer'];
-					$pic['picState'] = $photos[$key]['picState'];
-					$pic['picBuildFatherType'] = 0;
-					print_r($pic).'<br/>';
-					$this->picDAO->release($pic);
-							
-					
-					if($result<0){
-						return false;
-					} 
-				}
-			}
-		}
-		return false;
+		$office['picBuildType'] = 3;
+		$office['propId'] = $office['officeId'];
+		return $this->updateProperty($this->officeDAO, $office);
 	}
 	
 	public function saveShop($shop){
@@ -126,15 +123,9 @@ class SecondHandPropertyService{
 	}
 
 	public function updateShop($shop){
-		
-		if(isset($shop['propertyPhoto'])){
-			$propId = $shop['shopId'];
-			$this->picDAO->delPicByPropIdAndType(2,$propId);
-			
-			$shop['propId'] = $propId;
-			$this->savePhoto($shop);
-		}
-		return $this->shopsDAO->modify($shop);
+		$shop['picBuildType'] = 2;
+		$shop['propId'] = $shop['shopId'];
+		return $this->updateProperty($this->shopsDAO, $shop);
 	}
 	
 	public function saveFactory($factory){
@@ -148,15 +139,9 @@ class SecondHandPropertyService{
 	}
 
 	public function updateVilla($villa){
-		
-		if(isset($villa['propertyPhoto'])){
-			$propId = $villa['villaId'];
-			$this->picDAO->delPicByPropIdAndType(4,$propId);
-			
-			$villa['propId'] = $propId;
-			$this->savePhoto($villa);
-		}
-		return $this->villaDAO->modify($villa);
+		$villa['picBuildType'] = 4;
+		$villa['propId'] = $villa['villaId'];
+		return $this->updateProperty($this->villaDAO, $villa);
 	}
 	
 	public function getHousePropertyById($userId,$propId){

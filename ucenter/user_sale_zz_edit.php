@@ -22,7 +22,9 @@ if($property){
 	$houseBuildForm = $property['houseBuildForm'];
 	$houseBuildArea = $property['houseBuildArea'];
 	$houseUseArea = $property['houseUseArea'];
+	$houseUseArea = $houseUseArea == 0 ? "" : $houseUseArea;
 	$houseBuildYear = $property['houseBuildYear'];
+	$houseBuildYear = $houseBuildYear == 0 ? "" : $houseBuildYear;
 	$houseFloor = $property['houseFloor'];
 	$houseAllFloor = $property['houseAllFloor'];
 	$houseForward = $property['houseForward'];

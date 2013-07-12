@@ -136,10 +136,10 @@ function checkRentPrice(){
    	<div class="qg_bs">
             <form id="spForm" name="spForm" action="property_handler.php" method="post" enctype="multipart/form-data">
  		   <ul>
-   			 	<li><a href="user_sale_zz.php">录入住宅出售房源</a></li>
-    		    <li><a href="user_sale_bs.php">录入别墅出售房源</a></li>
-     		    <li><a href="user_sale_sp.php">录入商铺出售房源</a></li>
-      		 	<li><a href="user_sale_xzl.php">录入写字楼出售房源</a></li>
+   			 	<li><a href="user_lease_zz.php">录入住宅出租房源</a></li>
+    		    <li><a href="user_lease_bs.php">录入别墅出租房源</a></li>
+     		    <li><a href="user_lease_sp.php">录入商铺出租房源</a></li>
+      		 	<li><a href="user_lease_xzl.php">录入写字楼出租房源</a></li>
    		  </ul>
           <div class="bs_tx">
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>

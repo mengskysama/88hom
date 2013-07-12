@@ -1,13 +1,7 @@
 <?php
-require 'path.inc.php';
+require 'prop_input_path.inc.php';
 require 'check_login.php';
 $tpl_name = $tpl_dir.'user_lease_sp_edit.tpl';
-
-$html->addJs('jquery-ui-1.8.21.custom.min.js');
-$html->addJs('ucenter_property_input.js');
-$html->addCss('ucenter/jquery-ui.css');
-$html->addCss('ucenter/public.css');
-$html->show();
 
 $propId = getParameter("propId","GET");
 $propService = new SecondHandPropertyService($db);
@@ -47,7 +41,10 @@ if($property){
 		}
 	}
 	$picId = $property['picId'];
-	$propPhoto = $property['propPhoto'];
+	
+	$photo['picBuildIdId'] = $propId;
+	$photo['picBuildType'] = 2;
+	$propertyDetailPicList = $propService->getPropPhotos($photo);
 	$shopsTitle = $property['shopsTitle'];
 	$shopsContent = $property['shopsContent'];
 	
@@ -65,13 +62,10 @@ if($property){
 	$smarty->assign("shopsAllFloor",$shopsAllFloor);
 	$smarty->assign("shopsDivision",$shopsDivision);
 	$smarty->assign("shopsFitment",$shopsFitment);
-	$smarty->assign("picId",$picId);
-	$smarty->assign("propPhoto",$propPhoto);
+	$smarty->assign("propertyDetailPicList",$propertyDetailPicList);
 	$smarty->assign("shopsTitle",$shopsTitle);
 	$smarty->assign("shopsContent",$shopsContent);
 	$smarty->assign("propId",$propId);
 }
-$smarty->assign('ucenter_user_left_menu',$tpl_dir.'ucenter_user_left_menu.tpl');
-$smarty->assign('ckeditLib','../common/libs/fck/ckeditor/ckeditor.js');
 $smarty->display($tpl_name);
 ?>

@@ -43,9 +43,6 @@ $(function() {
 });
   
 function check(){
-	return true;;
-	//alert(document.getElementsByName("picPath")[0].value);
-	//return false;
 
 	var estNameValue = $("#estName").val();
 	if(trim(estNameValue) == ''){
@@ -70,7 +67,6 @@ function check(){
 	var houseContentValue = CKEDITOR.instances.houseContent.getData(); 
 	if(trim(houseContentValue) == ''){
 		alert("请填写房源描述");
-		$("#houseContent").focus();
 		return false;
 	}
 	

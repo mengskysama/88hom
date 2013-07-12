@@ -173,10 +173,6 @@ function checkVillaGarageCount(){
             <input type="hidden" name="prop_tx_type" value="1">
         <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
   <tr>
-    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">房源模板</td>
-    <td align="left" valign="middle" class="p25">还可保存6套 <span class="redlink"><a href="#">使用说明</a></span></td>
-  </tr>
-  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼盘名称</td>
     <td align="left" valign="middle" class="p25 grzc_31">
     <input type="hidden" id="estId" name="estId"/>

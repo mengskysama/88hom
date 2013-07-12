@@ -76,33 +76,24 @@ class ShopPropertyHandler extends PropertyHandler{
 	}
 	
 	private function updateProperty(){
-		$photoName = "";
-		if($this->shopPhoto['error'] == 0){
-	
-			$photoName = $this->uploadPhoto($this->shopPhoto,$this->shopUserId);
-			if(!$photoName) return false;
-		}
-		//echo $photoName;
 
-		$shop = $this->genPropEntity($this->estId,$photoName,"");
+		$shop = $this->genPropEntity($this->estId,"");
 		$shop["shopId"] = $this->shopId;
 		return $this->propertyService->updateShop($shop);
 	}
 	
 	private function createProperty(){
-		$photoName = $this->uploadPhoto($this->shopPhoto,$this->shopUserId);
-		if(!$photoName) return false;
 		
 		$realEstId = $this->getRealEstateId($this->estateService,$this->estId,$this->estName);
 		if(!$realEstId) return false;
 
-		$shop = $this->genPropEntity($realEstId,$photoName,$this->shopsState);
+		$shop = $this->genPropEntity($realEstId,$this->shopsState);
 		$shopId = $this->propertyService->saveShop($shop);
 		if(!$shopId) return false;
 		return true;
 	} 
 
-	private function genPropEntity($realEstId,$photoName,$shopState){
+	private function genPropEntity($realEstId,$shopState){
 
 		//save the property
 		$shopsBaseService = "";
@@ -156,11 +147,7 @@ class ShopPropertyHandler extends PropertyHandler{
 		if($realEstId){
 			$shop['shopsCommunityId'] = $realEstId;
 		}
-		if($photoName){
-			$shop['propertyPhoto']['picBuildType'] = 2;
-			$shop['propertyPhoto']['picSellRent'] = 1;
-			$shop['propertyPhoto']['picUrl'] = $photoName;
-		}
+		$shop['propertyPhoto'] = $this->shopPhoto;
 		return $shop;
 	}
 }

@@ -91,17 +91,20 @@ function CheckGardenArea(keyName,flag){
     
     if(value==''){
     	alert("请填写花园面积");
+		$("#"+keyName).focus();
         return false;
     }
         
     if(check_float(keyName)){
     	if(parseFloat(value)<=2||parseFloat(value)>=10000){
     		alert("花园面积必须大于2且小于10000");
+    		$("#"+keyName).focus();
     		return false;
     	}
     	return true;
 	}else{
         alert("只能填写数字");
+		$("#"+keyName).focus();
         return false;
 	}
 }
@@ -113,17 +116,20 @@ function CheckCellarArea(keyName,flag){
     
     if(value==''){
     	alert("请填写地下室面积");
+		$("#"+keyName).focus();
         return false;
     }
         
     if(check_float(keyName)){
     	if(parseFloat(value)<=2||parseFloat(value)>=10000){
     		alert("地下室面积必须大于2且小于10000");
+    		$("#"+keyName).focus();
     		return false;
     	}
     	return true;
 	}else{
         alert("只能填写数字");
+		$("#"+keyName).focus();
         return false;
 	}
 }
@@ -143,6 +149,32 @@ function CheckBuildingArea(KeyName,flag)
     if(check_float(KeyName)){
     	if(parseFloat(value)<=2||parseFloat(value)>=10000){
     		alert("建筑面积必须大于2且小于10000");
+    		$("#"+KeyName).focus();
+    		return false;
+    	}
+    	return true;
+	}else{
+        alert("只能填写数字");
+		$("#"+KeyName).focus();
+        return false;
+	}
+}
+function CheckRentArea(KeyName,flag)
+{
+    if(!flag) return false;
+    
+    document.getElementById(KeyName).value = document.getElementById(KeyName).value.toLowerCase();
+    var value=document.getElementById(KeyName).value;
+    
+    if(value==''){
+    	alert("请填写出租面积");
+		$("#"+KeyName).focus();
+        return false;
+    }
+        
+    if(check_float(KeyName)){
+    	if(parseFloat(value)<=2||parseFloat(value)>=10000){
+    		alert("出租面积必须大于2且小于10000");
     		$("#"+KeyName).focus();
     		return false;
     	}
@@ -376,6 +408,7 @@ function checkPropFee(KeyName,flag){
 	var value = document.getElementById(KeyName).value;
 	if(trim(value) == "" && flag) {
     	alert("请填写物业费");
+		$("#"+KeyName).focus();
     	return false;
 	}
 	
@@ -383,10 +416,12 @@ function checkPropFee(KeyName,flag){
 		if(parseFloat(value)<0 || parseFloat(value)>=1000000){
 			alert("物业费要小于100万元");
             return false;
+    		$("#"+KeyName).focus();
 		}
 		return true;
     }else{
     	alert("只能填写数字");
+		$("#"+KeyName).focus();
     	return false;
     }
 
@@ -397,17 +432,20 @@ function CheckSwatchPriceOffice(KeyNamePrice) {
     var valuePrice = document.getElementById(KeyNamePrice).value;
     if(trim(valuePrice) == ''){
     	alert("请填写单价");
+		$("#"+KeyNamePrice).focus();
     	return false;
     }
     
     if(check_float(KeyNamePrice)){
     	if(parseFloat(valuePrice)<=0 || parseFloat(valuePrice)>200000){
     		alert("单价要大于0元小于200000元");
+    		$("#"+KeyNamePrice).focus();
     		return false;
     	}
     	return true;
     }else{
     	alert("只能填写数字");
+		$("#"+KeyNamePrice).focus();
     	return false;
     }
 }

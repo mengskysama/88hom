@@ -28,7 +28,7 @@ class ShopsDAO{
 			  ".(empty($info['shopsDivision'])?0:$info['shopsDivision']).",
 			  ".(empty($info['shopsFitment'])?0:$info['shopsFitment']).",
 			  '".(empty($info['shopsBaseService'])?'':$info['shopsBaseService'])."',
-			  '".(empty($info['shopsAimOperasion'])?'':$info['shopsAimOperasion'])."',
+			  '".(empty($info['shopsAimOperastion'])?'':$info['shopsAimOperastion'])."',
 			  ".(empty($info['shopsIncludFee'])?0:$info['shopsIncludFee']).",
 			  ".(empty($info['shopsPropFee'])?0:$info['shopsPropFee']).",
 			  '".(empty($info['shopsTransferFee'])?'':$info['shopsTransferFee'])."',

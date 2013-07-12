@@ -26,7 +26,7 @@ class PicDAO  {
 										.",".time()
 										.",".time()
 										.")";
-		echo '|'.$sql.'|<br/>';
+		//echo '|'.$sql.'|<br/>';
 			return $this->db->getQueryExecute($sql);						
 	}
 	//修改图片

@@ -66,3 +66,8 @@ insert into ecms_pic(picBuildId,pictypeId,picBuildFatherType,picBuildType,picSel
 ,0,3,1,'2hand/20130712155713.jpg','2hand/20130712155713_thumb.jpg','',1,1,1373615979,1373615979)
 客户端:127.0.0.1
 时间:2013-07-12 15:59:39
+------------------------2013-07-12 22:18:30
+错误SQL语句：
+delete from ecms_pic where picBuildId= and picBuildType=3
+客户端:127.0.0.1
+时间:2013-07-12 22:18:30

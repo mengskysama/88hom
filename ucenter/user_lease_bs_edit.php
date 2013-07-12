@@ -1,13 +1,7 @@
 <?php
-require 'path.inc.php';
+require 'prop_input_path.inc.php';
 require 'check_login.php';
 $tpl_name = $tpl_dir.'user_lease_bs_edit.tpl';
-
-$html->addJs('jquery-ui-1.8.21.custom.min.js');
-$html->addJs('ucenter_property_input.js');
-$html->addCss('ucenter/jquery-ui.css');
-$html->addCss('ucenter/public.css');
-$html->show();
 
 $propId = getParameter("propId","GET");
 $propService = new SecondHandPropertyService($db);
@@ -62,8 +56,10 @@ if($property){
 		}
 	}
 	$villaLookTime = $property['villaLookTime'];
-	$picId = $property['picId'];
-	$propPhoto = $property['propPhoto'];
+	
+	$photo['picBuildIdId'] = $propId;
+	$photo['picBuildType'] = 4;
+	$propertyDetailPicList = $propService->getPropPhotos($photo);
 	$villaTitle = $property['villaTitle'];
 	$villaContent = $property['villaContent'];
 
@@ -94,13 +90,10 @@ if($property){
 	$smarty->assign("villaGarageCount",$villaGarageCount);
 	$smarty->assign("villaFitment",$villaFitment);
 	$smarty->assign("villaLookTime",$villaLookTime);
-	$smarty->assign("picId",$picId);
-	$smarty->assign("propPhoto",$propPhoto);
+	$smarty->assign("propertyDetailPicList",$propertyDetailPicList);
 	$smarty->assign("villaTitle",$villaTitle);
 	$smarty->assign("villaContent",$villaContent);
 	$smarty->assign("propId",$propId);
 }
-$smarty->assign('ucenter_user_left_menu',$tpl_dir.'ucenter_user_left_menu.tpl');
-$smarty->assign('ckeditLib','../common/libs/fck/ckeditor/ckeditor.js');
 $smarty->display($tpl_name);
 ?>

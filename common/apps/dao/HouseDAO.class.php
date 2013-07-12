@@ -33,7 +33,7 @@ class HouseDAO  {
 									.",".(empty($house['houseRentArea'])?0:$house['houseRentArea'])
 									.",".(empty($house['houseType'])?0:$house['houseType'])
 									.",".(empty($house['houseBuildStructure'])?0:$house['houseBuildStructure'])
-									.",'".(empty($house['houseBuildForm'])?0:$house['houseBuildForm'])
+									.",'".(empty($house['houseBuildForm'])?'':$house['houseBuildForm'])
 									."',".(empty($house['houseForward'])?0:$house['houseForward'])
 									.",".(empty($house['houseFitment'])?0:$house['houseFitment'])
 									.",'".(empty($house['houseBaseService'])?'':$house['houseBaseService'])

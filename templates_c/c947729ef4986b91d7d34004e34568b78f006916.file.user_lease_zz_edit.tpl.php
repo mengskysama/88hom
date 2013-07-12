@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-07 22:48:10
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-12 23:40:15
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_lease_zz_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1503551d910caf2cd07-06771959%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c947729ef4986b91d7d34004e34568b78f006916' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_lease_zz_edit.tpl',
-      1 => 1373208488,
+      1 => 1373637310,
       2 => 'file',
     ),
   ),
@@ -23,6 +23,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'jsFiles' => 0,
     'cssFiles' => 0,
     'ckeditLib' => 0,
+    'timestamp' => 0,
+    'token' => 0,
     'estId' => 0,
     'estName' => 0,
     'houseNumber' => 0,
@@ -52,7 +54,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'houseBaseService6' => 0,
     'houseBaseService7' => 0,
     'houseBaseService8' => 0,
-    'propPhoto' => 0,
+    'propertyDetailPicList' => 0,
+    'key_' => 0,
+    'item_' => 0,
     'houseTitle' => 0,
     'houseContent' => 0,
     'propId' => 0,
@@ -64,7 +68,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
 " />
-<title>录入住宅出租房源</title>
+<title>编辑住宅出租房源</title>
 <?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
@@ -82,6 +86,14 @@ $(function() {
             $("#btn_update").removeAttr("disabled");
         }
     });
+    initPicUp('<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['token']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['file_path_upload'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_path'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_common'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+');
+        
 });
   
 function check(){
@@ -132,17 +144,20 @@ function checkRentPrice(){
     var value=document.getElementById("houseSellPrice").value;
     if(trim(value) == ''){
 		alert("请填写租金");
+		$("#houseSellPrice").focus();
         return false;
     }
 
     if(check_float("houseSellPrice")){
         if(parseFloat(value)<=100||parseFloat(value)>=300000){
             alert("租金要大于100元小于30万元");
+			$("#houseSellPrice").focus();
         	return false;
         }
 		return true;
     }else{
 		alert("只能填写数字");
+		$("#houseSellPrice").focus();
 		return false;
     }
 }
@@ -161,9 +176,9 @@ function checkRentPrice(){
     <div class="qg_r">
     <p>你的位置: <a href="#">编辑住宅出租房源</a></p>
    	<div class="qg_bs">
+            <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
           <div class="bs_tx">
             <p><b>基本资料</b></p>
-            <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="zz">
             <input type="hidden" name="prop_tx_type" value="2">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
@@ -177,7 +192,7 @@ function checkRentPrice(){
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">房源信息编码</td>
 			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseNumber" name="houseNumber" type="text" value="<?php echo $_smarty_tpl->tpl_vars['houseNumber']->value;?>
-" maxlength="12" onblur="CheckInfoCode('houseNumber',true)" /> </td>
+" maxlength="12" /> </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">内部编码</td>
@@ -201,7 +216,7 @@ function checkRentPrice(){
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 租   金</td>
 			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseSellPrice" name="houseSellPrice" type="text" value="<?php echo $_smarty_tpl->tpl_vars['houseSellPrice']->value;?>
-" onblur="checkRentPrice();" /> 元/月</td>
+"/> 元/月</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>租赁方式</td>
@@ -235,7 +250,7 @@ function checkRentPrice(){
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
-			    <input id="housePayment" name="housePayment" type="radio" value="1" <?php if ($_smarty_tpl->tpl_vars['housePayment']->value==1){?> checked="checked" <?php }?>  onclick="changepaydetail()"/>押&nbsp;
+			    <input id="housePayment" name="housePayment" type="radio" value="1" <?php if ($_smarty_tpl->tpl_vars['housePayment']->value==1){?> checked="checked" <?php }?> onclick="changepaydetail()"/>押&nbsp;
 				<select name="housePayDetailY" id="housePayDetailY" style=" vertical-align:middle">
 				<option value="">请选择</option>
 				<option <?php if ($_smarty_tpl->tpl_vars['housePayDetailY']->value==0){?> selected="selected" <?php }?> value="0">零</option>
@@ -259,13 +274,13 @@ function checkRentPrice(){
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 出租面积</td>
 			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseRentArea" name="houseRentArea" type="text"value="<?php echo $_smarty_tpl->tpl_vars['houseRentArea']->value;?>
-" onblur="checkRentPrice();" maxlength="8" onblur="CheckBuildingArea('houseRentArea',true);"/> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
+"" maxlength="8" onblur="CheckBuildingArea('houseRentArea',true);"/> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼    层</td>
 			    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="houseFloor" name="houseFloor" type="text"value="<?php echo $_smarty_tpl->tpl_vars['houseFloor']->value;?>
-" onblur="checkRentPrice();" onblur="CheckFloor('houseFloor','houseAllFloor',true);" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="houseAllFloor" name="houseAllFloor" type="text"value="<?php echo $_smarty_tpl->tpl_vars['houseAllFloor']->value;?>
-" onblur="checkRentPrice();" onblur="CheckFloor('houseFloor','houseAllFloor',true);" /> <font class="z3">层</font> 地下室请填写负数</td>
+"/> <font class="z3">层</font>   <font class="z3">共</font> <input id="houseAllFloor" name="houseAllFloor" type="text"value="<?php echo $_smarty_tpl->tpl_vars['houseAllFloor']->value;?>
+"/> <font class="z3">层</font> 地下室请填写负数</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">朝    向</td>
@@ -322,17 +337,48 @@ function checkRentPrice(){
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
-			    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
-			    	<input id="housePhoto" name="housePhoto" type="file"/><br>
-    	<img src="http://localhost/88hom/uploads/community/<?php echo $_smarty_tpl->tpl_vars['propPhoto']->value;?>
-" class="l">
+				<td><input type="file" name="file_upload" id="file_upload"/></td>
+			    <td >
+					<div id="showImg" style="float: left;">		
+						<?php  $_smarty_tpl->tpl_vars['item_'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item_']->_loop = false;
+ $_smarty_tpl->tpl_vars['key_'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['propertyDetailPicList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item_']->key => $_smarty_tpl->tpl_vars['item_']->value){
+$_smarty_tpl->tpl_vars['item_']->_loop = true;
+ $_smarty_tpl->tpl_vars['key_']->value = $_smarty_tpl->tpl_vars['item_']->key;
+?>
+						<span style="float:left;margin:5px;line-height:25px;" id="pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
+">
+						<a target="_blank" href="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+uploads/<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
+">
+			        	<img height="200px" src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+uploads/<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
+"/>
+			       		</a><br/>
+			       		描述：<input type="text" name="picName[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picInfo'];?>
+"/><br/>
+			       		序号：<input type="text" name="picLayer[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picLayer'];?>
+"/>
+			        	<input type="button" name="deletePic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
+" onclick="dropContainer('pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
+');" value="删除"/>
+			        	<input type="hidden" name="picPath[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
+"/>
+			        	<input type="hidden" name="picPathThumb[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
+"/>
+			        	<input type="hidden" name="picTypeId[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['pictypeId'];?>
+"/>
+			        	</span>
+						<?php } ?>	
+					</div>
 			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
 			    <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
 			    	<input id="houseTitle" name="houseTitle" type="text"  value="<?php echo $_smarty_tpl->tpl_vars['houseTitle']->value;?>
-" maxlength="60" onblur="CheckTitle('houseTitle',true);" onkeyup="textCounter(document.getElementById('houseTitle'),document.getElementById('houseTitleAlert'),30);" /> 还可写<span id="houseTitleAlert"><font class="red">30</font></span>个汉字</td>
+" maxlength="60" onkeyup="textCounter(document.getElementById('houseTitle'),document.getElementById('houseTitleAlert'),30);" /> 还可写<span id="houseTitleAlert"><font class="red">30</font></span>个汉字</td>
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>

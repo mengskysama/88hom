@@ -62,7 +62,6 @@ if($propType == "zz"){
 	$housePayDetailF = getParameter("housePayDetailF");
 	$houseRentArea = getParameter("houseRentArea");
 
-	$propPhoto['picBuildType'] = 1;
 	$propHandler = new HousePropertyHandler($db,$estId,$estName,$houseNumber,$privateHouseNumber,$housePayInfo,
 											$houseType,$houseSellPrice,$houseRoom,$houseHall,$houseToilet,$houseKitchen,
 											$houseBalcony,$houseBuildArea,$houseUseArea,$houseBuildYear,$houseFloor,
@@ -106,7 +105,6 @@ if($propType == "zz"){
 	$villaPayment = getParameter("villaPayment");
 	$villaPayDetailY = getParameter("villaPayDetailY");
 	$villaPayDetailF = getParameter("villaPayDetailF");
-	$propPhoto['picBuildType'] = 4;
 	
 	$propHandler = new VillaPropertyHandler($db,$estId,$estName,$villaNumber,$privateHouseNumber,$villaBuildForm,$villaSellPrice,$villaRoom,$villaHall,
 											$villaToilet,$villaKitchen,$villaBalcony,$villaBuildArea,$villaUseArea,$villaBuildYear,
@@ -157,7 +155,6 @@ if($propType == "zz"){
 	$shopId = getParameter("propId");
 	$shopsRentPrice = getParameter("shopsRentPrice");
 	$shopsRentPriceUnit = getParameter("shopsRentPriceUnit");
-	$propPhoto['picBuildType'] = 2;
 	
 	$propHandler = new ShopPropertyHandler($db,$estId,$estName,$shopsAddress,$shopsType,$shopsAreaId,$shopsNumber,
 											$shopsSellPrice,$shopsPropFee,$shopsBuildArea,$shopsFloor,$shopsAllFloor,$shopsDivision,
