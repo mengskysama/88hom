@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
-<title>录入住宅出租房源</title>
+<title>编辑住宅出租房源</title>
 <!--{$jsFiles}-->
 <!--{$cssFiles}-->
 <script language="JavaScript" type="text/javascript" src="<!--{$ckeditLib}-->"></script>
@@ -17,6 +17,8 @@ $(function() {
             $("#btn_update").removeAttr("disabled");
         }
     });
+    initPicUp('<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
+        
 });
   
 function check(){
@@ -67,17 +69,20 @@ function checkRentPrice(){
     var value=document.getElementById("houseSellPrice").value;
     if(trim(value) == ''){
 		alert("请填写租金");
+		$("#houseSellPrice").focus();
         return false;
     }
 
     if(check_float("houseSellPrice")){
         if(parseFloat(value)<=100||parseFloat(value)>=300000){
             alert("租金要大于100元小于30万元");
+			$("#houseSellPrice").focus();
         	return false;
         }
 		return true;
     }else{
 		alert("只能填写数字");
+		$("#houseSellPrice").focus();
 		return false;
     }
 }
@@ -94,9 +99,9 @@ function checkRentPrice(){
     <div class="qg_r">
     <p>你的位置: <a href="#">编辑住宅出租房源</a></p>
    	<div class="qg_bs">
+            <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
           <div class="bs_tx">
             <p><b>基本资料</b></p>
-            <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="zz">
             <input type="hidden" name="prop_tx_type" value="2">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
@@ -107,7 +112,7 @@ function checkRentPrice(){
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">房源信息编码</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseNumber" name="houseNumber" type="text" value="<!--{$houseNumber}-->" maxlength="12" onblur="CheckInfoCode('houseNumber',true)" /> </td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseNumber" name="houseNumber" type="text" value="<!--{$houseNumber}-->" maxlength="12" /> </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">内部编码</td>
@@ -124,7 +129,7 @@ function checkRentPrice(){
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 租   金</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseSellPrice" name="houseSellPrice" type="text" value="<!--{$houseSellPrice}-->" onblur="checkRentPrice();" /> 元/月</td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseSellPrice" name="houseSellPrice" type="text" value="<!--{$houseSellPrice}-->"/> 元/月</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>租赁方式</td>
@@ -158,7 +163,7 @@ function checkRentPrice(){
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
-			    <input id="housePayment" name="housePayment" type="radio" value="1" <!--{if $housePayment eq 1 }--> checked="checked" <!--{/if}-->  onclick="changepaydetail()"/>押&nbsp;
+			    <input id="housePayment" name="housePayment" type="radio" value="1" <!--{if $housePayment eq 1 }--> checked="checked" <!--{/if}--> onclick="changepaydetail()"/>押&nbsp;
 				<select name="housePayDetailY" id="housePayDetailY" style=" vertical-align:middle">
 				<option value="">请选择</option>
 				<option <!--{if $housePayDetailY eq 0 }--> selected="selected" <!--{/if}--> value="0">零</option>
@@ -181,11 +186,11 @@ function checkRentPrice(){
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 出租面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseRentArea" name="houseRentArea" type="text"value="<!--{$houseRentArea}-->" onblur="checkRentPrice();" maxlength="8" onblur="CheckBuildingArea('houseRentArea',true);"/> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseRentArea" name="houseRentArea" type="text"value="<!--{$houseRentArea}-->"" maxlength="8" onblur="CheckBuildingArea('houseRentArea',true);"/> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼    层</td>
-			    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="houseFloor" name="houseFloor" type="text"value="<!--{$houseFloor}-->" onblur="checkRentPrice();" onblur="CheckFloor('houseFloor','houseAllFloor',true);" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="houseAllFloor" name="houseAllFloor" type="text"value="<!--{$houseAllFloor}-->" onblur="checkRentPrice();" onblur="CheckFloor('houseFloor','houseAllFloor',true);" /> <font class="z3">层</font> 地下室请填写负数</td>
+			    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="houseFloor" name="houseFloor" type="text"value="<!--{$houseFloor}-->"/> <font class="z3">层</font>   <font class="z3">共</font> <input id="houseAllFloor" name="houseAllFloor" type="text"value="<!--{$houseAllFloor}-->"/> <font class="z3">层</font> 地下室请填写负数</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">朝    向</td>
@@ -234,15 +239,29 @@ function checkRentPrice(){
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
-			    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
-			    	<input id="housePhoto" name="housePhoto" type="file"/><br>
-    	<img src="http://localhost/88hom/uploads/community/<!--{$propPhoto}-->" class="l">
+				<td><input type="file" name="file_upload" id="file_upload"/></td>
+			    <td >
+					<div id="showImg" style="float: left;">		
+						<!--{foreach from=$propertyDetailPicList item=item_ key=key_}-->
+						<span style="float:left;margin:5px;line-height:25px;" id="pic_<!--{$key_}-->">
+						<a target="_blank" href="<!--{$cfg.web_url}-->uploads/<!--{$item_.picUrl}-->">
+			        	<img height="200px" src="<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->"/>
+			       		</a><br/>
+			       		描述：<input type="text" name="picName[]" value="<!--{$item_.picInfo}-->"/><br/>
+			       		序号：<input type="text" name="picLayer[]" value="<!--{$item_.picLayer}-->"/>
+			        	<input type="button" name="deletePic_<!--{$key_}-->" onclick="dropContainer('pic_<!--{$key_}-->');" value="删除"/>
+			        	<input type="hidden" name="picPath[]" value="<!--{$item_.picUrl}-->"/>
+			        	<input type="hidden" name="picPathThumb[]" value="<!--{$item_.picThumb}-->"/>
+			        	<input type="hidden" name="picTypeId[]" value="<!--{$item_.pictypeId}-->"/>
+			        	</span>
+						<!--{/foreach}-->	
+					</div>
 			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
 			    <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
-			    	<input id="houseTitle" name="houseTitle" type="text"  value="<!--{$houseTitle}-->" maxlength="60" onblur="CheckTitle('houseTitle',true);" onkeyup="textCounter(document.getElementById('houseTitle'),document.getElementById('houseTitleAlert'),30);" /> 还可写<span id="houseTitleAlert"><font class="red">30</font></span>个汉字</td>
+			    	<input id="houseTitle" name="houseTitle" type="text"  value="<!--{$houseTitle}-->" maxlength="60" onkeyup="textCounter(document.getElementById('houseTitle'),document.getElementById('houseTitleAlert'),30);" /> 还可写<span id="houseTitleAlert"><font class="red">30</font></span>个汉字</td>
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>

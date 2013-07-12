@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
-<title>个人房源_写字楼</title>
+<title>编辑写字楼出售房源</title>
 <!--{$jsFiles}-->
 <!--{$cssFiles}-->
 <script language="JavaScript" type="text/javascript" src="<!--{$ckeditLib}-->"></script>
@@ -140,7 +140,7 @@ function check(){
         	<input type="button" name="deletePic_<!--{$key_}-->" onclick="dropContainer('pic_<!--{$key_}-->');" value="删除"/>
         	<input type="hidden" name="picPath[]" value="<!--{$item_.picUrl}-->"/>
         	<input type="hidden" name="picPathThumb[]" value="<!--{$item_.picThumb}-->"/>
-        	<input type="hidden" name="picTypeId[]" value="<!--{$key}-->"/>
+        	<input type="hidden" name="picTypeId[]" value="<!--{$item_.pictypeId}-->"/>
         	</span>
 			<!--{/foreach}-->	
 		</div>

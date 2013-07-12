@@ -17,6 +17,7 @@ $(function() {
             $("#btn_update").removeAttr("disabled");
         }
     });
+    initPicUp('<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
 });
   
 function check(){
@@ -26,13 +27,6 @@ function check(){
 	if(!checkPropFee('shopsPropFee',true)) return false;
 	if(!CheckBuildingArea('shopsBuildArea',true)) return false;
 	if(!CheckFloor('shopsFloor','shopsAllFloor',true)) return false;
-	/*
-	var housePhotoValue = $("#shopPhoto").val();
-	if(trim(housePhotoValue) == ''){
-		alert("请上传图片");
-		return false;
-	}
-	*/
 	if(!CheckTitle('shopsTitle',true)) return false;
 	var houseContentValue = CKEDITOR.instances.shopsContent.getData(); 
 	if(trim(houseContentValue) == ''){
@@ -54,9 +48,9 @@ function check(){
   	<div class="qg_r">
     <p>你的位置: <a href="#">编辑商铺出售房源</a></p>
    	<div class="qg_bs">
+            <form id="spForm" name="spForm" action="property_handler.php" method="post" enctype="multipart/form-data">
           <div class="bs_tx">
             <p><b>基本资料</b></p>
-            <form id="spForm" name="spForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="sp">
             <input type="hidden" name="prop_tx_type" value="1">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
@@ -71,7 +65,7 @@ function check(){
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"> 房源信息编码</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsNumber" name="shopsNumber" type="text" value="<!--{$shopsNumber}-->" maxlength="12" onblur="CheckInfoCode('shopsNumber',true)" /></td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsNumber" name="shopsNumber" type="text" value="<!--{$shopsNumber}-->" maxlength="12" /></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">类    别</td>
@@ -84,19 +78,19 @@ function check(){
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  售    价</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsSellPrice" name="shopsSellPrice" type="text" value="<!--{$shopsSellPrice}-->" onblur="CheckPrice('shopsSellPrice',true,'CS');" /> <font class="z3">万元/套</font></td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsSellPrice" name="shopsSellPrice" type="text" value="<!--{$shopsSellPrice}-->" /> <font class="z3">万元/套</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 物 业 费</td>
-    <td align="left" valign="middle" class="p25 grzc_32"><input id="shopsPropFee" name="shopsPropFee" type="text" value="<!--{$shopsPropFee}-->" onblur="checkPropFee('shopsPropFee',true);" /> <font class="z3">元/平米</font></td>
+    <td align="left" valign="middle" class="p25 grzc_32"><input id="shopsPropFee" name="shopsPropFee" type="text" value="<!--{$shopsPropFee}-->" /> <font class="z3">元/平米</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsBuildArea" name="shopsBuildArea" type="text" value="<!--{$shopsBuildArea}-->" maxlength="8" onblur="CheckBuildingArea('shopsBuildArea',true);" /> <font class="z3">平方米</font></td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsBuildArea" name="shopsBuildArea" type="text" value="<!--{$shopsBuildArea}-->" maxlength="8" /> <font class="z3">平方米</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼    层</td>
-    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="shopsFloor" name="shopsFloor" type="text" value="<!--{$shopsFloor}-->" onblur="CheckFloor('shopsFloor','shopsAllFloor',true);" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="shopsAllFloor" name="shopsAllFloor" type="text" value="<!--{$shopsAllFloor}-->" onblur="CheckFloor('shopsFloor','shopsAllFloor',true);" /> <font class="z3">层</font> 地下室请填写负数</td>
+    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="shopsFloor" name="shopsFloor" type="text" value="<!--{$shopsFloor}-->" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="shopsAllFloor" name="shopsAllFloor" type="text" value="<!--{$shopsAllFloor}-->" /> <font class="z3">层</font> 地下室请填写负数</td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否可分割</td>
@@ -148,15 +142,29 @@ function check(){
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
-			    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
-					<input id="shopPhoto" name="shopPhoto" type="file" value="" /><br>
-    				<img src="http://localhost/88hom/uploads/community/<!--{$propPhoto}-->" class="l">
+				<td><input type="file" name="file_upload" id="file_upload"/></td>
+			    <td >
+					<div id="showImg" style="float: left;">		
+						<!--{foreach from=$propertyDetailPicList item=item_ key=key_}-->
+						<span style="float:left;margin:5px;line-height:25px;" id="pic_<!--{$key_}-->">
+						<a target="_blank" href="<!--{$cfg.web_url}-->uploads/<!--{$item_.picUrl}-->">
+			        	<img height="200px" src="<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->"/>
+			       		</a><br/>
+			       		描述：<input type="text" name="picName[]" value="<!--{$item_.picInfo}-->"/><br/>
+			       		序号：<input type="text" name="picLayer[]" value="<!--{$item_.picLayer}-->"/>
+			        	<input type="button" name="deletePic_<!--{$key_}-->" onclick="dropContainer('pic_<!--{$key_}-->');" value="删除"/>
+			        	<input type="hidden" name="picPath[]" value="<!--{$item_.picUrl}-->"/>
+			        	<input type="hidden" name="picPathThumb[]" value="<!--{$item_.picThumb}-->"/>
+			        	<input type="hidden" name="picTypeId[]" value="<!--{$item_.pictypeId}-->"/>
+			        	</span>
+						<!--{/foreach}-->	
+					</div>
 			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
 			    <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
-			    	<input id="shopsTitle" name="shopsTitle" type="text" value="<!--{$shopsTitle}-->" maxlength="60" onblur="CheckTitle('shopsTitle',true);" onkeyup="textCounter(document.getElementById('shopsTitle'),document.getElementById('shopsTitleAlert'),30);" /> 还可写<span id="shopsTitleAlert"><font class="red">30</font></span>个汉字</td>
+			    	<input id="shopsTitle" name="shopsTitle" type="text" value="<!--{$shopsTitle}-->" maxlength="60" onkeyup="textCounter(document.getElementById('shopsTitle'),document.getElementById('shopsTitleAlert'),30);" /> 还可写<span id="shopsTitleAlert"><font class="red">30</font></span>个汉字</td>
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>

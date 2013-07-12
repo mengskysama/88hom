@@ -17,6 +17,8 @@ $(function() {
             $("#btn_update").removeAttr("disabled");
         }
     });
+    initPicUp('<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
+       
 });
   
 function check(){
@@ -37,13 +39,6 @@ function check(){
 	if($("input[name='villaGarden']:checked").val() == 1 && !CheckGardenArea('villaGardenArea',true)) return false;
 	if($("input[name='villaGarage']:checked").val() == 1 && !checkVillaGarageCount()) return false;
 
-/*
-	var villaPhotoValue = $("#villaPhoto").val();
-	if(trim(villaPhotoValue) == ''){
-		alert("请上传图片");
-		return false;
-	}
-*/	
 	if(!CheckTitle('villaTitle',true)) return false;
 	var villaContentValue = CKEDITOR.instances.villaContent.getData(); 
 	if(trim(villaContentValue) == ''){
@@ -84,16 +79,19 @@ function checkVillaAllFloor(){
     var value=document.getElementById("villaAllFloor").value;
     if(trim(value) == ""){
     	alert("请填写楼层");
+		$("#villaAllFloor").focus();
     	return false;
     }
     
     if(!IsInt("villaAllFloor")){
 		alert("地面层数只能填写数字");
+		$("#villaAllFloor").focus();
 		return false;
 	}
     
     if(parseInt(value) <= 0){
 		alert("地面层数必须大于0");
+		$("#villaAllFloor").focus();
 		return false;
 	}
     return true;
@@ -103,16 +101,19 @@ function checkVillaGarageCount(){
     var value=document.getElementById("villaGarageCount").value;
     if(trim(value) == ""){
     	alert("请填写车库数量");
+		$("#villaGarageCount").focus();
     	return false;
     }
     
     if(!IsInt("villaGarageCount")){
 		alert("车库数量只能填写数字");
+		$("#villaGarageCount").focus();
 		return false;
 	}
     
     if(parseInt(value) <= 0){
 		alert("车库数量必须大于0");
+		$("#villaGarageCount").focus();
 		return false;
 	}
     return true;
@@ -130,9 +131,9 @@ function checkVillaGarageCount(){
   <div class="qg_r">
     <p>你的位置: <a href="#">编辑别墅出售房源</a></p>
    	<div class="qg_bs">
+        <form id="bsForm" name="bsForm" action="property_handler.php" method="post" enctype="multipart/form-data">
       <div class="bs_tx">
         <p><b>基本资料</b></p>
-        <form id="bsForm" name="bsForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="bs">
             <input type="hidden" name="prop_tx_type" value="1">
         <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
@@ -143,7 +144,7 @@ function checkVillaGarageCount(){
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">房源信息编码</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaNumber" name="villaNumber" type="text" maxlength="12" onblur="CheckInfoCode('villaNumber',true)" value="<!--{$villaNumber}-->"/> </td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaNumber" name="villaNumber" type="text" maxlength="12" value="<!--{$villaNumber}-->"/> </td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">内部编码</td>
@@ -159,29 +160,29 @@ function checkVillaGarageCount(){
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  售    价</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaSellPrice" name="villaSellPrice" type="text" onblur="CheckPrice('villaSellPrice',true,'CS');" value="<!--{$villaSellPrice}-->" /> <font class="z3">万元/套</font></td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaSellPrice" name="villaSellPrice" type="text" value="<!--{$villaSellPrice}-->" /> <font class="z3">万元/套</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>户    型</td>
     <td align="left" valign="middle" class="p25 grzc_36">
-    <input id="villaRoom" name="villaRoom" type="text" maxlength="1" onblur="CheckRoom('villaRoom',true)" value="<!--{$villaRoom}-->"/> <font class="z3">室</font> 
-    <input id="villaHall" name="villaHall" type="text" maxlength="1" onblur="CheckRoom('villaHall',true)" value="<!--{$villaHall}-->"/> <font class="z3">厅</font> 
-    <input id="villaToilet" name="villaToilet" type="text" maxlength="1" onblur="CheckRoom('villaToilet',true);" value="<!--{$villaToilet}-->"/> <font class="z3">卫</font> 
-    <input id="villaKitchen" name="villaKitchen" type="text" maxlength="1" onblur="CheckRoom('villaKitchen',true);" value="<!--{$villaKitchen}-->"/> <font class="z3">厨</font> 
-    <input id="villaBalcony" name="villaBalcony" type="text" maxlength="1" onblur="CheckRoom('villaBalcony',true);" value="<!--{$villaBalcony}-->"/> <font class="z3">阳台</font></td>
+    <input id="villaRoom" name="villaRoom" type="text" maxlength="1" value="<!--{$villaRoom}-->"/> <font class="z3">室</font> 
+    <input id="villaHall" name="villaHall" type="text" maxlength="1" value="<!--{$villaHall}-->"/> <font class="z3">厅</font> 
+    <input id="villaToilet" name="villaToilet" type="text" maxlength="1" value="<!--{$villaToilet}-->"/> <font class="z3">卫</font> 
+    <input id="villaKitchen" name="villaKitchen" type="text" maxlength="1" value="<!--{$villaKitchen}-->"/> <font class="z3">厨</font> 
+    <input id="villaBalcony" name="villaBalcony" type="text" maxlength="1" value="<!--{$villaBalcony}-->"/> <font class="z3">阳台</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaBuildArea" name="villaBuildArea" type="text" maxlength="8" onblur="CheckBuildingArea('villaBuildArea',true);" value="<!--{$villaBuildArea}-->"/> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaBuildArea" name="villaBuildArea" type="text" maxlength="8" value="<!--{$villaBuildArea}-->"/> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">使用面积</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaUseArea" name="villaUseArea" type="text" maxlength="8" onblur="CheckLiveArea('villaUseArea','villaBuildArea',true)" value="<!--{$villaUseArea}-->" />
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaUseArea" name="villaUseArea" type="text" maxlength="8" value="<!--{$villaUseArea}-->" />
       <font class="z3"> 平方米</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaBuildYear" name="villaBuildYear" type="text" maxlength="4" onblur="CheckCreateTime('villaBuildYear',true)" value="<!--{$villaBuildYear}-->" />
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaBuildYear" name="villaBuildYear" type="text" maxlength="4" value="<!--{$villaBuildYear}-->" />
       <font class="z3"> 年</font></td>
   </tr>
   <tr>
@@ -194,7 +195,7 @@ function checkVillaGarageCount(){
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 地上层数</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaAllFloor" name="villaAllFloor" type="text" maxlength="3" onblur="checkVillaAllFloor();" value="<!--{$villaAllFloor}-->"/> 
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaAllFloor" name="villaAllFloor" type="text" maxlength="3" value="<!--{$villaAllFloor}-->"/> 
     <font class="z3">层</font></td>
   </tr>
   <tr>
@@ -209,7 +210,7 @@ function checkVillaGarageCount(){
   <tr id="tr_villaCellarArea" style="display: none;">
   <!--{/if}-->
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">地下室面积</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaCellarArea" name="villaCellarArea" type="text" maxlength="5" onblur="CheckCellarArea('villaCellarArea',true);" value="<!--{$villaCellarArea}-->"/> 
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaCellarArea" name="villaCellarArea" type="text" maxlength="5" value="<!--{$villaCellarArea}-->"/> 
     <font class="z3"> 平方米</font></td>
   </tr>
   <!--{if $villaCellar eq 1 }--> 
@@ -235,7 +236,7 @@ function checkVillaGarageCount(){
   <tr id="tr_villaGardenArea" style="display: none;">
   <!--{/if}-->
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">花园面积</td>
-    <td align="left" valign="middle" class="p25 grzc_35"><input id="villaGardenArea" name="villaGardenArea" type="text" maxlength="5" onblur="CheckGardenArea('villaGardenArea',true);" value="<!--{$villaGardenArea}-->"/> <font class="z3">平方米</font></td>
+    <td align="left" valign="middle" class="p25 grzc_35"><input id="villaGardenArea" name="villaGardenArea" type="text" maxlength="5" value="<!--{$villaGardenArea}-->"/> <font class="z3">平方米</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车库</td>
@@ -249,7 +250,7 @@ function checkVillaGarageCount(){
   <tr id="tr_villaGarageCount" style="display: none;">
   <!--{/if}-->
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车库数量</td>
-    <td align="left" valign="middle" class="p25 grzc_35"><input id="villaGarageCount" name="villaGarageCount" type="text" maxlength="2" onblur="checkVillaGarageCount()" value="<!--{$villaGarageCount}-->"/> <font class="z3">个</font></td>
+    <td align="left" valign="middle" class="p25 grzc_35"><input id="villaGarageCount" name="villaGarageCount" type="text" maxlength="2" value="<!--{$villaGarageCount}-->"/> <font class="z3">个</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>
@@ -289,15 +290,29 @@ function checkVillaGarageCount(){
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
-    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
-    	<input id="villaPhoto" name="villaPhoto" type="file"  value="" /><br>
-    	<img src="http://localhost/88hom/uploads/community/<!--{$propPhoto}-->" class="l">
+	<td><input type="file" name="file_upload" id="file_upload"/></td>
+    <td >
+		<div id="showImg" style="float: left;">		
+			<!--{foreach from=$propertyDetailPicList item=item_ key=key_}-->
+			<span style="float:left;margin:5px;line-height:25px;" id="pic_<!--{$key_}-->">
+			<a target="_blank" href="<!--{$cfg.web_url}-->uploads/<!--{$item_.picUrl}-->">
+        	<img height="200px" src="<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->"/>
+       		</a><br/>
+       		描述：<input type="text" name="picName[]" value="<!--{$item_.picInfo}-->"/><br/>
+       		序号：<input type="text" name="picLayer[]" value="<!--{$item_.picLayer}-->"/>
+        	<input type="button" name="deletePic_<!--{$key_}-->" onclick="dropContainer('pic_<!--{$key_}-->');" value="删除"/>
+        	<input type="hidden" name="picPath[]" value="<!--{$item_.picUrl}-->"/>
+        	<input type="hidden" name="picPathThumb[]" value="<!--{$item_.picThumb}-->"/>
+        	<input type="hidden" name="picTypeId[]" value="<!--{$item_.pictypeId}-->"/>
+        	</span>
+			<!--{/foreach}-->	
+		</div>
     </td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
     <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
-		<input id="villaTitle" name="villaTitle" type="text" value="<!--{$villaTitle}-->" maxlength="60" onblur="CheckTitle('villaTitle',true);" onkeyup="textCounter(document.getElementById('villaTitle'),document.getElementById('villaTitleAlert'),30);" /> 还可写<span id="villaTitleAlert"><font class="red">30</font></span>个汉字</td>
+		<input id="villaTitle" name="villaTitle" type="text" value="<!--{$villaTitle}-->" maxlength="60" onkeyup="textCounter(document.getElementById('villaTitle'),document.getElementById('villaTitleAlert'),30);" /> 还可写<span id="villaTitleAlert"><font class="red">30</font></span>个汉字</td>
   </tr>
   <tr>
     <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>

@@ -21,7 +21,6 @@ if($property){
 	$officeFitment = $property['officeFitment'];
 	$officeLevel = $property['officeLevel'];
 
-	$picId = $property['picId'];
 	$officeTitle = $property['officeTitle'];
 	$officeContent = $property['officeContent'];
 	
@@ -42,7 +41,6 @@ if($property){
 	$smarty->assign("officeDivision",$officeDivision);
 	$smarty->assign("officeFitment",$officeFitment);
 	$smarty->assign("officeLevel",$officeLevel);
-	$smarty->assign("picId",$picId);
 	$smarty->assign("officeTitle",$officeTitle);
 	$smarty->assign("officeContent",$officeContent);
 	$smarty->assign("propId",$propId);

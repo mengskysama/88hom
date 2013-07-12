@@ -28,8 +28,10 @@ class SecondHandPropertyService{
 		$picBuildType = $property['picBuildType'];
 		if(!empty($property['propertyPhoto'])){
 			$photos = $property['propertyPhoto'];
-			
-			foreach($photos['picPath'] as $key=>$value){
+// 			foreach($photos['picPath'] as $key=>$value){
+			$len = count($photos);
+// 			echo 'size->'.$len;
+			for($key=0; $key<$len; $key++){
 				$pic['picBuildId'] = $propId;
 				$pic['picBuildType'] = $picBuildType;
 				$pic['pictypeId'] = $photos[$key]['pictypeId'];
@@ -38,7 +40,8 @@ class SecondHandPropertyService{
 				$pic['picThumb'] = $photos[$key]['picThumb'];
 				$pic['picInfo'] = $photos[$key]['picInfo'];
 				$pic['picLayer'] = $photos[$key]['picLayer'];
-				$pic['picState'] = $photos[$key]['picState'];
+				$pic['picState'] = $photos[$key]['picState'];;
+				
 				$this->picDAO->release($pic);
 			}
 		}
@@ -177,7 +180,7 @@ class SecondHandPropertyService{
 	}
 	
 	public function getPropPhotos($photo){
-		return $this->picDAO->getPicList("picId,picBuildId,picBuildId,picBuildType,picSellRent,picUrl,picThumb,picInfo,picLayer",
+		return $this->picDAO->getPicList("picId,pictypeId,picBuildId,picBuildType,picSellRent,picUrl,picThumb,picInfo,picLayer",
 				"where picBuildId=".$photo['picBuildIdId']." and picBuildType=".$photo['picBuildType']." and picState=1",
 				"order by picState",
 				"");

@@ -17,6 +17,8 @@ $(function() {
             $("#btn_update").removeAttr("disabled");
         }
     });
+    initPicUp('<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
+        
 });
   
 function check(){
@@ -32,13 +34,6 @@ function check(){
 	if(!CheckLiveArea('houseUseArea','houseBuildArea',true)) return false;
 	if(!CheckCreateTime('houseBuildYear',true)) return false;
 	if(!CheckFloor('houseFloor','houseAllFloor',true)) return false;
-	/*
-	var housePhotoValue = $("#housePhoto").val();
-	if(trim(housePhotoValue) == ''){
-		alert("请上传图片");
-		return false;
-	}
-	*/
 	
 	if(!CheckTitle('houseTitle',true)) return false;
 	var houseContentValue = CKEDITOR.instances.houseContent.getData(); 
@@ -61,9 +56,9 @@ function check(){
     <div class="qg_r">
     <p>你的位置: <a href="#">编辑房源</a></p>
    	<div class="qg_bs">
+            <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
           <div class="bs_tx">
             <p><b>基本资料</b></p>
-            <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="zz">
             <input type="hidden" name="prop_tx_type" value="1">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
@@ -74,7 +69,7 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">房源信息编码</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseNumber" name="houseNumber" type="text" value="<!--{$houseNumber}-->" maxlength="12" onblur="CheckInfoCode('houseNumber',true)" /> </td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseNumber" name="houseNumber" type="text" value="<!--{$houseNumber}-->" maxlength="12" /> </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">内部编码</td>
@@ -106,16 +101,16 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  售    价</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseSellPrice" name="houseSellPrice" type="text" onblur="CheckPrice('houseSellPrice',true,'CS');" value="<!--{$houseSellPrice}-->"/> 万元/套</td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseSellPrice" name="houseSellPrice" type="text" value="<!--{$houseSellPrice}-->"/> 万元/套</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>户    型</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
-			    <input id="houseRoom" name="houseRoom" type="text" maxlength="1" onblur="CheckRoom('houseRoom',true)" value="<!--{$houseRoom}-->"/> 室
-			    <input id="houseHall" name="houseHall" type="text" maxlength="1" onblur="CheckRoom('houseHall',true)"/ value="<!--{$houseHall}-->"> 厅 
-			    <input id="houseToilet" name="houseToilet" type="text" maxlength="1" onblur="CheckRoom('houseToilet',true);" value="<!--{$houseToilet}-->"/> 卫 
-			    <input id="houseKitchen" name="houseKitchen" type="text" maxlength="1" onblur="CheckRoom('houseKitchen',true);" value="<!--{$houseKitchen}-->"/> 厨 
-			    <input id="houseBalcony" name="houseBalcony" type="text" maxlength="1" onblur="CheckRoom('houseBalcony',true);" value="<!--{$houseBalcony}-->"/> 阳台</td>
+			    <input id="houseRoom" name="houseRoom" type="text" maxlength="1" value="<!--{$houseRoom}-->"/> 室
+			    <input id="houseHall" name="houseHall" type="text" maxlength="1" value="<!--{$houseHall}-->"> 厅 
+			    <input id="houseToilet" name="houseToilet" type="text" maxlength="1" value="<!--{$houseToilet}-->"/> 卫 
+			    <input id="houseKitchen" name="houseKitchen" type="text" maxlength="1" value="<!--{$houseKitchen}-->"/> 厨 
+			    <input id="houseBalcony" name="houseBalcony" type="text" maxlength="1" value="<!--{$houseBalcony}-->"/> 阳台</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑形式</td>
@@ -123,19 +118,19 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildArea" name="houseBuildArea" type="text" maxlength="8" onblur="CheckBuildingArea('houseBuildArea',true);" value="<!--{$houseBuildArea}-->"/> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildArea" name="houseBuildArea" type="text" maxlength="8" value="<!--{$houseBuildArea}-->"/> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">使用面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseUseArea" name="houseUseArea" type="text" maxlength="8" onblur="CheckLiveArea('houseUseArea','houseBuildArea',true)" value="<!--{$houseUseArea}-->" /><font class="z3">平方米</font></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseUseArea" name="houseUseArea" type="text" maxlength="8" value="<!--{$houseUseArea}-->" /><font class="z3">平方米</font></td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildYear" name="houseBuildYear" type="text" maxlength="4" onblur="CheckCreateTime('houseBuildYear',true)" value="<!--{$houseBuildYear}-->" /><font class="z3">年</font></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildYear" name="houseBuildYear" type="text" maxlength="4" value="<!--{$houseBuildYear}-->" /><font class="z3">年</font></td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼    层</td>
-			    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="houseFloor" name="houseFloor" type="text" onblur="CheckFloor('houseFloor','houseAllFloor',true);" value="<!--{$houseFloor}-->" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="houseAllFloor" name="houseAllFloor" type="text" onblur="CheckFloor('houseFloor','houseAllFloor',true);" value="<!--{$houseAllFloor}-->" /> <font class="z3">层</font> 地下室请填写负数</td>
+			    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="houseFloor" name="houseFloor" type="text" value="<!--{$houseFloor}-->" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="houseAllFloor" name="houseAllFloor" type="text" value="<!--{$houseAllFloor}-->" /> <font class="z3">层</font> 地下室请填写负数</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">朝    向</td>
@@ -192,9 +187,23 @@ function check(){
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
-			    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
-			    	<input id="housePhoto" name="housePhoto" type="file"  value="" /><br>
-			    	<div id="showPic"><img src="http://localhost/88hom/uploads/community/<!--{$propPhoto}-->" class="l">&nbsp;&nbsp;<!--<a href="javascript:void(0);" onclick="deletePic(<!--{$picId}-->) ">删除</a>--></div>
+				<td><input type="file" name="file_upload" id="file_upload"/></td>
+			    <td >
+					<div id="showImg" style="float: left;">		
+						<!--{foreach from=$propertyDetailPicList item=item_ key=key_}-->
+						<span style="float:left;margin:5px;line-height:25px;" id="pic_<!--{$key_}-->">
+						<a target="_blank" href="<!--{$cfg.web_url}-->uploads/<!--{$item_.picUrl}-->">
+			        	<img height="200px" src="<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->"/>
+			       		</a><br/>
+			       		描述：<input type="text" name="picName[]" value="<!--{$item_.picInfo}-->"/><br/>
+			       		序号：<input type="text" name="picLayer[]" value="<!--{$item_.picLayer}-->"/>
+			        	<input type="button" name="deletePic_<!--{$key_}-->" onclick="dropContainer('pic_<!--{$key_}-->');" value="删除"/>
+			        	<input type="hidden" name="picPath[]" value="<!--{$item_.picUrl}-->"/>
+			        	<input type="hidden" name="picPathThumb[]" value="<!--{$item_.picThumb}-->"/>
+			        	<input type="hidden" name="picTypeId[]" value="<!--{$item_.pictypeId}-->"/>
+			        	</span>
+						<!--{/foreach}-->	
+					</div>
 			    </td>
 			  </tr>
 			  <tr>

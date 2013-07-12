@@ -17,7 +17,6 @@ $propTxType = getParameter("prop_tx_type");
 $propPhoto = "";
 if(!empty($_POST['picPath'])){
 	$len = count($_POST['picPath']);
-	//print_r($_POST['picPath']);
 	for($key=0; $key<$len; $key++){
 		$propPhoto[$key]['pictypeId'] = $_POST['picTypeId'][$key];
 		$propPhoto[$key]['picSellRent'] = $propTxType;
@@ -117,7 +116,6 @@ if($propType == "zz"){
 											$propTxType,$villaRentPrice,$villaRentType,$villaPayment,$villaPayDetailY,$villaPayDetailF);
 }else if($propType == "xzl"){
 
-	print_r($propPhoto).'<br/>';
 	$officeNumber = getParameter("officeNumber");
 	$officeType = getParameter("officeType");
 	$officeSellPrice = getParameter("officeSellPrice");

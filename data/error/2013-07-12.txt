@@ -1,0 +1,68 @@
+------------------------2013-07-12 15:40:10
+错误SQL语句：
+insert into ecms_pic(picBuildId,pictypeId,picBuildFatherType,picBuildType,picSellRent,picUrl,picThumb,picInfo,picLayer,picState,picCreateTime,picUpdateTime) values(7,<br />
+<b>Notice</b>:  Undefined index:  key in <b>E:\\workspace\\projects\\88hom\\templates_c\\de658057b5da23d575349e0395dfa25668483856.file.user_sale_xzl_edit.tpl.php</b> on line <b>229</b><br />
+<br />
+<b>Notice</b>:  Trying to get property of non-object in <b>E:\\workspace\\projects\\88hom\\templates_c\\de658057b5da23d575349e0395dfa25668483856.file.user_sale_xzl_edit.tpl.php</b> on line <b>229</b><br />
+,0,3,1,'2hand/20130712145634.jpg','2hand/20130712145634_thumb.jpg','',1,1,1373614810,1373614810)
+客户端:127.0.0.1
+时间:2013-07-12 15:40:10
+------------------------2013-07-12 15:40:10
+错误SQL语句：
+insert into ecms_pic(picBuildId,pictypeId,picBuildFatherType,picBuildType,picSellRent,picUrl,picThumb,picInfo,picLayer,picState,picCreateTime,picUpdateTime) values(7,<br />
+<b>Notice</b>:  Undefined index:  key in <b>E:\\workspace\\projects\\88hom\\templates_c\\de658057b5da23d575349e0395dfa25668483856.file.user_sale_xzl_edit.tpl.php</b> on line <b>229</b><br />
+<br />
+<b>Notice</b>:  Trying to get property of non-object in <b>E:\\workspace\\projects\\88hom\\templates_c\\de658057b5da23d575349e0395dfa25668483856.file.user_sale_xzl_edit.tpl.php</b> on line <b>229</b><br />
+,0,3,1,'2hand/201307121456340.jpg','2hand/201307121456340_thumb.jpg','',1,1,1373614810,1373614810)
+客户端:127.0.0.1
+时间:2013-07-12 15:40:10
+------------------------2013-07-12 15:42:51
+错误SQL语句：
+insert into ecms_pic(picBuildId,pictypeId,picBuildFatherType,picBuildType,picSellRent,picUrl,picThumb,picInfo,picLayer,picState,picCreateTime,picUpdateTime) values(7,<br />
+<b>Notice</b>:  Undefined index:  key in <b>E:\\workspace\\projects\\88hom\\templates_c\\de658057b5da23d575349e0395dfa25668483856.file.user_sale_xzl_edit.tpl.php</b> on line <b>229</b><br />
+<br />
+<b>Notice</b>:  Trying to get property of non-object in <b>E:\\workspace\\projects\\88hom\\templates_c\\de658057b5da23d575349e0395dfa25668483856.file.user_sale_xzl_edit.tpl.php</b> on line <b>229</b><br />
+,0,3,1,'2hand/20130712145634.jpg','2hand/20130712145634_thumb.jpg','',1,1,1373614971,1373614971)
+客户端:127.0.0.1
+时间:2013-07-12 15:42:51
+------------------------2013-07-12 15:42:51
+错误SQL语句：
+insert into ecms_pic(picBuildId,pictypeId,picBuildFatherType,picBuildType,picSellRent,picUrl,picThumb,picInfo,picLayer,picState,picCreateTime,picUpdateTime) values(7,<br />
+<b>Notice</b>:  Undefined index:  key in <b>E:\\workspace\\projects\\88hom\\templates_c\\de658057b5da23d575349e0395dfa25668483856.file.user_sale_xzl_edit.tpl.php</b> on line <b>229</b><br />
+<br />
+<b>Notice</b>:  Trying to get property of non-object in <b>E:\\workspace\\projects\\88hom\\templates_c\\de658057b5da23d575349e0395dfa25668483856.file.user_sale_xzl_edit.tpl.php</b> on line <b>229</b><br />
+,0,3,1,'2hand/201307121456340.jpg','2hand/201307121456340_thumb.jpg','',1,1,1373614971,1373614971)
+客户端:127.0.0.1
+时间:2013-07-12 15:42:51
+------------------------2013-07-12 15:44:33
+错误SQL语句：
+insert into ecms_pic(picBuildId,pictypeId,picBuildFatherType,picBuildType,picSellRent,picUrl,picThumb,picInfo,picLayer,picState,picCreateTime,picUpdateTime) values(7,<br />
+<b>Notice</b>:  Undefined index:  key in <b>E:\\workspace\\projects\\88hom\\templates_c\\de658057b5da23d575349e0395dfa25668483856.file.user_sale_xzl_edit.tpl.php</b> on line <b>229</b><br />
+<br />
+<b>Notice</b>:  Trying to get property of non-object in <b>E:\\workspace\\projects\\88hom\\templates_c\\de658057b5da23d575349e0395dfa25668483856.file.user_sale_xzl_edit.tpl.php</b> on line <b>229</b><br />
+,0,3,1,'2hand/20130712145634.jpg','2hand/20130712145634_thumb.jpg','',1,1,1373615073,1373615073)
+客户端:127.0.0.1
+时间:2013-07-12 15:44:33
+------------------------2013-07-12 15:44:33
+错误SQL语句：
+insert into ecms_pic(picBuildId,pictypeId,picBuildFatherType,picBuildType,picSellRent,picUrl,picThumb,picInfo,picLayer,picState,picCreateTime,picUpdateTime) values(7,<br />
+<b>Notice</b>:  Undefined index:  key in <b>E:\\workspace\\projects\\88hom\\templates_c\\de658057b5da23d575349e0395dfa25668483856.file.user_sale_xzl_edit.tpl.php</b> on line <b>229</b><br />
+<br />
+<b>Notice</b>:  Trying to get property of non-object in <b>E:\\workspace\\projects\\88hom\\templates_c\\de658057b5da23d575349e0395dfa25668483856.file.user_sale_xzl_edit.tpl.php</b> on line <b>229</b><br />
+,0,3,1,'2hand/201307121456340.jpg','2hand/201307121456340_thumb.jpg','',1,1,1373615073,1373615073)
+客户端:127.0.0.1
+时间:2013-07-12 15:44:33
+------------------------2013-07-12 15:57:15
+错误SQL语句：
+insert into ecms_pic(picBuildId,pictypeId,picBuildFatherType,picBuildType,picSellRent,picUrl,picThumb,picInfo,picLayer,picState,picCreateTime,picUpdateTime) values(7,<br />
+<b>Notice</b>:  Undefined index:  pictypeId in <b>E:\\workspace\\projects\\88hom\\templates_c\\de658057b5da23d575349e0395dfa25668483856.file.user_sale_xzl_edit.tpl.php</b> on line <b>228</b><br />
+,0,3,1,'2hand/20130712154005.jpg','2hand/20130712154005_thumb.jpg','',1,1,1373615835,1373615835)
+客户端:127.0.0.1
+时间:2013-07-12 15:57:15
+------------------------2013-07-12 15:59:39
+错误SQL语句：
+insert into ecms_pic(picBuildId,pictypeId,picBuildFatherType,picBuildType,picSellRent,picUrl,picThumb,picInfo,picLayer,picState,picCreateTime,picUpdateTime) values(7,<br />
+<b>Notice</b>:  Undefined index:  pictypeId in <b>E:\\workspace\\projects\\88hom\\templates_c\\de658057b5da23d575349e0395dfa25668483856.file.user_sale_xzl_edit.tpl.php</b> on line <b>228</b><br />
+,0,3,1,'2hand/20130712155713.jpg','2hand/20130712155713_thumb.jpg','',1,1,1373615979,1373615979)
+客户端:127.0.0.1
+时间:2013-07-12 15:59:39
