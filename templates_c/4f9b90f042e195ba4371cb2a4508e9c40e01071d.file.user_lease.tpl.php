@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-09 16:11:11
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-13 12:32:25
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_lease.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2609451dbc59f95cc38-57538710%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4f9b90f042e195ba4371cb2a4508e9c40e01071d' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_lease.tpl',
-      1 => 1373244575,
+      1 => 1373363026,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51dbc59fa21dc1_87136036',
   'variables' => 
   array (
     'cfg' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cssFiles' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_51dbc59fa21dc1_87136036',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51dbc59fa21dc1_87136036')) {function content_51dbc59fa21dc1_87136036($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -64,7 +64,7 @@ ucenter/qg_img2.jpg" /></a></dt>
               		  <dd>
    					  <b class="title">自己直接发布</b>
                       <p>您可以直接发布出售/出租信息，让业主联系您，买房过程，自主掌握。</p>
-  					  <p style=" margin-top:15px;"><a href="user_lease_zz.php">去委托</a></p>
+  					  <p style=" margin-top:15px;"><a href="user_lease_zz.php">去发布</a></p>
   					 </dd>
 				</dl>
             </div>

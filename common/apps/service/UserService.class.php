@@ -387,6 +387,14 @@ class UserService{
 			return '';
 		}
 	}
+	//Jul 13,2013
+	public function authUser($user){
+		$userId = $this->userDAO->updateUser($user);
+		if($userId && isset($user['phoneCert'])){
+			$this->deactiveCertCode($user['userPhone'], $user['phoneCert']);
+		}
+		return $userId;
+	}
 	//end to be added by Cheneil
 }
 ?>

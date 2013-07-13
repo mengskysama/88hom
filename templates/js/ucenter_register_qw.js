@@ -13,6 +13,7 @@ $(document).ready(function() {
         if (val($("#userPhone")) == "") {
             alert("请输入手机号码");
             isMobileValid = false;
+            $("#userPhone").focus();
             return;
         }
         check_mobilebase()
@@ -24,21 +25,7 @@ $(document).ready(function() {
         }
         return false;
     });
-
-    $("#phoneCert").blur(function() {
-        check_code(this);
-    });
-    
-
-    $("#mobileRegFrm").submit(function() {
-
-        if (check_reg_mobile()) {
-            return true;
-        } else {
-            return false;
-        }
-    });
-
+  
     $("#btn_reg_mobile").click(function() {
         $("#btn_reg_mobile").prop("disabled", true);
         if (check_reg_mobile()) {
@@ -61,20 +48,17 @@ $(document).ready(function() {
     });
     
     //验证邮箱
-    $("#userEmail").blur(function() {
-        check_email(this);
-    });
-    
-    $("#email_mathcode").blur(function() {
-    	check_mathcode();
-    });
-
     $("#btn_reg_email").click(function() {
         $("#btn_reg_email").prop("disabled", true);
         
         check_email($("#userEmail"));
-        check_mathcode();
-        if (isMatchCodeValid) {
+        if(isemaivalid){
+            check_mathcode();
+        }else {
+            $("#btn_reg_email").prop("disabled", false);
+        }
+        
+        if (isemaivalid && isMatchCodeValid) {
             document.getElementById("emailRegFrm").submit();
         }else {
             $("#btn_reg_email").prop("disabled", false);
@@ -86,6 +70,7 @@ function check_mathcode() {
     if (val($("#email_mathcode")) == '') {
         alert("请输入验证码");
         isMatchCodeValid = false;
+        $("#email_mathcode").focus();
         return false;
     }
 
@@ -100,6 +85,7 @@ function check_mathcode() {
             } else {
             	isMatchCodeValid = false;
                 alert("验证码错误，请重新输入");
+                $("#email_mathcode").focus();
             }
         }
     });
@@ -111,17 +97,20 @@ function check_email(obj) {
     if (val(obj) == "") {
         alert("请输入邮箱地址");
         isemaivalid = false;
+        $("#userEmail").focus();
         return false;
     }
     var filter = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
     if (!filter.test(val(obj))) {
         alert("请输入正确的邮箱地址");
         isemaivalid = false;
+        $("#userEmail").focus();
         return false;
     }
     if (GetStrLen(val(obj)) < 6 || GetStrLen(val(obj)) > 40) {
         alert("邮箱长度错误");
         isemaivalid = false;
+        $("#userEmail").focus();
         return false;
     }
     ajax_email();
@@ -140,6 +129,7 @@ function ajax_email() {
                 isemaivalid = false;
                 $("#imgcode").click();
                 alert("该邮箱地址已被用户绑定");
+                $("#userEmail").focus();
             } else {
                 isemaivalid = true;
             }
@@ -153,12 +143,14 @@ function check_code(obj) {
     if (code == "") {
         alert("请输入手机验证码");
         isCodeValid = false;
+        obj.focus();
         return false;
     }
     var pat = /^\d{6}$/;
     if (!pat.test(code)) {
         alert("验证码不对，重新输入下吧");
         isCodeValid = false;
+        obj.focus();
         return false;
     }
 
@@ -173,6 +165,7 @@ function check_code(obj) {
             } else {
                 isCodeValid = false;
                 alert("验证码错误");
+                obj.focus();
             }
         }
     });
@@ -183,14 +176,25 @@ function check_reg_mobile() {
     if (val($("#userPhone")) == "") {
         alert("请输入手机号码");
         isMobileValid = false;
+        $("#userPhone").focus();
         return false;
     }
 
     if (val($("#phoneCert")) == "") {
         alert("请输入手机验证码");
         isCodeValid = false;
+        $("#phoneCert").focus();
         return false;
     }
+
+    check_mobilebase();
+    if (isMobileValid) {
+        ajax_mobile();
+    }
+    if (!isMobileValid) return;
+    
+    check_code($("#phoneCert"));
+    if(!isCodeValid) return;
 
     if (!$("#reg_mobile_agree_ucenter").prop("checked")) {
         alert("请先选中同意《服务条款》和《隐私权相关政策》");
@@ -231,6 +235,15 @@ function radio_check(type) {
     }
 }
 
+function auth_type_check(type) {
+    if (type == "email") {
+    	document.getElementById("acc_2").style.display="none";  
+    	document.getElementById("acc_3").style.display="block";
+    }else {
+    	document.getElementById("acc_2").style.display="block";  
+    	document.getElementById("acc_3").style.display="none";
+    }
+}
 //得到输入值，已过滤空格
 function val(obj) {
     return jQuery.trim(jQuery(obj).val());
@@ -241,6 +254,7 @@ function sendCertCode() {
     if (val($("#userPhone")) == "") {
         alert("请输入手机号码");
         isMobileValid = false;
+        $("#userPhone").focus();
         return;
     }
     check_mobilebase();
@@ -261,11 +275,13 @@ function check_mobilebase() {
   if (mobile == "") {
       alert("请输入手机号码");
       isMobileValid = false;
+      $("#userPhone").focus();
       return false;
   }
   if (!pat.test(mobile)) {
       alert("手机号码格式不正确");
       isMobileValid = false;
+      $("#userPhone").focus();
       return false;
   }
   isMobileValid = true;
@@ -293,6 +309,7 @@ function ajax_mobile() {
           if (resu[0] != "200") {
               isMobileValid = false;
               alert("该手机号已被用户绑定");
+              $("#userPhone").focus();
               return false;
           } else {
               isMobileValid = true;

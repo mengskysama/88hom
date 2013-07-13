@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-12 14:33:43
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-13 13:23:35
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_xzl.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1874551c7e378b4dbf7-05579691%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8ad4089d35fdccbf91938938319f4c14891cc70c' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_xzl.tpl',
-      1 => 1373609867,
+      1 => 1373620609,
       2 => 'file',
     ),
   ),
@@ -33,7 +33,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
 " />
-<title>个人房源_写字楼</title>
+<title>录入写字楼出售房源</title>
 <?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
@@ -84,6 +84,7 @@ function check(){
 	var estNameValue = $("#estName").val();
 	if(trim(estNameValue) == ''){
 		alert("请填写写字楼名称");
+		$("#estName").focus();
 		return false;
 	}
 	

@@ -5,7 +5,7 @@ class UserDAO{
 		$this->db=$db;
 	}
 	/**
-	 * ¸ù¾İusername»ñÈ¡ÓÃ»§ĞÅÏ¢
+	 * ï¿½ï¿½ï¿½usernameï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	 * @param string $username 
 	 * @access public
 	 * @return array
@@ -100,7 +100,7 @@ class UserDAO{
 	}
 	
 	public function getUserByLoginId($loginId){
-		$sql = "select * from ecms_user where userUsername='".$loginId."' or userPhone='".$loginId."' or (userEmail='".$loginId."' and userEmailState=1)";
+		$sql = "select * from ecms_user where userUsername='".$loginId."' or userPhone='".$loginId."' or userEmail='".$loginId."'";
 		return $this->db->getQueryValue($sql);
 	}
 	
@@ -111,7 +111,7 @@ class UserDAO{
 	
 	//end to be added by Cheneil
 	/**
-	 * ¸ù¾İid»ñÈ¡ÓÃ»§ĞÅÏ¢
+	 * ï¿½ï¿½ï¿½idï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	 * @param string $username 
 	 * @access public
 	 * @return array
@@ -121,7 +121,7 @@ class UserDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	/**
-	 * »ñÈ¡ÓÃ»§ĞÅÏ¢ÁĞ±í
+	 * ï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½Ğ±ï¿½
 	 * @param array $user 
 	 * @access public
 	 * @return array
@@ -135,7 +135,7 @@ class UserDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	/**
-	 * ¸ù¾İID¸ü¸ÄĞÅÏ¢×´Ì¬
+	 * ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ï¿½Ï¢×´Ì¬
 	 * @access public
 	 * @param int $state ×´Ì¬
 	 * @param int $id
@@ -146,7 +146,7 @@ class UserDAO{
 		return $this->db->getQueryExecute($sql);
 	}
 	/**
-	 * ·¢²¼ÓÃ»§ĞÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 	 * @param array $user 
 	 * @access public
 	 * @return array
@@ -181,7 +181,7 @@ class UserDAO{
 		return $this->db->getQueryExecute($sql);
 	}
 	/**
-	 * ·¢²¼¹ÜÀíÓÃ»§×éĞÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 * @param array $user 
 	 * @access public
 	 * @return array
@@ -191,7 +191,7 @@ class UserDAO{
 		return $this->db->getQueryExecute($sql);
 	}
 	/**
-	 * ĞŞ¸Ä¹ÜÀíÓÃ»§×éĞÅÏ¢
+	 * ï¿½Ş¸Ä¹ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 * @param array $user 
 	 * @access public
 	 * @return array
@@ -201,8 +201,8 @@ class UserDAO{
 		return $this->db->getQueryExecute($sql);
 	}
 	/**
-	 * »ñÈ¡×é±ğÏêÇé
-	 * @param string $id ĞÅÏ¢ID
+	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @param string $id ï¿½ï¿½Ï¢ID
 	 * @return array
 	 */
 	public function getGroupDetailById($id) {
@@ -210,7 +210,7 @@ class UserDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	/**
-	 * »ñÈ¡×é±ğÁĞ±í
+	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½
 	 * @access public
 	 * @return array
 	 */
@@ -219,8 +219,8 @@ class UserDAO{
 		return $this->db->getQueryArray($sql);
 	}
 	/**
-	 * ¼ì²é¹ÜÀí×é±ğÎ¨Ò»ĞÔ
-	 * @param int $info ×ÖµäÏîĞÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¨Ò»ï¿½ï¿½
+	 * @param int $info ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 * @return string
 	 **/
 	public function checkGroupUnique($groupName) {
@@ -228,8 +228,8 @@ class UserDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	/**
-	 * ¼ì²éÏµÍ³ÓÃ»§ÕËºÅÎ¨Ò»ĞÔ
-	 * @param int $info ×ÖµäÏîĞÅÏ¢
+	 * ï¿½ï¿½ï¿½ÏµÍ³ï¿½Ã»ï¿½ï¿½Ëºï¿½Î¨Ò»ï¿½ï¿½
+	 * @param int $info ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 * @return string
 	 **/
 	public function checkUsersUnique($userName) {
@@ -237,8 +237,8 @@ class UserDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	/**
-	 * »ñÈ¡webÍøÕ¾ÅäÖÃ
-	 * @param int $info ×ÖµäÏîĞÅÏ¢
+	 * ï¿½ï¿½È¡webï¿½ï¿½Õ¾ï¿½ï¿½ï¿½ï¿½
+	 * @param int $info ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 * @return string
 	 **/
 	public function getWebSet(){

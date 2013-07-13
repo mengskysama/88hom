@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-12 14:55:52
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-13 10:06:40
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_zz.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1071251c0079056ef63-82697093%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7e3955469e7a46ee0125e81aa5500d4c78e062b4' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_zz.tpl',
-      1 => 1373609867,
+      1 => 1373677893,
       2 => 'file',
     ),
   ),
@@ -83,9 +83,6 @@ $(function() {
 });
   
 function check(){
-	return true;;
-	//alert(document.getElementsByName("picPath")[0].value);
-	//return false;
 
 	var estNameValue = $("#estName").val();
 	if(trim(estNameValue) == ''){
@@ -110,7 +107,6 @@ function check(){
 	var houseContentValue = CKEDITOR.instances.houseContent.getData(); 
 	if(trim(houseContentValue) == ''){
 		alert("请填写房源描述");
-		$("#houseContent").focus();
 		return false;
 	}
 	

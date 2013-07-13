@@ -37,6 +37,31 @@ if($userType == 3){
 	//echo $userName.'|'.$userPassword;
 	//return ;
 	$register = new BindAccountRegister($db, $userName, $userPassword, $userEmail, $userPhone, $phoneCert, $qwAgreement, $qw_user);
+}else if($userType == 20){
+	//auth user
+	$userId = getParameter("userId");
+	$userPhone = getParameter('userPhone');
+	$userService = new UserService($db);
+	$authResult = false;
+	$user['userId'] = $userId;
+	if($userPhone != ""){
+		$phoneCert = getParameter('phoneCert');
+		$user['userPhone'] = $userPhone;
+		$user['phoneCert'] = $phoneCert;
+		$user['userPhoneState'] = 1;
+		$authResult = $userService->authUser($user);
+		$taret_page = "success_auth_user_phone.php";
+	}else if($userEmail != ""){
+		$user['userEmail'] = $userEmail;
+		$authResult = $userService->authUser($user);
+		$taret_page = "success_reg_email.php?email=".$userEmail;
+	}
+	if($authResult){
+		header('Location: '.$taret_page);
+	}else{
+		$_SESSION['err_msg_auth_user'] = "认证失败，请重试";
+		header('Location: auth_user.php');
+	}
 }
 $result = $register->register(); 
 $callback = "index.php";

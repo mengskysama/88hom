@@ -1,6 +1,7 @@
 <?php
 require 'path.inc.php';
 require 'check_login.php';
+require 'check_auth_user.php';
 require 'HousePropertyHandler.class.php';
 require 'OfficePropertyHandler.class.php';
 require 'ShopPropertyHandler.class.php';
