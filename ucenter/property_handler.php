@@ -28,6 +28,15 @@ if(!empty($_POST['picPath'])){
 		$propPhoto[$key]['picState'] = 1;
 	}
 }
+$topPic['pictypeId'] = 1;
+$topPic['picBuildFatherType'] = 0;
+$topPic['picBuildType'] = 0;
+$topPic['picSellRent'] = $propTxType;
+$topPic['picUrl'] = getParameter("topPicPath");;
+$topPic['picThumb'] = getParameter("topPicPathThumb");
+$topPic['picInfo'] = '';
+$topPic['picLayer'] = 0;
+$topPic['picState'] = 1;
 
 if($propType == "zz"){
 	
@@ -62,6 +71,7 @@ if($propType == "zz"){
 	$housePayDetailY = getParameter("housePayDetailY");
 	$housePayDetailF = getParameter("housePayDetailF");
 	$houseRentArea = getParameter("houseRentArea");
+	$topPic['picBuildType'] = 1;
 
 	$propHandler = new HousePropertyHandler($db,$estId,$estName,$houseNumber,$privateHouseNumber,$housePayInfo,
 											$houseType,$houseSellPrice,$houseRoom,$houseHall,$houseToilet,$houseKitchen,
@@ -69,7 +79,7 @@ if($propType == "zz"){
 											$houseForward,$houseFitment,$houseBaseService,$houseLookTime,$propPhoto,$houseTitle,
 											$houseContent,$houseUserId,$houseBuildForm,$houseAllFloor,$state,$actionType,$houseId,
 											$propTxType,$houseRentType,$houseRentRoomType,$houseRentDetail,$housePayment,$housePayDetailY,
-											$housePayDetailF,$houseRentArea);
+											$housePayDetailF,$houseRentArea,$topPic);
 }else if($propType == "bs"){
 
 	$villaNumber = getParameter("villaNumber");
@@ -106,13 +116,14 @@ if($propType == "zz"){
 	$villaPayment = getParameter("villaPayment");
 	$villaPayDetailY = getParameter("villaPayDetailY");
 	$villaPayDetailF = getParameter("villaPayDetailF");
+	$topPic['picBuildType'] = 4;
 	
 	$propHandler = new VillaPropertyHandler($db,$estId,$estName,$villaNumber,$privateHouseNumber,$villaBuildForm,$villaSellPrice,$villaRoom,$villaHall,
 											$villaToilet,$villaKitchen,$villaBalcony,$villaBuildArea,$villaUseArea,$villaBuildYear,
 											$villaForward,$villaAllFloor,$villaCellar,$villaCellarArea,$villaCellarType,$villaGarden,
 											$villaGardenArea,$villaGarage,$villaGarageCount,$villaFitment,$villaBaseService,$villaLookTime,
 											$propPhoto,$villaTitle,$villaContent,$villaUserId,$state,$actionType,$villaId,
-											$propTxType,$villaRentPrice,$villaRentType,$villaPayment,$villaPayDetailY,$villaPayDetailF);
+											$propTxType,$villaRentPrice,$villaRentType,$villaPayment,$villaPayDetailY,$villaPayDetailF,$topPic);
 }else if($propType == "xzl"){
 
 	$officeNumber = getParameter("officeNumber");
@@ -131,10 +142,11 @@ if($propType == "zz"){
 	$officeId = getParameter("propId");
 	$officeRentPrice = getParameter("officeRentPrice");
 	$officeRentPriceUnit = getParameter("officeRentPriceUnit");
+	$topPic['picBuildType'] = 3;
 	$propHandler = new OfficePropertyHandler($db,$estId,$estName,$officeNumber,$officeType,$officeSellPrice,
 											$officeProFee,$officeBuildArea,$officeFloor,$officeAllFloor,$officeDivision,$officeFitment,
 											$officeLevel,$propPhoto,$officeTitle,$officeContent,$officeUserId,
-											$state,$actionType,$officeId,$propTxType,$officeRentPrice,$officeRentPriceUnit);
+											$state,$actionType,$officeId,$propTxType,$officeRentPrice,$officeRentPriceUnit,$topPic);
 }else if($propType == "sp"){
 	
 	$shopsAddress = getParameter("shopsAddress");
@@ -156,12 +168,14 @@ if($propType == "zz"){
 	$shopId = getParameter("propId");
 	$shopsRentPrice = getParameter("shopsRentPrice");
 	$shopsRentPriceUnit = getParameter("shopsRentPriceUnit");
+	$topPic['picBuildType'] = 2;
 	
 	$propHandler = new ShopPropertyHandler($db,$estId,$estName,$shopsAddress,$shopsType,$shopsAreaId,$shopsNumber,
 											$shopsSellPrice,$shopsPropFee,$shopsBuildArea,$shopsFloor,$shopsAllFloor,$shopsDivision,
 											$shopsFitment,$shopsBaseService,$shopsAimOperastion,$propPhoto,$shopsTitle,
-											$shopContent,$shopUserId,$state,$actionType,$shopId,$propTxType,$shopsRentPrice,$shopsRentPriceUnit);
+											$shopContent,$shopUserId,$state,$actionType,$shopId,$propTxType,$shopsRentPrice,$shopsRentPriceUnit,$topPic);
 }else if($propType == "cf"){
+	$topPic['picBuildType'] = 5;
 	
 }else if($action == "delProp"){
 	$propIds = getParameter("propIds");
@@ -185,6 +199,12 @@ if($propType == "zz"){
 	return;
 }
 echo 'result->'.$propHandler->handle();
-//$propHandler->handle();
-//header("Location:sell_property_list.php");
+/*
+$propHandler->handle();
+if($propTxType == 1){
+	header("Location:sell_property_list.php");
+}else{
+	header("Location:lease_property_list.php");
+}
+*/
 ?>

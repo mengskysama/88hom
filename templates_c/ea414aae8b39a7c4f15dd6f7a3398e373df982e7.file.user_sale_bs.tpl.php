@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-12 23:16:55
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-13 16:23:55
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_bs.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2621851d581589ebc48-79434450%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ea414aae8b39a7c4f15dd6f7a3398e373df982e7' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_bs.tpl',
-      1 => 1373642193,
+      1 => 1373703829,
       2 => 'file',
     ),
   ),
@@ -42,12 +42,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 "></script>
 <script>
 $(function() {    
-	$("#estName").autocomplete({
-      source: "ajax_get_prop_name.php",
-      select: function(e, ui) {
-      	  $("#estId").val(ui.item.id);    
-      }
-    });
     initPicUp('<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
 ','<?php echo $_smarty_tpl->tpl_vars['token']->value;?>
 ','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['file_path_upload'];?>
@@ -218,7 +212,10 @@ function checkVillaGarageCount(){
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼盘名称</td>
     <td align="left" valign="middle" class="p25 grzc_31">
     <input type="hidden" id="estId" name="estId"/>
-    <input id="estName" name="estName" type="text" maxlength="50" onkeyup="textCounter(document.getElementById('estName'),document.getElementById('estNameAlert'),25);" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字</td>
+    <input id="estName" name="estName" type="text" maxlength="50" onkeyup="textCounter(document.getElementById('estName'),document.getElementById('estNameAlert'),25);emptyEstId();" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字</td>
+    <div class="tswords" style="display: none;" id="dis_est_alert">
+                	<span class="alert01" style="margin-left:0;" id="P1">请选择列表中匹配的楼盘录入</span><a id="addestate" href="estate_input.php" title="" target="_blank">我要添加新楼盘</a>
+                </div>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">房源信息编码</td>

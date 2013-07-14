@@ -24,14 +24,15 @@ class OfficePropertyHandler extends PropertyHandler{
 	private $propTxType;
 	private $officeRentPrice;
 	private $officeRentPriceUnit;
-	
+	private $topPic;
+		
 	private $estateService;
 	private $propertyService;
 	
 	function __construct($db,$estId,$estName,$officeNumber,$officeType,$officeSellPrice,
 						$officeProFee,$officeBuildArea,$officeFloor,$officeAllFloor,$officeDivision,$officeFitment,
 						$officeLevel,$officePhoto,$officeTitle,$officeContent,$officeUserId,$officeState,$actionType,
-						$officeId,$propTxType,$officeRentPrice,$officeRentPriceUnit){
+						$officeId,$propTxType,$officeRentPrice,$officeRentPriceUnit,$topPic){
 		
 		$this->db = $db;
 		$this->estId = $estId;
@@ -56,17 +57,23 @@ class OfficePropertyHandler extends PropertyHandler{
 		$this->propTxType = $propTxType;
 		$this->officeRentPrice = $officeRentPrice;
 		$this->officeRentPriceUnit = $officeRentPriceUnit;
+		$this->topPic = $topPic;
 		
 		$this->estateService = new EstateService($db);
 		$this->propertyService = new SecondHandPropertyService($db);
 	}
 	
 	public function handle(){
+		$result = false;
 		if($this->actionType == "update"){
-			return $this->updateProperty();
+			$result = $this->updateProperty();
 		}else{
-			return $this->createProperty();
+			$result = $this->createProperty();
 		}
+		if(!$result) return false;
+
+		$this->topPic['picBuildId'] = $this->officeId;
+		return $this->handleTopPic($this->propertyService, $this->topPic);
 	}
 	
 	private function updateProperty(){
@@ -83,6 +90,8 @@ class OfficePropertyHandler extends PropertyHandler{
 		$office = $this->genPropEntity($this->estId,$this->officeState);
 		$officeId = $this->propertyService->saveOffice($office);
 		if(!$officeId) return false;
+		
+		$this->officeId = $officeId;
 		return true;
 	} 
 	

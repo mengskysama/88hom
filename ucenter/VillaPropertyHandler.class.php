@@ -42,6 +42,7 @@ class VillaPropertyHandler extends PropertyHandler{
 	private $villaPayment;
 	private $villaPayDetailY;
 	private $villaPayDetailF;
+	private $topPic;
 	
 	private $estateService;
 	private $propertyService;
@@ -51,7 +52,7 @@ class VillaPropertyHandler extends PropertyHandler{
 						$villaForward,$villaAllFloor,$villaCellar,$villaCellarArea,$villaCellarType,$villaGarden,
 						$villaGardenArea,$villaGarage,$villaGarageCount,$villaFitment,$villaBaseService,$villaLookTime,
 						$villaPhoto,$villaTitle,$villaContent,$villaUserId,$villaState,$actionType,$villaId,
-						$propTxType,$villaRentPrice,$villaRentType,$villaPayment,$villaPayDetailY,$villaPayDetailF){
+						$propTxType,$villaRentPrice,$villaRentType,$villaPayment,$villaPayDetailY,$villaPayDetailF,$topPic){
 		
 		$this->db = $db;
 		$this->estId = $estId;
@@ -94,16 +95,23 @@ class VillaPropertyHandler extends PropertyHandler{
 		$this->villaPayment = $villaPayment;
 		$this->villaPayDetailY = $villaPayDetailY;
 		$this->villaPayDetailF = $villaPayDetailF;
+		$this->topPic = $topPic;
+		
 		$this->estateService = new EstateService($db);
 		$this->propertyService = new SecondHandPropertyService($db);
 	}
 	
 	public function handle(){
+		$result = false;
 		if($this->actionType == "update"){
-			return $this->updateProperty();
+			$result = $this->updateProperty();
 		}else{
-			return $this->createProperty();
+			$result = $this->createProperty();
 		}
+		if(!$result) return false;
+
+		$this->topPic['picBuildId'] = $this->villaId;
+		return $this->handleTopPic($this->propertyService, $this->topPic);
 	}
 	
 	private function updateProperty(){
@@ -120,6 +128,8 @@ class VillaPropertyHandler extends PropertyHandler{
 		$villa = $this->genPropEntity($realEstId,$this->villaState);
 		$houseId = $this->propertyService->saveVilla($villa);
 		if(!$houseId) return false;
+		
+		$this->villaId = $houseId;
 		return true;
 	} 
 	

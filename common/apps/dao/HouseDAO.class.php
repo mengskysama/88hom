@@ -78,7 +78,7 @@ class HouseDAO  {
 	
 	public function getPropertyList($table,$query_fields,$query_where,$query_order,$query_limit){
 		$sql = "select ".$query_fields." from ".$table." ".$query_where." ".$query_order." ".$query_limit;
-		//echo $sql;
+		echo $sql;
 		return $this->db->getQueryArray($sql);
 	}
 	

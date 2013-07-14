@@ -29,7 +29,7 @@ a:hover {color:#f00;text-decoration: none;}
 .p25{ padding-left:25px;}
 .qd{ font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#f00}
 .bor{border-bottom:1px dotted #dddddd}
-
+.alert01 { padding:3px 3px 3px 22px;  background-image:url(../../images/ucenter/reg_est.gif);margin-left:10px;  background-position:4px 2px;overflow:hidden; background-repeat:no-repeat;}
 /* 头部 */
 .gr_top{ width:1000px; margin:0 auto; height:99px;}
 .gr_top img{ float:left}

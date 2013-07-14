@@ -11,6 +11,7 @@ class PicDAO  {
 		$this->db=$db;
 	}
 	//发布图片
+	//updated by Cheneil on 14Jul2013
 	public function release($pic){
 		$sql="insert into ecms_pic(picBuildId,pictypeId,picBuildFatherType,picBuildType,picSellRent,picUrl,picThumb,picInfo,picLayer,picState,picCreateTime,picUpdateTime) values("
 										.(empty($pic['picBuildId'])?0:$pic['picBuildId'])
@@ -26,8 +27,8 @@ class PicDAO  {
 										.",".time()
 										.",".time()
 										.")";
-		//echo '|'.$sql.'|<br/>';
-			return $this->db->getQueryExecute($sql);						
+		$this->db->query($sql);
+		return $this->db->getInsertNum();					
 	}
 	//修改图片
 	public function modify($pic){
@@ -82,6 +83,7 @@ class PicDAO  {
 	 */
 	public function getPicList($field = '*',$where='',$order='',$limit=''){
 		$sql="select $field from ecms_pic $where $order $limit";
+		//echo $sql;
 		return $this->db->getQueryArray($sql);
 	}
 	/**

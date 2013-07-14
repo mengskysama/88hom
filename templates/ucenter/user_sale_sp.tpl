@@ -8,13 +8,7 @@
 <script language="JavaScript" type="text/javascript" src="<!--{$ckeditLib}-->"></script>
 <script>
 $(function() {    
-    $("#estName").autocomplete({
-      source: "ajax_get_prop_name.php",
-      select: function(e, ui) {
-      	  $("#estId").val(ui.item.id);    
-      }
-    });
-    initPicUp('<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
+    initPicUp('','<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
     $("#btn_live").click(function() {
         $("#btn_live").attr("disabled", true);
         $("#btn_save").attr("disabled", true);
@@ -40,7 +34,7 @@ $(function() {
 });
   
 function check(){
-	var estNameValue = $("#estName").val();
+	var estNameValue = $("#estId").val();
 	if(trim(estNameValue) == ''){
 		alert("请填写商铺名称");
 		$("#estName").focus();
@@ -89,7 +83,10 @@ function check(){
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 商铺名称</td>
     <td align="left" valign="middle" class="p25 grzc_31"><input type="hidden" id="estId" name="estId"/>
-    <input id="estName" name="estName" type="text" maxlength="50" onkeyup="textCounter(document.getElementById('estName'),document.getElementById('estNameAlert'),25);" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字</td>
+    <input id="estName" name="estName" type="text" maxlength="50" onkeyup="textCounter(document.getElementById('estName'),document.getElementById('estNameAlert'),25);emptyEstId();" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字</td>
+     <div class="tswords" style="display: none;" id="dis_est_alert">
+                	<span class="alert01" style="margin-left:0;" id="P1">请选择列表中匹配的楼盘录入</span><a id="addestate" href="estate_input.php" title="" target="_blank">我要添加新楼盘</a>
+                </div>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">商铺地址</td>

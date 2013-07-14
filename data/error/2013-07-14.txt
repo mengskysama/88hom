@@ -1,0 +1,15 @@
+------------------------2013-07-14 00:30:24
+错误SQL语句：
+insert into ecms_community(communityName,communityIsHouseType,communityIsBusinessType,communityIsOfficeType,communityIsVillaType,communityAddress,communityTraffic,communityPeriInfo,communityProvince,communityCity,communityDistrict,communityArea,communityState,communityUserId,communityCreateTime) values('丰湖大厦',丰湖大厦,丰湖大厦,丰湖大厦,丰湖大厦,'dddddd','啊啊啊','收拾收拾',4,8,4,0,0,,UNIX_TIMESTAMP())
+客户端:127.0.0.1
+时间:2013-07-14 00:30:24
+------------------------2013-07-14 00:30:54
+错误SQL语句：
+insert into ecms_community(communityName,communityIsHouseType,communityIsBusinessType,communityIsOfficeType,communityIsVillaType,communityAddress,communityTraffic,communityPeriInfo,communityProvince,communityCity,communityDistrict,communityArea,communityState,communityUserId,communityCreateTime) values('丰湖大厦',丰湖大厦,丰湖大厦,丰湖大厦,丰湖大厦,'dddddd','啊啊啊','收拾收拾',4,8,4,0,0,0,UNIX_TIMESTAMP())
+客户端:127.0.0.1
+时间:2013-07-14 00:30:54
+------------------------2013-07-14 11:25:30
+错误SQL语句：
+select * from ecms_user where userId=
+客户端:127.0.0.1
+时间:2013-07-14 11:25:30

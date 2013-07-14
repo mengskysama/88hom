@@ -1,8 +1,17 @@
 <?php
 class PropertyHandler{
 
-
+	public function handleTopPic($secondPropService,$topPic){
+		if(empty($topPic)) return true;
+		
+		$secondPropService->deleteTopPic($topPic);		
+		$picId = $secondPropService->savePropPic($topPic);
+		if($picId) return true;
+		return false;
+	}
 	public function getRealEstateId($estateService,$estId,$estName){
+		return $estId;
+		/*
 		$realEstId = $estId;
 		//save the estate if it's a new one
 		if($estId == ""){
@@ -24,6 +33,7 @@ class PropertyHandler{
 			}
 		}
 		return $realEstId;
+		*/
 	}
 	
 	protected function uploadPhoto($photo,$userId){

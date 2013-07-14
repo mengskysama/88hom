@@ -27,6 +27,7 @@ class ShopPropertyHandler extends PropertyHandler{
 	private $propTxType;
 	private $shopsRentPrice;
 	private $shopsRentPriceUnit;
+	private $topPic;
 	
 	private $estateService;
 	private $propertyService;
@@ -34,7 +35,7 @@ class ShopPropertyHandler extends PropertyHandler{
 	function __construct($db,$estId,$estName,$shopsAddress,$shopsType,$shopsAreaId,$shopsNumber,
 						$shopsSellPrice,$shopsPropFee,$shopsBuildArea,$shopsFloor,$shopsAllFloor,$shopsDivision,
 						$shopsFitment,$shopsBaseService,$shopsAimOperastion,$shopPhoto,$shopsTitle,
-						$shopContent,$shopUserId,$shopsState,$actionType,$shopId,$propTxType,$shopsRentPrice,$shopsRentPriceUnit){
+						$shopContent,$shopUserId,$shopsState,$actionType,$shopId,$propTxType,$shopsRentPrice,$shopsRentPriceUnit,$topPic){
 		
 		$this->db = $db;
 		$this->estId = $estId;
@@ -62,17 +63,23 @@ class ShopPropertyHandler extends PropertyHandler{
 		$this->propTxType = $propTxType;
 		$this->shopsRentPrice = $shopsRentPrice;
 		$this->shopsRentPriceUnit = $shopsRentPriceUnit;
+		$this->topPic = $topPic;
 		
 		$this->estateService = new EstateService($db);
 		$this->propertyService = new SecondHandPropertyService($db);
 	}
 	
 	public function handle(){
+		$result = false;
 		if($this->actionType == "update"){
-			return $this->updateProperty();
+			$result = $this->updateProperty();
 		}else{
-			return $this->createProperty();
+			$result = $this->createProperty();
 		}
+		if(!$result) return false;
+
+		$this->topPic['picBuildId'] = $this->shopId;
+		return $this->handleTopPic($this->propertyService, $this->topPic);
 	}
 	
 	private function updateProperty(){
@@ -90,6 +97,8 @@ class ShopPropertyHandler extends PropertyHandler{
 		$shop = $this->genPropEntity($realEstId,$this->shopsState);
 		$shopId = $this->propertyService->saveShop($shop);
 		if(!$shopId) return false;
+		
+		$this->shopId = $shopId;
 		return true;
 	} 
 

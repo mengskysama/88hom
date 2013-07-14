@@ -1,4 +1,24 @@
 
+$(function() {   
+	$("#estName").autocomplete({
+      source: "ajax_get_prop_name.php",
+      select: function(e, ui) {
+      	  $("#estId").val(ui.item.id);    
+	      document.getElementById("dis_est_alert").style.display="none";
+      }
+    });
+    
+	$("#estName").blur(function () {
+      	  if($("#estId").val() == ""){
+	    	document.getElementById("dis_est_alert").style.display="block";	 
+      	  }else{
+	    	document.getElementById("dis_est_alert").style.display="none";	 
+      	  }
+    });
+});
+function emptyEstId(){
+	$("#estId").val("");    
+}
 function deletePic(picId){
 	if(!confirm("确认删除这张照片？")) return false;
     	

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-12 22:34:45
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-13 16:55:24
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_zz_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1636251d2f3fbecd172-19764708%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '55b46a0f7d399c9446d5885d5b8138b7d0137d65' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_zz_edit.tpl',
-      1 => 1373637310,
+      1 => 1373705721,
       2 => 'file',
     ),
   ),
@@ -86,7 +86,7 @@ $(function() {
             $("#btn_update").removeAttr("disabled");
         }
     });
-    initPicUp('<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
+    initPicUp('','<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
 ','<?php echo $_smarty_tpl->tpl_vars['token']->value;?>
 ','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['file_path_upload'];?>
 ','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_path'];?>

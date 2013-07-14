@@ -2,10 +2,12 @@
 class EstateService{
 	private $db = null;
 	private $estateDAO = null;
+	private $picDAO = null;
 	
 	public function __construct($db){
 		$this->db = $db;
 		$this->estateDAO = new EstateDAO($db);
+		$this->picDAO = new PicDAO($db);
 	}
 	
 	public function getEstatesByLikeName($estName){
@@ -21,7 +23,30 @@ class EstateService{
 	}
 	
 	public function saveEstate($estate){
-		return $this->estateDAO->saveEstate($estate);
+		$estId = $this->estateDAO->saveEstate($estate);
+		if(!$estId) return false;
+		
+		$picBuildType = $estate['estType'];
+		if(!empty($estate['photos'])){
+			$photos = $estate['photos'];
+			$len = count($photos);
+			for($key=0; $key<$len; $key++){
+				$pic['picBuildId'] = $estId;
+				$pic['picBuildType'] = $picBuildType;
+				$pic['pictypeId'] = $photos[$key]['pictypeId'];
+				$pic['picSellRent'] = $photos[$key]['picSellRent'];
+				$pic['picUrl'] = $photos[$key]['picUrl'];
+				$pic['picThumb'] = $photos[$key]['picThumb'];
+				$pic['picInfo'] = $photos[$key]['picInfo'];
+				$pic['picLayer'] = $photos[$key]['picLayer'];
+				$pic['picState'] = $photos[$key]['picState'];
+				$pic['picBuildFatherType'] = 1;
+				
+		
+				$this->picDAO->release($pic);
+			}
+		}
+		return $estId;
 	}
 }
 ?>

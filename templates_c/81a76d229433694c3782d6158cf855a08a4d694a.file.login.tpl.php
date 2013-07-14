@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-05-05 14:17:46
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-13 17:39:53
          compiled from "E:/workplace/phpprojects/88hom/templates\admin\login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:290025185f98a0f58e1-76541718%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '81a76d229433694c3782d6158cf855a08a4d694a' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\admin\\login.tpl',
-      1 => 1367547838,
+      1 => 1367844532,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_5185f98a94bb06_07955988',
   'variables' => 
   array (
     'cfg' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cssFiles' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_5185f98a94bb06_07955988',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5185f98a94bb06_07955988')) {function content_5185f98a94bb06_07955988($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

@@ -89,6 +89,7 @@ class SecondHandPropertyService{
 					}
 				}
 			}
+			return true;
 		}
 		return false;
 		
@@ -165,10 +166,14 @@ class SecondHandPropertyService{
 	}
 	
 	public function getPropPhotos($photo){
+		$where = "where picBuildId=".$photo['picBuildIdId']." and picBuildType=".$photo['picBuildType']." and picState=1 ";
+		if(!empty($photo['pictypeId'])){
+			$where .= "and pictypeId=".$photo['pictypeId'];
+		}
 		return $this->picDAO->getPicList("picId,pictypeId,picBuildId,picBuildType,picSellRent,picUrl,picThumb,picInfo,picLayer",
-				"where picBuildId=".$photo['picBuildIdId']." and picBuildType=".$photo['picBuildType']." and picState=1",
-				"order by picState",
-				"");
+										$where,
+										"order by picLayer",
+										"");
 	}
 	
 	public function countPropertiesByState($userId,$propState){
@@ -350,5 +355,12 @@ class SecondHandPropertyService{
 			return $propId;
 		}
 		return '';
+	}
+	public function deleteTopPic($pic){
+		$where = "where picBuildId=".$pic['picBuildId']." and pictypeId=".$pic['pictypeId']." and picBuildType=".$pic['picBuildType'];
+		return $this->picDAO->delPic($where);
+	}
+	public function savePropPic($pic){
+		return $this->picDAO->release($pic);
 	}
 }
