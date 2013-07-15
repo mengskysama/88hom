@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-14 11:37:08
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-15 20:38:52
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\ucenter_agent_left_menu.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3040051e21c08aa1ae1-35987316%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4cfeb3c3921816ffc27b566be1b1575650d1694f' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\ucenter_agent_left_menu.tpl',
-      1 => 1373773024,
+      1 => 1373891285,
       2 => 'file',
     ),
   ),
@@ -33,10 +33,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
           <div class="gl">
           <dl>
      		   	<dt class="jjr_bt1 jjr_bj2">房源管理</dt>
-          	    <dd class="jjr_bt2"><a href="#">录入出售房源</a></dd>
-          	    <dd class="jjr_bt2"><a href="#">管理出售房源</a></dd>
-         	    <dd class="jjr_bt2"><a href="#">录入出租房源</a></dd>
-                <dd class="jjr_bt2"><a href="#">管理出租房源</a></dd>
+          	    <dd class="jjr_bt2"><a href="agent_sale_zz.php">录入出售房源</a></dd>
+          	    <dd class="jjr_bt2"><a href="agent_sell_property_list.php">管理出售房源</a></dd>
+         	    <dd class="jjr_bt2"><a href="agent_lease_zz.php">录入出租房源</a></dd>
+                <dd class="jjr_bt2"><a href="agent_lease_property_list.php">管理出租房源</a></dd>
       	  </dl>
           </div>
           <div class="gl">

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-14 18:48:26
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-15 22:30:42
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\agent_sale_zz.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2497751e1194d0defe2-35888697%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '07a01e27ba424deddadb1b6f9be8331a863d1bef' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\agent_sale_zz.tpl',
-      1 => 1373798902,
+      1 => 1373891285,
       2 => 'file',
     ),
   ),
@@ -113,6 +113,10 @@ function check(){
 	var houseContentValue = CKEDITOR.instances.houseContent.getData(); 
 	if(trim(houseContentValue) == ''){
 		alert("请填写房源描述");
+		return false;
+	}
+	if($("#topPicPath").val() == ""){
+		alert("请选择标题图");
 		return false;
 	}
 	
@@ -284,13 +288,13 @@ function check(){
 	            <script>
 	                CKEDITOR.replace( 'houseContent' );
 	            </script>
-	            <span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
-				请勿从其它网站或其它房源描述中拷贝。</span>
-				         <span>
+	            <span style="border-bottom:none">可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
+				      请勿从其它网站或其它房源描述中拷贝。</span>
+				               <span>
+				         <b style="text-indent:0px;">注意事项：</b> <br />
 				1.上传宽度大于600像素，比例为5:4的图片可获得更好的展示效果。<br />
 				2.请勿上传有水印、盖章等任何侵犯他人版权或含有广告信息的图片。<br />
 				3.可上传20张图片，每张小于2M，建议尺寸大于500x400像素。</span>
-			    	
 			    </td>
 			  </tr>
 				<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;

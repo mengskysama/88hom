@@ -14,6 +14,7 @@ class FactoryPropertyHandler extends PropertyHandler{
 
 	public function handle(){
 		$result = false;
+		echo 'actiontype->'.$this->factory['actionType'];
 		if($this->factory['actionType'] == "update"){
 			$result = $this->updateProperty();
 		}else{
@@ -21,7 +22,7 @@ class FactoryPropertyHandler extends PropertyHandler{
 		}
 		if(!$result) return false;
 	
-		$this->factory['topPic']['picBuildId'] = $this->facotry['factoryId'];
+		$this->factory['topPic']['picBuildId'] = $this->factory['factoryId'];
 		return $this->handleTopPic($this->propertyService, $this->factory['topPic']);
 	}
 	

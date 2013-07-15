@@ -1,17 +1,67 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-15 22:49:17
+         compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\agent_sale_cf.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:1249751e3ed5bee5ca5-19730860%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '849f119a4b8d4f4da5a52365445b946d5daa409b' => 
+    array (
+      0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\agent_sale_cf.tpl',
+      1 => 1373899753,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '1249751e3ed5bee5ca5-19730860',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51e3ed5c437441_06712475',
+  'variables' => 
+  array (
+    'cfg' => 0,
+    'jsFiles' => 0,
+    'cssFiles' => 0,
+    'ckeditLib' => 0,
+    'picTypeList' => 0,
+    'key' => 0,
+    'timestamp' => 0,
+    'token' => 0,
+    'item' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_51e3ed5c437441_06712475')) {function content_51e3ed5c437441_06712475($_smarty_tpl) {?>﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
+" />
 <title>录入厂房出售房源</title>
-<!--{$jsFiles}-->
-<!--{$cssFiles}-->
-<script language="JavaScript" type="text/javascript" src="<!--{$ckeditLib}-->"></script>
+<?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
+
+<?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
+
+<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
+"></script>
 <script>
 $(function() {    
 
-	<!--{foreach from=$picTypeList item=item key=key}-->
-    initPicUp3(<!--{$key}-->,'<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
-	<!--{/foreach}-->
+	<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+    initPicUp3(<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+,'<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['token']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['file_path_upload'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_path'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_common'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+');
+	<?php } ?>
 	
 		//初始化区域插件
 		if($('#areaIndex').val() != ''){
@@ -122,10 +172,12 @@ function check(){
 
 <body>
 <!--头部-->
-<!--{include file="$ucenter_agent_header"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_agent_header']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 <!--中间内容部分-->
 <div class="qg_main">
-	<!--{include file="$ucenter_agent_left_menu"}-->
+	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_agent_left_menu']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
     <div class="jjr_r">
     	<div class="qg_r1">
     <p>你的位置: <a href="#">房源管理</a></p>
@@ -355,17 +407,27 @@ function check(){
 		    	 <textarea class="bdqy2" rows="7" cols="80" id="factoryTraffic" name="factoryTraffic"></textarea>
 		    </td>
 		  </tr>
-					<!--{foreach from=$picTypeList item=item key=key}-->
-					<tr><td height="220" align="center" valign="middle" bgcolor="#f7f6f1"><!--{$item}--></td>
+					<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+					<tr><td height="220" align="center" valign="middle" bgcolor="#f7f6f1"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</td>
 			         <td height="215" align="left" valign="top" class="p25">
 			         	<div class="sc_btn">
-			                <input type="file" name="file_upload_<!--{$key}-->" id="file_upload_<!--{$key}-->"/>
+			                <input type="file" name="file_upload_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" id="file_upload_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"/>
 			            </div>
-			            <div class="tpsc" id="showImg_<!--{$key}-->">
+			            <div class="tpsc" id="showImg_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+">
 			            </div>
 					 </td>
 					</tr> 
-					<!--{/foreach}-->
+					<?php } ?>
 			      
 			       <tr>
 				    <td height="124" align="center" valign="middle" bgcolor="#f7f6f1">标题图</td>
@@ -390,6 +452,8 @@ function check(){
     </div>
 
 <!--底部-->
-<!--{include file="$footer"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['footer']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 </body>
 </html>
+<?php }} ?>

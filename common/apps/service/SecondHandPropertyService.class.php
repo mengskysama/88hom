@@ -28,7 +28,6 @@ class SecondHandPropertyService{
 		$picBuildType = $property['picBuildType'];
 		if(!empty($property['propertyPhoto'])){
 			$photos = $property['propertyPhoto'];
-// 			foreach($photos['picPath'] as $key=>$value){
 			$len = count($photos);
 // 			echo 'size->'.$len;
 			for($key=0; $key<$len; $key++){

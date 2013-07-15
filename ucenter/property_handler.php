@@ -182,7 +182,7 @@ if($propType == "zz"){
 											$shopContent,$shopUserId,$state,$actionType,$shopId,$propTxType,$shopsRentPrice,$shopsRentPriceUnit,
 											$shopsTraffic,$shopsSet,$topPic);
 }else if($propType == "cf"){
-	$factory['factoryName'] = $estName;
+	$factory['factoryName'] = getParameter("factoryName");;
 	$factory['factoryAddress'] = getParameter('factoryAddress');
 	$factory['factoryNumber'] = getParameter('factoryNumber');
 	$factory['factoryType'] = getParameter('factoryType');
@@ -225,7 +225,7 @@ if($propType == "zz"){
 	
 	$topPic['picBuildType'] = 5;
 	$factory['topPic'] = $topPic;
-	$factory['photos'] = $propPhoto;
+	$factory['propertyPhoto'] = $propPhoto;
 	
 	$propHandler = new FactoryPropertyHandler($db,$factory);
 }else if($action == "delProp"){

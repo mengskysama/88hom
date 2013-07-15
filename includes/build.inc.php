@@ -58,6 +58,40 @@ return array(
 			         7=>'露台',
 			         8=>'阁楼'
 		),
+		'2handHouseRentType'=>array(	
+	               1=>'整租',
+	               2=>'合租'
+		),
+		'2handHouseRentRoomType'=>array(	
+		              1=>'主卧',
+		              2=>'次卧',
+		              3=>'床位',
+		              4=>'隔断间'
+		),
+		'2handHouseRentDetail'=>array(	
+	              1=>'性别不限',
+	              2=>'限女生',
+	              3=>'限男生',
+	              4=>'限夫妻'
+		),
+		'2handHousePayment'=>array(	
+				1=>'押付',
+				2=>'面议'
+		),
+		'2handHousePayDetailY'=>array(	
+				0=>'零',
+				1=>'一个月',
+				2=>'两个月',
+				3=>'三个月',
+				6=>'六个月'
+		),
+		'2handHousePayDetailF'=>array(	
+               1=>'一个月',
+               2=>'两个月',
+               3=>'三个月',
+               6=>'六个月',
+               12=>'十二个月'
+		),
 		'2handHouseLookTime'=>array(	
 			  		1=>'随时看房',     
 			      	2=>'非工作时间',    
@@ -158,5 +192,27 @@ return array(
 			  		1=>'随时看房',     
 			      	2=>'非工作时间',    
 			        3=>'电话预约'   
+		),
+		'2handVillaPayment'=>array(	
+				1=>'押付',
+				2=>'面议'
+		),
+		'2handVillaPayDetailY'=>array(	
+				0=>'零',
+				1=>'一个月',
+				2=>'两个月',
+				3=>'三个月',
+				6=>'六个月'
+		),
+		'2handVillaPayDetailF'=>array(	
+               1=>'一个月',
+               2=>'两个月',
+               3=>'三个月',
+               6=>'六个月',
+               12=>'十二个月'
+		),
+		'2handVillaRentType'=>array(	
+               1=>'整租',
+               2=>'合租'
 		)						    
 );

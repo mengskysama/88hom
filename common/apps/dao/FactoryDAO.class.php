@@ -75,7 +75,7 @@ class FactoryDAO  {
 	}
 	
 	public function getPropertyById($userId,$propId){ 
-		$sql = "select factoryNumber,factoryName,factoryAddress,factoryType,factorySellPrice,factoryProFee,factoryManagentUnits,factoryPayInfo,".
+		$sql = "select factoryTraffic,factoryContent,factoryNumber,factoryName,factoryAddress,factoryType,factorySellPrice,factoryProFee,factoryManagentUnits,factoryPayInfo,".
 			   "factoryFloorArea,factoryBuildArea,factoryOfficeArea,factoryWorkshopArea,factorySpaceArea,factoryDormitory,factoryBuildYear,".
 			   "factorySpan,factoryAllFloor,factoryFloorHeight,factoryLoadBearing,factoryBuildStructure,factoryWater,factoryHasCapacityNow,".
 			   "factoryHasCapacityMax,factoryRentPrice,factoryIncludFee,factoryPayment,factoryPayDetailY,factoryPayDetailF,factoryLeastYear,".
@@ -86,49 +86,109 @@ class FactoryDAO  {
 		if($userId > 0){
 			$sql .= " and factoryUserId=".$userId;
 		}
-		return $this->db->getQueryArray($sql);
+		return $this->db->getQueryValue($sql);
 	}
 	//end to be added by Cheneil
 	//修改厂房
 	public function modify($factory){
-		$sql="update ecms_factory set factoryNumber='"
-			.empty($factory['factoryNumber'])?'':$factory['factoryNumber']
-			."',factoryName='".empty($factory['factoryName'])?'':$factory['factoryName']
-			."',factoryAddress='".empty($factory['factoryAddress'])?'':$factory['factoryAddress']
-			."',factoryType=".empty($factory['factoryType'])?0:$factory['factoryType']
-			.",factorySellPrice=".empty($factory['factorySellPrice'])?0:$factory['factorySellPrice']
-			.",factoryProFee=".empty($factory['factoryProFee'])?0:$factory['factoryProFee']
-			.",factoryManagentUnits='".empty($factory['factoryManagentUnits'])?'':$factory['factoryManagentUnits']
-			."',factoryPayInfo=".empty($factory['factoryPayInfo'])?0:$factory['factoryPayInfo']
-			.",factoryFloorArea=".empty($factory['factoryFloorArea'])?0:$factory['factoryFloorArea']
-			.",factoryBuildArea=".empty($factory['factoryBuildArea'])?0:$factory['factoryBuildArea']
-			.",factoryOfficeArea=".empty($factory['factoryOfficeArea'])?0:$factory['factoryOfficeArea']
-			.",factoryWorkshopArea=".empty($factory['factoryWorkshopArea'])?0:$factory['factoryWorkshopArea']
-			.",factorySpaceArea=".empty($factory['factorySpaceArea'])?0:$factory['factorySpaceArea']
-			.",factoryDormitory='".empty($factory['factoryDormitory'])?0:$factory['factoryDormitory']
-			."',factoryBuildYear=".empty($factory['factoryBuildYear'])?0:$factory['factoryBuildYear']
-			.",factorySpan=".empty($factory['factorySpan'])?0:$factory['factorySpan']
-			.",factoryAllFloor=".empty($factory['factoryAllFloor'])?0:$factory['factoryAllFloor']
-			.",factoryFloorHeight='".empty($factory['factoryFloorHeight'])?'':$factory['factoryFloorHeight']
-			."',factoryLoadBearing='".empty($factory['factoryLoadBearing'])?'':$factory['factoryLoadBearing']
-			."',factoryBuildStructure='".empty($factory['factoryBuildStructure'])?0:$factory['factoryBuildStructure']
-			."',factoryWater='".empty($factory['factoryWater'])?'':$factory['factoryWater']
-			."',factoryHasCapacityNow='".empty($factory['factoryHasCapacityNow'])?'':$factory['factoryHasCapacityNow']
-			."',factoryHasCapacityMax='".empty($factory['factoryHasCapacityMax'])?0:$factory['factoryHasCapacityMax']
-			."',factoryRentPrice=".empty($factory['factoryRentPrice'])?0:$factory['factoryRentPrice']
-			.",factoryIncludFee='".empty($factory['factoryIncludFee'])?'':$factory['factoryIncludFee']
-			."',factoryPayment=".empty($factory['factoryPayment'])?0:$factory['factoryPayment']
-			.",factoryPayDetailY=".empty($factory['factoryPayDetailY'])?0:$factory['factoryPayDetailY']
-			.",factoryPayDetailF=".empty($factory['factoryPayDetailF'])?0:$factory['factoryPayDetailF']
-			.",factoryLeastYear=".empty($factory['factoryLeastYear'])?0:$factory['factoryLeastYear']
-			.",factorySellRentType=".empty($factory['factorySellRentType'])?0:$factory['factorySellRentType']
-			.",factoryMapX=".empty($factory['factoryMapX'])?0:$factory['factoryMapX']
-			.",factoryMapY=".empty($factory['factoryMapY'])?0:$factory['factoryMapY']
-			.",factoryState=".empty($factory['factoryState'])?0:$factory['factoryState']
-			.",factoryAreaId='".empty($factory['factoryAreaId'])?'':$factory['factoryAreaId']
-			."',factoryUserId=".empty($factory['factoryUserId'])?0:$factory['factoryUserId']
-			.",factoryUpdateTime=".time()
-			." where factoryId=".$factory['factoryId'];
+		$sql="update ecms_factory set ";
+		if(isset($factory['factoryNumber'])){
+			$sql .= "factoryNumber='".$factory['factoryNumber']."',";
+		}				
+		if(isset($factory['factoryAddress'])){
+			$sql .= "factoryAddress='".$factory['factoryAddress']."',";
+		}				
+		if(isset($factory['factoryType'])){
+			$sql .= "factoryType=".$factory['factoryType'].",";
+		}				
+		if(isset($factory['factorySellPrice'])){
+			$sql .= "factorySellPrice=".$factory['factorySellPrice'].",";
+		}				
+		if(isset($factory['factoryProFee'])){
+			$sql .= "factoryProFee=".$factory['factoryProFee'].",";
+		}			
+		if(isset($factory['factoryManagentUnits'])){
+			$sql .= "factoryManagentUnits='".$factory['factoryManagentUnits']."',";
+		}				
+		if(isset($factory['factoryPayInfo'])){
+			$sql .= "factoryPayInfo=".$factory['factoryPayInfo'].",";
+		}			
+		if(isset($factory['factoryFloorArea'])){
+			$sql .= "factoryFloorArea=".$factory['factoryFloorArea'].",";
+		}			
+		if(isset($factory['factoryBuildArea'])){
+			$sql .= "factoryBuildArea=".$factory['factoryBuildArea'].",";
+		}					
+		if(isset($factory['factoryOfficeArea'])){
+			$sql .= "factoryOfficeArea=".$factory['factoryOfficeArea'].",";
+		}				
+		if(isset($factory['factoryWorkshopArea'])){
+			$sql .= "factoryWorkshopArea=".$factory['factoryWorkshopArea'].",";
+		}				
+		if(isset($factory['factorySpaceArea'])){
+			$sql .= "factorySpaceArea=".$factory['factorySpaceArea'].",";
+		}				
+		if(isset($factory['factoryDormitory'])){
+			$sql .= "factoryDormitory='".$factory['factoryDormitory']."',";
+		}				
+		if(isset($factory['factoryBuildYear'])){
+			$sql .= "factoryBuildYear=".$factory['factoryBuildYear'].",";
+		}				
+		if(isset($factory['factorySpan'])){
+			$sql .= "factorySpan=".$factory['factorySpan'].",";
+		}				
+		if(isset($factory['factoryAllFloor'])){
+			$sql .= "factoryAllFloor=".$factory['factoryAllFloor'].",";
+		}				
+		if(isset($factory['factoryFloorHeight'])){
+			$sql .= "factoryFloorHeight=".$factory['factoryFloorHeight'].",";
+		}				
+		if(isset($factory['factoryLoadBearing'])){
+			$sql .= "factoryLoadBearing=".$factory['factoryLoadBearing'].",";
+		}				
+		if(isset($factory['factoryBuildStructure'])){
+			$sql .= "factoryBuildStructure='".$factory['factoryBuildStructure']."',";
+		}			
+		if(isset($factory['factoryWater'])){
+			$sql .= "factoryWater='".$factory['factoryWater']."',";
+		}				
+		if(isset($factory['factoryHasCapacityNow'])){
+			$sql .= "factoryHasCapacityNow='".$factory['factoryHasCapacityNow']."',";
+		}				
+		if(isset($factory['factoryHasCapacityMax'])){
+			$sql .= "factoryHasCapacityMax='".$factory['factoryHasCapacityMax']."',";
+		}				
+		if(isset($factory['factoryRentPrice'])){
+			$sql .= "factoryRentPrice=".($factory['factoryRentPrice'] == "" ? 0 : $factory['factoryRentPrice']).",";
+		}					
+		if(isset($factory['factoryIncludFee'])){
+			$sql .= "factoryIncludFee=".$factory['factoryIncludFee'].",";
+		}					
+		if(isset($factory['factoryPayment'])){
+			$sql .= "factoryPayment=".($factory['factoryPayment'] == "" ? 0 : $factory['factoryPayment']).",";
+		}				
+		if(isset($factory['factoryPayDetailY'])){
+			$sql .= "factoryPayDetailY=".($factory['factoryPayDetailY'] == "" ? 0 : $factory['factoryPayDetailY']).",";
+		}				
+		if(isset($factory['factoryPayDetailF'])){
+			$sql .= "factoryPayDetailF=".($factory['factoryPayDetailF'] == "" ? 0 : $factory['factoryPayDetailF']).",";
+		}				
+		if(isset($factory['factoryLeastYear'])){
+			$sql .= "factoryLeastYear=".$factory['factoryLeastYear'].",";
+		}				
+		if(isset($factory['factorySellRentType'])){
+			$sql .= "factorySellRentType=".$factory['factorySellRentType'].",";
+		}						
+		if(isset($factory['factoryAreaId'])){
+			$sql .= "factoryAreaId='".$factory['factoryAreaId']."',";
+		}					
+		if(isset($factory['factoryContent'])){
+			$sql .= "factoryContent='".$factory['factoryContent']."',";
+		}					
+		if(isset($factory['factoryTraffic'])){
+			$sql .= "factoryTraffic='".$factory['factoryTraffic']."',";
+		}					
+		$sql .= "factoryUpdateTime=".time()." where factoryId=".$factory['factoryId'];
 		return $this->db->getQueryExeCute($sql);
 	}
 	//删除厂房

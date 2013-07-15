@@ -1,17 +1,67 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-15 23:45:52
+         compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\agent_lease_cf.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:2804451e419306d42a9-64936326%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '06782a63ca6ce6a162bb3749abd9ace22489c161' => 
+    array (
+      0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\agent_lease_cf.tpl',
+      1 => 1373903057,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '2804451e419306d42a9-64936326',
+  'function' => 
+  array (
+  ),
+  'variables' => 
+  array (
+    'cfg' => 0,
+    'jsFiles' => 0,
+    'cssFiles' => 0,
+    'ckeditLib' => 0,
+    'picTypeList' => 0,
+    'key' => 0,
+    'timestamp' => 0,
+    'token' => 0,
+    'item' => 0,
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51e419307fada2_47452879',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_51e419307fada2_47452879')) {function content_51e419307fada2_47452879($_smarty_tpl) {?>﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
-<title>录入厂房出售房源</title>
-<!--{$jsFiles}-->
-<!--{$cssFiles}-->
-<script language="JavaScript" type="text/javascript" src="<!--{$ckeditLib}-->"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
+" />
+<title>录入厂房出租房源</title>
+<?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
+
+<?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
+
+<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
+"></script>
 <script>
 $(function() {    
 
-	<!--{foreach from=$picTypeList item=item key=key}-->
-    initPicUp3(<!--{$key}-->,'<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
-	<!--{/foreach}-->
+	<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+    initPicUp3(<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+,'<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['token']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['file_path_upload'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_path'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_common'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+');
+	<?php } ?>
 	
 		//初始化区域插件
 		if($('#areaIndex').val() != ''){
@@ -117,26 +167,42 @@ function check(){
 	
 	return true;	
 }
+
+function changepaydetail() {
+	var val = $('input:radio[name="factoryPayment"]:checked').val();
+    if (val == 2) {
+        document.getElementById("factoryPayDetailY").value = "";
+        document.getElementById("factoryPayDetailF").value = "";
+        document.getElementById("factoryPayDetailY").disabled = "disabled"
+        document.getElementById("factoryPayDetailF").disabled = "disabled"
+    }
+    else {
+        document.getElementById("factoryPayDetailY").disabled = ""
+        document.getElementById("factoryPayDetailF").disabled = ""
+    }
+}
 </script>
 </head>
 
 <body>
 <!--头部-->
-<!--{include file="$ucenter_agent_header"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_agent_header']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 <!--中间内容部分-->
 <div class="qg_main">
-	<!--{include file="$ucenter_agent_left_menu"}-->
+	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_agent_left_menu']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
     <div class="jjr_r">
     	<div class="qg_r1">
     <p>你的位置: <a href="#">房源管理</a></p>
    	<div class="qg_bs1">
             <form id="cfForm" name="cfForm" action="property_handler.php" method="post" enctype="multipart/form-data">
  		   <ul>
-   			 	<li><a href="agent_sale_zz.php">录入住宅出售房源</a></li>
-    		    <li><a href="agent_sale_bs.php">录入别墅出售房源</a></li>
-     		    <li><a href="agent_sale_sp.php">录入商铺出售房源</a></li>
-      		 	<li><a href="agent_sale_xzl.php">录入写字楼出售房源</a></li>
-       		    <li><a href="agent_sale_cf.php">录入厂房出售房源</a></li>
+   			 	<li><a href="agent_lease_zz.php">录入住宅出租房源</a></li>
+    		    <li><a href="agent_lease_bs.php">录入别墅出租房源</a></li>
+     		    <li><a href="agent_lease_sp.php">录入商铺出租房源</a></li>
+      		 	<li><a href="agent_lease_xzl.php">录入写字楼出租房源</a></li>
+       		    <li><a href="agent_lease_cf.php">录入厂房出租房源</a></li>
    		  </ul>
           <div class="bs_tx">
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
@@ -235,8 +301,15 @@ function check(){
 			    </td>
 			  </tr>
 			  <tr>
-			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  售    价</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factorySellPrice" name="factorySellPrice" type="text"  value="" /> <font class="z3">元/平米</font></td>
+			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  租    金</td>
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryRentPrice" name="factoryRentPrice" type="text"  value="" /> <font class="z3">元/月</font></td>
+			  </tr>
+			  <tr>
+			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否含管理费</td>
+			    <td align="left" valign="middle" class="p25 grzc_32"> 
+			    	<label><input id="" name="factoryIncludFee" type="radio" value="1" checked="checked" /> 是</label>     
+			      	<label> <input id="" name="factoryIncludFee" type="radio" value="2" /> 否</label>    
+			        </td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 管 理 费</td>
@@ -246,6 +319,35 @@ function check(){
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">管理单位</td>
 			    <td align="left" valign="middle" class="p25 grzc_31"><input id="factoryManagentUnits" name="factoryManagentUnits" type="text"  value="" /></td>
+			  </tr>
+			  <tr>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
+			    <td align="left" valign="middle" class="p25 grzc_35">
+			    <input id="housePayment" checked="checked" name="factoryPayment" type="radio" value="1" onclick="changepaydetail()"/>押&nbsp;
+				<select name="factoryPayDetailY" id="factoryPayDetailY" style=" vertical-align:middle">
+				<option selected="selected" value="">请选择</option>
+				<option value="0">零</option>
+				<option value="1">一个月</option>
+				<option value="2">两个月</option>
+				<option value="3">三个月</option>
+				<option value="6">六个月</option>
+				</select>
+                                                       付&nbsp;
+				<select name="factoryPayDetailF" id="factoryPayDetailF" style=" vertical-align:middle">
+                                    <option selected="selected" value="">请选择</option>
+                                    <option value="1" >一个月</option>
+                                    <option value="2">两个月</option>
+                                    <option value="3">三个月</option>
+                                    <option value="6">六个月</option>
+                                    <option value="12">十二个月</option>
+ 				</select>
+			    <input id="housePayment" name="factoryPayment" type="radio" value="2" onclick="changepaydetail();" />面议
+				</td>
+			  </tr>
+			  <tr>
+			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">起租年限</td>
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryLeastYear" name="factoryLeastYear" type="text"  value="" /> <font class="z3">年</font>
+			    </td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">土地证</td>
@@ -281,11 +383,6 @@ function check(){
 			  <tr>
 			    <td align="center" valign="middle" bgcolor="#f7f6f1">宿舍情况</td>
 			    <td align="left" valign="middle" class="p25 grzc_32"><input name="factoryDormitory" type="text"  maxlength="50" value="" />
-			    </td>
-			  </tr>
-			  <tr>
-			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryBuildYear" name="factoryBuildYear" type="text" maxlength="4" value="" /> <font class="z3">年</font>   
 			    </td>
 			  </tr>
 			   <tr>
@@ -355,17 +452,27 @@ function check(){
 		    	 <textarea class="bdqy2" rows="7" cols="80" id="factoryTraffic" name="factoryTraffic"></textarea>
 		    </td>
 		  </tr>
-					<!--{foreach from=$picTypeList item=item key=key}-->
-					<tr><td height="220" align="center" valign="middle" bgcolor="#f7f6f1"><!--{$item}--></td>
+					<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+					<tr><td height="220" align="center" valign="middle" bgcolor="#f7f6f1"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</td>
 			         <td height="215" align="left" valign="top" class="p25">
 			         	<div class="sc_btn">
-			                <input type="file" name="file_upload_<!--{$key}-->" id="file_upload_<!--{$key}-->"/>
+			                <input type="file" name="file_upload_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" id="file_upload_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"/>
 			            </div>
-			            <div class="tpsc" id="showImg_<!--{$key}-->">
+			            <div class="tpsc" id="showImg_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+">
 			            </div>
 					 </td>
 					</tr> 
-					<!--{/foreach}-->
+					<?php } ?>
 			      
 			       <tr>
 				    <td height="124" align="center" valign="middle" bgcolor="#f7f6f1">标题图</td>
@@ -390,6 +497,8 @@ function check(){
     </div>
 
 <!--底部-->
-<!--{include file="$footer"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['footer']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 </body>
 </html>
+<?php }} ?>

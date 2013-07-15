@@ -206,6 +206,29 @@ function CheckRentArea(KeyName,flag)
 	}
 }
 
+function checkArea(KeyName,KeyValue,chkEmpty){
+    var value=document.getElementById(KeyName).value;
+    
+    if(chkEmpty == true && value==''){
+    	alert("请填写" + KeyValue);
+		$("#"+KeyName).focus();
+        return false;
+    }
+        
+    if(check_float(KeyName)){
+    	if(parseFloat(value)<=2||parseFloat(value)>=10000){
+    		alert(KeyValue + "必须大于2且小于10000");
+    		$("#"+KeyName).focus();
+    		return false;
+    	}
+    	return true;
+	}else{
+        alert("只能填写数字");
+		$("#"+KeyName).focus();
+        return false;
+	}
+}
+
 function CheckLiveArea(KeyName,KeyName1,flag)
 {
     if(!flag) return false;

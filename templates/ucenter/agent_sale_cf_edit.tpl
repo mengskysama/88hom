@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
-<title>录入厂房出售房源</title>
+<title>编辑厂房出售房源</title>
 <!--{$jsFiles}-->
 <!--{$cssFiles}-->
 <script language="JavaScript" type="text/javascript" src="<!--{$ckeditLib}-->"></script>
@@ -22,41 +22,24 @@ $(function() {
 				$('#txtComareas').val(A[areaIndex[0]][areaIndex[1]][areaIndex[2]][areaIndex[3]]);//片区,表面文字
 		}
 		
-    $("#btn_live").click(function() {
-        $("#btn_live").attr("disabled", true);
-        $("#btn_save").attr("disabled", true);
-        if (check()) {
-        	$("#action_to_go").val(1);
-            document.getElementById("cfForm").submit();
-        } else {
-            $("#btn_live").removeAttr("disabled");
-            $("#btn_save").removeAttr("disabled");
-        }
-    });
         
-    $("#btn_save").click(function() {
-        $("#btn_live").attr("disabled", true);
-        $("#btn_save").attr("disabled", true);
+    $("#btn_update").click(function() {
+        $("#btn_update").attr("disabled", true);
         if (check()) {
             document.getElementById("cfForm").submit();
         } else {
-            $("#btn_live").removeAttr("disabled");
-            $("#btn_save").removeAttr("disabled");
+            $("#btn_update").removeAttr("disabled");
         }
     });
 });
 function check(){
-	var estNameValue = $("#factoryName").val();
-	if(trim(estNameValue) == ''){
-		alert("请填写厂房名称");
-		$("#factoryName").focus();
-		return false;
-	}
+
 	if(trim($("#factoryAddress").val()) == ''){
 		alert("请填写厂房地址");
 		$("#factoryAddress").focus();
 		return false;
-	}/*
+	}
+	/*
 	if(trim($("#areaIndex").val()) == ''){
 		alert("请选择区域");
 		return false;
@@ -128,16 +111,9 @@ function check(){
 	<!--{include file="$ucenter_agent_left_menu"}-->
     <div class="jjr_r">
     	<div class="qg_r1">
-    <p>你的位置: <a href="#">房源管理</a></p>
+    <p>你的位置: <a href="#">编辑商铺出售房源</a></p>
    	<div class="qg_bs1">
             <form id="cfForm" name="cfForm" action="property_handler.php" method="post" enctype="multipart/form-data">
- 		   <ul>
-   			 	<li><a href="agent_sale_zz.php">录入住宅出售房源</a></li>
-    		    <li><a href="agent_sale_bs.php">录入别墅出售房源</a></li>
-     		    <li><a href="agent_sale_sp.php">录入商铺出售房源</a></li>
-      		 	<li><a href="agent_sale_xzl.php">录入写字楼出售房源</a></li>
-       		    <li><a href="agent_sale_cf.php">录入厂房出售房源</a></li>
-   		  </ul>
           <div class="bs_tx">
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
             <input type="hidden" name="prop_type" value="cf">
@@ -145,11 +121,11 @@ function check(){
 			<table width="732" border="0" cellpadding="0" cellspacing="1" bordercolor="#FFFFFF">
 			  <tr>
 			    <td width="110" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 厂房名称</td>
-			    <td width="619" align="left" valign="middle" class="p25 grzc_31"><input id="factoryName" name="factoryName" type="text" maxlength="50" onkeyup="textCounter(document.getElementById('factoryName'),document.getElementById('estNameAlert'),25);" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字</td>
+			    <td width="619" align="left" valign="middle" class="p25 grzc_31"><!--{$factoryName}--></td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 厂房地址</td>
-			    <td align="left" valign="middle" class="p25 grzc_31"><input id="factoryAddress" name="factoryAddress" type="text" maxlength="100" onkeyup="textCounter(document.getElementById('factoryAddress'),document.getElementById('factoryAddressAlert'),50);" /> 还可写<span id="factoryAddressAlert"><font class="red">50</font></span>个汉字 </td>
+			    <td align="left" valign="middle" class="p25 grzc_31"><input id="factoryAddress" name="factoryAddress" type="text" value="<!--{$factoryAddress}-->" maxlength="100" onkeyup="textCounter(document.getElementById('factoryAddress'),document.getElementById('factoryAddressAlert'),50);" /> 还可写<span id="factoryAddressAlert"><font class="red">50</font></span>个汉字 </td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 区    域<input type="hidden" id="hidden_citys" value="北京|bj|beijing,上海|sh|shanghai,深圳|sz|shenzhen,广州|gz|guangzhou,天津|tj|tianjin,重庆|cq|chongqing,成都|cd|chengdu,苏州|sz|suzhou,杭州|hz|hangzhou,南京|nj|nanjing,武汉|wh|wuhan,西安|xa|xian,西宁|xn|xining,厦门|xm|xiamen,咸阳|xy|xianyang,湘潭|xt|xiangtan,襄阳|xy|xiangyang,徐州|xz|xuzhou,烟台|yt|yantai,盐城|yc|yancheng,扬州|yz|yangzhou,宜昌|yc|yichang,银川|yc|yinchuan,岳阳|yy|yueyang,漳州|zz|zhangzhou,肇庆|zq|zhaoqing,镇江|zj|zhenjiang,郑州|zz|zhengzhou,中山|zs|zhongshan,南宁|nn|nanning,南通|nt|nantong,宁波|nb|ningbo,秦皇岛|qhd|qinhuangdao,青岛|qd|qingdao,清远|qy|qingyuan,泉州|qz|quanzhou,三亚|sy|sanya,贵阳|gy|guiyang,桂林|gl|guilin,哈尔滨|heb|haerbin,海南|hn|hainan,邯郸|hd|handan,沈阳|sy|shenyang,石家庄|sjz|shijiazhuang,绍兴|sx|shaoxing,合肥|hf|hefei,衡水|hs|hengshui,衡阳|hy|hengyang,呼和浩特|hhht|huhehaote,湖州|hz|huzhou,淮安|ha|huaian,惠州|hz|huizhou,吉林|jl|jilin,济南|jn|jinan,济宁|jn|jining,嘉兴|jx|jiaxing,江门|jm|jiangmen,江阴|jy|jiangyin,九江|jj|jiujiang,昆明|km|kunming,昆山|ks|kunshan,兰州|lz|lanzhou,廊坊|lf|langfang,乐山|ls|leshan,连云港|lyg|lianyungang,聊城|lc|liaocheng,临沂|ly|linyi,柳州|lz|liuzhou,泸州|lz|luzhou,洛阳|ly|luoyang,马鞍山|mas|maanshan,梅州|mz|meizhou,绵阳|my|mianyang,南昌|nc|nanchang,南充|nc|nanchong,大连|dl|dalian,大庆|dq|daqing,德阳|dy|deyang,东莞|dg|dongguan,佛山|fs|foshan,福州|fz|fuzhou,赣州|gz|ganzhou,滨州|bz|binzhou,长春|cc|changcun,长沙|cs|changsha,常熟|cs|changshu,常州|cz|changzhou,鞍山|as|anshan,蚌埠|bb|bengbu,包头|bt|baotou,保定|bd|baoding,北海|bh|beihai,遂宁|sn|suining,太原|ty|taiyuan,泰安|ta|taian,泰州|tz|taizhou,唐山|ts|tangshan,舟山|zs|zhoushan,株洲|zz|zhuzhou,珠海|zh|zhuhai,淄博|zb|zibo,威海|wh|weihai,潍坊|wf|weifang,温州|wz|wenzhou,乌鲁木齐|wlmq|wlumuqi,无锡|wx|wuxi,吴江|wj|wujiang,芜湖|wh|wuhu,汕头|st|shantou," />
@@ -212,118 +188,118 @@ function check(){
 	                                onkeydown="SelectonKeyDown('txtComareas',event,'search_c')" style="width: 95px;" /><input
 	                                    type="button" class="but_input_cs" id="CheckCity" name="CheckCity" onclick="ShowComareas()" />
 	                             <!--省，市，区域，片区下标,以"-"隔开 -->
-								<input type="hidden" name="areaIndex"	id="areaIndex" value=""/>	
+								<input type="hidden" name="areaIndex"	id="areaIndex" value="<!--{$areaIndex}-->"/>	
 	                            <div class="search_select01 left230" id="search_c" >
 	                                <dl id="search_c_value">
 	                                </dl>
 	                            </div>
 	                        </div>
-			    </td
+			    </td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"> 房源信息编码</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="factoryNumber" name="factoryNumber" type="text" maxlength="12" value="" /></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="factoryNumber" name="factoryNumber" type="text" maxlength="12" value="<!--{$factoryNumber}-->" /></td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 厂房类型</td>
 			    <td align="left" valign="middle" class="p25">
-			    	 <label><input id="" name="factoryType" type="radio" value="1" checked="checked" /> 独立厂房</label>     
-			      	<label> <input id="" name="factoryType" type="radio" value="2" /> 工业园  </label>    
-			        <label><input id="" name="factoryType" type="radio" value="3" /> 开发区</label>    
-			        <label><input id="" name="factoryType" type="radio" value="4" /> 产业基地</label>  
-			        <label><input id="" name="factoryType" type="radio" value="5" /> 其他</label>
+			    	 <label><input id="" name="factoryType" type="radio" <!--{if $factoryType eq 1 }--> checked="checked" <!--{/if}--> value="1" /> 独立厂房</label>     
+			      	<label> <input id="" name="factoryType" type="radio" <!--{if $factoryType eq 2 }--> checked="checked" <!--{/if}--> value="2" /> 工业园  </label>    
+			        <label><input id="" name="factoryType" type="radio" <!--{if $factoryType eq 3 }--> checked="checked" <!--{/if}--> value="3" /> 开发区</label>    
+			        <label><input id="" name="factoryType" type="radio" <!--{if $factoryType eq 4 }--> checked="checked" <!--{/if}--> value="4" /> 产业基地</label>  
+			        <label><input id="" name="factoryType" type="radio" <!--{if $factoryType eq 5 }--> checked="checked" <!--{/if}--> value="5" /> 其他</label>
 			    </td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  售    价</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factorySellPrice" name="factorySellPrice" type="text"  value="" /> <font class="z3">元/平米</font></td>
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factorySellPrice" name="factorySellPrice" type="text" value="<!--{$factorySellPrice}-->" /> <font class="z3">元/平米</font></td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 管 理 费</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryProFee" name="factoryProFee" type="text"  value="" /> 
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryProFee" name="factoryProFee" type="text"  value="<!--{$factoryProFee}-->" /> 
 			      <font class="z3">元/平米·月</font> </td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">管理单位</td>
-			    <td align="left" valign="middle" class="p25 grzc_31"><input id="factoryManagentUnits" name="factoryManagentUnits" type="text"  value="" /></td>
+			    <td align="left" valign="middle" class="p25 grzc_31"><input id="factoryManagentUnits" name="factoryManagentUnits" type="text"  value="<!--{$factoryManagentUnits}-->" /></td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">土地证</td>
 			    <td align="left" valign="middle" class="p25">
-			    	<label><input id="" name="factoryPayInfo" type="radio" value="1" checked="checked" /> 国有土地证</label>     
-			      	<label> <input id="" name="factoryPayInfo" type="radio" value="2" /> 集体土地证  </label>    
+			    	<label><input id="" name="factoryPayInfo" type="radio" <!--{if $factoryPayInfo eq 1 }--> checked="checked" <!--{/if}--> value="1"/> 国有土地证</label>     
+			      	<label> <input id="" name="factoryPayInfo" type="radio" <!--{if $factoryPayInfo eq 2 }--> checked="checked" <!--{/if}--> value="2" /> 集体土地证  </label>    
 			    </td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">占地面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryFloorArea" name="factoryFloorArea" type="text"  value="" /> 
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryFloorArea" name="factoryFloorArea" type="text"  value="<!--{$factoryFloorArea}-->" /> 
 			      <font class="z3">平方米</font></td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryBuildArea" name="factoryBuildArea" type="text"  value="" />
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryBuildArea" name="factoryBuildArea" type="text"  value="<!--{$factoryBuildArea}-->" />
 			      <font class="z3"> 平方米</font></td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">办公面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryOfficeArea" name="factoryOfficeArea" type="text"  value="" /> <font class="z3">平方米</font></td>
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryOfficeArea" name="factoryOfficeArea" type="text"  value="<!--{$factoryOfficeArea}-->" /> <font class="z3">平方米</font></td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">车间面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryWorkshopArea" name="factoryWorkshopArea" type="text"  value="" /> <font class="z3">平方米</font>
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryWorkshopArea" name="factoryWorkshopArea" type="text"  value="<!--{$factoryWorkshopArea}-->" /> <font class="z3">平方米</font>
 			    </td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">空地面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factorySpaceArea" name="factorySpaceArea" type="text"  value="" /> <font class="z3">平方米</font>
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factorySpaceArea" name="factorySpaceArea" type="text"  value="<!--{$factorySpaceArea}-->" /> <font class="z3">平方米</font>
 			    </td>
 			  </tr>
 			  <tr>
 			    <td align="center" valign="middle" bgcolor="#f7f6f1">宿舍情况</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input name="factoryDormitory" type="text"  maxlength="50" value="" />
+			    <td align="left" valign="middle" class="p25 grzc_32"><input name="factoryDormitory" type="text"  maxlength="50" value="<!--{$factoryDormitory}-->" />
 			    </td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryBuildYear" name="factoryBuildYear" type="text" maxlength="4" value="" /> <font class="z3">年</font>   
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryBuildYear" name="factoryBuildYear" type="text" maxlength="4" value="<!--{$factoryBuildYear}-->" /> <font class="z3">年</font>   
 			    </td>
 			  </tr>
 			   <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">跨    度</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factorySpan" name="factorySpan" type="text"  value="" /><font class="z3"> 米</font>  
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factorySpan" name="factorySpan" type="text"  value="<!--{$factorySpan}-->" /><font class="z3"> 米</font>  
 			    </td>
 			  </tr>
 			   <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">层    数</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryAllFloor" name="factoryAllFloor" type="text"  value="" /> <font class="z3">层</font> 
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryAllFloor" name="factoryAllFloor" type="text"  value="<!--{$factoryAllFloor}-->" /> <font class="z3">层</font> 
 			    </td>
 			  </tr>
 			   <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">层    高</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryFloorHeight" name="factoryFloorHeight" type="text"  value="" /> <font class="z3">米</font>   
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryFloorHeight" name="factoryFloorHeight" type="text"  value="<!--{$factoryFloorHeight}-->" /> <font class="z3">米</font>   
 			    </td>
 			  </tr>
 			   <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">楼层承重</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryLoadBearing" name="factoryLoadBearing" type="text"  value="" /> <font class="z3">吨/平米</font>   
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryLoadBearing" name="factoryLoadBearing" type="text"  value="<!--{$factoryLoadBearing}-->" /> <font class="z3">吨/平米</font>   
 			    </td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑结构</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryBuildStructure" name="factoryBuildStructure" type="text"  value="" />     
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryBuildStructure" name="factoryBuildStructure" type="text"  value="<!--{$factoryBuildStructure}-->" />     
 			    </td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">水</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryWater" name="factoryWater" type="text" maxlength="50" value="" />     
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryWater" name="factoryWater" type="text" maxlength="50" value="<!--{$factoryWater}-->" />     
 			    </td>
 			  </tr><tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">现配电容量</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryHasCapacityNow" name="factoryHasCapacityNow" type="text" maxlength="50" value="" /> <font class="z3">KVA</font>       
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryHasCapacityNow" name="factoryHasCapacityNow" type="text" maxlength="50" value="<!--{$factoryHasCapacityNow}-->" /> <font class="z3">KVA</font>       
 			    </td>
 			  </tr><tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">可配电容量</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryHasCapacityMax" name="factoryHasCapacityMax" type="text" maxlength="50" value="" /> <font class="z3">KVA</font>      
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryHasCapacityMax" name="factoryHasCapacityMax" type="text" maxlength="50" value="<!--{$factoryHasCapacityMax}-->" /> <font class="z3">KVA</font>      
 			    </td>
 			  </tr>
 			</table>         
@@ -335,13 +311,13 @@ function check(){
 		  <tr>
 		    <td width="118" height="36" align="center" valign="middle" bgcolor="#f7f6f1">内部编号</td>
 		    <td width="611" align="left" valign="middle" class="p25 grzc_31">
-		    	<input name="factoryPrivateNumber" type="text"  value="" />
+		    	<input name="factoryPrivateNumber" type="text"  value="<!--{$factoryPrivateNumber}-->" />
 		    </td>
 		  </tr>
 		  <tr>
 		    <td align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
 		    <td colspan="2" align="left" valign="middle" >
-				    <textarea id="factoryContent" name="factoryContent" cols="86" rows="12" ></textarea>			    
+				    <textarea id="factoryContent" name="factoryContent" cols="86" rows="12" ><!--{$factoryContent}--></textarea>			    
 					<script>
 						CKEDITOR.replace( 'factoryContent' );
 					</script>
@@ -352,38 +328,53 @@ function check(){
 		  <tr>
 		    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>交通状况</td>
 		    <td align="left" valign="middle" class="p25 grzc_31">
-		    	 <textarea class="bdqy2" rows="7" cols="80" id="factoryTraffic" name="factoryTraffic"></textarea>
+		    	 <textarea class="bdqy2" rows="7" cols="80" id="factoryTraffic" name="factoryTraffic"><!--{$factoryTraffic}--></textarea>
 		    </td>
 		  </tr>
-					<!--{foreach from=$picTypeList item=item key=key}-->
-					<tr><td height="220" align="center" valign="middle" bgcolor="#f7f6f1"><!--{$item}--></td>
-			         <td height="215" align="left" valign="top" class="p25">
-			         	<div class="sc_btn">
-			                <input type="file" name="file_upload_<!--{$key}-->" id="file_upload_<!--{$key}-->"/>
-			            </div>
-			            <div class="tpsc" id="showImg_<!--{$key}-->">
-			            </div>
-					 </td>
-					</tr> 
-					<!--{/foreach}-->
-			      
-			       <tr>
-				    <td height="124" align="center" valign="middle" bgcolor="#f7f6f1">标题图</td>
-				    <td align="left" valign="top" class="p25"><div class="btt" id="topic_image"></div></td>
-				    
-	        	    <input type="hidden" id="topPicPath" name="topPicPath" value=""/>
-	        	    <input type="hidden" id="topPicPathThumb" name="topPicPathThumb" value=""/>
-				  </tr>
+				<!--{foreach from=$picTypeList item=item key=key}-->
+				<tr><td height="220" align="center" valign="middle" bgcolor="#f7f6f1"><!--{$item}--></td>
+		         <td height="215" align="left" valign="top" class="p25">
+		         	<div class="sc_btn">
+		                <input type="file" name="file_upload_<!--{$key}-->" id="file_upload_<!--{$key}-->"/>
+		            </div>
+		            <div class="tpsc" id="showImg_<!--{$key}-->">
+						<!--{foreach from=$propertyDetailPicList item=item_ key=key_}-->
+			        	<!--{if $key==$item_.pictypeId}-->
+			        	<dl id="pic_<!--{$key_}-->">
+        	        		<dt><img src="<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->"></dt>
+        	        		<dd><span class="redlink"><a href="javascript:void(0)" onclick="changeTopicImg('<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->','<!--{$item_.picThumb}-->','<!--{$item_.picUrl}-->')">设为标题图</a></span></dd>
+        	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<!--{$item_.picInfo}-->"/><a href="javascript:void(0)" onclick="dropContainer('pic_<!--{$key_}-->')"><img src="<!--{$cfg.web_url}-->templates/images/ucenter/cha.JPG"></a></dd>
+        	    		<input type="hidden" name="picPath[]" value="<!--{$item_.picUrl}-->"/>
+        	    		<input type="hidden" name="picPathThumb[]" value="<!--{$item_.picThumb}-->"/>
+        	    		<input type="hidden" name="picTypeId[]" value="<!--{$item_.pictypeId}-->"/>
+        	    		<input type="hidden" name="picLayer[]" value="0"/>
+        	    		</dl>
+						<!--{/if}-->
+						<!--{/foreach}-->	
+		            </div>
+				 </td>
+				</tr> 
+				<!--{/foreach}-->
+		      
+		       <tr>
+			    <td height="124" align="center" valign="middle" bgcolor="#f7f6f1">标题图</td>
+			    <td align="left" valign="top" class="p25"><div class="btt" id="topic_image"><img src="<!--{$cfg.web_url}-->uploads/<!--{$topPicThumb}-->"></div></td>
+			    
+        	    <input type="hidden" id="topPicPath" name="topPicPath" value="<!--{$topPicPath}-->"/>
+        	    <input type="hidden" id="topPicPathThumb" name="topPicPathThumb" value="<!--{$topPicThumb}-->"/>
+			  </tr>
 		</table>
       </div>
        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
-            <td width="120" align="center" valign="middle"><input name="btn_live" type="button" class="mddl1" id="btn_live" value="发布" /></td>
-            <td width="320" height="80" align="center" valign="middle"><input name="btn_save" type="button" class="mddl1" id="btn_save" value="保存待发布" /></td>
+            <td width="120" align="center" valign="middle">
+            <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_update" value="修改" /></td>
+            <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
 	      </tr>
 	    </table>
-	    <input type="hidden" id="action_to_go" name="action_to_go" value="0"/>
+	    <input type="hidden" id="actionType" name="actionType" value="update"/>
+	    <input type="hidden" id="propId" name="propId" value="<!--{$propId}-->"/>
 	    </form>
     </div>
     </div>

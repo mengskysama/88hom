@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
-<title>录入厂房出售房源</title>
+<title>录入厂房出租房源</title>
 <!--{$jsFiles}-->
 <!--{$cssFiles}-->
 <script language="JavaScript" type="text/javascript" src="<!--{$ckeditLib}-->"></script>
@@ -117,6 +117,20 @@ function check(){
 	
 	return true;	
 }
+
+function changepaydetail() {
+	var val = $('input:radio[name="factoryPayment"]:checked').val();
+    if (val == 2) {
+        document.getElementById("factoryPayDetailY").value = "";
+        document.getElementById("factoryPayDetailF").value = "";
+        document.getElementById("factoryPayDetailY").disabled = "disabled"
+        document.getElementById("factoryPayDetailF").disabled = "disabled"
+    }
+    else {
+        document.getElementById("factoryPayDetailY").disabled = ""
+        document.getElementById("factoryPayDetailF").disabled = ""
+    }
+}
 </script>
 </head>
 
@@ -132,16 +146,16 @@ function check(){
    	<div class="qg_bs1">
             <form id="cfForm" name="cfForm" action="property_handler.php" method="post" enctype="multipart/form-data">
  		   <ul>
-   			 	<li><a href="agent_sale_zz.php">录入住宅出售房源</a></li>
-    		    <li><a href="agent_sale_bs.php">录入别墅出售房源</a></li>
-     		    <li><a href="agent_sale_sp.php">录入商铺出售房源</a></li>
-      		 	<li><a href="agent_sale_xzl.php">录入写字楼出售房源</a></li>
-       		    <li><a href="agent_sale_cf.php">录入厂房出售房源</a></li>
+   			 	<li><a href="agent_lease_zz.php">录入住宅出租房源</a></li>
+    		    <li><a href="agent_lease_bs.php">录入别墅出租房源</a></li>
+     		    <li><a href="agent_lease_sp.php">录入商铺出租房源</a></li>
+      		 	<li><a href="agent_lease_xzl.php">录入写字楼出租房源</a></li>
+       		    <li><a href="agent_lease_cf.php">录入厂房出租房源</a></li>
    		  </ul>
           <div class="bs_tx">
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
             <input type="hidden" name="prop_type" value="cf">
-            <input type="hidden" name="prop_tx_type" value="1">
+            <input type="hidden" name="prop_tx_type" value="2">
 			<table width="732" border="0" cellpadding="0" cellspacing="1" bordercolor="#FFFFFF">
 			  <tr>
 			    <td width="110" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 厂房名称</td>
@@ -235,8 +249,15 @@ function check(){
 			    </td>
 			  </tr>
 			  <tr>
-			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  售    价</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factorySellPrice" name="factorySellPrice" type="text"  value="" /> <font class="z3">元/平米</font></td>
+			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  租    金</td>
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryRentPrice" name="factoryRentPrice" type="text"  value="" /> <font class="z3">元/月</font></td>
+			  </tr>
+			  <tr>
+			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否含管理费</td>
+			    <td align="left" valign="middle" class="p25 grzc_32"> 
+			    	<label><input id="" name="factoryIncludFee" type="radio" value="1" checked="checked" /> 是</label>     
+			      	<label> <input id="" name="factoryIncludFee" type="radio" value="2" /> 否</label>    
+			        </td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 管 理 费</td>
@@ -246,6 +267,35 @@ function check(){
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">管理单位</td>
 			    <td align="left" valign="middle" class="p25 grzc_31"><input id="factoryManagentUnits" name="factoryManagentUnits" type="text"  value="" /></td>
+			  </tr>
+			  <tr>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
+			    <td align="left" valign="middle" class="p25 grzc_35">
+			    <input id="housePayment" checked="checked" name="factoryPayment" type="radio" value="1" onclick="changepaydetail()"/>押&nbsp;
+				<select name="factoryPayDetailY" id="factoryPayDetailY" style=" vertical-align:middle">
+				<option selected="selected" value="">请选择</option>
+				<option value="0">零</option>
+				<option value="1">一个月</option>
+				<option value="2">两个月</option>
+				<option value="3">三个月</option>
+				<option value="6">六个月</option>
+				</select>
+                                                       付&nbsp;
+				<select name="factoryPayDetailF" id="factoryPayDetailF" style=" vertical-align:middle">
+                                    <option selected="selected" value="">请选择</option>
+                                    <option value="1" >一个月</option>
+                                    <option value="2">两个月</option>
+                                    <option value="3">三个月</option>
+                                    <option value="6">六个月</option>
+                                    <option value="12">十二个月</option>
+ 				</select>
+			    <input id="housePayment" name="factoryPayment" type="radio" value="2" onclick="changepaydetail();" />面议
+				</td>
+			  </tr>
+			  <tr>
+			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">起租年限</td>
+			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryLeastYear" name="factoryLeastYear" type="text"  value="" /> <font class="z3">年</font>
+			    </td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">土地证</td>
@@ -281,11 +331,6 @@ function check(){
 			  <tr>
 			    <td align="center" valign="middle" bgcolor="#f7f6f1">宿舍情况</td>
 			    <td align="left" valign="middle" class="p25 grzc_32"><input name="factoryDormitory" type="text"  maxlength="50" value="" />
-			    </td>
-			  </tr>
-			  <tr>
-			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryBuildYear" name="factoryBuildYear" type="text" maxlength="4" value="" /> <font class="z3">年</font>   
 			    </td>
 			  </tr>
 			   <tr>

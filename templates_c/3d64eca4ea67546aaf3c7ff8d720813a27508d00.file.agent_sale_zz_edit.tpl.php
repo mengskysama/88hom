@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-14 23:35:33
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-15 22:54:13
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\agent_sale_zz_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1926251e2bf8f39d212-50803563%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3d64eca4ea67546aaf3c7ff8d720813a27508d00' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\agent_sale_zz_edit.tpl',
-      1 => 1373816110,
+      1 => 1373891285,
       2 => 'file',
     ),
   ),
@@ -358,10 +358,10 @@ uploads/<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
 ','<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
 ','<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
 ')">设为标题图</a></span></dd>
-        	        		<dd>描述：<input type="text" class="input01" name="picName[]" /><a href="javascript:void(0)" onclick="dropContainer('pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
+        	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picInfo'];?>
+"/><a href="javascript:void(0)" onclick="dropContainer('pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
 ')"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
 templates/images/ucenter/cha.JPG"></a></dd>
-        	    		</dl>
         	    		<input type="hidden" name="picPath[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
 "/>
         	    		<input type="hidden" name="picPathThumb[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
@@ -369,6 +369,7 @@ templates/images/ucenter/cha.JPG"></a></dd>
         	    		<input type="hidden" name="picTypeId[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['pictypeId'];?>
 "/>
         	    		<input type="hidden" name="picLayer[]" value="0"/>
+        	    		</dl>
 						<?php }?>
 						<?php } ?>	
 		            </div>

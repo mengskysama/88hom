@@ -18,3 +18,58 @@ select * from ecms_user where userId=6
 0
 客户端:127.0.0.1
 时间:2013-07-15 18:18:23
+------------------------2013-07-15 22:24:58
+错误SQL语句：
+select picId,pictypeId,picBuildId,picBuildType,picSellRent,picUrl,picThumb,picInfo,picLayer from ecms_pic where picBuildId= and picBuildType=5 and picState=1  order by picLayer 
+客户端:127.0.0.1
+时间:2013-07-15 22:24:58
+------------------------2013-07-15 22:24:58
+错误SQL语句：
+select picId,pictypeId,picBuildId,picBuildType,picSellRent,picUrl,picThumb,picInfo,picLayer from ecms_pic where picBuildId= and picBuildType=5 and picState=1 and pictypeId=1 order by picLayer 
+客户端:127.0.0.1
+时间:2013-07-15 22:24:58
+------------------------2013-07-15 22:56:44
+SQL语句错误：SQL查询语句为空
+select * from ecms_user where userId=17
+客户端:127.0.0.1
+时间:2013-07-15 22:56:44
+------------------------2013-07-15 22:56:44
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-07-15 22:56:44
+------------------------2013-07-15 22:58:41
+SQL语句错误：SQL查询语句为空
+select * from ecms_user where userId=17
+客户端:127.0.0.1
+时间:2013-07-15 22:58:41
+------------------------2013-07-15 22:58:41
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-07-15 22:58:41
+------------------------2013-07-15 23:13:18
+错误SQL语句：
+update ecms_factory set factoryNumber='123456789871',factoryAddress='啦啦啦啦啦1',factoryType=3,factorySellPrice=5001,factoryProFee=21,factoryManagentUnits='人人人人人人人人',factoryPayInfo=2,factoryFloorArea=1001,factoryBuildArea=501,factoryOfficeArea=1001,factoryWorkshopArea=1101,factorySpaceArea=501,factoryDormitory='sdad1',factoryBuildYear=2001,factorySpan=221,factoryAllFloor=331,factoryFloorHeight=441,factoryLoadBearing=551,factoryBuildStructure='tt1',factoryWater='ww1',factoryHasCapacityNow='wwq1',factoryHasCapacityMax='qqq21',factoryRentPrice=,factoryPayment=,factoryPayDetailY=,factoryPayDetailF=,factorySellRentType=1,factoryState=,factoryAreaId=,factoryUpdateTime=1373901198where factoryId=3
+客户端:127.0.0.1
+时间:2013-07-15 23:13:18
+------------------------2013-07-15 23:17:51
+错误SQL语句：
+update ecms_factory set factoryNumber='123456789871',factoryAddress='啦啦啦啦啦1',factoryType=3,factorySellPrice=5001,factoryProFee=21,factoryManagentUnits='人人人人人人人人',factoryPayInfo=2,factoryFloorArea=1001,factoryBuildArea=501,factoryOfficeArea=1001,factoryWorkshopArea=1101,factorySpaceArea=501,factoryDormitory='sdad1',factoryBuildYear=2001,factorySpan=221,factoryAllFloor=331,factoryFloorHeight=441,factoryLoadBearing=551,factoryBuildStructure='tt1',factoryWater='ww1',factoryHasCapacityNow='wwq1',factoryHasCapacityMax='qqq21',factoryRentPrice=0,factoryPayment=0,factoryPayDetailY=0,factoryPayDetailF=0,factorySellRentType=1,factoryState=,factoryAreaId=,factoryUpdateTime=1373901471where factoryId=3
+客户端:127.0.0.1
+时间:2013-07-15 23:17:51
+------------------------2013-07-15 23:19:08
+错误SQL语句：
+update ecms_factory set factoryNumber='123456789871',factoryAddress='啦啦啦啦啦1',factoryType=3,factorySellPrice=5001,factoryProFee=21,factoryManagentUnits='人人人人人人人人',factoryPayInfo=2,factoryFloorArea=1001,factoryBuildArea=501,factoryOfficeArea=1001,factoryWorkshopArea=1101,factorySpaceArea=501,factoryDormitory='sdad1',factoryBuildYear=2001,factorySpan=221,factoryAllFloor=331,factoryFloorHeight=441,factoryLoadBearing=551,factoryBuildStructure='tt1',factoryWater='ww1',factoryHasCapacityNow='wwq1',factoryHasCapacityMax='qqq21',factoryRentPrice=0,factoryPayment=0,factoryPayDetailY=0,factoryPayDetailF=0,factorySellRentType=1,factoryAreaId=,factoryUpdateTime=1373901548where factoryId=3
+客户端:127.0.0.1
+时间:2013-07-15 23:19:08
+------------------------2013-07-15 23:19:44
+错误SQL语句：
+update ecms_factory set factoryNumber='123456789871',factoryAddress='啦啦啦啦啦1',factoryType=3,factorySellPrice=5001,factoryProFee=21,factoryManagentUnits='人人人人人人人人',factoryPayInfo=2,factoryFloorArea=1001,factoryBuildArea=501,factoryOfficeArea=1001,factoryWorkshopArea=1101,factorySpaceArea=501,factoryDormitory='sdad1',factoryBuildYear=2001,factorySpan=221,factoryAllFloor=331,factoryFloorHeight=441,factoryLoadBearing=551,factoryBuildStructure='tt1',factoryWater='ww1',factoryHasCapacityNow='wwq1',factoryHasCapacityMax='qqq21',factoryRentPrice=0,factoryPayment=0,factoryPayDetailY=0,factoryPayDetailF=0,factorySellRentType=1,factoryAreaId='',factoryUpdateTime=1373901584where factoryId=3
+客户端:127.0.0.1
+时间:2013-07-15 23:19:44
+------------------------2013-07-15 23:20:07
+错误SQL语句：
+delete from ecms_pic where picBuildId= and pictypeId=1 and picBuildType=5
+客户端:127.0.0.1
+时间:2013-07-15 23:20:07
