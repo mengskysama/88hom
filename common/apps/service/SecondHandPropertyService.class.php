@@ -133,6 +133,12 @@ class SecondHandPropertyService{
 		$factory['picBuildType'] = 5;
 		return $this->saveProperty($this->factoryDAO, $factory);
 	}
+
+	public function updateFactory($factory){
+		$factory['picBuildType'] = 5;
+		$factory['propId'] = $factory['factoryId'];
+		return $this->updateProperty($this->factoryDAO, $factory);
+	}
 	
 	public function saveVilla($villa){
 		$villa['picBuildType'] = 4;

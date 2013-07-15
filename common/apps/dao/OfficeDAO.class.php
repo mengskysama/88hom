@@ -8,7 +8,7 @@ class OfficeDAO{
 	public function release($info){
 		$sql="insert into ecms_office(officeNumber,officeType,officeSellPrice,officeRentPrice,officeRentPriceUnit,officeIncludFee,officeProFee,
 			  officePayment,officePayDetailY,officePayDetailF,officeBuildArea,officeFloor,officeAllFloor,officeDivision,officeFitment,officeLevel,
-			  officeTitle,officeContent,officeSellRentType,officeState,officeCommunityId,officeUserId,officeCreateTime,officeUpdateTime) 
+			  officeTitle,officeContent,officeTraffic,officeSellRentType,officeState,officeCommunityId,officeUserId,officeCreateTime,officeUpdateTime) 
 			  values('".(empty($info['officeNumber'])?'':$info['officeNumber'])."',
 			  ".(empty($info['officeType'])?0:$info['officeType']).",
 			  ".(empty($info['officeSellPrice'])?0:$info['officeSellPrice']).",
@@ -27,6 +27,7 @@ class OfficeDAO{
 			  ".(empty($info['officeLevel'])?0:$info['officeLevel']).",
 			  '".(empty($info['officeTitle'])?'':$info['officeTitle'])."',
 			  '".(empty($info['officeContent'])?'':$info['officeContent'])."',
+			  '".(empty($info['officeTraffic'])?'':$info['officeTraffic'])."',
 			  ".(empty($info['officeSellRentType'])?0:$info['officeSellRentType']).",
 			  ".(empty($info['officeState'])?0:$info['officeState']).",
 			  ".(empty($info['officeCommunityId'])?0:$info['officeCommunityId']).",
@@ -51,7 +52,7 @@ class OfficeDAO{
 	public function getPropertyById($userId,$propId){ 
 		$sql = "select officeNumber,officeType,officeSellPrice,officeRentPrice,officeRentPriceUnit,officeIncludFee,officeProFee,".
 			   "officePayment,officePayDetailY,officePayDetailF,officeBuildArea,officeFloor,officeAllFloor,officeDivision,officeFitment,officeLevel,".
-			   "officeTitle,officeContent,officeSellRentType,officeState,".
+			   "officeTitle,officeContent,officeTraffic,officeSellRentType,officeState,".
 			   "(select communityName from ecms_community where communityId=officeCommunityId) as propName,officeCommunityId,".
 			   "picId,picURl as propPhoto,officeUserId,officeCreateTime,officeUpdateTime ".	 
 				"from ecms_office prop left join ecms_pic pic on picBuildType=3 and picBuildId=officeId and picState=1 ".
@@ -111,6 +112,9 @@ class OfficeDAO{
 		} 
 		if(isset($info['officeContent'])){
 			$sql .= "officeContent='".$info['officeContent']."',";
+		} 
+		if(isset($info['officeTraffic'])){
+			$sql .= "officeTraffic='".$info['officeTraffic']."',";
 		} 
 		if(isset($info['officeSellRentType'])){
 			$sql .= "officeSellRentType=".$info['officeSellRentType'].",";

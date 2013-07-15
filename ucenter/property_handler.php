@@ -6,6 +6,7 @@ require 'HousePropertyHandler.class.php';
 require 'OfficePropertyHandler.class.php';
 require 'ShopPropertyHandler.class.php';
 require 'VillaPropertyHandler.class.php';
+require 'FactoryPropertyHandler.class.php';
 
 $propType = getParameter("prop_type");
 $estId = getParameter("estId");
@@ -142,11 +143,13 @@ if($propType == "zz"){
 	$officeId = getParameter("propId");
 	$officeRentPrice = getParameter("officeRentPrice");
 	$officeRentPriceUnit = getParameter("officeRentPriceUnit");
+	$officeTraffic = getParameter("officeTraffic");
 	$topPic['picBuildType'] = 3;
 	$propHandler = new OfficePropertyHandler($db,$estId,$estName,$officeNumber,$officeType,$officeSellPrice,
 											$officeProFee,$officeBuildArea,$officeFloor,$officeAllFloor,$officeDivision,$officeFitment,
 											$officeLevel,$propPhoto,$officeTitle,$officeContent,$officeUserId,
-											$state,$actionType,$officeId,$propTxType,$officeRentPrice,$officeRentPriceUnit,$topPic);
+											$state,$actionType,$officeId,$propTxType,$officeRentPrice,$officeRentPriceUnit,$officeTraffic,
+											$topPic);
 }else if($propType == "sp"){
 	
 	$shopsAddress = getParameter("shopsAddress");
@@ -168,15 +171,63 @@ if($propType == "zz"){
 	$shopId = getParameter("propId");
 	$shopsRentPrice = getParameter("shopsRentPrice");
 	$shopsRentPriceUnit = getParameter("shopsRentPriceUnit");
+	$shopsTraffic = getParameter("shopsTraffic");
+	$shopsSet = getParameter("shopsSet");
+	
 	$topPic['picBuildType'] = 2;
 	
 	$propHandler = new ShopPropertyHandler($db,$estId,$estName,$shopsAddress,$shopsType,$shopsAreaId,$shopsNumber,
 											$shopsSellPrice,$shopsPropFee,$shopsBuildArea,$shopsFloor,$shopsAllFloor,$shopsDivision,
 											$shopsFitment,$shopsBaseService,$shopsAimOperastion,$propPhoto,$shopsTitle,
-											$shopContent,$shopUserId,$state,$actionType,$shopId,$propTxType,$shopsRentPrice,$shopsRentPriceUnit,$topPic);
+											$shopContent,$shopUserId,$state,$actionType,$shopId,$propTxType,$shopsRentPrice,$shopsRentPriceUnit,
+											$shopsTraffic,$shopsSet,$topPic);
 }else if($propType == "cf"){
-	$topPic['picBuildType'] = 5;
+	$factory['factoryName'] = $estName;
+	$factory['factoryAddress'] = getParameter('factoryAddress');
+	$factory['factoryNumber'] = getParameter('factoryNumber');
+	$factory['factoryType'] = getParameter('factoryType');
+	$factory['factorySellPrice'] = getParameter('factorySellPrice');
+	$factory['factoryProFee'] = getParameter('factoryProFee');
+	$factory['factoryManagentUnits'] = getParameter('factoryManagentUnits');
+	$factory['factoryPayInfo'] = getParameter('factoryPayInfo');
+	$factory['factoryFloorArea'] = getParameter('factoryFloorArea');
+	$factory['factoryBuildArea'] = getParameter('factoryBuildArea');
+	$factory['factoryOfficeArea'] = getParameter('factoryOfficeArea');
+	$factory['factoryWorkshopArea'] = getParameter('factoryWorkshopArea');
+	$factory['factorySpaceArea'] = getParameter('factorySpaceArea');
+	$factory['factoryDormitory'] = getParameter('factoryDormitory');
+	$factory['factoryBuildYear'] = getParameter('factoryBuildYear');
+	$factory['factorySpan'] = getParameter('factorySpan');
+	$factory['factoryAllFloor'] = getParameter('factoryAllFloor');
+	$factory['factoryFloorHeight'] = getParameter('factoryFloorHeight');
+	$factory['factoryLoadBearing'] = getParameter('factoryLoadBearing');
+	$factory['factoryBuildStructure'] = getParameter('factoryBuildStructure');
+	$factory['factoryWater'] = getParameter('factoryWater');
+	$factory['factoryHasCapacityNow'] = getParameter('factoryHasCapacityNow');
+	$factory['factoryHasCapacityMax'] = getParameter('factoryHasCapacityMax');
+	$factory['factoryPrivateNumber'] = getParameter('factoryPrivateNumber');
+	$factory['factoryTraffic'] = getParameter('factoryTraffic');
+	$factory['factoryContent'] = getParameter('factoryContent');
+	$factory['factoryAreaId'] = getParameter('areaIndex');
+	$factory['factoryId'] = getParameter("propId");
 	
+	$factory['factoryRentPrice'] = "";
+	$factory['factoryPayment'] = "";
+	$factory['factoryPayDetailY'] = "";
+	$factory['factoryPayDetailF'] = "";
+	$factory['factoryMapX'] = "";
+	$factory['factoryMapY'] = "";
+	
+	$factory['factorySellRentType'] = $propTxType;
+	$factory['actionType'] = $actionType;
+	$factory['factoryState'] = $state;
+	$factory['factoryUserId'] = $userId;
+	
+	$topPic['picBuildType'] = 5;
+	$factory['topPic'] = $topPic;
+	$factory['photos'] = $propPhoto;
+	
+	$propHandler = new FactoryPropertyHandler($db,$factory);
 }else if($action == "delProp"){
 	$propIds = getParameter("propIds");
 	$secondPropService = new SecondHandPropertyService($db);

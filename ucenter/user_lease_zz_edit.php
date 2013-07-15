@@ -17,14 +17,14 @@ if($property){
 	$houseToilet = $property['houseToilet'];
 	$houseKitchen = $property['houseKitchen'];
 	$houseBalcony = $property['houseBalcony'];
-	
+
 	$houseRentType = $property['houseRentType'];
 	$houseRentRoomType = $property['houseRentRoomType'];
 	$houseRentDetail = $property['houseRentDetail'];
 	$housePayment = $property['housePayment'];
 	$housePayDetailY = $property['housePayDetailY'];
 	$housePayDetailF = $property['housePayDetailF'];
-	$houseRentArea = $property['houseRentArea'];	
+	$houseRentArea = $property['houseRentArea'];
 	$houseFloor = $property['houseFloor'];
 	$houseAllFloor = $property['houseAllFloor'];
 	$houseForward = $property['houseForward'];
@@ -38,11 +38,21 @@ if($property){
 			$smarty->assign("houseBaseService".$i,"");
 		}
 	}
-	
+
 	$photo['picBuildIdId'] = $propId;
 	$photo['picBuildType'] = 1;
 	$propertyDetailPicList = $propService->getPropPhotos($photo);
-	
+
+	$photo['pictypeId'] = 1;
+	$topPic = $propService->getPropPhotos($photo);
+	if($topPic){
+		$smarty->assign('topPicPath',$topPic[0]['picUrl']);
+		$smarty->assign('topPicThumb',$topPic[0]['picThumb']);
+	}else{
+		$smarty->assign('topPicPath',"");
+		$smarty->assign('topPicThumb',"");
+	}
+
 	$houseTitle = $property['houseTitle'];
 	$houseContent = $property['houseContent'];
 
@@ -59,7 +69,7 @@ if($property){
 	$smarty->assign("houseRentType",$houseRentType);
 	$smarty->assign("houseRentRoomType",$houseRentRoomType);
 	$smarty->assign("houseRentDetail",$houseRentDetail);
-	$smarty->assign("housePayment",$housePayment);	
+	$smarty->assign("housePayment",$housePayment);
 	$smarty->assign("housePayDetailY",$housePayDetailY);
 	$smarty->assign("housePayDetailF",$housePayDetailF);
 	$smarty->assign("houseRentArea",$houseRentArea);
@@ -72,5 +82,8 @@ if($property){
 	$smarty->assign("propId",$propId);
 	$smarty->assign("propertyDetailPicList",$propertyDetailPicList);
 }
+$picTypeList=$cfg['arr_pic']['2handHouse'];
+$smarty->assign('picTypeList',$picTypeList);
+$smarty->assign('userName',$userName);
 $smarty->display($tpl_name);
 ?>

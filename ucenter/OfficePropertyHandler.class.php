@@ -24,6 +24,7 @@ class OfficePropertyHandler extends PropertyHandler{
 	private $propTxType;
 	private $officeRentPrice;
 	private $officeRentPriceUnit;
+	private $officeTraffic;
 	private $topPic;
 		
 	private $estateService;
@@ -32,7 +33,7 @@ class OfficePropertyHandler extends PropertyHandler{
 	function __construct($db,$estId,$estName,$officeNumber,$officeType,$officeSellPrice,
 						$officeProFee,$officeBuildArea,$officeFloor,$officeAllFloor,$officeDivision,$officeFitment,
 						$officeLevel,$officePhoto,$officeTitle,$officeContent,$officeUserId,$officeState,$actionType,
-						$officeId,$propTxType,$officeRentPrice,$officeRentPriceUnit,$topPic){
+						$officeId,$propTxType,$officeRentPrice,$officeRentPriceUnit,$officeTraffic,$topPic){
 		
 		$this->db = $db;
 		$this->estId = $estId;
@@ -57,6 +58,7 @@ class OfficePropertyHandler extends PropertyHandler{
 		$this->propTxType = $propTxType;
 		$this->officeRentPrice = $officeRentPrice;
 		$this->officeRentPriceUnit = $officeRentPriceUnit;
+		$this->officeTraffic = $officeTraffic;
 		$this->topPic = $topPic;
 		
 		$this->estateService = new EstateService($db);
@@ -117,6 +119,7 @@ class OfficePropertyHandler extends PropertyHandler{
 		$office['officeTitle'] = $this->officeTitle;
 		$office['officeContent'] = $this->officeContent;
 		$office['officeSellRentType'] = $this->propTxType;
+		$office['officeTraffic'] = $this->officeTraffic;
 		if($officeState){
 			$office['officeState'] = $this->officeState;
 		}

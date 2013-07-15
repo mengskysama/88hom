@@ -9,7 +9,7 @@ class ShopsDAO{
 		$sql="insert into ecms_shops(shopsName,shopsAddress,shopsTitle,shopsContent,shopsType,shopsSellPrice,shopsRentPrice,
 			  shopsRentPriceUnit,shopsRentState,shopsPayment,shopsPayDetailY,shopsPayDetailF,shopsBuildArea,shopsFloor,shopsAllFloor,shopsDivision,
 			  shopsFitment,shopsBaseService,shopsAimOperastion,shopsIncludFee,shopsPropFee,shopsTransferFee,shopsNumber,shopsSellRentType,
-			  shopsMapX,shopsMapY,shopsState,shopsUserId,shopsCommunityId,shopsCreateTime,shopsUpdateTime) 
+			  shopsMapX,shopsMapY,shopsState,shopsUserId,shopsCommunityId,shopsTraffic,shopsSet,shopsCreateTime,shopsUpdateTime) 
 			  values('".(empty($info['shopsName'])?'':$info['shopsName'])."',
 			  '".(empty($info['shopsAddress'])?'':$info['shopsAddress'])."',
 			  '".(empty($info['shopsTitle'])?'':$info['shopsTitle'])."',
@@ -38,7 +38,9 @@ class ShopsDAO{
 			  ".(empty($info['shopsMapY'])?0:$info['shopsMapY']).",
 			  ".(empty($info['shopsState'])?0:$info['shopsState']).",
 			  ".(empty($info['shopsUserId'])?0:$info['shopsUserId']).",
-			  ".(empty($info['shopsCommunityId'])?0:$info['shopsCommunityId']).",".time().",".time().")";
+			  ".(empty($info['shopsCommunityId'])?0:$info['shopsCommunityId']).",
+			  '".(empty($info['shopsTraffic'])?'':$info['shopsTraffic'])."',
+			  '".(empty($info['shopsSet'])?'':$info['shopsSet'])."',".time().",".time().")";
 		
 		$this->db->query($sql);
 		$shopId = $this->db->getInsertNum();
@@ -60,7 +62,7 @@ class ShopsDAO{
 		$sql = "select shopsName,shopsAddress,shopsTitle,shopsContent,shopsType,shopsSellPrice,shopsRentPrice,".
 			   "shopsRentPriceUnit,shopsRentState,shopsPayment,shopsPayDetailY,shopsPayDetailF,shopsBuildArea,shopsFloor,shopsAllFloor,shopsDivision,".
 			   "shopsFitment,shopsBaseService,shopsAimOperastion,shopsIncludFee,shopsPropFee,shopsTransferFee,shopsNumber,shopsSellRentType,(select communityName from ecms_community where communityId=shopsCommunityId) as propName,".
-			   "shopsMapX,shopsMapY,shopsState,shopsUserId,shopsCommunityId,picId,picURl as propPhoto,shopsCreateTime,shopsUpdateTime ". 
+			   "shopsMapX,shopsMapY,shopsState,shopsUserId,shopsCommunityId,shopsTraffic,shopsSet,picId,picURl as propPhoto,shopsCreateTime,shopsUpdateTime ". 
 				"from ecms_shops prop left join ecms_pic pic on picBuildType=2 and picBuildId=shopsId and picState=1 ".
 				"where shopsId=".$propId;
 		if($userId > 0){
@@ -120,6 +122,12 @@ class ShopsDAO{
 		}
 		if(isset($info['shopsRentPriceUnit'])){
 			$sql .= "shopsRentPriceUnit=".$info['shopsRentPriceUnit'].",";
+		}
+		if(isset($info['shopsTraffic'])){
+			$sql .= "shopsTraffic='".$info['shopsTraffic']."',";
+		}
+		if(isset($info['shopsSet'])){
+			$sql .= "shopsSet='".$info['shopsSet']."',";
 		}
 		$sql .= "shopsUpdateTime=".time()." where shopsId=".$info['shopId'];
 		return $this->db->getQueryExeCute($sql);

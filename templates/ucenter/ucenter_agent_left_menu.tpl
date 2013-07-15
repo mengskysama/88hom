@@ -12,10 +12,10 @@
           <div class="gl">
           <dl>
      		   	<dt class="jjr_bt1 jjr_bj2">房源管理</dt>
-          	    <dd class="jjr_bt2"><a href="#">录入出售房源</a></dd>
-          	    <dd class="jjr_bt2"><a href="#">管理出售房源</a></dd>
-         	    <dd class="jjr_bt2"><a href="#">录入出租房源</a></dd>
-                <dd class="jjr_bt2"><a href="#">管理出租房源</a></dd>
+          	    <dd class="jjr_bt2"><a href="agent_sale_zz.php">录入出售房源</a></dd>
+          	    <dd class="jjr_bt2"><a href="agent_sell_property_list.php">管理出售房源</a></dd>
+         	    <dd class="jjr_bt2"><a href="agent_lease_zz.php">录入出租房源</a></dd>
+                <dd class="jjr_bt2"><a href="agent_lease_property_list.php">管理出租房源</a></dd>
       	  </dl>
           </div>
           <div class="gl">

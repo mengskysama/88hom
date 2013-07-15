@@ -11,7 +11,7 @@ class EstateDAO{
 	}
 	
 	public function getEstateByName($estName){
-		$sql = "select * from ecms_community where communityName='".$estName."'";
+		$sql = "select * from ecms_community where communityName='".$estName."' and communityState=1";
 		return $this->db->getQueryValue($sql);
 	}
 	

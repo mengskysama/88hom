@@ -17,7 +17,9 @@ $(function() {
             $("#btn_update").removeAttr("disabled");
         }
     });
-    initPicUp('','<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
+	<!--{foreach from=$picTypeList item=item key=key}-->
+    initPicUp3(<!--{$key}-->,'<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
+	<!--{/foreach}-->
         
 });
   
@@ -49,10 +51,10 @@ function check(){
 
 <body>
 <!--求购头部-->
-<!--{include file="$header_ucenter_user"}-->
+<!--{include file="$ucenter_agent_header"}-->
 <!--求购内容-->
 <div class="qg_main">
-	<!--{include file="$ucenter_user_left_menu"}-->
+	<!--{include file="$ucenter_agent_left_menu"}-->
     <div class="qg_r">
     <p>你的位置: <a href="#">编辑房源</a></p>
    	<div class="qg_bs">
@@ -122,11 +124,11 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">使用面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseUseArea" name="houseUseArea" type="text" maxlength="8" value="<!--{$houseUseArea}-->" /><font class="z3">平方米</font></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseUseArea" name="houseUseArea" type="text" maxlength="8" value="<!--{$houseUseArea}-->" /> <font class="z3">平方米</font></td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildYear" name="houseBuildYear" type="text" maxlength="4" value="<!--{$houseBuildYear}-->" /><font class="z3">年</font></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildYear" name="houseBuildYear" type="text" maxlength="4" value="<!--{$houseBuildYear}-->" /> <font class="z3">年</font></td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼    层</td>
@@ -186,27 +188,6 @@ function check(){
     		<p><b>图文信息</b></p>
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
-				<td><input type="file" name="file_upload" id="file_upload"/></td>
-			    <td >
-					<div id="showImg" style="float: left;">		
-						<!--{foreach from=$propertyDetailPicList item=item_ key=key_}-->
-						<span style="float:left;margin:5px;line-height:25px;" id="pic_<!--{$key_}-->">
-						<a target="_blank" href="<!--{$cfg.web_url}-->uploads/<!--{$item_.picUrl}-->">
-			        	<img height="200px" src="<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->"/>
-			       		</a><br/>
-			       		描述：<input type="text" name="picName[]" value="<!--{$item_.picInfo}-->"/><br/>
-			       		序号：<input type="text" name="picLayer[]" value="<!--{$item_.picLayer}-->"/>
-			        	<input type="button" name="deletePic_<!--{$key_}-->" onclick="dropContainer('pic_<!--{$key_}-->');" value="删除"/>
-			        	<input type="hidden" name="picPath[]" value="<!--{$item_.picUrl}-->"/>
-			        	<input type="hidden" name="picPathThumb[]" value="<!--{$item_.picThumb}-->"/>
-			        	<input type="hidden" name="picTypeId[]" value="<!--{$item_.pictypeId}-->"/>
-			        	</span>
-						<!--{/foreach}-->	
-					</div>
-			    </td>
-			  </tr>
-			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
 			    <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
 			    	<input id="houseTitle" name="houseTitle" type="text" value="<!--{$houseTitle}-->" maxlength="60" onblur="CheckTitle('houseTitle',true);" onkeyup="textCounter(document.getElementById('houseTitle'),document.getElementById('houseTitleAlert'),30);" /> 还可写<span id="houseTitleAlert"><font class="red">30</font></span>个汉字</td>
@@ -226,6 +207,38 @@ function check(){
 			2.请勿上传有水印、盖章等任何侵犯他人版权或含有广告信息的图片。</span>
 			    	
 			    </td>
+			  </tr>
+				<!--{foreach from=$picTypeList item=item key=key}-->
+				<tr><td height="220" align="center" valign="middle" bgcolor="#f7f6f1"><!--{$item}--></td>
+		         <td height="215" align="left" valign="top" class="p25">
+		         	<div class="sc_btn">
+		                <input type="file" name="file_upload_<!--{$key}-->" id="file_upload_<!--{$key}-->"/>
+		            </div>
+		            <div class="tpsc" id="showImg_<!--{$key}-->">
+						<!--{foreach from=$propertyDetailPicList item=item_ key=key_}-->
+			        	<!--{if $key==$item_.pictypeId}-->
+			        	<dl id="pic_<!--{$key_}-->">
+        	        		<dt><img src="<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->"></dt>
+        	        		<dd><span class="redlink"><a href="javascript:void(0)" onclick="changeTopicImg('<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->','<!--{$item_.picThumb}-->','<!--{$item_.picUrl}-->')">设为标题图</a></span></dd>
+        	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<!--{$item_.picInfo}-->"/><a href="javascript:void(0)" onclick="dropContainer('pic_<!--{$key_}-->')"><img src="<!--{$cfg.web_url}-->templates/images/ucenter/cha.JPG"></a></dd>
+        	    		<input type="hidden" name="picPath[]" value="<!--{$item_.picUrl}-->"/>
+        	    		<input type="hidden" name="picPathThumb[]" value="<!--{$item_.picThumb}-->"/>
+        	    		<input type="hidden" name="picTypeId[]" value="<!--{$item_.pictypeId}-->"/>
+        	    		<input type="hidden" name="picLayer[]" value="0"/>
+        	    		</dl>
+						<!--{/if}-->
+						<!--{/foreach}-->	
+		            </div>
+				 </td>
+				</tr> 
+				<!--{/foreach}-->
+		      
+		       <tr>
+			    <td height="124" align="center" valign="middle" bgcolor="#f7f6f1">标题图</td>
+			    <td align="left" valign="top" class="p25"><div class="btt" id="topic_image"><img src="<!--{$cfg.web_url}-->uploads/<!--{$topPicThumb}-->"></div></td>
+			    
+        	    <input type="hidden" id="topPicPath" name="topPicPath" value="<!--{$topPicPath}-->"/>
+        	    <input type="hidden" id="topPicPathThumb" name="topPicPathThumb" value="<!--{$topPicThumb}-->"/>
 			  </tr>
 			</table>
       </div>

@@ -65,6 +65,10 @@ function check(){
 		alert("请填写房源描述");
 		return false;
 	}
+	if($("#topPicPath").val() == ""){
+		alert("请选择标题图");
+		return false;
+	}
 	
 	return true;	
 }
@@ -232,13 +236,13 @@ function check(){
 	            <script>
 	                CKEDITOR.replace( 'houseContent' );
 	            </script>
-	            <span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
-				请勿从其它网站或其它房源描述中拷贝。</span>
-				         <span>
+	            <span style="border-bottom:none">可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
+				      请勿从其它网站或其它房源描述中拷贝。</span>
+				               <span>
+				         <b style="text-indent:0px;">注意事项：</b> <br />
 				1.上传宽度大于600像素，比例为5:4的图片可获得更好的展示效果。<br />
 				2.请勿上传有水印、盖章等任何侵犯他人版权或含有广告信息的图片。<br />
 				3.可上传20张图片，每张小于2M，建议尺寸大于500x400像素。</span>
-			    	
 			    </td>
 			  </tr>
 				<!--{foreach from=$picTypeList item=item key=key}-->

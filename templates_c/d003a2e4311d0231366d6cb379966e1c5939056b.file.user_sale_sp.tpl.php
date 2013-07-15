@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-13 13:23:51
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-15 11:09:56
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_sp.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2744051c7f0a56a3478-23197049%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd003a2e4311d0231366d6cb379966e1c5939056b' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_sp.tpl',
-      1 => 1373623472,
+      1 => 1373851191,
       2 => 'file',
     ),
   ),
@@ -42,13 +42,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 "></script>
 <script>
 $(function() {    
-    $("#estName").autocomplete({
-      source: "ajax_get_prop_name.php",
-      select: function(e, ui) {
-      	  $("#estId").val(ui.item.id);    
-      }
-    });
-    initPicUp('<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
+    initPicUp('','<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
 ','<?php echo $_smarty_tpl->tpl_vars['token']->value;?>
 ','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['file_path_upload'];?>
 ','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_path'];?>
@@ -80,7 +74,7 @@ $(function() {
 });
   
 function check(){
-	var estNameValue = $("#estName").val();
+	var estNameValue = $("#estId").val();
 	if(trim(estNameValue) == ''){
 		alert("请填写商铺名称");
 		$("#estName").focus();
@@ -131,7 +125,10 @@ function check(){
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 商铺名称</td>
     <td align="left" valign="middle" class="p25 grzc_31"><input type="hidden" id="estId" name="estId"/>
-    <input id="estName" name="estName" type="text" maxlength="50" onkeyup="textCounter(document.getElementById('estName'),document.getElementById('estNameAlert'),25);" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字</td>
+    <input id="estName" name="estName" type="text" maxlength="50" onkeyup="textCounter(document.getElementById('estName'),document.getElementById('estNameAlert'),25);emptyEstId();" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字</td>
+     <div class="tswords" style="display: none;" id="dis_est_alert">
+                	<span class="alert01" style="margin-left:0;" id="P1">请选择列表中匹配的楼盘录入</span><a id="addestate" href="estate_input.php" title="" target="_blank">我要添加新楼盘</a>
+                </div>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">商铺地址</td>

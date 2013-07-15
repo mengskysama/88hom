@@ -220,12 +220,12 @@ function check(){
 			        	<dl id="pic_<!--{$key_}-->">
         	        		<dt><img src="<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->"></dt>
         	        		<dd><span class="redlink"><a href="javascript:void(0)" onclick="changeTopicImg('<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->','<!--{$item_.picThumb}-->','<!--{$item_.picUrl}-->')">设为标题图</a></span></dd>
-        	        		<dd>描述：<input type="text" class="input01" name="picName[]" /><a href="javascript:void(0)" onclick="dropContainer('pic_<!--{$key_}-->')"><img src="<!--{$cfg.web_url}-->templates/images/ucenter/cha.JPG"></a></dd>
-        	    		</dl>
+        	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<!--{$item_.picInfo}-->"/><a href="javascript:void(0)" onclick="dropContainer('pic_<!--{$key_}-->')"><img src="<!--{$cfg.web_url}-->templates/images/ucenter/cha.JPG"></a></dd>
         	    		<input type="hidden" name="picPath[]" value="<!--{$item_.picUrl}-->"/>
         	    		<input type="hidden" name="picPathThumb[]" value="<!--{$item_.picThumb}-->"/>
         	    		<input type="hidden" name="picTypeId[]" value="<!--{$item_.pictypeId}-->"/>
         	    		<input type="hidden" name="picLayer[]" value="0"/>
+        	    		</dl>
 						<!--{/if}-->
 						<!--{/foreach}-->	
 		            </div>

@@ -27,6 +27,8 @@ class ShopPropertyHandler extends PropertyHandler{
 	private $propTxType;
 	private $shopsRentPrice;
 	private $shopsRentPriceUnit;
+	private $shopsTraffic;
+	private $shopsSet;
 	private $topPic;
 	
 	private $estateService;
@@ -35,7 +37,8 @@ class ShopPropertyHandler extends PropertyHandler{
 	function __construct($db,$estId,$estName,$shopsAddress,$shopsType,$shopsAreaId,$shopsNumber,
 						$shopsSellPrice,$shopsPropFee,$shopsBuildArea,$shopsFloor,$shopsAllFloor,$shopsDivision,
 						$shopsFitment,$shopsBaseService,$shopsAimOperastion,$shopPhoto,$shopsTitle,
-						$shopContent,$shopUserId,$shopsState,$actionType,$shopId,$propTxType,$shopsRentPrice,$shopsRentPriceUnit,$topPic){
+						$shopContent,$shopUserId,$shopsState,$actionType,$shopId,$propTxType,$shopsRentPrice,$shopsRentPriceUnit,
+						$shopsTraffic,$shopsSet,$topPic){
 		
 		$this->db = $db;
 		$this->estId = $estId;
@@ -63,6 +66,8 @@ class ShopPropertyHandler extends PropertyHandler{
 		$this->propTxType = $propTxType;
 		$this->shopsRentPrice = $shopsRentPrice;
 		$this->shopsRentPriceUnit = $shopsRentPriceUnit;
+	    $this->shopsTraffic = $shopsTraffic;
+		$this->shopsSet = $shopsSet;
 		$this->topPic = $topPic;
 		
 		$this->estateService = new EstateService($db);
@@ -149,6 +154,8 @@ class ShopPropertyHandler extends PropertyHandler{
 		$shop['shopsMapX'] = 0;
 		$shop['shopsMapY'] = 0;
 		$shop['shopsUserId'] = $this->shopUserId;
+	    $shop['shopsTraffic'] = $this->shopsTraffic;
+		$shop['shopsSet'] = $this->shopsSet;
 
 		if($shopState){
 			$shop['shopsState'] = $shopState;

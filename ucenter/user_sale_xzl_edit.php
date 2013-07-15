@@ -23,10 +23,21 @@ if($property){
 
 	$officeTitle = $property['officeTitle'];
 	$officeContent = $property['officeContent'];
+	$officeTraffic = $property['officeTraffic'];
 	
 	$photo['picBuildIdId'] = $propId;
 	$photo['picBuildType'] = 3;
 	$propertyDetailPicList = $propService->getPropPhotos($photo);
+
+	$photo['pictypeId'] = 1;
+	$topPic = $propService->getPropPhotos($photo);
+	if($topPic){
+		$smarty->assign('topPicPath',$topPic[0]['picUrl']);
+		$smarty->assign('topPicThumb',$topPic[0]['picThumb']);
+	}else{
+		$smarty->assign('topPicPath',"");
+		$smarty->assign('topPicThumb',"");
+	}
 	
 	$smarty->assign("estId",$estId);
 	$smarty->assign("estName",$estName);
@@ -43,8 +54,12 @@ if($property){
 	$smarty->assign("officeLevel",$officeLevel);
 	$smarty->assign("officeTitle",$officeTitle);
 	$smarty->assign("officeContent",$officeContent);
+	$smarty->assign("officeTraffic",$officeTraffic);
 	$smarty->assign("propId",$propId);
 	$smarty->assign("propertyDetailPicList",$propertyDetailPicList);
 }
+$picTypeList=$cfg['arr_pic']['2handOffice'];
+$smarty->assign('picTypeList',$picTypeList);
+$smarty->assign('userName',$userName);
 $smarty->display($tpl_name);
 ?>

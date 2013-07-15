@@ -9,8 +9,9 @@
 <script>
 $(function() {    
     
-    //initPicUp();
-    initPicUp('','<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
+	<!--{foreach from=$picTypeList item=item key=key}-->
+    initPicUp3(<!--{$key}-->,'<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
+	<!--{/foreach}-->
         
     $("#btn_live").click(function() {
         $("#btn_live").attr("disabled", true);
@@ -64,6 +65,10 @@ function check(){
 		alert("请填写房源描述");
 		return false;
 	}
+	if($("#topPicPath").val() == ""){
+		alert("请选择标题图");
+		return false;
+	}
 	
 	return true;	
 }
@@ -72,19 +77,20 @@ function check(){
 
 <body>
 <!--求购头部-->
-<!--{include file="$header_ucenter_user"}-->
+<!--{include file="$ucenter_agent_header"}-->
 <!--求购内容-->
 <div class="qg_main">
-	<!--{include file="$ucenter_user_left_menu"}-->
+	<!--{include file="$ucenter_agent_left_menu"}-->
     <div class="qg_r">
     <p>你的位置: <a href="#">房源管理</a></p>
    	<div class="qg_bs">
             <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
  		   <ul>
-   			 	<li><a href="user_sale_zz.php">录入住宅出售房源</a></li>
-    		    <li><a href="user_sale_bs.php">录入别墅出售房源</a></li>
-     		    <li><a href="user_sale_sp.php">录入商铺出售房源</a></li>
-      		 	<li><a href="user_sale_xzl.php">录入写字楼出售房源</a></li>
+   			 	<li><a href="agent_sale_zz.php">录入住宅出售房源</a></li>
+    		    <li><a href="agent_sale_bs.php">录入别墅出售房源</a></li>
+     		    <li><a href="agent_sale_sp.php">录入商铺出售房源</a></li>
+      		 	<li><a href="agent_sale_xzl.php">录入写字楼出售房源</a></li>
+       		    <li><a href="agent_sale_cf.php">录入厂房出售房源</a></li>
    		  </ul>
           <div class="bs_tx">
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
@@ -219,14 +225,6 @@ function check(){
     		<p><b>图文信息</b></p>
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
-			    <td><input type="file" name="file_upload" id="file_upload"/></td>
-			    <td>
-			    	<div id="showImg" style="float: left;">			
-					</div>
-			    </td>
-			  </tr>
-			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
 			    <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
 			    	<input id="houseTitle" name="houseTitle" type="text"  value="" maxlength="60" onkeyup="textCounter(document.getElementById('houseTitle'),document.getElementById('houseTitleAlert'),30);" /> 还可写<span id="houseTitleAlert"><font class="red">30</font></span>个汉字</td>
@@ -238,14 +236,33 @@ function check(){
 	            <script>
 	                CKEDITOR.replace( 'houseContent' );
 	            </script>
-	            <span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
-				请勿从其它网站或其它房源描述中拷贝。</span>
-				         <span>
+	            <span style="border-bottom:none">可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
+				      请勿从其它网站或其它房源描述中拷贝。</span>
+				               <span>
 				         <b style="text-indent:0px;">注意事项：</b> <br />
 				1.上传宽度大于600像素，比例为5:4的图片可获得更好的展示效果。<br />
-				2.请勿上传有水印、盖章等任何侵犯他人版权或含有广告信息的图片。</span>
-			    	
+				2.请勿上传有水印、盖章等任何侵犯他人版权或含有广告信息的图片。<br />
+				3.可上传20张图片，每张小于2M，建议尺寸大于500x400像素。</span>
 			    </td>
+			  </tr>
+				<!--{foreach from=$picTypeList item=item key=key}-->
+				<tr><td height="220" align="center" valign="middle" bgcolor="#f7f6f1"><!--{$item}--></td>
+		         <td height="215" align="left" valign="top" class="p25">
+		         	<div class="sc_btn">
+		                <input type="file" name="file_upload_<!--{$key}-->" id="file_upload_<!--{$key}-->"/>
+		            </div>
+		            <div class="tpsc" id="showImg_<!--{$key}-->">
+		            </div>
+				 </td>
+				</tr> 
+				<!--{/foreach}-->
+		      
+		       <tr>
+			    <td height="124" align="center" valign="middle" bgcolor="#f7f6f1">标题图</td>
+			    <td align="left" valign="top" class="p25"><div class="btt" id="topic_image"></div></td>
+			    
+        	    <input type="hidden" id="topPicPath" name="topPicPath" value=""/>
+        	    <input type="hidden" id="topPicPathThumb" name="topPicPathThumb" value=""/>
 			  </tr>
 			</table>
       	  </div>

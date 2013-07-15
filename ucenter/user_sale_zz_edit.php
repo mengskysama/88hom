@@ -39,11 +39,11 @@ if($property){
 		}
 	}
 	$houseLookTime = $property['houseLookTime'];
-	
+
 	$photo['picBuildIdId'] = $propId;
 	$photo['picBuildType'] = 1;
 	$propertyDetailPicList = $propService->getPropPhotos($photo);
-	
+
 	$houseTitle = $property['houseTitle'];
 	$houseContent = $property['houseContent'];
 
@@ -62,7 +62,7 @@ if($property){
 	$smarty->assign("houseBuildForm",$houseBuildForm);
 	$smarty->assign("houseBuildArea",$houseBuildArea);
 	$smarty->assign("houseUseArea",$houseUseArea);
-	$smarty->assign("houseBuildYear",$houseBuildYear);	
+	$smarty->assign("houseBuildYear",$houseBuildYear);
 	$smarty->assign("houseFloor",$houseFloor);
 	$smarty->assign("houseAllFloor",$houseAllFloor);
 	$smarty->assign("houseForward",$houseForward);
@@ -72,6 +72,19 @@ if($property){
 	$smarty->assign("houseContent",$houseContent);
 	$smarty->assign("propId",$propId);
 	$smarty->assign("propertyDetailPicList",$propertyDetailPicList);
+
+	$photo['pictypeId'] = 1;
+	$topPic = $propService->getPropPhotos($photo);
+	if($topPic){
+		$smarty->assign('topPicPath',$topPic[0]['picUrl']);
+		$smarty->assign('topPicThumb',$topPic[0]['picThumb']);
+	}else{
+		$smarty->assign('topPicPath',"");
+		$smarty->assign('topPicThumb',"");
+	}
 }
+$picTypeList=$cfg['arr_pic']['2handHouse'];
+$smarty->assign('picTypeList',$picTypeList);
+$smarty->assign('userName',$userName);
 $smarty->display($tpl_name);
 ?>

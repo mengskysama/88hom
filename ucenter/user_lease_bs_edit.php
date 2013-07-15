@@ -22,29 +22,29 @@ if($property){
 	$villaRentType = $property['villaRentType'];
 	$villaPayment = $property['villaPayment'];
 	$villaPayDetailY = $property['villaPayDetailY'];
-	$villaPayDetailF = $property['villaPayDetailF'];	
+	$villaPayDetailF = $property['villaPayDetailF'];
 	$villaForward = $property['villaForward'];
 	$villaAllFloor = $property['villaAllFloor'];
 	$villaCellar = $property['villaCellar'];
 	if($villaCellar){
 		$villaCellarArea = $property['villaCellarArea'];
-		$villaCellarType = $property['villaCellarType'];		
+		$villaCellarType = $property['villaCellarType'];
 	}else{
 		$villaCellarArea = "";
 		$villaCellarType = "";
 	}
 	$villaGarden = $property['villaGarden'];
 	if($villaGarden){
-		$villaGardenArea = $property['villaGardenArea'];	
+		$villaGardenArea = $property['villaGardenArea'];
 	}else{
 		$villaGardenArea = "";
 	}
 	$villaGarage = $property['villaGarage'];
 	if($villaGarage){
-		$villaGarageCount = $property['villaGarageCount'];	
+		$villaGarageCount = $property['villaGarageCount'];
 	}else{
 		$villaGarageCount = "";
-	}	
+	}
 	$villaFitment = $property['villaFitment'];
 	$villaBaseService = $property['villaBaseService'];
 	for($i=1; $i<7; $i++){
@@ -56,10 +56,20 @@ if($property){
 		}
 	}
 	$villaLookTime = $property['villaLookTime'];
-	
+
 	$photo['picBuildIdId'] = $propId;
 	$photo['picBuildType'] = 4;
 	$propertyDetailPicList = $propService->getPropPhotos($photo);
+
+	$photo['pictypeId'] = 1;
+	$topPic = $propService->getPropPhotos($photo);
+	if($topPic){
+		$smarty->assign('topPicPath',$topPic[0]['picUrl']);
+		$smarty->assign('topPicThumb',$topPic[0]['picThumb']);
+	}else{
+		$smarty->assign('topPicPath',"");
+		$smarty->assign('topPicThumb',"");
+	}
 	$villaTitle = $property['villaTitle'];
 	$villaContent = $property['villaContent'];
 
@@ -76,17 +86,17 @@ if($property){
 	$smarty->assign("villaBalcony",$villaBalcony);
 	$smarty->assign("villaBuildArea",$villaBuildArea);
 	$smarty->assign("villaRentType",$villaRentType);
-	$smarty->assign("villaPayment",$villaPayment);	
-	$smarty->assign("villaPayDetailY",$villaPayDetailY);	
+	$smarty->assign("villaPayment",$villaPayment);
+	$smarty->assign("villaPayDetailY",$villaPayDetailY);
 	$smarty->assign("villaPayDetailF",$villaPayDetailF);
 	$smarty->assign("villaForward",$villaForward);
-	$smarty->assign("villaAllFloor",$villaAllFloor);	
-	$smarty->assign("villaCellar",$villaCellar);	
-	$smarty->assign("villaCellarArea",$villaCellarArea);	
-	$smarty->assign("villaCellarType",$villaCellarType);	
-	$smarty->assign("villaGarden",$villaGarden);	
-	$smarty->assign("villaGardenArea",$villaGardenArea);	
-	$smarty->assign("villaGarage",$villaGarage);	
+	$smarty->assign("villaAllFloor",$villaAllFloor);
+	$smarty->assign("villaCellar",$villaCellar);
+	$smarty->assign("villaCellarArea",$villaCellarArea);
+	$smarty->assign("villaCellarType",$villaCellarType);
+	$smarty->assign("villaGarden",$villaGarden);
+	$smarty->assign("villaGardenArea",$villaGardenArea);
+	$smarty->assign("villaGarage",$villaGarage);
 	$smarty->assign("villaGarageCount",$villaGarageCount);
 	$smarty->assign("villaFitment",$villaFitment);
 	$smarty->assign("villaLookTime",$villaLookTime);
@@ -95,5 +105,8 @@ if($property){
 	$smarty->assign("villaContent",$villaContent);
 	$smarty->assign("propId",$propId);
 }
+$picTypeList=$cfg['arr_pic']['2handVilla'];
+$smarty->assign('picTypeList',$picTypeList);
+$smarty->assign('userName',$userName);
 $smarty->display($tpl_name);
 ?>

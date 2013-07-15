@@ -16,47 +16,51 @@ class FactoryDAO  {
 		$sql="insert into ecms_factory(factoryNumber,factoryName,factoryAddress,factoryType,factorySellPrice,factoryProFee,factoryManagentUnits,factoryPayInfo,
 										factoryFloorArea,factoryBuildArea,factoryOfficeArea,factoryWorkshopArea,factorySpaceArea,factoryDormitory,factoryBuildYear,
 										factorySpan,factoryAllFloor,factoryFloorHeight,factoryLoadBearing,factoryBuildStructure,factoryWater,factoryHasCapacityNow,
-										factoryHasCapacityMax,factoryRentPrice,factoryIncludFee,factoryPayment,factoryPayDetailY,factoryPayDetailF,factoryLeastYear,
+										factoryHasCapacityMax,factoryTraffic,factoryContent,factoryRentPrice,factoryIncludFee,factoryPayment,factoryPayDetailY,factoryPayDetailF,factoryLeastYear,
 										factorySellRentType,factoryMapX,factoryMapY,factoryAreaId,factoryState,factoryUserId,factoryCreateTime,factoryUpdateTime) values('"
-										.empty($factory['factoryNumber'])?'':$factory['factoryNumber']
-										."','".empty($factory['factoryName'])?'':$factory['factoryName']
-										."','".empty($factory['factoryAddress'])?'':$factory['factoryAddress']
-										."',".empty($factory['factoryType'])?0:$factory['factoryType']
-										.",".empty($factory['factorySellPrice'])?0:$factory['factorySellPrice']
-										.",".empty($factory['factoryProFee'])?0:$factory['factoryProFee']
-										.",'".empty($factory['factoryManagentUnits'])?'':$factory['factoryManagentUnits']
-										."',".empty($factory['factoryPayInfo'])?0:$factory['factoryPayInfo']
-										.",".empty($factory['factoryFloorArea'])?0:$factory['factoryFloorArea']
-										.",".empty($factory['factoryBuildArea'])?0:$factory['factoryBuildArea']
-										.",".empty($factory['factoryOfficeArea'])?0:$factory['factoryOfficeArea']
-										.",".empty($factory['factoryWorkshopArea'])?0:$factory['factoryWorkshopArea']
-										.",".empty($factory['factorySpaceArea'])?0:$factory['factorySpaceArea']
-										.",'".empty($factory['factoryDormitory'])?'':$factory['factoryDormitory']
-										."',".empty($factory['factoryBuildYear'])?0:$factory['factoryBuildYear']
-										.",".empty($factory['factorySpan'])?0:$factory['factorySpan']
-										.",".empty($factory['factoryAllFloor'])?0:$factory['factoryAllFloor']
-										.",".empty($factory['factoryFloorHeight'])?0:$factory['factoryFloorHeight']
-										.",".empty($factory['factoryLoadBearing'])?0:$factory['factoryLoadBearing']
-										.",'".empty($factory['factoryBuildStructure'])?'':$factory['factoryBuildStructure']
-										."','".empty($factory['factoryWater'])?'':$factory['factoryWater']
-										."','".empty($factory['factoryHasCapacityNow'])?'':$factory['factoryHasCapacityNow']
-										."','".empty($factory['factoryHasCapacityMax'])?'':$factory['factoryHasCapacityMax']
-										."',".empty($factory['factoryRentPrice'])?0:$factory['factoryRentPrice']
-										.",".empty($factory['factoryIncludFee'])?0:$factory['factoryIncludFee']
-										.",".empty($factory['factoryPayment'])?0:$factory['factoryPayment']
-										.",".empty($factory['factoryPayDetailY'])?0:$factory['factoryPayDetailY']
-										.",".empty($factory['factoryPayDetailF'])?0:$factory['factoryPayDetailF']
-										.",".empty($factory['factoryLeastYear'])?0:$factory['factoryLeastYear']
-										.",".empty($factory['factorySellRentType'])?0:$factory['factorySellRentType']
-										.",".empty($factory['factoryMapX'])?0:$factory['factoryMapX']
-										.",".empty($factory['factoryMapY'])?0:$factory['factoryMapY']
-										.",'".empty($factory['factoryAreaId'])?'':$factory['factoryAreaId']
-										."',".empty($factory['factoryState'])?0:$factory['factoryState']
-										.",".empty($factory['factoryUserId'])?0:$factory['factoryUserId']
+										.(empty($factory['factoryNumber'])?'':$factory['factoryNumber'])
+										."','".(empty($factory['factoryName'])?'':$factory['factoryName'])
+										."','".(empty($factory['factoryAddress'])?'':$factory['factoryAddress'])
+										."',".(empty($factory['factoryType'])?0:$factory['factoryType'])
+										.",".(empty($factory['factorySellPrice'])?0:$factory['factorySellPrice'])
+										.",".(empty($factory['factoryProFee'])?0:$factory['factoryProFee'])
+										.",'".(empty($factory['factoryManagentUnits'])?'':$factory['factoryManagentUnits'])
+										."',".(empty($factory['factoryPayInfo'])?0:$factory['factoryPayInfo'])
+										.",".(empty($factory['factoryFloorArea'])?0:$factory['factoryFloorArea'])
+										.",".(empty($factory['factoryBuildArea'])?0:$factory['factoryBuildArea'])
+										.",".(empty($factory['factoryOfficeArea'])?0:$factory['factoryOfficeArea'])
+										.",".(empty($factory['factoryWorkshopArea'])?0:$factory['factoryWorkshopArea'])
+										.",".(empty($factory['factorySpaceArea'])?0:$factory['factorySpaceArea'])
+										.",'".(empty($factory['factoryDormitory'])?'':$factory['factoryDormitory'])
+										."',".(empty($factory['factoryBuildYear'])?0:$factory['factoryBuildYear'])
+										.",".(empty($factory['factorySpan'])?0:$factory['factorySpan'])
+										.",".(empty($factory['factoryAllFloor'])?0:$factory['factoryAllFloor'])
+										.",".(empty($factory['factoryFloorHeight'])?0:$factory['factoryFloorHeight'])
+										.",".(empty($factory['factoryLoadBearing'])?0:$factory['factoryLoadBearing'])
+										.",'".(empty($factory['factoryBuildStructure'])?'':$factory['factoryBuildStructure'])
+										."','".(empty($factory['factoryWater'])?'':$factory['factoryWater'])
+										."','".(empty($factory['factoryHasCapacityNow'])?'':$factory['factoryHasCapacityNow'])
+										."','".(empty($factory['factoryHasCapacityMax'])?'':$factory['factoryHasCapacityMax'])
+										."','".(empty($factory['factoryTraffic'])?'':$factory['factoryTraffic'])
+										."','".(empty($factory['factoryContent'])?'':$factory['factoryContent'])
+										."',".(empty($factory['factoryRentPrice'])?0:$factory['factoryRentPrice'])
+										.",".(empty($factory['factoryIncludFee'])?0:$factory['factoryIncludFee'])
+										.",".(empty($factory['factoryPayment'])?0:$factory['factoryPayment'])
+										.",".(empty($factory['factoryPayDetailY'])?0:$factory['factoryPayDetailY'])
+										.",".(empty($factory['factoryPayDetailF'])?0:$factory['factoryPayDetailF'])
+										.",".(empty($factory['factoryLeastYear'])?0:$factory['factoryLeastYear'])
+										.",".(empty($factory['factorySellRentType'])?0:$factory['factorySellRentType'])
+										.",".(empty($factory['factoryMapX'])?0:$factory['factoryMapX'])
+										.",".(empty($factory['factoryMapY'])?0:$factory['factoryMapY'])
+										.",'".(empty($factory['factoryAreaId'])?'':$factory['factoryAreaId'])
+										."',".(empty($factory['factoryState'])?0:$factory['factoryState'])
+										.",".(empty($factory['factoryUserId'])?0:$factory['factoryUserId'])
 										.",".time()
 										.",".time()
 										.")";
-			return $this->db->getQueryExecute($sql);						
+		$this->db->query($sql);
+		$factoryId = $this->db->getInsertNum();
+		return $factoryId;										
 	}
 
 	public function countProperty($userId,$state,$txType=1){

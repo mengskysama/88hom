@@ -61,6 +61,16 @@ if($property){
 	$photo['picBuildIdId'] = $propId;
 	$photo['picBuildType'] = 4;
 	$propertyDetailPicList = $propService->getPropPhotos($photo);
+
+	$photo['pictypeId'] = 1;
+	$topPic = $propService->getPropPhotos($photo);
+	if($topPic){
+		$smarty->assign('topPicPath',$topPic[0]['picUrl']);
+		$smarty->assign('topPicThumb',$topPic[0]['picThumb']);
+	}else{
+		$smarty->assign('topPicPath',"");
+		$smarty->assign('topPicThumb',"");
+	}
 	$villaTitle = $property['villaTitle'];
 	$villaContent = $property['villaContent'];
 
@@ -94,5 +104,8 @@ if($property){
 	$smarty->assign("villaContent",$villaContent);
 	$smarty->assign("propId",$propId);
 }
+$picTypeList=$cfg['arr_pic']['2handVilla'];
+$smarty->assign('picTypeList',$picTypeList);
+$smarty->assign('userName',$userName);
 $smarty->display($tpl_name);
 ?>

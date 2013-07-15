@@ -11,7 +11,7 @@ if($property){
 	$estName = $property['propName'];
 	$shopsAddress = $property['shopsAddress'];
 	$shopsType = $property['shopsType'];
-	$shopsRentPrice = $property['shopsRentPrice'];	
+	$shopsRentPrice = $property['shopsRentPrice'];
 	$shopsRentPriceUnit = $property['shopsRentPriceUnit'];
 	$shopsNumber = $property['shopsNumber'];
 	$privateShopsNumber = '';//$property['privateshopsNumber'];
@@ -21,6 +21,8 @@ if($property){
 	$shopsAllFloor = $property['shopsAllFloor'];
 	$shopsDivision = $property['shopsDivision'];
 	$shopsFitment = $property['shopsFitment'];
+	$shopsTraffic = $property['shopsTraffic'];
+	$shopsSet = $property['shopsSet'];
 	$shopsBaseService = $property['shopsBaseService'];
 	for($i=1; $i<=9; $i++){
 		$index = strpos($shopsBaseService,','.$i.',');
@@ -41,13 +43,23 @@ if($property){
 		}
 	}
 	$picId = $property['picId'];
-	
+
 	$photo['picBuildIdId'] = $propId;
 	$photo['picBuildType'] = 2;
 	$propertyDetailPicList = $propService->getPropPhotos($photo);
+
+	$photo['pictypeId'] = 1;
+	$topPic = $propService->getPropPhotos($photo);
+	if($topPic){
+		$smarty->assign('topPicPath',$topPic[0]['picUrl']);
+		$smarty->assign('topPicThumb',$topPic[0]['picThumb']);
+	}else{
+		$smarty->assign('topPicPath',"");
+		$smarty->assign('topPicThumb',"");
+	}
 	$shopsTitle = $property['shopsTitle'];
 	$shopsContent = $property['shopsContent'];
-	
+
 	$smarty->assign("estId",$estId);
 	$smarty->assign("estName",$estName);
 	$smarty->assign("shopsAddress",$shopsAddress);
@@ -65,7 +77,12 @@ if($property){
 	$smarty->assign("propertyDetailPicList",$propertyDetailPicList);
 	$smarty->assign("shopsTitle",$shopsTitle);
 	$smarty->assign("shopsContent",$shopsContent);
+	$smarty->assign("shopsTraffic",$shopsTraffic);
+	$smarty->assign("shopsSet",$shopsSet);
 	$smarty->assign("propId",$propId);
 }
+$picTypeList=$cfg['arr_pic']['2handShop'];
+$smarty->assign('picTypeList',$picTypeList);
+$smarty->assign('userName',$userName);
 $smarty->display($tpl_name);
 ?>

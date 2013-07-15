@@ -168,11 +168,12 @@ function initPicUp3(id,v_timestamp,v_token,v_file_path_upload,v_web_path,v_web_c
         	        + '<dt><img src="'+v_web_url+'uploads/'+obj[0].pathThumb+'"></dt>'
         	        + '<dd><span class="redlink"><a href="javascript:void(0)" onclick="changeTopicImg(\''+v_web_url+'uploads/'+obj[0].pathThumb+'\',\''+obj[0].pathThumb+'\',\''+obj[0].path+'\')">设为标题图</a></span></dd>'
         	        + '<dd>描述：<input type="text" class="input01" name="picName[]" /><a href="javascript:void(0)" onclick="dropContainer(\'pic_'+pictureIndex+'\')"><img src="'+v_web_url+'templates/images/ucenter/cha.JPG"></a></dd>'
-        	    +'</dl>'
-        	    + '<input type="hidden" name="picPath[]" value="'+obj[0].path+'"/>'
-        	    + '<input type="hidden" name="picPathThumb[]" value="'+obj[0].pathThumb+'"/>'
-        	    + '<input type="hidden" name="picTypeId[]" value="'+id+'"/>'
-        	    + '<input type="hidden" name="picLayer[]" value="0"/>';
+
+            	    + '<input type="hidden" name="picPath[]" value="'+obj[0].path+'"/>'
+            	    + '<input type="hidden" name="picPathThumb[]" value="'+obj[0].pathThumb+'"/>'
+            	    + '<input type="hidden" name="picTypeId[]" value="'+id+'"/>'
+            	    + '<input type="hidden" name="picLayer[]" value="0"/>'
+        	    +'</dl>';
 				$('#showImg_'+id).append(html);
 				pictureIndex++;
     		}else{
