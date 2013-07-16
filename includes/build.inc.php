@@ -259,6 +259,6 @@ return array(
                'PROPERTY_COUNT_LEASE_USER'=>10,
                'PROPERTY_COUNT_SALE_USER'=>10,
                'PROPERTY_COUNT_LEASE_AGENT'=>60,
-               'PROPERTY_COUNT_LEASE_AGENT'=>60
+               'PROPERTY_COUNT_SALE_AGENT'=>60
 		)						    
 );

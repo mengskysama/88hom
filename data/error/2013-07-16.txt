@@ -32,3 +32,63 @@ update ecms_factory set factoryNumber='123456789981',factoryAddress='的地地�
 ',factoryTraffic='色的热狗1',factoryUpdateTime=1373942101 where factoryId=8
 客户端:127.0.0.1
 时间:2013-07-16 10:35:01
+------------------------2013-07-16 22:38:12
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=0
+客户端:127.0.0.1
+时间:2013-07-16 22:38:12
+------------------------2013-07-16 22:38:12
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-16 22:38:12
+------------------------2013-07-16 22:38:12
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=3
+客户端:127.0.0.1
+时间:2013-07-16 22:38:12
+------------------------2013-07-16 22:38:12
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=4
+客户端:127.0.0.1
+时间:2013-07-16 22:38:12
+------------------------2013-07-16 23:21:24
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=0
+客户端:127.0.0.1
+时间:2013-07-16 23:21:24
+------------------------2013-07-16 23:21:24
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-16 23:21:24
+------------------------2013-07-16 23:21:24
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=3
+客户端:127.0.0.1
+时间:2013-07-16 23:21:24
+------------------------2013-07-16 23:21:24
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=4
+客户端:127.0.0.1
+时间:2013-07-16 23:21:24
+------------------------2013-07-16 23:22:34
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=2
+客户端:127.0.0.1
+时间:2013-07-16 23:22:34
+------------------------2013-07-16 23:22:34
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=2
+客户端:127.0.0.1
+时间:2013-07-16 23:22:34
+------------------------2013-07-16 23:22:34
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=2
+客户端:127.0.0.1
+时间:2013-07-16 23:22:34
+------------------------2013-07-16 23:22:34
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=2
+客户端:127.0.0.1
+时间:2013-07-16 23:22:34

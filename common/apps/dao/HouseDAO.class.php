@@ -64,14 +64,14 @@ class HouseDAO  {
 		return $houseId;					
 	}
 	
-	public function countProperty($userId,$state,$txType=1){
+	public function countProperty($userId,$state,$txType){
 		$sql = "select count(houseId) as propTotal from ecms_house where houseUserId=".$userId." and houseSellRentType=".$txType;
 		if($state == 1){
 			$sql .= " and houseState in(1,5)";
 		}else{
 			$sql .= " and houseState=".$state;
 		}
-		//echo $sql;
+		//echo '<br/>'.$sql;
 		$result = $this->db->getQueryValue($sql);
 		return $result['propTotal'];
 	}

@@ -181,12 +181,12 @@ class SecondHandPropertyService{
 										"");
 	}
 	
-	public function countPropertiesByState($userId,$propState){
-		$house_count = $this->houseDAO->countProperty($userId,$propState);
-		$villa_count = $this->villaDAO->countProperty($userId,$propState);
-		$office_count = $this->officeDAO->countProperty($userId,$propState);
-		$shop_count = $this->shopsDAO->countProperty($userId,$propState);
-		$factory_count = $this->factoryDAO->countProperty($userId,$propState);
+	public function countPropertiesByState($userId,$propState,$txType){
+		$house_count = $this->houseDAO->countProperty($userId,$propState,$txType);
+		$villa_count = $this->villaDAO->countProperty($userId,$propState,$txType);
+		$office_count = $this->officeDAO->countProperty($userId,$propState,$txType);
+		$shop_count = $this->shopsDAO->countProperty($userId,$propState,$txType);
+		$factory_count = $this->factoryDAO->countProperty($userId,$propState,$txType);
 		//echo '<br/>'.$house_count.','.$villa_count.','.$office_count.','.$shop_count.','.$factory_count;
 		return $house_count + $villa_count + $office_count + $shop_count + $factory_count;
 	}
@@ -196,7 +196,11 @@ class SecondHandPropertyService{
 		//where
 		$query_where = "where userId=".$condition['userId'];
 		if($condition['propState'] != "" && $condition['propState'] != 2){
-			$query_where .= " and propState=".$condition['propState'];
+			if($condition['propState'] == 1){
+				$query_where .= " and propState in(1,5)";
+			}else{
+				$query_where .= " and propState=".$condition['propState'];
+			}
 		}else{
 			$query_where .= " and propState!=2";
 		}
@@ -253,7 +257,11 @@ class SecondHandPropertyService{
 		//where
 		$query_where = "where userId=".$condition['userId']; 
 		if($condition['propState'] != "" && $condition['propState'] != 2){
-			$query_where .= " and propState=".$condition['propState'];
+			if($condition['propState'] == 1){
+				$query_where .= " and propState in(1,5)";
+			}else{
+				$query_where .= " and propState=".$condition['propState'];
+			}
 		}else{
 			$query_where .= " and propState!=2";
 		}
@@ -385,6 +393,8 @@ class SecondHandPropertyService{
 			$dao = $this->factoryDAO;
 		}
 		if($dao == "") return false;
-		return $dao->refresh($propId);
+		if($dao->refresh($propId)){
+			return date("Y-m-d")."<br />".date("H:i");
+		}
 	}
 }

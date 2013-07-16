@@ -256,14 +256,15 @@ if($propType == "zz"){
 	$secondPropService = new SecondHandPropertyService($db);
 	$result_to_refresh = $secondPropService->refreshProperty($propKind, $propId);
 	if($result_to_refresh){
-		echo "{\"result\":\"success\"}";
+		echo "{\"result\":\"success\",\"u_time\":\"".$result_to_refresh."\"}";
 	}else{
 		echo "{\"result\":\"failure\"}";
 	}
 	return;
 }
-//echo 'result->'.$propHandler->handle();
-$userType = $_SESSION['userType'];
+//echo 'result->'.$propHandler->handle();return;
+$userType = $_SESSION['UCUser']['userType'];
+//echo 'userType->'.$userType;return;
 $result = $propHandler->handle();
 if($result){
 	if($propTxType == 1){

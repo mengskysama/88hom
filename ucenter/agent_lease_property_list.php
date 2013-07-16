@@ -25,6 +25,9 @@ $unlivePropsCount = $secondPropertyService->countPropertiesByState($userId,0,$tx
 $livePropsCount = $secondPropertyService->countPropertiesByState($userId,1,$txType);
 $expiredPropsCount = $secondPropertyService->countPropertiesByState($userId,3,$txType);
 $illegalPropsCount = $secondPropertyService->countPropertiesByState($userId,4,$txType);
+$usedLivePropsCount = $livePropsCount + $expiredPropsCount + $illegalPropsCount;
+//echo $livePropsCount."|".$expiredPropsCount."|".$illegalPropsCount;
+$restLivePropsCount = $cfg['arr_build']['2handConfig']['PROPERTY_COUNT_LEASE_AGENT'] - $usedLivePropsCount;
 //fill the condition
 $condition['userId'] = $userId;
 $condition['propState'] = $propState;
@@ -46,7 +49,8 @@ $html->show();
 $smarty->assign('ucenter_agent_header',$tpl_dir.'ucenter_agent_header.tpl');
 $smarty->assign('ucenter_agent_left_menu',$tpl_dir.'ucenter_agent_left_menu.tpl');
 $smarty->assign("unlivePropsCount",$unlivePropsCount);
-$smarty->assign("livePropsCount",$livePropsCount);
+$smarty->assign("usedLivePropsCount",$usedLivePropsCount);
+$smarty->assign("restLivePropsCount",$restLivePropsCount);
 $smarty->assign("expiredPropsCount",$expiredPropsCount);
 $smarty->assign("illegalPropsCount",$illegalPropsCount);
 $smarty->assign("propList",$propList);

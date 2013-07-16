@@ -620,6 +620,7 @@ function refreshProp(propKind, propId){
             success:function(msg){
 				if(msg.result=="success"){
 					alert("刷新成功!");
+					$("#t_update_time_"+propKind+"_"+propId).html(msg.u_time);
                 }else{
                     alert("刷新失败!");
                 }
