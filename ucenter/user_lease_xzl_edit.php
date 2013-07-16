@@ -1,6 +1,6 @@
 <?php
 require 'prop_input_path.inc.php';
-require 'check_login.php';
+require 'check_user_login.php';
 $tpl_name = $tpl_dir.'user_lease_xzl_edit.tpl';
 
 $propId = getParameter("propId","GET");

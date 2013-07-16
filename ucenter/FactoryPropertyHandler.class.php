@@ -14,14 +14,12 @@ class FactoryPropertyHandler extends PropertyHandler{
 
 	public function handle(){
 		$result = false;
-		echo 'actiontype->'.$this->factory['actionType'];
 		if($this->factory['actionType'] == "update"){
 			$result = $this->updateProperty();
 		}else{
 			$result = $this->createProperty();
 		}
 		if(!$result) return false;
-	
 		$this->factory['topPic']['picBuildId'] = $this->factory['factoryId'];
 		return $this->handleTopPic($this->propertyService, $this->factory['topPic']);
 	}
@@ -34,7 +32,7 @@ class FactoryPropertyHandler extends PropertyHandler{
 		$factoryId = $this->propertyService->saveFactory($this->factory);
 		if(!$factoryId) return false;
 	
-		$this->facotry['factoryId'] = $factoryId;
+		$this->factory['factoryId'] = $factoryId;
 		return true;
 	}
 	

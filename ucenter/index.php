@@ -28,7 +28,9 @@ if(isset($_POST['button2'])){
 		$_SESSION['UCUser'] = $user;
 			
 		$userType = $user['userType'];
-		if($userType == 3){
+		if($userType == 2){
+			header("Location:ucenter_agent.php");
+		}else{
 			header("Location:ucenter_user.php");
 		}
 	}

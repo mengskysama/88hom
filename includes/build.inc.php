@@ -156,6 +156,11 @@ return array(
 			          8=>'休闲娱乐',
 			          9=>'其他'
 		),
+		'2handShopsRentPriceUnit'=>array(
+			   	 	  1=>'元/平米·天',
+			          2=>'元/平米·月',
+			          3=>'元/月'
+		),
 		'2handVillaBuildForm'=>array(
 				    1=>'独栋', 
 				    2=>'联排',  
@@ -214,5 +219,46 @@ return array(
 		'2handVillaRentType'=>array(	
                1=>'整租',
                2=>'合租'
+		),
+		'2handFactoryType'=>array(	
+			    	1=>'独立厂房',     
+			      	2=>'工业园',    
+			        3=>'开发区',    
+			        4=>'产业基地',  
+			        5=>'其他'
+		),
+		'2handFactoryPayInfo'=>array(	
+					1=>'国有土地证',
+					2=>'集体土地证'
+		),
+		'2handFactoryIncludFee'=>array(	
+					1=>'是',
+					2=>'否'
+		),
+		'2handFactoryPayment'=>array(	
+				1=>'押付',
+				2=>'面议'
+		),
+		'2handFactoryPayDetailY'=>array(	
+				0=>'零',
+				1=>'一个月',
+				2=>'两个月',
+				3=>'三个月',
+				6=>'六个月'
+		),
+		'2handFactoryPayDetailF'=>array(	
+               1=>'一个月',
+               2=>'两个月',
+               3=>'三个月',
+               6=>'六个月',
+               12=>'十二个月'
+		),
+		'2handConfig'=>array(	
+               'REFRESH_COUNT_USER'=>10,
+               'REFRESH_COUNT_AGENT'=>60,
+               'PROPERTY_COUNT_LEASE_USER'=>10,
+               'PROPERTY_COUNT_SALE_USER'=>10,
+               'PROPERTY_COUNT_LEASE_AGENT'=>60,
+               'PROPERTY_COUNT_LEASE_AGENT'=>60
 		)						    
 );

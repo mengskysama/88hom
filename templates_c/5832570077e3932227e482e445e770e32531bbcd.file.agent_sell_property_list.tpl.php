@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-15 15:57:25
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-16 12:19:52
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_sell_property_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:845051e3ab6537a956-59315389%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5832570077e3932227e482e445e770e32531bbcd' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_sell_property_list.tpl',
-      1 => 1373874723,
+      1 => 1373947327,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51e3ab6564ef80_25335799',
   'variables' => 
   array (
     'cfg' => 0,
@@ -38,8 +40,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'propState' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_51e3ab6564ef80_25335799',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51e3ab6564ef80_25335799')) {function content_51e3ab6564ef80_25335799($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -218,7 +218,6 @@ m<sup>2</sup><br />
 			     <a href="javascript:void(0);" onclick="deleteProp('<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind'];?>
 <?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
 ')">删除</a><br />
-			    	<a href="#" class="xx0" style="margin:8px 12px;">去委托</a>
 			    </td>
 			  </tr>
 			  <?php endfor; endif; ?>

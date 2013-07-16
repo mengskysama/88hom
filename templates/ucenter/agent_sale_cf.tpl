@@ -56,11 +56,11 @@ function check(){
 		alert("请填写厂房地址");
 		$("#factoryAddress").focus();
 		return false;
-	}/*
+	}
 	if(trim($("#areaIndex").val()) == ''){
 		alert("请选择区域");
 		return false;
-	}*/
+	}
 	
 	if(!CheckInfoCode('factoryNumber',true)) return false;	
 	if(!CheckPrice('factorySellPrice',true,'CS')) return false;
@@ -218,7 +218,7 @@ function check(){
 	                                </dl>
 	                            </div>
 	                        </div>
-			    </td
+			    </td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"> 房源信息编码</td>

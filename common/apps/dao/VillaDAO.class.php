@@ -68,7 +68,12 @@ class VillaDAO  {
 	}
 
 	public function countProperty($userId,$state,$txType=1){
-		$sql = "select count(villaId) as propTotal from ecms_villa where villaUserId=".$userId." and villaState=".$state." and villaSellRentType=".$txType;
+		$sql = "select count(villaId) as propTotal from ecms_villa where villaUserId=".$userId." and villaSellRentType=".$txType;
+		if($state == 1){
+			$sql .= " and villaState in(1,5)";
+		}else{
+			$sql .= " and villaState=".$state;
+		}
 		$result = $this->db->getQueryValue($sql);
 		return $result['propTotal'];
 	}
@@ -195,6 +200,10 @@ class VillaDAO  {
 		
 		$sql .= "villaUpdateTime=".time()." where villaId=".$villa['villaId'];
 		//echo $sql;
+		return $this->db->getQueryExeCute($sql);
+	}
+	public function refresh($propId){
+		$sql = "update ecms_villa set villaUpdateTime=".time()." where villaId=".$propId;
 		return $this->db->getQueryExeCute($sql);
 	}
 	//end to be added by Cheneil

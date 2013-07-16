@@ -19,7 +19,7 @@
       <div class="bs_tx" style="border:0">
             <p><b>管理出售房源</b></p>
             <div class="bs_tx1">发 布 量：已使用 <!--{$livePropsCount}-->    还可使用<a href="#">10</a><br />               
-即将过期房源：<a href="#">0</a>  本月过期房源 已重新发布 <a href="#">0</a> 还可重新发布 <a href="#">1</a></div>
+即将过期房源：<a href="#">0</a>  已刷新次数 <a href="#">0</a> 还可刷新次数 <a href="#">1</a></div>
 <div style="width:700px; border-bottom:1px solid #ddd">
 			<ul style="width:584px; font-size:14px; font-weight:bolder;">
    			 	<li><a href="javascript:void(0)" onclick="gotolink(1)">已发布房源</a></li>
@@ -117,7 +117,14 @@
 			    <a href="user_sale_gc_edit.php?propId=<!--{$propList[prop].propId}-->">编辑</a>
 			    <!--{/if}-->			    
 			     <a href="javascript:void(0);" onclick="deleteProp('<!--{$propList[prop].propKind}--><!--{$propList[prop].propId}-->')">删除</a><br />
-			    	<a href="#" class="xx0" style="margin:8px 12px;">去委托</a>
+			     <!--{if $propList[prop].propState eq 1}-->
+			    	<a class="xx0" style="margin:8px 12px;">发布待审核</a>
+			     <!--{elseif $propList[prop].propState eq 5}-->
+			    	<a href="refreshProp('<!--{$propList[prop].propKind}-->','<!--{$propList[prop].propId}-->')" class="xx0" style="margin:8px 12px;">刷新</a>
+			    	<a href="user_sale_prop_agent.php?propKind=<!--{$propList[prop].propKind}-->&propId=<!--{$propList[prop].propId}-->" class="xx0" style="margin:8px 12px;">去委托</a>
+			     <!--{/elseif $propList[prop].propState eq 0}-->
+			     	<a href="user_sale_prop_agent.php?propKind=<!--{$propList[prop].propKind}-->&propId=<!--{$propList[prop].propId}-->" class="xx0" style="margin:8px 12px;">去委托</a>
+			     <!--{/if}-->
 			    </td>
 			  </tr>
 			  <!--{/section}-->

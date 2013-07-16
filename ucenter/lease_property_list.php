@@ -1,6 +1,6 @@
 <?php
 require 'path.inc.php';
-require 'check_login.php';
+require 'check_user_login.php';
 $tpl_name = $tpl_dir.'lease_property_list.tpl';
 
 $propState = getParameter("propState");

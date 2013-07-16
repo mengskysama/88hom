@@ -64,7 +64,12 @@ class FactoryDAO  {
 	}
 
 	public function countProperty($userId,$state,$txType=1){
-		$sql = "select count(factoryId) as propTotal from ecms_factory where factoryUserId=".$userId." and factoryState=".$state." and factorySellRentType=".$txType;
+		$sql = "select count(factoryId) as propTotal from ecms_factory where factoryUserId=".$userId." and factorySellRentType=".$txType;
+		if($state == 1){
+			$sql .= " and factoryState in(1,5)";
+		}else{
+			$sql .= " and factoryState=".$state;
+		}
 		$result = $this->db->getQueryValue($sql);
 		return $result['propTotal'];
 	}
@@ -88,7 +93,6 @@ class FactoryDAO  {
 		}
 		return $this->db->getQueryValue($sql);
 	}
-	//end to be added by Cheneil
 	//修改厂房
 	public function modify($factory){
 		$sql="update ecms_factory set ";
@@ -102,7 +106,7 @@ class FactoryDAO  {
 			$sql .= "factoryType=".$factory['factoryType'].",";
 		}				
 		if(isset($factory['factorySellPrice'])){
-			$sql .= "factorySellPrice=".$factory['factorySellPrice'].",";
+			$sql .= "factorySellPrice=".($factory['factorySellPrice'] == "" ? 0 : $factory['factorySellPrice']).",";
 		}				
 		if(isset($factory['factoryProFee'])){
 			$sql .= "factoryProFee=".$factory['factoryProFee'].",";
@@ -132,7 +136,7 @@ class FactoryDAO  {
 			$sql .= "factoryDormitory='".$factory['factoryDormitory']."',";
 		}				
 		if(isset($factory['factoryBuildYear'])){
-			$sql .= "factoryBuildYear=".$factory['factoryBuildYear'].",";
+			$sql .= "factoryBuildYear=".($factory['factoryBuildYear'] == "" ? 0 : $factory['factoryBuildYear']).",";
 		}				
 		if(isset($factory['factorySpan'])){
 			$sql .= "factorySpan=".$factory['factorySpan'].",";
@@ -187,10 +191,18 @@ class FactoryDAO  {
 		}					
 		if(isset($factory['factoryTraffic'])){
 			$sql .= "factoryTraffic='".$factory['factoryTraffic']."',";
-		}					
+		}				
+		if(isset($factory['factoryState'])){
+			$sql .= "factoryState=".($factory['factoryState'] == "" ? 0 : $factory['factoryState']).",";
+		}						
 		$sql .= "factoryUpdateTime=".time()." where factoryId=".$factory['factoryId'];
 		return $this->db->getQueryExeCute($sql);
 	}
+	public function refresh($propId){
+		$sql = "update ecms_factory set factoryUpdateTime=".time()." where factoryId=".$propId;
+		return $this->db->getQueryExeCute($sql);
+	}
+	//end to be added by Cheneil
 	//删除厂房
 	public function delFactoryById($id){
 		$sql="delete from  ecms_factory where factoryId=".$id;

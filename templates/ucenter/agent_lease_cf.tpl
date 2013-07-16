@@ -56,15 +56,20 @@ function check(){
 		alert("请填写厂房地址");
 		$("#factoryAddress").focus();
 		return false;
-	}/*
+	}
 	if(trim($("#areaIndex").val()) == ''){
 		alert("请选择区域");
 		return false;
-	}*/
+	}
 	
 	if(!CheckInfoCode('factoryNumber',true)) return false;	
-	if(!CheckPrice('factorySellPrice',true,'CS')) return false;
+	if(!checkRentPrice()) return false;
 	if(!checkPropFee('factoryProFee',true)) return false;
+	if($("#factoryLeastYear").val() != "" && !IsInt("factoryLeastYear")){
+		alert("起租年限只能是数字");
+		$("#factoryLeastYear").focus();
+		return false;
+	}
 	
 	if(!checkArea('factoryFloorArea','占地面积',false)) return false;
 	
@@ -72,7 +77,6 @@ function check(){
 	if(!checkArea('factoryOfficeArea','办公面积',false)) return false;
 	if(!checkArea('factoryWorkshopArea','车间面积',false)) return false;
 	if(!checkArea('factorySpaceArea','空地面积',false)) return false;
-	if(!CheckCreateTime('factoryBuildYear',true)) return false;
 	
 	if($("#factorySpan").val() != "" && !check_float('factorySpan')){
 		alert("跨度只能是数字");
@@ -118,6 +122,27 @@ function check(){
 	return true;	
 }
 
+function checkRentPrice(){
+	var value = $("#factoryRentPrice").val(); 
+    if(trim(value) == ""){
+    	alert("请填写租金");
+    	$("#factoryRentPrice").focus();
+    	return false;
+    }
+    
+    if(check_float("factoryRentPrice")){
+    	if(parseFloat(value)<=0 || parseFloat(value)>1000000){
+    		alert("租金要大于0元小于100万元");
+    		$("#factoryRentPrice").focus();
+    		return false;
+    	}
+    	return true;
+    }else{
+    	alert("租金只能填写数字和小数点");
+    	$("#factoryRentPrice").focus();
+    	return false;
+    }    
+}
 function changepaydetail() {
 	var val = $('input:radio[name="factoryPayment"]:checked').val();
     if (val == 2) {
@@ -232,7 +257,7 @@ function changepaydetail() {
 	                                </dl>
 	                            </div>
 	                        </div>
-			    </td
+			    </td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"> 房源信息编码</td>
@@ -271,7 +296,7 @@ function changepaydetail() {
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
-			    <input id="housePayment" checked="checked" name="factoryPayment" type="radio" value="1" onclick="changepaydetail()"/>押&nbsp;
+			    <input id="factoryPayment" checked="checked" name="factoryPayment" type="radio" value="1" onclick="changepaydetail()"/>押&nbsp;
 				<select name="factoryPayDetailY" id="factoryPayDetailY" style=" vertical-align:middle">
 				<option selected="selected" value="">请选择</option>
 				<option value="0">零</option>
@@ -289,7 +314,7 @@ function changepaydetail() {
                                     <option value="6">六个月</option>
                                     <option value="12">十二个月</option>
  				</select>
-			    <input id="housePayment" name="factoryPayment" type="radio" value="2" onclick="changepaydetail();" />面议
+			    <input id="factoryPayment" name="factoryPayment" type="radio" value="2" onclick="changepaydetail();" />面议
 				</td>
 			  </tr>
 			  <tr>

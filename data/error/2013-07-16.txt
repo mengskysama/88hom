@@ -1,0 +1,34 @@
+------------------------2013-07-16 09:48:00
+错误SQL语句：
+delete from ecms_pic where picBuildId= and pictypeId=1 and picBuildType=5
+客户端:127.0.0.1
+时间:2013-07-16 09:48:00
+------------------------2013-07-16 09:50:11
+错误SQL语句：
+delete from ecms_pic where picBuildId= and pictypeId=1 and picBuildType=5
+客户端:127.0.0.1
+时间:2013-07-16 09:50:11
+------------------------2013-07-16 09:52:00
+错误SQL语句：
+delete from ecms_pic where picBuildId= and pictypeId=1 and picBuildType=5
+客户端:127.0.0.1
+时间:2013-07-16 09:52:00
+------------------------2013-07-16 09:55:20
+错误SQL语句：
+delete from ecms_pic where picBuildId= and pictypeId=1 and picBuildType=5
+客户端:127.0.0.1
+时间:2013-07-16 09:55:20
+------------------------2013-07-16 10:32:51
+错误SQL语句：
+update ecms_factory set factoryNumber='123456789981',factoryAddress='的地地道道的1',factoryType=3,factorySellPrice=,factoryProFee=201,factoryManagentUnits='你哈哈哈哈哈1',factoryPayInfo=2,factoryFloorArea=3001,factoryBuildArea=2501,factoryOfficeArea=2001,factoryWorkshopArea=2001,factorySpaceArea=1001,factoryDormitory='啊撒大声地1',factoryBuildYear=,factorySpan=21,factoryAllFloor=11,factoryFloorHeight=1,factoryLoadBearing=51,factoryBuildStructure='等待1',factoryWater='搜索1',factoryHasCapacityNow='221',factoryHasCapacityMax='331',factoryRentPrice=20001,factoryIncludFee=2,factoryPayment=1,factoryPayDetailY=6,factoryPayDetailF=2,factoryLeastYear=21,factorySellRentType=2,factoryAreaId='4-8-1-4',factoryContent='<p>
+	瑟瑟发抖1</p>
+',factoryTraffic='色的热狗1',factoryUpdateTime=1373941971 where factoryId=8
+客户端:127.0.0.1
+时间:2013-07-16 10:32:51
+------------------------2013-07-16 10:35:01
+错误SQL语句：
+update ecms_factory set factoryNumber='123456789981',factoryAddress='的地地道道的1',factoryType=3,factorySellPrice=0,factoryProFee=201,factoryManagentUnits='你哈哈哈哈哈1',factoryPayInfo=2,factoryFloorArea=3001,factoryBuildArea=2501,factoryOfficeArea=2001,factoryWorkshopArea=2001,factorySpaceArea=1001,factoryDormitory='啊撒大声地1',factoryBuildYear=,factorySpan=21,factoryAllFloor=11,factoryFloorHeight=1,factoryLoadBearing=51,factoryBuildStructure='等待1',factoryWater='搜索1',factoryHasCapacityNow='221',factoryHasCapacityMax='331',factoryRentPrice=20001,factoryIncludFee=2,factoryPayment=1,factoryPayDetailY=6,factoryPayDetailF=2,factoryLeastYear=21,factorySellRentType=2,factoryAreaId='4-8-1-4',factoryContent='<p>
+	瑟瑟发抖1</p>
+',factoryTraffic='色的热狗1',factoryUpdateTime=1373942101 where factoryId=8
+客户端:127.0.0.1
+时间:2013-07-16 10:35:01

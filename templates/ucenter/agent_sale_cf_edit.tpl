@@ -39,11 +39,11 @@ function check(){
 		$("#factoryAddress").focus();
 		return false;
 	}
-	/*
+	
 	if(trim($("#areaIndex").val()) == ''){
 		alert("请选择区域");
 		return false;
-	}*/
+	}
 	
 	if(!CheckInfoCode('factoryNumber',true)) return false;	
 	if(!CheckPrice('factorySellPrice',true,'CS')) return false;
@@ -111,7 +111,7 @@ function check(){
 	<!--{include file="$ucenter_agent_left_menu"}-->
     <div class="jjr_r">
     	<div class="qg_r1">
-    <p>你的位置: <a href="#">编辑商铺出售房源</a></p>
+    <p>你的位置: <a href="#">编辑厂房出售房源</a></p>
    	<div class="qg_bs1">
             <form id="cfForm" name="cfForm" action="property_handler.php" method="post" enctype="multipart/form-data">
           <div class="bs_tx">

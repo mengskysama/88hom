@@ -211,10 +211,12 @@ if($propType == "zz"){
 	$factory['factoryAreaId'] = getParameter('areaIndex');
 	$factory['factoryId'] = getParameter("propId");
 	
-	$factory['factoryRentPrice'] = "";
-	$factory['factoryPayment'] = "";
-	$factory['factoryPayDetailY'] = "";
-	$factory['factoryPayDetailF'] = "";
+	$factory['factoryRentPrice'] = getParameter("factoryRentPrice");
+	$factory['factoryIncludFee'] = getParameter("factoryIncludFee");
+	$factory['factoryPayment'] = getParameter("factoryPayment");
+	$factory['factoryPayDetailY'] = getParameter("factoryPayDetailY");
+	$factory['factoryPayDetailF'] = getParameter("factoryPayDetailF");
+	$factory['factoryLeastYear'] = getParameter("factoryLeastYear");
 	$factory['factoryMapX'] = "";
 	$factory['factoryMapY'] = "";
 	
@@ -248,14 +250,36 @@ if($propType == "zz"){
 		echo "{\"result\":\"failure\"}";
 	}
 	return;
+}else if($action == "refreshProp"){
+	$propKind = getParameter("propKind");
+	$propId = getParameter("propId");
+	$secondPropService = new SecondHandPropertyService($db);
+	$result_to_refresh = $secondPropService->refreshProperty($propKind, $propId);
+	if($result_to_refresh){
+		echo "{\"result\":\"success\"}";
+	}else{
+		echo "{\"result\":\"failure\"}";
+	}
+	return;
 }
-echo 'result->'.$propHandler->handle();
-/*
-$propHandler->handle();
-if($propTxType == 1){
-	header("Location:sell_property_list.php");
+//echo 'result->'.$propHandler->handle();
+$userType = $_SESSION['userType'];
+$result = $propHandler->handle();
+if($result){
+	if($propTxType == 1){
+		if($userType == 2){
+			header("Location:agent_sell_property_list.php");
+		}else{
+			header("Location:sell_property_list.php");
+		}
+	}else{
+		if($userType == 2){
+			header("Location:agent_lease_property_list.php");
+		}else{
+			header("Location:lease_property_list.php");
+		}
+	}
 }else{
-	header("Location:lease_property_list.php");
+	
 }
-*/
 ?>

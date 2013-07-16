@@ -609,3 +609,23 @@ function SetValue(type,objName,ovalue)
     }
     return false;
 }
+function refreshProp(propKind, propId){	
+		
+	var option={"action":"refreshProp","propKind":propKind,"propId":propId};
+    $.ajax({
+			url:"property_handler.php",
+			dataType:"json",
+            data:option,
+            type:"post",
+            success:function(msg){
+				if(msg.result=="success"){
+					alert("刷新成功!");
+                }else{
+                    alert("刷新失败!");
+                }
+            },
+            error:function(){
+				alert("刷新失败!");
+            }
+    })
+}

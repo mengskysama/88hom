@@ -1,6 +1,6 @@
 <?php
 require 'prop_input_path.inc.php';
-require 'check_login.php';
+require 'check_agent_login.php';
 $tpl_name = $tpl_dir.'agent_lease_sp_edit.tpl';
 
 $propId = getParameter("propId","GET");

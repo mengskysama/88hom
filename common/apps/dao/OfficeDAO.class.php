@@ -39,7 +39,12 @@ class OfficeDAO{
 	}
 
 	public function countProperty($userId,$state,$txType=1){
-		$sql = "select count(officeId) as propTotal from ecms_office where officeUserId=".$userId." and officeState=".$state." and officeSellRentType=".$txType;
+		$sql = "select count(officeId) as propTotal from ecms_office where officeUserId=".$userId." and officeSellRentType=".$txType;
+		if($state == 1){
+			$sql .= " and officeState in(1,5)";
+		}else{
+			$sql .= " and officeState=".$state;
+		}
 		$result = $this->db->getQueryValue($sql);
 		return $result['propTotal'];
 	}
@@ -123,6 +128,10 @@ class OfficeDAO{
 			$sql .= "officeState=".$info['officeState'].",";
 		} 
 		$sql .= "officeUpdateTime=".time()." where officeId=".$info['officeId'];
+		return $this->db->getQueryExeCute($sql);
+	}
+	public function refresh($propId){
+		$sql = "update ecms_office set officeUpdateTime=".time()." where officeId=".$propId;
 		return $this->db->getQueryExeCute($sql);
 	}
 	//end to be added by Cheneil

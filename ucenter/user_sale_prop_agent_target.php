@@ -1,6 +1,6 @@
 <?php
 require 'path.inc.php';
-require 'check_login.php';
+require 'check_user_login.php';
 $tpl_name = $tpl_dir.'user_sale_prop_agent_target.tpl';
 
 $propId = getParameter("propId","GET");

@@ -48,7 +48,12 @@ class ShopsDAO{
 	}
 
 	public function countProperty($userId,$state,$txType=1){
-		$sql = "select count(shopsId) as propTotal from ecms_shops where shopsUserId=".$userId." and shopsState=".$state." and shopsSellRentType=".$txType;
+		$sql = "select count(shopsId) as propTotal from ecms_shops where shopsUserId=".$userId." and shopsSellRentType=".$txType;
+		if($state == 1){
+			$sql .= " and shopsState in(1,5)";
+		}else{
+			$sql .= " and shopsState=".$state;
+		}
 		$result = $this->db->getQueryValue($sql);
 		return $result['propTotal'];
 	}
@@ -130,6 +135,10 @@ class ShopsDAO{
 			$sql .= "shopsSet='".$info['shopsSet']."',";
 		}
 		$sql .= "shopsUpdateTime=".time()." where shopsId=".$info['shopId'];
+		return $this->db->getQueryExeCute($sql);
+	}
+	public function refresh($propId){
+		$sql = "update ecms_shops set shopsUpdateTime=".time()." where villaId=".$propId;
 		return $this->db->getQueryExeCute($sql);
 	}
 	//end to be added by Cheneil

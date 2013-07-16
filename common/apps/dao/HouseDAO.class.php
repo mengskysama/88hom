@@ -65,7 +65,13 @@ class HouseDAO  {
 	}
 	
 	public function countProperty($userId,$state,$txType=1){
-		$sql = "select count(houseId) as propTotal from ecms_house where houseUserId=".$userId." and houseState=".$state." and houseSellRentType=".$txType;
+		$sql = "select count(houseId) as propTotal from ecms_house where houseUserId=".$userId." and houseSellRentType=".$txType;
+		if($state == 1){
+			$sql .= " and houseState in(1,5)";
+		}else{
+			$sql .= " and houseState=".$state;
+		}
+		//echo $sql;
 		$result = $this->db->getQueryValue($sql);
 		return $result['propTotal'];
 	}
@@ -78,7 +84,7 @@ class HouseDAO  {
 	
 	public function getPropertyList($table,$query_fields,$query_where,$query_order,$query_limit){
 		$sql = "select ".$query_fields." from ".$table." ".$query_where." ".$query_order." ".$query_limit;
-		//echo $sql;
+		//echo '<br/>SQL->'.$sql;
 		return $this->db->getQueryArray($sql);
 	}
 	
@@ -204,6 +210,10 @@ class HouseDAO  {
 	
 		$sql .= "houseUpdateTime=".time()." where houseId=".$house['houseId'];
 		//echo $sql;
+		return $this->db->getQueryExeCute($sql);
+	}
+	public function refresh($propId){
+		$sql = "update ecms_house set houseUpdateTime=".time()." where houseId=".$propId;
 		return $this->db->getQueryExeCute($sql);
 	}
 	//end to be added by Cheneil

@@ -1,6 +1,6 @@
 <?php
 require 'path.inc.php';
-require 'check_login.php';
+require 'check_agent_login.php';
 $tpl_name = $tpl_dir.'agent_sell_property_list.tpl';
 
 $propState = isset($_POST['propState']) ? $_POST['propState'] : "";
@@ -21,10 +21,12 @@ $pageNo = $destNo == "" ? ($pageNo == "" ? 1 : $pageNo) : $destNo;
 $txType = 1;
 
 $secondPropertyService = new SecondHandPropertyService($db);
+//echo 'begin --'.date('Ymd His');
 $unlivePropsCount = $secondPropertyService->countPropertiesByState($userId,0,$txType);
 $livePropsCount = $secondPropertyService->countPropertiesByState($userId,1,$txType);
 $expiredPropsCount = $secondPropertyService->countPropertiesByState($userId,3,$txType);
 $illegalPropsCount = $secondPropertyService->countPropertiesByState($userId,4,$txType);
+//echo '<br/>finish to get count --'.date('Ymd His');
 //fill the condition
 $condition['userId'] = $userId;
 $condition['propState'] = $propState;
@@ -38,6 +40,7 @@ $condition['propName'] = $propName;
 $condition['currentPageNo'] = $pageNo;
 $condition['txType'] = $txType;
 $props = $secondPropertyService->getSellPropertyList($condition);
+//echo '<br/>finish to get list --'.date('Ymd His');
 $propList = $props['data'];
 $pagination = $props['pagination'];
 

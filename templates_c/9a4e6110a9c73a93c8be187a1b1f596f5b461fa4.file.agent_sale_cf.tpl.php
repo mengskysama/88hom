@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-15 18:11:31
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-16 09:19:25
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_sale_cf.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2021251e3bb93493851-16925453%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9a4e6110a9c73a93c8be187a1b1f596f5b461fa4' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_sale_cf.tpl',
-      1 => 1373881395,
+      1 => 1373937530,
       2 => 'file',
     ),
   ),
@@ -77,7 +77,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
         $("#btn_save").attr("disabled", true);
         if (check()) {
         	$("#action_to_go").val(1);
-            document.getElementById("spForm").submit();
+            document.getElementById("cfForm").submit();
         } else {
             $("#btn_live").removeAttr("disabled");
             $("#btn_save").removeAttr("disabled");
@@ -88,7 +88,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
         $("#btn_live").attr("disabled", true);
         $("#btn_save").attr("disabled", true);
         if (check()) {
-            document.getElementById("spForm").submit();
+            document.getElementById("cfForm").submit();
         } else {
             $("#btn_live").removeAttr("disabled");
             $("#btn_save").removeAttr("disabled");
@@ -96,33 +96,68 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
     });
 });
 function check(){
-	var estNameValue = $("#estId").val();
+	var estNameValue = $("#factoryName").val();
 	if(trim(estNameValue) == ''){
-		alert("请填写商铺名称");
-		$("#estName").focus();
+		alert("请填写厂房名称");
+		$("#factoryName").focus();
 		return false;
 	}
+	if(trim($("#factoryAddress").val()) == ''){
+		alert("请填写厂房地址");
+		$("#factoryAddress").focus();
+		return false;
+	}/*
+	if(trim($("#areaIndex").val()) == ''){
+		alert("请选择区域");
+		return false;
+	}*/
 	
-	if(!CheckInfoCode('shopsNumber',true)) return false;	
-	if(!CheckPrice('shopsSellPrice',true,'CS')) return false;
-	if(!checkPropFee('shopsPropFee',true)) return false;
-	if(!CheckBuildingArea('shopsBuildArea',true)) return false;
-	if(!CheckFloor('shopsFloor','shopsAllFloor',true)) return false;
-		
-	if(!CheckTitle('shopsTitle',true)) return false;
-	var houseContentValue = CKEDITOR.instances.shopsContent.getData(); 
+	if(!CheckInfoCode('factoryNumber',true)) return false;	
+	if(!CheckPrice('factorySellPrice',true,'CS')) return false;
+	if(!checkPropFee('factoryProFee',true)) return false;
+	
+	if(!checkArea('factoryFloorArea','占地面积',false)) return false;
+	
+	if(!CheckBuildingArea('factoryBuildArea',true)) return false;
+	if(!checkArea('factoryOfficeArea','办公面积',false)) return false;
+	if(!checkArea('factoryWorkshopArea','车间面积',false)) return false;
+	if(!checkArea('factorySpaceArea','空地面积',false)) return false;
+	if(!CheckCreateTime('factoryBuildYear',true)) return false;
+	
+	if($("#factorySpan").val() != "" && !check_float('factorySpan')){
+		alert("跨度只能是数字");
+		$("#factorySpan").focus();
+		return false;
+	}		
+	
+	if($("#factoryAllFloor").val() != "" && !check_float('factoryAllFloor')){
+		alert("层数只能是数字");
+		$("#factoryAllFloor").focus();
+		return false;
+	}		
+	
+	if($("#factoryFloorHeight").val() != "" && !check_float('factoryFloorHeight')){
+		alert("层高只能是数字");
+		$("#factoryFloorHeight").focus();
+		return false;
+	}		
+
+	if($("#factoryLoadBearing").val() != "" && !check_float('factoryLoadBearing')){
+		alert("楼层承重只能是数字");
+		$("#factoryLoadBearing").focus();
+		return false;
+	}	
+
+	var houseContentValue = CKEDITOR.instances.factoryContent.getData(); 
 	if(trim(houseContentValue) == ''){
 		alert("请填写房源描述");
 		return false;
 	}
-	if($("#shopsTraffic").val() == ""){
+	
+	
+	if($("#factoryTraffic").val() == ""){
 		alert("请填写交通状况");
-		$("#shopsTraffic").focus();
-		return false;
-	}
-	if($("#shopsSet").val() == ""){
-		alert("请填写周边配套");
-		$("#shopsSet").focus();
+		$("#factoryTraffic").focus();
 		return false;
 	}
 	if($("#topPicPath").val() == ""){
@@ -147,7 +182,7 @@ function check(){
     	<div class="qg_r1">
     <p>你的位置: <a href="#">房源管理</a></p>
    	<div class="qg_bs1">
-            <form id="xzlForm" name="xzlForm" action="property_handler.php" method="post" enctype="multipart/form-data">
+            <form id="cfForm" name="cfForm" action="property_handler.php" method="post" enctype="multipart/form-data">
  		   <ul>
    			 	<li><a href="agent_sale_zz.php">录入住宅出售房源</a></li>
     		    <li><a href="agent_sale_bs.php">录入别墅出售房源</a></li>
@@ -162,7 +197,7 @@ function check(){
 			<table width="732" border="0" cellpadding="0" cellspacing="1" bordercolor="#FFFFFF">
 			  <tr>
 			    <td width="110" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 厂房名称</td>
-			    <td width="619" align="left" valign="middle" class="p25 grzc_31"><input id="estName" name="estName" type="text" maxlength="50" onkeyup="textCounter(document.getElementById('estName'),document.getElementById('estNameAlert'),25);" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字</td>
+			    <td width="619" align="left" valign="middle" class="p25 grzc_31"><input id="factoryName" name="factoryName" type="text" maxlength="50" onkeyup="textCounter(document.getElementById('factoryName'),document.getElementById('estNameAlert'),25);" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字</td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 厂房地址</td>
@@ -406,8 +441,8 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
-            <td width="120" align="center" valign="middle"><input name="button" type="submit" class="mddl1" id="button" value="发布" /></td>
-            <td width="320" height="80" align="center" valign="middle"><input name="button2" type="submit" class="mddl1" id="button2" value="保存待发布" /></td>
+            <td width="120" align="center" valign="middle"><input name="btn_live" type="button" class="mddl1" id="btn_live" value="发布" /></td>
+            <td width="320" height="80" align="center" valign="middle"><input name="btn_save" type="button" class="mddl1" id="btn_save" value="保存待发布" /></td>
 	      </tr>
 	    </table>
 	    <input type="hidden" id="action_to_go" name="action_to_go" value="0"/>

@@ -187,6 +187,7 @@ class SecondHandPropertyService{
 		$office_count = $this->officeDAO->countProperty($userId,$propState);
 		$shop_count = $this->shopsDAO->countProperty($userId,$propState);
 		$factory_count = $this->factoryDAO->countProperty($userId,$propState);
+		//echo '<br/>'.$house_count.','.$villa_count.','.$office_count.','.$shop_count.','.$factory_count;
 		return $house_count + $villa_count + $office_count + $shop_count + $factory_count;
 	}
 	
@@ -297,7 +298,9 @@ class SecondHandPropertyService{
 		//fields
 		$query_fields = "propId,propKind,propName,propNumber,propPrice,propArea,floor(propPrice*10000/propArea) as perPriceArea,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime ";
 		$totalNum = $this->houseDAO->countPropertyList('vw_get_sell_property_list',$query_where);
+		//echo '<br/>finish to get totalNum --'.date('Ymd His');
 		$propList = $this->houseDAO->getPropertyList('vw_get_sell_property_list',$query_fields,$query_where,$query_order,$query_limit);
+		//echo '<br/>finish to get propList --'.date('Ymd His');
 		$pagination = pagination2($totalNum,USER_SELL_PROPERTY_LIST_PAGE_SIZE,$page,5);
 		$props['data'] = $propList;
 		$props['pagination'] = $pagination;
@@ -367,5 +370,21 @@ class SecondHandPropertyService{
 	}
 	public function savePropPic($pic){
 		return $this->picDAO->release($pic);
+	}
+	public function refreshProperty($propKind,$propId){
+		$dao = "";
+		if($propKind == 'zz'){
+			$dao = $this->houseDAO;
+		}else if($propKind == 'bs'){
+			$dao = $this->villaDAO;
+		}else if($propKind == 'sp'){
+			$dao = $this->shopsDAO;
+		}else if($propKind == 'xzl'){
+			$dao = $this->officeDAO;
+		}else if($propKind == 'cf'){
+			$dao = $this->factoryDAO;
+		}
+		if($dao == "") return false;
+		return $dao->refresh($propId);
 	}
 }

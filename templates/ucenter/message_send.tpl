@@ -238,7 +238,7 @@
 
             if (toSendName.value == '') 
             {
-                ShowAlertMsg('请输入短消息收件人!');
+                alert('请输入短消息收件人!');
                 return false;
             }
 
@@ -256,17 +256,20 @@
             }
             var strs = [];
             strs = namesp.split(',');
-            if (strs.length > 5) { ShowAlertMsg('抱歉，系统每次最多发送5人!'); return false; }
+            if (strs.length > 5) { 
+            	alert('抱歉，系统每次最多发送5人!'); 
+            	return false; 
+            }
 
             var i = 0;
             for (i = 0; i < strs.length; i++){
                 if (strs[i] == '<!--{$userName}-->'){
-                    ShowAlertMsg('短消息不能发送给自己!');
+                    alert('短消息不能发送给自己!');
                     return false;
                 }
             }
             if (sendcontent.replace(/(^\s*)|(\s*$)/g, "").replace('\r\n', "") == '') {
-                ShowAlertMsg('请输入短消息内容!');
+                alert('请输入短消息内容!');
                 $('#sendContent').val("");
                 return false;
             }
@@ -284,42 +287,19 @@
                             ShowAlertMsg(msg.msg);
                         }else{
                             if (msg.result == "1"){
-                                ShowAlert("icon_successSF2 textcenter","发送成功!");
-                                $("#toSendName").val("");
-                                $("#sendContent").val("");
+                                alert("发送成功!");
                                 setTimeout(function(){location.reload();},1000);
-                            }
-                            else{
-                                ShowAlert("icon_crySF2",msg.msg);
+                            }else{
+                                alert(msg.msg);
                             }
                         }
                     }
                 },
                 error: function() {
-                    ShowAlert("icon_failed2 textcenter","发送失败!");
+                    alert("发送失败!");
                 }
             });
-        }
-        //提示窗口
-        function ShowAlert(msgclass,msg){
-            $('#msgClass').attr("class",msgclass);
-            $('#showMess h2').html(msg);
-            $('#showMess h1').html(msg);
-            if(msgclass=='icon_crySF2'){
-                var h = $('#showMess h2');
-                h.replaceWith('<h1>' + msg + '</h1>');
-            }else{
-                var h = $('#showMess h1');
-                h.replaceWith('<h2>' + msg + '</h2>');
-            }
-            $('#showMess').show();
-            window.setTimeout(function(){$('#showMess').hide()}, 1000);
-        }
-        function ShowAlertMsg(msg){
-            $('#textValue').html(msg);
-            $('#tipMessage').jqmShow();
-        }
-        
+        }        
     </script>
 
 
