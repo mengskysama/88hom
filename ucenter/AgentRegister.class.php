@@ -5,19 +5,21 @@ class AgentRegister{
 	private $confirmUserPass;
 	private $userEmail;
 	private $userPhone;
+	private $phoneCert;
 	private $userRealName;
 	private $userTel;
 	private $areaIndex;
 	private $agreement;
 	private $db;
 	
-	function __construct($db,$userName,$userPassword,$confirmUserPass,$userEmail,$userPhone,$userRealName,$areaIndex,$userTel,$agreement){
+	function __construct($db,$userName,$userPassword,$confirmUserPass,$userEmail,$userPhone,$phoneCert,$userRealName,$areaIndex,$userTel,$agreement){
 		$this->db = $db;
 		$this->userName = $userName;
 		$this->userPassword = $userPassword;
 		$this->confirmUserPass = $confirmUserPass;
 		$this->userEmail = $userEmail;
 		$this->userPhone = $userPhone;
+		$this->phoneCert = $phoneCert;
 		$this->userRealName = $userRealName;
 		$this->userTel = $userTel;
 		$this->areaIndex = $areaIndex;
@@ -34,7 +36,7 @@ class AgentRegister{
 			return $result;
 		}
 		$userService = new UserService($this->db);
-		$user = $userService->getUserByUserName($this->userName);
+		$user = $userService->checkUserByUserName($this->userName);
 		if(!empty($user)){
 			$result[0] = 201;
 			$result[1] = "该用户名已经被使用";
@@ -60,7 +62,7 @@ class AgentRegister{
 		}
 		
 		if($this->userPhone != ""){
-			$user = $userService->getUserByUserPhone($this->userPhone);
+			$user = $userService->checkUserByUserPhone($this->userPhone);
 			if(!empty($user)){
 				$result[0] = 201;
 				$result[1] = "该手机号码已经被绑定";
@@ -69,7 +71,7 @@ class AgentRegister{
 		}
 		
 		if($this->userEmail != ""){
-			$user = $userService->getUserByUserEmail($this->userEmail);
+			$user = $userService->checkUserByUserEmail($this->userEmail);
 			if(!empty($user)){
 				$result[0] = 201;
 				$result[1] = "该邮箱地址已经被绑定";

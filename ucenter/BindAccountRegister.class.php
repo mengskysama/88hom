@@ -28,7 +28,7 @@ class BindAccountRegister{
 		$userService = new UserService($this->db);
 		//binding with an existing account
 		if($this->userName != "" && $this->userPassword != ""){
-			$user = $userService->getUserByUserName($this->userName);
+			$user = $userService->checkUserByUserName($this->userName);
 			if(empty($user) || sysAuth($user['userPassword'],'DECODE') != $this->userPassword){
 				$result[0] = 201;
 				$result[1] = "该账号不存在或者密码不正确";
@@ -46,7 +46,7 @@ class BindAccountRegister{
 		
 		//binding with a mobile phone
 		if($this->userPhone != ""){
-			$user = $userService->getUserByUserPhone($this->userPhone);
+			$user = $userService->checkUserByUserPhone($this->userPhone);
 			if(!empty($user)){
 				$result[0] = 201;
 				$result[1] = "该手机号码已被其它账号绑定";
@@ -56,7 +56,7 @@ class BindAccountRegister{
 		}
 		//binding with a email
 		if($this->userEmail != ""){
-			$user = $userService->getUserByUserEmail($this->userEmail);
+			$user = $userService->checkUserByUserEmail($this->userEmail);
 			if(!empty($user)){
 				$result[0] = 201;
 				$result[1] = "该邮箱已被其它账号绑定";
@@ -140,7 +140,7 @@ class BindAccountRegister{
 		$userService = new UserService($this->db);
 		while(true){
 			$defaultUserName = $charactors[rand(0, 25)].rand(10000,99999);
-			$user = $userService->getUserByUserName($defaultUserName);
+			$user = $userService->checkUserByUserName($defaultUserName);
 			if(!empty($user)) continue;
 			return $defaultUserName;			
 		}

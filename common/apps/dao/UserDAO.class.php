@@ -15,6 +15,18 @@ class UserDAO{
 		return $this->db->getQueryValue($sql);
 	}
 	//added by Cheneil
+	public function checkUserByUserEmail($useEmail){
+		$sql = "select * from ecms_user where userEmail='".$useEmail."' or userUsername='".$useEmail."'";
+		return $this->db->getQueryValue($sql);
+	}
+	public function checkUserByUserName($username){
+		$sql = "select * from ecms_user where userPhone='".$username."' or userUsername='".$username."' or userEmail='".$username."'";
+		return $this->db->getQueryValue($sql);
+	}
+	public function checkUserByUserPhone($userPhone){
+		$sql = "select * from ecms_user where userPhone='".$userPhone."' or userUsername='".$userPhone."'";
+		return $this->db->getQueryValue($sql);
+	}
 	public function getUserByUserPhone($userPhone){
 		$sql = "select * from ecms_user where userPhone='".$userPhone."'";
 		return $this->db->getQueryValue($sql);

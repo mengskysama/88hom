@@ -8,7 +8,7 @@ if($userName == ""){
 }
 
 $userService = new UserService($db);
-$user = $userService->getUserByUserName($userName);
+$user = $userService->checkUserByUserName($userName);
 if(empty($user)){
 	echo "200|no account found";
 	return;

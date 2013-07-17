@@ -7,7 +7,7 @@ if($aType == "getPwd"){
 	$err_code = 0;
 	$loginId = getParameter("loginId");
 	$userService = new UserService($db);
-	$user = $userService->getUserByUserName($loginId);
+	$user = $userService->checkUserByUserName($loginId);
 	if(empty($user)){
 		header("Location:get_password_success.php");
 	}

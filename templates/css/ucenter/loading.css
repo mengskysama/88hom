@@ -62,7 +62,8 @@ input{color:#CCC;}
 .yxzc2 a{ width:183px; height:54px; background:url(../../images/ucenter/grzc2_08.jpg) center no-repeat; display:block; color:#333333; font-size:14px; font-weight:bolder }
 .yxzc2 a:hover{ background:url(../../images/ucenter/grzc2_10.jpg) center no-repeat; display:block}
 .sjzc1{ width:483px; margin:15px 10px; padding-top:10px; position:relative;}
-.sjzc1_yz{ width:180px; height:62px; padding:8px; background:url(../../images/ucenter/yz_bg.gif) no-repeat; position:absolute; left:280px; top:125px;}
+.sjzc1_yz{ width:180px; height:62px; padding:8px; background:url(../../images/ucenter/yz_bg.gif) no-repeat; position:absolute; left:280px; top:175px;}
+.sjzc1_jjr{ width:180px; height:62px; padding:8px; background:url(../../images/ucenter/yz_bg.gif) no-repeat; position:absolute; left:440px; top:560px;}
 .yz_input{ width:42px; height:20px; line-height:20px; border:1px #dbdbdb solid; text-align:center; color:#474747;}
 .blue a{ color:#268dd0;}
 .blue a:link, .blue a:visited{ color:#268dd0;}

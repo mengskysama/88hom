@@ -11,7 +11,7 @@ if(isset($_POST['userPhone'])){
 	$vcode = getParameter("phoneCert");	
 	
 	$userService = new UserService($db);
-	$user = $userService->getUserByUserPhone($userPhone);
+	$user = $userService->checkUserByUserPhone($userPhone);
 	if(!empty($user)){
 		$errMsg = "该手机已被绑定，请重新输入";
 	}else{

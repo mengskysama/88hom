@@ -8,7 +8,7 @@ if($userEmail == ""){
 }
 
 $userService = new UserService($db);
-$user = $userService->getUserByUserEmail($userEmail);
+$user = $userService->checkUserByUserEmail($userEmail);
 echo empty($user) ? "200|valid email" : "201|the email already exist "; 
 
 ?>

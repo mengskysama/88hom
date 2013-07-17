@@ -8,7 +8,7 @@ if($userPhone == ""){
 	return;
 }
 $userService = new UserService($db);
-$user = $userService->getUserByUserPhone($userPhone);
+$user = $userService->checkUserByUserPhone($userPhone);
 if(empty($user)){
 	echo "200|valid phone";
 	return;

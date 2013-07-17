@@ -1,10 +1,17 @@
 <?php
-$userService = new UserService($db);
-$user = $userService->getUserById($userId);
-if(($user['userPhone'] != "" 
-	&& $user['userPhoneState'] == 1)
-	|| ($user['userEmail'] != "" && $user['userEmailState'] == 1)){
-}else{
+if(!isset($_SESSION['UCUserDetail']) && !isset($_SESSION['UCUser'])){
+	header("location: index.php");
+}
+
+$userType = $_SESSION['UCUser']['userType'];
+$userPhone = $_SESSION['UCUser']['userPhone'];
+$userPhoneState = $_SESSION['UCUser']['userPhoneState'];
+$userdetailState = $_SESSION['UCUserDetail']['userdetailState'];
+if($userType == 3 && $userdetailState != 2){
 	header("location: auth_user.php");
+}else if($userType == 2 && $userdetailState != 2){
+	header("location: auth_agent_idcard.php");
+}else{
+	header("location: index.php");
 }
 ?>

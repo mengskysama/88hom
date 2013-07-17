@@ -9,13 +9,15 @@ class UserRegister{
 	private $userPhone;
 	private $phoneCert;
 	private $agreement;
+	private $userRealName;
 	private $db;
 	
-	function __construct($db,$userName,$userPassword,$confirmUserPass,$userEmail,$userPhone,$phoneCert,$agreement){
+	function __construct($db,$userName,$userPassword,$confirmUserPass,$userRealName,$userEmail,$userPhone,$phoneCert,$agreement){
 		$this->db = $db;
 		$this->userName = $userName;
 		$this->userPassword = $userPassword;
 		$this->confirmUserPass = $confirmUserPass;
+		$this->userRealName = $userRealName;
 		$this->userEmail = $userEmail;
 		$this->userPhone = $userPhone;
 		$this->phoneCert = $phoneCert;
@@ -32,7 +34,7 @@ class UserRegister{
 			return $result;
 		}
 		$userService = new UserService($this->db);
-		$user = $userService->getUserByUserName($this->userName);
+		$user = $userService->checkUserByUserName($this->userName);
 		if(!empty($user)){
 			$result[0] = 201;
 			$result[1] = "该用户名已被使用";
@@ -44,9 +46,21 @@ class UserRegister{
 			$result[1] = "两次密码不相同";
 			return $result;
 		}
+		if($this->userRealName == ""){
+			$result[0] = 208;
+			$result[1] = "真实姓名不能为空";
+			return $result;
+		}
+		$m=mb_strlen($this->userRealName,'utf-8');
+		$s=strlen($this->userRealName);
+		if(!($s%$m==0&&$s%3==0)){
+			$result[0] = 208;
+			$result[1] = "真实姓名只能为汉字";
+			return $result;
+		}
 		
 		if($this->userPhone != ""){
-			$user = $userService->getUserByUserPhone($this->userPhone);
+			$user = $userService->checkUserByUserPhone($this->userPhone);
 			if(!empty($user)){
 				$result[0] = 201;
 				$result[1] = "该手机号码已被绑定";
@@ -55,7 +69,7 @@ class UserRegister{
 		}
 		
 		if($this->userEmail != ""){
-			$user = $userService->getUserByUserEmail($this->userEmail);
+			$user = $userService->checkUserByUserEmail($this->userEmail);
 			if(!empty($user)){
 				$result[0] = 201;
 				$result[1] = "该邮箱地址已被绑定";
@@ -80,16 +94,27 @@ class UserRegister{
 		//save the information in the database		
 		$user['userUsername'] = $this->userName;
 		$user['userPassword'] = sysAuth($this->userPassword);
+		$user['userRealName'] = $this->userRealName;
 		$user['userPhone'] = $this->userPhone;
 		$user['userPhoneState'] = !empty($this->userPhone) ? 1 : 0;
 		$user['userEmail'] = $this->userEmail;
 		$user['userEmailState'] = 0;
 		$user['userType'] = 3;
 		$user['userGroupId'] = 1;
-		$user['userState'] = !empty($this->userPhone) ? 1 : 0;
+		$user['userState'] = 1;
 		$user['UOpenId'] = "";
 		$userService = new UserService($this->db);
 		$userId = $userService->saveUser($user);
+		if(!$userId){
+			$result[0] = 209;
+			$result[1] = "注册失败";
+			return $result;
+		}
+
+		$userDetail['userId'] = $userId;
+		$userDetail['userdetailName'] = $this->userRealName;
+		$userDetail['userdetailState'] = !empty($this->userPhone) ? 2 : 1;
+		$userService->saveUserDetail($userDetail);
 		
 		//send the verify email if the register is by email
 		if(!empty($this->userEmail)){

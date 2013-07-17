@@ -295,6 +295,15 @@ class UserService{
 		return $msg;
 	}
 	//added by Cheneil
+	public function checkUserByUserEmail($useEmail){
+		return $this->userDAO->checkUserByUserEmail($userEmail);
+	}
+	public function checkUserByUserName($username){
+		return $this->userDAO->checkUserByUserName($username);
+	}
+	public function checkUserByUserPhone($userPhone){
+		return $this->userDAO->checkUserByUserPhone($userPhone);
+	}
 	public function getUserByUserPhone($userPhone){
 		$result=$this->userDAO->getUserByUserPhone($userPhone);
 		if(null==$result||$result==''){

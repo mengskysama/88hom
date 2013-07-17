@@ -18,7 +18,7 @@
    	<div class="qg_bs">
       <div class="bs_tx" style="border:0">
             <p><b>管理出售房源</b></p>
-            <div class="bs_tx1">发 布 量：已使用  <!--{$usedLivePropsCount}-->    还可使用<!--{$restLivePropsCount}--></a><br />               
+            <div class="bs_tx1">发 布 量：已使用  <!--{$usedLivePropsCount}-->    还可使用<!--{$restLivePropsCount}--><br />               
 即将过期房源：<a href="#">0</a>  已刷新次数 <a href="#">0</a> 还可刷新次数 <a href="#">1</a></div>
 <div style="width:700px; border-bottom:1px solid #ddd">
 			<ul style="width:584px; font-size:14px; font-weight:bolder;">

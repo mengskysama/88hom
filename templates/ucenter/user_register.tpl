@@ -30,7 +30,7 @@
                         <tr>
                             <td width="85"><img src='<!--{$cfg.web_code_line}-->' id='imgcode' name='imgcode'  onClick="this.src=this.src+'?op=login&'+Math.random()" style='cursor:pointer;'></td>
                             <td width="47"><input type="text" value="" maxlength="4" class="yz_input" id="txt_mathcode" /></td>
-                            <td width="44"><input id="btn_mathcode" type="image" src="<!--{$cfg.web_images}-->ucenter/qd.jpg"></td>
+                            <td width="44"><image id="btn_mathcode" src="<!--{$cfg.web_images}-->ucenter/qd.jpg"></td>
                         </tr>
                         <tr>
                             <td><span class="blue"><a href="javascript:void(0);" onclick="refresh_code();">换一题</a></span></td>
@@ -67,11 +67,15 @@
   						  <td height="35" valign="top">
                           	<p class="z6">请再次填写密码</p>
                          </td>
+  					<tr>
+ 					    <td width="105" height="50" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>真实姓名：</td>
+   					    <td height="30" class="grzc_31"><input id="userRealName" name="userRealName" type="text"  value="" /></td>
+	      </tr>
 				    <tr>
    					    <td width="105" height="30" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机号：</td>
  					    <td height="30">
 							<input id="userPhone" name="userPhone" type="text" class="sjh"  value=""/>
-                            <input name="button2" type="button" class="hq b0" id="button2" value="" onclick="return sendCertCode();"/>
+                            <input name="vcode" type="button" class="hq b0" id="vcode" value="" onclick="return sendCertCode();"/>
 							
                         </td>
 		  </tr>

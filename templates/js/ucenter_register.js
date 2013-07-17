@@ -17,9 +17,25 @@ $(document).ready(function() {
 	$('#confirmUserPass').blur(function() {
         check_pass1(this);
     });
+    $("#userRealName").blur(function() { 
+    	var realName = $("#userRealName").val(); 
+    	if(!checkChinese(realName)){
+            ShowWrong($("#userRealName"), "姓名只能为汉字", "");
+            isRealUserNameValid = false;
+    	}else{
+    		ShowWrong($("#userRealName"), "", "");
+    		isRealUserNameValid = true;
+    	}
+    });
 
 });
 
+//验证是否是中文
+function checkChinese(str) {
+	var pattern = "^[\\u4E00-\\u9FA5\\uF900-\\uFA2D]+$";
+	var reg = new RegExp(pattern);
+	return reg.test(str);
+};
 
 function onPasswordFocus() {
     if (isUpdate) {

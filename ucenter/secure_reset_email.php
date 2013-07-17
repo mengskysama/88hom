@@ -9,7 +9,7 @@ if(isset($_POST['userEmail'])){
 	
 	$userEmail = getParameter("userEmail");	
 	$userService = new UserService($db);
-	$user = $userService->getUserByUserEmail($userEmail);
+	$user = $userService->checkUserByUserEmail($userEmail);
 	if(!empty($user)){
 		$errMsg = "该邮箱已被绑定，请重新输入";
 	}else{

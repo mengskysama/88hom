@@ -37,6 +37,19 @@
                </div>
              </div>
             <div class="mdzc">
+            	<div class="sjzc1_jjr" id="div_mathcode" style="display: none;">
+               	  <table width="180" height="58" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="85"><img src='<!--{$cfg.web_code_line}-->' id='imgcode' name='imgcode'  onClick="this.src=this.src+'?op=login&'+Math.random()" style='cursor:pointer;'></td>
+                            <td width="47"><input type="text" value="" maxlength="4" class="yz_input" id="txt_mathcode" /></td>
+                            <td width="44"><image id="btn_mathcode" src="<!--{$cfg.web_images}-->ucenter/qd.jpg"></td>
+                        </tr>
+                        <tr>
+                            <td><span class="blue"><a href="javascript:void(0);" onclick="refresh_code();">换一题</a></span></td>
+                            <td colspan="2"><img src="<!--{$cfg.web_images}-->ucenter/yz_bq.gif" style="vertical-align:middle;"> 请输入答案</td>
+                        </tr>
+                    </table>
+                </div>
            	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
  					 <tr>
  						   <td width="140" height="35" align="right" valign="middle" class="f14 z3"><font class="red">*&nbsp;</font>账 户：</td>
@@ -150,14 +163,18 @@
    						 </td>
  					 </tr>
 					 <tr>
-  					     <td width="140" height="35" align="right" valign="middle" class="f14 z3"><font class="red">*&nbsp;</font>联系电话：</td>
-    					 <td width="81" valign="middle"> 
-    						<select name="ddlPhoneType" id="ddlPhoneType" class="select2">
- 						    <option selected="selected" value="1">手机号</option>
- 						    <option value="2">小灵通</option> 						    
-   							</select></td>
-    					 <td width="283" valign="middle"><input id="txtUserPhone" name="txtUserPhone" type="text" value="" class="inp01"/></td>
+  					     <td width="140" height="70" align="right" valign="middle" class="f14 z3"><font class="red">*&nbsp;</font>手机号码：</td>
+    					 <td colspan="2" height="70">
+    					 <input id="userPhone" name="userPhone" type="text" value="" class="inp01"/>    					 
+                         <input name="vcode" type="button" class="hq b0" id="vcode" value="" onclick="return sendCertCode();"/></td>
  					 </tr>
+ 					 <tr>
+  					    <td width="105" height="70" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机验证码：</td>
+   					    <td colspan="2" height="70">
+                       	  <input id="phoneCert" name="phoneCert" type="text" class="sjyz"  value=""/>
+                            <span class="yzm z6">若1分钟后仍未收到验证码短信，<a href="javascript:void(0);" id="a_sendcode">请点此重发</a><br /> 若无法收到验证短信，请使用<a href="email_register.php">电子邮箱注册</a></span>
+                        </td>
+		  			</tr>
  					 <tr>
      						<td width="140" height="30"></td>
 						    <td height="30" colspan="2" valign="top">

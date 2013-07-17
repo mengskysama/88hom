@@ -14,15 +14,16 @@ $agreement = getParameter('agree_ucenter');
 if($userType == 3){
 	$userPhone = getParameter('userPhone');
 	$phoneCert = getParameter('phoneCert');
-	$register = new UserRegister($db,$userName,$userPassword,$confirmUserPass,$userEmail,$userPhone,$phoneCert,$agreement);
+	$userRealName = getParameter('userRealName');
+	$register = new UserRegister($db,$userName,$userPassword,$confirmUserPass,$userRealName,$userEmail,$userPhone,$phoneCert,$agreement);
 }else if($userType == 2){
-	$userPhone = "";
-	$txtUserPhone = getParameter('txtUserPhone');
+	$userPhone = getParameter('userPhone');
+	$phoneCert = getParameter('phoneCert');
 	$userRealName = getParameter('userRealName');
 	$userTel = getParameter('userTel');
 	$areaIndex = getParameter('areaIndex');
 	
-	$register = new AgentRegister($db,$userName,$userPassword,$confirmUserPass,$userEmail,$txtUserPhone,$userRealName,$areaIndex,$userTel,$agreement);
+	$register = new AgentRegister($db,$userName,$userPassword,$confirmUserPass,$userEmail,$userPhone,$phoneCert,$userRealName,$areaIndex,$userTel,$agreement);
 }else if($userType == 10){
 	if(!isset($_SESSION['QW_USER'])){
 		header("location:index.php");

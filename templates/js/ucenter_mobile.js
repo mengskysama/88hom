@@ -105,15 +105,15 @@ function sendVcode(mobile, mathcode) {
         data: { "userPhone": mobile, "mathcode": mathcode },
         success: function(req) {
         	
-            if (req == "200") {
+            if (req == 200) {
                 refresh_code();
                 document.getElementById("div_mathcode").style.display = "none";
-                updateTimeLabel(120);
-            } else if (req == "201") {
+                //updateTimeLabel(120);
+            } else if (req == 201) {
                 //显示运算输入
                 document.getElementById("div_mathcode").style.display = "";
                 $("#txt_mathcode").focus();
-            } else if (req == "205") {
+            } else if (req == 205) {
                 //显示运算输入
             	ShowWrong('', "验证码不正确", "");
                 document.getElementById("div_mathcode").style.display = "";
@@ -203,6 +203,18 @@ function check() {
     //check_pass("#userPassword");
     //check_pass1("#confirmUserPass");
 
+	var realName = $("#userRealName").val(); 
+	if(realName == ""){
+		alert("请填写真实姓名");
+		$("#userRealName").focus();
+		return false;
+	}
+	if(!checkChinese(realName)){
+        alert("姓名只能为汉字");
+		$("#userRealName").focus();
+		return false;
+	}
+	
     if ($("#userPhone").val() == "") {
         ShowWrong($("#userPhone"), "请输入手机号码", "");
         isMobileValid = false;
@@ -267,7 +279,7 @@ function val(obj) {
 
 
 function ShowWrong(obj, message, className) {
-    var showObject = jQuery("#div_err_msg");
+    var showObject = $("#div_err_msg");
     showObject.html("<div class=\"" + className + "\">" + message + "</div>");
     document.getElementById("div_mathcode").style.display = "none";
 
@@ -284,17 +296,16 @@ function ShowNone(obj) {
 }
 
 function updateTimeLabel(time) {
-    var btn = jQuery("#vcode");
-    var a_sendcode = jQuery("#a_sendcode");
-    btn.val(time <= 0 ? "免费获取验证码" : ("" + (time) + "秒后点击重新发送"));
+    var btn = $("#vcode");
+    var a_sendcode = $("#a_sendcode");
+    btn.val(time <= 0 ? "获取手机验证码" : ("" + (time) + "秒后点击重新发送"));
     var hander = setInterval(function() {
         if (time <= 0) {
             clearInterval(hander);
             hander = null;
-            btn.val("免费获取验证码");
+            btn.val("获取手机验证码");
             btn.attr("disabled", false);
             a_sendcode.attr("disabled", false);
-            jQuery("#phoneCertTip").text("");
         }
         else {
             btn.attr("disabled", true);
