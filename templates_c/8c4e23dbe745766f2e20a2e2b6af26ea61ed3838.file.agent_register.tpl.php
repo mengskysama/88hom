@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-14 12:26:07
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-17 20:55:45
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\agent_register.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3153451e2285f07fee1-06844217%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8c4e23dbe745766f2e20a2e2b6af26ea61ed3838' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\agent_register.tpl',
-      1 => 1373286849,
+      1 => 1374065721,
       2 => 'file',
     ),
   ),
@@ -15,16 +15,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51e2285f0f36b4_42033005',
   'variables' => 
   array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'info' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_51e2285f0f36b4_42033005',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51e2285f0f36b4_42033005')) {function content_51e2285f0f36b4_42033005($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -69,6 +68,22 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                </div>
              </div>
             <div class="mdzc">
+            	<div class="sjzc1_jjr" id="div_mathcode" style="display: none;">
+               	  <table width="180" height="58" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="85"><img src='<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_code_line'];?>
+' id='imgcode' name='imgcode'  onClick="this.src=this.src+'?op=login&'+Math.random()" style='cursor:pointer;'></td>
+                            <td width="47"><input type="text" value="" maxlength="4" class="yz_input" id="txt_mathcode" /></td>
+                            <td width="44"><image id="btn_mathcode" src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/qd.jpg"></td>
+                        </tr>
+                        <tr>
+                            <td><span class="blue"><a href="javascript:void(0);" onclick="refresh_code();">换一题</a></span></td>
+                            <td colspan="2"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/yz_bq.gif" style="vertical-align:middle;"> 请输入答案</td>
+                        </tr>
+                    </table>
+                </div>
            	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
  					 <tr>
  						   <td width="140" height="35" align="right" valign="middle" class="f14 z3"><font class="red">*&nbsp;</font>账 户：</td>
@@ -173,8 +188,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	                                onkeydown="SelectonKeyDown('txtComareas',event,'search_c')" style="width: 95px;" /><input
 	                                    type="button" class="but_input_cs" id="CheckCity" name="CheckCity" onclick="ShowComareas()" />
 	                             <!--省，市，区域，片区下标,以"-"隔开 -->
-								<input type="hidden" name="areaIndex"	id="areaIndex" value="<?php echo $_smarty_tpl->tpl_vars['info']->value['areaIndex'];?>
-"/>	
+								<input type="hidden" name="areaIndex"	id="areaIndex" value=""/>	
 	                            <div class="search_select01 left230" id="search_c" >
 	                                <dl id="search_c_value">
 	                                </dl>
@@ -183,14 +197,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
    						 </td>
  					 </tr>
 					 <tr>
-  					     <td width="140" height="35" align="right" valign="middle" class="f14 z3"><font class="red">*&nbsp;</font>联系电话：</td>
-    					 <td width="81" valign="middle"> 
-    						<select name="ddlPhoneType" id="ddlPhoneType" class="select2">
- 						    <option selected="selected" value="1">手机号</option>
- 						    <option value="2">小灵通</option> 						    
-   							</select></td>
-    					 <td width="283" valign="middle"><input id="txtUserPhone" name="txtUserPhone" type="text" value="" class="inp01"/></td>
+  					     <td width="140" height="70" align="right" valign="middle" class="f14 z3"><font class="red">*&nbsp;</font>手机号码：</td>
+    					 <td colspan="2" height="70">
+    					 <input id="userPhone" name="userPhone" type="text" value="" class="inp01"/>    					 
+                         <input name="vcode" type="button" class="hq b0" id="vcode" value="" onclick="return sendCertCode();"/></td>
  					 </tr>
+ 					 <tr>
+  					    <td width="105" height="70" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机验证码：</td>
+   					    <td colspan="2" height="70">
+                       	  <input id="phoneCert" name="phoneCert" type="text" class="sjyz"  value=""/>
+                            <span class="yzm z6">若1分钟后仍未收到验证码短信，<a href="javascript:void(0);" id="a_sendcode">请点此重发</a><br /> 若无法收到验证短信，请使用<a href="email_register.php">电子邮箱注册</a></span>
+                        </td>
+		  			</tr>
  					 <tr>
      						<td width="140" height="30"></td>
 						    <td height="30" colspan="2" valign="top">

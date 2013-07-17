@@ -97,10 +97,10 @@ function checkRentPrice(){
 
 <body>
 <!--求购头部-->
-<!--{include file="$ucenter_agent_header"}-->
+<!--{include file="$header_ucenter_user"}-->
 <!--求购内容-->
 <div class="qg_main">
-	<!--{include file="$ucenter_agent_left_menu"}-->
+	<!--{include file="$ucenter_user_left_menu"}-->
     <div class="qg_r">
     <p>你的位置: <a href="#">编辑住宅出租房源</a></p>
    	<div class="qg_bs">

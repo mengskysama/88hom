@@ -295,7 +295,7 @@ class UserService{
 		return $msg;
 	}
 	//added by Cheneil
-	public function checkUserByUserEmail($useEmail){
+	public function checkUserByUserEmail($userEmail){
 		return $this->userDAO->checkUserByUserEmail($userEmail);
 	}
 	public function checkUserByUserName($username){
@@ -399,10 +399,11 @@ class UserService{
 	//Jul 13,2013
 	public function authUser($user){
 		$userId = $this->userDAO->updateUser($user);
+		$result = $this->updateUserDetail($user);
 		if($userId && isset($user['phoneCert'])){
 			$this->deactiveCertCode($user['userPhone'], $user['phoneCert']);
 		}
-		return $userId;
+		return $result;
 	}
 	//end to be added by Cheneil
 }

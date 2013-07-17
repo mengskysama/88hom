@@ -2,7 +2,6 @@
 var cityArray = new Array();
 var citydata;
 var MobilCityName;
-var isTxtUserPhoneValid = false;
 var isRealUserNameValid = false;
 $(document).ready(function () {
     HotCityName = "北京|bj|beijing,上海|sh|shanghai,广州|gz|guangzhou,深圳|sz|shenzhen,成都|cd|chengdu,天津|tj|tianjin,重庆|cq|chongqing,苏州|sz|suzhou,杭州|hz|hangzhou,南京|nj|nanjing,武汉|wh|wuhan,大连|dl|dalian,青岛|qd|qingdao,南昌|nc|nanchang,东莞|dg|dongguan,济南|jn|jinan,石家庄|sjz|shijiazhuang,无锡|wx|wuxi,昆明|km|kunming,西安|xa|xian,郑州|zz|zhengzhou";
@@ -60,7 +59,7 @@ function check() {
         return false;
     }
 
-    if (!(isNameValid && isPassValid && isPassConfirmValid && isTxtUserPhoneValid && isemaivalid && isRealUserNameValid)) {
+    if (!(isNameValid && isPassValid && isPassConfirmValid && isMobileValid && isemaivalid && isRealUserNameValid)) {
         alert("请按照页面的提示重新填写信息。");
         return false;
     }

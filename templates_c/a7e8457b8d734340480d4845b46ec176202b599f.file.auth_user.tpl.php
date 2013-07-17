@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-13 15:52:22
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-17 22:43:37
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\auth_user.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1282751e107369bd359-92179810%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a7e8457b8d734340480d4845b46ec176202b599f' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\auth_user.tpl',
-      1 => 1373698927,
+      1 => 1374072214,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51e10736b7e680_63857284',
   'variables' => 
   array (
     'cfg' => 0,
@@ -24,8 +26,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'err_msg_auth_user' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_51e10736b7e680_63857284',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51e10736b7e680_63857284')) {function content_51e10736b7e680_63857284($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49,8 +49,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div class="gr_b">
     	<div class="gr_dl">
 			<ul class="dlqh">
-            	<li class="sjzc2"><a href="javascript:void(0)" onclick="auth_type_check('mobile')">手机号码认证</a></li>
-                <li class="yxzc2"><a href="javascript:void(0)" onclick="auth_type_check('email')">电子邮箱认证</a></li>
+            	<li class="sjzc2"><a href="javascript:void(0)" >手机号码认证</a></li>
             </ul>
         	<div class="dl_tb">
 				<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
@@ -58,7 +57,7 @@ ucenter/QQbd.jpg" width="79" class="l">
             	<span class="dl_wz r">亲爱的，还差一步，就可以畅游房不剩房网营了！ 赶快认证一下吧！加油！</span>      
         	</div>
             <div class="sjzc1" id="acc_2">
-            <div class="sjzc1_yz" id="div_mathcode" style="display: none;">
+            <div class="sjzc1_auth" id="div_mathcode" style="display: none;">
             	<table width="180" height="58" border="0" cellspacing="0" cellpadding="0">
                 	<tr>
                     	<td width="85"><img src='<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_code_line'];?>
@@ -79,6 +78,10 @@ ucenter/yz_bq.gif" style="vertical-align:middle;"> 请输入答案</td>
 				<input type="hidden" name="userId" value="<?php echo $_smarty_tpl->tpl_vars['userId']->value;?>
 ">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  					<tr>
+ 					    <td width="105" height="50" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>真实姓名：</td>
+   					    <td height="30" class="grzc_31"><input id="userRealName" name="userRealName" type="text"  value="" /></td>
+	      			</tr>
 		          	<tr>
 					    <td width="105" height="40" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机号：</td>
 					    <td height="40">
@@ -105,43 +108,7 @@ ucenter/yz_bq.gif" style="vertical-align:middle;"> 请输入答案</td>
 	      			</tr>
 			  	</table>
 			</form>
-          	</div>
-            <div class="sjzc1" id="acc_3" style="display:none">
-            <form name="emailRegFrm" id="emailRegFrm" action="register.php" method="post">  
-				<input type="hidden" name="userType" value="20">
-				<input type="hidden" name="userId" value="<?php echo $_smarty_tpl->tpl_vars['userId']->value;?>
-">
-				<table width="100%" border="0" cellspacing="0" cellpadding="0">
-		            <tr>
-					    <td width="105" height="40" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>邮箱地址：</td>
-					    <td height="40" class="grzc_31">
-		                   	<input id="userEmail" name="userEmail" type="text" class="sjh"  value=""/>
-		                    
-		                </td>
-				  	</tr>
-		 			<tr>
-						<td width="105" height="70" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>验证码：</td>
-		   				<td height="70">
-		                       	  <input id="email_mathcode" name="email_mathcode" type="text" class="sjyz"  value=""/>
-		                            <span class="yzm"><img id="imgcode" src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_code_web'];?>
-" onClick="this.src=this.src+'?op=login&'+Math.random()" style='cursor:pointer;'></span>
-		                </td>
-				  	</tr>
-				  			
-					<tr>
-  						  <td height="30" colspan="2" align="right" valign="middle">
-                          <div class="zcjz"><input id="reg_email_agree_ucenter" name="reg_email_agree_ucenter" type="checkbox" value="yes" class="message_t01" checked/><span class="message_t02">同意"<a href="#">服务条款</a>"和"<a href="#">隐私权相关政策</a>"</span></div>
-                          </td>
-		  			</tr>
- 					<tr>
- 						   <td height="55" colspan="2" align="right" valign="middle" class="z14">
-                           		<div class="dlmm"><input name="btn_reg_email" type="button" class="denglu" id="btn_reg_email" value="立即验证" /></div>
-                           </td>
-	      			</tr>
-			  	</table>
-			</form>
-          	</div>
-          	
+          	</div>          	
         </div>
     </div>
 </div>

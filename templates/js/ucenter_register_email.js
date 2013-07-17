@@ -87,8 +87,9 @@ function ajax_email() {
         url: "check_email.php",
         data: { "userEmail": escape(val(($("#userEmail")))), "num": Math.random().toString() },
         success: function(req) {
+        	//alert(req);
             var resu = req.split("|");
-            if (resu[0] != "200") {
+            if (resu[0] != 200) {
                 isemaivalid = false;
                 ShowWrong($("#userEmail"), "该邮箱地址已被用户绑定", "");
             }
@@ -154,7 +155,6 @@ function check() {
         alert("请先选中同意《服务条款》和《隐私权相关政策》");
         return false;
     }
-
     if (!(isNameValid && isPassValid && isPassConfirmValid && isCodeValid)) {
         alert("请按照页面的提示重新填写信息。");
         return false;

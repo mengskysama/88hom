@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-11 10:00:31
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-17 22:18:38
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_register.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:187565183ceffcb09a2-61316980%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9dbd38769ea73e1e17f9b6c9fa2ee217bebe6a70' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_register.tpl',
-      1 => 1370915863,
+      1 => 1374064423,
       2 => 'file',
     ),
   ),
@@ -62,7 +62,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             <td width="85"><img src='<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_code_line'];?>
 ' id='imgcode' name='imgcode'  onClick="this.src=this.src+'?op=login&'+Math.random()" style='cursor:pointer;'></td>
                             <td width="47"><input type="text" value="" maxlength="4" class="yz_input" id="txt_mathcode" /></td>
-                            <td width="44"><input id="btn_mathcode" type="image" src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+                            <td width="44"><image id="btn_mathcode" src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
 ucenter/qd.jpg"></td>
                         </tr>
                         <tr>
@@ -101,11 +101,15 @@ ucenter/yz_bq.gif" style="vertical-align:middle;"> 请输入答案</td>
   						  <td height="35" valign="top">
                           	<p class="z6">请再次填写密码</p>
                          </td>
+  					<tr>
+ 					    <td width="105" height="50" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>真实姓名：</td>
+   					    <td height="30" class="grzc_31"><input id="userRealName" name="userRealName" type="text"  value="" /></td>
+	      </tr>
 				    <tr>
    					    <td width="105" height="30" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机号：</td>
  					    <td height="30">
 							<input id="userPhone" name="userPhone" type="text" class="sjh"  value=""/>
-                            <input name="button2" type="button" class="hq b0" id="button2" value="" onclick="return sendCertCode();"/>
+                            <input name="vcode" type="button" class="hq b0" id="vcode" value="" onclick="return sendCertCode();"/>
 							
                         </td>
 		  </tr>

@@ -23,7 +23,7 @@
             	<span class="dl_wz r">亲爱的，还差一步，就可以畅游房不剩房网营了！ 赶快认证一下吧！加油！</span>      
         	</div>
             <div class="sjzc1" id="acc_2">
-            <div class="sjzc1_yz" id="div_mathcode" style="display: none;">
+            <div class="sjzc1_auth" id="div_mathcode" style="display: none;">
             	<table width="180" height="58" border="0" cellspacing="0" cellpadding="0">
                 	<tr>
                     	<td width="85"><img src='<!--{$cfg.web_code_line}-->' id='imgcode' name='imgcode'  onClick="this.src=this.src+'?op=login&'+Math.random()" style='cursor:pointer;'></td>
@@ -40,6 +40,10 @@
 				<input type="hidden" name="userType" value="20">
 				<input type="hidden" name="userId" value="<!--{$userId}-->">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  					<tr>
+ 					    <td width="105" height="50" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>真实姓名：</td>
+   					    <td height="30" class="grzc_31"><input id="userRealName" name="userRealName" type="text"  value="" /></td>
+	      			</tr>
 		          	<tr>
 					    <td width="105" height="40" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机号：</td>
 					    <td height="40">

@@ -1,22 +1,20 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-17 23:03:54
-         compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_sp.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:3086051d02e2a08f659-39317030%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-17 22:57:16
+         compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\agent_sale_sp.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:1653051e6b0ccf1e4e0-17391907%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '72d7e6d07b0051ed191aa90cf5dff817c222a4aa' => 
+    '2540946c644bd5dec6afb269b1cc698eb7edde48' => 
     array (
-      0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_sp.tpl',
-      1 => 1374073329,
+      0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\agent_sale_sp.tpl',
+      1 => 1373891285,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '3086051d02e2a08f659-39317030',
+  'nocache_hash' => '1653051e6b0ccf1e4e0-17391907',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_51d02e2a196c36_59099786',
   'variables' => 
   array (
     'cfg' => 0,
@@ -30,8 +28,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'item' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51e6b0cd1f75a0_66974757',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51d02e2a196c36_59099786')) {function content_51d02e2a196c36_59099786($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_51e6b0cd1f75a0_66974757')) {function content_51e6b0cd1f75a0_66974757($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
@@ -129,21 +129,22 @@ function check(){
 
 <body>
 <!--求购头部-->
-<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['header_ucenter_user']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_agent_header']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 <!--求购内容-->
 <div class="qg_main">
-	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_user_left_menu']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_agent_left_menu']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
   	<div class="qg_r">
     <p>你的位置: <a href="#">房源管理</a></p>
    	<div class="qg_bs">
             <form id="spForm" name="spForm" action="property_handler.php" method="post" enctype="multipart/form-data">
  		   <ul>
-   			 	<li><a href="user_sale_zz.php">录入住宅出售房源</a></li>
-    		    <li><a href="user_sale_bs.php">录入别墅出售房源</a></li>
-     		    <li><a href="user_sale_sp.php">录入商铺出售房源</a></li>
-      		 	<li><a href="user_sale_xzl.php">录入写字楼出售房源</a></li>
+   			 	<li><a href="agent_sale_zz.php">录入住宅出售房源</a></li>
+    		    <li><a href="agent_sale_bs.php">录入别墅出售房源</a></li>
+     		    <li><a href="agent_sale_sp.php">录入商铺出售房源</a></li>
+      		 	<li><a href="agent_sale_xzl.php">录入写字楼出售房源</a></li>
+       		    <li><a href="agent_sale_cf.php">录入厂房出售房源</a></li>
    		  </ul>
           <div class="bs_tx">
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>

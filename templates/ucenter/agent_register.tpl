@@ -154,7 +154,7 @@
 	                                onkeydown="SelectonKeyDown('txtComareas',event,'search_c')" style="width: 95px;" /><input
 	                                    type="button" class="but_input_cs" id="CheckCity" name="CheckCity" onclick="ShowComareas()" />
 	                             <!--省，市，区域，片区下标,以"-"隔开 -->
-								<input type="hidden" name="areaIndex"	id="areaIndex" value="<!--{$info.areaIndex}-->"/>	
+								<input type="hidden" name="areaIndex"	id="areaIndex" value=""/>	
 	                            <div class="search_select01 left230" id="search_c" >
 	                                <dl id="search_c_value">
 	                                </dl>

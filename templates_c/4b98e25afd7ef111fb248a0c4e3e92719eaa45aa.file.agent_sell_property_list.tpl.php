@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-16 23:42:00
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-17 22:07:19
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\agent_sell_property_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:959551e541b89f3361-78474580%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4b98e25afd7ef111fb248a0c4e3e92719eaa45aa' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\agent_sell_property_list.tpl',
-      1 => 1373989225,
+      1 => 1374064423,
       2 => 'file',
     ),
   ),
@@ -69,7 +69,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <p><b>管理出售房源</b></p>
             <div class="bs_tx1">发 布 量：已使用  <?php echo $_smarty_tpl->tpl_vars['usedLivePropsCount']->value;?>
     还可使用<?php echo $_smarty_tpl->tpl_vars['restLivePropsCount']->value;?>
-</a><br />               
+<br />               
 即将过期房源：<a href="#">0</a>  已刷新次数 <a href="#">0</a> 还可刷新次数 <a href="#">1</a></div>
 <div style="width:700px; border-bottom:1px solid #ddd">
 			<ul style="width:584px; font-size:14px; font-weight:bolder;">

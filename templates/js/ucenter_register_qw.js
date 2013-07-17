@@ -173,6 +173,18 @@ function check_code(obj) {
 
 function check_reg_mobile() {
 
+    var realName = $("#userRealName").val();
+    if(jQuery.trim(realName) == ""){
+        alert("请填写真实姓名");
+        $("#userRealName").focus();
+        return false;
+    }
+    if(!checkChinese(realName)){
+        alert("姓名只能为汉字");
+        $("#userRealName").focus();
+        return false;
+    }
+    
     if (val($("#userPhone")) == "") {
         alert("请输入手机号码");
         isMobileValid = false;
@@ -208,6 +220,12 @@ function check_reg_mobile() {
     return true;
 }
 
+//验证是否是中文
+function checkChinese(str) {
+	var pattern = "^[\\u4E00-\\u9FA5\\uF900-\\uFA2D]+$";
+	var reg = new RegExp(pattern);
+	return reg.test(str);
+};
 function show_menuc(type){
 	if(type=="login"){
 		document.getElementById("acc_2").style.display="none";	
@@ -326,14 +344,14 @@ function sendVcode(mobile, mathcode) {
         data: { "userPhone": mobile, "mathcode": mathcode },
         success: function(req) {
         	
-            if (req == "200") {
+            if (req == 200) {
                 refresh_code();
                 document.getElementById("div_mathcode").style.display = "none";
-            } else if (req == "201") {
+            } else if (req == 201) {
                 //显示运算输入
                 document.getElementById("div_mathcode").style.display = "";
                 $("#txt_mathcode").focus();
-            } else if (req == "205") {
+            } else if (req == 205) {
                 //显示运算输入
             	alert("验证码不正确");
                 document.getElementById("div_mathcode").style.display = "";

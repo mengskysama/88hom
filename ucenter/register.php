@@ -47,9 +47,12 @@ if($userType == 3){
 	$user['userId'] = $userId;
 	if($userPhone != ""){
 		$phoneCert = getParameter('phoneCert');
+		$userRealName = getParameter('userRealName');
 		$user['userPhone'] = $userPhone;
 		$user['phoneCert'] = $phoneCert;
 		$user['userPhoneState'] = 1;
+		$user['userdetailState'] = 2;
+		$user['userdetailName'] = $userRealName;
 		$authResult = $userService->authUser($user);
 		$taret_page = "success_auth_user_phone.php";
 	}else if($userEmail != ""){
@@ -58,6 +61,7 @@ if($userType == 3){
 		$taret_page = "success_reg_email.php?email=".$userEmail;
 	}
 	if($authResult){
+		$_SESSION['UCUserDetail']['userdetailState'] = 2;
 		header('Location: '.$taret_page);
 	}else{
 		$_SESSION['err_msg_auth_user'] = "认证失败，请重试";

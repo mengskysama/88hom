@@ -120,7 +120,7 @@
 			     <!--{elseif $propList[prop].propState eq 5}-->
 			    	<a href="refreshProp('<!--{$propList[prop].propKind}-->','<!--{$propList[prop].propId}-->')" class="xx0" style="margin:8px 12px;">刷新</a>
 			    	<a href="user_lease_prop_agent.php?propKind=<!--{$propList[prop].propKind}-->&propId=<!--{$propList[prop].propId}-->" class="xx0" style="margin:8px 12px;">去委托</a>
-			     <!--{/elseif $propList[prop].propState eq 0}-->
+			     <!--{elseif $propList[prop].propState eq 0}-->
 			     	<a href="user_lease_prop_agent.php?propKind=<!--{$propList[prop].propKind}-->&propId=<!--{$propList[prop].propId}-->" class="xx0" style="margin:8px 12px;">去委托</a>
 			     <!--{/if}-->
 			    </td>

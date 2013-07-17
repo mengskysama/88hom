@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-13 16:23:55
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-17 23:03:52
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_bs.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2621851d581589ebc48-79434450%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ea414aae8b39a7c4f15dd6f7a3398e373df982e7' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_bs.tpl',
-      1 => 1373703829,
+      1 => 1374073344,
       2 => 'file',
     ),
   ),
@@ -23,8 +23,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'jsFiles' => 0,
     'cssFiles' => 0,
     'ckeditLib' => 0,
+    'picTypeList' => 0,
+    'key' => 0,
     'timestamp' => 0,
     'token' => 0,
+    'item' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -42,14 +45,22 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 "></script>
 <script>
 $(function() {    
-    initPicUp('<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
+	<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+    initPicUp3(<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+,'<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
 ','<?php echo $_smarty_tpl->tpl_vars['token']->value;?>
 ','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['file_path_upload'];?>
 ','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_path'];?>
 ','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_common'];?>
 ','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
 ');
-       
+	<?php } ?>
     $("#btn_live").click(function() {
         $("#btn_live").attr("disabled", true);
         $("#btn_save").attr("disabled", true);
@@ -75,7 +86,7 @@ $(function() {
 });
   
 function check(){
-	var estNameValue = $("#estName").val();
+	var estNameValue = $("#estId").val();
 	if(trim(estNameValue) == ''){
 		alert("请填写楼盘名称");
 		$("#estName").focus();
@@ -102,6 +113,10 @@ function check(){
 	var villaContentValue = CKEDITOR.instances.villaContent.getData(); 
 	if(trim(villaContentValue) == ''){
 		alert("请填写房源描述");
+		return false;
+	}
+	if($("#topPicPath").val() == ""){
+		alert("请选择标题图");
 		return false;
 	}
 	
@@ -341,36 +356,58 @@ function checkVillaGarageCount(){
       <div class=" bs_tx">
     <p><b>图文信息</b></p>
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
-  <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
-			    <td><input type="file" name="file_upload" id="file_upload"/></td>
-			    <td>
-			    	<div id="showImg" style="float: left;">			
-					</div>
+			  <tr>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
+			    <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
+					<input id="villaTitle" name="villaTitle" type="text"  value="" maxlength="60" onkeyup="textCounter(document.getElementById('villaTitle'),document.getElementById('villaTitleAlert'),30);" /> 还可写<span id="villaTitleAlert"><font class="red">30</font></span>个汉字</td>
+			  </tr>
+			  <tr>
+			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
+			    <td colspan="2" align="left" valign="middle">
+						    <textarea id="villaContent" name="villaContent" cols="86" rows="12" ></textarea>			    
+				            <script>
+				                CKEDITOR.replace( 'villaContent' );
+				            </script><div class="bs"><span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
+      请勿从其它网站或其它房源描述中拷贝。</span></div>
+		      <div class="bs01">
+		        <strong>注意事项：</strong></br>
+		        1.上传宽度大于600像素，比例为4:3的图片可获得更好的展示效果。</br>
+		        2.请勿上传有水印、盖章等任何侵犯他人版权或含有广告信息的图片。</br>
+		        3.可上传20张图片，每张小于2M，建议尺寸大于400x300像素。</br>
+		        <span class="redlink"><a href="#">如何批量上传 安装FLASH插件查看最佳图片示例</a></span></div>
+			    	
 			    </td>
-  </tr>
-  <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
-    <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
-		<input id="villaTitle" name="villaTitle" type="text"  value="" maxlength="60" onkeyup="textCounter(document.getElementById('villaTitle'),document.getElementById('villaTitleAlert'),30);" /> 还可写<span id="villaTitleAlert"><font class="red">30</font></span>个汉字</td>
-  </tr>
-  <tr>
-    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-    <td colspan="2" align="left" valign="middle">
-			    <textarea id="villaContent" name="villaContent" cols="86" rows="12" ></textarea>			    
-	            <script>
-	                CKEDITOR.replace( 'villaContent' );
-	            </script>
-	            <span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
-请勿从其它网站或其它房源描述中拷贝。</span>
-         <span>
-         <b style="text-indent:0px;">注意事项：</b> <br />
-1.上传宽度大于600像素，比例为5:4的图片可获得更好的展示效果。<br />
-2.请勿上传有水印、盖章等任何侵犯他人版权或含有广告信息的图片。</span>
-    	
-    </td>
-  </tr>
-</table>
+			  </tr>
+				<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+				<tr><td height="220" align="center" valign="middle" bgcolor="#f7f6f1"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</td>
+		         <td height="215" align="left" valign="top" class="p25">
+		         	<div class="sc_btn">
+		                <input type="file" name="file_upload_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" id="file_upload_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"/>
+		            </div>
+		            <div class="tpsc" id="showImg_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+">
+		            </div>
+				 </td>
+				</tr> 
+				<?php } ?>
+		      
+		       <tr>
+			    <td height="124" align="center" valign="middle" bgcolor="#f7f6f1">标题图</td>
+			    <td align="left" valign="top" class="p25"><div class="btt" id="topic_image"></div></td>
+			    
+        	    <input type="hidden" id="topPicPath" name="topPicPath" value=""/>
+        	    <input type="hidden" id="topPicPathThumb" name="topPicPathThumb" value=""/>
+			  </tr>
+			</table>
       </div>
        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>

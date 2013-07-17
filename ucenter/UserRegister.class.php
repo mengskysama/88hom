@@ -46,20 +46,20 @@ class UserRegister{
 			$result[1] = "两次密码不相同";
 			return $result;
 		}
-		if($this->userRealName == ""){
-			$result[0] = 208;
-			$result[1] = "真实姓名不能为空";
-			return $result;
-		}
-		$m=mb_strlen($this->userRealName,'utf-8');
-		$s=strlen($this->userRealName);
-		if(!($s%$m==0&&$s%3==0)){
-			$result[0] = 208;
-			$result[1] = "真实姓名只能为汉字";
-			return $result;
-		}
 		
 		if($this->userPhone != ""){
+			if($this->userRealName == ""){
+				$result[0] = 208;
+				$result[1] = "真实姓名不能为空";
+				return $result;
+			}
+			$m=mb_strlen($this->userRealName,'utf-8');
+			$s=strlen($this->userRealName);
+			if(!($s%$m==0&&$s%3==0)){
+				$result[0] = 208;
+				$result[1] = "真实姓名只能为汉字";
+				return $result;
+			}
 			$user = $userService->checkUserByUserPhone($this->userPhone);
 			if(!empty($user)){
 				$result[0] = 201;

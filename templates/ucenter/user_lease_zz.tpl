@@ -118,20 +118,19 @@ function checkRentPrice(){
 
 <body>
 <!--求购头部-->
-<!--{include file="$ucenter_agent_header"}-->
+<!--{include file="$header_ucenter_user"}-->
 <!--求购内容-->
 <div class="qg_main">
-	<!--{include file="$ucenter_agent_left_menu"}-->
+	<!--{include file="$ucenter_user_left_menu"}-->
     <div class="qg_r">
     <p>你的位置: <a href="#">房源管理</a></p>
    	<div class="qg_bs">
             <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
  		   <ul>
-   			 	<li><a href="agent_lease_zz.php">录入住宅出租房源</a></li>
-    		    <li><a href="agent_lease_bs.php">录入别墅出租房源</a></li>
-     		    <li><a href="agent_lease_sp.php">录入商铺出租房源</a></li>
-      		 	<li><a href="agent_lease_xzl.php">录入写字楼出租房源</a></li>
-       		    <li><a href="agent_lease_cf.php">录入厂房出租房源</a></li>
+   			 	<li><a href="user_lease_zz.php">录入住宅出租房源</a></li>
+    		    <li><a href="user_lease_bs.php">录入别墅出租房源</a></li>
+     		    <li><a href="user_lease_sp.php">录入商铺出租房源</a></li>
+      		 	<li><a href="user_lease_xzl.php">录入写字楼出租房源</a></li>
    		  </ul>
           <div class="bs_tx">
             <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
