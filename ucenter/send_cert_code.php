@@ -27,8 +27,8 @@ if(!$result){
 }
 
 $smsSender = new SMSSender();
-//$sent = $smsSender->send($userPhone, '房不胜房注册码是'.$certCode);
-$sent = true;
+$sent = $smsSender->send($userPhone, '房不胜房注册码是'.$certCode);
+//$sent = true;
 if($sent){
 	echo "200";
 	return;

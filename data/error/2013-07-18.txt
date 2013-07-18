@@ -3,3 +3,168 @@
 insert into ecms_agent_property(propUserId,agentUserId,communityId,txType,propPrice,remarks,contactName,contactGender,contactMobile,propState,createTime) values(6,0,,1,230,'ssss','杨过',1,'15986605673',1,UNIX_TIMESTAMP())
 客户端:127.0.0.1
 时间:2013-07-18 09:26:35
+------------------------2013-07-18 22:25:02
+错误SQL语句：
+select * from ecms_group where groupId=
+客户端:127.0.0.1
+时间:2013-07-18 22:25:02
+------------------------2013-07-18 22:25:02
+错误SQL语句：
+select * from ecms_group where groupId=
+客户端:127.0.0.1
+时间:2013-07-18 22:25:02
+------------------------2013-07-18 22:30:45
+错误SQL语句：
+select count(*) as propTotal from vw_get_sell_property_list where userId=17 and propState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-18 22:30:45
+------------------------2013-07-18 22:30:45
+错误SQL语句：
+select propId,propKind,propName,propNumber,propPrice,propArea,floor(propPrice*10000/propArea) as perPriceArea,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime  from vw_get_sell_property_list where userId=17 and propState in(1,5)  limit 0,5
+客户端:127.0.0.1
+时间:2013-07-18 22:30:45
+------------------------2013-07-18 22:50:32
+错误SQL语句：
+select count(*) as propTotal from vw_get_sell_property_list where userId=17 and propState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-18 22:50:32
+------------------------2013-07-18 22:50:32
+错误SQL语句：
+select propId,propKind,propName,propNumber,propPrice,propArea,floor(propPrice*10000/propArea) as perPriceArea,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime  from vw_get_sell_property_list where userId=17 and propState in(1,5)  limit 0,5
+客户端:127.0.0.1
+时间:2013-07-18 22:50:32
+------------------------2013-07-18 22:51:16
+错误SQL语句：
+select count(*) as propTotal from vw_get_sell_property_list where userId=17 and propState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-18 22:51:16
+------------------------2013-07-18 22:51:16
+错误SQL语句：
+select propId,propKind,propName,propNumber,propPrice,propArea,floor(propPrice*10000/propArea) as perPriceArea,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime  from vw_get_sell_property_list where userId=17 and propState in(1,5)  limit 0,5
+客户端:127.0.0.1
+时间:2013-07-18 22:51:16
+------------------------2013-07-18 22:51:36
+错误SQL语句：
+select count(*) as propTotal from vw_get_sell_property_list where userId=17 and propState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-18 22:51:36
+------------------------2013-07-18 22:51:36
+错误SQL语句：
+select propId,propKind,propName,propNumber,propPrice,propArea,floor(propPrice*10000/propArea) as perPriceArea,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime  from vw_get_sell_property_list where userId=17 and propState in(1,5)  limit 0,5
+客户端:127.0.0.1
+时间:2013-07-18 22:51:36
+------------------------2013-07-18 22:52:39
+错误SQL语句：
+select count(*) as propTotal from vw_get_sell_property_list where userId=17 and propState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-18 22:52:39
+------------------------2013-07-18 22:52:39
+错误SQL语句：
+select propId,propKind,propName,propNumber,propPrice,propArea,floor(propPrice*10000/propArea) as perPriceArea,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime  from vw_get_sell_property_list where userId=17 and propState in(1,5)  limit 0,5
+客户端:127.0.0.1
+时间:2013-07-18 22:52:39
+------------------------2013-07-18 22:53:45
+错误SQL语句：
+select count(*) as propTotal from vw_get_lease_property_list where userId=17 and propState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-18 22:53:45
+------------------------2013-07-18 22:53:45
+错误SQL语句：
+select propId,propKind,propName,propNumber,propPrice,propArea,propPriceUnit,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime  from vw_get_lease_property_list where userId=17 and propState in(1,5)  limit 0,5
+客户端:127.0.0.1
+时间:2013-07-18 22:53:45
+------------------------2013-07-18 22:53:59
+错误SQL语句：
+select count(*) as propTotal from vw_get_lease_property_list where userId=17 and propState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-18 22:53:59
+------------------------2013-07-18 22:53:59
+错误SQL语句：
+select propId,propKind,propName,propNumber,propPrice,propArea,propPriceUnit,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime  from vw_get_lease_property_list where userId=17 and propState in(1,5)  limit 0,5
+客户端:127.0.0.1
+时间:2013-07-18 22:53:59
+------------------------2013-07-18 22:55:08
+错误SQL语句：
+select count(*) as propTotal from vw_get_lease_property_list where userId=24 and propState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-18 22:55:08
+------------------------2013-07-18 22:55:08
+错误SQL语句：
+select propId,propKind,propName,propNumber,propPrice,propArea,propPriceUnit,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime  from vw_get_lease_property_list where userId=24 and propState in(1,5)  limit 0,5
+客户端:127.0.0.1
+时间:2013-07-18 22:55:08
+------------------------2013-07-18 23:04:00
+错误SQL语句：
+select count(*) as propTotal from vw_get_lease_property_list where userId=24 and propState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-18 23:04:00
+------------------------2013-07-18 23:04:00
+错误SQL语句：
+select propId,propKind,propName,propNumber,propPrice,propArea,propPriceUnit,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime  from vw_get_lease_property_list where userId=24 and propState in(1,5)  limit 0,5
+客户端:127.0.0.1
+时间:2013-07-18 23:04:00
+------------------------2013-07-18 23:04:08
+错误SQL语句：
+select count(*) as propTotal from vw_get_lease_property_list where userId=24 and propState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-18 23:04:08
+------------------------2013-07-18 23:04:08
+错误SQL语句：
+select propId,propKind,propName,propNumber,propPrice,propArea,propPriceUnit,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime  from vw_get_lease_property_list where userId=24 and propState in(1,5)  limit 0,5
+客户端:127.0.0.1
+时间:2013-07-18 23:04:08
+------------------------2013-07-18 23:04:20
+错误SQL语句：
+select count(*) as propTotal from vw_get_sell_property_list where userId=17 and propState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-18 23:04:20
+------------------------2013-07-18 23:04:20
+错误SQL语句：
+select propId,propKind,propName,propNumber,propPrice,propArea,floor(propPrice*10000/propArea) as perPriceArea,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime  from vw_get_sell_property_list where userId=17 and propState in(1,5)  limit 0,5
+客户端:127.0.0.1
+时间:2013-07-18 23:04:20
+------------------------2013-07-18 23:10:30
+错误SQL语句：
+select count(*) as propTotal from vw_get_sell_property_list where userId=17 and propState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-18 23:10:30
+------------------------2013-07-18 23:10:30
+错误SQL语句：
+select propId,propKind,propName,propNumber,propPrice,propArea,floor(propPrice*10000/propArea) as perPriceArea,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime  from vw_get_sell_property_list where userId=17 and propState in(1,5)  limit 0,5
+客户端:127.0.0.1
+时间:2013-07-18 23:10:30
+------------------------2013-07-18 23:14:23
+错误SQL语句：
+select count(*) as propTotal from vw_get_sell_property_list where userId=17 and propState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-18 23:14:23
+------------------------2013-07-18 23:14:23
+错误SQL语句：
+select propId,propKind,propName,propNumber,propPrice,propArea,floor(propPrice*10000/propArea) as perPriceArea,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime  from vw_get_sell_property_list where userId=17 and propState in(1,5)  limit 0,5
+客户端:127.0.0.1
+时间:2013-07-18 23:14:23
+------------------------2013-07-18 23:17:19
+错误SQL语句：
+select count(*) as propTotal from vw_get_sell_property_list where userId=17 and propState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-18 23:17:19
+------------------------2013-07-18 23:17:19
+错误SQL语句：
+select propId,propKind,propName,propNumber,propPrice,propArea,floor(propPrice*10000/propArea) as perPriceArea,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime  from vw_get_sell_property_list where userId=17 and propState in(1,5)  limit 0,5
+客户端:127.0.0.1
+时间:2013-07-18 23:17:19
+------------------------2013-07-18 23:17:20
+错误SQL语句：
+select count(*) as propTotal from vw_get_sell_property_list where userId=17 and propState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-18 23:17:20
+------------------------2013-07-18 23:17:20
+错误SQL语句：
+select propId,propKind,propName,propNumber,propPrice,propArea,floor(propPrice*10000/propArea) as perPriceArea,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime  from vw_get_sell_property_list where userId=17 and propState in(1,5)  limit 0,5
+客户端:127.0.0.1
+时间:2013-07-18 23:17:20
+------------------------2013-07-18 23:32:05
+错误SQL语句：
+select userId,userdetailName,userPhone,userdetailImcpName,userdetailPicThumb,userdetailDistrict,userdetailArea  from ecms_user_detail a inner join ecms_user b on a.userId=b.userId where userdetailState=2   limit 0,20
+客户端:127.0.0.1
+时间:2013-07-18 23:32:05

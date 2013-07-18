@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-17 23:05:24
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-18 22:30:45
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\sell_property_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1757751ce7fb296f1b1-35968700%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5e9b7150e0557bc555e3279d580a2af1b52447a9' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\sell_property_list.tpl',
-      1 => 1374073509,
+      1 => 1374150255,
       2 => 'file',
     ),
   ),
@@ -24,6 +24,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cssFiles' => 0,
     'usedLivePropsCount' => 0,
     'restLivePropsCount' => 0,
+    'soonBeExpiredCount' => 0,
+    'usedRefreshTimes' => 0,
+    'restRefreshTimes' => 0,
     'unlivePropsCount' => 0,
     'expiredPropsCount' => 0,
     'illegalPropsCount' => 0,
@@ -70,7 +73,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="bs_tx1">发 布 量：已使用 <?php echo $_smarty_tpl->tpl_vars['usedLivePropsCount']->value;?>
     还可使用<?php echo $_smarty_tpl->tpl_vars['restLivePropsCount']->value;?>
 <br />               
-即将过期房源：<a href="#">0</a>  已刷新次数 <a href="#">0</a> 还可刷新次数 <a href="#">1</a></div>
+即将过期房源：<?php echo $_smarty_tpl->tpl_vars['soonBeExpiredCount']->value;?>
+  已刷新次数 <a id="d_usedRefreshTimes"><?php echo $_smarty_tpl->tpl_vars['usedRefreshTimes']->value;?>
+</a> 还可刷新次数 <a id="d_restRefreshTimes"><?php echo $_smarty_tpl->tpl_vars['restRefreshTimes']->value;?>
+</a></div>
 <div style="width:700px; border-bottom:1px solid #ddd">
 			<ul style="width:584px; font-size:14px; font-weight:bolder;">
    			 	<li><a href="javascript:void(0)" onclick="gotolink(1)">已发布房源</a></li>
@@ -192,7 +198,9 @@ m<sup>2</sup><br />
 					 	<?php }?>
 			        </span>
 			        </td>
-			    <td width="120" align="center" valign="middle" style="line-height:22px;" class="bor"><?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['updateDate'];?>
+			    <td id="t_update_time_<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind'];?>
+_<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
+" width="120" align="center" valign="middle" style="line-height:22px;" class="bor"><?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['updateDate'];?>
 <br /><?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['updateTime'];?>
 </td>
 			    <td width="120" align="center" valign="middle" class="bor"><?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['createDate'];?>
@@ -222,7 +230,7 @@ m<sup>2</sup><br />
 			     <?php if ($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propState']==1){?>
 			    	<a class="xx0" style="margin:8px 12px;">发布待审核</a>
 			     <?php }elseif($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propState']==5){?>
-			    	<a href="refreshProp('<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind'];?>
+			    	<a href="javascript:void(0);" onclick="refreshProp('<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind'];?>
 ','<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
 ')" class="xx0" style="margin:8px 12px;">刷新</a>
 			    	<a href="user_sale_prop_agent.php?propKind=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind'];?>

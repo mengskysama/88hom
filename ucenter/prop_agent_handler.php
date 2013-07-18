@@ -30,6 +30,7 @@ $propId = $secondPropService->sendPropToAgent($prop);
 if($propId){
 	header("location:user_sale_prop_agent_target.php?propId=".$propId);
 }
+
 $_SESSION['ERR_MSG_AGENT_PROP'] = "委托失败，请重试";
 header("location:".$err_redirect_uri);
 ?>

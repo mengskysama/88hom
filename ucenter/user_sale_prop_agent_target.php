@@ -1,12 +1,32 @@
 <?php
 require 'path.inc.php';
+require '../includes/area.inc.php';
 require 'check_user_login.php';
 $tpl_name = $tpl_dir.'user_sale_prop_agent_target.tpl';
 
 $propId = getParameter("propId","GET");
+$companyId = getParameter("company");
+$agentName = getParameter("agentName");
 
 $imcpService = new ImcpService($db);
-$agentCompany = $imcpService->getAgentCompanyList();
+$companyList = $imcpService->getAgentCompanyList();
+
+$districtId = getParameter("district");
+$districtId = $districtId == "" ? -1 : $districtId;
+$districtList = $D[4][8];
+
+$destNo = getParameter("destNo");
+$pageNo = getParameter("pageNo");
+$pageNo = $destNo == "" ? ($pageNo == "" ? 1 : $pageNo) : $destNo;
+$condition['company'] = $companyId;
+$condition['district'] = $districtId;
+$condition['agentName'] = $agentName;
+$condition['company'] = $companyId; 
+$condition['currentPageNo'] = $pageNo;
+$userService = new UserService($db);
+$agents = $userService->getAgentList($condition);
+$agentList = $agents['data'];
+$pagination = $agents['pagination'];
 
 $html->addJs('jquery-ui-1.8.21.custom.min.js');
 $html->addJs('ucenter_property_input.js');
@@ -14,6 +34,10 @@ $html->addCss('ucenter/jquery-ui.css');
 $html->addCss('ucenter/public.css');
 $html->show();
 $smarty->assign('ucenter_user_left_menu',$tpl_dir.'ucenter_user_left_menu.tpl');
-$smarty->assign('agentCompany',$agentCompany);
+$smarty->assign('companyList',$companyList);
+$smarty->assign('companyId',$companyId);
+$smarty->assign('districtList',$districtList);
+$smarty->assign('districtId',$districtId);
+$smarty->assign('agentList',$agentList);
 $smarty->display($tpl_name);
 ?>
