@@ -4,7 +4,6 @@ require 'check_login.php';
 require 'PropertyHandler.class.php';
 
 $txType = getParameter("txType");
-$estId = getParameter("estId");
 $estName = getParameter("estName");
 $propPrice = getParameter("propPrice");
 $remarks = getParameter("remarks");
@@ -14,15 +13,8 @@ $contactMobile = getParameter("contactMobile");
 $certcode = getParameter("certcode");
 
 $err_redirect_uri = $txType == 1 ? "user_sale_prop_agent.php" : "user_lease_prop_agent.php";
-$estateService = new EstateService($db);
-$propHandler = new PropertyHandler();
-$realEstId = $propHandler->getRealEstateId($estateService,$estId,$estName);
-if(!$realEstId){
-	$_SESSION['ERR_MSG_AGENT_PROP'] = "委托失败，请重试";
-	header("location:".$err_redirect_uri); 
-}
 $prop['propUserId'] = $userId;
-$prop['communityId'] = $realEstId;
+$prop['propName'] = $estName;
 $prop['propPrice'] = $propPrice;
 $prop['txType'] = $txType;
 $prop['remarks'] = $remarks;
@@ -38,7 +30,6 @@ $propId = $secondPropService->sendPropToAgent($prop);
 if($propId){
 	header("location:user_sale_prop_agent_target.php?propId=".$propId);
 }
-
 $_SESSION['ERR_MSG_AGENT_PROP'] = "委托失败，请重试";
 header("location:".$err_redirect_uri);
 ?>

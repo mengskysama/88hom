@@ -216,6 +216,10 @@ class HouseDAO  {
 		$sql = "update ecms_house set houseUpdateTime=".time()." where houseId=".$propId;
 		return $this->db->getQueryExeCute($sql);
 	}
+	public function getExpiredPropStat($userId,$txType){
+		$sql="select * from ecms_expired_prop_stat where userId=".$userId." and txType=".$txType;
+		return $this->db->getQueryValue($sql);
+	}
 	//end to be added by Cheneil
 	//删除住宅房源
 	public function delHouseById($id){

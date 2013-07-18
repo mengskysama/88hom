@@ -21,12 +21,25 @@ $pageNo = $destNo == "" ? ($pageNo == "" ? 1 : $pageNo) : $destNo;
 $txType = 2;
 
 $secondPropertyService = new SecondHandPropertyService($db);
+$soonBeExpiredCount = 0;
+$expiredPropsCount = 0;
+$expiredPropStat = $secondPropertyService->getExpiredPropStat($userId,$txType);
+if($expiredPropStat){
+	$soonBeExpiredCount = $expiredPropStat['soonbeexpiredcount'];
+	$expiredPropsCount = $expiredPropStat['expiredcount'];
+}
+
 $unlivePropsCount = $secondPropertyService->countPropertiesByState($userId,0,$txType);
 $livePropsCount = $secondPropertyService->countPropertiesByState($userId,1,$txType);
-$expiredPropsCount = $secondPropertyService->countPropertiesByState($userId,3,$txType);
 $illegalPropsCount = $secondPropertyService->countPropertiesByState($userId,4,$txType);
 $usedLivePropsCount = $livePropsCount + $expiredPropsCount + $illegalPropsCount;
 $restLivePropsCount = $cfg['arr_build']['2handConfig']['PROPERTY_COUNT_LEASE_USER'] - $usedLivePropsCount;
+
+$userService = new UserService($db);
+$user = $userService->getUserById($userId);
+$usedRefreshTimes = $user['propRefreshTimes'];
+$restRefreshTimes = $cfg['arr_build']['2handConfig']['REFRESH_COUNT_USER'] - $usedRefreshTimes;
+
 //fill the condition
 $condition['userId'] = $userId;
 $condition['propState'] = $propState;
@@ -50,6 +63,9 @@ $smarty->assign("usedLivePropsCount",$usedLivePropsCount);
 $smarty->assign("restLivePropsCount",$restLivePropsCount);
 $smarty->assign("expiredPropsCount",$expiredPropsCount);
 $smarty->assign("illegalPropsCount",$illegalPropsCount);
+$smarty->assign("usedRefreshTimes",$usedRefreshTimes);
+$smarty->assign("restRefreshTimes",$restRefreshTimes);
+$smarty->assign("soonBeExpiredCount",$soonBeExpiredCount);
 $smarty->assign("propList",$propList);
 $smarty->assign("pagination",$pagination);
 $smarty->assign("propState",$propState);

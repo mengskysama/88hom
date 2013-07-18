@@ -253,8 +253,19 @@ if($propType == "zz"){
 }else if($action == "refreshProp"){
 	$propKind = getParameter("propKind");
 	$propId = getParameter("propId");
+	$userService = new UserService($db);
+	$user = $userService->getUserById($userId);
+	$propRefreshTimes = $user['propRefreshTimes'];
+	if($propRefreshTimes == $cfg['arr_build']['2handConfig']['REFRESH_COUNT_AGENT']){
+		echo "{\"result\":\"limited\"}";
+		return;
+	}
+	$prop['propId'] = $propId;
+	$prop['propKind'] = $propKind;
+	$prop['userId'] = $userId;
+	$prop['propRefreshTimes'] = $propRefreshTimes;
 	$secondPropService = new SecondHandPropertyService($db);
-	$result_to_refresh = $secondPropService->refreshProperty($propKind, $propId);
+	$result_to_refresh = $secondPropService->refreshProperty($prop);
 	if($result_to_refresh){
 		echo "{\"result\":\"success\",\"u_time\":\"".$result_to_refresh."\"}";
 	}else{

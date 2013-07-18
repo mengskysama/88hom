@@ -1,0 +1,5 @@
+------------------------2013-07-18 09:26:35
+错误SQL语句：
+insert into ecms_agent_property(propUserId,agentUserId,communityId,txType,propPrice,remarks,contactName,contactGender,contactMobile,propState,createTime) values(6,0,,1,230,'ssss','杨过',1,'15986605673',1,UNIX_TIMESTAMP())
+客户端:127.0.0.1
+时间:2013-07-18 09:26:35

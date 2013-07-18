@@ -19,7 +19,7 @@
       <div class="bs_tx" style="border:0">
             <p><b>管理出售房源</b></p>
             <div class="bs_tx1">发 布 量：已使用 <!--{$usedLivePropsCount}-->    还可使用<!--{$restLivePropsCount}--><br />               
-即将过期房源：<a href="#">0</a>  已刷新次数 <a href="#">0</a> 还可刷新次数 <a href="#">1</a></div>
+即将过期房源：<!--{$soonBeExpiredCount}-->  已刷新次数 <a id="d_usedRefreshTimes"><!--{$usedRefreshTimes}--></a> 还可刷新次数 <a id="d_restRefreshTimes"><!--{$restRefreshTimes}--></a></div>
 <div style="width:700px; border-bottom:1px solid #ddd">
 			<ul style="width:584px; font-size:14px; font-weight:bolder;">
    			 	<li><a href="javascript:void(0)" onclick="gotolink(1)">已发布房源</a></li>
@@ -101,7 +101,7 @@
 					 	<!--{/if}-->
 			        </span>
 			        </td>
-			    <td width="120" align="center" valign="middle" style="line-height:22px;" class="bor"><!--{$propList[prop].updateDate}--><br /><!--{$propList[prop].updateTime}--></td>
+			    <td id="t_update_time_<!--{$propList[prop].propKind}-->_<!--{$propList[prop].propId}-->" width="120" align="center" valign="middle" style="line-height:22px;" class="bor"><!--{$propList[prop].updateDate}--><br /><!--{$propList[prop].updateTime}--></td>
 			    <td width="120" align="center" valign="middle" class="bor"><!--{$propList[prop].createDate}--><br /><!--{$propList[prop].createTime}--></td>
 			    <td width="92" align="center" valign="middle" class="bor"><font class="red">100</font> 次</td>
 			    <td align="center" valign="middle" class="bor">
@@ -120,7 +120,7 @@
 			     <!--{if $propList[prop].propState eq 1}-->
 			    	<a class="xx0" style="margin:8px 12px;">发布待审核</a>
 			     <!--{elseif $propList[prop].propState eq 5}-->
-			    	<a href="refreshProp('<!--{$propList[prop].propKind}-->','<!--{$propList[prop].propId}-->')" class="xx0" style="margin:8px 12px;">刷新</a>
+			    	<a href="javascript:void(0);" onclick="refreshProp('<!--{$propList[prop].propKind}-->','<!--{$propList[prop].propId}-->')" class="xx0" style="margin:8px 12px;">刷新</a>
 			    	<a href="user_sale_prop_agent.php?propKind=<!--{$propList[prop].propKind}-->&propId=<!--{$propList[prop].propId}-->" class="xx0" style="margin:8px 12px;">去委托</a>
 			     <!--{elseif $propList[prop].propState eq 0}-->
 			     	<a href="user_sale_prop_agent.php?propKind=<!--{$propList[prop].propKind}-->&propId=<!--{$propList[prop].propId}-->" class="xx0" style="margin:8px 12px;">去委托</a>

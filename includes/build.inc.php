@@ -259,6 +259,8 @@ return array(
                'PROPERTY_COUNT_LEASE_USER'=>10,
                'PROPERTY_COUNT_SALE_USER'=>10,
                'PROPERTY_COUNT_LEASE_AGENT'=>60,
-               'PROPERTY_COUNT_SALE_AGENT'=>60
+               'PROPERTY_COUNT_SALE_AGENT'=>60,
+				'DAYS_TO_BE_EXPIRED'=>15,
+				'DAYS_SOON_TO_BE_EXPIRED'=>12
 		)						    
 );

@@ -1,18 +1,51 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-18 17:44:43
+         compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_prop_agent_target.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:2319151e7b90be6da21-18395084%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'c22bb61d5deef7ced2c971afcc4cc8f0b2565d11' => 
+    array (
+      0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_prop_agent_target.tpl',
+      1 => 1374140321,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '2319151e7b90be6da21-18395084',
+  'function' => 
+  array (
+  ),
+  'variables' => 
+  array (
+    'cfg' => 0,
+    'jsFiles' => 0,
+    'cssFiles' => 0,
+    'propId' => 0,
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51e7b90c1b8263_11397472',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_51e7b90c1b8263_11397472')) {function content_51e7b90c1b8263_11397472($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
+" />
 <title>委托出售房源</title>
-<!--{$jsFiles}-->
-<!--{$cssFiles}-->
+<?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
+
+<?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
+
 </head>
 
 <body>
 <!--求购头部-->
-<!--{include file="$header_ucenter_user"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['header_ucenter_user']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 <!--求购内容-->
 <div class="qg_main">
-	<!--{include file="$ucenter_user_left_menu"}-->
+	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_user_left_menu']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
     <div class="qg_r">
     	<p>你的位置： 我的房不剩房 > <a href="user_sale.php">我要出售</a> > 委托出售房源</p>
         <div class="qgxq">
@@ -23,7 +56,8 @@
        	  <p class="wyqg1"><b>你可以在线委托多个经纪人，请点“立即委托”</b></p>
           <div class="xxjj">
           <form id="searchAgentFrm" name="searchAgentFrm" action="user_sale_prop_agent_target.php" method="post">
-          <input type="hidden" id="propId" name="propId" value="<!--{$propId}-->"/>
+          <input type="hidden" id="propId" name="propId" value="<?php echo $_smarty_tpl->tpl_vars['propId']->value;?>
+"/>
           	<table width="0" border="0" cellspacing="0" cellpadding="0">
 			  <tr>
 			    <td width="125" height="40" align="center" valign="middle">
@@ -78,6 +112,8 @@
     </div>
 
 <!--求购底部-->
-<!--{include file="$footer"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['footer']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 </body>
 </html>
+<?php }} ?>

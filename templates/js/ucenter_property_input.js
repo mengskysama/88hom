@@ -610,6 +610,12 @@ function SetValue(type,objName,ovalue)
     return false;
 }
 function refreshProp(propKind, propId){	
+	var usedTimes = parseInt($("#d_usedRefreshTimes").html());
+	var restTimes = parseInt($("#d_restRefreshTimes").html());
+	if(restTimes == 0){
+		alert("今天的刷新次数已到最大值!");
+		return;
+	}
 		
 	var option={"action":"refreshProp","propKind":propKind,"propId":propId};
     $.ajax({
@@ -621,6 +627,10 @@ function refreshProp(propKind, propId){
 				if(msg.result=="success"){
 					alert("刷新成功!");
 					$("#t_update_time_"+propKind+"_"+propId).html(msg.u_time);
+					$("#d_usedRefreshTimes").html(usedTimes + 1);
+					$("#d_restRefreshTimes").html(restTimes - 1);
+                }else if(msg.result=="limited"){
+					alert("今天的刷新次数已到最大值!");
                 }else{
                     alert("刷新失败!");
                 }

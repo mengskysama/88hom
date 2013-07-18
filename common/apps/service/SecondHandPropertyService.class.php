@@ -379,7 +379,13 @@ class SecondHandPropertyService{
 	public function savePropPic($pic){
 		return $this->picDAO->release($pic);
 	}
-	public function refreshProperty($propKind,$propId){
+	public function refreshProperty($prop){
+		$propKind = $prop['propKind'];
+		$propId = $prop['propId'];
+		$userId = $prop['userId'];
+		$propRefreshTimes = $prop['propRefreshTimes'];
+		$times = $propRefreshTimes + 1;
+		
 		$dao = "";
 		if($propKind == 'zz'){
 			$dao = $this->houseDAO;
@@ -394,7 +400,11 @@ class SecondHandPropertyService{
 		}
 		if($dao == "") return false;
 		if($dao->refresh($propId)){
+			$this->userDAO->updatePropRefreshTimes($userId, $times);
 			return date("Y-m-d")."<br />".date("H:i");
 		}
+	}
+	public function getExpiredPropStat($userId,$txType){
+		return $this->houseDAO->getExpiredPropStat($userId,$txType);
 	}
 }

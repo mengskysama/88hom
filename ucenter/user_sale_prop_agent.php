@@ -6,6 +6,7 @@ $tpl_name = $tpl_dir.'user_sale_prop_agent.tpl';
 $err_msg = "";
 if(isset($_SESSION['ERR_MSG_AGENT_PROP'])){
 	$err_msg = "alert('".$_SESSION['ERR_MSG_AGENT_PROP']."');";
+	unset($_SESSION['ERR_MSG_AGENT_PROP']);
 }
 
 $html->addJs('jquery-ui-1.8.21.custom.min.js');

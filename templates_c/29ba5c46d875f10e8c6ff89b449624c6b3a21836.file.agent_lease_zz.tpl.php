@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-15 14:47:34
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-18 10:30:17
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_lease_zz.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2222551e38f8d7b7bf4-34258343%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '29ba5c46d875f10e8c6ff89b449624c6b3a21836' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_lease_zz.tpl',
-      1 => 1373869275,
+      1 => 1374022445,
       2 => 'file',
     ),
   ),
@@ -333,7 +333,7 @@ function checkRentPrice(){
 	            <script>
 	                CKEDITOR.replace( 'houseContent' );
 	            </script>
-	            <span style="border-bottom:none">可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
+	            <span style="border-bottom:none">可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。
 				      请勿从其它网站或其它房源描述中拷贝。</span>
 				               <span>
 				         <b style="text-indent:0px;">注意事项：</b> <br />

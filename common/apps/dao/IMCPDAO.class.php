@@ -82,6 +82,12 @@ class ImcpDAO  {
 			  inner join ecms_user as user on imcp.imcpUserId=user.userId $where";
 		return $this->db->getQueryValue($sql);
 	}
+	//added by Cheneil
+	public function getAgentCompanyList(){
+		$sql = "select imcpId,imcpName,imcpShortName from ecms_imcp where imcpState=1";
+		return $this->db->getQueryArray($sql);
+	}
+	//end to be added by Cheneil
 
 }
 

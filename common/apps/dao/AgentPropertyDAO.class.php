@@ -7,8 +7,8 @@ class AgentPropertyDAO{
 	}
 	
 	public function save($prop){
-		$sql = "insert into ecms_agent_property(propUserId,agentUserId,communityId,txType,propPrice,remarks,contactName,contactGender,contactMobile,propState,createTime) ".
-				"values(".$prop['propUserId'].",".$prop['agentUserId'].",".$prop['communityId'].",".$prop['txType'].",".$prop['propPrice'].",'"
+		$sql = "insert into ecms_agent_property(propUserId,agentUserId,propName,txType,propPrice,remarks,contactName,contactGender,contactMobile,propState,createTime) ".
+				"values(".$prop['propUserId'].",".$prop['agentUserId'].",'".$prop['propName']."',".$prop['txType'].",".$prop['propPrice'].",'"
 						.$prop['remarks']."','".$prop['contactName']."',".$prop['contactGender'].",'".$prop['contactMobile']."',".$prop['propState'].",UNIX_TIMESTAMP())";
 		$this->db->query($sql);
 		$propId = $this->db->getInsertNum();

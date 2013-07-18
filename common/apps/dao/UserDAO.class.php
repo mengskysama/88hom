@@ -120,7 +120,14 @@ class UserDAO{
 		$sql = "select * from ecms_user where UOpenID='".$openID."'";
 		return $this->db->getQueryValue($sql);
 	}
-	
+	public function updatePropRefreshTimes($userId,$times){
+		$sql = "update ecms_user set propRefreshTimes=".$times." where userId=".$userId;
+		return $this->db->getQueryExecute($sql);
+	}
+	public function getExpiredPropStat($userId){
+		$sql = "select soonbeexpiredcount,expiredcount from ecms_expired_prop_stat where userId=".$userId;
+		return $this->db->getQueryValue($sql);
+	}
 	//end to be added by Cheneil
 	/**
 	 * ���id��ȡ�û���Ϣ
