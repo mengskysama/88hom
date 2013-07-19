@@ -110,7 +110,7 @@ class HousePropertyHandler extends PropertyHandler{
 	}
 	
 	private function updateProperty(){
-		$house = $this->genPropEntity($this->estId,"");
+		$house = $this->genPropEntity($this->estId,$this->houseState);
 		$house["houseId"] = $this->houseId;
 		return $this->propertyService->updateHouse($house);
 	}

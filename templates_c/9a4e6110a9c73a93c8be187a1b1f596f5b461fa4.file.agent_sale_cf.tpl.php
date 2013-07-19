@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-16 09:19:25
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-19 16:03:58
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_sale_cf.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2021251e3bb93493851-16925453%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9a4e6110a9c73a93c8be187a1b1f596f5b461fa4' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_sale_cf.tpl',
-      1 => 1373937530,
+      1 => 1374220814,
       2 => 'file',
     ),
   ),
@@ -27,6 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'key' => 0,
     'timestamp' => 0,
     'token' => 0,
+    'restLivePropsCount' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
@@ -106,11 +107,11 @@ function check(){
 		alert("请填写厂房地址");
 		$("#factoryAddress").focus();
 		return false;
-	}/*
+	}
 	if(trim($("#areaIndex").val()) == ''){
 		alert("请选择区域");
 		return false;
-	}*/
+	}
 	
 	if(!CheckInfoCode('factoryNumber',true)) return false;	
 	if(!CheckPrice('factorySellPrice',true,'CS')) return false;
@@ -191,7 +192,8 @@ function check(){
        		    <li><a href="agent_sale_cf.php">录入厂房出售房源</a></li>
    		  </ul>
           <div class="bs_tx">
-            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
+            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> <?php echo $_smarty_tpl->tpl_vars['restLivePropsCount']->value;?>
+</font> 条</span></p>
             <input type="hidden" name="prop_type" value="cf">
             <input type="hidden" name="prop_tx_type" value="1">
 			<table width="732" border="0" cellpadding="0" cellspacing="1" bordercolor="#FFFFFF">

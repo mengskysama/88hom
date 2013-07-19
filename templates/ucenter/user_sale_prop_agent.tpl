@@ -161,7 +161,7 @@ function chkEmpty(keyId,msg){
     	<p>你的位置： 我的房不剩房 > <a href="user_sale.php">我要出售</a> > 委托出售房源</p>
         <div class="qgxq">
        		 <b class="wyqg f14 z3"><img src="<!--{$cfg.web_images}-->ucenter/qg_32.jpg"> 我要出售</b>
-             <div class="qgxq3"><span style="color:#FFF">1.填写委托信</span><span>2.选择经纪人</span><span>3.委托发布成功</span></div>
+             <div class="qgxq3"><span style="color:#FFF">1.填写委托信</span><span>2.选择经纪人</span></div>
         </div>
         <div class="qgxq2">
        	  <p class="wyqg1"><b class="z14">基本资料</b><font class="red">*</font>为必填项</p>
@@ -172,11 +172,11 @@ function chkEmpty(keyId,msg){
           <table width="100%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
            <tr>
 		    <td width="120" height="42" align="center" valign="middle" bgcolor="#f7f6f1" class="z14"><font class="red">*</font>&nbsp;房源名称</td>
-		     <td valign="middle" class="grzc_33 p5"><input type="hidden" id="estId" name="estId"/><input id="estName" name="estName" type="text" maxlength="50" onkeyup="textCounter(document.getElementById('estName'),document.getElementById('estNameAlert'),25);" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字 </td>
+		     <td valign="middle" class="grzc_33 p5"><input type="hidden" id="estId" name="estId"/><input id="estName" name="estName" value="<!--{$propName}-->" type="text" maxlength="50" onkeyup="textCounter(document.getElementById('estName'),document.getElementById('estNameAlert'),25);" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字 </td>
 		  </tr>
 		  <tr>
 		    <td width="120" height="42" align="center" valign="middle" bgcolor="#f7f6f1" class="z14"><font class="red">*</font>&nbsp;目标总价</td>
-		    <td valign="middle" class="grzc_33 p5"><input id="propPrice" name="propPrice" type="text" onblur="CheckPrice('propPrice',true,'CS');" /> 万元</td>
+		    <td valign="middle" class="grzc_33 p5"><input id="propPrice" name="propPrice" type="text" value="<!--{$propPrice}-->" /> 万元</td>
 		    
 		  </tr>
 		  <tr>
@@ -197,7 +197,7 @@ function chkEmpty(keyId,msg){
           <table width="100%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 		  <tr>
 		    <td width="120" height="42" align="center" valign="middle" bgcolor="#f7f6f1" class="z14" ><font class="red">*</font> 联 系 人</td>
-		    <td width="175" class="grzc_33 p5"><input name="contactName" id="contactName" maxlength="25" type="text" value="" onblur="chkEmpty('contactName','请填写联系人')"/> </td>
+		    <td width="175" class="grzc_33 p5"><input name="contactName" id="contactName" maxlength="25" type="text" value=""/> </td>
 		    <td> 
 		    	<input name="contactGender" type="radio" value="1" checked="checked" />先生
 		        <input name="contactGender" type="radio" value="0" />女士</td>

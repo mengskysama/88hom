@@ -80,7 +80,7 @@ class OfficePropertyHandler extends PropertyHandler{
 	
 	private function updateProperty(){
 
-		$office = $this->genPropEntity($this->estId,"");
+		$office = $this->genPropEntity($this->estId,$this->officeState);
 		$office["officeId"] = $this->officeId;
 		return $this->propertyService->updateOffice($office);
 	}	

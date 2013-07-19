@@ -372,6 +372,14 @@ class SecondHandPropertyService{
 		}
 		return '';
 	}
+	
+	public function agentProperty($prop){
+		return $this->agentPropertyDAO->agentProperty($prop);
+	}
+	
+	public function chkAgentProp($propId,$userId){
+		return $this->agentPropertyDAO->chkAgentProp($propId,$userId);
+	}
 	public function deleteTopPic($pic){
 		$where = "where picBuildId=".$pic['picBuildId']." and pictypeId=".$pic['pictypeId']." and picBuildType=".$pic['picBuildType'];
 		return $this->picDAO->delPic($where);
@@ -406,5 +414,22 @@ class SecondHandPropertyService{
 	}
 	public function getExpiredPropStat($userId,$txType){
 		return $this->houseDAO->getExpiredPropStat($userId,$txType);
+	}
+	public function getProperty($propKind,$propId,$txType){
+		$property = "";
+		$query_fields = "propName,propPrice";
+		$query_where = "where propKind='".$propKind."' and propId=".$propId;
+		$query_order = "";
+		$query_limit = "";
+		if($txType == 1){
+			$propList = $this->houseDAO->getPropertyList('vw_get_sell_property_list',$query_fields,$query_where,$query_order,$query_limit);
+		}else{
+			$propList = $this->houseDAO->getPropertyList('vw_get_lease_property_list',$query_fields,$query_where,$query_order,$query_limit);
+		}
+		if($propList){
+			$property['propName'] = $propList[0]['propName'];
+			$property['propPrice'] = $propList[0]['propPrice'];
+		}
+		return $property;
 	}
 }

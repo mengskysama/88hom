@@ -35,6 +35,7 @@ if($property){
 	$factoryTraffic = $property['factoryTraffic'];
 	$factoryContent = $property['factoryContent'];
 	$factoryAreaId = $property['factoryAreaId'];
+	$factoryState = $property['factoryState'];
 	
 	$photo['picBuildIdId'] = $propId;
 	$photo['picBuildType'] = 5;
@@ -77,6 +78,7 @@ if($property){
 	$smarty->assign("factoryTraffic",$factoryTraffic);
 	$smarty->assign("factoryContent",$factoryContent);
 	$smarty->assign("areaIndex",$factoryAreaId);
+	$smarty->assign("propState",$factoryState);
 	
 	$smarty->assign("propertyDetailPicList",$propertyDetailPicList);
 	$smarty->assign("propId",$propId);

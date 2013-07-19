@@ -59,6 +59,7 @@ if($property){
 	}
 	$shopsTitle = $property['shopsTitle'];
 	$shopsContent = $property['shopsContent'];
+	$shopsState = $property['shopsState'];
 	
 	$smarty->assign("estId",$estId);
 	$smarty->assign("estName",$estName);
@@ -80,6 +81,7 @@ if($property){
 	$smarty->assign("shopsTraffic",$shopsTraffic);
 	$smarty->assign("shopsSet",$shopsSet);
 	$smarty->assign("propId",$propId);
+	$smarty->assign("propState",$shopsState);
 }
 $picTypeList=$cfg['arr_pic']['2handShop'];
 $smarty->assign('picTypeList',$picTypeList);

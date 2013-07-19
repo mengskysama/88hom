@@ -1,0 +1,40 @@
+------------------------2013-07-19 10:00:49
+错误SQL语句：
+select count(userId) as total from ecms_user_detail where userdetailState=2 and imcpId=1and userdetailName like '搜索经纪人%'
+客户端:127.0.0.1
+时间:2013-07-19 10:00:49
+------------------------2013-07-19 10:00:49
+错误SQL语句：
+select a.userId,userdetailName,userPhone,userdetailImcpName,userdetailPicThumb,userdetailDistrict,userdetailArea,userdetailIdCardState,userdetailCardState,userdetailCredState  from ecms_user_detail a inner join ecms_user b on a.userId=b.userId where userdetailState=2 and imcpId=1and userdetailName like '搜索经纪人%'  limit 0,20
+客户端:127.0.0.1
+时间:2013-07-19 10:00:49
+------------------------2013-07-19 10:03:17
+错误SQL语句：
+select count(userId) as total from ecms_user_detail a inner join ecms_user b on a.userId=b.userId where userdetailState=2 
+客户端:127.0.0.1
+时间:2013-07-19 10:03:17
+------------------------2013-07-19 10:03:21
+错误SQL语句：
+select count(userId) as total from ecms_user_detail a inner join ecms_user b on a.userId=b.userId where userdetailState=2 
+客户端:127.0.0.1
+时间:2013-07-19 10:03:21
+------------------------2013-07-19 11:58:49
+错误SQL语句：
+insert into ecms_agent_property(propUserId,propName,txType,propPrice,remarks,contactName,contactGender,contactMobile,propState,createTime) values(6,aaaa',2,2300,'ddddaa','刘德华',1,'15986605673',1,UNIX_TIMESTAMP())
+客户端:127.0.0.1
+时间:2013-07-19 11:58:49
+------------------------2013-07-19 12:00:38
+错误SQL语句：
+insert into ecms_agent_property(propUserId,propName,txType,propPrice,remarks,contactName,contactGender,contactMobile,propState,createTime) values(6,dddd',2,2300,'ssss','刘德华',1,'15986605673',1,UNIX_TIMESTAMP())
+客户端:127.0.0.1
+时间:2013-07-19 12:00:38
+------------------------2013-07-19 12:36:49
+错误SQL语句：
+select propName,propPrice from vw_get_lease_property_list propKind='zz' and propId=9  
+客户端:127.0.0.1
+时间:2013-07-19 12:36:49
+------------------------2013-07-19 17:03:20
+错误SQL语句：
+select * from ecms_user_detail where userId=
+客户端:127.0.0.1
+时间:2013-07-19 17:03:20

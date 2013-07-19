@@ -255,12 +255,13 @@ class UserDetailDAO{
 		return $this->db->getQueryExecute($fields);
 	}
 	public function countAgents($where){
-		$sql = "select count(userId) as total from ecms_user_detail ".$where;
+		$sql = "select count(a.userId) as total from ecms_user_detail a inner join ecms_user b on a.userId=b.userId ".$where;
 		$result = $this->db->getQueryValue($sql);
 		return $result['total'];
 	}
 	public function getAgentList($fields,$where,$order,$limit){
 		$sql = "select ".$fields." from ecms_user_detail a inner join ecms_user b on a.userId=b.userId ".$where." ".$order." ".$limit;
+		//echo $sql;
 		return $this->db->getQueryArray($sql);
 	}
 	//end to update by Cheneil

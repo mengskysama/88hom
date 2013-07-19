@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-16 10:56:44
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-19 16:20:50
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_lease_sp.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2195551dbc5a847e5a1-01965641%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '929f50b5be0f23b35cd66b5fb0ee9d8f32b81937' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_lease_sp.tpl',
-      1 => 1373875902,
+      1 => 1374221770,
       2 => 'file',
     ),
   ),
@@ -27,6 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'key' => 0,
     'timestamp' => 0,
     'token' => 0,
+    'restLivePropsCount' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
@@ -189,25 +190,25 @@ function checkRentPrice(){
 
 <body>
 <!--求购头部-->
-<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_agent_header']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['header_ucenter_user']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 <!--求购内容-->
 <div class="qg_main">
-	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_agent_left_menu']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_user_left_menu']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
   	<div class="qg_r">
     <p>你的位置: <a href="#">房源管理</a></p>
    	<div class="qg_bs">
             <form id="spForm" name="spForm" action="property_handler.php" method="post" enctype="multipart/form-data">
  		   <ul>
-   			 	<li><a href="agent_lease_zz.php">录入住宅出租房源</a></li>
-    		    <li><a href="agent_lease_bs.php">录入别墅出租房源</a></li>
-     		    <li><a href="agent_lease_sp.php">录入商铺出租房源</a></li>
-      		 	<li><a href="agent_lease_xzl.php">录入写字楼出租房源</a></li>
-       		    <li><a href="agent_lease_cf.php">录入厂房出租房源</a></li>
+   			 	<li><a href="user_lease_zz.php">录入住宅出租房源</a></li>
+    		    <li><a href="user_lease_bs.php">录入别墅出租房源</a></li>
+     		    <li><a href="user_lease_sp.php">录入商铺出租房源</a></li>
+      		 	<li><a href="user_lease_xzl.php">录入写字楼出租房源</a></li>
    		  </ul>
           <div class="bs_tx">
-            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
+            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> <?php echo $_smarty_tpl->tpl_vars['restLivePropsCount']->value;?>
+</font> 条</span></p>
             <input type="hidden" name="prop_type" value="sp">
             <input type="hidden" name="prop_tx_type" value="2">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">

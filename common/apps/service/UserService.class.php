@@ -407,23 +407,24 @@ class UserService{
 	}
 	
 	public function getAgentList($condition){
-		$where = "where userdetailState=2 ";
+		$where = "where userdetailState=2 and userType=2 ";
 		if($condition['company'] != "" && $condition['company'] > 0){
-			$where .= "and imcpId=".$condition['company'];
+			$where .= " and imcpId=".$condition['company'];
 		}
 		if($condition['district'] != "" && $condition['district'] > 0){
-			$where .= "and userdetailDistrict=".$condition['district'];			
+			$where .= " and userdetailDistrict=".$condition['district'];			
 		}
 		if($condition['agentName'] != ""){
-			$where .= "and userdetailName like '".$condition['agentName']."%'";			
+			$where .= " and userdetailName like '".$condition['agentName']."%'";			
 		}
 		//limit
 		$order = "";
 		$page = $condition['currentPageNo'];
 		$page = ($page == "" || $page == 0) ? 1 : $page;
-		$limit = "limit ".(($page - 1) * 20).",20";
+		$limit = " limit ".(($page - 1) * 20).",20";
 		//fields
-		$fields = "a.userId,userdetailName,userPhone,userdetailImcpName,userdetailPicThumb,userdetailDistrict,userdetailArea ";
+		$fields = "a.userId,userdetailName,userPhone,userdetailImcpName,userdetailPicThumb,userdetailDistrict,userdetailArea,userdetailIdCardState,userdetailCardState,userdetailCredState,".
+				  "(select count(userId) from ems_agent_property_user where agent_property_id=".$condition['propId']." and userId=a.userId) as isAgent ";
 		$totalNum = $this->userDetailDAO->countAgents($where);
 		$agentList = $this->userDetailDAO->getAgentList($fields,$where,$order,$limit);
 		$pagination = pagination2($totalNum,20,$page,5);

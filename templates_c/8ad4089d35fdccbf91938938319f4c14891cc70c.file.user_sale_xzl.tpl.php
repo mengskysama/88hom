@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-13 13:23:35
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-19 16:20:31
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_xzl.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1874551c7e378b4dbf7-05579691%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8ad4089d35fdccbf91938938319f4c14891cc70c' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_xzl.tpl',
-      1 => 1373620609,
+      1 => 1374221816,
       2 => 'file',
     ),
   ),
@@ -23,8 +23,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'jsFiles' => 0,
     'cssFiles' => 0,
     'ckeditLib' => 0,
+    'picTypeList' => 0,
+    'key' => 0,
     'timestamp' => 0,
     'token' => 0,
+    'restLivePropsCount' => 0,
+    'item' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -41,21 +45,23 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
 "></script>
 <script>
-$(function() {    
-    $("#estName").autocomplete({
-      source: "ajax_get_prop_name.php",
-      select: function(e, ui) {
-      	  $("#estId").val(ui.item.id);    
-      }
-    });
-    initPicUp('<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
+$(function() {       
+	<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+    initPicUp3(<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+,'<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
 ','<?php echo $_smarty_tpl->tpl_vars['token']->value;?>
 ','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['file_path_upload'];?>
 ','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_path'];?>
 ','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_common'];?>
 ','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
 ');
-        
+	<?php } ?>
     $("#btn_live").click(function() {
         $("#btn_live").attr("disabled", true);
         $("#btn_save").attr("disabled", true);
@@ -81,7 +87,7 @@ $(function() {
 });
   
 function check(){
-	var estNameValue = $("#estName").val();
+	var estNameValue = $("#estId").val();
 	if(trim(estNameValue) == ''){
 		alert("请填写写字楼名称");
 		$("#estName").focus();
@@ -104,6 +110,15 @@ function check(){
 	var houseContentValue = CKEDITOR.instances.officeContent.getData(); 
 	if(trim(houseContentValue) == ''){
 		alert("请填写房源描述");
+		return false;
+	}
+	if($("#officeTraffic").val() == ""){
+		alert("请填写交通状况");
+		$("#officeTraffic").focus();
+		return false;
+	}
+	if($("#topPicPath").val() == ""){
+		alert("请选择标题图");
 		return false;
 	}
 	
@@ -131,14 +146,18 @@ function check(){
       		 	<li><a href="user_sale_xzl.php">录入写字楼出售房源</a></li>
    		  </ul>
       <div class="bs_tx">
-        <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
+        <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> <?php echo $_smarty_tpl->tpl_vars['restLivePropsCount']->value;?>
+</font> 条</span></p>
             <input type="hidden" name="prop_type" value="xzl">
             <input type="hidden" name="prop_tx_type" value="1">
         <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 写字楼名称</td>
     <td align="left" valign="middle" class="p25 grzc_31"><input type="hidden" id="estId" name="estId"/>
-    <input id="estName" name="estName" type="text" maxlength="50" onkeyup="textCounter(document.getElementById('estName'),document.getElementById('estNameAlert'),25);" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字</td>
+    <input id="estName" name="estName" type="text" maxlength="50" onkeyup="textCounter(document.getElementById('estName'),document.getElementById('estNameAlert'),25);emptyEstId();" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字</td>
+     <div class="tswords" style="display: none;" id="dis_est_alert">
+                	<span class="alert01" style="margin-left:0;" id="P1">请选择列表中匹配的楼盘录入</span><a id="addestate" href="estate_input.php" title="" target="_blank">我要添加新楼盘</a>
+                </div>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">房源信息编码</td>
@@ -199,36 +218,59 @@ function check(){
       <div class=" bs_tx">
     <p><b>图文信息</b></p>
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
-  <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
-			    <td><input type="file" name="file_upload" id="file_upload"/></td>
-			    <td>
-			    	<div id="showImg" style="float: left;">			
-					</div>
+			  <tr>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
+			    <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
+			    	<input id="officeTitle" name="officeTitle" type="text" maxlength="60" onkeyup="textCounter(document.getElementById('officeTitle'),document.getElementById('officeTitleAlert'),30);" /> 还可写<span id="officeTitleAlert"><font class="red">30</font></span>个汉字</td>
+			  </tr>
+			  <tr>
+			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
+			    <td colspan="2" align="left" valign="middle">
+			    <textarea id="officeContent" name="officeContent" cols="86" rows="12" ></textarea>			    
+				<script>
+					CKEDITOR.replace( 'officeContent' );
+				</script>
+			    <span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
+			请勿从其它网站或其它房源描述中拷贝。</span>
+			    	
 			    </td>
-  </tr>
-  <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
-    <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
-    	<input id="officeTitle" name="officeTitle" type="text" maxlength="60" onkeyup="textCounter(document.getElementById('officeTitle'),document.getElementById('officeTitleAlert'),30);" /> 还可写<span id="officeTitleAlert"><font class="red">30</font></span>个汉字</td>
-  </tr>
-  <tr>
-    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-    <td colspan="2" align="left" valign="middle">
-    <textarea id="officeContent" name="officeContent" cols="86" rows="12" ></textarea>			    
-	<script>
-		CKEDITOR.replace( 'officeContent' );
-	</script>
-    <span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
-请勿从其它网站或其它房源描述中拷贝。</span>
-         <span>
-         <b style="text-indent:0px;">注意事项：</b> <br />
-1.上传宽度大于600像素，比例为5:4的图片可获得更好的展示效果。<br />
-2.请勿上传有水印、盖章等任何侵犯他人版权或含有广告信息的图片。</span>
-    	
-    </td>
-  </tr>
-</table>
+			  </tr>
+			  <tr>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>交通状况</td>
+			    <td colspan="2" width="600" align="left" valign="middle" class="p25 grzc_31">
+			    	 <textarea class="bdqy2" rows="7" cols="80" id="officeTraffic" name="officeTraffic"></textarea>
+			    </td>
+			  </tr>
+				<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+				<tr><td height="220" align="center" valign="middle" bgcolor="#f7f6f1"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</td>
+		         <td height="215" align="left" valign="top" class="p25">
+		         	<div class="sc_btn">
+		                <input type="file" name="file_upload_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" id="file_upload_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"/>
+		            </div>
+		            <div class="tpsc" id="showImg_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+">
+		            </div>
+				 </td>
+				</tr> 
+				<?php } ?>
+		      
+		       <tr>
+			    <td height="124" align="center" valign="middle" bgcolor="#f7f6f1">标题图</td>
+			    <td align="left" valign="top" class="p25"><div class="btt" id="topic_image"></div></td>
+			    
+        	    <input type="hidden" id="topPicPath" name="topPicPath" value=""/>
+        	    <input type="hidden" id="topPicPathThumb" name="topPicPathThumb" value=""/>
+			  </tr>
+			</table>
       </div>
        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>

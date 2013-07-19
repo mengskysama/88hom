@@ -42,6 +42,7 @@ if($property){
 	$factoryPayDetailY = $property['factoryPayDetailY'];
 	$factoryPayDetailF = $property['factoryPayDetailF'];
 	$factoryLeastYear = $property['factoryLeastYear'];
+	$factoryState = $property['factoryState'];
 	
 	$photo['picBuildIdId'] = $propId;
 	$photo['picBuildType'] = 5;
@@ -91,6 +92,7 @@ if($property){
 	$smarty->assign("factoryPayDetailY",$factoryPayDetailY);
 	$smarty->assign("factoryPayDetailF",$factoryPayDetailF);
 	$smarty->assign("factoryLeastYear",$factoryLeastYear);
+	$smarty->assign("propState",$factoryState);
 	
 	$smarty->assign("propertyDetailPicList",$propertyDetailPicList);
 	$smarty->assign("propId",$propId);

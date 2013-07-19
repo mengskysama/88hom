@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-13 12:32:25
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-19 11:43:54
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_lease.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2609451dbc59f95cc38-57538710%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4f9b90f042e195ba4371cb2a4508e9c40e01071d' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_lease.tpl',
-      1 => 1373363026,
+      1 => 1374205431,
       2 => 'file',
     ),
   ),
@@ -55,7 +55,7 @@ ucenter/qg_img1.jpg" /></a></dt>
               		  <dd>
    					  <b class="title">委托中介网店找房</b>
                       <p>足不出户，委托房源信息，推优中介网店帮您售房租房！高效、免骚扰。</p>
-  					  <p style=" margin-top:15px;"><a href="#">去委托</a></p>
+  					  <p style=" margin-top:15px;"><a href="user_lease_prop_agent.php">去委托</a></p>
   					 </dd>
 				</dl>
 				<dl>

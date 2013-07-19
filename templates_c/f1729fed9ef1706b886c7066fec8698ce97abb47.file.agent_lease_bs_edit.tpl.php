@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-15 15:25:22
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-19 14:54:07
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_lease_bs_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1537051e3a39180c750-75609927%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f1729fed9ef1706b886c7066fec8698ce97abb47' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_lease_bs_edit.tpl',
-      1 => 1373873098,
+      1 => 1374216707,
       2 => 'file',
     ),
   ),
@@ -68,6 +68,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'key_' => 0,
     'topPicThumb' => 0,
     'topPicPath' => 0,
+    'propState' => 0,
     'propId' => 0,
   ),
   'has_nocache_code' => false,
@@ -77,7 +78,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
 " />
-<title>编辑别墅出售房源</title>
+<title>编辑别墅出租房源</title>
 <?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
@@ -93,6 +94,16 @@ $(function() {
             document.getElementById("bsForm").submit();
         } else {
             $("#btn_update").removeAttr("disabled");
+        }
+    });
+		
+    $("#btn_live").click(function() {
+        $("#btn_live").attr("disabled", true);
+        if (check()) {
+            $("#action_to_go").val("1");
+            document.getElementById("bsForm").submit();
+        } else {
+            $("#btn_live").removeAttr("disabled");
         }
     });
 	<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
@@ -587,11 +598,13 @@ uploads/<?php echo $_smarty_tpl->tpl_vars['topPicThumb']->value;?>
 		  <tr>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
             <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_update" value="修改" /></td>
-            <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
+            <td width="320" height="80" align="center" valign="middle"><?php if ($_smarty_tpl->tpl_vars['propState']->value==0){?><input name="btn_live" type="button" class="mddl1" id="btn_live" value="发布" /><?php }?></td>
 	      </tr>
 	    </table>
 	    <input type="hidden" id="actionType" name="actionType" value="update"/>
 	    <input type="hidden" id="propId" name="propId" value="<?php echo $_smarty_tpl->tpl_vars['propId']->value;?>
+"/>
+	    <input type="hidden" id="action_to_go" name="action_to_go" value="<?php echo $_smarty_tpl->tpl_vars['propState']->value;?>
 "/>
 	    </form>
     </div>

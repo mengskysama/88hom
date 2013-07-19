@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-16 09:46:38
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-19 16:02:46
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_lease_cf.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1653051e4a0327c7e99-50136842%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f3b922d817777ade82c84a1bd0f64038b7ef5bd8' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_lease_cf.tpl',
-      1 => 1373939194,
+      1 => 1374220794,
       2 => 'file',
     ),
   ),
@@ -27,6 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'key' => 0,
     'timestamp' => 0,
     'token' => 0,
+    'restLivePropsCount' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
@@ -230,7 +231,8 @@ function changepaydetail() {
        		    <li><a href="agent_lease_cf.php">录入厂房出租房源</a></li>
    		  </ul>
           <div class="bs_tx">
-            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
+            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> <?php echo $_smarty_tpl->tpl_vars['restLivePropsCount']->value;?>
+</font> 条</span></p>
             <input type="hidden" name="prop_type" value="cf">
             <input type="hidden" name="prop_tx_type" value="2">
 			<table width="732" border="0" cellpadding="0" cellspacing="1" bordercolor="#FFFFFF">

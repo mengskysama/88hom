@@ -97,9 +97,6 @@ class OfficeDAO{
 		if(isset($info['officeFloor'])){
 			$sql .= "officeFloor=".$info['officeFloor'].",";
 		} 
-		if(isset($info['officeFloor'])){
-			$sql .= "officeFloor=".$info['officeFloor'].",";
-		} 
 		if(isset($info['officeAllFloor'])){
 			$sql .= "officeAllFloor=".$info['officeAllFloor'].",";
 		} 

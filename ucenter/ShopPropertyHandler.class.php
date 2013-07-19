@@ -89,7 +89,7 @@ class ShopPropertyHandler extends PropertyHandler{
 	
 	private function updateProperty(){
 
-		$shop = $this->genPropEntity($this->estId,"");
+		$shop = $this->genPropEntity($this->estId,$this->shopsState);
 		$shop["shopId"] = $this->shopId;
 		return $this->propertyService->updateShop($shop);
 	}

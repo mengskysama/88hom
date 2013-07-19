@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-15 14:46:27
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-19 16:19:54
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_sale_sp.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3199451e37364805a49-52276084%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3c5388099526408bda746106421cd8e269a8cf20' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_sale_sp.tpl',
-      1 => 1373870565,
+      1 => 1374221725,
       2 => 'file',
     ),
   ),
@@ -27,6 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'key' => 0,
     'timestamp' => 0,
     'token' => 0,
+    'restLivePropsCount' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
@@ -147,7 +148,8 @@ function check(){
        		    <li><a href="agent_sale_cf.php">录入厂房出售房源</a></li>
    		  </ul>
           <div class="bs_tx">
-            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
+            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> <?php echo $_smarty_tpl->tpl_vars['restLivePropsCount']->value;?>
+</font> 条</span></p>
             <input type="hidden" name="prop_type" value="sp">
             <input type="hidden" name="prop_tx_type" value="1">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">

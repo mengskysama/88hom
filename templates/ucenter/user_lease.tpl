@@ -22,7 +22,7 @@
               		  <dd>
    					  <b class="title">委托中介网店找房</b>
                       <p>足不出户，委托房源信息，推优中介网店帮您售房租房！高效、免骚扰。</p>
-  					  <p style=" margin-top:15px;"><a href="#">去委托</a></p>
+  					  <p style=" margin-top:15px;"><a href="user_lease_prop_agent.php">去委托</a></p>
   					 </dd>
 				</dl>
 				<dl>

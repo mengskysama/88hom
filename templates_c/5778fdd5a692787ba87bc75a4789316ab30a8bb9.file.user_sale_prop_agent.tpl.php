@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-10 16:50:15
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-19 12:44:52
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_prop_agent.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:258451dbe469d375d3-28207828%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5778fdd5a692787ba87bc75a4789316ab30a8bb9' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_prop_agent.tpl',
-      1 => 1373444782,
+      1 => 1374209039,
       2 => 'file',
     ),
   ),
@@ -23,6 +23,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'jsFiles' => 0,
     'cssFiles' => 0,
     'userId' => 0,
+    'propName' => 0,
+    'propPrice' => 0,
     'err_msg' => 0,
   ),
   'has_nocache_code' => false,
@@ -196,7 +198,7 @@ function chkEmpty(keyId,msg){
         <div class="qgxq">
        		 <b class="wyqg f14 z3"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
 ucenter/qg_32.jpg"> 我要出售</b>
-             <div class="qgxq3"><span style="color:#FFF">1.填写委托信</span><span>2.选择经纪人</span><span>3.委托发布成功</span></div>
+             <div class="qgxq3"><span style="color:#FFF">1.填写委托信</span><span>2.选择经纪人</span></div>
         </div>
         <div class="qgxq2">
        	  <p class="wyqg1"><b class="z14">基本资料</b><font class="red">*</font>为必填项</p>
@@ -208,11 +210,13 @@ ucenter/qg_32.jpg"> 我要出售</b>
           <table width="100%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
            <tr>
 		    <td width="120" height="42" align="center" valign="middle" bgcolor="#f7f6f1" class="z14"><font class="red">*</font>&nbsp;房源名称</td>
-		     <td valign="middle" class="grzc_33 p5"><input type="hidden" id="estId" name="estId"/><input id="estName" name="estName" type="text" maxlength="50" onkeyup="textCounter(document.getElementById('estName'),document.getElementById('estNameAlert'),25);" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字 </td>
+		     <td valign="middle" class="grzc_33 p5"><input type="hidden" id="estId" name="estId"/><input id="estName" name="estName" value="<?php echo $_smarty_tpl->tpl_vars['propName']->value;?>
+" type="text" maxlength="50" onkeyup="textCounter(document.getElementById('estName'),document.getElementById('estNameAlert'),25);" /> 还可写<span id="estNameAlert"><font class="red">25</font></span>个汉字 </td>
 		  </tr>
 		  <tr>
 		    <td width="120" height="42" align="center" valign="middle" bgcolor="#f7f6f1" class="z14"><font class="red">*</font>&nbsp;目标总价</td>
-		    <td valign="middle" class="grzc_33 p5"><input id="propPrice" name="propPrice" type="text" onblur="CheckPrice('propPrice',true,'CS');" /> 万元</td>
+		    <td valign="middle" class="grzc_33 p5"><input id="propPrice" name="propPrice" type="text" value="<?php echo $_smarty_tpl->tpl_vars['propPrice']->value;?>
+" /> 万元</td>
 		    
 		  </tr>
 		  <tr>
@@ -233,7 +237,7 @@ ucenter/qg_32.jpg"> 我要出售</b>
           <table width="100%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 		  <tr>
 		    <td width="120" height="42" align="center" valign="middle" bgcolor="#f7f6f1" class="z14" ><font class="red">*</font> 联 系 人</td>
-		    <td width="175" class="grzc_33 p5"><input name="contactName" id="contactName" maxlength="25" type="text" value="" onblur="chkEmpty('contactName','请填写联系人')"/> </td>
+		    <td width="175" class="grzc_33 p5"><input name="contactName" id="contactName" maxlength="25" type="text" value=""/> </td>
 		    <td> 
 		    	<input name="contactGender" type="radio" value="1" checked="checked" />先生
 		        <input name="contactGender" type="radio" value="0" />女士</td>

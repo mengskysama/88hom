@@ -30,6 +30,16 @@ $(function() {
             $("#btn_update").removeAttr("disabled");
         }
     });
+		
+    $("#btn_live").click(function() {
+        $("#btn_live").attr("disabled", true);
+        if (check()) {
+            $("#action_to_go").val("1");
+            document.getElementById("cfForm").submit();
+        } else {
+            $("#btn_live").removeAttr("disabled");
+        }
+    });
 });
 function check(){
 
@@ -438,11 +448,12 @@ function changepaydetail() {
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
             <td width="120" align="center" valign="middle">
             <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_update" value="修改" /></td>
-            <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
+            <td width="320" height="80" align="center" valign="middle"><!--{if $propState eq 0}--><input name="btn_live" type="button" class="mddl1" id="btn_live" value="发布" /><!--{/if}--></td>
 	      </tr>
 	    </table>
 	    <input type="hidden" id="actionType" name="actionType" value="update"/>
 	    <input type="hidden" id="propId" name="propId" value="<!--{$propId}-->"/>
+	    <input type="hidden" id="action_to_go" name="action_to_go" value="<!--{$propState}-->"/>
 	    </form>
     </div>
     </div>

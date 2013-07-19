@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-15 14:46:10
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-19 16:20:08
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_lease_sp.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3080351e39ab2d6fd99-58416139%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd2bcb87d6bfa8432e0b7a7e2033d5d4794d30b5f' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_lease_sp.tpl',
-      1 => 1373870608,
+      1 => 1374221681,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51e39ab2e7c003_55709508',
   'variables' => 
   array (
     'cfg' => 0,
@@ -25,11 +27,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'key' => 0,
     'timestamp' => 0,
     'token' => 0,
+    'restLivePropsCount' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_51e39ab2e7c003_55709508',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51e39ab2e7c003_55709508')) {function content_51e39ab2e7c003_55709508($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -207,7 +208,8 @@ function checkRentPrice(){
        		    <li><a href="agent_lease_cf.php">录入厂房出租房源</a></li>
    		  </ul>
           <div class="bs_tx">
-            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
+            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> <?php echo $_smarty_tpl->tpl_vars['restLivePropsCount']->value;?>
+</font> 条</span></p>
             <input type="hidden" name="prop_type" value="sp">
             <input type="hidden" name="prop_tx_type" value="2">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
@@ -317,7 +319,6 @@ function checkRentPrice(){
 				</script>
 				<span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 			请勿从其它网站或其它房源描述中拷贝。</span>
-			         <span>
 			    	
 			    </td>
 			  </tr>

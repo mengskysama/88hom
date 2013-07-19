@@ -155,7 +155,7 @@ function checkRentPrice(){
        		    <li><a href="agent_lease_cf.php">录入厂房出租房源</a></li>
    		  </ul>
           <div class="bs_tx">
-            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
+            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> <!--{$restLivePropsCount}--></font> 条</span></p>
             <input type="hidden" name="prop_type" value="sp">
             <input type="hidden" name="prop_tx_type" value="2">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">

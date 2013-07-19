@@ -115,7 +115,7 @@ class VillaPropertyHandler extends PropertyHandler{
 	}
 	
 	private function updateProperty(){
-		$villa = $this->genPropEntity($this->estId,"");
+		$villa = $this->genPropEntity($this->estId,$this->villaState);
 		$villa["villaId"] = $this->villaId;
 		return $this->propertyService->updateVilla($villa);
 	}

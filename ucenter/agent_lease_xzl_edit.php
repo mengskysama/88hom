@@ -38,6 +38,7 @@ if($property){
 	$officeTitle = $property['officeTitle'];
 	$officeContent = $property['officeContent'];
 	$officeTraffic = $property['officeTraffic'];
+	$officeState = $property['officeState'];
 	
 	$smarty->assign("estId",$estId);
 	$smarty->assign("estName",$estName);
@@ -58,6 +59,7 @@ if($property){
 	$smarty->assign("officeTraffic",$officeTraffic);
 	$smarty->assign("propId",$propId);
 	$smarty->assign("propertyDetailPicList",$propertyDetailPicList);
+	$smarty->assign("propState",$officeState);
 }
 $picTypeList=$cfg['arr_pic']['2handOffice'];
 $smarty->assign('picTypeList',$picTypeList);

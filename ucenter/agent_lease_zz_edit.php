@@ -55,6 +55,7 @@ if($property){
 	
 	$houseTitle = $property['houseTitle'];
 	$houseContent = $property['houseContent'];
+	$houseState = $property['houseState'];
 
 	$smarty->assign("estId",$estId);
 	$smarty->assign("estName",$estName);
@@ -81,6 +82,7 @@ if($property){
 	$smarty->assign("houseContent",$houseContent);
 	$smarty->assign("propId",$propId);
 	$smarty->assign("propertyDetailPicList",$propertyDetailPicList);
+	$smarty->assign("propState",$houseState);
 }
 $picTypeList=$cfg['arr_pic']['2handHouse'];
 $smarty->assign('picTypeList',$picTypeList);
