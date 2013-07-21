@@ -128,6 +128,9 @@ class CommunityDAO  {
 		$sql="select count(*) as counts from ecms_community $where";
 		return $this->db->getQueryValue($sql);
 	}
+	//add by david start
+	
+	//add by david end
 }
 
 

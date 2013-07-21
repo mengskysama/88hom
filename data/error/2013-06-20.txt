@@ -1,0 +1,5 @@
+------------------------2013-06-20 16:34:06
+错误SQL语句：
+update ecms_community set communityName='东方新地',communityRefPrice=0,communityIsHouseType=0,communityIsBusinessType=0,communityIsOfficeType=0,communityIsVillaType=1,communityBuildType='',communityManagerFee=0,communityAddress='',communityProjectFeatures='',communityFitmentStatus='',communityCompany='',communityCompanyAddress='',communityDevCompany='',communityDevCompanyAddress='',communitySellHouseAddress='',communityTraffic='',communityPeriInfo='',communityMapX=0,communityMapY=0,communityVolRate=0,communityGreenRate=0,communityBuildArea=9999999999.9999,communityLandArea=0,communityBuildInfo='',communityParkingSpaces='',communityHouseholds='',communityMainHouseModel='',communityRight=0,communityParkingSpace='',communityProvince=4,communityCity=8,communityDistrict=0,communityArea=3,communityState=1,communityIsSuggest=0,communityOrderNum=1,communityUserId=1,communityUpdateTime=1371717246 where communityId=24
+客户端:127.0.0.1
+时间:2013-06-20 16:34:06

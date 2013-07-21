@@ -14,7 +14,7 @@ if(!$magic_quotes_gpc) {
 	$_FILES = c_addslashes($_FILES);
 }
 //$webset=require ECMS_PATH_CONF.'web/web_'.LANG.'.cfg.php';
-$webset=require ECMS_PATH_CONF.'web/web_zh_CN.cfg.php';
+$webset=require ECMS_PATH_CONF.'web/web.cfg.php';
 $cfg['web_keywords']='';
 $cfg['web_keywords_str']='';
 if($webset['keywords']!=''){
@@ -89,7 +89,7 @@ if(ECMS_DB_PROVIDER=='mysql'){
 
 //友情链接
 //$link=require ECMS_PATH_CONF.'link/link_'.LANG.'.php';
-//$link=require ECMS_PATH_CONF.'link/link_zh_CN.php';
+$link=require ECMS_PATH_CONF.'link/link_zh_CN.php';
 
 //smarty模板引擎设置
 require ECMS_PATH_SMARTY.'libs/Smarty.class.php';
@@ -124,6 +124,10 @@ function __autoload($name) {
 	if (file_exists(ECMS_PATH_SERVICE . $name . '.class.php')) {
 		//echo 'you';
 		require ECMS_PATH_SERVICE . $name . '.class.php';
+	}
+	if (file_exists(ECMS_PATH_MODEL . $name . '.class.php')) {
+		//echo 'sb';
+		require ECMS_PATH_MODEL . $name . '.class.php';
 	}
 	if(file_exists(ECMS_PATH_CLASSES . $name . '.class.php')){
 		//echo '!!!';

@@ -1,0 +1,21 @@
+------------------------2013-07-03 10:58:24
+错误SQL语句：
+update ecms_imcp set imcpName='世华地产有限公司',
+			  imcpShortName='世华地产123',
+			  imcpAddress='深圳市南山区',
+			  imcpWebSite='http://www.88hom.com',
+			  imcpContent='<p>
+	这是个神奇的中介公司</p>
+',
+			  imcpLogo='imcp/20130703100917.jpg',
+			  imcpState=0,
+			  imcpUpdateTime=1372820304 
+			  where imcpId=
+客户端:127.0.0.1
+时间:2013-07-03 10:58:24
+------------------------2013-07-03 11:12:37
+错误SQL语句：
+select imcp.*,user.userId,user.userUsername from ecms_imcp as imcp 
+			  inner join ecms_user as user on imcp.imcpUserId=user.userId where 1=1 imcp.imcpShortName like "%中原%" or imcp.imcpName like "%中原%" order by imcp.imcpUpdateTime desc limit 0,20
+客户端:127.0.0.1
+时间:2013-07-03 11:12:37

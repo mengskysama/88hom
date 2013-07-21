@@ -1,85 +1,48 @@
-------------------------2013-06-19 15:48:36
+------------------------2013-06-19 11:18:13
 错误SQL语句：
-select communityId,communityName from ecms_community where communityName like '天%
+insert into ecms_community(communityName,communityRefPrice,communityIsHouseType,communityIsBusinessType,communityIsOfficeType,communityIsVillaType,communityBuildType,communityManagerFee,
+										communityAddress,communityProjectFeatures,communityFitmentStatus,communityCompany,communityCompanyAddress,communityDevCompany,communityDevCompanyAddress,
+										communitySellHouseAddress,communityTraffic,communityPeriInfo,communityMapX,communityMapY,communityVolRate,communityGreenRate,communityBuildArea,
+										communityLandArea,communityBuildInfo,communityParkingSpaces,communityHouseholds,communityMainHouseModel,communityRight,communityParkingSpace,
+										communityProvince,communityCity,communityDistrict,communityArea,communityState,communityIsSuggest,communityOrderNum,communityUserId,communityCreateTime,communityUpdateTime) values('东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',33000,1,0,0,0,'东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',2.5,'东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地','东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地','东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地','东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地','东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地','东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地','东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地','东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地','<p>
+	东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地</p>
+','<p>
+	东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地</p>
+',东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地,0,80,60,40000,10000,'<p>
+	东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地</p>
+','','东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地','东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',70,'东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',4,8,0,0,1,0,1,1,1371611893,1371611893)
 客户端:127.0.0.1
-时间:2013-06-19 15:48:36
-------------------------2013-06-19 15:56:37
+时间:2013-06-19 11:18:13
+------------------------2013-06-19 11:28:58
 错误SQL语句：
-select communityId,communityName from ecms_community where communityName like '天%
+update ecms_community set communityName='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityRefPrice=33000,communityIsHouseType=1,communityIsBusinessType=0,communityIsOfficeType=0,communityIsVillaType=0,communityBuildType='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityManagerFee=2.5,communityAddress='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityProjectFeatures='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityFitmentStatus='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityCompany='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityCompanyAddress='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityDevCompany='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityDevCompanyAddress='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communitySellHouseAddress='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityTraffic='<p>
+	东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地</p>
+',communityPeriInfo='<p>
+	东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地</p>
+',communityMapX=116.391046,communityMapY=39.968263,communityVolRate=80,communityGreenRate=60,communityBuildArea=40000,communityLandArea=10000,communityBuildInfo='<p>
+	东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地</p>
+',communityParkingSpaces='',communityHouseholds='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityMainHouseModel='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityRight=70,communityParkingSpace='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityProvince=4,communityCity=8,communityDistrict=0,communityArea=0,communityState=1,communityIsSuggest=0,communityOrderNum=1,communityUserId=1,communityUpdateTime=1371612538 where communityId=18
 客户端:127.0.0.1
-时间:2013-06-19 15:56:37
-------------------------2013-06-19 15:57:47
+时间:2013-06-19 11:28:58
+------------------------2013-06-19 11:33:16
 错误SQL语句：
-select communityId,communityName from ecms_community where communityName like 'j%
+update ecms_community set communityName='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityRefPrice=33000,communityIsHouseType=1,communityIsBusinessType=0,communityIsOfficeType=0,communityIsVillaType=0,communityBuildType='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityManagerFee=2.5,communityAddress='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityProjectFeatures='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityFitmentStatus='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityCompany='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityCompanyAddress='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityDevCompany='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityDevCompanyAddress='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communitySellHouseAddress='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityTraffic='<p>
+	东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地</p>
+',communityPeriInfo='<p>
+	东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地</p>
+',communityMapX=116.391046,communityMapY=39.968263,communityVolRate=80,communityGreenRate=60,communityBuildArea=40000,communityLandArea=10000,communityBuildInfo='<p>
+	东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地</p>
+',communityParkingSpaces='',communityHouseholds='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityMainHouseModel='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityRight=70,communityParkingSpace='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityProvince=4,communityCity=8,communityDistrict=0,communityArea=0,communityState=1,communityIsSuggest=0,communityOrderNum=1,communityUserId=1,communityUpdateTime=1371612796 where communityId=18
 客户端:127.0.0.1
-时间:2013-06-19 15:57:47
-------------------------2013-06-19 15:57:51
+时间:2013-06-19 11:33:16
+------------------------2013-06-19 11:35:58
 错误SQL语句：
-select communityId,communityName from ecms_community where communityName like 't%
+update ecms_community set communityName='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityRefPrice=33000,communityIsHouseType=1,communityIsBusinessType=0,communityIsOfficeType=0,communityIsVillaType=0,communityBuildType='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityManagerFee=2.5,communityAddress='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityProjectFeatures='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityFitmentStatus='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityCompany='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityCompanyAddress='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityDevCompany='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityDevCompanyAddress='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communitySellHouseAddress='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityTraffic='<p>
+	东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地</p>
+',communityPeriInfo='<p>
+	东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地</p>
+',communityMapX=116.391046,communityMapY=39.968263,communityVolRate=80,communityGreenRate=60,communityBuildArea=40000,communityLandArea=10000,communityBuildInfo='<p>
+	东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地</p>
+',communityParkingSpaces='',communityHouseholds='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityMainHouseModel='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityRight=70,communityParkingSpace='东方新地东方新地东方新地东方新地东方新地东方新地东方新地东方新地',communityProvince=4,communityCity=8,communityDistrict=0,communityArea=0,communityState=1,communityIsSuggest=0,communityOrderNum=1,communityUserId=1,communityUpdateTime=1371612958 where communityId=18
 客户端:127.0.0.1
-时间:2013-06-19 15:57:51
-------------------------2013-06-19 15:57:52
-错误SQL语句：
-select communityId,communityName from ecms_community where communityName like 'tian%
-客户端:127.0.0.1
-时间:2013-06-19 15:57:52
-------------------------2013-06-19 15:57:52
-错误SQL语句：
-select communityId,communityName from ecms_community where communityName like '天%
-客户端:127.0.0.1
-时间:2013-06-19 15:57:52
-------------------------2013-06-19 16:01:08
-错误SQL语句：
-select communityId,communityName from ecms_community where communityName like 'j%
-客户端:127.0.0.1
-时间:2013-06-19 16:01:08
-------------------------2013-06-19 16:01:10
-错误SQL语句：
-select communityId,communityName from ecms_community where communityName like 'ja%
-客户端:127.0.0.1
-时间:2013-06-19 16:01:10
-------------------------2013-06-19 16:01:14
-错误SQL语句：
-select communityId,communityName from ecms_community where communityName like 't%
-客户端:127.0.0.1
-时间:2013-06-19 16:01:14
-------------------------2013-06-19 16:01:15
-错误SQL语句：
-select communityId,communityName from ecms_community where communityName like 'tian%
-客户端:127.0.0.1
-时间:2013-06-19 16:01:15
-------------------------2013-06-19 16:01:16
-错误SQL语句：
-select communityId,communityName from ecms_community where communityName like '天%
-客户端:127.0.0.1
-时间:2013-06-19 16:01:16
-------------------------2013-06-19 16:01:32
-错误SQL语句：
-select communityId,communityName from ecms_community where communityName like '天yu%
-客户端:127.0.0.1
-时间:2013-06-19 16:01:32
-------------------------2013-06-19 16:01:32
-错误SQL语句：
-select communityId,communityName from ecms_community where communityName like '天yue%
-客户端:127.0.0.1
-时间:2013-06-19 16:01:32
-------------------------2013-06-19 16:01:34
-错误SQL语句：
-select communityId,communityName from ecms_community where communityName like '天悦%
-客户端:127.0.0.1
-时间:2013-06-19 16:01:34
-------------------------2013-06-19 16:09:27
-错误SQL语句：
-select communityId,communityName from ecms_community where communityName like 'ss%
-客户端:127.0.0.1
-时间:2013-06-19 16:09:27
-------------------------2013-06-19 16:09:44
-错误SQL语句：
-select communityId,communityName from ecms_community where communityName like '天%
-客户端:127.0.0.1
-时间:2013-06-19 16:09:44
-------------------------2013-06-19 16:09:49
-错误SQL语句：
-select communityId,communityName from ecms_community where communityName like 'dd%
-客户端:127.0.0.1
-时间:2013-06-19 16:09:49
+时间:2013-06-19 11:35:58

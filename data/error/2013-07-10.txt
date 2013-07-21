@@ -1,20 +1,42 @@
-------------------------2013-07-10 14:35:55
+------------------------2013-07-10 10:57:19
 错误SQL语句：
-insert into ecms_agent_property(propUserId,agentUserId,communityId,txType,propPrice,remarks,contactName,contactGender,contactMobile,propState,createTime) values(,,,,150,托尔斯泰','等等',1,15986605676,,UNIX_TIMESTAMP())
+select * from ecms_tg  
+			  where tgPropertyId=13page=2 
+			  order by tgCreateTime desc  
+			  limit 0,1
 客户端:127.0.0.1
-时间:2013-07-10 14:35:55
-------------------------2013-07-10 14:37:47
+时间:2013-07-10 10:57:19
+------------------------2013-07-10 10:57:19
 错误SQL语句：
-insert into ecms_agent_property(propUserId,agentUserId,communityId,txType,propPrice,remarks,contactName,contactGender,contactMobile,propState,createTime) values(,,,,130,等待','的',1,15986605676,,UNIX_TIMESTAMP())
+SELECT COUNT(*) AS counts FROM ecms_tg 
+			  where tgPropertyId=13page=2
 客户端:127.0.0.1
-时间:2013-07-10 14:37:47
-------------------------2013-07-10 14:42:06
+时间:2013-07-10 10:57:19
+------------------------2013-07-10 10:57:41
 错误SQL语句：
-insert into ecms_agent_property(propUserId,agentUserId,communityId,txType,propPrice,remarks,contactName,contactGender,contactMobile,propState,createTime) values(6,0,25,1,130,等待','的',1,15986605676,1,UNIX_TIMESTAMP())
+select * from ecms_tg  
+			  where tgPropertyId=13page=2 
+			  order by tgCreateTime desc  
+			  limit 0,1
 客户端:127.0.0.1
-时间:2013-07-10 14:42:06
-------------------------2013-07-10 14:42:41
+时间:2013-07-10 10:57:41
+------------------------2013-07-10 10:57:41
 错误SQL语句：
-insert into ecms_agent_property(propUserId,agentUserId,communityId,txType,propPrice,remarks,contactName,contactGender,contactMobile,propState,createTime) values(6,0,25,1,130,'等待','的',1,15986605676,1,UNIX_TIMESTAMP())
+SELECT COUNT(*) AS counts FROM ecms_tg 
+			  where tgPropertyId=13page=2
 客户端:127.0.0.1
-时间:2013-07-10 14:42:41
+时间:2013-07-10 10:57:41
+------------------------2013-07-10 15:33:48
+错误SQL语句：
+SELECT count(*) AS counts
+			  FROM ecms_property 
+			  LEFT JOIN (SELECT * FROM ecms_pic WHERE picBuildFatherType=2 AND pictypeId=3 GROUP BY picBuildId ORDER BY picLayer DESC) AS t_pic 
+			  ON propertyId=picBuildId 
+			  WHERE 1=1 AND propertyState=1 and propertyProvince=4 and propertyCity=8 AND propertyName like "%广��ryno�y�܇^[��j�!%"
+客户端:127.0.0.1
+时间:2013-07-10 15:33:48
+------------------------2013-07-10 21:25:27
+错误SQL语句：
+insert into ecms_user_detail(userId,userdetailName,userdetailGender,userdetailPic,userdetailTel,userdetailAddr,userdetailPostCode,userdetailQQ,userdetailMSN,userdetailProvince,userdetailCity,userdetailDistrict,userdetailArea,cardtypeId,userdetailCardNumber,userdetailState,userdetailCreateTime,userdetailUpdateTime) values(34,'邓光华',1,'19344535949.jpg','15820437227','深圳市南山区西丽旺棠工业区26栋北座1011','518000','','',4,8,2,0,1,'430903198612160334',1,UNIX_TIMESTAMP(),UNIX_TIMESTAMP())
+客户端:127.0.0.1
+时间:2013-07-10 21:25:27

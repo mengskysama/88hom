@@ -83,7 +83,7 @@ return array(
 		'2handOffice'=>array(
 			2=>'交通图',
 			3=>'平面图',
-			4=>'室内图'	,
+			4=>'室内图',
 			4=>'外景图'	
 		),
 		'2handShop'=>array(

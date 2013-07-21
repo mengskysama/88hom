@@ -129,8 +129,8 @@
 			$('input[name="communityMapX"]').focus();
 			return false;
 		}*/ 
-		if($('input[name="communityMap"]').val() != '' && !/^\d+(\.\d+)?\,\d+(\.\d+)?$/.test($('input[name="communityMap"]').val())){
-			alert('经纬度输入格式为两个浮点数中间有逗号隔开，如：123.123,123.123,但是可完全留空不填！');
+		if(!/^\d+(\.\d+)?\,\d+(\.\d+)?$/.test($('input[name="communityMap"]').val())){ 
+			alert('请输入经纬度,格式为两个浮点数中间有逗号隔开，如：123.123,123.123');
 			$('input[name="communityMap"]').focus();
 			return false;
 		}
@@ -258,7 +258,7 @@
 		<tr ><td width="100">小区地址：</td><td><input maxlength="255" class="input_long" type="text" name="communityAddress"/></td></tr>
 		<tr ><td width="100">地理经纬度：</td>
 			<td>
-				<input class="input_long" type="text" name="communityMap"/> (如 <font color="red">123.123,123.123</font>)逗号隔开
+				<input class="input_long" type="text" name="communityMap"/><font color="red">*</font>(如 <font color="red">123.123,123.123</font>)逗号隔开
 			</td>
 		</tr>
 		<tr ><td width="100">项目特色：</td><td><input maxlength="255" class="input_long" type="text" name="communityProjectFeatures"/></td></tr>

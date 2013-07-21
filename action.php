@@ -1,44 +1,56 @@
 <?php
 require 'path.inc.php';
-if(isset($_GET['action'])&&!empty($_GET['action'])){
-	$action=$_GET['action'];
+if(isset($_REQUEST['action'])&&!empty($_REQUEST['action'])){
+	$action=$_REQUEST['action'];
 }else{
-	$html->backUrl('ÇëÇó³ö´í,Ã»ÓÐÇëÇó ²ÎÊýaction£¡');
+	$action='';
 }
-$userService=new UserService($db);
+if(isset($_REQUEST['search'])&&!empty($_REQUEST['search'])){
+	$search=$_REQUEST['search'];
+}else{
+	$search='';
+}
+
+$sphinxSearch=new SphinxSearch($db);
 switch ($action){
-	case 'webLogin':
+	case 'searchForCommunity':
 		$result=null;
-		if(isset($_SESSION['codeweb']) && isset($_POST['valideCode']) && $_SESSION['codeweb']==strtolower($_POST['valideCode'])){
-			$user=$userService->getWebUserByUserName(iconv('utf-8','gbk',$_POST['username']));
-			if(empty($user)){
-				$result=array('result'=>'error','error'=>'1','msg'=>charsetIconv('ÕËºÅ»òÃÜÂë´íÎó1£¡','gbk','utf-8'));
-			}else{
-				if($_POST['password']==sysAuth($user['password'],'DECODE',ECMS_KEY_WEB)){
-					$result=array('result'=>'success');
-					$user['time']=time();
-					$_SESSION['Web_Login']='webLoginOn';
-					$_SESSION['Web_User']=$user;
-					$result=array('result'=>'success','error'=>'0','msg'=>charsetIconv('µÇÂ¼³É¹¦£¡','gbk','utf-8'));
-				}else{
-					$result=array('result'=>'error','error'=>'1','msg'=>charsetIconv('ÕËºÅ»òÃÜÂë´íÎó2£¡','gbk','utf-8'));
-				}
-			}
-		}else{
-			$result=array('result'=>'error','error'=>'2','msg'=>charsetIconv('ÑéÖ¤Âë´íÎó£¡','gbk','utf-8'));
-		}
-		echo json_encode($result);
-	break;
-	case 'webLoginOut':
-		$userService->getWebLoginOut();
-	break;
-	case 'webCheckLogin':
-		$result=null;
-		if(isset($_SESSION['Web_User'])){
-			$result=array('result'=>'success');
-		}else{
-			$result=array('result'=>'error');
-		}
+//		$result=array(
+//			0=>array(
+//				'id'=>231,
+//				'weight'=>200585,
+//				'attrs'=>array(
+//					'communityid'=>231,
+//					'communityname'=>'ç¿ æµ·èŠ±å›­ï¼ˆç¿ æµ·èŠ±å›­ä¸€æœŸã€æŒ¯ä¸šç¿ æµ·èŠ±å›­ï¼‰',
+//					'communityaddress'=>'æ·±åœ³å¸‚,ç¦ç”°åŒºé¦™èœœæ¹–ä¾¨é¦™è·¯ä¸Žå†œå›­è·¯äº¤æ±‡'
+//				)
+//			),
+//			1=>array(
+//				'id'=>357,
+//				'weight'=>200581,
+//				'attrs'=>array(
+//					'communityid'=>357,
+//					'communityname'=>'ä¸œæµ·èŠ±å›­ï¼ˆä¸œæµ·èŠ±å›­ä¸€æœŸï¼‰',
+//					'communityaddress'=>'æ·±åœ³å¸‚ç¦ç”°åŒºé¦™æž—è·¯ä¸Žå†œè½©è·¯äº¤æ±‡å¤„'
+//				)
+//			),
+//			2=>array(
+//				'id'=>384,
+//				'weight'=>200581,
+//				'attrs'=>array(
+//					'communityid'=>384,
+//					'communityname'=>'é¦™æ¦­é‡ŒèŠ±å›­ï¼ˆé¦™æ¦­é‡ŒèŠ±å›­ä¸€æœŸï¼‰',
+//					'communityaddress'=>'æ·±åœ³å¸‚ç¦ç”°åŒºå†œç§‘ä¸­å¿ƒå†œå›­è·¯ä¸Žæ˜¥ç”°è·¯äº¤æ±‡è¥¿'
+//				)
+//			)
+//		);
+		
+//		echo json_encode($result);
+//		exit;
+		//$searchInfo['search']=$search;
+		$searchModel=new SearchModel();
+		$searchModel->search=$search;
+		$result=$sphinxSearch->getCommunityForAutoComplete($searchModel);
 		echo json_encode($result);
 	break;
 }

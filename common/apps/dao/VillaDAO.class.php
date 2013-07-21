@@ -11,6 +11,7 @@ class VillaDAO  {
 		$this->db=$db;
 	}
 	//发布厂房
+	//发布厂房
 	//added by Cheneil
 	public function release($villa){
 		$sql="insert into ecms_villa(villaTitle,villaContent,villaNumber,villaRoom,villaHall,villaToilet,villaKitchen,villaBalcony,villaBuildArea,

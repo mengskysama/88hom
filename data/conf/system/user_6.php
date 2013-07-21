@@ -1,5 +1,5 @@
 <?php return array (
-  'logManager' => '1',
-  'statManager' => '1',
+  'ad' => '1',
+  'adType' => '1',
   'editpwd' => '1',
 ); ?>

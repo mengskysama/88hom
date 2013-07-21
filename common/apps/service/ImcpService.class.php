@@ -69,7 +69,6 @@ class ImcpService{
 		if($result<0) $msg='信息删除失败！'; 
 		return $msg;
 	}
-	
 	//added by Cheneil
 	public function getAgentCompanyList(){
 		return $this->imcpDAO->getAgentCompanyList();

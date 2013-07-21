@@ -1,5 +1,10 @@
-------------------------2013-06-09 17:18:52
+------------------------2013-06-09 17:33:47
 错误SQL语句：
-select (select userUsername from ecms_user where userId=messageToUserId) as toUserName,msg.* from ecms_message where messageId=11
+insert into ecms_group(group_name) values('组4')
 客户端:127.0.0.1
-时间:2013-06-09 17:18:52
+时间:2013-06-09 17:33:47
+------------------------2013-06-09 17:39:00
+错误SQL语句：
+insert into ecms_group(group_name) values('组4')
+客户端:127.0.0.1
+时间:2013-06-09 17:39:00

@@ -1,0 +1,15 @@
+------------------------2013-06-17 14:17:24
+错误SQL语句：
+insert into ecms_furniture_store(name,logo,address,phone,businessTime,orderNum,updateTime) values('name','furniture/store/20130617141619_thumb.jpg','address','phone','10:00-18:00,1,1,1371449844)
+客户端:127.0.0.1
+时间:2013-06-17 14:17:24
+------------------------2013-06-17 14:18:39
+错误SQL语句：
+insert into ecms_furniture_store(name,logo,address,phone,businessTime,orderNum,updateTime) values('name','furniture/store/20130617141619_thumb.jpg','address','phone','10:00-18:00',1,1,1371449919)
+客户端:127.0.0.1
+时间:2013-06-17 14:18:39
+------------------------2013-06-17 16:44:38
+错误SQL语句：
+update ecms_furniture_store set name='name1',logo='furniture/store/20130617141619_thumb.jpg',address='address1',phone='phone1',businessTime='10:00-18:001',orderNum=11,state=0,adUpdateTime=1371458678 where id=1
+客户端:127.0.0.1
+时间:2013-06-17 16:44:38

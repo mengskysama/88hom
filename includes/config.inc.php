@@ -13,7 +13,7 @@ if(SERVER_NAME=='localhost'||SERVER_NAME=='127.0.0.1'||SERVER_NAME=='192.168.0.2
 }
 //数据库配置信息
 if(SERVER_NAME=='localhost'||SERVER_NAME=='192.168.0.27'){
-	define('ECMS_DB_HOST', '127.0.0.1'); //数据库服务器主机地址
+	define('ECMS_DB_HOST', '192.168.0.27'); //数据库服务器主机地址
 	define('ECMS_DB_USER', '88hom'); //数据库帐号
 	define('ECMS_DB_PW', '123456'); //数据库密码
 	define('ECMS_DB_NAME', '88hom'); //数据库名
@@ -22,7 +22,6 @@ if(SERVER_NAME=='localhost'||SERVER_NAME=='192.168.0.27'){
 	define('ECMS_DB_PCONNECT', 0); //0 或1，是否使用持久连接
 	define('ECMS_DB_PROVIDER', 'mysql'); //数据库类型
 	define('LANG', 'zh_CN');
-	
 }else{
 	define('ECMS_DB_HOST', '118.123.13.251:53406'); //数据库服务器主机地址
 	define('ECMS_DB_USER', '88hom'); //数据库帐号
@@ -86,6 +85,7 @@ define('ECMS_PATH_APPS', ECMS_PATH_COMMON.'apps/'); //通用apps目录
 define('ECMS_PATH_ACTION', ECMS_PATH_APPS.'action/'); //通用程序action目录
 define('ECMS_PATH_SERVICE', ECMS_PATH_APPS.'service/'); //通用程序service目录
 define('ECMS_PATH_DAO', ECMS_PATH_APPS.'dao/'); //通用程序dao目录
+define('ECMS_PATH_MODEL', ECMS_PATH_APPS.'model/'); //通用程序model目录
 define('ECMS_PATH_DATA', ECMS_PATH_ROOT.'data/'); //通用数据目录
 define('ECMS_PATH_UPLOADS', ECMS_PATH_ROOT.'uploads/'); //通用数据目录
 define('ECMS_PATH_ERROR', ECMS_PATH_DATA.'error/');//数据库错误日志
@@ -109,10 +109,13 @@ $cfg['web_css'] = ECMS_PATH_CSS;
 $cfg['web_images'] = ECMS_PATH_IMAGES;
 $cfg['web_js'] = ECMS_PATH_JS;
 $cfg['web_common'] = ECMS_PATH.'templates/common/';
+
 $cfg['arr_pic']=require_once 'pic.inc.php';//公共数据
 $cfg['arr_build']=require_once 'build.inc.php';//公共数据
 $cfg['arr_info']=require_once 'info.inc.php';//公共数据
-$cfg['file_path_upload']=ECMS_PATH_UPLOADS;
+
+$cfg['file_path_upload']=ECMS_PATH_UPLOADS;//后台上传文件目录物理路径
+$cfg['web_url_upload'] = ECMS_PATH.'uploads/';//台前上传文件目录url
 //其他一般配置
 define('ECMS_TIME',time());
 $cfg['web_charset']='UTF-8';
@@ -140,4 +143,102 @@ define('ECMS_SYSTEM_ADMIN', '1'); //网站创始人ID，多个ID逗号分隔
 define('MEMCACHE_HOST', 'localhost'); //MemCache服务器主机
 define('MEMCACHE_PORT', 11211); //MemCache服务器端口
 define('MEMCACHE_TIMEOUT', 1); //S，MemCache服务器连接超时
+
+
+//Sphinx常量配置内容
+//
+// $Id$
+//
+
+//
+// Copyright (c) 2001-2011, Andrew Aksyonoff
+// Copyright (c) 2008-2011, Sphinx Technologies Inc
+// All rights reserved
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License. You should have
+// received a copy of the GPL license along with this program; if you
+// did not, you can find it at http://www.gnu.org/
+//
+
+/////////////////////////////////////////////////////////////////////////////
+// PHP version of Sphinx searchd client (PHP API)
+/////////////////////////////////////////////////////////////////////////////
+
+/// known searchd commands
+define ( "SEARCHD_COMMAND_SEARCH",		0 );
+define ( "SEARCHD_COMMAND_EXCERPT",		1 );
+define ( "SEARCHD_COMMAND_UPDATE",		2 );
+define ( "SEARCHD_COMMAND_KEYWORDS",	3 );
+define ( "SEARCHD_COMMAND_PERSIST",		4 );
+define ( "SEARCHD_COMMAND_STATUS",		5 );
+define ( "SEARCHD_COMMAND_FLUSHATTRS",	7 );
+
+/// current client-side command implementation versions
+define ( "VER_COMMAND_SEARCH",		0x119 );
+define ( "VER_COMMAND_EXCERPT",		0x103 );
+define ( "VER_COMMAND_UPDATE",		0x102 );
+define ( "VER_COMMAND_KEYWORDS",	0x100 );
+define ( "VER_COMMAND_STATUS",		0x100 );
+define ( "VER_COMMAND_QUERY",		0x100 );
+define ( "VER_COMMAND_FLUSHATTRS",	0x100 );
+
+/// known searchd status codes
+define ( "SEARCHD_OK",				0 );
+define ( "SEARCHD_ERROR",			1 );
+define ( "SEARCHD_RETRY",			2 );
+define ( "SEARCHD_WARNING",			3 );
+
+/// known match modes
+define ( "SPH_MATCH_ALL",			0 );
+define ( "SPH_MATCH_ANY",			1 );
+define ( "SPH_MATCH_PHRASE",		2 );
+define ( "SPH_MATCH_BOOLEAN",		3 );
+define ( "SPH_MATCH_EXTENDED",		4 );
+define ( "SPH_MATCH_FULLSCAN",		5 );
+define ( "SPH_MATCH_EXTENDED2",		6 );	// extended engine V2 (TEMPORARY, WILL BE REMOVED)
+
+/// known ranking modes (ext2 only)
+define ( "SPH_RANK_PROXIMITY_BM25",	0 );	///< default mode, phrase proximity major factor and BM25 minor one
+define ( "SPH_RANK_BM25",			1 );	///< statistical mode, BM25 ranking only (faster but worse quality)
+define ( "SPH_RANK_NONE",			2 );	///< no ranking, all matches get a weight of 1
+define ( "SPH_RANK_WORDCOUNT",		3 );	///< simple word-count weighting, rank is a weighted sum of per-field keyword occurence counts
+define ( "SPH_RANK_PROXIMITY",		4 );
+define ( "SPH_RANK_MATCHANY",		5 );
+define ( "SPH_RANK_FIELDMASK",		6 );
+define ( "SPH_RANK_SPH04",			7 );
+define ( "SPH_RANK_EXPR",			8 );
+define ( "SPH_RANK_TOTAL",			9 );
+
+/// known sort modes
+define ( "SPH_SORT_RELEVANCE",		0 );
+define ( "SPH_SORT_ATTR_DESC",		1 );
+define ( "SPH_SORT_ATTR_ASC",		2 );
+define ( "SPH_SORT_TIME_SEGMENTS", 	3 );
+define ( "SPH_SORT_EXTENDED", 		4 );
+define ( "SPH_SORT_EXPR", 			5 );
+
+/// known filter types
+define ( "SPH_FILTER_VALUES",		0 );
+define ( "SPH_FILTER_RANGE",		1 );
+define ( "SPH_FILTER_FLOATRANGE",	2 );
+
+/// known attribute types
+define ( "SPH_ATTR_INTEGER",		1 );
+define ( "SPH_ATTR_TIMESTAMP",		2 );
+define ( "SPH_ATTR_ORDINAL",		3 );
+define ( "SPH_ATTR_BOOL",			4 );
+define ( "SPH_ATTR_FLOAT",			5 );
+define ( "SPH_ATTR_BIGINT",			6 );
+define ( "SPH_ATTR_STRING",			7 );
+define ( "SPH_ATTR_MULTI",			0x40000001 );
+define ( "SPH_ATTR_MULTI64",			0x40000002 );
+
+/// known grouping functions
+define ( "SPH_GROUPBY_DAY",			0 );
+define ( "SPH_GROUPBY_WEEK",		1 );
+define ( "SPH_GROUPBY_MONTH",		2 );
+define ( "SPH_GROUPBY_YEAR",		3 );
+define ( "SPH_GROUPBY_ATTR",		4 );
+define ( "SPH_GROUPBY_ATTRPAIR",	5 );
 ?>

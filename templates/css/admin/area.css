@@ -2,12 +2,11 @@
 /* CSS Document */
 
 *{margin: 0 auto;padding: 0}
-body {font-size: 12px;font-family:"宋体",Arial, Helvetica, sans-serif;}
 input {vertical-align:middle;}
 img { border:0;}
 
-#areaTable a:link,a:visited{ color: #2A3086;text-decoration:none;}
-#areaTable a:hover,a:active{ color:#f20029;text-decoration:underline;}
+#areaTable a:link,a:visited{ text-decoration:none;}
+#areaTable a:hover,a:active{text-decoration:underline;}
 #areaTable ul,li,dl,dt,dd {list-style:none;}
 #areaTable td,#areaTable th{border:none;padding:0px;}
 #areaTable {float:left;width:440px;margin-top:0px;border-collapse: collapse;border-spacing: 0;empty-cells:show;}

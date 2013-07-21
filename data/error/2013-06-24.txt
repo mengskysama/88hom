@@ -1,30 +1,174 @@
-------------------------2013-06-24 14:19:37
-数据库不可用：
-88hom
+------------------------2013-06-24 10:50:05
+SQL语句错误：SQL查询语句为空
+
 客户端:127.0.0.1
-时间:2013-06-24 14:19:37
-------------------------2013-06-24 14:21:37
+时间:2013-06-24 10:50:05
+------------------------2013-06-24 10:50:05
 错误SQL语句：
-insert into ecms_community(communityName) valuse('世界金融中心')
+0
 客户端:127.0.0.1
-时间:2013-06-24 14:21:37
-------------------------2013-06-24 14:22:15
+时间:2013-06-24 10:50:05
+------------------------2013-06-24 11:06:26
 错误SQL语句：
-insert into ecms_community(communityName) valuse('世界金融中心')
+update ecms_property set 
+			  propertyName='东方新地',
+			  propertyOpenTime='2013-06-06',
+			  propertyCheckInTime='2013-12-12',
+			  propertyIsHouseType=1,
+			  propertyIsBusinessType=0,
+			  propertyIsOfficeType=0,
+			  propertyIsVillaType=0,
+			  propertyCompanyFee=123,
+			  propertyBuildingType='测试数据测试数据测试数据测试数据',
+			  propertyFitmentStatus='测试数据测试数据测试数据测试数据',
+			  propertyCompany='测试数据测试数据测试数据测试数据',
+			  propertyCompanyAddress='测试数据测试数据测试数据测试数据',
+			  propertyCompanyWebsite='测试数据测试数据测试数据测试数据',
+			  propertySellAddress='测试数据测试数据测试数据测试数据',
+			  propertyDevCompany='测试数据测试数据测试数据测试数据',
+			  propertyDevCompanyAddress='测试数据测试数据测试数据测试数据',
+			  propertyDevCompanyWebsite='测试数据测试数据测试数据测试数据',
+			  propertyPreSellPermits='测试数据测试数据测试数据测试数据',
+			  propertyTraffic='<p>
+	测试数据测试数据测试数据测试数据</p>
+',
+			  propertyPeriInfo='<p>
+	测试数据测试数据测试数据测试数据</p>
+',
+			  propertyMapX=0,
+			  propertyMapY=0,
+			  propertyVolRate=12,
+			  propertyGreenRate=12,
+			  propertyBuildArea=123,
+			  propertyLandArea=123,
+			  propertyProxyCompany='测试数据测试数据测试数据测试数据',
+			  propertyParkingSpaces='测试数据测试数据测试数据测试数据',
+			  propertyHouseholds='测试数据测试数据测试数据测试数据',
+			  propertyOpenPrice=30000,
+			  propertyOpenPriceRemark='测试数据测试数据测试数据测试数据',
+			  propertyMainHouseModel='测试数据测试数据测试数据测试数据',
+			  propertyMortgageBank='测试数据测试数据测试数据测试数据',
+			  propertyRight=70,
+			  propertyHotline='测试数据测试数据测试数据测试数据',
+			  propertyFeature='测试数据测试数据测试数据测试数据',
+			  propertyIntroduction='<p>
+	测试数据测试数据测试数据测试数据</p>
+',
+			  propertyStartingTime='2012-01-02',
+			  propertyEndingTime='2013-03-15',
+			  propertyWorksProgramme='测试数据测试数据测试数据测试数据',
+			  propertyClickCount=0,
+			  propertyProvince=<br />
+<b>Notice</b>:  Undefined index:  property in <b>E:\\home\\web\\88hom\\templates_c\\c32752414928a13fcf10b915fa08f12d3a5dd5ed.file.modify.tpl.php</b> on line <b>269</b><br />
+<br />
+<b>Notice</b>:  Trying to get property of non,
+			  propertyCity=object in <b>E:\\home\\web\\88hom\\templates_c\\c32752414928a13fcf10b915fa08f12d3a5dd5ed.file.modify.tpl.php</b> on line <b>269</b><br />
+,
+			  propertyDistrict=<br />
+<b>Notice</b>:  Undefined index:  property in <b>E:\\home\\web\\88hom\\templates_c\\c32752414928a13fcf10b915fa08f12d3a5dd5ed.file.modify.tpl.php</b> on line <b>270</b><br />
+<br />
+<b>Notice</b>:  Trying to get property of non,
+			  propertyArea=object in <b>E:\\home\\web\\88hom\\templates_c\\c32752414928a13fcf10b915fa08f12d3a5dd5ed.file.modify.tpl.php</b> on line <b>270</b><br />
+,
+			  propertyIsHot=1,
+			  propertyIsBusiness=1,
+			  propertyIsSmallAmt=0,
+			  propertyIsSubwayLine=0,
+			  propertyIsPark=0,
+			  propertyIsInvestment=0,
+			  propertyIsRecommend=1,
+			  propertyIsFine=1,
+			  propertyIsGbuy=0,
+			  propertyIsGbuyTop=0,
+			  propertyGbuyPrice='',
+			  propertyGbuyTitle='',
+			  propertyGbuyTime=0,
+			  propertyIsDiscounts=0,
+			  propertyDiscountsPrice='',
+			  propertyDiscountsTitle='',
+			  propertyIsPreferential=0,
+			  propertyPreferentialPrice='',  
+			  propertyPreferentialTitle='',  
+			  propertyState=0,
+			  propertyUpdateTime=1372043186 
+			  where propertyId=
 客户端:127.0.0.1
-时间:2013-06-24 14:22:15
-------------------------2013-06-24 14:22:30
+时间:2013-06-24 11:06:26
+------------------------2013-06-24 11:11:03
 错误SQL语句：
-insert into ecms_community(communityName) valuse('世界金融中心')
+update ecms_property set 
+			  propertyName='东方新地',
+			  propertyOpenTime='2013-06-06',
+			  propertyCheckInTime='2013-12-12',
+			  propertyIsHouseType=1,
+			  propertyIsBusinessType=0,
+			  propertyIsOfficeType=0,
+			  propertyIsVillaType=0,
+			  propertyCompanyFee=123,
+			  propertyBuildingType='测试数据测试数据测试数据测试数据',
+			  propertyFitmentStatus='测试数据测试数据测试数据测试数据',
+			  propertyCompany='测试数据测试数据测试数据测试数据',
+			  propertyCompanyAddress='测试数据测试数据测试数据测试数据',
+			  propertyCompanyWebsite='测试数据测试数据测试数据测试数据',
+			  propertySellAddress='测试数据测试数据测试数据测试数据',
+			  propertyDevCompany='测试数据测试数据测试数据测试数据',
+			  propertyDevCompanyAddress='测试数据测试数据测试数据测试数据',
+			  propertyDevCompanyWebsite='测试数据测试数据测试数据测试数据',
+			  propertyPreSellPermits='测试数据测试数据测试数据测试数据',
+			  propertyTraffic='<p>
+	测试数据测试数据测试数据测试数据</p>
+',
+			  propertyPeriInfo='<p>
+	测试数据测试数据测试数据测试数据</p>
+',
+			  propertyMapX=0,
+			  propertyMapY=0,
+			  propertyVolRate=12,
+			  propertyGreenRate=12,
+			  propertyBuildArea=123,
+			  propertyLandArea=123,
+			  propertyProxyCompany='测试数据测试数据测试数据测试数据',
+			  propertyParkingSpaces='测试数据测试数据测试数据测试数据',
+			  propertyHouseholds='测试数据测试数据测试数据测试数据',
+			  propertyOpenPrice=30000,
+			  propertyOpenPriceRemark='测试数据测试数据测试数据测试数据',
+			  propertyMainHouseModel='测试数据测试数据测试数据测试数据',
+			  propertyMortgageBank='测试数据测试数据测试数据测试数据',
+			  propertyRight=70,
+			  propertyHotline='测试数据测试数据测试数据测试数据',
+			  propertyFeature='测试数据测试数据测试数据测试数据',
+			  propertyIntroduction='<p>
+	测试数据测试数据测试数据测试数据</p>
+',
+			  propertyStartingTime='2012-01-02',
+			  propertyEndingTime='2013-03-15',
+			  propertyWorksProgramme='测试数据测试数据测试数据测试数据',
+			  propertyClickCount=0,
+			  propertyProvince=4,
+			  propertyCity=8,
+			  propertyDistrict=2,
+			  propertyArea=0,
+			  propertyIsHot=1,
+			  propertyIsBusiness=1,
+			  propertyIsSmallAmt=0,
+			  propertyIsSubwayLine=0,
+			  propertyIsPark=0,
+			  propertyIsInvestment=0,
+			  propertyIsRecommend=1,
+			  propertyIsFine=1,
+			  propertyIsGbuy=0,
+			  propertyIsGbuyTop=0,
+			  propertyGbuyPrice='',
+			  propertyGbuyTitle='',
+			  propertyGbuyTime=0,
+			  propertyIsDiscounts=0,
+			  propertyDiscountsPrice='',
+			  propertyDiscountsTitle='',
+			  propertyIsPreferential=0,
+			  propertyPreferentialPrice='',  
+			  propertyPreferentialTitle='',  
+			  propertyState=0,
+			  propertyUpdateTime=1372043463 
+			  where propertyId=
 客户端:127.0.0.1
-时间:2013-06-24 14:22:30
-------------------------2013-06-24 14:22:45
-错误SQL语句：
-insert into ecms_community(communityName) valuse('世界金融中心')
-客户端:127.0.0.1
-时间:2013-06-24 14:22:45
-------------------------2013-06-24 14:24:09
-错误SQL语句：
-insert into ecms_community(communityName) valuse('世界金融中心')
-客户端:127.0.0.1
-时间:2013-06-24 14:24:09
+时间:2013-06-24 11:11:03

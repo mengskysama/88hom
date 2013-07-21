@@ -7,11 +7,13 @@
  */
 class TgService{
 	private $db=null;
-	private $tgDAO = null;
+	private $tgDAO=null;
+	private $area=null;
 
 	public function __construct($db){
 		$this->db=$db;
-		$this->tgDAO = new TgDAO($db);
+		$this->tgDAO=new TgDAO($db);
+		$this->area=new Area();
 	}
 	//发布一条团购信息
 	public function release($tg){
@@ -55,12 +57,11 @@ class TgService{
 	}
 	//获取团购信息列表按楼盘分
 	public function getPropertyListForTg($field='*',$where='',$group='',$order='',$limit=''){
-		require_once ECMS_PATH_ROOT.'includes/area.inc.php';
 		$result=null;
 		$result=$this->tgDAO->getPropertyListForTg($field,$where,$group,$order,$limit);
 		if(!empty($result)){
 			for($i=0;$i<count($result);$i++){
-				$result[$i]['propertyAreaName']=$C[$result[$i]['propertyProvince']][$result[$i]['propertyCity']].'-'.$D[$result[$i]['propertyProvince']][$result[$i]['propertyCity']][$result[$i]['propertyDistrict']];
+				$result[$i]['propertyAreaName']=$this->area->C[$result[$i]['propertyProvince']][$result[$i]['propertyCity']].'-'.$this->area->D[$result[$i]['propertyProvince']][$result[$i]['propertyCity']][$result[$i]['propertyDistrict']];
 			}
 		}
 		return $result;

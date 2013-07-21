@@ -83,7 +83,6 @@ class InfoDAO  {
 	 */
 	public function getInfoList($field = '*',$where='',$order='',$limit=''){
 		$sql="select $field from ecms_info $where $order $limit";
-
 		return $this->db->getQueryArray($sql);
 	}
 	//计算新闻条数
@@ -94,7 +93,7 @@ class InfoDAO  {
 	//信息上一条，下一条
 	public function getInfoPrevNextPage($id,$table,$where,$order,$select){
 		$sql = "call getAroundTwoRecord($id,'$table','$where','$order','$select');";
-		
+
 		define('CLIENT_MULTI_RESULTS', 131072);
     	$link = mysql_connect(ECMS_DB_HOST, ECMS_DB_USER, ECMS_DB_PW,1,CLIENT_MULTI_RESULTS) or die("Could not connect: ".mysql_error());    
     	
@@ -110,7 +109,7 @@ class InfoDAO  {
     	{
     		$list[$i++] = array('infoId'=>$row['infoId'],'infoTitle'=>$row['infoTitle'],'num'=>$row['num'],'currentNum'=>$row['currentNum']);
     	}
-  	
+  		
     	 mysql_free_result($result);
     	 mysql_close($link);
 		return $list;

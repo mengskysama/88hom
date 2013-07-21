@@ -1,94 +1,34 @@
-------------------------2013-07-16 09:48:00
+------------------------2013-07-16 11:58:23
 错误SQL语句：
-delete from ecms_pic where picBuildId= and pictypeId=1 and picBuildType=5
+select s.*,c.* 
+			  from ecms_shops as s 
+			  inner join ecms_community as c on s.shopsCommunityId=c.communityId 
+			  where 1=1 and o.officeId=1
 客户端:127.0.0.1
-时间:2013-07-16 09:48:00
-------------------------2013-07-16 09:50:11
+时间:2013-07-16 11:58:23
+------------------------2013-07-16 11:59:31
 错误SQL语句：
-delete from ecms_pic where picBuildId= and pictypeId=1 and picBuildType=5
+select s.*,c.* 
+			  from ecms_shops as s 
+			  inner join ecms_community as c on s.shopsCommunityId=c.communityId 
+			  where 1=1 and o.officeId=1
 客户端:127.0.0.1
-时间:2013-07-16 09:50:11
-------------------------2013-07-16 09:52:00
+时间:2013-07-16 11:59:31
+------------------------2013-07-16 12:09:58
 错误SQL语句：
-delete from ecms_pic where picBuildId= and pictypeId=1 and picBuildType=5
+select o.*,c.communityProvince,c.communityCity,c.communityDistrict,c.communityArea 
+			  from ecms_office as o 
+			  inner join ecms_community as c on o.officeCommunityId=c.communityId 
+			  where 1=1 and o.officeState=<br /><b>Notice</b>:  Undefined index:  state in <b>E:\\home\\web\\88hom\\templates_c\\85e1879fa267eb9f01e418a55a377407b3b88c5e.file.complexOfficeSellDetail.tpl.php</b> on line <b>202</b><br /><br /><b>Notice</b>:  Trying to get property of non-object in <b>E:\\home\\web\\88hom\\templates_c\\85e1879fa267eb9f01e418a55a377407b3b88c5e.file.complexOfficeSellDetail.tpl.php</b> on line <b>202</b><br /> and o.officeSellRentType=<br /><b>Notice</b>:  Undefined index:  type in <b>E:\\home\\web\\88hom\\templates_c\\85e1879fa267eb9f01e418a55a377407b3b88c5e.file.complexOfficeSellDetail.tpl.php</b> on line <b>201</b><br /><br /><b>Notice</b>:  Trying to get property of non-object in <b>E:\\home\\web\\88hom\\templates_c\\85e1879fa267eb9f01e418a55a377407b3b88c5e.file.complexOfficeSellDetail.tpl.php</b> on line <b>201</b><br /> 
+			   order by o.officeUpdateTime desc 
+			   limit 0,20
 客户端:127.0.0.1
-时间:2013-07-16 09:52:00
-------------------------2013-07-16 09:55:20
+时间:2013-07-16 12:09:58
+------------------------2013-07-16 12:09:58
 错误SQL语句：
-delete from ecms_pic where picBuildId= and pictypeId=1 and picBuildType=5
+select count(*) as counts 
+			  from ecms_office as o 
+			  inner join ecms_community as c on o.officeCommunityId=c.communityId 
+			  where 1=1 and o.officeState=<br /><b>Notice</b>:  Undefined index:  state in <b>E:\\home\\web\\88hom\\templates_c\\85e1879fa267eb9f01e418a55a377407b3b88c5e.file.complexOfficeSellDetail.tpl.php</b> on line <b>202</b><br /><br /><b>Notice</b>:  Trying to get property of non-object in <b>E:\\home\\web\\88hom\\templates_c\\85e1879fa267eb9f01e418a55a377407b3b88c5e.file.complexOfficeSellDetail.tpl.php</b> on line <b>202</b><br /> and o.officeSellRentType=<br /><b>Notice</b>:  Undefined index:  type in <b>E:\\home\\web\\88hom\\templates_c\\85e1879fa267eb9f01e418a55a377407b3b88c5e.file.complexOfficeSellDetail.tpl.php</b> on line <b>201</b><br /><br /><b>Notice</b>:  Trying to get property of non-object in <b>E:\\home\\web\\88hom\\templates_c\\85e1879fa267eb9f01e418a55a377407b3b88c5e.file.complexOfficeSellDetail.tpl.php</b> on line <b>201</b><br />
 客户端:127.0.0.1
-时间:2013-07-16 09:55:20
-------------------------2013-07-16 10:32:51
-错误SQL语句：
-update ecms_factory set factoryNumber='123456789981',factoryAddress='的地地道道的1',factoryType=3,factorySellPrice=,factoryProFee=201,factoryManagentUnits='你哈哈哈哈哈1',factoryPayInfo=2,factoryFloorArea=3001,factoryBuildArea=2501,factoryOfficeArea=2001,factoryWorkshopArea=2001,factorySpaceArea=1001,factoryDormitory='啊撒大声地1',factoryBuildYear=,factorySpan=21,factoryAllFloor=11,factoryFloorHeight=1,factoryLoadBearing=51,factoryBuildStructure='等待1',factoryWater='搜索1',factoryHasCapacityNow='221',factoryHasCapacityMax='331',factoryRentPrice=20001,factoryIncludFee=2,factoryPayment=1,factoryPayDetailY=6,factoryPayDetailF=2,factoryLeastYear=21,factorySellRentType=2,factoryAreaId='4-8-1-4',factoryContent='<p>
-	瑟瑟发抖1</p>
-',factoryTraffic='色的热狗1',factoryUpdateTime=1373941971 where factoryId=8
-客户端:127.0.0.1
-时间:2013-07-16 10:32:51
-------------------------2013-07-16 10:35:01
-错误SQL语句：
-update ecms_factory set factoryNumber='123456789981',factoryAddress='的地地道道的1',factoryType=3,factorySellPrice=0,factoryProFee=201,factoryManagentUnits='你哈哈哈哈哈1',factoryPayInfo=2,factoryFloorArea=3001,factoryBuildArea=2501,factoryOfficeArea=2001,factoryWorkshopArea=2001,factorySpaceArea=1001,factoryDormitory='啊撒大声地1',factoryBuildYear=,factorySpan=21,factoryAllFloor=11,factoryFloorHeight=1,factoryLoadBearing=51,factoryBuildStructure='等待1',factoryWater='搜索1',factoryHasCapacityNow='221',factoryHasCapacityMax='331',factoryRentPrice=20001,factoryIncludFee=2,factoryPayment=1,factoryPayDetailY=6,factoryPayDetailF=2,factoryLeastYear=21,factorySellRentType=2,factoryAreaId='4-8-1-4',factoryContent='<p>
-	瑟瑟发抖1</p>
-',factoryTraffic='色的热狗1',factoryUpdateTime=1373942101 where factoryId=8
-客户端:127.0.0.1
-时间:2013-07-16 10:35:01
-------------------------2013-07-16 22:38:12
-错误SQL语句：
-select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=0
-客户端:127.0.0.1
-时间:2013-07-16 22:38:12
-------------------------2013-07-16 22:38:12
-错误SQL语句：
-select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState in(1,5)
-客户端:127.0.0.1
-时间:2013-07-16 22:38:12
-------------------------2013-07-16 22:38:12
-错误SQL语句：
-select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=3
-客户端:127.0.0.1
-时间:2013-07-16 22:38:12
-------------------------2013-07-16 22:38:12
-错误SQL语句：
-select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=4
-客户端:127.0.0.1
-时间:2013-07-16 22:38:12
-------------------------2013-07-16 23:21:24
-错误SQL语句：
-select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=0
-客户端:127.0.0.1
-时间:2013-07-16 23:21:24
-------------------------2013-07-16 23:21:24
-错误SQL语句：
-select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState in(1,5)
-客户端:127.0.0.1
-时间:2013-07-16 23:21:24
-------------------------2013-07-16 23:21:24
-错误SQL语句：
-select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=3
-客户端:127.0.0.1
-时间:2013-07-16 23:21:24
-------------------------2013-07-16 23:21:24
-错误SQL语句：
-select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=4
-客户端:127.0.0.1
-时间:2013-07-16 23:21:24
-------------------------2013-07-16 23:22:34
-错误SQL语句：
-select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=2
-客户端:127.0.0.1
-时间:2013-07-16 23:22:34
-------------------------2013-07-16 23:22:34
-错误SQL语句：
-select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=2
-客户端:127.0.0.1
-时间:2013-07-16 23:22:34
-------------------------2013-07-16 23:22:34
-错误SQL语句：
-select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=2
-客户端:127.0.0.1
-时间:2013-07-16 23:22:34
-------------------------2013-07-16 23:22:34
-错误SQL语句：
-select count(houseId) as propTotal from ecms_house where houseUserId=23 and houseSellRentType= and houseState=2
-客户端:127.0.0.1
-时间:2013-07-16 23:22:34
+时间:2013-07-16 12:09:58

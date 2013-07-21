@@ -132,7 +132,11 @@ input{
 			<td align="center">
 				<a href="info_manager.php?action=detail&id=<!--{$item.info.infoId}-->">详细</a> 
 				<a href="info_manager.php?action=update&id=<!--{$item.info.infoId}-->">修改</a> 
-				<a href="javascript:del(<!--{$item.info.infoId}-->)">删除</a>
+				<a href="javascript:del(<!--{$item.info.infoId}-->)">删除</a><br />
+				全部(<!--{$item.info.noPassReplyCount+$item.info.passReplyCount}-->) 
+				<a href="infoReply_manager.php?state=0&infoId=<!--{$item.info.infoId}-->">回复待审(<font color="red"><!--{$item.info.noPassReplyCount}--></font>)</a> 
+				<a href="infoReply_manager.php?state=1&infoId=<!--{$item.info.infoId}-->">回复已审(<!--{$item.info.passReplyCount}-->)</a> 
+				
 			</td>
 		</tr>
 		<!--{/foreach}-->

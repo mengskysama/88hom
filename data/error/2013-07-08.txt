@@ -1,0 +1,104 @@
+------------------------2013-07-08 02:06:05
+错误SQL语句：
+SELECT propertyId AS id,propertyId,propertyName,propertyIsHouseType,propertyIsBusinessType, 
+			  propertyIsOfficeType,propertyIsVillaType,propertyBuildingType,propertyFitmentStatus,propertyCompany,propertyCompanyAddress, 
+			  propertyCompanyFee,propertySellAddress,propertyDevCompany,propertyDevCompanyAddress,propertyPreSellPermits, 
+			  propertyMapX,propertyMapY,propertyVolRate,propertyGreenRate,propertyBuildArea,propertyLandArea,propertyProxyCompany, 
+			  propertyParkingSpaces,propertyHouseholds,propertyOpenPrice,propertyOpenPriceRemark,propertyMainHouseModel, 
+			  propertyMortgageBank,propertyHotline,propertyFeature,propertyProvince,propertyCity,propertyDistrict,propertyArea, 
+			  propertyIsHot,propertyIsBusiness,propertyIsSmallAmt,propertyIsSubwayLine,propertyIsPark,propertyIsInvestment, 
+			  propertyIsRecommend,propertyIsFine,propertyIsGbuy,propertyIsGbuyTop,propertyIsDiscounts,propertyIsPreferential, 
+			  propertyState,propertyUserId,propertyCreateTime,propertyUpdateTime,picUrl,picThumb,picInfo,picState,picLayer 
+			  FROM ecms_property 
+			  LEFT JOIN (SELECT * FROM ecms_pic WHERE picBuildFatherType=2 AND pictypeId=3 GROUP BY picBuildId ORDER BY picLayer DESC) AS t_pic 
+			  ON propertyId=picBuildId 
+			  WHERE 1=1 AND propertyState=1 AND propertyName like "%1%"
+			  ORDER BY propertyUpdateTime DESC
+			  LIMIT -10,10
+客户端:127.0.0.1
+时间:2013-07-08 02:06:05
+------------------------2013-07-08 02:06:16
+错误SQL语句：
+SELECT propertyId AS id,propertyId,propertyName,propertyIsHouseType,propertyIsBusinessType, 
+			  propertyIsOfficeType,propertyIsVillaType,propertyBuildingType,propertyFitmentStatus,propertyCompany,propertyCompanyAddress, 
+			  propertyCompanyFee,propertySellAddress,propertyDevCompany,propertyDevCompanyAddress,propertyPreSellPermits, 
+			  propertyMapX,propertyMapY,propertyVolRate,propertyGreenRate,propertyBuildArea,propertyLandArea,propertyProxyCompany, 
+			  propertyParkingSpaces,propertyHouseholds,propertyOpenPrice,propertyOpenPriceRemark,propertyMainHouseModel, 
+			  propertyMortgageBank,propertyHotline,propertyFeature,propertyProvince,propertyCity,propertyDistrict,propertyArea, 
+			  propertyIsHot,propertyIsBusiness,propertyIsSmallAmt,propertyIsSubwayLine,propertyIsPark,propertyIsInvestment, 
+			  propertyIsRecommend,propertyIsFine,propertyIsGbuy,propertyIsGbuyTop,propertyIsDiscounts,propertyIsPreferential, 
+			  propertyState,propertyUserId,propertyCreateTime,propertyUpdateTime,picUrl,picThumb,picInfo,picState,picLayer 
+			  FROM ecms_property 
+			  LEFT JOIN (SELECT * FROM ecms_pic WHERE picBuildFatherType=2 AND pictypeId=3 GROUP BY picBuildId ORDER BY picLayer DESC) AS t_pic 
+			  ON propertyId=picBuildId 
+			  WHERE 1=1 AND propertyState=1 AND propertyName like "%1%"
+			  ORDER BY propertyUpdateTime DESC
+			  LIMIT -10,10
+客户端:127.0.0.1
+时间:2013-07-08 02:06:16
+------------------------2013-07-08 02:06:58
+错误SQL语句：
+SELECT propertyId AS id,propertyId,propertyName,propertyIsHouseType,propertyIsBusinessType, 
+			  propertyIsOfficeType,propertyIsVillaType,propertyBuildingType,propertyFitmentStatus,propertyCompany,propertyCompanyAddress, 
+			  propertyCompanyFee,propertySellAddress,propertyDevCompany,propertyDevCompanyAddress,propertyPreSellPermits, 
+			  propertyMapX,propertyMapY,propertyVolRate,propertyGreenRate,propertyBuildArea,propertyLandArea,propertyProxyCompany, 
+			  propertyParkingSpaces,propertyHouseholds,propertyOpenPrice,propertyOpenPriceRemark,propertyMainHouseModel, 
+			  propertyMortgageBank,propertyHotline,propertyFeature,propertyProvince,propertyCity,propertyDistrict,propertyArea, 
+			  propertyIsHot,propertyIsBusiness,propertyIsSmallAmt,propertyIsSubwayLine,propertyIsPark,propertyIsInvestment, 
+			  propertyIsRecommend,propertyIsFine,propertyIsGbuy,propertyIsGbuyTop,propertyIsDiscounts,propertyIsPreferential, 
+			  propertyState,propertyUserId,propertyCreateTime,propertyUpdateTime,picUrl,picThumb,picInfo,picState,picLayer 
+			  FROM ecms_property 
+			  LEFT JOIN (SELECT * FROM ecms_pic WHERE picBuildFatherType=2 AND pictypeId=3 GROUP BY picBuildId ORDER BY picLayer DESC) AS t_pic 
+			  ON propertyId=picBuildId 
+			  WHERE 1=1 AND propertyState=1 AND propertyName like "%1%"
+			  ORDER BY propertyUpdateTime DESC
+			  LIMIT -10,10
+客户端:127.0.0.1
+时间:2013-07-08 02:06:58
+------------------------2013-07-08 02:07:06
+错误SQL语句：
+SELECT propertyId AS id,propertyId,propertyName,propertyIsHouseType,propertyIsBusinessType, 
+			  propertyIsOfficeType,propertyIsVillaType,propertyBuildingType,propertyFitmentStatus,propertyCompany,propertyCompanyAddress, 
+			  propertyCompanyFee,propertySellAddress,propertyDevCompany,propertyDevCompanyAddress,propertyPreSellPermits, 
+			  propertyMapX,propertyMapY,propertyVolRate,propertyGreenRate,propertyBuildArea,propertyLandArea,propertyProxyCompany, 
+			  propertyParkingSpaces,propertyHouseholds,propertyOpenPrice,propertyOpenPriceRemark,propertyMainHouseModel, 
+			  propertyMortgageBank,propertyHotline,propertyFeature,propertyProvince,propertyCity,propertyDistrict,propertyArea, 
+			  propertyIsHot,propertyIsBusiness,propertyIsSmallAmt,propertyIsSubwayLine,propertyIsPark,propertyIsInvestment, 
+			  propertyIsRecommend,propertyIsFine,propertyIsGbuy,propertyIsGbuyTop,propertyIsDiscounts,propertyIsPreferential, 
+			  propertyState,propertyUserId,propertyCreateTime,propertyUpdateTime,picUrl,picThumb,picInfo,picState,picLayer 
+			  FROM ecms_property 
+			  LEFT JOIN (SELECT * FROM ecms_pic WHERE picBuildFatherType=2 AND pictypeId=3 GROUP BY picBuildId ORDER BY picLayer DESC) AS t_pic 
+			  ON propertyId=picBuildId 
+			  WHERE 1=1 AND propertyState=1 AND propertyName like "%1%"
+			  ORDER BY propertyUpdateTime DESC
+			  LIMIT -10,10
+客户端:127.0.0.1
+时间:2013-07-08 02:07:06
+------------------------2013-07-08 18:32:02
+错误SQL语句：
+SELECT propertyId AS id,propertyId,propertyName,propertyIsHouseType,propertyIsBusinessType, 
+			  propertyIsOfficeType,propertyIsVillaType,propertyBuildingType,propertyFitmentStatus,propertyCompany,propertyCompanyAddress, 
+			  propertyCompanyFee,propertySellAddress,propertyDevCompany,propertyDevCompanyAddress,propertyPreSellPermits, 
+			  propertyMapX,propertyMapY,propertyVolRate,propertyGreenRate,propertyBuildArea,propertyLandArea,propertyProxyCompany, 
+			  propertyParkingSpaces,propertyHouseholds,propertyOpenPrice,propertyOpenPriceRemark,propertyMainHouseModel, 
+			  propertyMortgageBank,propertyHotline,propertyFeature,propertyProvince,propertyCity,propertyDistrict,propertyArea, 
+			  propertyIsHot,propertyIsBusiness,propertyIsSmallAmt,propertyIsSubwayLine,propertyIsPark,propertyIsInvestment, 
+			  propertyIsRecommend,propertyIsFine,propertyIsGbuy,propertyIsGbuyTop,propertyIsDiscounts,propertyIsPreferential, 
+			  propertyState,propertyUserId,propertyCreateTime,propertyUpdateTime,picUrl,picThumb,picInfo,picState,picLayer 
+			  FROM ecms_property 
+			  LEFT JOIN (SELECT * FROM ecms_pic WHERE picBuildFatherType=2 AND pictypeId=3 GROUP BY picBuildId ORDER BY picLayer DESC) AS t_pic 
+			  ON propertyId=picBuildId 
+			  WHERE 1=1 AND propertyState=1 and propertyIsHouseType=1 and propertyProvince=4 and propertyCity=8 and propertyDistrict=0 AND propertyName like "%�%"
+			  ORDER BY propertyUpdateTime DESC  
+			  LIMIT 0,10
+客户端:127.0.0.1
+时间:2013-07-08 18:32:02
+------------------------2013-07-08 18:32:02
+错误SQL语句：
+SELECT count(*) AS counts
+			  FROM ecms_property 
+			  LEFT JOIN (SELECT * FROM ecms_pic WHERE picBuildFatherType=2 AND pictypeId=3 GROUP BY picBuildId ORDER BY picLayer DESC) AS t_pic 
+			  ON propertyId=picBuildId 
+			  WHERE 1=1 AND propertyState=1 and propertyIsHouseType=1 and propertyProvince=4 and propertyCity=8 and propertyDistrict=0 AND propertyName like "%�%"
+客户端:127.0.0.1
+时间:2013-07-08 18:32:02

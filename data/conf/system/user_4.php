@@ -4,4 +4,5 @@
   'productType' => '1',
   'productTypeSearch' => '1',
   'editpwd' => '1',
+  'community' => '1',
 ); ?>

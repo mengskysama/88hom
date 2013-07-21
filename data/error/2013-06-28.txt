@@ -1,20 +1,320 @@
-------------------------2013-06-28 11:02:23
-数据库不可用：
-88hom
+------------------------2013-06-28 11:18:19
+SQL语句错误：SQL查询语句为空
+insert into ecms_info(infoTitle,infoSummary,infoContent,infoPic,infoPicThumb,infoSource,infoUserId,infoClickCount,infoSuggest,infoLayer,infoState,infoCreateTime,infoUpdateTime) values('test','','','','','',1,0,0,1,1,1372389499,1372389499)
 客户端:127.0.0.1
-时间:2013-06-28 11:02:23
-------------------------2013-06-28 11:02:44
-数据库不可用：
-88hom
-客户端:127.0.0.1
-时间:2013-06-28 11:02:44
-------------------------2013-06-28 11:03:45
-数据库不可用：
-88hom
-客户端:127.0.0.1
-时间:2013-06-28 11:03:45
-------------------------2013-06-28 11:28:00
+时间:2013-06-28 11:18:19
+------------------------2013-06-28 11:18:19
 错误SQL语句：
-insert into ecms_register_cert_code(cert_channel,cert_code,cert_code_status,create_time) values('cheneil.jc.fan@gmail.com',b731c17ac40e77ca2e879ab920819555,1,now())
+0
 客户端:127.0.0.1
-时间:2013-06-28 11:28:00
+时间:2013-06-28 11:18:19
+------------------------2013-06-28 11:22:34
+SQL语句错误：SQL查询语句为空
+insert into ecms_info(infoTitle,infoSummary,infoContent,infoPic,infoPicThumb,infoSource,infoUserId,infoClickCount,infoSuggest,infoLayer,infoState,infoCreateTime,infoUpdateTime) values('test','','','','','',1,0,0,1,1,1372389754,1372389754)
+客户端:127.0.0.1
+时间:2013-06-28 11:22:34
+------------------------2013-06-28 11:22:34
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:22:34
+------------------------2013-06-28 11:23:28
+SQL语句错误：SQL查询语句为空
+insert into ecms_info(infoTitle,infoSummary,infoContent,infoPic,infoPicThumb,infoSource,infoUserId,infoClickCount,infoSuggest,infoLayer,infoState,infoCreateTime,infoUpdateTime) values('test','','','','','',1,0,0,1,1,1372389808,1372389808)
+客户端:127.0.0.1
+时间:2013-06-28 11:23:28
+------------------------2013-06-28 11:23:28
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:23:28
+------------------------2013-06-28 11:24:01
+SQL语句错误：SQL查询语句为空
+insert into ecms_info(infoTitle,infoSummary,infoContent,infoPic,infoPicThumb,infoSource,infoUserId,infoClickCount,infoSuggest,infoLayer,infoState,infoCreateTime,infoUpdateTime) values('test','','','','','',1,0,0,1,1,1372389841,1372389841)
+客户端:127.0.0.1
+时间:2013-06-28 11:24:01
+------------------------2013-06-28 11:24:01
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:24:01
+------------------------2013-06-28 11:26:00
+SQL语句错误：SQL查询语句为空
+insert into ecms_info(infoTitle,infoSummary,infoContent,infoPic,infoPicThumb,infoSource,infoUserId,infoClickCount,infoSuggest,infoLayer,infoState,infoCreateTime,infoUpdateTime) values('test','','','','','',1,0,0,1,1,1372389960,1372389960)
+客户端:127.0.0.1
+时间:2013-06-28 11:26:00
+------------------------2013-06-28 11:26:00
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:26:00
+------------------------2013-06-28 11:28:52
+SQL语句错误：SQL查询语句为空
+insert into ecms_info(infoTitle,infoSummary,infoContent,infoPic,infoPicThumb,infoSource,infoUserId,infoClickCount,infoSuggest,infoLayer,infoState,infoCreateTime,infoUpdateTime) values('test','','','','','',1,0,0,1,1,1372390132,1372390132)
+客户端:127.0.0.1
+时间:2013-06-28 11:28:52
+------------------------2013-06-28 11:28:52
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:28:52
+------------------------2013-06-28 11:29:13
+SQL语句错误：SQL查询语句为空
+insert into ecms_info(infoTitle,infoSummary,infoContent,infoPic,infoPicThumb,infoSource,infoUserId,infoClickCount,infoSuggest,infoLayer,infoState,infoCreateTime,infoUpdateTime) values('test','','','','','',1,0,0,1,1,1372390153,1372390153)
+客户端:127.0.0.1
+时间:2013-06-28 11:29:13
+------------------------2013-06-28 11:29:13
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:29:13
+------------------------2013-06-28 11:35:03
+SQL语句错误：SQL查询语句为空
+insert into ecms_info(infoTitle,infoSummary,infoContent,infoPic,infoPicThumb,infoSource,infoUserId,infoClickCount,infoSuggest,infoLayer,infoState,infoCreateTime,infoUpdateTime) values('test','','','','','',1,0,0,1,1,1372390503,1372390503)
+客户端:127.0.0.1
+时间:2013-06-28 11:35:03
+------------------------2013-06-28 11:35:03
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:35:03
+------------------------2013-06-28 11:35:03
+SQL语句错误：SQL查询语句为空
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:35:03
+------------------------2013-06-28 11:35:03
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:35:03
+------------------------2013-06-28 11:35:03
+SQL语句错误：SQL查询语句为空
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:35:03
+------------------------2013-06-28 11:35:03
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:35:03
+------------------------2013-06-28 11:35:03
+SQL语句错误：SQL查询语句为空
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:35:03
+------------------------2013-06-28 11:35:03
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:35:03
+------------------------2013-06-28 11:35:03
+SQL语句错误：SQL查询语句为空
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:35:03
+------------------------2013-06-28 11:35:03
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:35:03
+------------------------2013-06-28 11:35:03
+SQL语句错误：SQL查询语句为空
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:35:03
+------------------------2013-06-28 11:35:03
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:35:03
+------------------------2013-06-28 11:45:51
+SQL语句错误：SQL查询语句为空
+insert into ecms_info(infoTitle,infoSummary,infoContent,infoPic,infoPicThumb,infoSource,infoUserId,infoClickCount,infoSuggest,infoLayer,infoState,infoCreateTime,infoUpdateTime) values('test','','','','','',1,0,0,1,1,1372391151,1372391151)
+客户端:127.0.0.1
+时间:2013-06-28 11:45:51
+------------------------2013-06-28 11:45:51
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:45:51
+------------------------2013-06-28 11:45:51
+SQL语句错误：SQL查询语句为空
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:45:51
+------------------------2013-06-28 11:45:51
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:45:51
+------------------------2013-06-28 11:45:51
+SQL语句错误：SQL查询语句为空
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:45:51
+------------------------2013-06-28 11:45:51
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:45:51
+------------------------2013-06-28 11:45:51
+SQL语句错误：SQL查询语句为空
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:45:51
+------------------------2013-06-28 11:45:51
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:45:51
+------------------------2013-06-28 11:45:51
+SQL语句错误：SQL查询语句为空
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:45:51
+------------------------2013-06-28 11:45:51
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:45:51
+------------------------2013-06-28 11:45:51
+SQL语句错误：SQL查询语句为空
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:45:51
+------------------------2013-06-28 11:45:51
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:45:51
+------------------------2013-06-28 11:46:39
+SQL语句错误：SQL查询语句为空
+insert into ecms_info(infoTitle,infoSummary,infoContent,infoPic,infoPicThumb,infoSource,infoUserId,infoClickCount,infoSuggest,infoLayer,infoState,infoCreateTime,infoUpdateTime) values('test','','','','','',1,0,0,1,1,1372391199,1372391199)
+客户端:127.0.0.1
+时间:2013-06-28 11:46:39
+------------------------2013-06-28 11:46:39
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:46:39
+------------------------2013-06-28 11:46:39
+SQL语句错误：SQL查询语句为空
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:46:39
+------------------------2013-06-28 11:46:39
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:46:39
+------------------------2013-06-28 11:46:39
+SQL语句错误：SQL查询语句为空
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:46:39
+------------------------2013-06-28 11:46:39
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:46:39
+------------------------2013-06-28 11:46:39
+SQL语句错误：SQL查询语句为空
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:46:39
+------------------------2013-06-28 11:46:39
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:46:39
+------------------------2013-06-28 11:46:39
+SQL语句错误：SQL查询语句为空
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:46:39
+------------------------2013-06-28 11:46:39
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:46:39
+------------------------2013-06-28 11:46:39
+SQL语句错误：SQL查询语句为空
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:46:39
+------------------------2013-06-28 11:46:39
+错误SQL语句：
+0
+客户端:127.0.0.1
+时间:2013-06-28 11:46:39
+------------------------2013-06-28 12:00:16
+错误SQL语句：
+insert into ecms_info_type(infoId,infotypeId,infotypeSubId) values(,21,1,100)
+客户端:127.0.0.1
+时间:2013-06-28 12:00:16
+------------------------2013-06-28 12:00:16
+错误SQL语句：
+insert into ecms_info_type(infoId,infotypeId,infotypeSubId) values(,21,2,200)
+客户端:127.0.0.1
+时间:2013-06-28 12:00:16
+------------------------2013-06-28 12:00:16
+错误SQL语句：
+insert into ecms_info_type(infoId,infotypeId,infotypeSubId) values(,21,2,201)
+客户端:127.0.0.1
+时间:2013-06-28 12:00:16
+------------------------2013-06-28 12:00:16
+错误SQL语句：
+insert into ecms_info_type(infoId,infotypeId,infotypeSubId) values(,21,3,300)
+客户端:127.0.0.1
+时间:2013-06-28 12:00:16
+------------------------2013-06-28 12:00:16
+错误SQL语句：
+insert into ecms_info_type(infoId,infotypeId,infotypeSubId) values(,21,3,301)
+客户端:127.0.0.1
+时间:2013-06-28 12:00:16
+------------------------2013-06-28 12:00:16
+错误SQL语句：
+insert into ecms_info_type(infoId,infotypeId,infotypeSubId) values(,21,4,401)
+客户端:127.0.0.1
+时间:2013-06-28 12:00:16
+------------------------2013-06-28 18:21:30
+错误SQL语句：
+select distinct ecms_info.infoId,infoTitle,infoClickCount,infoSuggest,infoLayer,infoState,infoUpdateTime, userUsername from ecms_info  ,ecms_info_type,ecms_user where ecms_info.infoId=ecms_info_type.infoId and ecms_info.infoUserId=ecms_user.userId and ecms_info.infoId=ecms_info_type.infoId   and ( ecms_info_type.infotypeSubId=  )  order by infoLayer desc,infoUpdateTime desc   limit 0,10
+客户端:127.0.0.1
+时间:2013-06-28 18:21:30
+------------------------2013-06-28 18:21:30
+错误SQL语句：
+select count(distinct ecms_info.infoId) as counts from ecms_info  ,ecms_info_type,ecms_user where ecms_info.infoId=ecms_info_type.infoId and ecms_info.infoUserId=ecms_user.userId and ecms_info.infoId=ecms_info_type.infoId   and ( ecms_info_type.infotypeSubId=  )
+客户端:127.0.0.1
+时间:2013-06-28 18:21:30
+------------------------2013-06-28 18:22:18
+错误SQL语句：
+select distinct ecms_info.infoId,infoTitle,infoClickCount,infoSuggest,infoLayer,infoState,infoUpdateTime, userUsername from ecms_info  ,ecms_info_type,ecms_user where ecms_info.infoId=ecms_info_type.infoId and ecms_info.infoUserId=ecms_user.userId and ecms_info.infoId=ecms_info_type.infoId   and ( ecms_info_type.infotypeSubId=  )  order by infoLayer desc,infoUpdateTime desc   limit 0,10
+客户端:127.0.0.1
+时间:2013-06-28 18:22:18
+------------------------2013-06-28 18:22:18
+错误SQL语句：
+select count(distinct ecms_info.infoId) as counts from ecms_info  ,ecms_info_type,ecms_user where ecms_info.infoId=ecms_info_type.infoId and ecms_info.infoUserId=ecms_user.userId and ecms_info.infoId=ecms_info_type.infoId   and ( ecms_info_type.infotypeSubId=  )
+客户端:127.0.0.1
+时间:2013-06-28 18:22:18
+------------------------2013-06-28 18:25:36
+错误SQL语句：
+select distinct ecms_info.infoId,infoTitle,infoClickCount,infoSuggest,infoLayer,infoState,infoUpdateTime, userUsername from ecms_info  ,ecms_info_type,ecms_user where ecms_info.infoId=ecms_info_type.infoId and ecms_info.infoUserId=ecms_user.userId and ecms_info.infoId=ecms_info_type.infoId   and ( ecms_info_type.infotypeSubId=  )  order by infoLayer desc,infoUpdateTime desc   limit 0,10
+客户端:127.0.0.1
+时间:2013-06-28 18:25:36
+------------------------2013-06-28 18:25:36
+错误SQL语句：
+select count(distinct ecms_info.infoId) as counts from ecms_info  ,ecms_info_type,ecms_user where ecms_info.infoId=ecms_info_type.infoId and ecms_info.infoUserId=ecms_user.userId and ecms_info.infoId=ecms_info_type.infoId   and ( ecms_info_type.infotypeSubId=  )
+客户端:127.0.0.1
+时间:2013-06-28 18:25:36
+------------------------2013-06-28 18:26:17
+错误SQL语句：
+select distinct ecms_info.infoId,infoTitle,infoClickCount,infoSuggest,infoLayer,infoState,infoUpdateTime, userUsername from ecms_info  ,ecms_info_type,ecms_user where ecms_info.infoId=ecms_info_type.infoId and ecms_info.infoUserId=ecms_user.userId and ecms_info.infoId=ecms_info_type.infoId   and ( ecms_info_type.infotypeSubId=  )  order by infoLayer desc,infoUpdateTime desc   limit 0,10
+客户端:127.0.0.1
+时间:2013-06-28 18:26:17
+------------------------2013-06-28 18:26:17
+错误SQL语句：
+select count(distinct ecms_info.infoId) as counts from ecms_info  ,ecms_info_type,ecms_user where ecms_info.infoId=ecms_info_type.infoId and ecms_info.infoUserId=ecms_user.userId and ecms_info.infoId=ecms_info_type.infoId   and ( ecms_info_type.infotypeSubId=  )
+客户端:127.0.0.1
+时间:2013-06-28 18:26:17

@@ -88,7 +88,6 @@ class ImcpDAO  {
 		return $this->db->getQueryArray($sql);
 	}
 	//end to be added by Cheneil
-
 }
 
 

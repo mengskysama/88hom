@@ -27,13 +27,14 @@ $allowType = strtolower($_POST['allowType']);
 if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 	$result=array();
 	$data=array();
-	$upload = new UploadFile();//ʵ���ϴ�����
+	$upload = new UploadFile();//实例化上传对象
+	$originalPath .= date('Ymd').'/';
 	$targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder . $originalPath;
 	if(!file_exists($targetPath)){
 		if(!mkdir($targetPath,0777,true)){
 			$data['result']=0;
-			$data['msg']='�ļ�Ŀ¼����ʧ�ܣ�';
-			$result[]=charsetIconv($data,'GBK','UTF-8');
+			$data['msg']='文件目录创建失败！';
+			$result[]=$data;
 			echo json_encode($result);
 			exit;
 		}
@@ -41,33 +42,35 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 	$upload->setAllowFileType($allowType);
 	$fileTypes = $upload->allowFileTypes;
 	$fileParts = pathinfo($_FILES['Filedata']['name']);
-	
-	if (in_array($fileParts['extension'],$fileTypes)) {
+
+	$name=str_replace('.'.$fileParts['extension'], '', $fileParts['basename']);
+
+	if (in_array(strtolower($fileParts['extension']),$fileTypes)) {
 		try{
 			$fileName = $upload->upload($_FILES['Filedata'],ECMS_PATH_ROOT.'uploads/'.$originalPath, 1);
-			//�����Ե�ָ����С
+			//先缩略到指定大小
 			$image = new Image(ECMS_PATH_ROOT.'uploads/'.$originalPath.$fileName);
 			$isBig=$image->resizeImage($width,$height,$resizeType);
-			//�������Ҫ����ʱ��ͼƬʧ������
+			//解决不需要缩放时的图片失真问题
 			if($isBig==1){
 				$image->save();
 			}
 			$path=$originalPath.$fileName;
-			//��ˮӡ
+			//加水印
 			if($watermark==1){
 				$image = new Image(ECMS_PATH_ROOT.'uploads/'.$originalPath.$fileName);
 				$image->waterMark($watermarkPic,$watermarkPos);
 				$image->save();
 			}
-			//��ȡѡ������
+			//截取选定区域
 //			$image = new Image(ECMS_PATH_ROOT.'uploads/'.$originalPath.$fileName);
 //			$image->cutimg($srcimgurl, $endimgurl, $x, $y, $endimg_w, $endimg_h, $border_w, $border_h);
-			//�����Ҫ���������ͼ
+			//如果需要再生成缩略图
 			if($thumb==1){
 				$image = new Image(ECMS_PATH_ROOT.'uploads/'.$originalPath.$fileName);
 				$image->resizeImage($thumbWidth,$thumbHeight,$thumbResizeType);
 				if($originalPath==$thumbDir){
-					//��ֹ�洢Ŀ¼��ͬʱ����ԭ�е�ͼƬ�����洢����ͼֱ������ thumb ����Ϊ��
+					//防止存储目录相同时覆盖原有的图片，不存储缩略图直接设置 thumb 属性为空
 					$image->save(2,ECMS_PATH_ROOT.'uploads/'.$thumbDir,'_thumb');
 					$thumb_path = $thumbDir.FileSystem::getBasicName($fileName, false).'_thumb'.FileSystem::fileExt($fileName, true);
 				}else{
@@ -75,24 +78,30 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 					$thumb_path = $thumbDir.$fileName;
 				}
 			}
+			else 
+			{
+					$thumb_path = '';			
+			}
 			$data['result']=1;
-			$data['msg']='�ļ��ϴ��ɹ���';
+			$data['msg']='文件上传成功！';
+//			$data['name']=$name;//文件名称
+			$data['name']='';
 			$data['path']=$path;
 			$data['pathThumb']=$thumb_path;
-			$result[]=charsetIconv($data,'GBK','UTF-8');
+			$result[]=$data;
 			echo json_encode($result);
 			exit;
 		}catch(Exception $e){
 			$data['result']=0;
 			$data['msg']=$e->getMessage();
-			$result[]=charsetIconv($data,'GBK','UTF-8');
+			$result[]=$data;
 			echo json_encode($result);
 			exit;
 		}
 	} else {
 		$data['result']=0;
-		$data['msg']='�ϴ��ļ����ʹ���';
-		$result[]=charsetIconv($data,'GBK','UTF-8');
+		$data['msg']='上传文件类型错误！';
+		$result[]=$data;
 		echo json_encode($result);
 		exit;
 	}

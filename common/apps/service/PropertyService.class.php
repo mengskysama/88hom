@@ -9,16 +9,17 @@ class PropertyService{
 	private $db=null;
 	private $propertyDAO = null;
 	private $picDAO=null;
+	private $area=null;
 
 	public function __construct($db){
 		$this->db=$db;
 		$this->propertyDAO = new PropertyDAO($db);
 		$this->picDAO=new PicDAO($db);
+		$this->area=new Area();
 	}
 	//发布新盘信息
 	public function release($info){
 		global $cfg;
-		require_once ECMS_PATH_ROOT.'includes/area.inc.php';
 		$msg=true;
 		$areaIndexArr = explode("-",$info['areaIndex']);
 		$info['propertyProvince'] = $areaIndexArr[0];
@@ -27,7 +28,7 @@ class PropertyService{
 		$info['propertyArea'] = $areaIndexArr[3];
 		$info['propertyUserId'] = $_SESSION['Admin_User']['userId'];
 		$picInfo='';
-		$picInfo=$C[$info['propertyProvince']][$info['propertyCity']];
+		$picInfo=$this->area->C[$info['propertyProvince']][$info['propertyCity']];
 		$picInfo.=' '.$info['propertyName'];
 		if(!empty($info['propertyIsGbuy'])&&$info['propertyIsGbuy']!=1){
 			$info['propertyIsGbuyTop']='';
@@ -82,7 +83,6 @@ class PropertyService{
 	//修改新盘信息
 	public function modify($info){
 		global $cfg;
-		require_once ECMS_PATH_ROOT.'includes/area.inc.php';
 		$msg=true;
 		$areaIndexArr = explode("-",$info['areaIndex']);
 		$info['propertyProvince'] = $areaIndexArr[0];
@@ -90,7 +90,7 @@ class PropertyService{
 		$info['propertyDistrict'] = $areaIndexArr[2];
 		$info['propertyArea'] = $areaIndexArr[3];
 		$picInfo='';
-		$picInfo=$C[$info['propertyProvince']][$info['propertyCity']];
+		$picInfo=$this->area->C[$info['propertyProvince']][$info['propertyCity']];
 		$picInfo.=' '.$info['propertyName'];
 		$info['propertyUserId'] = $_SESSION['Admin_User']['userId'];
 		if(!empty($info['propertyIsGbuy'])&&$info['propertyIsGbuy']!=1){

@@ -58,6 +58,7 @@ class UploadFile {
 	 * @access public
 	 */
 	public function upload($fileField, $destFolder = './', $fileNameType = 1) {
+
 		switch ($fileField['error']) {
 			case UPLOAD_ERR_OK : //其值为 0，没有错误发生，文件上传成功。
 			$upload_succeed = true;
@@ -144,8 +145,7 @@ class UploadFile {
 					$fileFullName = $fileField['name'];
 					break;
 			}
-			//if (@move_uploaded_file($fileField['tmp_name'], $destFolder . $fileFullName)) {
-			if (copy($fileField['tmp_name'], $destFolder . $fileFullName)) {
+			if (@move_uploaded_file($fileField['tmp_name'], $destFolder . $fileFullName)) {
 				return $fileFullName;
 			} else {
 				$errorMsg = '文件上传失败！失败原因：本地文件系统读写权限出错！';

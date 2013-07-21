@@ -1,6 +1,5 @@
 <?php
 /**
- * 
  * PHPBB用户接口（同步论坛登录，退出，注册，修改，删除）
  * @author Max(maxyellow@vip.qq.com)
  * @since 2013-07-8

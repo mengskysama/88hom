@@ -1,6 +1,6 @@
 <?php
-require 'path.inc.php';
-
+session_start();
+require_once '../classes/Captcha.class.php';
 $Captcha = new Captcha("add");
 $Captcha->set_checkimage_wh(60, 20);
 $Captcha->set_checkcode_num(4);

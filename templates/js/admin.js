@@ -1279,22 +1279,22 @@ function exeAdminPropertyRelease(){
 		return false;
 	}
 	if(propertyLandArea!=''&&!reg.isMoney.exec(propertyLandArea)){
-		alert('占地面积必须为大于小于10000000的数值！');
+		alert('占地面积必须为大于小于100000000的数值！');
 		$('#propertyLandArea').focus();
 		return false;
 	}
-	if(propertyLandArea<0||propertyLandArea>10000000){
-		alert('占地面积必须为大于0小于10000000的数值！');
+	if(propertyLandArea<0||propertyLandArea>100000000){
+		alert('占地面积必须为大于0小于100000000的数值！');
 		$('#propertyLandArea').focus();
 		return false;
 	}
 	if(propertyBuildArea!=''&&!reg.isMoney.exec(propertyBuildArea)){
-		alert('建筑面积必须为大于0小于10000000的数值！');
+		alert('建筑面积必须为大于0小于100000000的数值！');
 		$('#propertyBuildArea').focus();
 		return false;
 	}
-	if(propertyBuildArea<0||propertyBuildArea>10000000){
-		alert('建筑面积必须为大于0小于10000000的数值！');
+	if(propertyBuildArea<0||propertyBuildArea>100000000){
+		alert('建筑面积必须为大于0小于100000000的数值！');
 		$('#propertyBuildArea').focus();
 		return false;
 	}
@@ -1475,22 +1475,22 @@ function exeAdminPropertyModify(){
 		return false;
 	}
 	if(propertyLandArea!=''&&!reg.isMoney.exec(propertyLandArea)){
-		alert('占地面积必须为大于小于1000000的数值！');
+		alert('占地面积必须为大于小于100000000的数值！');
 		$('#propertyLandArea').focus();
 		return false;
 	}
-	if(propertyLandArea<0||propertyLandArea>1000000){
-		alert('占地面积必须为大于0小于1000000的数值！');
+	if(propertyLandArea<0||propertyLandArea>100000000){
+		alert('占地面积必须为大于0小于100000000的数值！');
 		$('#propertyLandArea').focus();
 		return false;
 	}
 	if(propertyBuildArea!=''&&!reg.isMoney.exec(propertyBuildArea)){
-		alert('建筑面积必须为大于0小于1000000的数值！');
+		alert('建筑面积必须为大于0小于100000000的数值！');
 		$('#propertyBuildArea').focus();
 		return false;
 	}
-	if(propertyBuildArea<0||propertyBuildArea>1000000){
-		alert('建筑面积必须为大于0小于1000000的数值！');
+	if(propertyBuildArea<0||propertyBuildArea>100000000){
+		alert('建筑面积必须为大于0小于100000000的数值！');
 		$('#propertyBuildArea').focus();
 		return false;
 	}
@@ -1590,7 +1590,6 @@ function exeAdminPropertyModify(){
 	$('#propertyVolRate').val(propertyVolRate);
 	$('#propertyGreenRate').val(propertyGreenRate);
 	$('#propertyLandArea').val(propertyLandArea);
-	$('#propertyLandArea').val(propertyLandArea);
 	$('#propertyBuildArea').val(propertyBuildArea);
 	$('#propertyRight').val(propertyRight);
 	$('#propertyOpenPrice').val(propertyOpenPrice);
@@ -1603,6 +1602,199 @@ function exeAdminPropertyModify(){
 	$('#propertyDiscountsTitle').val(propertyDiscountsTitle);
 	$('#propertyPreferentialPrice').val(propertyPreferentialPrice);
 	$('#propertyPreferentialTitle').val(propertyPreferentialTitle);
+	
+	return true;
+}
+function exeAdminCommunityChangeStateAndModify(){
+	var reg=new RegExps();
+	var communityName=$.trim($('#communityName').val());
+	var communityVolRate=$.trim($('#communityVolRate').val());
+	var communityGreenRate=$.trim($('#communityGreenRate').val());
+	var communityLandArea=$.trim($('#communityLandArea').val());
+	var communityBuildArea=$.trim($('#communityBuildArea').val());
+	var communityRight=$.trim($('#communityRight').val());
+	var communityRefPrice=$.trim($('#communityRefPrice').val());
+	var communityMapXY=$.trim($('#communityMapXY').val());
+	var communityManagerFee=$.trim($('#communityManagerFee').val());
+	
+	if(null==communityName || communityName==''){
+		alert('楼盘名称不能为空！');
+		$('#communityName').focus();
+		return false;
+	}
+	if($('div#communityIs input[type="checkbox"]:checked').length == 0){
+		alert('请至少选择一种物业类型！');
+		$('#communityIsHouseType').focus();
+		return false;
+	}
+	if($('#txtCity').val()=='选择城市'){
+		alert('请选择城市！');
+		$('#txtCity').focus();
+		return false;
+	}
+	if($('#txtDistrict').val()=='选择区域' || $('#txtDistrict').val()=='选择区县' || $('#txtDistrict').val()==''){
+		alert('请选择区域！');
+		$('#txtDistrict').focus();
+		return false;
+	}
+	if($('#txtComareas').val()=='选择商圈' || $('#txtComareas').val()==''){
+		alert('请选择商圈！');
+		$('#txtComareas').focus();
+		return false;
+	}
+	if(communityMapXY==''){
+		alert('经纬度为必填选项,格式为116.463404,39.876646形式,请用百度地图坐标拾取器获取19级层数数值！');
+		$('#communityMapXY').focus();
+		return false;
+	}
+	if(communityMapXY!=''&&!/^\d+(\.\d+)?\,\d+(\.\d+)?$/.test(communityMapXY)){
+		alert('经纬度为必填选项,格式为116.463404,39.876646形式,请用百度地图坐标拾取器获取19级层数数值！');
+		$('#communityMapXY').focus();
+		return false;
+	}
+	if(communityVolRate!=''&&!reg.isMoney.exec(communityVolRate)){
+		alert('容积率必须为大于0小于100的数值！');
+		$('#communityVolRate').focus();
+		return false;
+	}
+	if(communityVolRate<0||communityVolRate>100){
+		alert('容积率必须为大于0小于100的数值！');
+		$('#communityVolRate').focus();
+		return false;
+	}
+	if(communityGreenRate!=''&&!reg.isMoney.exec(communityGreenRate)){
+		alert('绿化率必须为大于0小于100的数值！');
+		$('#communityGreenRate').focus();
+		return false;
+	}
+	if(communityGreenRate<0||communityGreenRate>100){
+		alert('绿化率必须为大于0小于100的数值！');
+		$('#communityGreenRate').focus();
+		return false;
+	}
+	if(communityLandArea!=''&&!reg.isMoney.exec(communityLandArea)){
+		alert('占地面积必须为大于小于100000000的数值！');
+		$('#communityLandArea').focus();
+		return false;
+	}
+	if(communityLandArea<0||communityLandArea>100000000){
+		alert('占地面积必须为大于0小于100000000的数值！');
+		$('#communityLandArea').focus();
+		return false;
+	}
+	if(communityBuildArea!=''&&!reg.isMoney.exec(communityBuildArea)){
+		alert('建筑面积必须为大于0小于100000000的数值！');
+		$('#communityBuildArea').focus();
+		return false;
+	}
+	if(communityBuildArea<0||communityBuildArea>100000000){
+		alert('建筑面积必须为大于0小于100000000的数值！');
+		$('#communityBuildArea').focus();
+		return false;
+	}
+	if(communityRight!=''&&!reg.isInt.exec(communityRight)){
+		alert('产权年限必须为大于0小于等于70的数值！');
+		$('#communityRight').focus();
+		return false;
+	}
+	if(communityRight<0||communityRight>70){
+		alert('产权年限必须为大于0小于等于70的数值！');
+		$('#communityRight').focus();
+		return false;
+	}
+	if(communityRefPrice!=''&&!reg.isInt.exec(communityRefPrice)){
+		alert('参考均价必须为大于0小于1000000的数值！');
+		$('#communityRefPrice').focus();
+		return false;
+	}
+	if(communityRefPrice<0||communityRefPrice>1000000){
+		alert('参考均价必须为大于0小于1000000的数值！');
+		$('#communityRefPrice').focus();
+		return false;
+	}
+	
+	if(communityManagerFee!=''&&!reg.isMoney.exec(communityManagerFee)){
+		alert('物业管理费必须为大于0小于1000的数值！');
+		$('#communityManagerFee').focus();
+		return false;
+	}
+	if(communityManagerFee<0||communityManagerFee>1000){
+		alert('物业管理费必须为大于0小于1000的数值！');
+		$('#communityManagerFee').focus();
+		return false;
+	}
+
+	$('#communityName').val(communityName);
+	$('#communityVolRate').val(communityVolRate);
+	$('#communityGreenRate').val(communityGreenRate);
+	$('#communityLandArea').val(communityLandArea);
+	$('#communityBuildArea').val(communityBuildArea);
+	$('#communityRight').val(communityRight);
+	$('#communityRefPrice').val(communityRefPrice);
+	$('#communityMapXY').val(communityMapXY);
+	$('#communityManagerFee').val(communityManagerFee);
+	
+	return true;
+}
+function exeAdminComplexImcpRelease(){
+	var reg=new RegExps();
+	var imcpShortName=$.trim($('#imcpShortName').val());
+	var imcpName=$.trim($('#imcpName').val());
+	var imcpAddress=$.trim($('#imcpAddress').val());
+	var imcpWebSite=$.trim($('#imcpWebSite').val());
+	var imcpLogo=$.trim($('#imcpLogo').val());
+	
+	if(null==imcpShortName || imcpShortName==''){
+		alert('中介公司名称【短写】不能为空！');
+		$('#imcpShortName').focus();
+		return false;
+	}
+	if(null==imcpName || imcpName==''){
+		alert('中介公司名称【全称】不能为空！');
+		$('#imcpName').focus();
+		return false;
+	}
+	if(null==imcpLogo || imcpLogo==''){
+		alert('楼盘名称不能为空！');
+		return false;
+	}
+	
+	$('#imcpShortName').val(imcpShortName);
+	$('#imcpName').val(imcpName);
+	$('#imcpAddress').val(imcpAddress);
+	$('#imcpWebSite').val(imcpWebSite);
+	$('#imcpLogo').val(imcpLogo);
+	
+	return true;
+}
+function exeAdminComplexImcpModify(){
+	var reg=new RegExps();
+	var imcpShortName=$.trim($('#imcpShortName').val());
+	var imcpName=$.trim($('#imcpName').val());
+	var imcpAddress=$.trim($('#imcpAddress').val());
+	var imcpWebSite=$.trim($('#imcpWebSite').val());
+	var imcpLogo=$.trim($('#imcpLogo').val());
+	
+	if(null==imcpShortName || imcpShortName==''){
+		alert('中介公司名称【短写】不能为空！');
+		$('#imcpShortName').focus();
+		return false;
+	}
+	if(null==imcpName || imcpName==''){
+		alert('中介公司名称【全称】不能为空！');
+		$('#imcpName').focus();
+		return false;
+	}
+	if(null==imcpLogo || imcpLogo==''){
+		alert('楼盘名称不能为空！');
+		return false;
+	}
+	
+	$('#imcpShortName').val(imcpShortName);
+	$('#imcpName').val(imcpName);
+	$('#imcpAddress').val(imcpAddress);
+	$('#imcpWebSite').val(imcpWebSite);
+	$('#imcpLogo').val(imcpLogo);
 	
 	return true;
 }

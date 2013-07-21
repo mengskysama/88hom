@@ -1,5 +1,6 @@
 <?php
-require 'path.inc.php';
+session_start();
+require_once '../classes/CheckCode.class.php';
 $checkcode=new CheckCode();
 $checkcode->width=80;
 $checkcode->height=24;

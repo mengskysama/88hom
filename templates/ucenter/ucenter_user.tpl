@@ -48,6 +48,7 @@
               </div>
             </div>
             <div class="zltx1">
+            <a name="001" id="001" ></a>
             <div class="zltx0">
             	<ul>
                 	<li><a href="#">我的新房楼盘选房单(1)</a></li>
@@ -90,6 +91,7 @@
               </div>
             </div>
             <div class="zltx1">
+            <a name="002" id="002" ></a>
             <div class="zltx0">
             	<ul>
                 	<li><a href="#">我浏览过的新房楼盘(1)</a></li>

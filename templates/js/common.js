@@ -1,5 +1,5 @@
 /**
- * ����ͨ��js�ļ�
+ * 通用JS
  */
 
 var domain = getDomain();

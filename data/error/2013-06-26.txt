@@ -1,0 +1,5 @@
+------------------------2013-06-26 23:03:51
+错误SQL语句：
+insert into ecms_register_cert_code(cert_channel,cert_code,cert_code_status,create_time) values('112538201@qq.com',3997a3c7be3ae494e7fc447d3175b2c1,1,now())
+客户端:127.0.0.1
+时间:2013-06-26 23:03:51

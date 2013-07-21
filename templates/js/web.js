@@ -166,112 +166,90 @@ function exeWebChangeFriends(){
 		window.open(select);
 	}
 }
-function exeWebCheersbuddysRelease(){
-	var reg=new RegExps();
-	var name=$.trim($('#name').val());
-	var tel=$.trim($('#tel').val());
-	var address=$.trim($('#address').val());
-	var pCount=$.trim($('#pCount').val());
-	if(null==name || name==''){
-		alert('姓名不能为空！');
-		$('#name').focus();
-		return false;
+function exeWebPropertySearchDown(value){
+	if(value=='搜索小区名、楼盘名、地址等'){
+		$('#search').val('');
 	}
-	if(null==tel || tel==''){
-		alert('电话不能为空！');
-		$('#tel').focus();
-		return false;
-	}
-	if(null==address || address==''){
-		alert('地址不能为空！');
-		$('#address').focus();
-		return false;
-	}
-	if(null==pCount || pCount==''){
-		alert('数量不能为空！');
-		$('#pCount').focus();
-		return false;
-	}else if(!reg.isInt.exec(pCount)){
-		alert('请填写整数数量！');
-		$('#pCount').focus();
-		return false;
-	}
-	$('#name').val(name);
-	$('#tel').val(tel);
-	$('#address').val(address);
-	$('#pCount').val(pCount);
-	$('#releaseForm').submit();
 }
-function exeWebMessageRelease(){
-	var reg=new RegExps();
-	var name=$.trim($('#name').val());
-	var post=$.trim($('#post').val());
-	var companyName=$.trim($('#companyName').val());
-	var tel=$.trim($('#tel').val());
-	var email=$.trim($('#email').val());
-	var address=$.trim($('#address').val());
-	var companyAddress=$.trim($('#companyAddress').val());
-	if(null==name || name==''){
-		alert('姓名不能为空！');
-		$('#name').focus();
-		return false;
+function exeWebPropertySearchOut(value){
+	if(value==''){
+		$('#search').val('搜索小区名、楼盘名、地址等');
 	}
-//	if(null==post || post==''){
-//		alert('职位不能为空！');
-//		$('#post').focus();
-//		return false;
-//	}
-	if(null==companyName || companyName==''){
-		alert('公司名称不能为空！');
-		$('#companyName').focus();
-		return false;
-	}
-	if(null==tel || tel==''){
-		alert('电话不能为空！');
-		$('#tel').focus();
-		return false;
-	}
-//	if(null==email || email==''){
-//		alert('E-mail不能为空！');
-//		$('#email').focus();
-//		return false;
-//	}
-//	if(null==address || address==''){
-//		alert('地址不能为空！');
-//		$('#address').focus();
-//		return false;
-//	}
-
-	$('#name').val(name);
-	$('#post').val(post);
-	$('#companyName').val(companyName);
-	$('#tel').val(tel);
-	$('#email').val(email);
-	$('#address').val(address);
-
-	return true;
 }
-function exeWebMediaLogin(){
-	var username=$.trim($('#username').val());
-	var password=$.trim($('#password').val());
-	var valideCode=$.trim($('#valideCode').val());
-	if(null==username || username==''){
-		alert('用户名不能为空！');
-		$('#username').focus();
-		return false;
+function exeWebCommunitySearchDown(value){
+	if(value=='搜索小区名、楼盘名、地址等'){
+		$('#search').val('');
 	}
-	if(null==password || password==''){
-		alert('密码不能为空！');
-		$('#password').focus();
-		return false;
+}
+function exeWebCommunitySearchOut(value){
+	if(value==''){
+		$('#search').val('搜索小区名、楼盘名、地址等');
 	}
-	if(null==valideCode || valideCode==''){
-		alert('请输入验证码！');
-		$('#valideCode').focus();
-		return false;
+}
+function exeWebHouseSellSearch(name,val){
+	if($('#search').val()=='搜索小区名、楼盘名、地址等') 
+		$('#search').val('');
+	var search=$.trim($('#search').val());
+	if(search!=''){
+		$.base64.utf8encode = true;
+		search=$.base64.btoa(search);
 	}
-	$('#username').val(username);
-	$('#password').val(password);
-	$('#valideCode').val(valideCode);
-	$('#mediaLoginForm').submit();
+	var t=$('#t').val();
+	var p=$('#p').val();
+	var c=$('#c').val();
+	var d=$('#d').val();
+	var a=$('#a').val();
+	var pt=$('#pt').val();
+	var rt=$('#rt').val();
+	var at=$('#at').val();
+	var bt=$('#bt').val();
+	var st=$('#st').val();
+	var bYear=$('#bYear').val();
+	var forward=$('#forward').val();
+	var floor=$('#floor').val();
+	var fitment=$('#fitment').val();
+	var orderPrice=$('#orderPrice').val();
+	var orderArea=$('#orderArea').val();
+
+	if(name=='d'){
+		d=val;
+	}else if(name=='pt'){
+		pt=val;
+	}else if(name=='rt'){
+		rt=val;
+	}else if(name=='at'){
+		at=val;
+	}else if(name=='bt'){
+		bt=val;
+	}else if(name=='st'){
+		st=val;
+	}else if(name=='bYear'){
+		bYear=val;
+	}else if(name=='forward'){
+		forward=val;
+	}else if(name=='floor'){
+		floor=val;
+	}else if(name=='fitment'){
+		fitment=val;
+	}else if(name=='orderPrice'){
+		orderArea='';
+		if(orderPrice==''){
+			orderPrice=1;
+		}else if(orderPrice==1){
+			orderPrice=2;
+		}else if(orderPrice==2){
+			orderPrice=1;
+		}
+	}else if(name=='orderArea'){
+		orderPrice='';
+		if(orderArea==''){
+			orderArea=1;
+		}else if(orderArea==1){
+			orderArea=2;
+		}else if(orderArea==2){
+			orderArea=1;
+		}
+	}
+	//alert('sellSearch.php?t='+t+'&p='+p+'&c='+c+'&d='+d+'&a='+a+'&pt='+pt+'&rt='+rt+'&at='+at+'&bt='+bt+'&st='+st+'&bYear='+bYear+'&forward='+forward+'&floor='+floor+'&fitment='+fitment+'&orderPrice='+orderPrice+'&orderArea='+orderArea+'&search='+search);
+	location.href='sellSearch.php?t='+t+'&p='+p+'&c='+c+'&d='+d+'&a='+a+'&pt='+pt+'&rt='+rt+'&at='+at+'&bt='+bt+'&st='+st+'&bYear='+bYear+'&forward='+forward+'&floor='+floor+'&fitment='+fitment+'&orderPrice='+orderPrice+'&orderArea='+orderArea+'&search='+search;
 }

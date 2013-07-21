@@ -99,7 +99,7 @@ $type='propertyAndUser';
 $step=20;
 $begin=$step*($page-1);
 
-$fileName='list.php?propertyIsHouseType='.$propertyIsHouseType.'&propertyIsBusinessType='.$propertyIsBusinessType.'&propertyIsOfficeType='.$propertyIsOfficeType.'&propertyIsVillaType='.$propertyIsVillaType.'&propertyIsHot='.$propertyIsHot.'&propertyIsBusiness='.$propertyIsBusiness.'&$propertyIsSmallAmt='.$propertyIsSmallAmt.'&propertyIsSubwayLine='.$propertyIsSubwayLine.'&propertyIsPark='.$propertyIsPark.'&propertyIsInvestment='.$propertyIsInvestment.'&propertyIsRecommend='.$propertyIsRecommend.'&propertyIsFine='.$propertyIsFine.'&propertyIsGbuy='.$propertyIsGbuy.'&propertyIsDiscounts='.$propertyIsDiscounts.'&propertyIsPreferential='.$propertyIsPreferential.'&areaIndex='.$areaIndex.'&page';
+$fileName='list.php?propertyIsHouseType='.$propertyIsHouseType.'&propertyIsBusinessType='.$propertyIsBusinessType.'&propertyIsOfficeType='.$propertyIsOfficeType.'&propertyIsVillaType='.$propertyIsVillaType.'&propertyIsHot='.$propertyIsHot.'&propertyIsBusiness='.$propertyIsBusiness.'&$propertyIsSmallAmt='.$propertyIsSmallAmt.'&propertyIsSubwayLine='.$propertyIsSubwayLine.'&propertyIsPark='.$propertyIsPark.'&propertyIsInvestment='.$propertyIsInvestment.'&propertyIsRecommend='.$propertyIsRecommend.'&propertyIsFine='.$propertyIsFine.'&propertyIsGbuy='.$propertyIsGbuy.'&propertyIsDiscounts='.$propertyIsDiscounts.'&propertyIsPreferential='.$propertyIsPreferential.'&search='.$search.'&areaIndex='.$areaIndex.'&page';
 
 //echo $fileName;
 

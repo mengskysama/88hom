@@ -26,8 +26,8 @@
 					'width'     : 1000,
 					'height'    : 800,
 					'thumbResizeType': 1,
-					'thumbWidth': 110,
-					'thumbHeight': 90,
+					'thumbWidth': 120,
+					'thumbHeight': 96,
 					'watermark' : 0,
 					'watermarkPic': '<!--{$cfg.file_path_upload}-->watermark.png',
 					'watermarkPos': 9,
@@ -96,7 +96,7 @@
 					<img src="<!--{$cfg.web_url}-->uploads/<!--{$furnitureStore.logo}-->"/>
 				</span>
 				<span style="float:left;clear:both;margin-top:10px;">
-					<input type="file" name="file_upload" id="file_upload" />
+					<input type="file" name="file_upload" id="file_upload" />(120*96)
 				</span>
 				<input type="hidden" name="logo" value="<!--{$furnitureStore.logo}-->"/>
 			</td>

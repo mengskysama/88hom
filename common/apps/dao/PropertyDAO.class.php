@@ -140,7 +140,6 @@ class PropertyDAO  {
 			  propertyStartingTime='".(empty($property['propertyStartingTime'])?'':$property['propertyStartingTime'])."',
 			  propertyEndingTime='".(empty($property['propertyEndingTime'])?'':$property['propertyEndingTime'])."',
 			  propertyWorksProgramme='".(empty($property['propertyWorksProgramme'])?'':$property['propertyWorksProgramme'])."',
-			  propertyClickCount=".(empty($property['propertyClickCount'])?0:$property['propertyClickCount']).",
 			  propertyProvince=".(empty($property['propertyProvince'])?0:$property['propertyProvince']).",
 			  propertyCity=".(empty($property['propertyCity'])?0:$property['propertyCity']).",
 			  propertyDistrict=".(empty($property['propertyDistrict'])?0:$property['propertyDistrict']).",

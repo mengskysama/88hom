@@ -4,19 +4,19 @@
         <div class="qg_zc">
      	   <dl>
      		   	<dt class="qg_bt1">我要买房</dt>
-          	    <dd class="qg_bt2"><a href="#">我的找房条件</a></dd>
-          	    <dd class="qg_bt2"><a href="#">我的选房单</a></dd>
-         	    <dd class="qg_bt2"><a href="#">我浏览过的房源</a></dd>
-                <dd class="qg_bt2"><a href="#">我要求购</a></dd>
-                <dd class="qg_bt2"><a href="#">管理我的求购信息</a></dd>
+          	    <dd class="qg_bt2"><a href="user_search_criteria.php?cType=1">我的找房条件</a></dd>
+          	    <dd class="qg_bt2"><a href="ucenter_user.php#001">我的选房单</a></dd>
+         	    <dd class="qg_bt2"><a href="ucenter_user.php#002">我浏览过的房源</a></dd>
+                <dd class="qg_bt2"><a href="user_wanted.php?wType=1">我要求购</a></dd>
+                <dd class="qg_bt2"><a href="user_wanted_manage.php?wType=1">管理我的求购信息</a></dd>
       	  </dl>
             <dl>
      		   	<dt class="qg_bt1">我要租房</dt>
-          	    <dd class="qg_bt2"><a href="#">我的租房条件</a></dd>
-          	    <dd class="qg_bt2"><a href="#">我的选房单</a></dd>
-         	    <dd class="qg_bt2"><a href="#">我浏览过的房源</a></dd>
-                <dd class="qg_bt2"><a href="#">我要求租</a></dd>
-                <dd class="qg_bt2"><a href="#">管理我的求租信息</a></dd>
+          	    <dd class="qg_bt2"><a href="user_search_criteria.php?cType=2">我的租房条件</a></dd>
+          	    <dd class="qg_bt2"><a href="ucenter_user.php#001">我的选房单</a></dd>
+         	    <dd class="qg_bt2"><a href="ucenter_user.php#002">我浏览过的房源</a></dd>
+                <dd class="qg_bt2"><a href="user_wanted.php?wType=2">我要求租</a></dd>
+                <dd class="qg_bt2"><a href="user_wanted_manage.php?wType=2">管理我的求租信息</a></dd>
       	  </dl>
           <dl>
      		   	<dt class="qg_bt1">出租出售</dt>

@@ -210,7 +210,10 @@ function toList(){//列表
 	$limit = ' limit '.(($page-1)*$pageSize).','.$pageSize;
 
 	$where = ' ,ecms_info_type,ecms_user where ecms_info.infoId=ecms_info_type.infoId and ecms_info.infoUserId=ecms_user.userId  '.$where;
-	$infoList = $infoDAO->getInfoList('distinct ecms_info.infoId,infoTitle,infoClickCount,infoSuggest,infoLayer,infoState,infoUpdateTime, userUsername',$where,' order by infoLayer desc,infoUpdateTime desc ',$limit);
+	$infoList = $infoDAO->getInfoList('distinct ecms_info.infoId,infoTitle,infoClickCount,infoSuggest,infoLayer,infoState,infoUpdateTime, userUsername,
+				(select count(*) from ecms_info_reply r where r.infoId=ecms_info.infoId and inforeplyState=1) as passReplyCount ,
+				(select count(*) from ecms_info_reply r where r.infoId=ecms_info.infoId and inforeplyState=0) as noPassReplyCount '
+				,$where,' order by noPassReplyCount desc,infoLayer desc,infoUpdateTime desc ',$limit);
 	$temp = array();
 	for($i=0;$i<count($infoList);$i++)//每条新闻对应的类别
 	{

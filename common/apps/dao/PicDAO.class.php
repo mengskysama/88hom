@@ -27,6 +27,7 @@ class PicDAO  {
 										.",".time()
 										.",".time()
 										.")";
+//		return $this->db->getQueryExecute($sql);//修改前2013-07-19
 		$this->db->query($sql);
 		return $this->db->getInsertNum();					
 	}
@@ -50,6 +51,10 @@ class PicDAO  {
 	//删除图片
 	public function delPicById($id){
 		$sql="delete from  ecms_pic where picId=".$id;
+		return $this->db->getQueryExecute($sql);
+	}
+	public function setPicDel($where){
+		$sql="update ecms_pic set picState=2 $where";
 		return $this->db->getQueryExecute($sql);
 	}
 	//added by Cheneil
@@ -83,7 +88,6 @@ class PicDAO  {
 	 */
 	public function getPicList($field = '*',$where='',$order='',$limit=''){
 		$sql="select $field from ecms_pic $where $order $limit";
-		//echo $sql;
 		return $this->db->getQueryArray($sql);
 	}
 	/**

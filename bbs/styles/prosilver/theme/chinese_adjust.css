@@ -1,0 +1,315 @@
+/* For font size correction
+---------------------------------------- */
+
+p {
+   font-size: 1.2em;
+}
+
+h2 {
+	font-size: 1.6em;
+	font-weight: bold;
+}
+
+ul.linklist li {
+   font-size: 1.2em;
+}
+
+li.header dt, li.header dd {
+   font-size: 1.2em;
+}
+
+li.header dt {
+   font-weight: normal;
+}
+
+ul.topiclist dt {
+   font-size: 1.2em;
+}
+
+dd.lastpost {
+   font-size: 1.2em;
+}
+
+h3 {
+   font-size: 1.2em;
+}
+
+a.forumtitle, a.topictitle {
+   font-family: Tahoma, Helvetica, Arial, Sans-serif;
+   font-size: 1em;
+}
+
+.copyright {
+   font-size: 1.2em;
+}
+
+.postbody h3.first, .postbody h3 {
+   font-size: 1.2em;
+}
+
+.postbody .content {
+	font-size:1.2em;
+	font-family: Tahoma,Verdana,Helvetica,Arial,sans-serif;
+}
+
+p.author {
+   font-size: 1.2em;
+}
+
+.postprofile dd, .postprofile dt {
+   font-size: 1.2em;
+}
+
+.pagination {
+   font-size: 1.1em;
+}
+
+.attachbox {
+   font-size: 1.2em;
+}
+
+blockquote {
+   font-size: 1em;
+}
+
+fieldset {
+   font-size: 1.1em;
+}
+
+fieldset dl {
+	font-size: 1.1em;
+}
+
+fieldset.quick-login label {
+	font-size: 1.1em;
+}
+
+fieldset.submit-buttons {
+	font-size: 1.2em;
+}
+
+fieldset.quickmod, fieldset.jumpbox, fieldset.display-options {
+   font-size: 1.2em;
+}
+
+table.table1 thead th {
+	font-size: 1.2em;
+}
+
+table.table1 td {
+	font-size: 1.2em;
+}
+
+#tabs li {
+   font-size: 1.2em;
+}
+
+#cp-main .panel p, #cp-main .panel ol {
+   font-size: 1.2em;
+}
+
+#format-buttons {
+	font-size: 1.1em;
+}
+
+#navigation li {
+   font-size: 1.2em;
+   font-weight: normal;
+}
+
+#smiley-box {
+	font-size: 1.1em;
+}
+
+#navigation a {
+   font-weight: normal;
+}
+
+#page-body p {
+   font-size: 1.2em;
+}
+
+dl.details {
+   font-size: 1.2em;
+}
+
+dl.faq {
+	font-size: 1.2em;
+}
+
+dl.codebox dt {
+   font-size: 0.9em;
+}
+
+div.rules {
+font-size: 1.2em;
+}
+
+.signature {
+font-size: 1.2em;
+}
+
+.posttitle {
+	height:37px;
+	margin:0px 10px 5px 0px;
+}
+
+.posttime {
+	color:#FFFFFF;
+	float:left;
+	height:30px;
+	margin-right:3px;
+	margin-top:5px;
+	width:30px;
+}
+
+.forum_title h2, .posttitle h2 {
+	font-size:1.2em;
+	margin-bottom:0px;
+	margin-top:0px;
+}
+
+#main .forum_title a, #main .posttitle a {
+	text-decoration:none;
+}
+
+.forum_title h2 .arrow:hover, .posttitle h2 .arrow:hover {
+	background-image:url(images/span.gif);
+	background-position:right -300px;
+	background-repeat:no-repeat;
+	color:#83AA59;
+	padding-right:20px;
+	text-decoration:none;
+}
+
+.postmeta span {
+	line-height: 13px;
+	padding-left: 14px;
+	color: #939393;
+	margin-right: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-image: url(images/span.gif);
+	background-repeat: no-repeat;
+}
+.postmeta span a {
+	color: #4C81B6;
+	text-decoration: none;
+}
+.postmeta span a:hover {
+	color: #a14c2a;
+}
+.file {
+	background-position: left -78px;
+}
+.date {
+	background-position: left -98px;
+}
+.user {
+	background-position: left 2px;
+}
+.moderator {
+	background-position: left 2px;
+}
+.subforum {
+	background-position: left -302px;
+}
+.firstpost {
+	background-position: left -37px;
+}
+.comment {
+	background-position: left -58px;
+}
+.pop {
+	float: right;
+	background-position: left 16px;
+}
+.edit {
+	background-position: left -138px;
+}
+
+.posttitle h2 .pagination {
+	background:transparent url(images/icon_pages.gif) no-repeat scroll 0pt 50%;
+	float:none;
+	font-size:0.9em;
+	margin-top:0pt;
+	padding:1px 0pt 1px 15px;
+}
+
+.icon-arrow {
+	background-image:url(./images/hover_arrow.gif);
+	background-position:5px 50%;
+	background-repeat:no-repeat;
+}
+
+#extras ul li{
+	list-style-type:none;
+}
+
+#extras ul li ul li,#extras ul li ul li span{
+	line-height: 16px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-right: 0px;
+	padding-left: 20px;
+	margin: 0px;
+	overflow: hidden;
+	word-wrap: break-word;
+
+}
+#extras ul li ul li a {
+
+	padding-top: 1px;
+	padding-bottom: 1px;
+	display: block;
+	text-decoration: none;
+}
+#extras ul li ul li a:hover {
+	background-color: #E2F4FD;
+	padding-right: 5px;
+	padding-left: 1px;
+	display: block;
+}
+#extras ul li ul li:hover {
+	background-color: #E2F4FD;
+	padding-right: 5px;
+	padding-left: 22px;
+}
+#extras li.rc {
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+#extras li.rc a,#extras ul.rc li a {
+	display: inline;
+}
+#extras li.rc a:hover,#extras ul.rc li a:hover {
+	display: inline;
+}
+#extras li.cat-item a {
+	line-height: 16px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	display: inline;
+}
+#extras li.cat-item a:hover {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	display: inline;
+}
+#extras li.cat-item:hover {
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+#extras li.cat-item, ul.wp_sofa li {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+#extras li.cat-item ul.children {
+	margin-left: 10px;
+}
+#extras li .active {
+	background-color: #FFFFFF;
+}
+
+.blog-postbody {
+	font-size: 1.2em;
+}

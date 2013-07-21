@@ -1,120 +1,86 @@
-------------------------2013-06-27 10:06:30
-错误SQL语句：
-insert into ecms_register_cert_code(cert_channel,cert_code,cert_code_status,create_time) values('fcheneil@qq.com',03a355bb3be51c527a5ee208ee317e74,1,now())
+------------------------2013-06-27 15:31:51
+数据库不可用：
+88hom
 客户端:127.0.0.1
-时间:2013-06-27 10:06:30
-------------------------2013-06-27 15:06:27
-错误SQL语句：
-insert into ecms_shops(shopsName,shopsAddress,shopsTitle,shopsContent,shopsType,shopsSellPrice,shopsRentPrice,
-			  shopsRentPriceUnit,shopsRentState,shopsPayment,shopsPayDetailY,shopsPayDetailF,shopsBuildArea,shopsFloor,shopsAllFloor,shopsDivision,
-			  shopsFitment,shopsBaseService,shopsAimOperasion,shopsIncludFee,shopsPropFee,shopsTransferFee,shopsNumber,shopsSellRentType,
-			  shopsMapX,shopsMapY,shopsState,shopsUserId,shopsPropertyId,shopsCreateTime,shopsUpdateTime) 
-			  values('东门步行街',
-			  '东门步行街22号',
-			  '东门步行街',
-			  '',
-			  2,
-			  33,
-			  0,
-			  0,
-			  0,
-			  0,
-			  0,
-			  0,
-			  22,
-			  2,
-			  10,
-			  1,
-			  1,
-			  'Array',
-			  'Array',
-			  0,
-			  50,
-			  '',
-			  '',
-			  1,
-			  0,
-			  0,
-			  0,
-			  0,
-			  0,1372316787,1372316787)
+时间:2013-06-27 15:31:51
+------------------------2013-06-27 15:31:52
+数据库不可用：
+88hom
 客户端:127.0.0.1
-时间:2013-06-27 15:06:27
-------------------------2013-06-27 15:08:16
+时间:2013-06-27 15:31:52
+------------------------2013-06-27 15:31:52
 错误SQL语句：
-insert into ecms_shops(shopsName,shopsAddress,shopsTitle,shopsContent,shopsType,shopsSellPrice,shopsRentPrice,
-			  shopsRentPriceUnit,shopsRentState,shopsPayment,shopsPayDetailY,shopsPayDetailF,shopsBuildArea,shopsFloor,shopsAllFloor,shopsDivision,
-			  shopsFitment,shopsBaseService,shopsAimOperasion,shopsIncludFee,shopsPropFee,shopsTransferFee,shopsNumber,shopsSellRentType,
-			  shopsMapX,shopsMapY,shopsState,shopsUserId,shopsPropertyId,shopsCreateTime,shopsUpdateTime) 
-			  values('东门步行街',
-			  '东门步行街22号',
-			  '东门步行街',
-			  '<p>
-	<u><strong>哈哈</strong></u></p>
-',
-			  2,
-			  33,
-			  0,
-			  0,
-			  0,
-			  0,
-			  0,
-			  0,
-			  22,
-			  2,
-			  10,
-			  1,
-			  1,
-			  'Array',
-			  'Array',
-			  0,
-			  50,
-			  '',
-			  '',
-			  1,
-			  0,
-			  0,
-			  0,
-			  6,
-			  0,1372316896,1372316896)
+select * from ecms_property as property 
+			  inner join ecms_user as user on property.propertyUserId=user.userId where 1=1  order by property.propertyUpdateTime desc limit 0,20
 客户端:127.0.0.1
-时间:2013-06-27 15:08:16
-------------------------2013-06-27 15:10:39
+时间:2013-06-27 15:31:52
+------------------------2013-06-27 15:31:53
+数据库不可用：
+88hom
+客户端:127.0.0.1
+时间:2013-06-27 15:31:53
+------------------------2013-06-27 15:31:53
 错误SQL语句：
-insert into ecms_shops(shopsName,shopsAddress,shopsTitle,shopsContent,shopsType,shopsSellPrice,shopsRentPrice,
-			  shopsRentPriceUnit,shopsRentState,shopsPayment,shopsPayDetailY,shopsPayDetailF,shopsBuildArea,shopsFloor,shopsAllFloor,shopsDivision,
-			  shopsFitment,shopsBaseService,shopsAimOperastion,shopsIncludFee,shopsPropFee,shopsTransferFee,shopsNumber,shopsSellRentType,
-			  shopsMapX,shopsMapY,shopsState,shopsUserId,shopsPropertyId,shopsCreateTime,shopsUpdateTime) 
-			  values('东门步行街',
-			  '东门步行街22号',
-			  '东门步行街',
-			  '<p>
-	<u><strong>哈哈</strong></u></p>
-',
-			  2,
-			  33,
-			  0,
-			  0,
-			  0,
-			  0,
-			  0,
-			  0,
-			  22,
-			  2,
-			  10,
-			  1,
-			  1,
-			  'Array',
-			  'Array',
-			  0,
-			  50,
-			  '',
-			  '',
-			  1,
-			  0,
-			  0,
-			  0,
-			  6,
-			  0,1372317039,1372317039)
+select count(*) as counts from ecms_property as property 
+			  inner join ecms_user as user on property.propertyUserId=user.userId where 1=1 
 客户端:127.0.0.1
-时间:2013-06-27 15:10:39
+时间:2013-06-27 15:31:53
+------------------------2013-06-27 15:32:00
+数据库不可用：
+88hom
+客户端:127.0.0.1
+时间:2013-06-27 15:32:00
+------------------------2013-06-27 15:32:01
+数据库不可用：
+88hom
+客户端:127.0.0.1
+时间:2013-06-27 15:32:01
+------------------------2013-06-27 15:32:01
+错误SQL语句：
+select * from ecms_property as property 
+			  inner join ecms_user as user on property.propertyUserId=user.userId where 1=1  order by property.propertyUpdateTime desc limit 0,20
+客户端:127.0.0.1
+时间:2013-06-27 15:32:01
+------------------------2013-06-27 15:32:02
+数据库不可用：
+88hom
+客户端:127.0.0.1
+时间:2013-06-27 15:32:02
+------------------------2013-06-27 15:32:02
+错误SQL语句：
+select count(*) as counts from ecms_property as property 
+			  inner join ecms_user as user on property.propertyUserId=user.userId where 1=1 
+客户端:127.0.0.1
+时间:2013-06-27 15:32:02
+------------------------2013-06-27 15:32:46
+数据库不可用：
+88hom
+客户端:127.0.0.1
+时间:2013-06-27 15:32:46
+------------------------2013-06-27 15:33:07
+数据库不可用：
+88hom
+客户端:127.0.0.1
+时间:2013-06-27 15:33:07
+------------------------2013-06-27 15:33:08
+错误SQL语句：
+select * from ecms_property as property 
+			  inner join ecms_user as user on property.propertyUserId=user.userId where 1=1  order by property.propertyUpdateTime desc limit 0,20
+客户端:127.0.0.1
+时间:2013-06-27 15:33:08
+------------------------2013-06-27 15:33:16
+数据库不可用：
+88hom
+客户端:127.0.0.1
+时间:2013-06-27 15:33:16
+------------------------2013-06-27 15:33:16
+错误SQL语句：
+select count(*) as counts from ecms_property as property 
+			  inner join ecms_user as user on property.propertyUserId=user.userId where 1=1 
+客户端:127.0.0.1
+时间:2013-06-27 15:33:16
+------------------------2013-06-27 17:44:08
+错误SQL语句：
+insert into ecms_register_cert_code(cert_channel,cert_code,cert_code_status,create_time) values('112538201@qq.com',8838fcd51fcf5938d40927ca7888d756,1,now())
+客户端:127.0.0.1
+时间:2013-06-27 17:44:08

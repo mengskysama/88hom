@@ -103,7 +103,8 @@ class AgentRegister{
 		$user['userType'] = 2;
 		$user['userGroupId'] = 0;
 		$user['userState'] = 1;
-		$user['UOpenId'] = "";
+		$user['QQId'] = "";
+		$user['WEIBOId'] = "";
 		$userService = new UserService($this->db);
 		$userId = $userService->saveUser($user);
 		

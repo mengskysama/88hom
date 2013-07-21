@@ -16,7 +16,7 @@ class InfoReplyDAO  {
 										.(empty($infoReply['inforeplyContent'])?'':$infoReply['inforeplyContent'])
 										."','".(empty($infoReply['infoId'])?'':$infoReply['infoId'])
 										."','".(empty($infoReply['userId'])?'':$infoReply['userId'])
-										."','".(empty($infoReply['inforeplyState'])?'':$infoReply['inforeplyState'])
+										."',".(empty($infoReply['inforeplyState'])?0:$infoReply['inforeplyState'])
 										.",".time()
 										.",".time()
 										.")";
@@ -67,7 +67,7 @@ class InfoReplyDAO  {
 	 * @return boolean
 	 */
 	public function changeState($state,$infoReplyreplyId){
-		$sql="update ecms_info_reply set inforeplyState=$state,inforeplyUpdateTime=".time()." where inforeplyId=$infoReplyreplyId";
+		$sql="update ecms_info_reply set inforeplyState=$state where inforeplyId=$infoReplyreplyId";
 		return $this->db->getQueryExecute($sql);
 	}
 	//计算新闻回复条数

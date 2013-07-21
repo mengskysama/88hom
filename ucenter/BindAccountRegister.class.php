@@ -84,7 +84,8 @@ class BindAccountRegister{
 		$user['userType'] = 3;
 		$user['userGroupId'] = 0;
 		$user['userState'] = 1;
-		$user['UOpenId'] = $this->qw_user['openID'];
+		$user['QQId'] = $this->qw_user['channel'] == "QQ" ? $this->qw_user['openID'] : "";
+		$user['WEIBOId'] = $this->qw_user['channel'] == "微博" ? $this->qw_user['openID'] : "";
 		$userService = new UserService($this->db);
 		$userId = $userService->saveUser($user);		
 		$userService->deactiveCertCode($this->userPhone,$this->phoneCert);
@@ -110,7 +111,8 @@ class BindAccountRegister{
 		$user['userType'] = 3;
 		$user['userGroupId'] = 0;
 		$user['userState'] = 0;
-		$user['UOpenId'] = $this->qw_user['openID'];
+		$user['QQId'] = $this->qw_user['channel'] == "QQ" ? $this->qw_user['openID'] : "";
+		$user['WEIBOId'] = $this->qw_user['channel'] == "微博" ? $this->qw_user['openID'] : "";
 		$userService = new UserService($this->db);
 		$userId = $userService->saveUser($user);
 		
@@ -128,7 +130,8 @@ class BindAccountRegister{
 		$result[0] = ERR_CODE_REGISTER_SUCCESS;
 		
 		$user['userId'] = $userId;
-		$user['UOpenId'] = $this->qw_user['openID'];
+		$user['QQId'] = $this->qw_user['channel'] == "QQ" ? $this->qw_user['openID'] : "";
+		$user['WEIBOId'] = $this->qw_user['channel'] == "微博" ? $this->qw_user['openID'] : "";
 		$userService = new UserService($this->db);
 		$userService->updateUser($user);
 		return $result;

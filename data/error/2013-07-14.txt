@@ -1,15 +1,10 @@
-------------------------2013-07-14 00:30:24
+------------------------2013-07-14 20:24:23
 错误SQL语句：
-insert into ecms_community(communityName,communityIsHouseType,communityIsBusinessType,communityIsOfficeType,communityIsVillaType,communityAddress,communityTraffic,communityPeriInfo,communityProvince,communityCity,communityDistrict,communityArea,communityState,communityUserId,communityCreateTime) values('丰湖大厦',丰湖大厦,丰湖大厦,丰湖大厦,丰湖大厦,'dddddd','啊啊啊','收拾收拾',4,8,4,0,0,,UNIX_TIMESTAMP())
+update ecms_community set communityState=2,communityUserId=,communityUpdateTime=1373804663 where communityId=
 客户端:127.0.0.1
-时间:2013-07-14 00:30:24
-------------------------2013-07-14 00:30:54
+时间:2013-07-14 20:24:23
+------------------------2013-07-14 20:25:22
 错误SQL语句：
-insert into ecms_community(communityName,communityIsHouseType,communityIsBusinessType,communityIsOfficeType,communityIsVillaType,communityAddress,communityTraffic,communityPeriInfo,communityProvince,communityCity,communityDistrict,communityArea,communityState,communityUserId,communityCreateTime) values('丰湖大厦',丰湖大厦,丰湖大厦,丰湖大厦,丰湖大厦,'dddddd','啊啊啊','收拾收拾',4,8,4,0,0,0,UNIX_TIMESTAMP())
+update ecms_community set communityState=2,communityUserId=,communityUpdateTime=1373804722 where communityId=1344
 客户端:127.0.0.1
-时间:2013-07-14 00:30:54
-------------------------2013-07-14 11:25:30
-错误SQL语句：
-select * from ecms_user where userId=
-客户端:127.0.0.1
-时间:2013-07-14 11:25:30
+时间:2013-07-14 20:25:22

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
-<title>委托出售房源</title>
+<title>我要求购—委托</title>
 <!--{$jsFiles}-->
 <!--{$cssFiles}-->
 </head>
@@ -16,7 +16,7 @@
     <div class="qg_r">
     	<p>你的位置： 我的房不剩房 > <a href="user_sale.php">我要出售</a> > 委托出售房源</p>
         <div class="qgxq">
-       		 <b class="wyqg f14 z3"><img src="<!--{$cfg.web_images}-->ucenter/qg_32.jpg">我要求购</b>
+       		 <b class="wyqg f14 z3"><img src="images/qg_32.jpg">我要求购</b>
              <div class="qgxq44"><span>1.填写委托信</span><span style="color:#FFF">2.选择经纪人</span><span>3.委托发布成功</span></div>
         </div>
         <div class="qgxq2">
@@ -27,30 +27,16 @@
           	<table width="0" border="0" cellspacing="0" cellpadding="0">
 			  <tr>
 			    <td width="125" height="40" align="center" valign="middle">
-			    	<select name="company" id="company" class="select2">			    	
-			            <option value="0">选择中介公司</option>
-				<!--{foreach from=$companyList item=item key=key}-->
-					<!--{if $item.imcpId eq $companyId}-->
-			            <option selected="selected" value="<!--{$item.imcpId}-->"><!--{$item.imcpName}--></option>
-			        <!--{else}-->
-			        	<option value="<!--{$item.imcpId}-->"><!--{$item.imcpName}--></option>
-			        <!--{/if}-->
-				<!--{/foreach}-->
+			    	<select name="company" id="company" class="select2">
+			            <option selected="selected" value="0">选择中介公司</option>
 			        </select>
 			        </td>
 			    <td width="125" align="center" valign="middle">
 			    <select name="district" id="district" class="select2">
-					<option value="-1">选择区域</option>
-				<!--{foreach from=$districtList item=item key=key}-->
-					<!--{if $key eq $districtId}-->
-			            <option selected="selected" value="<!--{$key}-->"><!--{$item}--></option>
-			        <!--{elseif $item ne "不限"}-->
-			        	<option value="<!--{$key}-->"><!--{$item}--></option>
-			        <!--{/if}-->
-				<!--{/foreach}-->
+					<option selected="selected" value="0">选择区域</option>
 			    </select></td>
 			    <td width="220" align="center" valign="middle" class="grzc_37">
-			    	<input id="agentName" name="agentName" type="text"  value="搜索经纪人" />
+			    	<input id="agentName" name="agentName" type="text"  value="搜索小区名，经纪人" />
 			    </td>
 			    <td width="164" align="left" valign="middle">
 			    	<input name="btn_search" type="button" class="mddl3" id="btn_search" value="查询" />
@@ -67,24 +53,22 @@
 			    <td width="138" align="center" valign="middle" bgcolor="#f7f6f1"><strong>联系方式</strong></td>
 			    <td width="98" align="center" valign="middle" bgcolor="#f7f6f1"><strong>在线委托</strong></td>
 			  </tr>
-			<!--{foreach from=$agentList item=item key=key}-->
 			  <tr>
-			    <td width="159" height="150" align="center" valign="middle" class="bor"><img src="<!--{$cfg.web_url}-->uploads/<!--{$item.userdetailPicThumb}-->" class="imgs" /></td>
+			    <td width="159" height="150" align="center" valign="middle" class="bor"><img src="images/test/cs3.jpg" class="imgs" /></td>
 			    <td width="203" align="left" valign="middle" class="bor pj">
-			    	<b><!--{$item.userdetailName}--></b>
-			        <p>所属公司： <!--{$item.userdetailImcpName}--></p>
-			        <p>所在区域：  <//!--{$item.distName}--></p>
+			    	<b>南新店</b>
+			        <p>所属公司： 中原地产</p>
+			        <p>所在区域： 罗湖 - 莲塘</p>
 			        <a href="#">大家对我的评价</a>
 			    </td>
 			    <td align="center" valign="middle" class="bor pj">
-			    	 <img src="<!--{$cfg.web_images}-->ucenter/zy.gif" width="25"> <img src="<!--{$cfg.web_images}-->ucenter/sf.gif" width="25"> <img src="<!--{$cfg.web_images}-->ucenter/mp.gif" width="25">
+			    	 <img src="images/zy.gif" width="25"> <img src="images/sf.gif" width="25"> <img src="images/mp.gif" width="25">
 			    </td>
-			    <td align="center" valign="middle" class="bor"><strong class="f14 red"><!--{$item.userPhone}--></strong></font></td>
+			    <td align="center" valign="middle" class="bor"><strong class="f14 red">13922778899</strong></font></td>
 			    <td align="center" valign="middle" class="bor">
 			    	<a href="#" class="yz1">立即委托</a>
 			    </td>
 			  </tr>
-			<!--{/foreach}-->
 			</table>
 
 		</div>

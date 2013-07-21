@@ -102,7 +102,8 @@ class UserRegister{
 		$user['userType'] = 3;
 		$user['userGroupId'] = 1;
 		$user['userState'] = 1;
-		$user['UOpenId'] = "";
+		$user['QQId'] = "";
+		$user['WEIBOId'] = "";
 		$userService = new UserService($this->db);
 		$userId = $userService->saveUser($user);
 		if(!$userId){
