@@ -65,7 +65,7 @@
 		  			</tr>
  					<tr>
  						   <td height="55" colspan="2" align="right" valign="middle" class="z14">
-                           		<div class="dlmm"><input name="btn_reg_mobile" type="button" class="denglu" id="btn_reg_mobile" value="立即验证" /></div>
+                           		<div class="dlmm"><input name="btn_auth_user" type="button" class="denglu" id="btn_auth_user" value="立即验证" /></div>
                            </td>
 	      			</tr>
 			  	</table>

@@ -34,6 +34,15 @@ $(document).ready(function() {
             $("#btn_reg_mobile").prop("disabled", false);
         }
     });
+  
+    $("#btn_auth_user").click(function() {
+        $("#btn_auth_user").prop("disabled", true);
+        if (check_auth_form()) {
+           document.getElementById("mobileRegFrm").submit();
+        } else {
+            $("#btn_auth_user").prop("disabled", false);
+        }
+    });
     
 
     $("#btn_ok_loginFrm").click(function() {
@@ -172,6 +181,42 @@ function check_code(obj) {
 }
 
 function check_reg_mobile() {
+    
+    if (val($("#userPhone")) == "") {
+        alert("请输入手机号码");
+        isMobileValid = false;
+        $("#userPhone").focus();
+        return false;
+    }
+
+    if (val($("#phoneCert")) == "") {
+        alert("请输入手机验证码");
+        isCodeValid = false;
+        $("#phoneCert").focus();
+        return false;
+    }
+
+    check_mobilebase();
+    if (isMobileValid) {
+        ajax_mobile();
+    }
+    if (!isMobileValid) return;
+    
+    check_code($("#phoneCert"));
+    if(!isCodeValid) return;
+
+    if (!$("#reg_mobile_agree_ucenter").prop("checked")) {
+        alert("请先选中同意《服务条款》和《隐私权相关政策》");
+        return false;
+    }
+
+    if (!(isMobileValid && isCodeValid)) {
+        alert("请按照页面的提示重新填写信息。");
+        return false;
+    }
+    return true;
+}
+function check_auth_form() {
 
     var realName = $("#userRealName").val();
     if(jQuery.trim(realName) == ""){
@@ -219,6 +264,7 @@ function check_reg_mobile() {
     }
     return true;
 }
+
 
 //验证是否是中文
 function checkChinese(str) {
