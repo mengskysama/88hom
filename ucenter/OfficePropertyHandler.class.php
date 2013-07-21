@@ -103,8 +103,16 @@ class OfficePropertyHandler extends PropertyHandler{
 		$office['officeNumber'] = $this->officeNumber;
 		$office['officeType'] = $this->officeType;
 		$office['officeSellPrice'] = $this->officeSellPrice;
-		$office['officeRentPrice'] = $this->officeRentPrice;
+				
 		$office['officeRentPriceUnit'] = $this->officeRentPriceUnit;
+		if($this->officeRentPriceUnit == 1){
+			$office['officeRentPrice'] = $this->officeRentPrice * 30 * $this->officeBuildArea;
+		}else if($this->officeRentPriceUnit == 2){
+			$office['officeRentPrice'] = $this->officeRentPrice * $this->officeBuildArea;
+		}else{
+			$office['officeRentPrice'] = $this->officeRentPrice;
+		}
+		
 		$office['officeIncludFee'] = 0;
 		$office['officeProFee'] = $this->officeProFee;
 		$office['officePayment'] = 0;

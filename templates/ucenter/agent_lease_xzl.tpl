@@ -191,7 +191,7 @@ function checkRentPrice(){
     <input id="officeRentPrice" name="officeRentPrice" type="text" />
     <label><input id="" name="officeRentPriceUnit" type="radio" onclick="checkPrice('30',false)" value="1" />元/平米·天</label>
     <label><input id="" name="officeRentPriceUnit" type="radio" onclick="checkPrice('900',false)" value="2" />元/平米·月</label>
-    <label><input id="" name="officeRentPriceUnit" type="radio" onclick="checkPrice('1000000000',false)" value="3" />元/月</label>
+    <label><input id="" name="officeRentPriceUnit" type="radio" onclick="checkPrice('1000000000',false)" value="3" checked="checked" />元/月</label>
     </td>
   </tr>
   <tr>

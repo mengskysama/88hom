@@ -12,8 +12,8 @@ function initPicUp(id,v_timestamp,v_token,v_file_path_upload,v_web_path,v_web_co
 			'width'     : 1200,
 			'height'    : 1200,
 			'thumbResizeType': 1,
-			'thumbWidth': 150,
-			'thumbHeight': 120,
+			'thumbWidth': 74,
+			'thumbHeight': 58,
 			'watermark' : 1,
 			'watermarkPic': v_file_path_upload+'watermark.png',
 			'watermarkPos': 9,
@@ -74,8 +74,8 @@ function initPicUp2(id,v_timestamp,v_token,v_file_path_upload,v_web_path,v_web_c
 			'width'     : 1200,
 			'height'    : 1200,
 			'thumbResizeType': 1,
-			'thumbWidth': 150,
-			'thumbHeight': 120,
+			'thumbWidth': 74,
+			'thumbHeight': 58,
 			'watermark' : 1,
 			'watermarkPic': v_file_path_upload+'watermark.png',
 			'watermarkPos': 9,
@@ -133,8 +133,8 @@ function initPicUp3(id,v_timestamp,v_token,v_file_path_upload,v_web_path,v_web_c
 			'width'     : 1200,
 			'height'    : 1200,
 			'thumbResizeType': 1,
-			'thumbWidth': 150,
-			'thumbHeight': 120,
+			'thumbWidth': 120,
+			'thumbHeight': 97,
 			'watermark' : 1,
 			'watermarkPic': v_file_path_upload+'watermark.png',
 			'watermarkPos': 9,
@@ -167,7 +167,7 @@ function initPicUp3(id,v_timestamp,v_token,v_file_path_upload,v_web_path,v_web_c
         		var html='<dl id="pic_'+pictureIndex+'">'
         	        + '<dt><img src="'+v_web_url+'uploads/'+obj[0].pathThumb+'"></dt>'
         	        + '<dd><span class="redlink"><a href="javascript:void(0)" onclick="changeTopicImg(\''+v_web_url+'uploads/'+obj[0].pathThumb+'\',\''+obj[0].pathThumb+'\',\''+obj[0].path+'\')">设为标题图</a></span></dd>'
-        	        + '<dd>描述：<input type="text" class="input01" name="picName[]" /><a href="javascript:void(0)" onclick="dropContainer(\'pic_'+pictureIndex+'\')"><img src="'+v_web_url+'templates/images/ucenter/cha.JPG"></a></dd>'
+        	        + '<dd>描述：<input type="text" class="input01" name="picName[]" /><a href="javascript:void(0)" onclick="dropContainer(\'pic_'+pictureIndex+'\')"><img src="'+v_web_url+'templates/images/ucenter/cha.jpg"></a></dd>'
 
             	    + '<input type="hidden" name="picPath[]" value="'+obj[0].path+'"/>'
             	    + '<input type="hidden" name="picPathThumb[]" value="'+obj[0].pathThumb+'"/>'

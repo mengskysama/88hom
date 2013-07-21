@@ -11,11 +11,18 @@ if($property){
 	$estName = $property['propName'];
 	$officeNumber = $property['officeNumber'];
 	$officeType = $property['officeType'];
+	$officeBuildArea = $property['officeBuildArea'];
+	
 	$officeRentPrice = $property['officeRentPrice'];
 	$officeRentPriceUnit = $property['officeRentPriceUnit'];
+	if($officeRentPriceUnit == 1){
+		$officeRentPrice = $officeRentPrice/(30 * $officeBuildArea);
+	}else if($officeRentPriceUnit == 2){
+		$officeRentPrice = $officeRentPrice/$officeBuildArea;
+	}
+	
 	$officeProFee = $property['officeProFee'];
 	$privateofficeNumber = '';//$property['privateofficeNumber'];
-	$officeBuildArea = $property['officeBuildArea'];
 	$officeFloor = $property['officeFloor'];
 	$officeAllFloor = $property['officeAllFloor'];
 	$officeDivision = $property['officeDivision'];

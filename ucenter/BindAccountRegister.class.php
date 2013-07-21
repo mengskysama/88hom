@@ -110,7 +110,7 @@ class BindAccountRegister{
 		$user['userEmailState'] = 0;
 		$user['userType'] = 3;
 		$user['userGroupId'] = 0;
-		$user['userState'] = 0;
+		$user['userState'] = 1;
 		$user['QQId'] = $this->qw_user['channel'] == "QQ" ? $this->qw_user['openID'] : "";
 		$user['WEIBOId'] = $this->qw_user['channel'] == "微博" ? $this->qw_user['openID'] : "";
 		$userService = new UserService($this->db);

@@ -60,7 +60,7 @@ class UserDAO{
 	
 	public function saveUser($user){
 		$sql = "insert into ecms_user(userUsername,userPassword,userPhone,userPhoneState,userEmail,userEmailState,userType,userGroupId,userState,QQId,WEIBOId,userCreateTime,userUpdateTime) ".
-				"values('".$user['userUsername']."','".$user['userPassword']."','".$user['userPhone']."',".$user['userPhoneState'].",'".$user['userEmail']."',".$user['userEmailState'].",".$user['userType'].",".$user['userGroupId'].",".$user['userState'].",'".$user['QQId'].",'".$user['WEIBOId']."',UNIX_TIMESTAMP(),UNIX_TIMESTAMP())";
+				"values('".$user['userUsername']."','".$user['userPassword']."','".$user['userPhone']."',".$user['userPhoneState'].",'".$user['userEmail']."',".$user['userEmailState'].",".$user['userType'].",".$user['userGroupId'].",".$user['userState'].",'".$user['QQId']."','".$user['WEIBOId']."',UNIX_TIMESTAMP(),UNIX_TIMESTAMP())";
 		$this->db->query($sql);
 		$userId = $this->db->getInsertNum();
 		return $userId;

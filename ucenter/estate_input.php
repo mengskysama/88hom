@@ -39,17 +39,17 @@ if(isset($_POST['checkname'])){
 		$err_msg_submit = "该楼盘已存在！";
 	}else if($estName == ""){
 		$err_msg_submit = "请填写楼盘名称！";
-	}else if(strlen($estName) > 15){
+	}else if(mb_strlen($estName) > 15){
 		$err_msg_submit = "楼盘名称不可超过15个汉字！";
 	}else if(count(explode("-",$areaIndex)) != 4){
 		$err_msg_submit = "请选择所在商圈！";
 	}else if($estAddr == ""){
 		$err_msg_submit = "请填写物业地址！";
-	}else if(strlen($estAddr) > 30){
+	}else if(mb_strlen($estAddr) > 30){
 		$err_msg_submit = "楼盘名称不可超过30个汉字！";
 	}else if($communityTraffic == ""){
 		$err_msg_submit = "请填写交通状况!";
-	}else if(strlen($estName) > 500){
+	}else if(mb_strlen($estName) > 500){
 		$err_msg_submit = "交通状况不能太长！";
 	}else{
 		$estate['communityName'] = $estName;

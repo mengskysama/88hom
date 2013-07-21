@@ -11,12 +11,19 @@ if($property){
 	$estName = $property['propName'];
 	$shopsAddress = $property['shopsAddress'];
 	$shopsType = $property['shopsType'];
+	$shopsBuildArea = $property['shopsBuildArea'];
+	
 	$shopsRentPrice = $property['shopsRentPrice'];	
 	$shopsRentPriceUnit = $property['shopsRentPriceUnit'];
+	if($shopsRentPriceUnit == 1){
+		$shopsRentPrice = $shopsRentPrice/(30 * $shopsBuildArea);
+	}else if($shopsRentPriceUnit == 2){
+		$shopsRentPrice = $shopsRentPrice/$shopsBuildArea;
+	}
+		
 	$shopsNumber = $property['shopsNumber'];
 	$privateShopsNumber = '';//$property['privateshopsNumber'];
 	$shopsPropFee = $property['shopsPropFee'];
-	$shopsBuildArea = $property['shopsBuildArea'];
 	$shopsFloor = $property['shopsFloor'];
 	$shopsAllFloor = $property['shopsAllFloor'];
 	$shopsDivision = $property['shopsDivision'];
