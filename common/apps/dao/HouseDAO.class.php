@@ -33,8 +33,8 @@ class HouseDAO  {
 									.",".(empty($house['houseRentArea'])?0:$house['houseRentArea'])
 									.",".(empty($house['houseType'])?0:$house['houseType'])
 									.",".(empty($house['houseBuildStructure'])?0:$house['houseBuildStructure'])
-									.",'".(empty($house['houseBuildForm'])?'':$house['houseBuildForm'])
-									."',".(empty($house['houseForward'])?0:$house['houseForward'])
+									.",".(empty($house['houseBuildForm'])?0:$house['houseBuildForm'])
+									.",".(empty($house['houseForward'])?0:$house['houseForward'])
 									.",".(empty($house['houseFitment'])?0:$house['houseFitment'])
 									.",'".(empty($house['houseBaseService'])?'':$house['houseBaseService'])
 									."','".(empty($house['houseEquipment'])?'':$house['houseEquipment'])
@@ -150,8 +150,11 @@ class HouseDAO  {
 		if(isset($house['houseType'])){
 			$sql .= "houseType=".$house['houseType'].",";
 		}
+		if(isset($house['houseBuildStructure'])){
+			$sql .= "houseBuildStructure=".$house['houseBuildStructure'].",";
+		}		
 		if(isset($house['houseBuildForm'])){
-			$sql .= "houseBuildForm='".$house['houseBuildForm']."',";
+			$sql .= "houseBuildForm=".$house['houseBuildForm'].",";
 		}		
 		if(isset($house['houseForward'])){
 			$sql .= "houseForward=".$house['houseForward'].",";

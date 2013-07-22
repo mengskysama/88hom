@@ -26,6 +26,7 @@ class HousePropertyHandler extends PropertyHandler{
 	private $houseTitle;
 	private $houseContent;
 	private $houseUserId;
+	private $houseBuildStructure;
 	private $houseBuildForm;
 	private $houseAllFloor;
 	private $houseState;
@@ -48,7 +49,7 @@ class HousePropertyHandler extends PropertyHandler{
 						$houseType,$houseSellPrice,$houseRoom,$houseHall,$houseToilet,$houseKitchen,
 						$houseBalcony,$houseBuildArea,$houseUseArea,$houseBuildYear,$houseFloor,
 						$houseForward,$houseFitment,$houseBaseService,$houseLookTime,$housePhoto,$houseTitle,
-						$houseContent,$houseUserId,$houseBuildForm,$houseAllFloor,$houseState,$actionType,$houseId,
+						$houseContent,$houseUserId,$houseBuildStructure,$houseBuildForm,$houseAllFloor,$houseState,$actionType,$houseId,
 						$propTxType,$houseRentType,$houseRentRoomType,$houseRentDetail,$housePayment,$housePayDetailY,
 						$housePayDetailF,$houseRentArea,$topPic){
 		
@@ -77,6 +78,7 @@ class HousePropertyHandler extends PropertyHandler{
 		$this->houseTitle = $houseTitle;
 		$this->houseContent = $houseContent;
 		$this->houseUserId = $houseUserId;
+		$this->houseBuildStructure = $houseBuildStructure;
 		$this->houseBuildForm = $houseBuildForm;
 		$this->houseAllFloor = $houseAllFloor;
 		$this->houseState = $houseState;
@@ -148,8 +150,9 @@ class HousePropertyHandler extends PropertyHandler{
 		$house['houseSellPrice'] = $this->houseSellPrice;
 		$house['houseBuildArea'] = $this->houseBuildArea == "" ? 0 : $this->houseBuildArea;
 		$house['houseUseArea'] = $this->houseUseArea == "" ? 0 : $this->houseUseArea;
-		$house['houseType'] = $this->houseType == "" ? 0 : $this->houseType	;
-		$house['houseBuildForm'] = $this->houseBuildForm ;
+		$house['houseType'] = $this->houseType == "" ? 0 : $this->houseType;
+		$house['houseBuildStructure'] = $this->houseBuildStructure;
+		$house['houseBuildForm'] = $this->houseBuildForm;
 		$house['houseForward'] = $this->houseForward;
 		$house['houseFitment'] = $this->houseFitment;
 		$house['houseBaseService'] = $houseBaseService;
@@ -165,7 +168,6 @@ class HousePropertyHandler extends PropertyHandler{
 		$house['propertyPhoto'] = $this->housePhoto;
 		$house['houseRentType'] = $this->houseRentType == "" ? 0 : $this->houseRentType;
 		$house['houseRentArea'] = $this->houseRentArea == "" ? 0 : $this->houseRentArea;
-		$house['houseBuildStructure'] = 0;
 		$house['housePayInfo'] = $this->housePayInfo == "" ? 0 : $this->housePayInfo;
 		$house['houseRentRoomType'] = $this->houseRentRoomType == "" ? 0 : $this->houseRentRoomType;
 		$house['houseRentDetail'] = $this->houseRentDetail == "" ? 0 : $this->houseRentDetail;

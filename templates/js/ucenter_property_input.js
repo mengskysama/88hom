@@ -3,7 +3,9 @@ $(function() {
 	$("#estName").autocomplete({
       source: "ajax_get_prop_name.php",
       select: function(e, ui) {
-      	  $("#estId").val(ui.item.id);    
+      	  $("#estId").val(ui.item.id);
+      	  $("#estName").val(ui.item.value);
+      	  textCounter(document.getElementById('estName'),document.getElementById('estNameAlert'),25);
 	      document.getElementById("dis_est_alert").style.display="none";
       }
     });

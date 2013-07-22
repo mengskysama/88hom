@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-10 21:44:33
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-22 22:31:10
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\ucenter_user_left_menu.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1486151c30e31cf7c42-54194895%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1fa01fa3f1f0be51069001b41855b6918ddd468a' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\ucenter_user_left_menu.tpl',
-      1 => 1373463424,
+      1 => 1374247372,
       2 => 'file',
     ),
   ),
@@ -25,19 +25,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <div class="qg_zc">
      	   <dl>
      		   	<dt class="qg_bt1">我要买房</dt>
-          	    <dd class="qg_bt2"><a href="#">我的找房条件</a></dd>
-          	    <dd class="qg_bt2"><a href="#">我的选房单</a></dd>
-         	    <dd class="qg_bt2"><a href="#">我浏览过的房源</a></dd>
-                <dd class="qg_bt2"><a href="#">我要求购</a></dd>
-                <dd class="qg_bt2"><a href="#">管理我的求购信息</a></dd>
+          	    <dd class="qg_bt2"><a href="user_search_criteria.php?cType=1">我的找房条件</a></dd>
+          	    <dd class="qg_bt2"><a href="ucenter_user.php#001">我的选房单</a></dd>
+         	    <dd class="qg_bt2"><a href="ucenter_user.php#002">我浏览过的房源</a></dd>
+                <dd class="qg_bt2"><a href="user_wanted.php?wType=1">我要求购</a></dd>
+                <dd class="qg_bt2"><a href="user_wanted_manage.php?wType=1">管理我的求购信息</a></dd>
       	  </dl>
             <dl>
      		   	<dt class="qg_bt1">我要租房</dt>
-          	    <dd class="qg_bt2"><a href="#">我的租房条件</a></dd>
-          	    <dd class="qg_bt2"><a href="#">我的选房单</a></dd>
-         	    <dd class="qg_bt2"><a href="#">我浏览过的房源</a></dd>
-                <dd class="qg_bt2"><a href="#">我要求租</a></dd>
-                <dd class="qg_bt2"><a href="#">管理我的求租信息</a></dd>
+          	    <dd class="qg_bt2"><a href="user_search_criteria.php?cType=2">我的租房条件</a></dd>
+          	    <dd class="qg_bt2"><a href="ucenter_user.php#001">我的选房单</a></dd>
+         	    <dd class="qg_bt2"><a href="ucenter_user.php#002">我浏览过的房源</a></dd>
+                <dd class="qg_bt2"><a href="user_wanted.php?wType=2">我要求租</a></dd>
+                <dd class="qg_bt2"><a href="user_wanted_manage.php?wType=2">管理我的求租信息</a></dd>
       	  </dl>
           <dl>
      		   	<dt class="qg_bt1">出租出售</dt>

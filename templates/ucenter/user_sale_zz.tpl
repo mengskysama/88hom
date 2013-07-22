@@ -152,7 +152,22 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑形式</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildForm" name="houseBuildForm" type="text"  value="" /> </td>
+			    <td align="left" valign="middle" class="p25 grzc_33">
+			    
+			    <select id="houseBuildStructure" name="houseBuildStructure">			    
+			    	<option value="0">选择结构</option>					
+					<!--{foreach from=$structureList item=item key=key}-->	    
+			    	<option value="<!--{$key}-->"><!--{$item}--></option>
+					<!--{/foreach}-->		    	
+			    </select>
+			    
+			    <select id="houseBuildForm" name="houseBuildForm">				    
+			    	<option value="0">选择类别</option>					
+					<!--{foreach from=$formList item=item key=key}-->	    
+			    	<option value="<!--{$key}-->"><!--{$item}--></option>
+					<!--{/foreach}-->		    	
+			    </select>
+			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
@@ -173,7 +188,7 @@ function check(){
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">朝    向</td>
 			    <td align="left" valign="middle" class="p25">
-			   	   <label><input id="" name="houseForward" type="radio" value="1" />东</label>     
+			   	   <label><input id="" name="houseForward" type="radio" value="1" checked="checked"/>东</label>     
 			      	<label> <input id="" name="houseForward" type="radio" value="2" /> 南  </label>    
 			        <label><input id="" name="houseForward" type="radio" value="3" /> 西</label>    
 			        <label><input id="" name="houseForward" type="radio" value="4" /> 北 </label>  
@@ -191,7 +206,7 @@ function check(){
 			  	    <label><input id="" name="houseFitment" type="radio" value="1" /> 豪华装修</label>     
 			      	<label> <input id="" name="houseFitment" type="radio" value="2" /> 精装修  </label>    
 			        <label><input id="" name="houseFitment" type="radio" value="3" /> 中等装修</label>    
-			        <label><input id="" name="houseFitment" type="radio" value="4" /> 简装修</label>  
+			        <label><input id="" name="houseFitment" type="radio" value="4" checked="checked" /> 简装修</label>  
 			        <label><input id="" name="houseFitment" type="radio" value="5" /> 毛坯</label>
 			    </td>
 			  </tr>

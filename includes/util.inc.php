@@ -690,9 +690,9 @@ function extend_file($file_name){
 }
  function getParameter($param, $method='POST'){
  	if($method == 'POST'){
- 		return !empty($_POST[$param]) ? $_POST[$param] : "";
+ 		return isset($_POST[$param]) ? $_POST[$param] : "";
  	}else{
- 		return !empty($_GET[$param]) ? $_GET[$param] : "";
+ 		return isset($_GET[$param]) ? $_GET[$param] : "";
  	}
  }
  //解码javascript的escape

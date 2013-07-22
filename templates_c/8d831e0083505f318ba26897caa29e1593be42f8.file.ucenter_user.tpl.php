@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-09 21:54:52
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-22 22:31:10
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\ucenter_user.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:22515189027e77ae28-05339564%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8d831e0083505f318ba26897caa29e1593be42f8' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\ucenter_user.tpl',
-      1 => 1373378031,
+      1 => 1374501187,
       2 => 'file',
     ),
   ),
@@ -55,7 +55,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         	<div class="zltx">
             	<div class="jr_l">
 				<?php if ($_smarty_tpl->tpl_vars['userdetailPic']->value!=''){?>
-    				<img src="../uploads/agent/<?php echo $_smarty_tpl->tpl_vars['userdetailPic']->value;?>
+    				<img src="../uploads/<?php echo $_smarty_tpl->tpl_vars['userdetailPic']->value;?>
 " style="padding-bottom:5px; height:128px; margin-left:-10px;">
     			<?php }else{ ?>
                 	<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
@@ -89,6 +89,7 @@ ucenter/jry_06.jpg" align="middle" class="l"><b>性别：<?php echo $_smarty_tpl
               </div>
             </div>
             <div class="zltx1">
+            <a name="001" id="001" ></a>
             <div class="zltx0">
             	<ul>
                 	<li><a href="#">我的新房楼盘选房单(1)</a></li>
@@ -135,6 +136,7 @@ ucenter/jry_25.jpg"><a href="#">查看地图</a></p>
               </div>
             </div>
             <div class="zltx1">
+            <a name="002" id="002" ></a>
             <div class="zltx0">
             	<ul>
                 	<li><a href="#">我浏览过的新房楼盘(1)</a></li>

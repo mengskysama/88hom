@@ -35,6 +35,20 @@ return array(
 			    3=>'酒店式公寓 ',
 			    4=>'集资房'		
 		),
+		'2handHouseBuildStructure'=>array(
+				1=>'错层',
+			    2=>'跃层',
+			    3=>'复式 ',
+			    4=>'开间'	,
+			    5=>'平层'		
+		),
+		'2handHouseBuildForm'=>array(
+				1=>'板楼',
+			    2=>'塔楼',
+			    3=>'砖楼 ',
+			    4=>'砖混'	,
+			    5=>'平房'		
+		),
 		'2handHouseForward'=>array(				
 			   	1=>'东',
 			    2=>'南',    

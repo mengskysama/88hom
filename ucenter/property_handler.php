@@ -62,6 +62,7 @@ if($propType == "zz"){
 	$houseTitle  = getParameter("houseTitle");	
 	$houseContent  = getParameter("houseContent");
 	$houseUserId  = $userId;
+	$houseBuildStructure = getParameter("houseBuildStructure");
 	$houseBuildForm  = getParameter("houseBuildForm");
 	$houseAllFloor  = getParameter("houseAllFloor");
 	$houseId = getParameter("propId");
@@ -78,7 +79,7 @@ if($propType == "zz"){
 											$houseType,$houseSellPrice,$houseRoom,$houseHall,$houseToilet,$houseKitchen,
 											$houseBalcony,$houseBuildArea,$houseUseArea,$houseBuildYear,$houseFloor,
 											$houseForward,$houseFitment,$houseBaseService,$houseLookTime,$propPhoto,$houseTitle,
-											$houseContent,$houseUserId,$houseBuildForm,$houseAllFloor,$state,$actionType,$houseId,
+											$houseContent,$houseUserId,$houseBuildStructure,$houseBuildForm,$houseAllFloor,$state,$actionType,$houseId,
 											$propTxType,$houseRentType,$houseRentRoomType,$houseRentDetail,$housePayment,$housePayDetailY,
 											$housePayDetailF,$houseRentArea,$topPic);
 }else if($propType == "bs"){
