@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-17 14:40:17
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-20 22:40:30
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_register.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:344651a725e519fe95-41879250%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '567fa1e7f12b0a196290a409d33d93ebace7922a' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_register.tpl',
-      1 => 1374043211,
+      1 => 1374110402,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'info' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -189,8 +188,7 @@ ucenter/yz_bq.gif" style="vertical-align:middle;"> 请输入答案</td>
 	                                onkeydown="SelectonKeyDown('txtComareas',event,'search_c')" style="width: 95px;" /><input
 	                                    type="button" class="but_input_cs" id="CheckCity" name="CheckCity" onclick="ShowComareas()" />
 	                             <!--省，市，区域，片区下标,以"-"隔开 -->
-								<input type="hidden" name="areaIndex"	id="areaIndex" value="<?php echo $_smarty_tpl->tpl_vars['info']->value['areaIndex'];?>
-"/>	
+								<input type="hidden" name="areaIndex"	id="areaIndex" value=""/>	
 	                            <div class="search_select01 left230" id="search_c" >
 	                                <dl id="search_c_value">
 	                                </dl>

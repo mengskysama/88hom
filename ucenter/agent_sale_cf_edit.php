@@ -34,7 +34,13 @@ if($property){
 	$factoryPrivateNumber = "";//$property['factoryPrivateNumber'];
 	$factoryTraffic = $property['factoryTraffic'];
 	$factoryContent = $property['factoryContent'];
-	$factoryAreaId = $property['factoryAreaId'];
+	
+	$factoryProvince = $property['factoryProvince'];
+	$factoryCity = $property['factoryCity'];
+	$factoryDistrict = $property['factoryDistrict'];
+	$factoryArea = $property['factoryArea'];
+	$factoryAreaId = $factoryProvince.'-'.$factoryCity.'-'.$factoryDistrict.'-'.$factoryArea;
+	
 	$factoryState = $property['factoryState'];
 	
 	$photo['picBuildIdId'] = $propId;

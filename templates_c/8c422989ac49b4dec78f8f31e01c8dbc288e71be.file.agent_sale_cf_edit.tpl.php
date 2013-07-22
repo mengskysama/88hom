@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-16 09:20:14
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-22 12:12:40
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_sale_cf_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3071551e49fcecca523-55499541%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8c422989ac49b4dec78f8f31e01c8dbc288e71be' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_sale_cf_edit.tpl',
-      1 => 1373937346,
+      1 => 1374218444,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51e49fcf174543_40604629',
   'variables' => 
   array (
     'cfg' => 0,
@@ -58,11 +60,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'key_' => 0,
     'topPicThumb' => 0,
     'topPicPath' => 0,
+    'propState' => 0,
     'propId' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_51e49fcf174543_40604629',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51e49fcf174543_40604629')) {function content_51e49fcf174543_40604629($_smarty_tpl) {?>﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -114,6 +115,16 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
             $("#btn_update").removeAttr("disabled");
         }
     });
+		
+    $("#btn_live").click(function() {
+        $("#btn_live").attr("disabled", true);
+        if (check()) {
+            $("#action_to_go").val("1");
+            document.getElementById("cfForm").submit();
+        } else {
+            $("#btn_live").removeAttr("disabled");
+        }
+    });
 });
 function check(){
 
@@ -122,11 +133,11 @@ function check(){
 		$("#factoryAddress").focus();
 		return false;
 	}
-	/*
+	
 	if(trim($("#areaIndex").val()) == ''){
 		alert("请选择区域");
 		return false;
-	}*/
+	}
 	
 	if(!CheckInfoCode('factoryNumber',true)) return false;	
 	if(!CheckPrice('factorySellPrice',true,'CS')) return false;
@@ -196,7 +207,7 @@ function check(){
 
     <div class="jjr_r">
     	<div class="qg_r1">
-    <p>你的位置: <a href="#">编辑商铺出售房源</a></p>
+    <p>你的位置: <a href="#">编辑厂房出售房源</a></p>
    	<div class="qg_bs1">
             <form id="cfForm" name="cfForm" action="property_handler.php" method="post" enctype="multipart/form-data">
           <div class="bs_tx">
@@ -513,11 +524,13 @@ uploads/<?php echo $_smarty_tpl->tpl_vars['topPicThumb']->value;?>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
             <td width="120" align="center" valign="middle">
             <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_update" value="修改" /></td>
-            <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
+            <td width="320" height="80" align="center" valign="middle"><?php if ($_smarty_tpl->tpl_vars['propState']->value==0){?><input name="btn_live" type="button" class="mddl1" id="btn_live" value="发布" /><?php }?></td>
 	      </tr>
 	    </table>
 	    <input type="hidden" id="actionType" name="actionType" value="update"/>
 	    <input type="hidden" id="propId" name="propId" value="<?php echo $_smarty_tpl->tpl_vars['propId']->value;?>
+"/>
+	    <input type="hidden" id="action_to_go" name="action_to_go" value="<?php echo $_smarty_tpl->tpl_vars['propState']->value;?>
 "/>
 	    </form>
     </div>

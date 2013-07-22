@@ -90,7 +90,7 @@
 			    <td width="55" height="80" align="center" valign="middle" class="bor">
 			    	<label><input name="" type="checkbox" value="<!--{$propList[prop].propKind}--><!--{$propList[prop].propId}-->" / ></label></td>
 			    <td width="225" align="left" valign="middle" class="bor">
-			    	<img src="http://localhost/88hom/uploads/community/<!--{$propList[prop].propPhoto}-->" class="l">
+			    	<img src="../uploads/<!--{$propList[prop].propPhoto}-->" class="l">
 			        <span class="l wz">
 			        	名称：<!--{$propList[prop].propName}--><br /> 			        	
 					 	<!--{if $propList[prop].propKind eq 'zz' or $propList[prop].propKind eq 'bs'}-->
@@ -111,8 +111,6 @@
 			    <a href="user_lease_sp_edit.php?propId=<!--{$propList[prop].propId}-->">编辑</a>
 			    <!--{elseif $propList[prop].propKind eq 'xzl'}-->
 			    <a href="user_lease_xzl_edit.php?propId=<!--{$propList[prop].propId}-->">编辑</a>
-			    <!--{elseif $propList[prop].propKind eq 'gc'}-->
-			    <a href="user_lease_gc_edit.php?propId=<!--{$propList[prop].propId}-->">编辑</a>
 			    <!--{/if}-->			    
 			     <a href="javascript:void(0);" onclick="deleteProp('<!--{$propList[prop].propKind}--><!--{$propList[prop].propId}-->')">删除</a><br />
 			     <!--{if $propList[prop].propState eq 1}-->

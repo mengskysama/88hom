@@ -13,6 +13,17 @@ class FactoryPropertyHandler extends PropertyHandler{
 	}
 
 	public function handle(){
+		$areaId = $this->factory['factoryAreaId'];
+		//echo "areaId->".$areaId."|".explode("-", $areaId);
+		if(empty($areaId) || count(explode("-", $areaId)) != 4) return false;
+		
+		$areas = explode("-", $areaId);
+		$this->factory['factoryProvince'] = $areas[0];
+		$this->factory['factoryCity'] = $areas[1];
+		$this->factory['factoryDistrict'] = $areas[2];
+		$this->factory['factoryArea'] = $areas[3];
+		//print_r($areas);return;
+		
 		$result = false;
 		if($this->factory['actionType'] == "update"){
 			$result = $this->updateProperty();

@@ -142,7 +142,7 @@ function checkRentPrice(){
       <div class="bs_tx">
         <p><b>基本资料</b></p>
             <input type="hidden" name="prop_type" value="xzl">
-            <input type="hidden" name="prop_tx_type" value="1">
+            <input type="hidden" name="prop_tx_type" value="2">
         <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 写字楼名称</td>

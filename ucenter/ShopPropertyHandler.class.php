@@ -136,7 +136,7 @@ class ShopPropertyHandler extends PropertyHandler{
 		
 		$shop['shopsRentPriceUnit'] = $this->shopsRentPriceUnit == "" ? 0 : $this->shopsRentPriceUnit;
 		if($this->shopsRentPriceUnit == 1){
-			$shop['shopsRentPrice'] = $this->shopsRentPrice * 30 * $this->shopsRentPriceUnit;
+			$shop['shopsRentPrice'] = $this->shopsRentPrice * 30 * $this->shopsBuildArea;
 		}else if($this->shopsRentPriceUnit == 2){
 			$shop['shopsRentPrice'] = $this->shopsRentPrice * $this->shopsBuildArea;
 		}else{

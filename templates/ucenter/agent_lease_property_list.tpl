@@ -112,7 +112,7 @@
 			    <!--{elseif $propList[prop].propKind eq 'xzl'}-->
 			    <a href="agent_lease_xzl_edit.php?propId=<!--{$propList[prop].propId}-->">编辑</a>
 			    <!--{elseif $propList[prop].propKind eq 'gc'}-->
-			    <a href="agent_lease_gc_edit.php?propId=<!--{$propList[prop].propId}-->">编辑</a>
+			    <a href="agent_lease_cf_edit.php?propId=<!--{$propList[prop].propId}-->">编辑</a>
 			    <!--{/if}-->			    
 			     <a href="javascript:void(0);" onclick="deleteProp('<!--{$propList[prop].propKind}--><!--{$propList[prop].propId}-->')">删除</a><br />
 			     <!--{if $propList[prop].propState eq 1}-->

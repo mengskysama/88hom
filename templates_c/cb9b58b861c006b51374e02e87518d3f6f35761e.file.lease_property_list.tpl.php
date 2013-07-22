@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-18 17:21:05
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-22 10:00:45
          compiled from "E:/workspace/projects/88hom/templates\ucenter\lease_property_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3204451e3a76a523791-91627584%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cb9b58b861c006b51374e02e87518d3f6f35761e' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\lease_property_list.tpl',
-      1 => 1374137019,
+      1 => 1374458390,
       2 => 'file',
     ),
   ),
@@ -179,7 +179,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['last']       = ($_sm
 <?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
 " / ></label></td>
 			    <td width="225" align="left" valign="middle" class="bor">
-			    	<img src="http://localhost/88hom/uploads/community/<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propPhoto'];?>
+			    	<img src="../uploads/<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propPhoto'];?>
 " class="l">
 			        <span class="l wz">
 			        	名称：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propName'];?>

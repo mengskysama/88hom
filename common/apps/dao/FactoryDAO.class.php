@@ -17,7 +17,7 @@ class FactoryDAO  {
 										factoryFloorArea,factoryBuildArea,factoryOfficeArea,factoryWorkshopArea,factorySpaceArea,factoryDormitory,factoryBuildYear,
 										factorySpan,factoryAllFloor,factoryFloorHeight,factoryLoadBearing,factoryBuildStructure,factoryWater,factoryHasCapacityNow,
 										factoryHasCapacityMax,factoryTraffic,factoryContent,factoryRentPrice,factoryIncludFee,factoryPayment,factoryPayDetailY,factoryPayDetailF,factoryLeastYear,
-										factorySellRentType,factoryMapX,factoryMapY,factoryAreaId,factoryState,factoryUserId,factoryCreateTime,factoryUpdateTime) values('"
+										factorySellRentType,factoryProvince,factoryCity,factoryDistrict,factoryArea,factoryState,factoryUserId,factoryCreateTime,factoryUpdateTime) values('"
 										.(empty($factory['factoryNumber'])?'':$factory['factoryNumber'])
 										."','".(empty($factory['factoryName'])?'':$factory['factoryName'])
 										."','".(empty($factory['factoryAddress'])?'':$factory['factoryAddress'])
@@ -50,10 +50,11 @@ class FactoryDAO  {
 										.",".(empty($factory['factoryPayDetailF'])?0:$factory['factoryPayDetailF'])
 										.",".(empty($factory['factoryLeastYear'])?0:$factory['factoryLeastYear'])
 										.",".(empty($factory['factorySellRentType'])?0:$factory['factorySellRentType'])
-										.",".(empty($factory['factoryMapX'])?0:$factory['factoryMapX'])
-										.",".(empty($factory['factoryMapY'])?0:$factory['factoryMapY'])
-										.",'".(empty($factory['factoryAreaId'])?'':$factory['factoryAreaId'])
-										."',".(empty($factory['factoryState'])?0:$factory['factoryState'])
+										.",".(empty($factory['factoryProvince'])?-1:$factory['factoryProvince'])
+										.",".(empty($factory['factoryCity'])?-1:$factory['factoryCity'])
+										.",".(empty($factory['factoryDistrict'])?-1:$factory['factoryDistrict'])
+										.",".(empty($factory['factoryArea'])?-1:$factory['factoryArea'])
+										.",".(empty($factory['factoryState'])?0:$factory['factoryState'])
 										.",".(empty($factory['factoryUserId'])?0:$factory['factoryUserId'])
 										.",".time()
 										.",".time()
@@ -84,7 +85,7 @@ class FactoryDAO  {
 			   "factoryFloorArea,factoryBuildArea,factoryOfficeArea,factoryWorkshopArea,factorySpaceArea,factoryDormitory,factoryBuildYear,".
 			   "factorySpan,factoryAllFloor,factoryFloorHeight,factoryLoadBearing,factoryBuildStructure,factoryWater,factoryHasCapacityNow,".
 			   "factoryHasCapacityMax,factoryRentPrice,factoryIncludFee,factoryPayment,factoryPayDetailY,factoryPayDetailF,factoryLeastYear,".
-			   "factorySellRentType,factoryMapX,factoryMapY,factoryAreaId,factoryState,".
+			   "factorySellRentType,factoryProvince,factoryCity,factoryDistrict,factoryArea,factoryState,".
 			   "(select picUrl from ecms_pic where picBuildType=5 and picBuildId=factoryId limit 1) as propPhoto,factoryUserId,factoryCreateTime,factoryUpdateTime ".	 
 				"from ecms_factory ".
 				"where factoryId=".$propId;
@@ -183,8 +184,17 @@ class FactoryDAO  {
 		if(isset($factory['factorySellRentType'])){
 			$sql .= "factorySellRentType=".$factory['factorySellRentType'].",";
 		}						
-		if(isset($factory['factoryAreaId'])){
-			$sql .= "factoryAreaId='".$factory['factoryAreaId']."',";
+		if(isset($factory['factoryProvince'])){
+			$sql .= "factoryProvince=".$factory['factoryProvince'].",";
+		}					
+		if(isset($factory['factoryCity'])){
+			$sql .= "factoryCity=".$factory['factoryCity'].",";
+		}					
+		if(isset($factory['factoryDistrict'])){
+			$sql .= "factoryDistrict=".$factory['factoryDistrict'].",";
+		}					
+		if(isset($factory['factoryArea'])){
+			$sql .= "factoryArea=".$factory['factoryArea'].",";
 		}					
 		if(isset($factory['factoryContent'])){
 			$sql .= "factoryContent='".$factory['factoryContent']."',";

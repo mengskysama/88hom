@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-15 15:10:36
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-22 11:34:33
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_lease_sp_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1069951e3a06cc661c1-40739907%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '89902c79379038e31c40a2b9de60a80015da9a7d' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_lease_sp_edit.tpl',
-      1 => 1373872101,
+      1 => 1374217085,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51e3a06d011a74_42956592',
   'variables' => 
   array (
     'cfg' => 0,
@@ -66,11 +68,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'key_' => 0,
     'topPicThumb' => 0,
     'topPicPath' => 0,
+    'propState' => 0,
     'propId' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_51e3a06d011a74_42956592',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51e3a06d011a74_42956592')) {function content_51e3a06d011a74_42956592($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -93,6 +94,16 @@ $(function() {
             document.getElementById("spForm").submit();
         } else {
             $("#btn_update").removeAttr("disabled");
+        }
+    });
+		
+    $("#btn_live").click(function() {
+        $("#btn_live").attr("disabled", true);
+        if (check()) {
+            $("#action_to_go").val("1");
+            document.getElementById("spForm").submit();
+        } else {
+            $("#btn_live").removeAttr("disabled");
         }
     });
 
@@ -447,11 +458,13 @@ uploads/<?php echo $_smarty_tpl->tpl_vars['topPicThumb']->value;?>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
             <td width="120" align="center" valign="middle">
             <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_update" value="修改" /></td>
-            <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
+            <td width="320" height="80" align="center" valign="middle"><?php if ($_smarty_tpl->tpl_vars['propState']->value==0){?><input name="btn_live" type="button" class="mddl1" id="btn_live" value="发布" /><?php }?></td>
 	      </tr>
 	    </table>
 	    <input type="hidden" id="actionType" name="actionType" value="update"/>
 	    <input type="hidden" id="propId" name="propId" value="<?php echo $_smarty_tpl->tpl_vars['propId']->value;?>
+"/>
+	    <input type="hidden" id="action_to_go" name="action_to_go" value="<?php echo $_smarty_tpl->tpl_vars['propState']->value;?>
 "/>
 	    </form>
     </div>

@@ -317,7 +317,10 @@ class SecondHandPropertyService{
 	
 	public function deletePropertyList($propIds){
 		if($propIds == "") return false;
-		$propIds = substr($propIds, 0, (strlen($propIds) - 1));
+		if(strrpos($propIds,",") == (strlen($propIds) - 1)){
+			$propIds = substr($propIds, 0, (strlen($propIds) - 1));
+			//echo 'propIds='.$propIds;
+		}
 		
 		$ids = explode(",",$propIds);
 		$len = count($ids);
@@ -328,30 +331,30 @@ class SecondHandPropertyService{
 			$offset = 0;
 			$picBuildType = 0;
 			//echo $id."|";
-			if(!strpos($id,'zz')){
+			if(strpos($id,'zz') !== false){
 				$dao = $this->houseDAO;
 				$offset = 2;
 				$picBuildType = 1;
-			}else if(!strpos($id,'bs')){
+			}else if(strpos($id,'bs') !== false){
 				$dao = $this->villaDAO;
 				$offset = 2;
 				$picBuildType = 4;
-			}else if(!strpos($id,'sp')){
+			}else if(strpos($id,'sp') !== false){
 				$dao = $this->shopsDAO;
 				$offset = 2;
 				$picBuildType = 2;
-			}else if(!strpos($id,'xzl')){
+			}else if(strpos($id,'xzl') !== false){
 				$dao = $this->officeDAO;
 				$offset = 3;
 				$picBuildType = 3;
-			}else if(!strpos($id,'cf')){
+			}else if(strpos($id,'gc') !== false){
 				$dao = $this->factoryDAO;
 				$offset = 2;
 				$picBuildType = 5;
 			}
 			if($dao == "") return false;
 
-			//echo $offset."|".$picBuildType;
+			//echo $offset."|".$picBuildType;return;
 			$id = substr($id,$offset);
 			$dao->delete($id);
 			$this->picDAO->delPicByPropIdAndType($picBuildType,$id);

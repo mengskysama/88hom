@@ -1,0 +1,27 @@
+------------------------2013-07-22 09:34:03
+数据库不可用：
+88hom
+客户端:127.0.0.1
+时间:2013-07-22 09:34:03
+------------------------2013-07-22 09:58:30
+数据库不可用：
+88hom
+客户端:127.0.0.1
+时间:2013-07-22 09:58:30
+------------------------2013-07-22 10:09:42
+错误SQL语句：
+update ecms_house set houseState=2 where houseId=
+客户端:127.0.0.1
+时间:2013-07-22 10:09:42
+------------------------2013-07-22 10:09:42
+错误SQL语句：
+update ecms_pic set picState=0 where picBuildType=1 and picBuildId=
+客户端:127.0.0.1
+时间:2013-07-22 10:09:42
+------------------------2013-07-22 11:10:16
+错误SQL语句：
+update ecms_shops set shopsAddress='',shopsTitle='是搜索水水水水',shopsContent='<p>
+	阿士大夫撒</p>
+',shopsType=,shopsSellPrice=0,shopsBuildArea=50,shopsFloor=2,shopsAllFloor=5,shopsDivision=1,shopsFitment=1,shopsBaseService=',1,2,3,',shopsAimOperastion=',1,2,',shopsPropFee=33,shopsNumber='',shopsState=1,shopsRentPrice=30000,shopsRentPriceUnit=1,shopsTraffic='灌灌灌灌灌',shopsSet='水水水水',shopsUpdateTime=1374462616 where shopsId=6
+客户端:127.0.0.1
+时间:2013-07-22 11:10:16

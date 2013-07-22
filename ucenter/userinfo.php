@@ -24,7 +24,7 @@ $areaIndex = "";
 
 $userService = new UserService($db);
 if(isset($_POST['actionType'])){
-	$rblSex = getParameter("rblSex");
+	$rblSex = isset($_POST['rblSex']) ? $_POST['rblSex'] : 1;
 	$realName = getParameter("userdetailName");
 	$cardtypeId = getParameter("cardtypeId");
 	$IDCode = getParameter("IDCode");
@@ -34,26 +34,16 @@ if(isset($_POST['actionType'])){
 	$contactQQ = getParameter("contactQQ");
 	$contactMSN = getParameter("contactMSN");
 	$actionType = getParameter("actionType");
-
+	
 	$userdetailPic = "";
-	if(isset($_FILES['userdetailPic']) && $_FILES['userdetailPic']['error'] == 0){
-		if((($_FILES['userdetailPic']["type"] != "image/gif")
-				&& ($_FILES['userdetailPic']["type"] != "image/jpeg")
-				&& ($_FILES['userdetailPic']["type"] != "image/pjpeg"))
-				|| ($_FILES['userdetailPic']["size"] >= 200000)) {
-			$operation_msg .= "alert('图片必须是gif、jgp格式的，并且小于2M');";
-		}else{
-			$fileName = $_FILES['userdetailPic']['name'];
-			$imageSuffix = substr($fileName,strrpos($fileName,'.'));
-			$userdetailPic = rand(10,20).$userId.rand(1000000,9999999).$imageSuffix;
-			$renameResult = copy($_FILES['userdetailPic']["tmp_name"],ECMS_PATH_ROOT.'uploads/agent/'.$userdetailPic);
-			//echo ECMS_PATH_ROOT.'uploads/agent/'.$userdetailPic.'->'.$renameResult;return;
-			if(!$renameResult){
-				$operation_msg .= "alert('图片上传失败，请重试');";
-			}
-		}		
+	$userdetailPicThumb = "";
+	if(!empty($_POST['picPath'])){
+		$len = count($_POST['picPath']);
+		$key = $len-1;
+		$userdetailPic = $_POST['picPath'][$key];
+		$userdetailPicThumb = $_POST['picPathThumb'][$key];
 	}
-
+	
 	if(isset($_POST['areaIndex'])){
 		$areaIndex = getParameter("areaIndex");
 		if($areaIndex){
@@ -76,10 +66,9 @@ if(isset($_POST['actionType'])){
 		$UCUser['userdetailMSN'] = $contactMSN;
 		$UCUser['cardtypeId'] = $cardtypeId;
 		$UCUser['userdetailCardNumber'] = $IDCode;
-		if($userdetailPic != ""){
-			$UCUser['userdetailPic'] = $userdetailPic;
-		}
-		//echo 'pic->'.$userdetailPic;return;
+		$UCUser['userdetailPic'] = $userdetailPic;
+		$UCUser['userdetailPicThumb'] = $userdetailPicThumb;
+		
 		$UCUser['userdetailAddr'] = $contactAddr;
 		$UCUser['userdetailPostCode'] = $postCode;
 		$UCUser['userdetailProvince'] = $ddlProvince;
@@ -108,6 +97,7 @@ if($userDetail){
 	$IDCode = $userDetail['userdetailCardNumber'];
 
 	$userdetailPic = $userDetail['userdetailPic'];
+	$userdetailPicThumb = $userDetail['userdetailPicThumb'];
 	$contactAddr = $userDetail['userdetailAddr'];
 	$postCode = $userDetail['userdetailPostCode'];
 	$ddlProvince = $userDetail['userdetailProvince'];
@@ -130,8 +120,13 @@ if($rblSex == 1){
 
 $html->addJs("ucenter_city.js");
 $html->addJs("ucenter_register_agent.js");
-$html->addJs("ucenter_property_input.js");
+$html->addJs("ucenter_upload_pic.js");
+//$html->addJs("ucenter_property_input.js");
+$html->addJs('jquery.uploadify.min.js');
+$html->addCss('common/uploadify/uploadify.css');
 $html->addCss("ucenter/city.css");
+$html->addCss('ucenter/jquery-ui.css');
+$html->addCss('ucenter/css.css');
 $html->show();
 
 $smarty->assign('userName',$userName);
@@ -147,6 +142,7 @@ $smarty->assign('IDCode',$IDCode);
 
 //echo 'userdetailPic-'.$userdetailPic;
 $smarty->assign('userdetailPic',$userdetailPic);
+$smarty->assign('userdetailPicThumb',$userdetailPicThumb);
 $smarty->assign('contactAddr',$contactAddr);
 $smarty->assign('postCode',$postCode);
 $smarty->assign('ddlProvince',$ddlProvince);
@@ -157,6 +153,10 @@ $smarty->assign('operation_msg',$operation_msg);
 $smarty->assign('areaIndex',$areaIndex);
 $smarty->assign('actionType',$actionType);
 
+$timestamp=time();
+$token=md5('unique_salt' . $timestamp);
+$smarty->assign('timestamp',$timestamp);
+$smarty->assign('token',$token);
 $smarty->display($tpl_name);
 
 ?>

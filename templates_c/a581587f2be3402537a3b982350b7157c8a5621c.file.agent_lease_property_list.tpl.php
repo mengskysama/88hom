@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-18 16:22:29
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-22 12:14:45
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_lease_property_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1863151e3a6109c96b8-67632345%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a581587f2be3402537a3b982350b7157c8a5621c' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_lease_property_list.tpl',
-      1 => 1374134429,
+      1 => 1374466288,
       2 => 'file',
     ),
   ),
@@ -219,7 +219,7 @@ _<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable(
 			    <a href="agent_lease_xzl_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
 ">编辑</a>
 			    <?php }elseif($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='gc'){?>
-			    <a href="agent_lease_gc_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
+			    <a href="agent_lease_cf_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
 ">编辑</a>
 			    <?php }?>			    
 			     <a href="javascript:void(0);" onclick="deleteProp('<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind'];?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-19 16:20:52
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-22 11:21:24
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_lease_xzl.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2790651e8f6e40f74c5-48417683%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd9eda2e2298f98b15d1495382ed495521a3fed49' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_lease_xzl.tpl',
-      1 => 1374221780,
+      1 => 1374454301,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51e8f6e42084d2_56726481',
   'variables' => 
   array (
     'cfg' => 0,
@@ -29,8 +31,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'item' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_51e8f6e42084d2_56726481',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51e8f6e42084d2_56726481')) {function content_51e8f6e42084d2_56726481($_smarty_tpl) {?>﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -244,7 +244,7 @@ function checkRentPrice(){
     <input id="officeRentPrice" name="officeRentPrice" type="text" />
     <label><input id="" name="officeRentPriceUnit" type="radio" onclick="checkPrice('30',false)" value="1" />元/平米·天</label>
     <label><input id="" name="officeRentPriceUnit" type="radio" onclick="checkPrice('900',false)" value="2" />元/平米·月</label>
-    <label><input id="" name="officeRentPriceUnit" type="radio" onclick="checkPrice('1000000000',false)" value="3" />元/月</label>
+    <label><input id="" name="officeRentPriceUnit" type="radio" onclick="checkPrice('1000000000',false)" value="3" checked="checked" />元/月</label>
     </td>
   </tr>
   <tr>

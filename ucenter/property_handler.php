@@ -234,6 +234,7 @@ if($propType == "zz"){
 	$propIds = getParameter("propIds");
 	$secondPropService = new SecondHandPropertyService($db);
 	$delResult = $secondPropService->deletePropertyList($propIds);
+	//echo $delResult;return;
 	if($delResult){
 		echo "{\"result\":\"success\"}";
 	}else{

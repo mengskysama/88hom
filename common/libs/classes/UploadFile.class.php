@@ -145,7 +145,8 @@ class UploadFile {
 					$fileFullName = $fileField['name'];
 					break;
 			}
-			if (@move_uploaded_file($fileField['tmp_name'], $destFolder . $fileFullName)) {
+			//if (@move_uploaded_file($fileField['tmp_name'], $destFolder . $fileFullName)) {
+			if (@copy($fileField['tmp_name'], $destFolder . $fileFullName)) {
 				return $fileFullName;
 			} else {
 				$errorMsg = '文件上传失败！失败原因：本地文件系统读写权限出错！';

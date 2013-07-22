@@ -53,6 +53,7 @@ function deleteProp(propId){
         data:option,
         type:"post",
         success:function(msg){
+//        	/alert(msg);
 			if(msg.result=="success"){
 				alert("删除成功!");
                 window.setTimeout(function(){location.reload();}, 1000);

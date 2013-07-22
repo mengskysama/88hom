@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-11 15:28:27
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-22 18:02:04
          compiled from "E:/workspace/projects/88hom/templates\ucenter\userinfo.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:268025189e9ba8dc2e9-62378949%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a07f87c4baa3c930d0da5e02f9dd890d9a2d4316' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\userinfo.tpl',
-      1 => 1373527370,
+      1 => 1374487320,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
+    'timestamp' => 0,
+    'token' => 0,
     'userName' => 0,
     'maleGender' => 0,
     'femaleGender' => 0,
@@ -35,6 +37,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'contactQQ' => 0,
     'contactMSN' => 0,
     'userdetailPic' => 0,
+    'userdetailPicThumb' => 0,
     'actionType' => 0,
     'operation_msg' => 0,
   ),
@@ -51,8 +54,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
 <script type="text/javascript">
-	$(document).ready(function(){
-
+	$(function(){
+		
+		initAgentPicUp('<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['token']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['file_path_upload'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_path'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_common'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+');
+				
 		$('#btn_confirm').click(function(){
 			if(checkform()){
 				$('#frm_userinfo').submit();
@@ -79,7 +90,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	
 	function chkEmpty(keyId,msg){
 		var value = document.getElementById(keyId).value;
-		if(trim(value) == ""){
+		if(jQuery.trim(value) == ""){
 			alert(msg);
 			return false;
 		}
@@ -87,7 +98,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	}
 	function chkNumber(keyId,keyName,tag){
 		var value = document.getElementById(keyId).value;
-		if(trim(value) == ""){
+		if(jQuery.trim(value) == ""){
 			if(tag){
 				alert('请填写' + keyName);
 				return false;
@@ -99,6 +110,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			alert(keyName + "只能是数字");
 			return false;
 		}
+		return true;
+	}
+	function IsInt(o){
+	    var s = document.getElementById(o);
+		var reg =/^[0-9]*$/;
+		if(!reg.test(jQuery.trim(s.value))) return false;
 		return true;
 	}
 </script>
@@ -132,7 +149,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 </div>
                 <div class="zl_r">
                 <form id="frm_userinfo" name="frm_userinfo" action="userinfo.php" method="post" enctype="multipart/form-data">
-<table width="90%" border="0" cellspacing="0" cellpadding="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
 						  <tr>
   							  <td width="120" height="48" align="right" valign="middle" class="f14 z3">用户名：</td>
   							  <td width="450" class="f14 z3"><?php echo $_smarty_tpl->tpl_vars['userName']->value;?>
@@ -268,12 +285,24 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</tr>
  						 <tr>
    								 <td width="120" height="48" align="right" valign="middle" class="f14 z3">上传靓照：</td>
-   								 <td width="450">
-    								<input id="userdetailPic" name="userdetailPic" type="file"  value="" /><br>
-    								<?php if ($_smarty_tpl->tpl_vars['userdetailPic']->value!=''){?>
-    								<img src="../uploads/agent/<?php echo $_smarty_tpl->tpl_vars['userdetailPic']->value;?>
-" style="padding-bottom:5px; height:128px; margin-left:-10px;">
-    								<?php }?>
+   								 <td width="450" height="215" align="left" valign="top" class="p25">
+    								<div class="sc_btn">
+					                <input type="file" name="file_upload_1" id="file_upload_1"/>
+						            </div>
+						            <div class="tpsc" id="showImg">
+						            <?php if ($_smarty_tpl->tpl_vars['userdetailPic']->value!=''){?>
+						            <dl id="pic_100">
+						            	<dt><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+uploads/<?php echo $_smarty_tpl->tpl_vars['userdetailPicThumb']->value;?>
+"></dt>
+						            	<a href="javascript:void(0)" onclick="dropContainer('pic_100')"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+/templates/images/ucenter/cha.jpg"></a>
+						            	<input type="hidden" name="picPath[]" value="<?php echo $_smarty_tpl->tpl_vars['userdetailPic']->value;?>
+">
+						            	<input type="hidden" name="picPathThumb[]" value="<?php echo $_smarty_tpl->tpl_vars['userdetailPicThumb']->value;?>
+"></dl>
+						            </div>
+						            <?php }?>
                                   </td>
 		    </tr>
  						 <tr>

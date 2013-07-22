@@ -86,7 +86,7 @@ class ShopsDAO{
 		if(isset($info['shopsContent'])){
 			$sql .= "shopsContent='".$info['shopsContent']."',";
 		} 
-		if(isset($info['shopsType'])){
+		if(isset($info['shopsType']) && $info['shopsType'] > 0){
 			$sql .= "shopsType=".$info['shopsType'].",";
 		} 
 		if(isset($info['shopsSellPrice'])){

@@ -13,7 +13,7 @@ if(SERVER_NAME=='localhost'||SERVER_NAME=='127.0.0.1'||SERVER_NAME=='192.168.0.2
 }
 //数据库配置信息
 if(SERVER_NAME=='localhost'||SERVER_NAME=='192.168.0.27'){
-	define('ECMS_DB_HOST', '192.168.0.27'); //数据库服务器主机地址
+	define('ECMS_DB_HOST', 'localhost'); //数据库服务器主机地址
 	define('ECMS_DB_USER', '88hom'); //数据库帐号
 	define('ECMS_DB_PW', '123456'); //数据库密码
 	define('ECMS_DB_NAME', '88hom'); //数据库名

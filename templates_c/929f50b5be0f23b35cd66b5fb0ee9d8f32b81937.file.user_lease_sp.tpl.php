@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-19 16:20:50
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-22 10:58:28
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_lease_sp.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2195551dbc5a847e5a1-01965641%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '929f50b5be0f23b35cd66b5fb0ee9d8f32b81937' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_lease_sp.tpl',
-      1 => 1374221770,
+      1 => 1374454301,
       2 => 'file',
     ),
   ),
@@ -242,7 +242,7 @@ function checkRentPrice(){
     <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsRentPrice" name="shopsRentPrice" type="text" />
     <label><input id="" name="shopsRentPriceUnit" type="radio" onclick="checkPrice('30',false)" value="1" />元/平米·天</label>
     <label><input id="" name="shopsRentPriceUnit" type="radio" onclick="checkPrice('900',false)" value="2" />元/平米·月</label>
-    <label><input id="" name="shopsRentPriceUnit" type="radio" onclick="checkPrice('1000000000',false)" value="3" />元/月</label></td>
+    <label><input id="" name="shopsRentPriceUnit" type="radio" onclick="checkPrice('1000000000',false)" value="3" checked="checked" />元/月</label></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 物 业 费</td>

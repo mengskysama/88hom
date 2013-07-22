@@ -6,8 +6,10 @@
 <!--{$jsFiles}-->
 <!--{$cssFiles}-->
 <script type="text/javascript">
-	$(document).ready(function(){
-
+	$(function(){
+		
+		initAgentPicUp('<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
+				
 		$('#btn_confirm').click(function(){
 			if(checkform()){
 				$('#frm_userinfo').submit();
@@ -34,7 +36,7 @@
 	
 	function chkEmpty(keyId,msg){
 		var value = document.getElementById(keyId).value;
-		if(trim(value) == ""){
+		if(jQuery.trim(value) == ""){
 			alert(msg);
 			return false;
 		}
@@ -42,7 +44,7 @@
 	}
 	function chkNumber(keyId,keyName,tag){
 		var value = document.getElementById(keyId).value;
-		if(trim(value) == ""){
+		if(jQuery.trim(value) == ""){
 			if(tag){
 				alert('请填写' + keyName);
 				return false;
@@ -54,6 +56,12 @@
 			alert(keyName + "只能是数字");
 			return false;
 		}
+		return true;
+	}
+	function IsInt(o){
+	    var s = document.getElementById(o);
+		var reg =/^[0-9]*$/;
+		if(!reg.test(jQuery.trim(s.value))) return false;
 		return true;
 	}
 </script>
@@ -85,7 +93,7 @@
                 </div>
                 <div class="zl_r">
                 <form id="frm_userinfo" name="frm_userinfo" action="userinfo.php" method="post" enctype="multipart/form-data">
-<table width="90%" border="0" cellspacing="0" cellpadding="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
 						  <tr>
   							  <td width="120" height="48" align="right" valign="middle" class="f14 z3">用户名：</td>
   							  <td width="450" class="f14 z3"><!--{$userName}--></td>
@@ -210,11 +218,19 @@
 			</tr>
  						 <tr>
    								 <td width="120" height="48" align="right" valign="middle" class="f14 z3">上传靓照：</td>
-   								 <td width="450">
-    								<input id="userdetailPic" name="userdetailPic" type="file"  value="" /><br>
-    								<!--{if $userdetailPic ne '' }-->
-    								<img src="../uploads/agent/<!--{$userdetailPic}-->" style="padding-bottom:5px; height:128px; margin-left:-10px;">
-    								<!--{/if}-->
+   								 <td width="450" height="215" align="left" valign="top" class="p25">
+    								<div class="sc_btn">
+					                <input type="file" name="file_upload_1" id="file_upload_1"/>
+						            </div>
+						            <div class="tpsc" id="showImg">
+						            <!--{if $userdetailPic != ""}-->
+						            <dl id="pic_100">
+						            	<dt><img src="<!--{$cfg.web_url}-->uploads/<!--{$userdetailPicThumb}-->"></dt>
+						            	<a href="javascript:void(0)" onclick="dropContainer('pic_100')"><img src="<!--{$cfg.web_url}-->/templates/images/ucenter/cha.jpg"></a>
+						            	<input type="hidden" name="picPath[]" value="<!--{$userdetailPic}-->">
+						            	<input type="hidden" name="picPathThumb[]" value="<!--{$userdetailPicThumb}-->"></dl>
+						            </div>
+						            <!--{/if}-->
                                   </td>
 		    </tr>
  						 <tr>

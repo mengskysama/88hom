@@ -3,7 +3,7 @@ require 'path.inc.php';
 require 'check_user_login.php';
 $tpl_name = $tpl_dir.'lease_property_list.tpl';
 
-$propState = getParameter("propState");
+$propState = isset($_POST['propState']) ? $_POST['propState'] : "";
 $propState = $propState == "" ? 1 : $propState;
 $propNum = getParameter("propNum");
 $propPriceFrom = getParameter("propPriceFrom");
