@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-19 16:20:09
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 11:55:52
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_lease_xzl.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2770351e3959adb1d85-69860054%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8e038178e03cb624230ffafc066aad4bf5310647' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_lease_xzl.tpl',
-      1 => 1374221692,
+      1 => 1374550575,
       2 => 'file',
     ),
   ),
@@ -245,7 +245,7 @@ function checkRentPrice(){
     <input id="officeRentPrice" name="officeRentPrice" type="text" />
     <label><input id="" name="officeRentPriceUnit" type="radio" onclick="checkPrice('30',false)" value="1" />元/平米·天</label>
     <label><input id="" name="officeRentPriceUnit" type="radio" onclick="checkPrice('900',false)" value="2" />元/平米·月</label>
-    <label><input id="" name="officeRentPriceUnit" type="radio" onclick="checkPrice('1000000000',false)" value="3" />元/月</label>
+    <label><input id="" name="officeRentPriceUnit" type="radio" onclick="checkPrice('1000000000',false)" value="3" checked="checked" />元/月</label>
     </td>
   </tr>
   <tr>
@@ -264,14 +264,14 @@ function checkRentPrice(){
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否可分割</td>
     <td align="left" valign="middle" class="p25">
-    	<label><input id="" name="officeDivision" type="radio" value="1" /> 可分割</label>     
+    	<label><input id="" name="officeDivision" type="radio" value="1" checked="checked"/> 可分割</label>     
       	<label> <input id="" name="officeDivision" type="radio" value="2" /> 不可分割</label>   </td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>
     <td align="left" valign="middle" class="p25">
     	<label><input id="" name="officeFitment" type="radio" value="1" /> 精装修</label>     
-      	<label> <input id="" name="officeFitment" type="radio" value="2" /> 简装修</label>
+      	<label> <input id="" name="officeFitment" type="radio" value="2" checked="checked"/> 简装修</label>
         <label> <input id="" name="officeFitment" type="radio" value="3" /> 毛坯</label>
         </td>
   </tr>
@@ -279,7 +279,7 @@ function checkRentPrice(){
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 写字楼级别</td>
     <td align="left" valign="middle" class="p25" style="line-height:26px;">
     	 <label><input id="" name="officeLevel" type="radio" value="1" /> 甲级</label>     
-      	<label> <input id="" name="officeLevel" type="radio" value="2" /> 乙级</label>
+      	<label> <input id="" name="officeLevel" type="radio" value="2" checked="checked"/> 乙级</label>
         <label> <input id="" name="officeLevel" type="radio" value="3" /> 丙级</label>
         <label> <input id="" name="officeLevel" type="radio" value="4" /> 其它</label>
     </td>

@@ -145,6 +145,15 @@ return array(
 			    4=>'购物中心/百货',  
 			    5=>'其他'
 		),
+		'2handShopsRentState'=>array(
+			    1=>'营业中',     
+			    2=>'闲置中',
+			    3=>'新铺'
+		),
+		'2handShopsIncludFee'=>array(
+			    1=>'是',     
+			    2=>'否'
+		),
 		'2handShopsDivision'=>array(
 			    1=>'可分割',     
 			    2=>'不可分割'
@@ -187,16 +196,36 @@ return array(
 				3=>'双拼', 
 				4=>'叠加'
 		),
-		'2handVillaForward'=>array(
-				1=>'东', 
-				2=>'西',  
-				3=>'南', 
-				4=>'北' 
+		'2handVillaBuildStructure'=>array(
+				1=>'平层', 
+				2=>'挑高'
+		),
+		'2handVillaGarden'=>array(
+				0=>'无', 
+				1=>'有'
+		),
+		'2handVillaGarage'=>array(
+				0=>'无', 
+				1=>'有'
+		),
+		'2handVillaParkingPlace'=>array(
+				0=>'无', 
+				1=>'有'
+		),
+		'2handVillaCellar'=>array(
+				0=>'无', 
+				1=>'有'
 		),
 		'2handVillaCellarType'=>array(
 				1=>'全明', 
 				2=>'半明', 
 				3=>'暗'
+		),
+		'2handVillaForward'=>array(
+				1=>'东', 
+				2=>'西',  
+				3=>'南', 
+				4=>'北' 
 		),
 		'2handVillaFitment'=>array(
 			  	1=>'豪华装修',     

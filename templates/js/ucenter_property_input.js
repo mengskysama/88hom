@@ -256,10 +256,12 @@ function CheckLiveArea(KeyName,KeyName1,flag)
 
 function CheckCreateTime(KeyName,flag)
 {
-    if(!flag) return false;
-    
-    document.getElementById(KeyName).value = document.getElementById(KeyName).value.toLowerCase();
     var value = document.getElementById(KeyName).value;
+    if(flag && trim(value) == ""){
+    	alert("请填写建筑年代 如：2008");
+		$("#"+KeyName).focus();
+    	return false;
+    }
     
     if(trim(value) != "" && (!IsInt(KeyName) || value < 1000 || value>= 10000 )){
     	alert("请填写4位数字 如：2008");
@@ -473,6 +475,112 @@ function checkPropFee(KeyName,flag){
 
 }
 
+function checkShopsTransferFee(KeyName){
+	
+	var value = document.getElementById(KeyName).value;
+	if(trim(value) == "面议") return true;
+	
+	if(trim(value) == "" && flag) {
+    	alert("请填写转让费");
+		$("#"+KeyName).focus();
+    	return false;
+	}
+	
+	if(check_float(KeyName)){
+		if(parseFloat(value)<0){
+			alert("转让费要大于0万元");
+            return false;
+    		$("#"+KeyName).focus();
+		}
+		return true;
+    }else{
+    	alert("只能填写数字");
+		$("#"+KeyName).focus();
+    	return false;
+    }
+
+}
+
+function resetShopsTransferFee(KeyName){
+	var value = document.getElementById(KeyName).value;
+	if(trim(value) == "面议") {
+        $("#"+KeyName).val("");
+	}else if(trim(value) == ""){
+        $("#"+KeyName).val("面议");
+	}
+}
+
+function selectShopsTransfer(visible){
+	if(visible==1){
+		$("#tr_shopsTransferFee").css("display","");
+    }else{
+        $("#tr_shopsTransferFee").css("display","none");
+        $("#shopsTransferFee").val("面议");
+    }
+}
+
+function checkShopsPayment(){
+
+	
+	var val = $('input:radio[name="shopsPayment"]:checked').val();
+    if (val == 1) {
+        var shopsPayDetailY = document.getElementById("shopsPayDetailY").value;
+        var shopsPayDetailY = document.getElementById("shopsPayDetailF").value;
+        if(villaPayDetailY == ""){
+        	alert("请选择支付方式压多少");
+        	return false;
+        }
+        if(shopsPayDetailF == ""){
+        	alert("请选择支付方式付多少");
+        	return false;
+        }
+    }
+}
+function changeShopPaydetail(){
+	var val = $('input:radio[name="shopsPayment"]:checked').val();
+    if (val == 2) {
+        document.getElementById("shopsPayDetailY").value = "";
+        document.getElementById("shopsPayDetailF").value = "";
+        document.getElementById("shopsPayDetailY").disabled = "disabled"
+        document.getElementById("shopsPayDetailF").disabled = "disabled"
+    }
+    else {
+        document.getElementById("shopsPayDetailY").disabled = ""
+        document.getElementById("shopsPayDetailF").disabled = ""
+    }
+}
+
+function checkOfficePayment(){
+
+	
+	var val = $('input:radio[name="officePayment"]:checked').val();
+    if (val == 1) {
+        var officePayDetailY = document.getElementById("officePayDetailY").value;
+        var officePayDetailF = document.getElementById("officePayDetailF").value;
+        if(officePayDetailY == ""){
+        	alert("请选择支付方式压多少");
+        	return false;
+        }
+        if(officePayDetailF == ""){
+        	alert("请选择支付方式付多少");
+        	return false;
+        }
+    }
+}
+function changeOfficePaydetail(){
+	var val = $('input:radio[name="officePayment"]:checked').val();
+    if (val == 2) {
+        document.getElementById("officePayDetailY").value = "";
+        document.getElementById("officePayDetailF").value = "";
+        document.getElementById("officePayDetailY").disabled = "disabled"
+        document.getElementById("officePayDetailF").disabled = "disabled"
+    }
+    else {
+        document.getElementById("officePayDetailY").disabled = ""
+        document.getElementById("officePayDetailF").disabled = ""
+    }
+}
+
 function CheckSwatchPriceOffice(KeyNamePrice) {
     document.getElementById(KeyNamePrice).value = document.getElementById(KeyNamePrice).value.toLowerCase();
     var valuePrice = document.getElementById(KeyNamePrice).value;
@@ -642,4 +750,35 @@ function refreshProp(propKind, propId){
 				alert("刷新失败!");
             }
     })
+}
+
+function selectParkingPlace(visible){
+	if(visible==1){
+		$("#tr_villaParkingPlaceCount").css("display","");
+	}else{
+        $("#tr_villaParkingPlaceCount").css("display","none");
+        $("#villaParkingPlaceCount").val("");
+	}
+}
+function checkVillaParkingPlaceCount(){
+
+    var value=document.getElementById("villaParkingPlaceCount").value;
+    if(trim(value) == ""){
+    	alert("请填写车位数量");
+		$("#villaParkingPlaceCount").focus();
+    	return false;
+    }
+    
+    if(!IsInt("villaGarageCount")){
+		alert("车位数量只能填写数字");
+		$("#villaParkingPlaceCount").focus();
+		return false;
+	}
+    
+    if(parseInt(value) <= 0){
+		alert("车位数量必须大于0");
+		$("#villaParkingPlaceCount").focus();
+		return false;
+	}
+    return true;
 }

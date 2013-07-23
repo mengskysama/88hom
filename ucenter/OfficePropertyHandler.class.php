@@ -7,7 +7,11 @@ class OfficePropertyHandler extends PropertyHandler{
 	private $officeNumber;
 	private $officeType;
 	private $officeSellPrice;
+	private $officeIncludFee;
 	private $officeProFee;
+	private $officePayment;
+	private $officePayDetailY;
+	private $officePayDetailF;
 	private $officeBuildArea;
 	private $officeFloor;
 	private $officeAllFloor;
@@ -31,7 +35,8 @@ class OfficePropertyHandler extends PropertyHandler{
 	private $propertyService;
 	
 	function __construct($db,$estId,$estName,$officeNumber,$officeType,$officeSellPrice,
-						$officeProFee,$officeBuildArea,$officeFloor,$officeAllFloor,$officeDivision,$officeFitment,
+						$officeIncludFee,$officeProFee,$officePayment,$officePayDetailY,$officePayDetailF,
+						$officeBuildArea,$officeFloor,$officeAllFloor,$officeDivision,$officeFitment,
 						$officeLevel,$officePhoto,$officeTitle,$officeContent,$officeUserId,$officeState,$actionType,
 						$officeId,$propTxType,$officeRentPrice,$officeRentPriceUnit,$officeTraffic,$topPic){
 		
@@ -42,6 +47,10 @@ class OfficePropertyHandler extends PropertyHandler{
 		$this->officeType = $officeType;
 		$this->officeSellPrice = $officeSellPrice;
 		$this->officeProFee = $officeProFee;
+		$this->officeIncludFee = $officeIncludFee;
+		$this->officePayment = $officePayment;
+		$this->officePayDetailY = $officePayDetailY;
+		$this->officePayDetailF = $officePayDetailF;
 		$this->officeBuildArea = $officeBuildArea;
 		$this->officeFloor = $officeFloor;
 		$this->officeAllFloor = $officeAllFloor;
@@ -113,11 +122,11 @@ class OfficePropertyHandler extends PropertyHandler{
 			$office['officeRentPrice'] = $this->officeRentPrice;
 		}
 		
-		$office['officeIncludFee'] = 0;
+		$office['officeIncludFee'] = $this->officeIncludFee;
 		$office['officeProFee'] = $this->officeProFee;
-		$office['officePayment'] = 0;
-		$office['officePayDetailY'] = 0;
-		$office['officePayDetailF'] = 0;
+		$office['officePayment'] = $this->officePayment;
+		$office['officePayDetailY'] = $this->officePayDetailY;
+		$office['officePayDetailF'] = $this->officePayDetailF;
 		$office['officeBuildArea'] = $this->officeBuildArea;
 		$office['officeFloor'] = $this->officeFloor;
 		$office['officeAllFloor'] = $this->officeAllFloor;

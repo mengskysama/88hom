@@ -41,12 +41,29 @@ function check(){
 	if(!CheckRoom('villaToilet',true)) return false;
 	if(!CheckRoom('villaKitchen',true)) return false;
 	if(!CheckRoom('villaBalcony',true)) return false;
+	
+	var val = $('input:radio[name="villaPayment"]:checked').val();
+    if (val == 1) {
+        var villaPayDetailY = document.getElementById("villaPayDetailY").value;
+        var villaPayDetailF = document.getElementById("villaPayDetailF").value;
+        if(villaPayDetailY == ""){
+        	alert("请选择支付方式压多少");
+        	return false;
+        }
+        if(villaPayDetailF == ""){
+        	alert("请选择支付方式付多少");
+        	return false;
+        }
+    }
+	if(!CheckCreateTime('villaBuildYear',false)) return false;
+    
 	if(!CheckRentArea()) return false;
 	if(!checkVillaAllFloor()) return false;
 
 	if($("input[name='villaCellar']:checked").val() == 1 && !CheckCellarArea('villaCellarArea',true)) return false;	
 	if($("input[name='villaGarden']:checked").val() == 1 && !CheckGardenArea('villaGardenArea',true)) return false;
 	if($("input[name='villaGarage']:checked").val() == 1 && !checkVillaGarageCount()) return false;
+	if($("input[name='villaParkingPlace']:checked").val() == 1 && !checkVillaParkingPlaceCount()) return false;	
 
 	
 	if(!CheckTitle('villaTitle',true)) return false;
@@ -241,6 +258,13 @@ function checkRentPrice(){
     <td align="left" valign="middle" class="p25 grzc_33"><input id="villaRentPrice" name="villaRentPrice" type="text" value="<!--{$villaRentPrice}-->" /> <font class="z3">元/月</font></td>
   </tr>
   <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">厅 结 构</td>
+    <td align="left" valign="middle" class="p25">
+    <input id="" name="villaBuildStructure" type="radio" value="1" <!--{if $villaBuildStructure eq 1 }--> checked="checked" <!--{/if}-->/> 平层 
+    <input id="" name="villaBuildStructure" type="radio" value="2" <!--{if $villaBuildStructure eq 2 }--> checked="checked" <!--{/if}-->/> 挑高
+    </td>
+  </tr>
+  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>户    型</td>
     <td align="left" valign="middle" class="p25 grzc_36">
     <input id="villaRoom" name="villaRoom" type="text" maxlength="1" value="<!--{$villaRoom}-->"/> <font class="z3">室</font> 
@@ -280,6 +304,11 @@ function checkRentPrice(){
 			    <input id="villaPayment" name="villaPayment" type="radio" value="2" <!--{if $villaPayment eq 2 }--> checked="checked" <!--{/if}--> onclick="changepaydetail();" />面议
 				</td>
 			  </tr>
+  <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaBuildYear" name="villaBuildYear" type="text" value="<!--{$villaBuildYear}-->" maxlength="4" />
+      <font class="z3"> 年</font></td>
+  </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 出租面积</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="villaBuildArea" name="villaBuildArea" type="text" value="<!--{$villaBuildArea}-->" maxlength="8" /> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
@@ -352,6 +381,20 @@ function checkRentPrice(){
     <td align="left" valign="middle" class="p25 grzc_35"><input id="villaGarageCount" name="villaGarageCount" type="text" maxlength="2" value="<!--{$villaGarageCount}-->"/> <font class="z3">个</font></td>
   </tr>
   <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车位</td>
+    <td align="left" valign="middle" class="p25"> 
+    <input id="" name="villaParkingPlace" type="radio" value="1" <!--{if $villaParkingPlace eq 1 }--> checked="checked" <!--{/if}--> onclick="selectParkingPlace(1)"/>有 
+    <input id="" name="villaParkingPlace" type="radio" value="0" <!--{if $villaParkingPlace eq 0 }--> checked="checked" <!--{/if}--> onclick="selectParkingPlace(0)"/> 无</td>
+  </tr>
+  <!--{if $villaParkingPlace eq 1 }--> 
+  <tr id="tr_villaParkingPlaceCount">
+  <!--{else}--> 
+  <tr id="tr_villaParkingPlaceCount" style="display: none;">
+  <!--{/if}-->
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车位数量</td>
+    <td align="left" valign="middle" class="p25 grzc_35"><input id="villaParkingPlaceCount" name="villaParkingPlaceCount" type="text" maxlength="2" value="<!--{$villaParkingPlaceCount}-->/> <font class="z3">个</font></td>
+  </tr>
+  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>
     <td align="left" valign="middle" class="p25">
   	    <label><input id="" name="villaFitment" type="radio" value="1" <!--{if $villaFitment eq 1 }--> checked="checked" <!--{/if}--> /> 豪华装修</label>     
@@ -379,6 +422,11 @@ function checkRentPrice(){
   		 <label><input id="" name="villaLookTime" type="radio" value="1" <!--{if $villaLookTime eq 1 }--> checked="checked" <!--{/if}--> /> 随时看房 </label>     
       	<label> <input id="" name="villaLookTime" type="radio" value="2" <!--{if $villaLookTime eq 2 }--> checked="checked" <!--{/if}--> /> 非工作时间  </label>    
         <label><input id="" name="villaLookTime" type="radio" value="3" <!--{if $villaLookTime eq 3 }--> checked="checked" <!--{/if}--> /> 电话预约</label>    
+    </td>
+  </tr>
+  <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">入住时间</td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaLiveTime" name="villaLiveTime" type="text" value="<!--{$villaLiveTime}-->" />
     </td>
   </tr>
 </table>

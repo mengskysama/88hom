@@ -126,7 +126,30 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑形式</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildForm" name="houseBuildForm" type="text" value="<!--{$houseBuildForm}-->" /> </td>
+			    <td align="left" valign="middle" class="p25 grzc_33">
+			    			    
+			    <select id="houseBuildStructure" name="houseBuildStructure">			    
+			    	<option value="0">选择结构</option>					
+					<!--{foreach from=$structureList item=item key=key}-->	 
+					<!--{if $houseBuildStructure eq $key}-->   
+			    	<option value="<!--{$key}-->" selected="selected"><!--{$item}--></option>
+			    	<!--{else}-->
+			    	<option value="<!--{$key}-->"><!--{$item}--></option>
+			    	<!--{/if}-->
+					<!--{/foreach}-->		    	
+			    </select>
+			    
+			    <select id="houseBuildForm" name="houseBuildForm">				    
+			    	<option value="0">选择类别</option>					
+					<!--{foreach from=$formList item=item key=key}-->	   
+					<!--{if $houseBuildForm eq $key}-->   
+			    	<option value="<!--{$key}-->" selected="selected"><!--{$item}--></option>
+			    	<!--{else}-->
+			    	<option value="<!--{$key}-->"><!--{$item}--></option>
+			    	<!--{/if}-->
+					<!--{/foreach}-->		    	
+			    </select>
+			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
@@ -137,7 +160,7 @@ function check(){
 			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseUseArea" name="houseUseArea" type="text" maxlength="8" value="<!--{$houseUseArea}-->" /> <font class="z3">平方米</font></td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑年代</td>
 			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildYear" name="houseBuildYear" type="text" maxlength="4" value="<!--{$houseBuildYear}-->" /> <font class="z3">年</font></td>
 			  </tr>
 			  <tr>

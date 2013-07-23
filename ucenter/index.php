@@ -61,7 +61,7 @@ $smarty->assign('lcon_class',$lcon_class);
 $smarty->assign('dl_class',$dl_class);
 $smarty->assign('dl_1_class',$dl_1_class);
 $smarty->assign('login_title',$login_title);
-$smarty->assign('$login_page',$login_page);
+$smarty->assign('login_page',$login_page);
 $smarty->assign('regFormAction',$regFormAction);
 $smarty->assign('userType',$userType);
 if(!$isValidAccount){

@@ -71,7 +71,7 @@ function check_input() {
     	<div class="<!--{$dl_class}-->">
         	 <div class="<!--{$dl_1_class}-->">
              	<ul>
-                	<li><a href="<!--{$login_page}-->"><!--{$login_title}--></a></li>
+                	<li><a><!--{$login_title}--></a></li>
                 	<!--{if $userType == 3}-->
                     	<li style="float:right"><a href="index.php?userType=2" style="font-size:12px;color:#F00; font-weight:normal; background:none; text-decoration:underline">我是经纪人</a></li>
                     <!--{/if}-->

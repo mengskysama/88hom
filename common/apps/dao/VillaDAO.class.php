@@ -36,7 +36,7 @@ class VillaDAO  {
 										.",'".(empty($villa['villaBaseService'])?'':$villa['villaBaseService'])
 										."','".(empty($villa['villaEquipment'])?'':$villa['villaEquipment'])
 										."',".(empty($villa['villaLookTime'])?0:$villa['villaLookTime'])
-										.",'".(empty($villa['villaLiveTime'])?0:$villa['villaLiveTime'])
+										.",'".(empty($villa['villaLiveTime'])?'':$villa['villaLiveTime'])
 										."',".(empty($villa['villaSellPrice'])?0:$villa['villaSellPrice'])
 										.",".(empty($villa['villaRentPrice'])?0:$villa['villaRentPrice'])
 										.",".(empty($villa['villaRentType'])?0:$villa['villaRentType'])
@@ -147,6 +147,9 @@ class VillaDAO  {
 		if(isset($villa['villaLookTime'])){
 			$sql .= "villaLookTime=".$villa['villaLookTime'].",";
 		}
+		if(isset($villa['villaLiveTime'])){
+			$sql .= "villaLiveTime='".$villa['villaLiveTime']."',";
+		}
 		if(isset($villa['villaSellPrice'])){
 			$sql .= "villaSellPrice=".$villa['villaSellPrice'].",";
 		}
@@ -155,6 +158,9 @@ class VillaDAO  {
 		}
 		if(isset($villa['villaBuildForm'])){
 			$sql .= "villaBuildForm=".$villa['villaBuildForm'].",";
+		}
+		if(isset($villa['villaBuildStructure'])){
+			$sql .= "villaBuildStructure=".$villa['villaBuildStructure'].",";
 		}
 		if(isset($villa['villaCellar'])){
 			$sql .= "villaCellar=".$villa['villaCellar'].",";
@@ -176,6 +182,12 @@ class VillaDAO  {
 		}
 		if(isset($villa['villaGarageCount'])){
 			$sql .= "villaGarageCount=".$villa['villaGarageCount'].",";
+		}
+		if(isset($villa['villaParkingPlace'])){
+			$sql .= "villaParkingPlace=".$villa['villaParkingPlace'].",";
+		}
+		if(isset($villa['villaParkingPlaceCount'])){
+			$sql .= "villaParkingPlaceCount=".$villa['villaParkingPlaceCount'].",";
 		}
 		if(isset($villa['villaSellRentType'])){
 			$sql .= "villaSellRentType=".$villa['villaSellRentType'].",";

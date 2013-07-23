@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-19 16:20:27
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 10:23:06
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_bs.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:75451d27095c38000-56840654%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8baf308944848da28c4c325d0e89ae4dc329349a' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_bs.tpl',
-      1 => 1374221250,
+      1 => 1374546174,
       2 => 'file',
     ),
   ),
@@ -103,7 +103,7 @@ function check(){
 	if(!CheckRoom('villaBalcony',true)) return false;
 	if(!CheckBuildingArea('villaBuildArea',true)) return false;
 	if(!CheckLiveArea('villaUseArea','villaBuildArea',true)) return false;
-	if(!CheckCreateTime('villaBuildYear',true)) return false;
+	if(!CheckCreateTime('villaBuildYear',false)) return false;
 	if(!checkVillaAllFloor()) return false;
 
 	if($("input[name='villaCellar']:checked").val() == 1 && !CheckCellarArea('villaCellarArea',true)) return false;	
@@ -280,7 +280,7 @@ function checkVillaGarageCount(){
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">朝    向</td>
     <td align="left" valign="middle" class="p25">
-    <input id="" name="villaForward" type="radio" value="1" /> 东 
+    <input id="" name="villaForward" type="radio" value="1" checked="checked"/> 东 
     <input id="" name="villaForward" type="radio" value="2" /> 西  
     <input id="" name="villaForward" type="radio" value="3" /> 南 
     <input id="" name="villaForward" type="radio" value="4" /> 北 </td>
@@ -303,7 +303,7 @@ function checkVillaGarageCount(){
     <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">地下室类型</td>
     <td align="left" valign="middle" class="p25">
     <input id="villaCellarType" name="villaCellarType" type="radio" value="1" /> 全明 
-    <input id="villaCellarType" name="villaCellarType" type="radio" value="2" /> 半明 
+    <input id="villaCellarType" name="villaCellarType" type="radio" value="2" checked="checked"/> 半明 
     <input id="villaCellarType" name="villaCellarType" type="radio" value="3" /> 暗</td>
   </tr>
   <tr>

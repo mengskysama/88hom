@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-18 09:21:30
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 09:51:35
          compiled from "E:/workspace/projects/88hom/templates\ucenter\auth_user.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1455551e0bd3e4d7e98-91766445%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '14bde321511959b47e5756650fb3d3e50fea1001' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\auth_user.tpl',
-      1 => 1374110402,
+      1 => 1374375628,
       2 => 'file',
     ),
   ),
@@ -103,7 +103,7 @@ ucenter/yz_bq.gif" style="vertical-align:middle;"> 请输入答案</td>
 		  			</tr>
  					<tr>
  						   <td height="55" colspan="2" align="right" valign="middle" class="z14">
-                           		<div class="dlmm"><input name="btn_reg_mobile" type="button" class="denglu" id="btn_reg_mobile" value="立即验证" /></div>
+                           		<div class="dlmm"><input name="btn_auth_user" type="button" class="denglu" id="btn_auth_user" value="立即验证" /></div>
                            </td>
 	      			</tr>
 			  	</table>

@@ -119,7 +119,7 @@ function check(){
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">类    别</td>
     <td align="left" valign="middle" class="p25"> 
     	<label><input id="" name="shopsType" type="radio" value="1" /> 住宅底商</label>     
-      	<label><input id="" name="shopsType" type="radio" value="2" /> 商业街商铺  </label>    
+      	<label><input id="" name="shopsType" type="radio" value="2" checked="checked"/> 商业街商铺  </label>    
         <label><input id="" name="shopsType" type="radio" value="3" /> 写字楼配套底商</label>    
         <label><input id="" name="shopsType" type="radio" value="4" /> 购物中心/百货</label>  
         <label><input id="" name="shopsType" type="radio" value="5" /> 其他</label></td>
@@ -143,14 +143,14 @@ function check(){
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否可分割</td>
     <td align="left" valign="middle" class="p25">
-    	<label><input id="" name="shopsDivision" type="radio" value="1" /> 可分割</label>     
+    	<label><input id="" name="shopsDivision" type="radio" value="1" checked="checked"/> 可分割</label>     
       	<label> <input id="" name="shopsDivision" type="radio" value="2" /> 不可分割</label>   </td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>
     <td align="left" valign="middle" class="p25">
     	<label><input id="" name="shopsFitment" type="radio" value="1" /> 精装修</label>     
-      	<label> <input id="" name="shopsFitment" type="radio" value="2" /> 简装修</label>
+      	<label> <input id="" name="shopsFitment" type="radio" value="2" checked="checked"/> 简装修</label>
         <label> <input id="" name="shopsFitment" type="radio" value="3" /> 毛坯</label>
         </td>
   </tr>

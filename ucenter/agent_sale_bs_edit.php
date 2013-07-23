@@ -12,6 +12,7 @@ if($property){
 	$villaNumber = $property['villaNumber'];
 	$privateVillaNumber = '';//$property['privateHouseNumber'];
 	$villaBuildForm = $property['villaBuildForm'];
+	$villaBuildStructure = $property['villaBuildStructure'];
 	$villaSellPrice = $property['villaSellPrice'];
 	$villaRoom = $property['villaRoom'];
 	$villaHall = $property['villaHall'];
@@ -44,6 +45,12 @@ if($property){
 		$villaGarageCount = $property['villaGarageCount'];	
 	}else{
 		$villaGarageCount = "";
+	}	
+	$villaParkingPlace = $property['villaParkingPlace'];
+	if($villaParkingPlace){
+		$villaParkingPlaceCount = $property['villaParkingPlaceCount'];	
+	}else{
+		$villaParkingPlaceCount = "";
 	}	
 	$villaFitment = $property['villaFitment'];
 	$villaBaseService = $property['villaBaseService'];
@@ -80,6 +87,7 @@ if($property){
 	$smarty->assign("villaNumber",$villaNumber);
 	$smarty->assign("privateVillaNumber",$privateVillaNumber);
 	$smarty->assign("villaBuildForm",$villaBuildForm);
+	$smarty->assign("villaBuildStructure",$villaBuildStructure);	
 	$smarty->assign("villaSellPrice",$villaSellPrice);
 	$smarty->assign("villaRoom",$villaRoom);
 	$smarty->assign("villaHall",$villaHall);
@@ -98,6 +106,8 @@ if($property){
 	$smarty->assign("villaGardenArea",$villaGardenArea);	
 	$smarty->assign("villaGarage",$villaGarage);	
 	$smarty->assign("villaGarageCount",$villaGarageCount);
+	$smarty->assign("villaParkingPlace",$villaParkingPlace);	
+	$smarty->assign("villaParkingPlaceCount",$villaParkingPlaceCount);
 	$smarty->assign("villaFitment",$villaFitment);
 	$smarty->assign("villaLookTime",$villaLookTime);
 	$smarty->assign("propertyDetailPicList",$propertyDetailPicList);

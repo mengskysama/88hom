@@ -7,6 +7,7 @@ class VillaPropertyHandler extends PropertyHandler{
 	private $villaNumber;
 	private $privateHouseNumber;
 	private $villaBuildForm;
+	private $villaBuildStructure;
 	private $villaSellPrice;
 	private $villaRoom;
 	private $villaHall;
@@ -25,9 +26,12 @@ class VillaPropertyHandler extends PropertyHandler{
 	private $villaGardenArea;
 	private $villaGarage;
 	private $villaGarageCount;	
+	private $villaParkingPlace;
+	private $villaParkingPlaceCount;
 	private $villaFitment;
 	private $villaBaseService;	
 	private $villaLookTime;
+	private $villaLiveTime;
 	
 	private $villaPhoto;
 	private $villaTitle;
@@ -47,11 +51,11 @@ class VillaPropertyHandler extends PropertyHandler{
 	private $estateService;
 	private $propertyService;
 	
-	function __construct($db,$estId,$estName,$villaNumber,$privateHouseNumber,$villaBuildForm,$villaSellPrice,$villaRoom,$villaHall,
+	function __construct($db,$estId,$estName,$villaNumber,$privateHouseNumber,$villaBuildForm,$villaBuildStructure,$villaSellPrice,$villaRoom,$villaHall,
 						$villaToilet,$villaKitchen,$villaBalcony,$villaBuildArea,$villaUseArea,$villaBuildYear,
 						$villaForward,$villaAllFloor,$villaCellar,$villaCellarArea,$villaCellarType,$villaGarden,
-						$villaGardenArea,$villaGarage,$villaGarageCount,$villaFitment,$villaBaseService,$villaLookTime,
-						$villaPhoto,$villaTitle,$villaContent,$villaUserId,$villaState,$actionType,$villaId,
+						$villaGardenArea,$villaGarage,$villaGarageCount,$villaParkingPlace,$villaParkingPlaceCount,$villaFitment,$villaBaseService,$villaLookTime,
+						$villaLiveTime,$villaPhoto,$villaTitle,$villaContent,$villaUserId,$villaState,$actionType,$villaId,
 						$propTxType,$villaRentPrice,$villaRentType,$villaPayment,$villaPayDetailY,$villaPayDetailF,$topPic){
 		
 		$this->db = $db;
@@ -77,10 +81,13 @@ class VillaPropertyHandler extends PropertyHandler{
 		$this->villaGarden = $villaGarden;
 		$this->villaGardenArea = $villaGardenArea;
 		$this->villaGarage = $villaGarage;
-		$this->villaGarageCount = $villaGarageCount;	
+		$this->villaGarageCount = $villaGarageCount;
+		$this->villaParkingPlace = $villaParkingPlace;
+		$this->villaParkingPlaceCount = $villaParkingPlaceCount;	
 		$this->villaFitment = $villaFitment;
 		$this->villaBaseService = $villaBaseService;	
 		$this->villaLookTime = $villaLookTime;
+		$this->villaLiveTime = $villaLiveTime;
 		
 		$this->villaPhoto = $villaPhoto;
 		$this->villaTitle = $villaTitle;
@@ -160,7 +167,7 @@ class VillaPropertyHandler extends PropertyHandler{
 		$villa['villaBaseService'] = $villaBaseService;
 		$villa['villaEquipment'] = '';
 		$villa['villaLookTime'] = $this->villaLookTime == "" ? 0 : $this->villaLookTime;
-		$villa['villaLiveTime'] = '';
+		$villa['villaLiveTime'] = $this->villaLiveTime;
 		$villa['villaSellPrice'] = $this->villaSellPrice == "" ? 0 : $this->villaSellPrice;
 		$villa['villaRentPrice'] = $this->villaRentPrice == "" ? 0 : $this->villaRentPrice;
 		$villa['villaRentType'] = $this->villaRentType == "" ? 0 : $this->villaRentType;
@@ -169,6 +176,7 @@ class VillaPropertyHandler extends PropertyHandler{
 		$villa['villaPayDetailF'] = $this->villaPayDetailF == "" ? 0 : $this->villaPayDetailF;
 		$villa['villaAllFloor'] = $this->villaAllFloor;
 		$villa['villaBuildForm'] = $this->villaBuildForm;
+		$villa['villaBuildStructure'] = $this->villaBuildStructure;
 		$villa['villaBuildStructure'] = '';
 		$villa['villaCellar'] = $this->villaCellar == "" ? 0 : $this->villaCellar;
 		$villa['villaCellarArea'] = $this->villaCellarArea == "" ? 0 : $this->villaCellarArea;
@@ -177,8 +185,8 @@ class VillaPropertyHandler extends PropertyHandler{
 		$villa['villaGardenArea'] = $this->villaGardenArea == "" ? 0 : $this->villaGardenArea;
 		$villa['villaGarage'] = $this->villaGarage == "" ? 0 : $this->villaGarage;
 		$villa['villaGarageCount'] = $this->villaGarageCount == "" ? 0 : $this->villaGarageCount;
-		$villa['villaParkingPlace'] = '';
-		$villa['villaParkingPlaceCount'] = 0;
+		$villa['villaParkingPlace'] = $this->villaParkingPlace == "" ? 0 : $this->villaParkingPlace;
+		$villa['villaParkingPlaceCount'] = $this->villaParkingPlaceCount == "" ? 0 : $this->villaParkingPlaceCount;
 		if($villaState){
 			$villa['villaState'] = $villaState;
 		}

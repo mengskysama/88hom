@@ -52,6 +52,21 @@ function check(){
 	if(!CheckRoom('houseToilet',true)) return false;
 	if(!CheckRoom('houseKitchen',true)) return false;
 	if(!CheckRoom('houseBalcony',true)) return false;
+	
+	var val = $('input:radio[name="housePayment"]:checked').val();
+    if (val == 1) {
+        var housePayDetailY = document.getElementById("housePayDetailY").value;
+        var housePayDetailF = document.getElementById("housePayDetailF").value;
+        if(housePayDetailY == ""){
+        	alert("请选择支付方式压多少");
+        	return false;
+        }
+        if(housePayDetailF == ""){
+        	alert("请选择支付方式付多少");
+        	return false;
+        }
+    }
+    
 	if(!CheckRentArea('houseRentArea',true)) return false;
 	if(!CheckFloor('houseFloor','houseAllFloor',true)) return false;
 		
@@ -227,7 +242,7 @@ function checkRentPrice(){
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">朝    向</td>
 			    <td align="left" valign="middle" class="p25">
-			   	   <label><input id="" name="houseForward" type="radio" value="1" />东</label>     
+			   	   <label><input id="" name="houseForward" type="radio" value="1" checked="checked"/>东</label>     
 			      	<label> <input id="" name="houseForward" type="radio" value="2" /> 南  </label>    
 			        <label><input id="" name="houseForward" type="radio" value="3" /> 西</label>    
 			        <label><input id="" name="houseForward" type="radio" value="4" /> 北 </label>  
@@ -245,7 +260,7 @@ function checkRentPrice(){
 			  	    <label><input id="" name="houseFitment" type="radio" value="1" /> 豪华装修</label>     
 			      	<label> <input id="" name="houseFitment" type="radio" value="2" /> 精装修  </label>    
 			        <label><input id="" name="houseFitment" type="radio" value="3" /> 中等装修</label>    
-			        <label><input id="" name="houseFitment" type="radio" value="4" /> 简装修</label>  
+			        <label><input id="" name="houseFitment" type="radio" value="4" checked="checked"/> 简装修</label>  
 			        <label><input id="" name="houseFitment" type="radio" value="5" /> 毛坯</label>
 			    </td>
 			  </tr>

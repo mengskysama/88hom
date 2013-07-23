@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-04 15:02:21
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 10:13:42
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_zz_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1358351d38ca9487b12-24388418%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '18d69a02eadb0be1e2b964a248c3dcd99b677f2f' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_zz_edit.tpl',
-      1 => 1372920639,
+      1 => 1374545555,
       2 => 'file',
     ),
   ),
@@ -23,6 +23,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'jsFiles' => 0,
     'cssFiles' => 0,
     'ckeditLib' => 0,
+    'picTypeList' => 0,
+    'key' => 0,
+    'timestamp' => 0,
+    'token' => 0,
     'estId' => 0,
     'estName' => 0,
     'houseNumber' => 0,
@@ -35,6 +39,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'houseToilet' => 0,
     'houseKitchen' => 0,
     'houseBalcony' => 0,
+    'structureList' => 0,
+    'houseBuildStructure' => 0,
+    'item' => 0,
+    'formList' => 0,
     'houseBuildForm' => 0,
     'houseBuildArea' => 0,
     'houseUseArea' => 0,
@@ -52,10 +60,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'houseBaseService7' => 0,
     'houseBaseService8' => 0,
     'houseLookTime' => 0,
-    'propPhoto' => 0,
-    'picId' => 0,
     'houseTitle' => 0,
     'houseContent' => 0,
+    'propertyDetailPicList' => 0,
+    'item_' => 0,
+    'key_' => 0,
+    'topPicThumb' => 0,
+    'topPicPath' => 0,
+    'propState' => 0,
     'propId' => 0,
   ),
   'has_nocache_code' => false,
@@ -83,6 +95,33 @@ $(function() {
             $("#btn_update").removeAttr("disabled");
         }
     });
+		
+    $("#btn_live").click(function() {
+        $("#btn_live").attr("disabled", true);
+        if (check()) {
+            $("#action_to_go").val("1");
+            document.getElementById("zzForm").submit();
+        } else {
+            $("#btn_live").removeAttr("disabled");
+        }
+    });
+	<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+    initPicUp3(<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+,'<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['token']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['file_path_upload'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_path'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_common'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+');
+	<?php } ?>
+        
 });
   
 function check(){
@@ -98,13 +137,6 @@ function check(){
 	if(!CheckLiveArea('houseUseArea','houseBuildArea',true)) return false;
 	if(!CheckCreateTime('houseBuildYear',true)) return false;
 	if(!CheckFloor('houseFloor','houseAllFloor',true)) return false;
-	/*
-	var housePhotoValue = $("#housePhoto").val();
-	if(trim(housePhotoValue) == ''){
-		alert("请上传图片");
-		return false;
-	}
-	*/
 	
 	if(!CheckTitle('houseTitle',true)) return false;
 	var houseContentValue = CKEDITOR.instances.houseContent.getData(); 
@@ -129,10 +161,11 @@ function check(){
     <div class="qg_r">
     <p>你的位置: <a href="#">编辑房源</a></p>
    	<div class="qg_bs">
+            <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
           <div class="bs_tx">
             <p><b>基本资料</b></p>
-            <form id="zzForm" name="zzForm" action="property_handler.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="prop_type" value="zz">
+            <input type="hidden" name="prop_tx_type" value="1">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼盘名称</td>
@@ -144,7 +177,7 @@ function check(){
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">房源信息编码</td>
 			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseNumber" name="houseNumber" type="text" value="<?php echo $_smarty_tpl->tpl_vars['houseNumber']->value;?>
-" maxlength="12" onblur="CheckInfoCode('houseNumber',true)" /> </td>
+" maxlength="12" /> </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">内部编码</td>
@@ -177,47 +210,89 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  售    价</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseSellPrice" name="houseSellPrice" type="text" onblur="CheckPrice('houseSellPrice',true,'CS');" value="<?php echo $_smarty_tpl->tpl_vars['houseSellPrice']->value;?>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseSellPrice" name="houseSellPrice" type="text" value="<?php echo $_smarty_tpl->tpl_vars['houseSellPrice']->value;?>
 "/> 万元/套</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>户    型</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
-			    <input id="houseRoom" name="houseRoom" type="text" maxlength="1" onblur="CheckRoom('houseRoom',true)" value="<?php echo $_smarty_tpl->tpl_vars['houseRoom']->value;?>
+			    <input id="houseRoom" name="houseRoom" type="text" maxlength="1" value="<?php echo $_smarty_tpl->tpl_vars['houseRoom']->value;?>
 "/> 室
-			    <input id="houseHall" name="houseHall" type="text" maxlength="1" onblur="CheckRoom('houseHall',true)"/ value="<?php echo $_smarty_tpl->tpl_vars['houseHall']->value;?>
+			    <input id="houseHall" name="houseHall" type="text" maxlength="1" value="<?php echo $_smarty_tpl->tpl_vars['houseHall']->value;?>
 "> 厅 
-			    <input id="houseToilet" name="houseToilet" type="text" maxlength="1" onblur="CheckRoom('houseToilet',true);" value="<?php echo $_smarty_tpl->tpl_vars['houseToilet']->value;?>
+			    <input id="houseToilet" name="houseToilet" type="text" maxlength="1" value="<?php echo $_smarty_tpl->tpl_vars['houseToilet']->value;?>
 "/> 卫 
-			    <input id="houseKitchen" name="houseKitchen" type="text" maxlength="1" onblur="CheckRoom('houseKitchen',true);" value="<?php echo $_smarty_tpl->tpl_vars['houseKitchen']->value;?>
+			    <input id="houseKitchen" name="houseKitchen" type="text" maxlength="1" value="<?php echo $_smarty_tpl->tpl_vars['houseKitchen']->value;?>
 "/> 厨 
-			    <input id="houseBalcony" name="houseBalcony" type="text" maxlength="1" onblur="CheckRoom('houseBalcony',true);" value="<?php echo $_smarty_tpl->tpl_vars['houseBalcony']->value;?>
+			    <input id="houseBalcony" name="houseBalcony" type="text" maxlength="1" value="<?php echo $_smarty_tpl->tpl_vars['houseBalcony']->value;?>
 "/> 阳台</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑形式</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildForm" name="houseBuildForm" type="text" value="<?php echo $_smarty_tpl->tpl_vars['houseBuildForm']->value;?>
-" /> </td>
+			    <td align="left" valign="middle" class="p25 grzc_33">
+			    			    
+			    <select id="houseBuildStructure" name="houseBuildStructure">			    
+			    	<option value="0">选择结构</option>					
+					<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['structureList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>	 
+					<?php if ($_smarty_tpl->tpl_vars['houseBuildStructure']->value==$_smarty_tpl->tpl_vars['key']->value){?>   
+			    	<option value="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" selected="selected"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</option>
+			    	<?php }else{ ?>
+			    	<option value="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</option>
+			    	<?php }?>
+					<?php } ?>		    	
+			    </select>
+			    
+			    <select id="houseBuildForm" name="houseBuildForm">				    
+			    	<option value="0">选择类别</option>					
+					<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['formList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>	   
+					<?php if ($_smarty_tpl->tpl_vars['houseBuildForm']->value==$_smarty_tpl->tpl_vars['key']->value){?>   
+			    	<option value="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" selected="selected"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</option>
+			    	<?php }else{ ?>
+			    	<option value="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</option>
+			    	<?php }?>
+					<?php } ?>		    	
+			    </select>
+			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildArea" name="houseBuildArea" type="text" maxlength="8" onblur="CheckBuildingArea('houseBuildArea',true);" value="<?php echo $_smarty_tpl->tpl_vars['houseBuildArea']->value;?>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildArea" name="houseBuildArea" type="text" maxlength="8" value="<?php echo $_smarty_tpl->tpl_vars['houseBuildArea']->value;?>
 "/> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">使用面积</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseUseArea" name="houseUseArea" type="text" maxlength="8" onblur="CheckLiveArea('houseUseArea','houseBuildArea',true)" value="<?php echo $_smarty_tpl->tpl_vars['houseUseArea']->value;?>
-" /><font class="z3">平方米</font></td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseUseArea" name="houseUseArea" type="text" maxlength="8" value="<?php echo $_smarty_tpl->tpl_vars['houseUseArea']->value;?>
+" /> <font class="z3">平方米</font></td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildYear" name="houseBuildYear" type="text" maxlength="4" onblur="CheckCreateTime('houseBuildYear',true)" value="<?php echo $_smarty_tpl->tpl_vars['houseBuildYear']->value;?>
-" /><font class="z3">年</font></td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑年代</td>
+			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildYear" name="houseBuildYear" type="text" maxlength="4" value="<?php echo $_smarty_tpl->tpl_vars['houseBuildYear']->value;?>
+" /> <font class="z3">年</font></td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 楼    层</td>
-			    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="houseFloor" name="houseFloor" type="text" onblur="CheckFloor('houseFloor','houseAllFloor',true);" value="<?php echo $_smarty_tpl->tpl_vars['houseFloor']->value;?>
-" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="houseAllFloor" name="houseAllFloor" type="text" onblur="CheckFloor('houseFloor','houseAllFloor',true);" value="<?php echo $_smarty_tpl->tpl_vars['houseAllFloor']->value;?>
+			    <td align="left" valign="middle" class="p25 grzc_35"><font class="z3">第</font> <input id="houseFloor" name="houseFloor" type="text" value="<?php echo $_smarty_tpl->tpl_vars['houseFloor']->value;?>
+" /> <font class="z3">层</font>   <font class="z3">共</font> <input id="houseAllFloor" name="houseAllFloor" type="text" value="<?php echo $_smarty_tpl->tpl_vars['houseAllFloor']->value;?>
 " /> <font class="z3">层</font> 地下室请填写负数</td>
 			  </tr>
 			  <tr>
@@ -282,15 +357,6 @@ function check(){
     		<p><b>图文信息</b></p>
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
-			    <td colspan="2" width="280" align="left" valign="middle" class="p25 grzc_31">
-			    	<input id="housePhoto" name="housePhoto" type="file"  value="" /><br>
-			    	<div id="showPic"><img src="http://localhost/88hom/uploads/community/<?php echo $_smarty_tpl->tpl_vars['propPhoto']->value;?>
-" class="l">&nbsp;&nbsp;<!--<a href="javascript:void(0);" onclick="deletePic(<?php echo $_smarty_tpl->tpl_vars['picId']->value;?>
-) ">删除</a>--></div>
-			    </td>
-			  </tr>
-			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
 			    <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
 			    	<input id="houseTitle" name="houseTitle" type="text" value="<?php echo $_smarty_tpl->tpl_vars['houseTitle']->value;?>
@@ -313,17 +379,84 @@ function check(){
 			    	
 			    </td>
 			  </tr>
+				<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+				<tr><td height="220" align="center" valign="middle" bgcolor="#f7f6f1"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</td>
+		         <td height="215" align="left" valign="top" class="p25">
+		         	<div class="sc_btn">
+		                <input type="file" name="file_upload_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" id="file_upload_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"/>
+		            </div>
+		            <div class="tpsc" id="showImg_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+">
+						<?php  $_smarty_tpl->tpl_vars['item_'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item_']->_loop = false;
+ $_smarty_tpl->tpl_vars['key_'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['propertyDetailPicList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item_']->key => $_smarty_tpl->tpl_vars['item_']->value){
+$_smarty_tpl->tpl_vars['item_']->_loop = true;
+ $_smarty_tpl->tpl_vars['key_']->value = $_smarty_tpl->tpl_vars['item_']->key;
+?>
+			        	<?php if ($_smarty_tpl->tpl_vars['key']->value==$_smarty_tpl->tpl_vars['item_']->value['pictypeId']){?>
+			        	<dl id="pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
+">
+        	        		<dt><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+uploads/<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
+"></dt>
+        	        		<dd><span class="redlink"><a href="javascript:void(0)" onclick="changeTopicImg('<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+uploads/<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
+','<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
+','<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
+')">设为标题图</a></span></dd>
+        	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picInfo'];?>
+"/><a href="javascript:void(0)" onclick="dropContainer('pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
+')"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+templates/images/ucenter/cha.JPG"></a></dd>
+        	    		<input type="hidden" name="picPath[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
+"/>
+        	    		<input type="hidden" name="picPathThumb[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
+"/>
+        	    		<input type="hidden" name="picTypeId[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['pictypeId'];?>
+"/>
+        	    		<input type="hidden" name="picLayer[]" value="0"/>
+        	    		</dl>
+						<?php }?>
+						<?php } ?>	
+		            </div>
+				 </td>
+				</tr> 
+				<?php } ?>
+		      
+		       <tr>
+			    <td height="124" align="center" valign="middle" bgcolor="#f7f6f1">标题图</td>
+			    <td align="left" valign="top" class="p25"><div class="btt" id="topic_image"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+uploads/<?php echo $_smarty_tpl->tpl_vars['topPicThumb']->value;?>
+"></div></td>
+			    
+        	    <input type="hidden" id="topPicPath" name="topPicPath" value="<?php echo $_smarty_tpl->tpl_vars['topPicPath']->value;?>
+"/>
+        	    <input type="hidden" id="topPicPathThumb" name="topPicPathThumb" value="<?php echo $_smarty_tpl->tpl_vars['topPicThumb']->value;?>
+"/>
+			  </tr>
 			</table>
       </div>
        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
             <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_update" value="修改" /></td>
-            <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
+            <td width="320" height="80" align="center" valign="middle"><?php if ($_smarty_tpl->tpl_vars['propState']->value==0){?><input name="btn_live" type="button" class="mddl1" id="btn_live" value="发布" /><?php }?></td>
 	      </tr>
 	    </table>
 	    <input type="hidden" id="actionType" name="actionType" value="update"/>
 	    <input type="hidden" id="propId" name="propId" value="<?php echo $_smarty_tpl->tpl_vars['propId']->value;?>
+"/>
+	    <input type="hidden" id="action_to_go" name="action_to_go" value="<?php echo $_smarty_tpl->tpl_vars['propState']->value;?>
 "/>
 	    </form>
     </div>

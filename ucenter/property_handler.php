@@ -87,6 +87,7 @@ if($propType == "zz"){
 	$villaNumber = getParameter("villaNumber");
 	$privateHouseNumber = getParameter("privateVillaNumber");
 	$villaBuildForm  = getParameter("villaBuildForm");
+	$villaBuildStructure  = getParameter("villaBuildStructure");
 	$villaSellPrice = getParameter("villaSellPrice");
 	$villaRoom = getParameter("villaRoom");
 	$villaHall = getParameter("villaHall");
@@ -105,9 +106,12 @@ if($propType == "zz"){
 	$villaGardenArea  = getParameter("villaGardenArea");
 	$villaGarage  = getParameter("villaGarage");
 	$villaGarageCount  = getParameter("villaGarageCount");	
+	$villaParkingPlace  = getParameter("villaParkingPlace");
+	$villaParkingPlaceCount  = getParameter("villaParkingPlaceCount");	
 	$villaFitment  = getParameter("villaFitment");
 	$villaBaseService  = getParameter("villaBaseService");	
 	$villaLookTime  = getParameter("villaLookTime");
+	$villaLiveTime  = getParameter("villaLiveTime");
 	
 	$villaTitle  = getParameter("villaTitle");
 	$villaContent  = getParameter("villaContent");
@@ -120,18 +124,23 @@ if($propType == "zz"){
 	$villaPayDetailF = getParameter("villaPayDetailF");
 	$topPic['picBuildType'] = 4;
 	
-	$propHandler = new VillaPropertyHandler($db,$estId,$estName,$villaNumber,$privateHouseNumber,$villaBuildForm,$villaSellPrice,$villaRoom,$villaHall,
+	$propHandler = new VillaPropertyHandler($db,$estId,$estName,$villaNumber,$privateHouseNumber,$villaBuildForm,$villaBuildStructure,$villaSellPrice,$villaRoom,$villaHall,
 											$villaToilet,$villaKitchen,$villaBalcony,$villaBuildArea,$villaUseArea,$villaBuildYear,
 											$villaForward,$villaAllFloor,$villaCellar,$villaCellarArea,$villaCellarType,$villaGarden,
-											$villaGardenArea,$villaGarage,$villaGarageCount,$villaFitment,$villaBaseService,$villaLookTime,
-											$propPhoto,$villaTitle,$villaContent,$villaUserId,$state,$actionType,$villaId,
+											$villaGardenArea,$villaGarage,$villaGarageCount,$villaParkingPlace,$villaParkingPlaceCount,$villaFitment,$villaBaseService,$villaLookTime,
+											$villaLiveTime,$propPhoto,$villaTitle,$villaContent,$villaUserId,$state,$actionType,$villaId,
 											$propTxType,$villaRentPrice,$villaRentType,$villaPayment,$villaPayDetailY,$villaPayDetailF,$topPic);
 }else if($propType == "xzl"){
 
 	$officeNumber = getParameter("officeNumber");
 	$officeType = getParameter("officeType");
 	$officeSellPrice = getParameter("officeSellPrice");
+	$officeIncludFee = getParameter("officeIncludFee");
 	$officeProFee = getParameter("officeProFee");
+	$officePayment = getParameter("officePayment");
+	$officePayDetailY = getParameter("officePayDetailY");
+	$officePayDetailF = getParameter("officePayDetailF");
+	
 	$officeBuildArea = getParameter("officeBuildArea");
 	$officeFloor = getParameter("officeFloor");	
 	$officeAllFloor = getParameter("officeAllFloor");
@@ -147,7 +156,8 @@ if($propType == "zz"){
 	$officeTraffic = getParameter("officeTraffic");
 	$topPic['picBuildType'] = 3;
 	$propHandler = new OfficePropertyHandler($db,$estId,$estName,$officeNumber,$officeType,$officeSellPrice,
-											$officeProFee,$officeBuildArea,$officeFloor,$officeAllFloor,$officeDivision,$officeFitment,
+											$officeIncludFee,$officeProFee,$officePayment,$officePayDetailY,$officePayDetailF,
+											$officeBuildArea,$officeFloor,$officeAllFloor,$officeDivision,$officeFitment,
 											$officeLevel,$propPhoto,$officeTitle,$officeContent,$officeUserId,
 											$state,$actionType,$officeId,$propTxType,$officeRentPrice,$officeRentPriceUnit,$officeTraffic,
 											$topPic);
@@ -158,7 +168,12 @@ if($propType == "zz"){
 	$shopsAreaId = getParameter("shopsAreaId");
 	$shopsNumber = getParameter("shopsNumber");
 	$shopsSellPrice = getParameter("shopsSellPrice");
+	
+	$shopsIncludFee = getParameter("shopsIncludFee");
 	$shopsPropFee = getParameter("shopsPropFee");
+	$shopsTransfer = getParameter("shopsTransfer");
+	$shopsTransferFee = getParameter("shopsTransferFee");
+	
 	$shopsBuildArea = getParameter("shopsBuildArea");
 	$shopsFloor = getParameter("shopsFloor");
 	$shopsAllFloor = getParameter("shopsAllFloor");
@@ -174,14 +189,19 @@ if($propType == "zz"){
 	$shopsRentPriceUnit = getParameter("shopsRentPriceUnit");
 	$shopsTraffic = getParameter("shopsTraffic");
 	$shopsSet = getParameter("shopsSet");
+	$shopsRentState = getParameter("shopsRentState");
+	$shopsPayment = getParameter("shopsPayment");
+	$shopsPayDetailY = getParameter("shopsPayDetailY");
+	$shopsPayDetailF = getParameter("shopsPayDetailF");
 	
 	$topPic['picBuildType'] = 2;
 	
 	$propHandler = new ShopPropertyHandler($db,$estId,$estName,$shopsAddress,$shopsType,$shopsAreaId,$shopsNumber,
-											$shopsSellPrice,$shopsPropFee,$shopsBuildArea,$shopsFloor,$shopsAllFloor,$shopsDivision,
+											$shopsSellPrice,$shopsIncludFee,$shopsPropFee,$shopsTransfer,$shopsTransferFee,
+											$shopsBuildArea,$shopsFloor,$shopsAllFloor,$shopsDivision,
 											$shopsFitment,$shopsBaseService,$shopsAimOperastion,$propPhoto,$shopsTitle,
 											$shopContent,$shopUserId,$state,$actionType,$shopId,$propTxType,$shopsRentPrice,$shopsRentPriceUnit,
-											$shopsTraffic,$shopsSet,$topPic);
+											$shopsTraffic,$shopsSet,$topPic,$shopsRentState,$shopsPayment,$shopsPayDetailY,$shopsPayDetailF);
 }else if($propType == "cf"){
 	$factory['factoryName'] = getParameter("factoryName");;
 	$factory['factoryAddress'] = getParameter('factoryAddress');

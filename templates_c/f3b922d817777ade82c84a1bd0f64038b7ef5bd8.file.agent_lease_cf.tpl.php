@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-19 16:02:46
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 12:31:18
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_lease_cf.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1653051e4a0327c7e99-50136842%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f3b922d817777ade82c84a1bd0f64038b7ef5bd8' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_lease_cf.tpl',
-      1 => 1374220794,
+      1 => 1374553870,
       2 => 'file',
     ),
   ),
@@ -116,6 +116,21 @@ function check(){
 	if(!CheckInfoCode('factoryNumber',true)) return false;	
 	if(!checkRentPrice()) return false;
 	if(!checkPropFee('factoryProFee',true)) return false;
+	
+	var val = $('input:radio[name="factoryPayment"]:checked').val();
+    if (val == 1) {
+        var factoryPayDetailY = document.getElementById("factoryPayDetailY").value;
+        var factoryPayDetailF = document.getElementById("factoryPayDetailF").value;
+        if(factoryPayDetailY == ""){
+        	alert("请选择支付方式压多少");
+        	return false;
+        }
+        if(factoryPayDetailF == ""){
+        	alert("请选择支付方式付多少");
+        	return false;
+        }
+    }
+    
 	if($("#factoryLeastYear").val() != "" && !IsInt("factoryLeastYear")){
 		alert("起租年限只能是数字");
 		$("#factoryLeastYear").focus();
@@ -333,10 +348,10 @@ function changepaydetail() {
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否含管理费</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"> 
+			    <td align="left" valign="middle" class="p25"> 
 			    	<label><input id="" name="factoryIncludFee" type="radio" value="1" checked="checked" /> 是</label>     
 			      	<label> <input id="" name="factoryIncludFee" type="radio" value="2" /> 否</label>    
-			        </td>
+			    </td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 管 理 费</td>

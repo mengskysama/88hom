@@ -65,6 +65,21 @@ function check(){
 	if(!CheckInfoCode('factoryNumber',true)) return false;	
 	if(!checkRentPrice()) return false;
 	if(!checkPropFee('factoryProFee',true)) return false;
+	
+	var val = $('input:radio[name="factoryPayment"]:checked').val();
+    if (val == 1) {
+        var factoryPayDetailY = document.getElementById("factoryPayDetailY").value;
+        var factoryPayDetailF = document.getElementById("factoryPayDetailF").value;
+        if(factoryPayDetailY == ""){
+        	alert("请选择支付方式压多少");
+        	return false;
+        }
+        if(factoryPayDetailF == ""){
+        	alert("请选择支付方式付多少");
+        	return false;
+        }
+    }
+    
 	if($("#factoryLeastYear").val() != "" && !IsInt("factoryLeastYear")){
 		alert("起租年限只能是数字");
 		$("#factoryLeastYear").focus();
@@ -279,10 +294,10 @@ function changepaydetail() {
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否含管理费</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"> 
+			    <td align="left" valign="middle" class="p25"> 
 			    	<label><input id="" name="factoryIncludFee" type="radio" value="1" checked="checked" /> 是</label>     
 			      	<label> <input id="" name="factoryIncludFee" type="radio" value="2" /> 否</label>    
-			        </td>
+			    </td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 管 理 费</td>

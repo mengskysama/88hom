@@ -38,6 +38,12 @@ function check(){
 	if(!CheckInfoCode('shopsNumber',true)) return false;		
 	if(!checkRentPrice()) return false;
 	if(!checkPropFee('shopsPropFee',true)) return false;
+	
+	var val = $('input:radio[name="shopsTransfer"]:checked').val();
+    if (val == 1 && !checkShopsTransferFee('shopsTransferFee')) {
+        return false;
+    }
+	
 	if(!CheckBuildingArea('shopsBuildArea',true)) return false;
 	if(!CheckFloor('shopsFloor','shopsAllFloor',true)) return false;
 
@@ -165,6 +171,13 @@ function checkRentPrice(){
         <label><input id="" name="shopsType" type="radio" <!--{if $shopsType eq 5 }--> checked="checked" <!--{/if}--> value="5" /> 其他</label></td>
   </tr>
   <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">商铺状态</td>
+    <td align="left" valign="middle" class="p25"> 
+    	<label><input id="" name="shopsRentState" type="radio" value="1" <!--{if $shopsRentState eq 1 }--> checked="checked" <!--{/if}--> /> 营业中</label>     
+      	<label><input id="" name="shopsRentState" type="radio" value="2" <!--{if $shopsRentState eq 2 }--> checked="checked" <!--{/if}--> /> 闲置中  </label>    
+        <label><input id="" name="shopsRentState" type="radio" value="3" <!--{if $shopsRentState eq 3 }--> checked="checked" <!--{/if}--> /> 新铺</label></td>
+  </tr>
+  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  租    金</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsRentPrice" name="shopsRentPrice" type="text" value="<!--{$shopsRentPrice}-->" />
     <label><input id="" name="shopsRentPriceUnit" type="radio" onclick="checkPrice('30',false)" value="1" <!--{if $shopsRentPriceUnit eq 1 }--> checked="checked" <!--{/if}--> />元/平米·天</label>
@@ -172,9 +185,55 @@ function checkRentPrice(){
     <label><input id="" name="shopsRentPriceUnit" type="radio" onclick="checkPrice('1000000000',false)" value="3" <!--{if $shopsRentPriceUnit eq 3 }--> checked="checked" <!--{/if}--> />元/月</label></td>
   </tr>
   <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 物 业 费</td>
-    <td align="left" valign="middle" class="p25 grzc_32"><input id="shopsPropFee" name="shopsPropFee" type="text" value="<!--{$shopsPropFee}-->" /> <font class="z3">元/平米</font></td>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否含物业费</td>
+    <td align="left" valign="middle" class="p25">
+    	<label><input id="" name="shopsIncludFee" type="radio" value="1" <!--{if $shopsIncludFee eq 1 }--> checked="checked" <!--{/if}--> onclick="selectShopsTransfer(1)"/> 是</label>     
+      	<label> <input id="" name="shopsIncludFee" type="radio" value="2" <!--{if $shopsIncludFee eq 2 }--> checked="checked" <!--{/if}--> onclick="selectShopsTransfer(2)"/> 否</label>   
+    </td>
   </tr>
+  <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 物 业 费</td>
+    <td align="left" valign="middle" class="p25 grzc_32"><input id="shopsPropFee" name="shopsPropFee" type="text" value="<!--{$shopsPropFee}-->"/> <font class="z3">元/平米</font></td>
+  </tr>
+  <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否转让</td>
+    <td align="left" valign="middle" class="p25">
+    	<label><input id="" name="shopsTransfer" type="radio" value="1" <!--{if $shopsTransfer eq 2 }--> checked="checked" <!--{/if}--> /> 是</label>     
+      	<label><input id="" name="shopsTransfer" type="radio" value="2" <!--{if $shopsTransfer eq 2 }--> checked="checked" <!--{/if}--> /> 否</label>   
+    </td>
+  </tr>
+  <!--{if $shopsIncludFee eq 1 }-->
+  <tr id="tr_shopsTransferFee">
+  <!--{else}-->
+  <tr id="tr_shopsTransferFee" style="display: none;">
+  <!--{/if}-->
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 转 让 费</td>
+    <td align="left" valign="middle" class="p25 grzc_32"><input id="shopsTransferFee" name="shopsTransferFee" type="text" value="<!--{$shopsTransferFee}-->" onfocus="resetShopsTransferFee('shopsTransferFee')" onblur="resetShopsTransferFee('shopsTransferFee')"/> <font class="z3">万元</font></td>
+  </tr>
+			  <tr>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
+			    <td align="left" valign="middle" class="p25 grzc_35">
+			    <input id="villaPayment" checked="checked" name="shopsPayment" type="radio" value="1" <!--{if $shopsPayment eq 1 }--> checked="checked" <!--{/if}--> onclick="changeShopPaydetail()"/>押&nbsp;
+				<select name="shopsPayDetailY" id="shopsPayDetailY" style=" vertical-align:middle">				
+				<option selected="selected" value="">请选择</option>
+				<option value="0" <!--{if $shopsPayDetailY eq 0 }--> selected="selected" <!--{/if}-->>零</option>
+				<option value="1" <!--{if $shopsPayDetailY eq 1 }--> selected="selected" <!--{/if}-->>一个月</option>
+				<option value="2" <!--{if $shopsPayDetailY eq 2 }--> selected="selected" <!--{/if}-->>两个月</option>
+				<option value="3" <!--{if $shopsPayDetailY eq 3 }--> selected="selected" <!--{/if}-->>三个月</option>
+				<option value="6" <!--{if $shopsPayDetailY eq 6 }--> selected="selected" <!--{/if}-->>六个月</option>
+				</select>
+                                                       付&nbsp;
+				<select name="shopsPayDetailF" id="shopsPayDetailF" style=" vertical-align:middle">
+                                    <option selected="selected" value="">请选择</option>
+                                    <option value="1" <!--{if $shopsPayDetailF eq 1 }--> selected="selected" <!--{/if}-->>一个月</option>
+                                    <option value="2" <!--{if $shopsPayDetailF eq 2 }--> selected="selected" <!--{/if}-->>两个月</option>
+                                    <option value="3" <!--{if $shopsPayDetailF eq 3 }--> selected="selected" <!--{/if}-->>三个月</option>
+                                    <option value="6" <!--{if $shopsPayDetailF eq 6 }--> selected="selected" <!--{/if}-->>六个月</option>
+                                    <option value="12 <!--{if $shopsPayDetailF eq 12 }--> selected="selected" <!--{/if}-->">十二个月</option>
+ 				</select>
+			    <input id="villaPayment" name="shopsPayment" type="radio" value="2" <!--{if $shopsPayment eq 2 }--> checked="checked" <!--{/if}--> onclick="changeShopPaydetail();" />面议
+				</td>
+			  </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsBuildArea" name="shopsBuildArea" type="text" value="<!--{$shopsBuildArea}-->" maxlength="8" /> <font class="z3">平方米</font></td>

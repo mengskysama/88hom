@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-22 10:58:28
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 11:47:33
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_lease_sp.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2195551dbc5a847e5a1-01965641%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '929f50b5be0f23b35cd66b5fb0ee9d8f32b81937' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_lease_sp.tpl',
-      1 => 1374454301,
+      1 => 1374551189,
       2 => 'file',
     ),
   ),
@@ -232,7 +232,7 @@ function checkRentPrice(){
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">类    别</td>
     <td align="left" valign="middle" class="p25"> 
     	<label><input id="" name="shopsType" type="radio" value="1" /> 住宅底商</label>     
-      	<label><input id="" name="shopsType" type="radio" value="2" /> 商业街商铺  </label>    
+      	<label><input id="" name="shopsType" type="radio" value="2" checked="checked"/> 商业街商铺  </label>    
         <label><input id="" name="shopsType" type="radio" value="3" /> 写字楼配套底商</label>    
         <label><input id="" name="shopsType" type="radio" value="4" /> 购物中心/百货</label>  
         <label><input id="" name="shopsType" type="radio" value="5" /> 其他</label></td>
@@ -259,14 +259,14 @@ function checkRentPrice(){
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否可分割</td>
     <td align="left" valign="middle" class="p25">
-    	<label><input id="" name="shopsDivision" type="radio" value="1" /> 可分割</label>     
+    	<label><input id="" name="shopsDivision" type="radio" value="1" checked="checked"/> 可分割</label>     
       	<label> <input id="" name="shopsDivision" type="radio" value="2" /> 不可分割</label>   </td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>
     <td align="left" valign="middle" class="p25">
     	<label><input id="" name="shopsFitment" type="radio" value="1" /> 精装修</label>     
-      	<label> <input id="" name="shopsFitment" type="radio" value="2" /> 简装修</label>
+      	<label> <input id="" name="shopsFitment" type="radio" value="2" checked="checked"/> 简装修</label>
         <label> <input id="" name="shopsFitment" type="radio" value="3" /> 毛坯</label>
         </td>
   </tr>

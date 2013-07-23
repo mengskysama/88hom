@@ -41,6 +41,21 @@ function check(){
 	if(!CheckRoom('houseToilet',true)) return false;
 	if(!CheckRoom('houseKitchen',true)) return false;
 	if(!CheckRoom('houseBalcony',true)) return false;
+	
+	var val = $('input:radio[name="housePayment"]:checked').val();
+    if (val == 1) {
+        var housePayDetailY = document.getElementById("housePayDetailY").value;
+        var housePayDetailF = document.getElementById("housePayDetailF").value;
+        if(housePayDetailY == ""){
+        	alert("请选择支付方式压多少");
+        	return false;
+        }
+        if(housePayDetailF == ""){
+        	alert("请选择支付方式付多少");
+        	return false;
+        }
+    }
+    
 	if(!CheckBuildingArea('houseRentArea',true)) return false;
 	if(!CheckFloor('houseFloor','houseAllFloor',true)) return false;
 	

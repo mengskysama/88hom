@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-19 16:20:24
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 10:16:17
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_zz.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1071251c0079056ef63-82697093%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7e3955469e7a46ee0125e81aa5500d4c78e062b4' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_zz.tpl',
-      1 => 1374221829,
+      1 => 1374545549,
       2 => 'file',
     ),
   ),
@@ -28,7 +28,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'timestamp' => 0,
     'token' => 0,
     'restLivePropsCount' => 0,
+    'structureList' => 0,
     'item' => 0,
+    'formList' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -206,7 +208,38 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑形式</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildForm" name="houseBuildForm" type="text"  value="" /> </td>
+			    <td align="left" valign="middle" class="p25 grzc_33">
+			    
+			    <select id="houseBuildStructure" name="houseBuildStructure">			    
+			    	<option value="0">选择结构</option>					
+					<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['structureList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>	    
+			    	<option value="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</option>
+					<?php } ?>		    	
+			    </select>
+			    
+			    <select id="houseBuildForm" name="houseBuildForm">				    
+			    	<option value="0">选择类别</option>					
+					<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['formList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>	    
+			    	<option value="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</option>
+					<?php } ?>		    	
+			    </select>
+			    </td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
@@ -217,7 +250,7 @@ function check(){
 			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseUseArea" name="houseUseArea" type="text" maxlength="8" /><font class="z3">平方米</font></td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑年代</td>
 			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildYear" name="houseBuildYear" type="text" maxlength="4"/><font class="z3">年</font></td>
 			  </tr>
 			  <tr>
@@ -227,7 +260,7 @@ function check(){
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">朝    向</td>
 			    <td align="left" valign="middle" class="p25">
-			   	   <label><input id="" name="houseForward" type="radio" value="1" />东</label>     
+			   	   <label><input id="" name="houseForward" type="radio" value="1" checked="checked"/>东</label>     
 			      	<label> <input id="" name="houseForward" type="radio" value="2" /> 南  </label>    
 			        <label><input id="" name="houseForward" type="radio" value="3" /> 西</label>    
 			        <label><input id="" name="houseForward" type="radio" value="4" /> 北 </label>  
@@ -245,7 +278,7 @@ function check(){
 			  	    <label><input id="" name="houseFitment" type="radio" value="1" /> 豪华装修</label>     
 			      	<label> <input id="" name="houseFitment" type="radio" value="2" /> 精装修  </label>    
 			        <label><input id="" name="houseFitment" type="radio" value="3" /> 中等装修</label>    
-			        <label><input id="" name="houseFitment" type="radio" value="4" /> 简装修</label>  
+			        <label><input id="" name="houseFitment" type="radio" value="4" checked="checked" /> 简装修</label>  
 			        <label><input id="" name="houseFitment" type="radio" value="5" /> 毛坯</label>
 			    </td>
 			  </tr>

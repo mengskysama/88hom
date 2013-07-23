@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-19 16:19:55
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 11:54:55
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_sale_xzl.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2443751e355cacfaeb6-81506165%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b65d6e25ca256bb39d431a9ffc34fb5726aad72e' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_sale_xzl.tpl',
-      1 => 1374221734,
+      1 => 1374546379,
       2 => 'file',
     ),
   ),
@@ -193,21 +193,21 @@ function check(){
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否可分割</td>
     <td align="left" valign="middle" class="p25">
-    	<label><input id="" name="officeDivision" type="radio" value="1" /> 可分割</label>     
+    	<label><input id="" name="officeDivision" type="radio" value="1" checked="checked"/> 可分割</label>     
       	<label> <input id="" name="officeDivision" type="radio" value="2" /> 不可分割</label>   </td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>
     <td align="left" valign="middle" class="p25">
     	<label><input id="" name="officeFitment" type="radio" value="1" /> 精装修</label>     
-      	<label> <input id="" name="officeFitment" type="radio" value="2" /> 简装修</label>
+      	<label> <input id="" name="officeFitment" type="radio" value="2" checked="checked"/> 简装修</label>
         <label> <input id="" name="officeFitment" type="radio" value="3" /> 毛坯</label>
         </td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 写字楼级别</td>
     <td align="left" valign="middle" class="p25" style="line-height:26px;">
-    	 <label><input id="" name="officeLevel" type="radio" value="1" /> 甲级</label>     
+    	 <label><input id="" name="officeLevel" type="radio" value="1" checked="checked"/> 甲级</label>     
       	<label> <input id="" name="officeLevel" type="radio" value="2" /> 乙级</label>
         <label> <input id="" name="officeLevel" type="radio" value="3" /> 丙级</label>
         <label> <input id="" name="officeLevel" type="radio" value="4" /> 其它</label>

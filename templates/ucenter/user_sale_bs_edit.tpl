@@ -49,6 +49,7 @@ function check(){
 	if($("input[name='villaCellar']:checked").val() == 1 && !CheckCellarArea('villaCellarArea',true)) return false;	
 	if($("input[name='villaGarden']:checked").val() == 1 && !CheckGardenArea('villaGardenArea',true)) return false;
 	if($("input[name='villaGarage']:checked").val() == 1 && !checkVillaGarageCount()) return false;
+	if($("input[name='villaParkingPlace']:checked").val() == 1 && !checkVillaParkingPlaceCount()) return false;	
 
 	if(!CheckTitle('villaTitle',true)) return false;
 	var villaContentValue = CKEDITOR.instances.villaContent.getData(); 
@@ -187,6 +188,13 @@ function checkVillaGarageCount(){
     <input id="villaBalcony" name="villaBalcony" type="text" maxlength="1" value="<!--{$villaBalcony}-->"/> <font class="z3">阳台</font></td>
   </tr>
   <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">厅 结 构</td>
+    <td align="left" valign="middle" class="p25">
+    <input id="" name="villaBuildStructure" type="radio" value="1" <!--{if $villaBuildStructure eq 1 }--> checked="checked" <!--{/if}-->/> 平层 
+    <input id="" name="villaBuildStructure" type="radio" value="2" <!--{if $villaBuildStructure eq 2 }--> checked="checked" <!--{/if}-->/> 挑高
+    </td>
+  </tr>
+  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="villaBuildArea" name="villaBuildArea" type="text" maxlength="8" value="<!--{$villaBuildArea}-->"/> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
   </tr>
@@ -266,6 +274,20 @@ function checkVillaGarageCount(){
   <!--{/if}-->
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车库数量</td>
     <td align="left" valign="middle" class="p25 grzc_35"><input id="villaGarageCount" name="villaGarageCount" type="text" maxlength="2" value="<!--{$villaGarageCount}-->"/> <font class="z3">个</font></td>
+  </tr>
+  <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车位</td>
+    <td align="left" valign="middle" class="p25"> 
+    <input id="" name="villaParkingPlace" type="radio" value="1" <!--{if $villaParkingPlace eq 1 }--> checked="checked" <!--{/if}--> onclick="selectParkingPlace(1)"/>有 
+    <input id="" name="villaParkingPlace" type="radio" value="0" <!--{if $villaParkingPlace eq 0 }--> checked="checked" <!--{/if}--> onclick="selectParkingPlace(0)"/> 无</td>
+  </tr>
+  <!--{if $villaParkingPlace eq 1 }--> 
+  <tr id="tr_villaParkingPlaceCount">
+  <!--{else}--> 
+  <tr id="tr_villaParkingPlaceCount" style="display: none;">
+  <!--{/if}-->
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车位数量</td>
+    <td align="left" valign="middle" class="p25 grzc_35"><input id="villaParkingPlaceCount" name="villaParkingPlaceCount" type="text" maxlength="2" value="<!--{$villaParkingPlaceCount}-->/> <font class="z3">个</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>

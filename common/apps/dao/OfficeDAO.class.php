@@ -88,8 +88,24 @@ class OfficeDAO{
 			$sql .= "officeRentPriceUnit=".$info['officeRentPriceUnit'].",";
 		} 
 		
+		if(isset($info['officeIncludFee'])){
+			$sql .= "officeIncludFee=".$info['officeIncludFee'].",";
+		} 
+		
 		if(isset($info['officeProFee'])){
 			$sql .= "officeProFee=".$info['officeProFee'].",";
+		} 
+		
+		if(isset($info['officePayment'])){
+			$sql .= "officePayment=".$info['officePayment'].",";
+		} 
+		
+		if(isset($info['officePayDetailY'])){
+			$sql .= "officePayDetailY=".$info['officePayDetailY'].",";
+		} 
+		
+		if(isset($info['officePayDetailF'])){
+			$sql .= "officePayDetailF=".$info['officePayDetailF'].",";
 		} 
 		if(isset($info['officeBuildArea'])){
 			$sql .= "officeBuildArea=".$info['officeBuildArea'].",";

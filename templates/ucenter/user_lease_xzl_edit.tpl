@@ -37,6 +37,7 @@ function check(){
 	if(!CheckInfoCode('officeNumber',true)) return false;	
 	if(!checkPrice('0',true)) return false;
 	if(!checkPropFee('officeProFee',true)) return false;
+	if(!checkOfficePayment()) return false;
 	if(!CheckBuildingArea('officeBuildArea',true)) return false;
 	if(!CheckFloor('officeFloor','officeAllFloor',true)) return false;
 	
@@ -172,10 +173,41 @@ function checkRentPrice(){
     </td>
   </tr>
   <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否含物业费</td>
+    <td align="left" valign="middle" class="p25">
+    	<label><input id="" name="officeIncludFee" type="radio" value="1" <!--{if $officeIncludFee eq 1 }--> checked="checked" <!--{/if}-->/> 是</label>     
+      	<label> <input id="" name="officeIncludFee" type="radio" value="2" <!--{if $officeIncludFee eq 2 }--> checked="checked" <!--{/if}-->/> 否</label>   
+    </td>
+  </tr>
+  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>物 业 费</td>
     <td align="left" valign="middle" class="p25 grzc_32"><input id="officeProFee" name="officeProFee" type="text" value="<!--{$officeProFee}-->" /> 元/平米·月
     	</td>
   </tr>
+			  <tr>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
+			    <td align="left" valign="middle" class="p25 grzc_35">
+			    <input id="villaPayment" checked="checked" name="officePayment" type="radio" value="1" <!--{if $officePayment eq 1 }--> checked="checked" <!--{/if}--> onclick="changeShopPaydetail()"/>押&nbsp;
+				<select name="officePayDetailY" id="officePayDetailY" style=" vertical-align:middle">
+				<option selected="selected" value="">请选择</option>
+				<option value="0" <!--{if $officePayDetailY eq 0 }--> selected="selected" <!--{/if}-->>零</option>
+				<option value="1" <!--{if $officePayDetailY eq 1 }--> selected="selected" <!--{/if}-->>一个月</option>
+				<option value="2" <!--{if $officePayDetailY eq 2 }--> selected="selected" <!--{/if}-->>两个月</option>
+				<option value="3" <!--{if $officePayDetailY eq 3 }--> selected="selected" <!--{/if}-->>三个月</option>
+				<option value="6" <!--{if $officePayDetailY eq 6 }--> selected="selected" <!--{/if}-->>六个月</option>
+				</select>
+                                                       付&nbsp;
+				<select name="officePayDetailF" id="officePayDetailF" style=" vertical-align:middle">
+                                    <option selected="selected" value="">请选择</option>
+                                    <option value="1" <!--{if $officePayDetailF eq 1 }--> selected="selected" <!--{/if}-->>一个月</option>
+                                    <option value="2" <!--{if $officePayDetailF eq 2 }--> selected="selected" <!--{/if}-->>两个月</option>
+                                    <option value="3" <!--{if $officePayDetailF eq 3 }--> selected="selected" <!--{/if}-->>三个月</option>
+                                    <option value="6" <!--{if $officePayDetailF eq 6 }--> selected="selected" <!--{/if}-->>六个月</option>
+                                    <option value="12 <!--{if $officePayDetailF eq 12 }--> selected="selected" <!--{/if}-->">十二个月</option>
+ 				</select>
+			    <input id="villaPayment" name="officePayment" type="radio" value="2" <!--{if $officePayment eq 2 }--> checked="checked" <!--{/if}--> onclick="changeShopPaydetail();" />面议
+				</td>
+			  </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="officeBuildArea" name="officeBuildArea" type="text" value="<!--{$officeBuildArea}-->" maxlength="8" /> 平方米</td>

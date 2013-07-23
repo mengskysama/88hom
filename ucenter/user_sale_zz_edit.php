@@ -19,6 +19,7 @@ if($property){
 	$houseToilet = $property['houseToilet'];
 	$houseKitchen = $property['houseKitchen'];
 	$houseBalcony = $property['houseBalcony'];
+	$houseBuildStructure = $property['houseBuildStructure'];
 	$houseBuildForm = $property['houseBuildForm'];
 	$houseBuildArea = $property['houseBuildArea'];
 	$houseUseArea = $property['houseUseArea'];
@@ -60,6 +61,7 @@ if($property){
 	$smarty->assign("houseToilet",$houseToilet);
 	$smarty->assign("houseKitchen",$houseKitchen);
 	$smarty->assign("houseBalcony",$houseBalcony);
+	$smarty->assign("houseBuildStructure",$houseBuildStructure);
 	$smarty->assign("houseBuildForm",$houseBuildForm);
 	$smarty->assign("houseBuildArea",$houseBuildArea);
 	$smarty->assign("houseUseArea",$houseUseArea);
@@ -85,6 +87,11 @@ if($property){
 		$smarty->assign('topPicThumb',"");
 	}
 }
+$structureList = $cfg['arr_build']['2handHouseBuildStructure'];
+$formList = $cfg['arr_build']['2handHouseBuildForm'];
+$smarty->assign('structureList',$structureList);
+$smarty->assign('formList',$formList);
+
 $picTypeList=$cfg['arr_pic']['2handHouse'];
 $smarty->assign('picTypeList',$picTypeList);
 $smarty->assign('userName',$userName);

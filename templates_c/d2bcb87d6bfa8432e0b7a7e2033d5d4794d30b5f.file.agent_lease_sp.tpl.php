@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-22 11:32:31
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 17:38:10
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_lease_sp.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3080351e39ab2d6fd99-58416139%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd2bcb87d6bfa8432e0b7a7e2033d5d4794d30b5f' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_lease_sp.tpl',
-      1 => 1374454301,
+      1 => 1374571095,
       2 => 'file',
     ),
   ),
@@ -99,6 +99,13 @@ function check(){
 	if(!CheckInfoCode('shopsNumber',true)) return false;	
 	if(!checkRentPrice()) return false;
 	if(!checkPropFee('shopsPropFee',true)) return false;
+	
+	var val = $('input:radio[name="shopsTransfer"]:checked').val();
+    if (val == 1 && !checkShopsTransferFee('shopsTransferFee')) {
+        return false;
+    }
+    if(!checkShopsPayment()) return false;
+	
 	if(!CheckBuildingArea('shopsBuildArea',true)) return false;
 	if(!CheckFloor('shopsFloor','shopsAllFloor',true)) return false;
 	
@@ -233,10 +240,17 @@ function checkRentPrice(){
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">类    别</td>
     <td align="left" valign="middle" class="p25"> 
     	<label><input id="" name="shopsType" type="radio" value="1" /> 住宅底商</label>     
-      	<label><input id="" name="shopsType" type="radio" value="2" /> 商业街商铺  </label>    
+      	<label><input id="" name="shopsType" type="radio" value="2" checked="checked"/> 商业街商铺  </label>    
         <label><input id="" name="shopsType" type="radio" value="3" /> 写字楼配套底商</label>    
         <label><input id="" name="shopsType" type="radio" value="4" /> 购物中心/百货</label>  
         <label><input id="" name="shopsType" type="radio" value="5" /> 其他</label></td>
+  </tr>
+  <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">商铺状态</td>
+    <td align="left" valign="middle" class="p25"> 
+    	<label><input id="" name="shopsRentState" type="radio" value="1" checked="checked"/> 营业中</label>     
+      	<label><input id="" name="shopsRentState" type="radio" value="2"/> 闲置中  </label>    
+        <label><input id="" name="shopsRentState" type="radio" value="3" /> 新铺</label></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  租    金</td>
@@ -246,9 +260,51 @@ function checkRentPrice(){
     <label><input id="" name="shopsRentPriceUnit" type="radio" onclick="checkPrice('1000000000',false)" value="3" checked="checked" />元/月</label></td>
   </tr>
   <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否含物业费</td>
+    <td align="left" valign="middle" class="p25">
+    	<label><input id="" name="shopsIncludFee" type="radio" value="1"/> 是</label>     
+      	<label> <input id="" name="shopsIncludFee" type="radio" value="2" checked="checked"/> 否</label>   
+    </td>
+  </tr>
+  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 物 业 费</td>
     <td align="left" valign="middle" class="p25 grzc_32"><input id="shopsPropFee" name="shopsPropFee" type="text"/> <font class="z3">元/平米</font></td>
   </tr>
+  <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否转让</td>
+    <td align="left" valign="middle" class="p25">
+    	<label><input id="" name="shopsTransfer" type="radio" value="1" onclick="selectShopsTransfer(1)"/> 是</label>     
+      	<label> <input id="" name="shopsTransfer" type="radio" value="2" checked="checked" onclick="selectShopsTransfer(2)"/> 否</label>   
+    </td>
+  </tr>
+  <tr id="tr_shopsTransferFee" style="display: none;">
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">转 让 费</td>
+    <td align="left" valign="middle" class="p25 grzc_32"><input id="shopsTransferFee" name="shopsTransferFee" type="text" value="面议" onfocus="resetShopsTransferFee('shopsTransferFee')" onblur="resetShopsTransferFee('shopsTransferFee')"/> <font class="z3">万元</font></td>
+  </tr>
+			  <tr>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
+			    <td align="left" valign="middle" class="p25 grzc_35">
+			    <input id="villaPayment" checked="checked" name="shopsPayment" type="radio" value="1" checked="checked" onclick="changeShopPaydetail()"/>押&nbsp;
+				<select name="shopsPayDetailY" id="shopsPayDetailY" style=" vertical-align:middle">
+				<option selected="selected" value="">请选择</option>
+				<option value="0">零</option>
+				<option value="1">一个月</option>
+				<option value="2">两个月</option>
+				<option value="3">三个月</option>
+				<option value="6">六个月</option>
+				</select>
+                                                       付&nbsp;
+				<select name="shopsPayDetailF" id="shopsPayDetailF" style=" vertical-align:middle">
+                                    <option selected="selected" value="">请选择</option>
+                                    <option value="1" >一个月</option>
+                                    <option value="2">两个月</option>
+                                    <option value="3">三个月</option>
+                                    <option value="6">六个月</option>
+                                    <option value="12">十二个月</option>
+ 				</select>
+			    <input id="villaPayment" name="shopsPayment" type="radio" value="2" onclick="changeShopPaydetail();" />面议
+				</td>
+			  </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsBuildArea" name="shopsBuildArea" type="text" maxlength="8" /> <font class="z3">平方米</font></td>
@@ -260,14 +316,14 @@ function checkRentPrice(){
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否可分割</td>
     <td align="left" valign="middle" class="p25">
-    	<label><input id="" name="shopsDivision" type="radio" value="1" /> 可分割</label>     
+    	<label><input id="" name="shopsDivision" type="radio" value="1" checked="checked"/> 可分割</label>     
       	<label> <input id="" name="shopsDivision" type="radio" value="2" /> 不可分割</label>   </td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>
     <td align="left" valign="middle" class="p25">
     	<label><input id="" name="shopsFitment" type="radio" value="1" /> 精装修</label>     
-      	<label> <input id="" name="shopsFitment" type="radio" value="2" /> 简装修</label>
+      	<label> <input id="" name="shopsFitment" type="radio" value="2" checked="checked"/> 简装修</label>
         <label> <input id="" name="shopsFitment" type="radio" value="3" /> 毛坯</label>
         </td>
   </tr>

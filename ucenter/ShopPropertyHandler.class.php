@@ -10,6 +10,9 @@ class ShopPropertyHandler extends PropertyHandler{
 	private $shopsNumber;
 	private $shopsSellPrice;
 	private $shopsPropFee;
+	private $shopsIncludFee;
+	private $shopsTransfer;
+	private $shopsTransferFee;
 	private $shopsBuildArea;
 	private $shopsFloor;
 	private $shopsAllFloor;
@@ -30,15 +33,20 @@ class ShopPropertyHandler extends PropertyHandler{
 	private $shopsTraffic;
 	private $shopsSet;
 	private $topPic;
+	private $shopsRentState;
+	private $shopsPayment;
+	private $shopsPayDetailY;
+	private $shopsPayDetailF;
 	
 	private $estateService;
 	private $propertyService;
 	
 	function __construct($db,$estId,$estName,$shopsAddress,$shopsType,$shopsAreaId,$shopsNumber,
-						$shopsSellPrice,$shopsPropFee,$shopsBuildArea,$shopsFloor,$shopsAllFloor,$shopsDivision,
+						$shopsSellPrice,$shopsIncludFee,$shopsPropFee,$shopsTransfer,$shopsTransferFee,
+						$shopsBuildArea,$shopsFloor,$shopsAllFloor,$shopsDivision,
 						$shopsFitment,$shopsBaseService,$shopsAimOperastion,$shopPhoto,$shopsTitle,
 						$shopContent,$shopUserId,$shopsState,$actionType,$shopId,$propTxType,$shopsRentPrice,$shopsRentPriceUnit,
-						$shopsTraffic,$shopsSet,$topPic){
+						$shopsTraffic,$shopsSet,$topPic,$shopsRentState,$shopsPayment,$shopsPayDetailY,$shopsPayDetailF){
 		
 		$this->db = $db;
 		$this->estId = $estId;
@@ -49,6 +57,9 @@ class ShopPropertyHandler extends PropertyHandler{
 		$this->shopsNumber = $shopsNumber;
 		$this->shopsSellPrice = $shopsSellPrice;
 		$this->shopsPropFee = $shopsPropFee;
+	    $this->shopsIncludFee = $shopsIncludFee;
+		$this->shopsTransfer = $shopsTransfer;
+		$this->shopsTransferFee = $shopsTransferFee;
 		$this->shopsBuildArea = $shopsBuildArea;
 		$this->shopsFloor = $shopsFloor;
 		$this->shopsAllFloor = $shopsAllFloor;
@@ -69,6 +80,10 @@ class ShopPropertyHandler extends PropertyHandler{
 	    $this->shopsTraffic = $shopsTraffic;
 		$this->shopsSet = $shopsSet;
 		$this->topPic = $topPic;
+		$this->shopsRentState = $shopsRentState;
+		$this->shopsPayment = $shopsPayment;
+		$this->shopsPayDetailY = $shopsPayDetailY;
+		$this->shopsPayDetailF = $shopsPayDetailF;
 		
 		$this->estateService = new EstateService($db);
 		$this->propertyService = new SecondHandPropertyService($db);
@@ -143,10 +158,10 @@ class ShopPropertyHandler extends PropertyHandler{
 			$shop['shopsRentPrice'] = $this->shopsRentPrice;
 		}
 		
-		$shop['shopsRentState'] = 0;
-		$shop['shopsPayment'] = 0;
-		$shop['shopsPayDetailY'] = 0;
-		$shop['shopsPayDetailF'] = 0;
+		$shop['shopsRentState'] = $this->shopsRentState;
+		$shop['shopsPayment'] = $this->shopsPayment;
+		$shop['shopsPayDetailY'] = $this->shopsPayDetailF == "" ? -1 : $this->shopsPayDetailF;
+		$shop['shopsPayDetailF'] = $this->shopsPayDetailF == "" ? -1 : $this->shopsPayDetailF;
 		$shop['shopsBuildArea'] = $this->shopsBuildArea;
 		$shop['shopsFloor'] = $this->shopsFloor;
 		$shop['shopsAllFloor'] = $this->shopsAllFloor;
@@ -154,9 +169,10 @@ class ShopPropertyHandler extends PropertyHandler{
 		$shop['shopsFitment'] = $this->shopsFitment;
 		$shop['shopsBaseService'] = $shopsBaseService;
 		$shop['shopsAimOperastion'] = $shopsAimOperastion;
-		$shop['shopsIncludFee'] = 0;
+		$shop['shopsIncludFee'] = $this->shopsIncludFee;
 		$shop['shopsPropFee'] = $this->shopsPropFee;
-		$shop['shopsTransferFee'] = 0;
+		$shop['shopsTransfer'] = $this->shopsTransfer;
+		$shop['shopsTransferFee'] = $this->shopsTransferFee;
 		$shop['shopsNumber'] = $this->shopsNumber;
 		$shop['shopsSellRentType'] = $this->propTxType;
 		$shop['shopsMapX'] = 0;

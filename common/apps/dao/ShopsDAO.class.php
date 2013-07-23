@@ -8,7 +8,7 @@ class ShopsDAO{
 	public function release($info){
 		$sql="insert into ecms_shops(shopsName,shopsAddress,shopsTitle,shopsContent,shopsType,shopsSellPrice,shopsRentPrice,
 			  shopsRentPriceUnit,shopsRentState,shopsPayment,shopsPayDetailY,shopsPayDetailF,shopsBuildArea,shopsFloor,shopsAllFloor,shopsDivision,
-			  shopsFitment,shopsBaseService,shopsAimOperastion,shopsIncludFee,shopsPropFee,shopsTransferFee,shopsNumber,shopsSellRentType,
+			  shopsFitment,shopsBaseService,shopsAimOperastion,shopsIncludFee,shopsPropFee,shopsTransfer,shopsTransferFee,shopsNumber,shopsSellRentType,
 			  shopsMapX,shopsMapY,shopsState,shopsUserId,shopsCommunityId,shopsTraffic,shopsSet,shopsCreateTime,shopsUpdateTime) 
 			  values('".(empty($info['shopsName'])?'':$info['shopsName'])."',
 			  '".(empty($info['shopsAddress'])?'':$info['shopsAddress'])."',
@@ -31,6 +31,7 @@ class ShopsDAO{
 			  '".(empty($info['shopsAimOperastion'])?'':$info['shopsAimOperastion'])."',
 			  ".(empty($info['shopsIncludFee'])?0:$info['shopsIncludFee']).",
 			  ".(empty($info['shopsPropFee'])?0:$info['shopsPropFee']).",
+			  ".(empty($info['shopsTransfer'])?0:$info['shopsTransfer']).",
 			  '".(empty($info['shopsTransferFee'])?'':$info['shopsTransferFee'])."',
 			  '".(empty($info['shopsNumber'])?'':$info['shopsNumber'])."',
 			  ".(empty($info['shopsSellRentType'])?0:$info['shopsSellRentType']).",
@@ -66,7 +67,7 @@ class ShopsDAO{
 	public function getPropertyById($userId,$propId){
 		$sql = "select shopsName,shopsAddress,shopsTitle,shopsContent,shopsType,shopsSellPrice,shopsRentPrice,".
 			   "shopsRentPriceUnit,shopsRentState,shopsPayment,shopsPayDetailY,shopsPayDetailF,shopsBuildArea,shopsFloor,shopsAllFloor,shopsDivision,".
-			   "shopsFitment,shopsBaseService,shopsAimOperastion,shopsIncludFee,shopsPropFee,shopsTransferFee,shopsNumber,shopsSellRentType,(select communityName from ecms_community where communityId=shopsCommunityId) as propName,".
+			   "shopsFitment,shopsBaseService,shopsAimOperastion,shopsIncludFee,shopsPropFee,shopsTransfer,shopsTransferFee,shopsNumber,shopsSellRentType,(select communityName from ecms_community where communityId=shopsCommunityId) as propName,".
 			   "shopsMapX,shopsMapY,shopsState,shopsUserId,shopsCommunityId,shopsTraffic,shopsSet,picId,picURl as propPhoto,shopsCreateTime,shopsUpdateTime ". 
 				"from ecms_shops prop left join ecms_pic pic on picBuildType=2 and picBuildId=shopsId and picState=1 ".
 				"where shopsId=".$propId;
@@ -113,8 +114,29 @@ class ShopsDAO{
 		if(isset($info['shopsAimOperastion'])){
 			$sql .= "shopsAimOperastion='".$info['shopsAimOperastion']."',";
 		}
+		if(isset($info['shopsIncludFee'])){
+			$sql .= "shopsIncludFee=".$info['shopsIncludFee'].",";
+		}
 		if(isset($info['shopsPropFee'])){
 			$sql .= "shopsPropFee=".$info['shopsPropFee'].",";
+		}
+		if(isset($info['shopsTransfer'])){
+			$sql .= "shopsTransfer=".$info['shopsTransfer'].",";
+		}
+		if(isset($info['shopsTransferFee'])){
+			$sql .= "shopsTransferFee=".$info['shopsTransferFee'].",";
+		}
+		if(isset($info['shopsRentState'])){
+			$sql .= "shopsRentState=".$info['shopsRentState'].",";
+		}
+		if(isset($info['shopsPayment'])){
+			$sql .= "shopsPayment=".$info['shopsPayment'].",";
+		}
+		if(isset($info['shopsPayDetailY'])){
+			$sql .= "shopsPayDetailY=".$info['shopsPayDetailY'].",";
+		}
+		if(isset($info['shopsPayDetailF'])){
+			$sql .= "shopsPayDetailF=".$info['shopsPayDetailF'].",";
 		}
 		if(isset($info['shopsNumber'])){
 			$sql .= "shopsNumber='".$info['shopsNumber']."',";
