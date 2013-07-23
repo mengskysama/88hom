@@ -96,6 +96,8 @@
 					 	<!--{if $propList[prop].propKind eq 'zz' or $propList[prop].propKind eq 'bs'}-->
 						户型：<!--{$propList[prop].room}-->室<!--{$propList[prop].hall}-->厅 面积：<!--{$propList[prop].propArea}-->m<sup>2</sup><br />
 						单价：<!--{$propList[prop].perPriceArea}-->/m<sup>2</sup><br />
+                        <!--{elseif $propList[prop].propKind eq 'xzl' }-->
+						售价：<!--{$propList[prop].propPrice}-->元/平方米  面积：<!--{$propList[prop].propArea}-->m<sup>2</sup><br />
                         <!--{else}-->
 						售价：<!--{$propList[prop].propPrice}-->万 面积：<!--{$propList[prop].propArea}-->m<sup>2</sup><br />
 					 	<!--{/if}-->

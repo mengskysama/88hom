@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-17 23:03:52
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 22:02:04
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_bs.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2621851d581589ebc48-79434450%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ea414aae8b39a7c4f15dd6f7a3398e373df982e7' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_bs.tpl',
-      1 => 1374073344,
+      1 => 1374585492,
       2 => 'file',
     ),
   ),
@@ -27,6 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'key' => 0,
     'timestamp' => 0,
     'token' => 0,
+    'restLivePropsCount' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
@@ -102,12 +103,13 @@ function check(){
 	if(!CheckRoom('villaBalcony',true)) return false;
 	if(!CheckBuildingArea('villaBuildArea',true)) return false;
 	if(!CheckLiveArea('villaUseArea','villaBuildArea',true)) return false;
-	if(!CheckCreateTime('villaBuildYear',true)) return false;
+	if(!CheckCreateTime('villaBuildYear',false)) return false;
 	if(!checkVillaAllFloor()) return false;
 
 	if($("input[name='villaCellar']:checked").val() == 1 && !CheckCellarArea('villaCellarArea',true)) return false;	
 	if($("input[name='villaGarden']:checked").val() == 1 && !CheckGardenArea('villaGardenArea',true)) return false;
 	if($("input[name='villaGarage']:checked").val() == 1 && !checkVillaGarageCount()) return false;
+	if($("input[name='villaParkingPlace']:checked").val() == 1 && !checkVillaParkingPlaceCount()) return false;	
 	
 	if(!CheckTitle('villaTitle',true)) return false;
 	var villaContentValue = CKEDITOR.instances.villaContent.getData(); 
@@ -219,7 +221,8 @@ function checkVillaGarageCount(){
       		 	<li><a href="user_sale_xzl.php">录入写字楼出售房源</a></li>
    		  </ul>
       <div class="bs_tx">
-        <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
+        <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> <?php echo $_smarty_tpl->tpl_vars['restLivePropsCount']->value;?>
+</font> 条</span></p>
             <input type="hidden" name="prop_type" value="bs">
             <input type="hidden" name="prop_tx_type" value="1">
         <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
@@ -262,6 +265,13 @@ function checkVillaGarageCount(){
     <input id="villaBalcony" name="villaBalcony" type="text" maxlength="1" /> <font class="z3">阳台</font></td>
   </tr>
   <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">厅 结 构</td>
+    <td align="left" valign="middle" class="p25">
+    <input id="" name="villaBuildStructure" type="radio" value="1" checked="checked" /> 平层 
+    <input id="" name="villaBuildStructure" type="radio" value="2" /> 挑高
+    </td>
+  </tr>
+  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="villaBuildArea" name="villaBuildArea" type="text" maxlength="8" /> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
   </tr>
@@ -278,7 +288,7 @@ function checkVillaGarageCount(){
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">朝    向</td>
     <td align="left" valign="middle" class="p25">
-    <input id="" name="villaForward" type="radio" value="1" /> 东 
+    <input id="" name="villaForward" type="radio" value="1" checked="checked"/> 东 
     <input id="" name="villaForward" type="radio" value="2" /> 西  
     <input id="" name="villaForward" type="radio" value="3" /> 南 
     <input id="" name="villaForward" type="radio" value="4" /> 北 </td>
@@ -301,7 +311,7 @@ function checkVillaGarageCount(){
     <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">地下室类型</td>
     <td align="left" valign="middle" class="p25">
     <input id="villaCellarType" name="villaCellarType" type="radio" value="1" /> 全明 
-    <input id="villaCellarType" name="villaCellarType" type="radio" value="2" /> 半明 
+    <input id="villaCellarType" name="villaCellarType" type="radio" value="2" checked="checked"/> 半明 
     <input id="villaCellarType" name="villaCellarType" type="radio" value="3" /> 暗</td>
   </tr>
   <tr>
@@ -319,6 +329,14 @@ function checkVillaGarageCount(){
   <tr id="tr_villaGarageCount" style="display: none;">
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车库数量</td>
     <td align="left" valign="middle" class="p25 grzc_35"><input id="villaGarageCount" name="villaGarageCount" type="text" maxlength="2" /> <font class="z3">个</font></td>
+  </tr>
+  <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车位</td>
+    <td align="left" valign="middle" class="p25"> <input id="" name="villaParkingPlace" type="radio" value="1" onclick="selectParkingPlace(1)"/>有 <input id="" name="villaParkingPlace" type="radio" value="0" checked="checked" onclick="selectParkingPlace(0)"/> 无</td>
+  </tr>
+  <tr id="tr_villaParkingPlaceCount" style="display: none;">
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车位数量</td>
+    <td align="left" valign="middle" class="p25 grzc_35"><input id="villaParkingPlaceCount" name="villaParkingPlaceCount" type="text" maxlength="2" /> <font class="z3">个</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>

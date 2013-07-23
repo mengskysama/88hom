@@ -11,10 +11,10 @@ if($property){
 	$estName = $property['propName'];	
 	$officeNumber = $property['officeNumber'];
 	$officeType = $property['officeType'];
+	$officeBuildArea = $property['officeBuildArea'];
 	$officeSellPrice = $property['officeSellPrice'];
 	$officeProFee = $property['officeProFee'];
 	$privateofficeNumber = '';//$property['privateofficeNumber'];
-	$officeBuildArea = $property['officeBuildArea'];
 	$officeFloor = $property['officeFloor'];
 	$officeAllFloor = $property['officeAllFloor'];
 	$officeDivision = $property['officeDivision'];

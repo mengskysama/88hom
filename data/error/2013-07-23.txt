@@ -1,0 +1,144 @@
+------------------------2013-07-23 22:28:19
+错误SQL语句：
+insert into ecms_shops(shopsName,shopsAddress,shopsTitle,shopsContent,shopsType,shopsSellPrice,shopsRentPrice,
+			  shopsRentPriceUnit,shopsRentState,shopsPayment,shopsPayDetailY,shopsPayDetailF,shopsBuildArea,shopsFloor,shopsAllFloor,shopsDivision,
+			  shopsFitment,shopsBaseService,shopsAimOperastion,shopsIncludFee,shopsPropFee,shopsTransfer,shopsTransferFee,shopsNumber,shopsSellRentType,
+			  shopsMapX,shopsMapY,shopsState,shopsUserId,shopsCommunityId,shopsTraffic,shopsSet,shopsCreateTime,shopsUpdateTime) 
+			  values('中信星光名庭',
+			  '',
+			  '某某街旺铺',
+			  '<p>
+	上大大的发大水</p>
+',
+			  2,
+			  100,
+			  0,
+			  0,
+			  0,
+			  0,
+			  -1,
+			  -1,
+			  34,
+			  1,
+			  3,
+			  1,
+			  2,
+			  ',2,3,4,',
+			  ',1,2,3,',
+			  0,
+			  22,
+			  0,
+			  '',
+			  '',
+			  1,
+			  0,
+			  0,
+			  1,
+			  43,
+			  137,
+			  '得得得',
+			  ' 收拾收拾',1374589699,1374589699)
+客户端:127.0.0.1
+时间:2013-07-23 22:28:19
+------------------------2013-07-23 22:32:33
+错误SQL语句：
+insert into ecms_shops(shopsName,shopsAddress,shopsTitle,shopsContent,shopsType,shopsSellPrice,shopsRentPrice,
+			  shopsRentPriceUnit,shopsRentState,shopsPayment,shopsPayDetailY,shopsPayDetailF,shopsBuildArea,shopsFloor,shopsAllFloor,shopsDivision,
+			  shopsFitment,shopsBaseService,shopsAimOperastion,shopsIncludFee,shopsPropFee,shopsTransfer,shopsTransferFee,shopsNumber,shopsSellRentType,
+			  shopsMapX,shopsMapY,shopsState,shopsUserId,shopsCommunityId,shopsTraffic,shopsSet,shopsCreateTime,shopsUpdateTime) 
+			  values('中信星光名庭',
+			  '',
+			  '某某街旺铺',
+			  '<p>
+	上大大的发大水</p>
+',
+			  2,
+			  100,
+			  0,
+			  0,
+			  0,
+			  0,
+			  -1,
+			  -1,
+			  34,
+			  1,
+			  3,
+			  1,
+			  2,
+			  ',2,3,4,',
+			  ',1,2,3,',
+			  0,
+			  22,
+			  0,
+			  '',
+			  '',
+			  1,
+			  0,
+			  0,
+			  1,
+			  43,
+			  137,
+			  '得得得',
+			  ' 收拾收拾',1374589953,1374589953)
+客户端:127.0.0.1
+时间:2013-07-23 22:32:33
+------------------------2013-07-23 22:35:43
+错误SQL语句：
+update ecms_shops set shopsAddress='罗湖区和平路船步街',shopsTitle='某某街旺铺1',shopsContent='<p>
+	上大大的发大水1</p>
+',shopsType=3,shopsSellPrice=101,shopsBuildArea=31,shopsFloor=11,shopsAllFloor=31,shopsDivision=2,shopsFitment=1,shopsBaseService=',2,3,4,6,7,',shopsAimOperastion=',1,2,3,4,',shopsIncludFee=,shopsPropFee=21,shopsTransfer=,shopsTransferFee=,shopsRentState=,shopsPayment=,shopsPayDetailY=-1,shopsPayDetailF=-1,shopsNumber='123456789876',shopsState=1,shopsRentPrice=,shopsRentPriceUnit=0,shopsTraffic='得得得1',shopsSet=' 收拾收拾1',shopsUpdateTime=1374590143 where shopsId=7
+客户端:127.0.0.1
+时间:2013-07-23 22:35:43
+------------------------2013-07-23 22:39:05
+错误SQL语句：
+update ecms_shops set shopsAddress='罗湖区和平路船步街',shopsTitle='某某街旺铺1',shopsContent='<p>
+	上大大的发大水1</p>
+',shopsType=3,shopsSellPrice=101,shopsBuildArea=31,shopsFloor=11,shopsAllFloor=31,shopsDivision=2,shopsFitment=1,shopsBaseService=',2,3,4,6,7,',shopsAimOperastion=',1,2,3,4,',shopsIncludFee=,shopsPropFee=21,shopsTransfer=,shopsTransferFee=,shopsRentState=,shopsPayment=,shopsPayDetailY=-1,shopsPayDetailF=-1,shopsNumber='123456789876',shopsState=1,shopsRentPrice=,shopsRentPriceUnit=0,shopsTraffic='得得得1',shopsSet=' 收拾收拾1',shopsUpdateTime=1374590345 where shopsId=7
+客户端:127.0.0.1
+时间:2013-07-23 22:39:05
+------------------------2013-07-23 22:40:04
+错误SQL语句：
+update ecms_shops set shopsAddress='罗湖区和平路船步街',shopsTitle='某某街旺铺1',shopsContent='<p>
+	上大大的发大水1</p>
+',shopsType=3,shopsSellPrice=101,shopsBuildArea=31,shopsFloor=11,shopsAllFloor=31,shopsDivision=2,shopsFitment=1,shopsBaseService=',2,3,4,6,7,',shopsAimOperastion=',1,2,3,4,',shopsPropFee=21,shopsPayDetailY=-1,shopsPayDetailF=-1,shopsNumber='123456789876',shopsState=1,shopsRentPrice=,shopsRentPriceUnit=0,shopsTraffic='得得得1',shopsSet=' 收拾收拾1',shopsUpdateTime=1374590404 where shopsId=7
+客户端:127.0.0.1
+时间:2013-07-23 22:40:04
+------------------------2013-07-23 22:58:57
+错误SQL语句：
+insert into ecms_office(officeNumber,officeType,officeSellPrice,officeRentPrice,officeRentPriceUnit,officeIncludFee,officeProFee,
+			  officePayment,officePayDetailY,officePayDetailF,officeBuildArea,officeFloor,officeAllFloor,officeDivision,officeFitment,officeLevel,
+			  officeTitle,officeContent,officeTraffic,officeSellRentType,officeState,officeCommunityId,officeUserId,officeCreateTime,officeUpdateTime) 
+			  values('',
+			  1,
+			  249.9952,
+			  0,
+			  0,
+			  0,
+			  22,
+			  0,
+			  0,
+			  0,
+			  52,
+			  12,
+			  29,
+			  1,
+			  2,
+			  1,
+			  '淡淡的淡淡的',
+			  '<p>
+	事实上事实上</p>
+',
+			  '反反复复方法',
+			  1,
+			  1,
+			  106,
+			  43,1374591537,1374591537)
+客户端:127.0.0.1
+时间:2013-07-23 22:58:57
+------------------------2013-07-23 23:02:32
+错误SQL语句：
+update ecms_office set officeNumber='123456789876',officeType=2,officeNumber='123456789876',officeSellPrice=245.1825,officeIncludFee=,officeProFee=21,officePayment=,officePayDetailY=,officePayDetailF=,officeBuildArea=51,officeFloor=11,officeFloor=11,officeAllFloor=21,officeDivision=2,officeFitment=1,officeLevel=2,officeTitle='淡淡的淡淡的1',officeContent='<p>
+	事实上事实上1</p>
+',officeTraffic='反反复复方法',officeSellRentType=1,officeState=1,officeUpdateTime=1374591752 where officeId=7
+客户端:127.0.0.1
+时间:2013-07-23 23:02:32

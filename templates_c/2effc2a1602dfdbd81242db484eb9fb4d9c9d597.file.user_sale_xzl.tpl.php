@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-17 23:03:56
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 22:42:44
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_xzl.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1993251c5bbf6583919-32244773%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2effc2a1602dfdbd81242db484eb9fb4d9c9d597' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_xzl.tpl',
-      1 => 1374073310,
+      1 => 1374585492,
       2 => 'file',
     ),
   ),
@@ -27,6 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'key' => 0,
     'timestamp' => 0,
     'token' => 0,
+    'restLivePropsCount' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
@@ -145,7 +146,8 @@ function check(){
       		 	<li><a href="user_sale_xzl.php">录入写字楼出售房源</a></li>
    		  </ul>
       <div class="bs_tx">
-        <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
+        <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> <?php echo $_smarty_tpl->tpl_vars['restLivePropsCount']->value;?>
+</font> 条</span></p>
             <input type="hidden" name="prop_type" value="xzl">
             <input type="hidden" name="prop_tx_type" value="1">
         <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
@@ -190,21 +192,21 @@ function check(){
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否可分割</td>
     <td align="left" valign="middle" class="p25">
-    	<label><input id="" name="officeDivision" type="radio" value="1" /> 可分割</label>     
+    	<label><input id="" name="officeDivision" type="radio" value="1" checked="checked"/> 可分割</label>     
       	<label> <input id="" name="officeDivision" type="radio" value="2" /> 不可分割</label>   </td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>
     <td align="left" valign="middle" class="p25">
     	<label><input id="" name="officeFitment" type="radio" value="1" /> 精装修</label>     
-      	<label> <input id="" name="officeFitment" type="radio" value="2" /> 简装修</label>
+      	<label> <input id="" name="officeFitment" type="radio" value="2" checked="checked"/> 简装修</label>
         <label> <input id="" name="officeFitment" type="radio" value="3" /> 毛坯</label>
         </td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 写字楼级别</td>
     <td align="left" valign="middle" class="p25" style="line-height:26px;">
-    	 <label><input id="" name="officeLevel" type="radio" value="1" /> 甲级</label>     
+    	 <label><input id="" name="officeLevel" type="radio" value="1" checked="checked"/> 甲级</label>     
       	<label> <input id="" name="officeLevel" type="radio" value="2" /> 乙级</label>
         <label> <input id="" name="officeLevel" type="radio" value="3" /> 丙级</label>
         <label> <input id="" name="officeLevel" type="radio" value="4" /> 其它</label>

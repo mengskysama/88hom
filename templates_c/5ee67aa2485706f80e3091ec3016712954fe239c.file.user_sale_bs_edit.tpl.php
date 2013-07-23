@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-12 23:22:15
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 22:11:55
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_bs_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1730751d586e16985f8-18288923%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5ee67aa2485706f80e3091ec3016712954fe239c' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_bs_edit.tpl',
-      1 => 1373637310,
+      1 => 1374588707,
       2 => 'file',
     ),
   ),
@@ -23,6 +23,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'jsFiles' => 0,
     'cssFiles' => 0,
     'ckeditLib' => 0,
+    'picTypeList' => 0,
+    'key' => 0,
     'timestamp' => 0,
     'token' => 0,
     'estId' => 0,
@@ -36,6 +38,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'villaToilet' => 0,
     'villaKitchen' => 0,
     'villaBalcony' => 0,
+    'villaBuildStructure' => 0,
     'villaBuildArea' => 0,
     'villaUseArea' => 0,
     'villaBuildYear' => 0,
@@ -48,6 +51,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'villaGardenArea' => 0,
     'villaGarage' => 0,
     'villaGarageCount' => 0,
+    'villaParkingPlace' => 0,
+    'villaParkingPlaceCount' => 0,
     'villaFitment' => 0,
     'villaBaseService1' => 0,
     'villaBaseService2' => 0,
@@ -56,11 +61,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'villaBaseService5' => 0,
     'villaBaseService6' => 0,
     'villaLookTime' => 0,
-    'propertyDetailPicList' => 0,
-    'key_' => 0,
-    'item_' => 0,
     'villaTitle' => 0,
     'villaContent' => 0,
+    'item' => 0,
+    'propertyDetailPicList' => 0,
+    'item_' => 0,
+    'key_' => 0,
+    'topPicThumb' => 0,
+    'topPicPath' => 0,
+    'propState' => 0,
     'propId' => 0,
   ),
   'has_nocache_code' => false,
@@ -88,14 +97,32 @@ $(function() {
             $("#btn_update").removeAttr("disabled");
         }
     });
-    initPicUp('<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
+		
+    $("#btn_live").click(function() {
+        $("#btn_live").attr("disabled", true);
+        if (check()) {
+            $("#action_to_go").val("1");
+            document.getElementById("bsForm").submit();
+        } else {
+            $("#btn_live").removeAttr("disabled");
+        }
+    });
+	<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+    initPicUp3(<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+,'<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
 ','<?php echo $_smarty_tpl->tpl_vars['token']->value;?>
 ','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['file_path_upload'];?>
 ','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_path'];?>
 ','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_common'];?>
 ','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
 ');
-       
+	<?php } ?>
 });
   
 function check(){
@@ -115,11 +142,16 @@ function check(){
 	if($("input[name='villaCellar']:checked").val() == 1 && !CheckCellarArea('villaCellarArea',true)) return false;	
 	if($("input[name='villaGarden']:checked").val() == 1 && !CheckGardenArea('villaGardenArea',true)) return false;
 	if($("input[name='villaGarage']:checked").val() == 1 && !checkVillaGarageCount()) return false;
+	if($("input[name='villaParkingPlace']:checked").val() == 1 && !checkVillaParkingPlaceCount()) return false;	
 
 	if(!CheckTitle('villaTitle',true)) return false;
 	var villaContentValue = CKEDITOR.instances.villaContent.getData(); 
 	if(trim(villaContentValue) == ''){
 		alert("请填写房源描述");
+		return false;
+	}
+	if($("#topPicPath").val() == ""){
+		alert("请选择标题图");
 		return false;
 	}
 	
@@ -261,6 +293,13 @@ function checkVillaGarageCount(){
 "/> <font class="z3">阳台</font></td>
   </tr>
   <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">厅 结 构</td>
+    <td align="left" valign="middle" class="p25">
+    <input id="" name="villaBuildStructure" type="radio" value="1" <?php if ($_smarty_tpl->tpl_vars['villaBuildStructure']->value==1){?> checked="checked" <?php }?>/> 平层 
+    <input id="" name="villaBuildStructure" type="radio" value="2" <?php if ($_smarty_tpl->tpl_vars['villaBuildStructure']->value==2){?> checked="checked" <?php }?>/> 挑高
+    </td>
+  </tr>
+  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="villaBuildArea" name="villaBuildArea" type="text" maxlength="8" value="<?php echo $_smarty_tpl->tpl_vars['villaBuildArea']->value;?>
 "/> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
@@ -349,6 +388,21 @@ function checkVillaGarageCount(){
 "/> <font class="z3">个</font></td>
   </tr>
   <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车位</td>
+    <td align="left" valign="middle" class="p25"> 
+    <input id="" name="villaParkingPlace" type="radio" value="1" <?php if ($_smarty_tpl->tpl_vars['villaParkingPlace']->value==1){?> checked="checked" <?php }?> onclick="selectParkingPlace(1)"/>有 
+    <input id="" name="villaParkingPlace" type="radio" value="0" <?php if ($_smarty_tpl->tpl_vars['villaParkingPlace']->value==0){?> checked="checked" <?php }?> onclick="selectParkingPlace(0)"/> 无</td>
+  </tr>
+  <?php if ($_smarty_tpl->tpl_vars['villaParkingPlace']->value==1){?> 
+  <tr id="tr_villaParkingPlaceCount">
+  <?php }else{ ?> 
+  <tr id="tr_villaParkingPlaceCount" style="display: none;">
+  <?php }?>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车位数量</td>
+    <td align="left" valign="middle" class="p25 grzc_35"><input id="villaParkingPlaceCount" name="villaParkingPlaceCount" type="text" maxlength="2" value="<?php echo $_smarty_tpl->tpl_vars['villaParkingPlaceCount']->value;?>
+"/> <font class="z3">个</font></td>
+  </tr>
+  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>
     <td align="left" valign="middle" class="p25">
   	    <label><input id="" name="villaFitment" type="radio" value="1" <?php if ($_smarty_tpl->tpl_vars['villaFitment']->value==1){?> checked="checked" <?php }?> /> 豪华装修</label>     
@@ -390,79 +444,108 @@ function checkVillaGarageCount(){
       <div class=" bs_tx">
     <p><b>图文信息</b></p>
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
-  <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>图片展示</td>
-	<td><input type="file" name="file_upload" id="file_upload"/></td>
-    <td >
-		<div id="showImg" style="float: left;">		
-			<?php  $_smarty_tpl->tpl_vars['item_'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item_']->_loop = false;
+			  <tr>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
+			    <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
+					<input id="villaTitle" name="villaTitle" type="text" value="<?php echo $_smarty_tpl->tpl_vars['villaTitle']->value;?>
+" maxlength="60" onkeyup="textCounter(document.getElementById('villaTitle'),document.getElementById('villaTitleAlert'),30);" /> 还可写<span id="villaTitleAlert"><font class="red">30</font></span>个汉字</td>
+			  </tr>
+			  <tr>
+			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
+			    <td colspan="2" align="left" valign="middle">
+						    <textarea id="villaContent" name="villaContent" cols="86" rows="12" ><?php echo $_smarty_tpl->tpl_vars['villaContent']->value;?>
+</textarea>			    
+				            <script>
+				                CKEDITOR.replace( 'villaContent' );
+				            </script>
+				            <div class="bs"><span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
+      请勿从其它网站或其它房源描述中拷贝。</span></div>
+		      <div class="bs01">
+		        <strong>注意事项：</strong></br>
+		        1.上传宽度大于600像素，比例为4:3的图片可获得更好的展示效果。</br>
+		        2.请勿上传有水印、盖章等任何侵犯他人版权或含有广告信息的图片。</br>
+		        3.可上传20张图片，每张小于2M，建议尺寸大于400x300像素。</br>
+		        <span class="redlink"><a href="#">如何批量上传 安装FLASH插件查看最佳图片示例</a></span></div>
+			    </td>
+			  </tr>
+				<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+				<tr><td height="220" align="center" valign="middle" bgcolor="#f7f6f1"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</td>
+		         <td height="215" align="left" valign="top" class="p25">
+		         	<div class="sc_btn">
+		                <input type="file" name="file_upload_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" id="file_upload_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"/>
+		            </div>
+		            <div class="tpsc" id="showImg_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+">
+						<?php  $_smarty_tpl->tpl_vars['item_'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item_']->_loop = false;
  $_smarty_tpl->tpl_vars['key_'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['propertyDetailPicList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['item_']->key => $_smarty_tpl->tpl_vars['item_']->value){
 $_smarty_tpl->tpl_vars['item_']->_loop = true;
  $_smarty_tpl->tpl_vars['key_']->value = $_smarty_tpl->tpl_vars['item_']->key;
 ?>
-			<span style="float:left;margin:5px;line-height:25px;" id="pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
+			        	<?php if ($_smarty_tpl->tpl_vars['key']->value==$_smarty_tpl->tpl_vars['item_']->value['pictypeId']){?>
+			        	<dl id="pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
 ">
-			<a target="_blank" href="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
-uploads/<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
-">
-        	<img height="200px" src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+        	        		<dt><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
 uploads/<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
+"></dt>
+        	        		<dd><span class="redlink"><a href="javascript:void(0)" onclick="changeTopicImg('<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+uploads/<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
+','<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
+','<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
+')">设为标题图</a></span></dd>
+        	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picInfo'];?>
+"/><a href="javascript:void(0)" onclick="dropContainer('pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
+')"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+templates/images/ucenter/cha.JPG"></a></dd>
+        	    		<input type="hidden" name="picPath[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
 "/>
-       		</a><br/>
-       		描述：<input type="text" name="picName[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picInfo'];?>
-"/><br/>
-       		序号：<input type="text" name="picLayer[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picLayer'];?>
+        	    		<input type="hidden" name="picPathThumb[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
 "/>
-        	<input type="button" name="deletePic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
-" onclick="dropContainer('pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
-');" value="删除"/>
-        	<input type="hidden" name="picPath[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
+        	    		<input type="hidden" name="picTypeId[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['pictypeId'];?>
 "/>
-        	<input type="hidden" name="picPathThumb[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
+        	    		<input type="hidden" name="picLayer[]" value="0"/>
+        	    		</dl>
+						<?php }?>
+						<?php } ?>	
+		            </div>
+				 </td>
+				</tr> 
+				<?php } ?>
+		      
+		       <tr>
+			    <td height="124" align="center" valign="middle" bgcolor="#f7f6f1">标题图</td>
+			    <td align="left" valign="top" class="p25"><div class="btt" id="topic_image"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+uploads/<?php echo $_smarty_tpl->tpl_vars['topPicThumb']->value;?>
+"></div></td>
+			    
+        	    <input type="hidden" id="topPicPath" name="topPicPath" value="<?php echo $_smarty_tpl->tpl_vars['topPicPath']->value;?>
 "/>
-        	<input type="hidden" name="picTypeId[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['pictypeId'];?>
+        	    <input type="hidden" id="topPicPathThumb" name="topPicPathThumb" value="<?php echo $_smarty_tpl->tpl_vars['topPicThumb']->value;?>
 "/>
-        	</span>
-			<?php } ?>	
-		</div>
-    </td>
-  </tr>
-  <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>标  题</td>
-    <td colspan="2" align="left" valign="middle" class="p25 grzc_31">
-		<input id="villaTitle" name="villaTitle" type="text" value="<?php echo $_smarty_tpl->tpl_vars['villaTitle']->value;?>
-" maxlength="60" onkeyup="textCounter(document.getElementById('villaTitle'),document.getElementById('villaTitleAlert'),30);" /> 还可写<span id="villaTitleAlert"><font class="red">30</font></span>个汉字</td>
-  </tr>
-  <tr>
-    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-    <td colspan="2" align="left" valign="middle">
-			    <textarea id="villaContent" name="villaContent" cols="86" rows="12" ><?php echo $_smarty_tpl->tpl_vars['villaContent']->value;?>
-</textarea>			    
-	            <script>
-	                CKEDITOR.replace( 'villaContent' );
-	            </script>
-	            <span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
-请勿从其它网站或其它房源描述中拷贝。</span>
-         <span>
-         <b style="text-indent:0px;">注意事项：</b> <br />
-1.上传宽度大于600像素，比例为5:4的图片可获得更好的展示效果。<br />
-2.请勿上传有水印、盖章等任何侵犯他人版权或含有广告信息的图片。</span>
-    	
-    </td>
-  </tr>
-</table>
+			  </tr>
+			</table>
       </div>
        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
             <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_update" value="修改" /></td>
-            <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
+            <td width="320" height="80" align="center" valign="middle"><?php if ($_smarty_tpl->tpl_vars['propState']->value==0){?><input name="btn_live" type="button" class="mddl1" id="btn_live" value="发布" /><?php }?></td>
 	      </tr>
 	    </table>
 	    <input type="hidden" id="actionType" name="actionType" value="update"/>
 	    <input type="hidden" id="propId" name="propId" value="<?php echo $_smarty_tpl->tpl_vars['propId']->value;?>
+"/>
+	    <input type="hidden" id="action_to_go" name="action_to_go" value="<?php echo $_smarty_tpl->tpl_vars['propState']->value;?>
 "/>
 	    </form>
     </div>

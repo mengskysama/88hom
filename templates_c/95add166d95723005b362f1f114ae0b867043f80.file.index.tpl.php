@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-11 09:58:06
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 22:01:41
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:314785183bb739b9338-21159143%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '95add166d95723005b362f1f114ae0b867043f80' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\index.tpl',
-      1 => 1370915863,
+      1 => 1374585492,
       2 => 'file',
     ),
   ),
@@ -26,7 +26,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'lcon_class' => 0,
     'dl_class' => 0,
     'dl_1_class' => 0,
-    'login_page' => 0,
     'login_title' => 0,
     'userType' => 0,
     'regFormAction' => 0,
@@ -115,8 +114,7 @@ ucenter/logo.jpg"></a>
         	 <div class="<?php echo $_smarty_tpl->tpl_vars['dl_1_class']->value;?>
 ">
              	<ul>
-                	<li><a href="<?php echo $_smarty_tpl->tpl_vars['login_page']->value;?>
-"><?php echo $_smarty_tpl->tpl_vars['login_title']->value;?>
+                	<li><a><?php echo $_smarty_tpl->tpl_vars['login_title']->value;?>
 </a></li>
                 	<?php if ($_smarty_tpl->tpl_vars['userType']->value==3){?>
                     	<li style="float:right"><a href="index.php?userType=2" style="font-size:12px;color:#F00; font-weight:normal; background:none; text-decoration:underline">我是经纪人</a></li>

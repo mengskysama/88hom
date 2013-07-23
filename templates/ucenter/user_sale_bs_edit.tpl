@@ -287,7 +287,7 @@ function checkVillaGarageCount(){
   <tr id="tr_villaParkingPlaceCount" style="display: none;">
   <!--{/if}-->
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车位数量</td>
-    <td align="left" valign="middle" class="p25 grzc_35"><input id="villaParkingPlaceCount" name="villaParkingPlaceCount" type="text" maxlength="2" value="<!--{$villaParkingPlaceCount}-->/> <font class="z3">个</font></td>
+    <td align="left" valign="middle" class="p25 grzc_35"><input id="villaParkingPlaceCount" name="villaParkingPlaceCount" type="text" maxlength="2" value="<!--{$villaParkingPlaceCount}-->"/> <font class="z3">个</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>

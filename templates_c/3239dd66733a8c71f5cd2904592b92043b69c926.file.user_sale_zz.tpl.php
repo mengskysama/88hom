@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-22 22:52:30
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 22:02:01
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_zz.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1429151c30e3d6923a5-03520430%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3239dd66733a8c71f5cd2904592b92043b69c926' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_zz.tpl',
-      1 => 1374504747,
+      1 => 1374585492,
       2 => 'file',
     ),
   ),
@@ -250,7 +250,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseUseArea" name="houseUseArea" type="text" maxlength="8" /><font class="z3">平方米</font></td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑年代</td>
 			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildYear" name="houseBuildYear" type="text" maxlength="4"/><font class="z3">年</font></td>
 			  </tr>
 			  <tr>

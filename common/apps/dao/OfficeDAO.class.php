@@ -88,7 +88,7 @@ class OfficeDAO{
 			$sql .= "officeRentPriceUnit=".$info['officeRentPriceUnit'].",";
 		} 
 		
-		if(isset($info['officeIncludFee'])){
+		if(isset($info['officeIncludFee']) && $info['officeIncludFee']>0){
 			$sql .= "officeIncludFee=".$info['officeIncludFee'].",";
 		} 
 		
@@ -96,22 +96,19 @@ class OfficeDAO{
 			$sql .= "officeProFee=".$info['officeProFee'].",";
 		} 
 		
-		if(isset($info['officePayment'])){
+		if(isset($info['officePayment']) && $info['officePayment']>0){
 			$sql .= "officePayment=".$info['officePayment'].",";
 		} 
 		
-		if(isset($info['officePayDetailY'])){
+		if(isset($info['officePayDetailY']) && ($info['officePayDetailY'] === 0 || $info['officePayDetailY'] > 0)){
 			$sql .= "officePayDetailY=".$info['officePayDetailY'].",";
 		} 
 		
-		if(isset($info['officePayDetailF'])){
+		if(isset($info['officePayDetailF']) && $info['officePayDetailF']>0){
 			$sql .= "officePayDetailF=".$info['officePayDetailF'].",";
 		} 
 		if(isset($info['officeBuildArea'])){
 			$sql .= "officeBuildArea=".$info['officeBuildArea'].",";
-		} 
-		if(isset($info['officeFloor'])){
-			$sql .= "officeFloor=".$info['officeFloor'].",";
 		} 
 		if(isset($info['officeFloor'])){
 			$sql .= "officeFloor=".$info['officeFloor'].",";

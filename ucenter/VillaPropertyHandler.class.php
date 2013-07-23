@@ -64,6 +64,7 @@ class VillaPropertyHandler extends PropertyHandler{
 		$this->villaNumber = $villaNumber;
 		$this->privateHouseNumber = $privateHouseNumber;
 		$this->villaBuildForm = $villaBuildForm;
+		$this->villaBuildStructure = $villaBuildStructure;
 		$this->villaSellPrice = $villaSellPrice;
 		$this->villaRoom = $villaRoom;
 		$this->villaHall = $villaHall;
@@ -177,7 +178,6 @@ class VillaPropertyHandler extends PropertyHandler{
 		$villa['villaAllFloor'] = $this->villaAllFloor;
 		$villa['villaBuildForm'] = $this->villaBuildForm;
 		$villa['villaBuildStructure'] = $this->villaBuildStructure;
-		$villa['villaBuildStructure'] = '';
 		$villa['villaCellar'] = $this->villaCellar == "" ? 0 : $this->villaCellar;
 		$villa['villaCellarArea'] = $this->villaCellarArea == "" ? 0 : $this->villaCellarArea;
 		$villa['villaCellarType'] = $this->villaCellarType == "" ? 0 : $this->villaCellarType;

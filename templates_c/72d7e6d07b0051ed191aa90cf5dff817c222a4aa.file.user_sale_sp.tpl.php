@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-17 23:03:54
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 22:16:03
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_sp.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3086051d02e2a08f659-39317030%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '72d7e6d07b0051ed191aa90cf5dff817c222a4aa' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_sp.tpl',
-      1 => 1374073329,
+      1 => 1374585492,
       2 => 'file',
     ),
   ),
@@ -27,6 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'key' => 0,
     'timestamp' => 0,
     'token' => 0,
+    'restLivePropsCount' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
@@ -146,7 +147,8 @@ function check(){
       		 	<li><a href="user_sale_xzl.php">录入写字楼出售房源</a></li>
    		  </ul>
           <div class="bs_tx">
-            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
+            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> <?php echo $_smarty_tpl->tpl_vars['restLivePropsCount']->value;?>
+</font> 条</span></p>
             <input type="hidden" name="prop_type" value="sp">
             <input type="hidden" name="prop_tx_type" value="1">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
@@ -170,7 +172,7 @@ function check(){
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">类    别</td>
     <td align="left" valign="middle" class="p25"> 
     	<label><input id="" name="shopsType" type="radio" value="1" /> 住宅底商</label>     
-      	<label><input id="" name="shopsType" type="radio" value="2" /> 商业街商铺  </label>    
+      	<label><input id="" name="shopsType" type="radio" value="2" checked="checked"/> 商业街商铺  </label>    
         <label><input id="" name="shopsType" type="radio" value="3" /> 写字楼配套底商</label>    
         <label><input id="" name="shopsType" type="radio" value="4" /> 购物中心/百货</label>  
         <label><input id="" name="shopsType" type="radio" value="5" /> 其他</label></td>
@@ -194,14 +196,14 @@ function check(){
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否可分割</td>
     <td align="left" valign="middle" class="p25">
-    	<label><input id="" name="shopsDivision" type="radio" value="1" /> 可分割</label>     
+    	<label><input id="" name="shopsDivision" type="radio" value="1" checked="checked" /> 可分割</label>     
       	<label> <input id="" name="shopsDivision" type="radio" value="2" /> 不可分割</label>   </td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>
     <td align="left" valign="middle" class="p25">
     	<label><input id="" name="shopsFitment" type="radio" value="1" /> 精装修</label>     
-      	<label> <input id="" name="shopsFitment" type="radio" value="2" /> 简装修</label>
+      	<label> <input id="" name="shopsFitment" type="radio" value="2" checked="checked" /> 简装修</label>
         <label> <input id="" name="shopsFitment" type="radio" value="3" /> 毛坯</label>
         </td>
   </tr>

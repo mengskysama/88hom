@@ -114,22 +114,22 @@ class ShopsDAO{
 		if(isset($info['shopsAimOperastion'])){
 			$sql .= "shopsAimOperastion='".$info['shopsAimOperastion']."',";
 		}
-		if(isset($info['shopsIncludFee'])){
+		if(isset($info['shopsIncludFee']) && $info['shopsIncludFee']>0){
 			$sql .= "shopsIncludFee=".$info['shopsIncludFee'].",";
 		}
 		if(isset($info['shopsPropFee'])){
 			$sql .= "shopsPropFee=".$info['shopsPropFee'].",";
 		}
-		if(isset($info['shopsTransfer'])){
+		if(isset($info['shopsTransfer']) && $info['shopsTransfer']>0){
 			$sql .= "shopsTransfer=".$info['shopsTransfer'].",";
 		}
-		if(isset($info['shopsTransferFee'])){
+		if(isset($info['shopsTransferFee']) && $info['shopsTransferFee']>0){
 			$sql .= "shopsTransferFee=".$info['shopsTransferFee'].",";
 		}
-		if(isset($info['shopsRentState'])){
+		if(isset($info['shopsRentState']) && $info['shopsRentState']>0){
 			$sql .= "shopsRentState=".$info['shopsRentState'].",";
 		}
-		if(isset($info['shopsPayment'])){
+		if(isset($info['shopsPayment']) && $info['shopsPayment']>0){
 			$sql .= "shopsPayment=".$info['shopsPayment'].",";
 		}
 		if(isset($info['shopsPayDetailY'])){
@@ -144,7 +144,7 @@ class ShopsDAO{
 		if(isset($info['shopsState'])){
 			$sql .= "shopsState=".$info['shopsState'].",";
 		}
-		if(isset($info['shopsRentPrice'])){
+		if(isset($info['shopsRentPrice']) && $info['shopsRentPrice']>0){
 			$sql .= "shopsRentPrice=".$info['shopsRentPrice'].",";
 		}
 		if(isset($info['shopsRentPriceUnit'])){
