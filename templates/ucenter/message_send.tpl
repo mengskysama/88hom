@@ -83,64 +83,6 @@
 	</div>
 </div>
 
-    <!--发送提示-->
-    <div class="tips_div05 jqmWindow" id="showMess" style="width: 240px; margin-left: -120px; top: 40%">
-        <ul>
-            <li class="Rb_3_1">
-                <div>
-                    <span></span>
-                </div>
-            </li>
-            <li class="Rb_3_2"></li>
-            <li class="Rb_3_3"></li>
-        </ul>
-        <div class="tips_div_content05">
-            <div class="editsucBox02">
-                <span id="msgClass" class="icon_successSF2 textcenter"></span>
-                <h2>
-                    发送成功！</h2>
-                <div class="clearbth">
-                </div>
-            </div>
-        </div>
-        <ul>
-            <li class="Rb_3_3"></li>
-            <li class="Rb_3_2"></li>
-            <li class="Rb_3_1">
-                <div>
-                    <span></span>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <!--提示消息栏-->
-    <div class="tips_div jqmWindow" id="tipMessage">
-        <ul>
-            <li class="Rb_3_1">
-                <div>
-                    <span></span>
-                </div>
-            </li>
-            <li class="Rb_3_2"></li>
-            <li class="Rb_3_3"></li>
-        </ul>
-        <div class="tips_div_content">
-            <h2 id="textValue">
-            </h2>
-            <input type="button" class="but_confirm jqmClose" onclick="document.getElementById('tipMessage').style.display='none'"
-                style="cursor: pointer;" />
-        </div>
-        <ul>
-            <li class="Rb_3_3"></li>
-            <li class="Rb_3_2"></li>
-            <li class="Rb_3_1">
-                <div>
-                    <span></span>
-                </div>
-            </li>
-        </ul>
-    </div>
-
     <script type="text/javascript">
         var second = 3;
         
@@ -284,7 +226,7 @@
                 success: function(msg){
                     if (msg != null){
                         if(msg.err=="error"){
-                            ShowAlertMsg(msg.msg);
+                            alert(msg.msg);
                         }else{
                             if (msg.result == "1"){
                                 alert("发送成功!");

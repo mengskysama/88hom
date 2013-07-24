@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-11 10:00:27
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-24 23:07:46
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\message_inbox.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:13621518e422206eb63-73945523%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0ad99ce687e8034d11311a53571dfff8db798a72' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\message_inbox.tpl',
-      1 => 1370915863,
+      1 => 1373354848,
       2 => 'file',
     ),
   ),
@@ -51,7 +51,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         	 <div class="zl_b11">
           <div class="yhzx1">
 	        <ul class="zl_dh">
-	          <li><a href="#">用户中心</a></li>
+	          <li><a href="ucenter_user.php">用户中心</a></li>
 	          <li><a href="userinfo.php">个人资料</a></li>
 	          <li><a href="secure_reset_password.php">安全中心</a></li>
 	          <li><a href="message_inbox.php">短信息中心</a></li>

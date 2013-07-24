@@ -4,17 +4,12 @@ class UserDAO{
 	public function __construct($db){
 		$this->db=$db;
 	}
-	/**
-	 * ���username��ȡ�û���Ϣ
-	 * @param string $username 
-	 * @access public
-	 * @return array
-	 */
+	
+	//added by Cheneil
 	public function getUserByUserName($username){
-		$sql="select * from ecms_user where userState=1 and userType=0 and userUsername='$username'";
+		$sql="select * from ecms_user where userState=1 and userUsername='$username'";
 		return $this->db->getQueryValue($sql);
 	}
-	//added by Cheneil
 	public function checkUserByUserEmail($useEmail){
 		$sql = "select * from ecms_user where userEmail='".$useEmail."' or userUsername='".$useEmail."'";
 		return $this->db->getQueryValue($sql);

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-29 16:29:45
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-24 23:08:22
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\message_outbox.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2397651ce9af93b2062-24036616%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '839ea408f454c058ea16c82b89365e399bd7e4f7' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\message_outbox.tpl',
-      1 => 1370915863,
+      1 => 1373354854,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51ce9af94a40f2_28879248',
   'variables' => 
   array (
     'cfg' => 0,
@@ -25,8 +27,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'messageList' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_51ce9af94a40f2_28879248',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51ce9af94a40f2_28879248')) {function content_51ce9af94a40f2_28879248($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -51,7 +51,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         	 <div class="zl_b11">
           <div class="yhzx1">
 	        <ul class="zl_dh">
-	          <li><a href="#">用户中心</a></li>
+	          <li><a href="ucenter_user.php">用户中心</a></li>
 	          <li><a href="userinfo.php">个人资料</a></li>
 	          <li><a href="secure_reset_password.php">安全中心</a></li>
 	          <li><a href="message_inbox.php">短信息中心</a></li>

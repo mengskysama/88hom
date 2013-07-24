@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-29 16:31:38
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-24 23:16:19
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\message_send.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:28404518e402574a714-91650917%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1059e55de58c6e54e32cc534c5aa9d20821ea38c' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\message_send.tpl',
-      1 => 1371277937,
+      1 => 1374678971,
       2 => 'file',
     ),
   ),
@@ -51,7 +51,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	      <div class="zl_b11">
           <div class="yhzx1">
 	        <ul class="zl_dh">
-	          <li><a href="#">用户中心</a></li>
+	          <li><a href="ucenter_user.php">用户中心</a></li>
 	          <li><a href="userinfo.php">个人资料</a></li>
 	          <li><a href="secure_reset_password.php">安全中心</a></li>
 	          <li><a href="message_inbox.php">短信息中心</a></li>
@@ -117,64 +117,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	  </div>
 	</div>
 </div>
-
-    <!--发送提示-->
-    <div class="tips_div05 jqmWindow" id="showMess" style="width: 240px; margin-left: -120px; top: 40%">
-        <ul>
-            <li class="Rb_3_1">
-                <div>
-                    <span></span>
-                </div>
-            </li>
-            <li class="Rb_3_2"></li>
-            <li class="Rb_3_3"></li>
-        </ul>
-        <div class="tips_div_content05">
-            <div class="editsucBox02">
-                <span id="msgClass" class="icon_successSF2 textcenter"></span>
-                <h2>
-                    发送成功！</h2>
-                <div class="clearbth">
-                </div>
-            </div>
-        </div>
-        <ul>
-            <li class="Rb_3_3"></li>
-            <li class="Rb_3_2"></li>
-            <li class="Rb_3_1">
-                <div>
-                    <span></span>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <!--提示消息栏-->
-    <div class="tips_div jqmWindow" id="tipMessage">
-        <ul>
-            <li class="Rb_3_1">
-                <div>
-                    <span></span>
-                </div>
-            </li>
-            <li class="Rb_3_2"></li>
-            <li class="Rb_3_3"></li>
-        </ul>
-        <div class="tips_div_content">
-            <h2 id="textValue">
-            </h2>
-            <input type="button" class="but_confirm jqmClose" onclick="document.getElementById('tipMessage').style.display='none'"
-                style="cursor: pointer;" />
-        </div>
-        <ul>
-            <li class="Rb_3_3"></li>
-            <li class="Rb_3_2"></li>
-            <li class="Rb_3_1">
-                <div>
-                    <span></span>
-                </div>
-            </li>
-        </ul>
-    </div>
 
     <script type="text/javascript">
         var second = 3;
@@ -273,7 +215,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
             if (toSendName.value == '') 
             {
-                ShowAlertMsg('请输入短消息收件人!');
+                alert('请输入短消息收件人!');
                 return false;
             }
 
@@ -291,18 +233,21 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             }
             var strs = [];
             strs = namesp.split(',');
-            if (strs.length > 5) { ShowAlertMsg('抱歉，系统每次最多发送5人!'); return false; }
+            if (strs.length > 5) { 
+            	alert('抱歉，系统每次最多发送5人!'); 
+            	return false; 
+            }
 
             var i = 0;
             for (i = 0; i < strs.length; i++){
                 if (strs[i] == '<?php echo $_smarty_tpl->tpl_vars['userName']->value;?>
 '){
-                    ShowAlertMsg('短消息不能发送给自己!');
+                    alert('短消息不能发送给自己!');
                     return false;
                 }
             }
             if (sendcontent.replace(/(^\s*)|(\s*$)/g, "").replace('\r\n', "") == '') {
-                ShowAlertMsg('请输入短消息内容!');
+                alert('请输入短消息内容!');
                 $('#sendContent').val("");
                 return false;
             }
@@ -315,47 +260,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 data: option,
                 type: 'post',
                 success: function(msg){
+                	alert(msg.err+"|"+msg.result);
                     if (msg != null){
                         if(msg.err=="error"){
-                            ShowAlertMsg(msg.msg);
+                            alert(msg.msg);
                         }else{
                             if (msg.result == "1"){
-                                ShowAlert("icon_successSF2 textcenter","发送成功!");
-                                $("#toSendName").val("");
-                                $("#sendContent").val("");
+                                alert("发送成功!");
                                 setTimeout(function(){location.reload();},1000);
-                            }
-                            else{
-                                ShowAlert("icon_crySF2",msg.msg);
+                            }else{
+                                alert(msg.msg);
                             }
                         }
                     }
                 },
                 error: function() {
-                    ShowAlert("icon_failed2 textcenter","发送失败!");
+                    alert("发送失败!");
                 }
             });
-        }
-        //提示窗口
-        function ShowAlert(msgclass,msg){
-            $('#msgClass').attr("class",msgclass);
-            $('#showMess h2').html(msg);
-            $('#showMess h1').html(msg);
-            if(msgclass=='icon_crySF2'){
-                var h = $('#showMess h2');
-                h.replaceWith('<h1>' + msg + '</h1>');
-            }else{
-                var h = $('#showMess h1');
-                h.replaceWith('<h2>' + msg + '</h2>');
-            }
-            $('#showMess').show();
-            window.setTimeout(function(){$('#showMess').hide()}, 1000);
-        }
-        function ShowAlertMsg(msg){
-            $('#textValue').html(msg);
-            $('#tipMessage').jqmShow();
-        }
-        
+        }        
     </script>
 
 

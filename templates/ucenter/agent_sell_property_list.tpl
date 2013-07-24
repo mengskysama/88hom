@@ -90,7 +90,7 @@
 			    <td width="55" height="80" align="center" valign="middle" class="bor">
 			    	<label><input name="" type="checkbox" value="<!--{$propList[prop].propKind}--><!--{$propList[prop].propId}-->" / ></label></td>
 			    <td width="225" align="left" valign="middle" class="bor">
-			    	<img src="<!--{$cfg.web_url}-->uploads/<!--{$propList[prop].propPhoto}-->" class="l">
+			    	<img width="74px" height="58px" src="<!--{$cfg.web_url}-->uploads/<!--{$propList[prop].propPhoto}-->" class="l">
 			        <span class="l wz">
 			        	名称：<!--{$propList[prop].propName}--><br /> 			        	
 					 	<!--{if $propList[prop].propKind eq 'zz' or $propList[prop].propKind eq 'bs'}-->

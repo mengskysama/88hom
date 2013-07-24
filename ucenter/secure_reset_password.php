@@ -16,16 +16,18 @@ if(isset($_POST['btn_confirm_reset'])){
 		$errMsg = "两次输入的密码不一，修改密码失败";
 	}else{
 		$userPwd = $UCUser['userPassword'];
+		//echo sysAuth($userPwd,'DECODE').','.$oldPwd;
 		if(sysAuth($userPwd,'DECODE') != $oldPwd){
 			$errCode = 2;
 			$errMsg = "密码不正确，修改密码失败";
 		}
-		if($errCode == 0){
+		if($errCode === 0){
 			$userService = new UserService($db);
 			$UCUser['userPassword'] = sysAuth($newPwd);
 			$result = $userService->updateUser($UCUser);
 			if($result>0){
 				$errMsg = "修改密码成功";
+				$_SESSION['UCUser'] = $UCUser;
 			}else{
 				$errMsg = "修改密码失败，请重试";
 			}

@@ -1,10 +1,43 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-24 23:07:33
+         compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\secure_reset_mobile.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:2459051efe5d7c02e91-19878665%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'd1d4ef23ed5334b7d5ecb487a56bbed66f6ce1ef' => 
+    array (
+      0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\secure_reset_mobile.tpl',
+      1 => 1374678431,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '2459051efe5d7c02e91-19878665',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51efe5d7d42eb0_18867264',
+  'variables' => 
+  array (
+    'cfg' => 0,
+    'jsFiles' => 0,
+    'cssFiles' => 0,
+    'userName' => 0,
+    'errMsg' => 0,
+    'oldUserPhone' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_51efe5d7d42eb0_18867264')) {function content_51efe5d7d42eb0_18867264($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
+" />
 <title>安全中心-手机</title>
-<!--{$jsFiles}-->
-<!--{$cssFiles}-->
+<?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
+
+<?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
+
 <script language="javascript" type="text/javascript">
 
 var ismobilevalid = false;
@@ -105,7 +138,8 @@ function check_mobile() {
 function refresh_code() {
     var codefor = $("#userPhone").val();
     var v_random = Math.round(Math.random() * 10000);
-    $("#imgcode").attr("src", '<!--{$cfg.web_url}-->/common/libs/api/line_captcha.php?code=' + v_random + '&codefor=' + codefor);
+    $("#imgcode").attr("src", '<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+/common/libs/api/line_captcha.php?code=' + v_random + '&codefor=' + codefor);
 }
 
 function sendCertCode() {
@@ -150,7 +184,8 @@ function sendCertCode() {
 
 <body>
 <!--头部-->
-<!--{include file="$header"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['header']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 <!--中间-->
 <div class="gr_zj">
 	<div class="zl_b">
@@ -167,7 +202,8 @@ function sendCertCode() {
              </div>
             <div class="zl_nr">
             	<div class="zl_l">
-                	<span>您好，<font class="red"><!--{$userName}--></font></span>
+                	<span>您好，<font class="red"><?php echo $_smarty_tpl->tpl_vars['userName']->value;?>
+</font></span>
 						<ul class="zlfl">
                     		<li><a href="secure_reset_password.php">密码修改</a></li>
                             <li><a href="secure_reset_email.php">邮箱修改</a></li>
@@ -179,27 +215,32 @@ function sendCertCode() {
             	<div class="sjzc1_reset_mobile" id="div_mathcode" style="display: none;">
                	  <table width="180" height="58" border="0" cellspacing="0" cellpadding="0">
                         <tr>
-                            <td width="85"><img src='<!--{$cfg.web_code_line}-->' id='imgcode' name='imgcode'  onClick="this.src=this.src+'?op=login&'+Math.random()" style='cursor:pointer;'></td>
+                            <td width="85"><img src='<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_code_line'];?>
+' id='imgcode' name='imgcode'  onClick="this.src=this.src+'?op=login&'+Math.random()" style='cursor:pointer;'></td>
                             <td width="47"><input type="text" value="" maxlength="4" class="yz_input" id="txt_mathcode" /></td>
-                            <td width="44"><image id="btn_mathcode" src="<!--{$cfg.web_images}-->ucenter/qd.jpg" onclick="return sendCertCode();"></td>
+                            <td width="44"><image id="btn_mathcode" src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/qd.jpg" onclick="return sendCertCode();"></td>
                         </tr>
                         <tr>
                             <td><span class="blue"><a href="javascript:void(0);" onclick="refresh_code();">换一题</a></span></td>
-                            <td colspan="2"><img src="<!--{$cfg.web_images}-->ucenter/yz_bq.gif" style="vertical-align:middle;"> 请输入答案</td>
+                            <td colspan="2"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_images'];?>
+ucenter/yz_bq.gif" style="vertical-align:middle;"> 请输入答案</td>
                         </tr>
                     </table>
                 </div>
 					<table width="90%" border="0" cellspacing="0" cellpadding="0">
 						  <tr>
-  							  <td align="middle" colspan="2"><font color="red"><!--{$errMsg}--></font>
+  							  <td align="middle" colspan="2"><font color="red"><?php echo $_smarty_tpl->tpl_vars['errMsg']->value;?>
+</font>
                                </td>
 						  </tr>
-						  <!--{if $oldUserPhone != ''}-->
+						  <?php if ($_smarty_tpl->tpl_vars['oldUserPhone']->value!=''){?>
 						  <tr>
   							  <td width="120" height="48" align="right" valign="middle" class="f14 z3">原始手机号：</td>
-  							  <td width="450" class="p5 z14"><!--{$oldUserPhone}--></td>
+  							  <td width="450" class="p5 z14"><?php echo $_smarty_tpl->tpl_vars['oldUserPhone']->value;?>
+</td>
 						  </tr>
-						  <!--{/if}-->
+						  <?php }?>
  						  <tr>
    							 <td width="120" height="48" align="right" valign="middle" class="f14 z3">输入新手机号：</td>
                                 <td width="450">
@@ -232,6 +273,8 @@ function sendCertCode() {
     </div>
 </div>
 <!--底部-->
-<!--{include file="$footer"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['footer']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 </body>
 </html>
+<?php }} ?>

@@ -107,6 +107,7 @@ function sendVcode(mobile, mathcode) {
         	
             if (req == 200) {
                 refresh_code();
+            	alert("验证码已发送");
                 document.getElementById("div_mathcode").style.display = "none";
                 //updateTimeLabel(120);
             } else if (req == 201) {
@@ -115,7 +116,7 @@ function sendVcode(mobile, mathcode) {
                 $("#txt_mathcode").focus();
             } else if (req == 205) {
                 //显示运算输入
-            	ShowWrong('', "验证码不正确", "");
+            	alert("验证码不正确");
                 document.getElementById("div_mathcode").style.display = "";
                 $("#txt_mathcode").focus();
             } else {
