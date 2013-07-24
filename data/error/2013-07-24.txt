@@ -1,0 +1,98 @@
+------------------------2013-07-24 14:30:40
+错误SQL语句：
+select * from ecms_expired_prop_stat where userId= and txType=1
+客户端:127.0.0.1
+时间:2013-07-24 14:30:40
+------------------------2013-07-24 14:30:41
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId= and houseSellRentType=1 and houseState=0
+客户端:127.0.0.1
+时间:2013-07-24 14:30:41
+------------------------2013-07-24 14:30:41
+错误SQL语句：
+select count(villaId) as propTotal from ecms_villa where villaUserId= and villaSellRentType=1 and villaState=0
+客户端:127.0.0.1
+时间:2013-07-24 14:30:41
+------------------------2013-07-24 14:30:41
+错误SQL语句：
+select count(officeId) as propTotal from ecms_office where officeUserId= and officeSellRentType=1 and officeState=0
+客户端:127.0.0.1
+时间:2013-07-24 14:30:41
+------------------------2013-07-24 14:30:41
+错误SQL语句：
+select count(shopsId) as propTotal from ecms_shops where shopsUserId= and shopsSellRentType=1 and shopsState=0
+客户端:127.0.0.1
+时间:2013-07-24 14:30:41
+------------------------2013-07-24 14:30:41
+错误SQL语句：
+select count(factoryId) as propTotal from ecms_factory where factoryUserId= and factorySellRentType=1 and factoryState=0
+客户端:127.0.0.1
+时间:2013-07-24 14:30:41
+------------------------2013-07-24 14:30:41
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId= and houseSellRentType=1 and houseState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-24 14:30:41
+------------------------2013-07-24 14:30:41
+错误SQL语句：
+select count(villaId) as propTotal from ecms_villa where villaUserId= and villaSellRentType=1 and villaState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-24 14:30:41
+------------------------2013-07-24 14:30:41
+错误SQL语句：
+select count(officeId) as propTotal from ecms_office where officeUserId= and officeSellRentType=1 and officeState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-24 14:30:41
+------------------------2013-07-24 14:30:41
+错误SQL语句：
+select count(shopsId) as propTotal from ecms_shops where shopsUserId= and shopsSellRentType=1 and shopsState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-24 14:30:41
+------------------------2013-07-24 14:30:41
+错误SQL语句：
+select count(factoryId) as propTotal from ecms_factory where factoryUserId= and factorySellRentType=1 and factoryState in(1,5)
+客户端:127.0.0.1
+时间:2013-07-24 14:30:41
+------------------------2013-07-24 14:30:41
+错误SQL语句：
+select count(houseId) as propTotal from ecms_house where houseUserId= and houseSellRentType=1 and houseState=4
+客户端:127.0.0.1
+时间:2013-07-24 14:30:41
+------------------------2013-07-24 14:30:41
+错误SQL语句：
+select count(villaId) as propTotal from ecms_villa where villaUserId= and villaSellRentType=1 and villaState=4
+客户端:127.0.0.1
+时间:2013-07-24 14:30:41
+------------------------2013-07-24 14:30:41
+错误SQL语句：
+select count(officeId) as propTotal from ecms_office where officeUserId= and officeSellRentType=1 and officeState=4
+客户端:127.0.0.1
+时间:2013-07-24 14:30:41
+------------------------2013-07-24 14:30:41
+错误SQL语句：
+select count(shopsId) as propTotal from ecms_shops where shopsUserId= and shopsSellRentType=1 and shopsState=4
+客户端:127.0.0.1
+时间:2013-07-24 14:30:41
+------------------------2013-07-24 14:30:41
+错误SQL语句：
+select count(factoryId) as propTotal from ecms_factory where factoryUserId= and factorySellRentType=1 and factoryState=4
+客户端:127.0.0.1
+时间:2013-07-24 14:30:41
+------------------------2013-07-24 14:51:21
+错误SQL语句：
+update ecms_factory set factoryNumber='123456789981',factoryAddress='一路向西',factoryType=2,factorySellPrice=3001,factoryProFee=31,factoryManagentUnits='你哈哈哈哈哈1',factoryPayInfo=1,factoryFloorArea=3001,factoryBuildArea=2501,factoryOfficeArea=4001,factoryWorkshopArea=4501,factorySpaceArea=3001,factoryDormitory='等等等1',factoryBuildYear=2001,factorySpan=21,factoryAllFloor=21,factoryFloorHeight=11,factoryLoadBearing=51,factoryBuildStructure='等待1',factoryWater='搜索1',factoryHasCapacityNow='21',factoryHasCapacityMax='31',factoryRentPrice=0,factoryIncludFee=,factoryPayment=0,factoryPayDetailY=0,factoryPayDetailF=0,factoryLeastYear=,factorySellRentType=1,factoryProvince=4,factoryCity=8,factoryDistrict=1,factoryArea=4,factoryContent='<p>
+	新年快乐</p>
+<p>
+	恭喜发财1</p>
+',factoryTraffic='身体健康1',factoryState=1,factoryUpdateTime=1374648681 where factoryId=12
+客户端:127.0.0.1
+时间:2013-07-24 14:51:21
+------------------------2013-07-24 14:53:58
+错误SQL语句：
+update ecms_factory set factoryNumber='123456789981',factoryAddress='一路向西',factoryType=2,factorySellPrice=3001,factoryProFee=31,factoryManagentUnits='你哈哈哈哈哈1',factoryPayInfo=1,factoryFloorArea=3001,factoryBuildArea=2501,factoryOfficeArea=4001,factoryWorkshopArea=4501,factorySpaceArea=3001,factoryDormitory='等等等1',factoryBuildYear=2001,factorySpan=21,factoryAllFloor=21,factoryFloorHeight=11,factoryLoadBearing=51,factoryBuildStructure='等待1',factoryWater='搜索1',factoryHasCapacityNow='21',factoryHasCapacityMax='31',factoryRentPrice=0,factoryIncludFee=0,factoryPayment=0,factoryPayDetailY=0,factoryPayDetailF=0,factoryLeastYear=,factorySellRentType=1,factoryProvince=4,factoryCity=8,factoryDistrict=1,factoryArea=4,factoryContent='<p>
+	新年快乐</p>
+<p>
+	恭喜发财1</p>
+',factoryTraffic='身体健康1',factoryState=1,factoryUpdateTime=1374648838 where factoryId=12
+客户端:127.0.0.1
+时间:2013-07-24 14:53:58

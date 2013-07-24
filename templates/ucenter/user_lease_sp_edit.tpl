@@ -27,7 +27,7 @@ $(function() {
             $("#btn_live").removeAttr("disabled");
         }
     });
-
+	textCounter(document.getElementById('shopsTitle'),document.getElementById('shopsTitleAlert'),30);
 	<!--{foreach from=$picTypeList item=item key=key}-->
     initPicUp3(<!--{$key}-->,'<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
 	<!--{/foreach}-->
@@ -43,6 +43,7 @@ function check(){
     if (val == 1 && !checkShopsTransferFee('shopsTransferFee')) {
         return false;
     }
+    if(!checkShopsPayment()) return false;
 	
 	if(!CheckBuildingArea('shopsBuildArea',true)) return false;
 	if(!CheckFloor('shopsFloor','shopsAllFloor',true)) return false;
@@ -172,8 +173,6 @@ function checkRentPrice(){
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">商铺状态</td>
-  <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">商铺状态</td>
     <td align="left" valign="middle" class="p25"> 
     	<label><input id="" name="shopsRentState" type="radio" value="1" <!--{if $shopsRentState eq 1 }--> checked="checked" <!--{/if}--> /> 营业中</label>     
       	<label><input id="" name="shopsRentState" type="radio" value="2" <!--{if $shopsRentState eq 2 }--> checked="checked" <!--{/if}--> /> 闲置中  </label>    
@@ -201,11 +200,11 @@ function checkRentPrice(){
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否转让</td>
     <td align="left" valign="middle" class="p25">
-    	<label><input id="" name="shopsTransfer" type="radio" value="1" <!--{if $shopsTransfer eq 2 }--> checked="checked" <!--{/if}--> /> 是</label>     
+    	<label><input id="" name="shopsTransfer" type="radio" value="1" <!--{if $shopsTransfer eq 1 }--> checked="checked" <!--{/if}--> /> 是</label>     
       	<label> <input id="" name="shopsTransfer" type="radio" value="2" <!--{if $shopsTransfer eq 2 }--> checked="checked" <!--{/if}--> /> 否</label>   
     </td>
   </tr>
-  <!--{if $shopsIncludFee eq 1 }-->
+  <!--{if $shopsTransfer eq 1 }-->
   <tr id="tr_shopsTransferFee">
   <!--{else}-->
   <tr id="tr_shopsTransferFee" style="display: none;">
@@ -216,7 +215,7 @@ function checkRentPrice(){
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
-			    <input id="villaPayment" checked="checked" name="shopsPayment" type="radio" value="1" <!--{if $shopsPayment eq 1 }--> checked="checked" <!--{/if}--> onclick="changeShopPaydetail()"/>押&nbsp;
+			    <input id="shopsPayment" checked="checked" name="shopsPayment" type="radio" value="1" <!--{if $shopsPayment eq 1 }--> checked="checked" <!--{/if}--> onclick="changeShopPaydetail()"/>押&nbsp;
 				<select name="shopsPayDetailY" id="shopsPayDetailY" style=" vertical-align:middle">
 				<option selected="selected" value="">请选择</option>
 				<option value="0" <!--{if $shopsPayDetailY eq 0 }--> selected="selected" <!--{/if}-->>零</option>
@@ -234,7 +233,7 @@ function checkRentPrice(){
                                     <option value="6" <!--{if $shopsPayDetailF eq 6 }--> selected="selected" <!--{/if}-->>六个月</option>
                                     <option value="12 <!--{if $shopsPayDetailF eq 12 }--> selected="selected" <!--{/if}-->">十二个月</option>
  				</select>
-			    <input id="villaPayment" name="shopsPayment" type="radio" value="2" <!--{if $shopsPayment eq 2 }--> checked="checked" <!--{/if}--> onclick="changeShopPaydetail();" />面议
+			    <input id="shopsPayment" name="shopsPayment" type="radio" value="2" <!--{if $shopsPayment eq 2 }--> checked="checked" <!--{/if}--> onclick="changeShopPaydetail();" />面议
 				</td>
 			  </tr>
   <tr>
@@ -335,7 +334,7 @@ function checkRentPrice(){
 			        	<dl id="pic_<!--{$key_}-->">
         	        		<dt><img src="<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->"></dt>
         	        		<dd><span class="redlink"><a href="javascript:void(0)" onclick="changeTopicImg('<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->','<!--{$item_.picThumb}-->','<!--{$item_.picUrl}-->')">设为标题图</a></span></dd>
-        	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<!--{$item_.picInfo}-->"/><a href="javascript:void(0)" onclick="dropContainer('pic_<!--{$key_}-->')"><img src="<!--{$cfg.web_url}-->templates/images/ucenter/cha.JPG"></a></dd>
+        	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<!--{$item_.picInfo}-->"/><a href="javascript:void(0)" onclick="dropContainer('pic_<!--{$key_}-->')"><img src="<!--{$cfg.web_url}-->templates/images/ucenter/cha.jpg"></a></dd>
         	    		<input type="hidden" name="picPath[]" value="<!--{$item_.picUrl}-->"/>
         	    		<input type="hidden" name="picPathThumb[]" value="<!--{$item_.picThumb}-->"/>
         	    		<input type="hidden" name="picTypeId[]" value="<!--{$item_.pictypeId}-->"/>

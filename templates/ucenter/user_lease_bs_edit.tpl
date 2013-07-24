@@ -27,6 +27,7 @@ $(function() {
             $("#btn_live").removeAttr("disabled");
         }
     });
+    textCounter(document.getElementById('villaTitle'),document.getElementById('villaTitleAlert'),30);
 	<!--{foreach from=$picTypeList item=item key=key}-->
     initPicUp3(<!--{$key}-->,'<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
 	<!--{/foreach}-->
@@ -392,7 +393,7 @@ function checkRentPrice(){
   <tr id="tr_villaParkingPlaceCount" style="display: none;">
   <!--{/if}-->
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车位数量</td>
-    <td align="left" valign="middle" class="p25 grzc_35"><input id="villaParkingPlaceCount" name="villaParkingPlaceCount" type="text" maxlength="2" value="<!--{$villaParkingPlaceCount}-->/> <font class="z3">个</font></td>
+    <td align="left" valign="middle" class="p25 grzc_35"><input id="villaParkingPlaceCount" name="villaParkingPlaceCount" type="text" maxlength="2" value="<!--{$villaParkingPlaceCount}-->"/> <font class="z3">个</font></td>
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>
@@ -470,7 +471,7 @@ function checkRentPrice(){
 			        	<dl id="pic_<!--{$key_}-->">
         	        		<dt><img src="<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->"></dt>
         	        		<dd><span class="redlink"><a href="javascript:void(0)" onclick="changeTopicImg('<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->','<!--{$item_.picThumb}-->','<!--{$item_.picUrl}-->')">设为标题图</a></span></dd>
-        	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<!--{$item_.picInfo}-->"/><a href="javascript:void(0)" onclick="dropContainer('pic_<!--{$key_}-->')"><img src="<!--{$cfg.web_url}-->templates/images/ucenter/cha.JPG"></a></dd>
+        	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<!--{$item_.picInfo}-->"/><a href="javascript:void(0)" onclick="dropContainer('pic_<!--{$key_}-->')"><img src="<!--{$cfg.web_url}-->templates/images/ucenter/cha.jpg"></a></dd>
         	    		<input type="hidden" name="picPath[]" value="<!--{$item_.picUrl}-->"/>
         	    		<input type="hidden" name="picPathThumb[]" value="<!--{$item_.picThumb}-->"/>
         	    		<input type="hidden" name="picTypeId[]" value="<!--{$item_.pictypeId}-->"/>

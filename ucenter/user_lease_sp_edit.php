@@ -67,6 +67,20 @@ if($property){
 	$shopsTitle = $property['shopsTitle'];
 	$shopsContent = $property['shopsContent'];
 	$shopsState = $property['shopsState'];
+	$shopsRentState =$property['shopsRentState'];
+	$shopsIncludFee =$property['shopsIncludFee'];
+	$shopsTransfer =$property['shopsTransfer'];
+	$shopsTransferFee =$property['shopsTransferFee'];
+	$shopsPayment =$property['shopsPayment'];
+	$shopsPayDetailY =$property['shopsPayDetailY'];
+	$shopsPayDetailF =$property['shopsPayDetailF'];
+	$smarty->assign("shopsRentState",$shopsRentState);
+	$smarty->assign("shopsIncludFee",$shopsIncludFee);
+	$smarty->assign("shopsTransfer",$shopsTransfer);
+	$smarty->assign("shopsTransferFee",$shopsTransferFee);
+	$smarty->assign("shopsPayment",$shopsPayment);
+	$smarty->assign("shopsPayDetailY",$shopsPayDetailY);
+	$smarty->assign("shopsPayDetailF",$shopsPayDetailF);
 
 	$smarty->assign("estId",$estId);
 	$smarty->assign("estName",$estName);

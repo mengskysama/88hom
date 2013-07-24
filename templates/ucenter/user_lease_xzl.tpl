@@ -202,15 +202,15 @@ function checkRentPrice(){
     </td>
   </tr>
   <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>物 业 费</td>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 物 业 费</td>
     <td align="left" valign="middle" class="p25 grzc_32"><input id="officeProFee" name="officeProFee" type="text" /> 元/平米·月
     	</td>
   </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
-			    <input id="villaPayment" checked="checked" name="officePayment" type="radio" value="1" checked="checked" onclick="changeOfficePaydetail()"/>押&nbsp;
-				<select name="shopsPayDetailY" id="officePayDetailY" style=" vertical-align:middle">
+			    <input id="officePayment" checked="checked" name="officePayment" type="radio" value="1" checked="checked" onclick="changeOfficePaydetail()"/>押&nbsp;
+				<select name="officePayDetailY" id="officePayDetailY" style=" vertical-align:middle">
 				<option selected="selected" value="">请选择</option>
 				<option value="0">零</option>
 				<option value="1">一个月</option>
@@ -219,7 +219,7 @@ function checkRentPrice(){
 				<option value="6">六个月</option>
 				</select>
                                                        付&nbsp;
-				<select name="shopsPayDetailF" id="officePayDetailF" style=" vertical-align:middle">
+				<select name="officePayDetailF" id="officePayDetailF" style=" vertical-align:middle">
                                     <option selected="selected" value="">请选择</option>
                                     <option value="1" >一个月</option>
                                     <option value="2">两个月</option>
@@ -227,7 +227,7 @@ function checkRentPrice(){
                                     <option value="6">六个月</option>
                                     <option value="12">十二个月</option>
  				</select>
-			    <input id="villaPayment" name="officePayment" type="radio" value="2" onclick="changeOfficePaydetail();" />面议
+			    <input id="officePayment" name="officePayment" type="radio" value="2" onclick="changeOfficePaydetail();" />面议
 				</td>
 			  </tr>
   <tr>

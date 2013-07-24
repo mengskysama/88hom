@@ -289,7 +289,7 @@ function changepaydetail() {
 			    </td>
 			  </tr>
 			  <tr>
-			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  租    金</td>
+			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 租    金</td>
 			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryRentPrice" name="factoryRentPrice" type="text"  value="" /> <font class="z3">元/月</font></td>
 			  </tr>
 			  <tr>
@@ -309,7 +309,7 @@ function changepaydetail() {
 			    <td align="left" valign="middle" class="p25 grzc_31"><input id="factoryManagentUnits" name="factoryManagentUnits" type="text"  value="" /></td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 支付方式</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
 			    <input id="factoryPayment" checked="checked" name="factoryPayment" type="radio" value="1" onclick="changepaydetail()"/>押&nbsp;
 				<select name="factoryPayDetailY" id="factoryPayDetailY" style=" vertical-align:middle">

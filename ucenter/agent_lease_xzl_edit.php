@@ -46,6 +46,14 @@ if($property){
 	$officeContent = $property['officeContent'];
 	$officeTraffic = $property['officeTraffic'];
 	$officeState = $property['officeState'];
+	$officeIncludFee = $property['officeIncludFee'];
+	$officePayment = $property['officePayment'];
+	$officePayDetailY = $property['officePayDetailY'];
+	$officePayDetailF = $property['officePayDetailF'];
+	$smarty->assign("officeIncludFee",$officeIncludFee);
+	$smarty->assign("officePayment",$officePayment);
+	$smarty->assign("officePayDetailY",$officePayDetailY);
+	$smarty->assign("officePayDetailF",$officePayDetailF);
 	
 	$smarty->assign("estId",$estId);
 	$smarty->assign("estName",$estName);

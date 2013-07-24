@@ -521,12 +521,11 @@ function selectShopsTransfer(visible){
 
 function checkShopsPayment(){
 
-	
 	var val = $('input:radio[name="shopsPayment"]:checked').val();
     if (val == 1) {
         var shopsPayDetailY = document.getElementById("shopsPayDetailY").value;
-        var shopsPayDetailY = document.getElementById("shopsPayDetailF").value;
-        if(villaPayDetailY == ""){
+        var shopsPayDetailF = document.getElementById("shopsPayDetailF").value;
+        if(shopsPayDetailY == ""){
         	alert("请选择支付方式压多少");
         	return false;
         }
@@ -534,6 +533,7 @@ function checkShopsPayment(){
         	alert("请选择支付方式付多少");
         	return false;
         }
+        return true;
     }
 }
 function changeShopPaydetail(){
@@ -565,6 +565,7 @@ function checkOfficePayment(){
         	alert("请选择支付方式付多少");
         	return false;
         }
+        return true;
     }
 }
 function changeOfficePaydetail(){

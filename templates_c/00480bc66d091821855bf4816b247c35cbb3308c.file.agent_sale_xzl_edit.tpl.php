@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-15 10:53:15
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-24 14:44:39
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_sale_xzl_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2304351e35b02b7ba29-91857288%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '00480bc66d091821855bf4816b247c35cbb3308c' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_sale_xzl_edit.tpl',
-      1 => 1373856737,
+      1 => 1374648091,
       2 => 'file',
     ),
   ),
@@ -48,6 +48,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'key_' => 0,
     'topPicThumb' => 0,
     'topPicPath' => 0,
+    'propState' => 0,
     'propId' => 0,
   ),
   'has_nocache_code' => false,
@@ -75,6 +76,16 @@ $(function() {
             $("#btn_update").removeAttr("disabled");
         }
     });      
+		
+    $("#btn_live").click(function() {
+        $("#btn_live").attr("disabled", true);
+        if (check()) {
+            $("#action_to_go").val("1");
+            document.getElementById("xzlForm").submit();
+        } else {
+            $("#btn_live").removeAttr("disabled");
+        }
+    });
 	<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
  $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -115,6 +126,10 @@ function check(){
 	if($("#officeTraffic").val() == ""){
 		alert("请填写交通状况");
 		$("#officeTraffic").focus();
+		return false;
+	}
+	if($("#topPicPath").val() == ""){
+		alert("请选择标题图");
 		return false;
 	}
 	
@@ -167,7 +182,7 @@ function check(){
 " onblur="CheckSwatchPriceOffice('officeSellPrice');" /> 元/平米</td>
   </tr>
   <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>物 业 费</td>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 物 业 费</td>
     <td align="left" valign="middle" class="p25 grzc_32"><input id="officeProFee" name="officeProFee" type="text" value="<?php echo $_smarty_tpl->tpl_vars['officeProFee']->value;?>
 " onblur="checkPropFee('officeProFee',true);" /> 元/平米·月
     	</td>
@@ -310,11 +325,13 @@ uploads/<?php echo $_smarty_tpl->tpl_vars['topPicThumb']->value;?>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
             <td width="120" align="center" valign="middle">
             <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_update" value="修改" /></td>
-            <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
+            <td width="320" height="80" align="center" valign="middle"><?php if ($_smarty_tpl->tpl_vars['propState']->value==0){?><input name="btn_live" type="button" class="mddl1" id="btn_live" value="发布" /><?php }?></td>
 	      </tr>
 	    </table>
 	    <input type="hidden" id="actionType" name="actionType" value="update"/>
 	    <input type="hidden" id="propId" name="propId" value="<?php echo $_smarty_tpl->tpl_vars['propId']->value;?>
+"/>
+	    <input type="hidden" id="action_to_go" name="action_to_go" value="<?php echo $_smarty_tpl->tpl_vars['propState']->value;?>
 "/>
 	    </form>
     </div>

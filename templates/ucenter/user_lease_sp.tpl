@@ -52,7 +52,8 @@ function check(){
 	var val = $('input:radio[name="shopsTransfer"]:checked').val();
     if (val == 1 && !checkShopsTransferFee('shopsTransferFee')) {
         return false;
-    }
+    }    
+    if(!checkShopsPayment()) return false;
 	
 	if(!CheckBuildingArea('shopsBuildArea',true)) return false;
 	if(!CheckFloor('shopsFloor','shopsAllFloor',true)) return false;
@@ -228,7 +229,7 @@ function checkRentPrice(){
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
-			    <input id="villaPayment" checked="checked" name="shopsPayment" type="radio" value="1" checked="checked" onclick="changeShopPaydetail()"/>押&nbsp;
+			    <input id="shopsPayment" checked="checked" name="shopsPayment" type="radio" value="1" checked="checked" onclick="changeShopPaydetail()"/>押&nbsp;
 				<select name="shopsPayDetailY" id="shopsPayDetailY" style=" vertical-align:middle">
 				<option selected="selected" value="">请选择</option>
 				<option value="0">零</option>
@@ -246,7 +247,7 @@ function checkRentPrice(){
                                     <option value="6">六个月</option>
                                     <option value="12">十二个月</option>
  				</select>
-			    <input id="villaPayment" name="shopsPayment" type="radio" value="2" onclick="changeShopPaydetail();" />面议
+			    <input id="shopsPayment" name="shopsPayment" type="radio" value="2" onclick="changeShopPaydetail();" />面议
 				</td>
 			  </tr>
   <tr>

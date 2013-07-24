@@ -27,6 +27,7 @@ $(function() {
             $("#btn_live").removeAttr("disabled");
         }
     });
+    textCounter(document.getElementById('houseTitle'),document.getElementById('houseTitleAlert'),30);
 	<!--{foreach from=$picTypeList item=item key=key}-->
     initPicUp3(<!--{$key}-->,'<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
 	<!--{/foreach}-->
@@ -35,12 +36,12 @@ $(function() {
 function check(){
 	
 	if(!CheckInfoCode('houseNumber',true)) return false;
-	if(!checkRentPrice()) return false;
 	if(!CheckRoom('houseRoom',true)) return false;
 	if(!CheckRoom('houseHall',true)) return false;
 	if(!CheckRoom('houseToilet',true)) return false;
 	if(!CheckRoom('houseKitchen',true)) return false;
 	if(!CheckRoom('houseBalcony',true)) return false;
+	if(!checkRentPrice()) return false;
 	
 	var val = $('input:radio[name="housePayment"]:checked').val();
     if (val == 1) {
@@ -149,7 +150,7 @@ function checkRentPrice(){
 			    <td align="left" valign="middle" class="p25 grzc_33"><input id="privateHouseNumber" name="privateHouseNumber" type="text" value="<!--{$privateHouseNumber}-->" /></td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>户    型</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 户    型</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
 			    <input id="houseRoom" name="houseRoom" type="text" value="<!--{$houseRoom}-->" maxlength="1" onblur="CheckRoom('houseRoom',true)"/> 室 
 			    <input id="houseHall" name="houseHall" type="text" value="<!--{$houseHall}-->" maxlength="1" onblur="CheckRoom('houseHall',true)"/> 厅 
@@ -162,7 +163,7 @@ function checkRentPrice(){
 			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseSellPrice" name="houseSellPrice" type="text" value="<!--{$houseSellPrice}-->"/> 元/月</td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>租赁方式</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 租赁方式</td>
 			    <td align="left" valign="middle" class="p25">
 				<input type="radio" name="houseRentType" id="" onclick="ISJoinLease(1);" value="1" <!--{if $houseRentType eq 1 }--> checked="checked" <!--{/if}--> /> 整租
                 <input type="radio" name="houseRentType" id="" onclick="ISJoinLease(2);" value="2" <!--{if $houseRentType eq 2 }--> checked="checked" <!--{/if}--> /> 合租				
@@ -173,7 +174,7 @@ function checkRentPrice(){
 			  <!--{else}-->
 			  <tr id="tr_houseRentType_join">
 			  <!--{/if}-->
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>合租方式</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 合租方式</td>
 			    <td align="left" valign="middle" class="p25">
 	            <select name="houseRentRoomType" id="houseRentRoomType">
 	              <option <!--{if $houseRentRoomType eq 1 }--> selected="selected" <!--{/if}--> value="1">主卧</option>
@@ -191,7 +192,7 @@ function checkRentPrice(){
 				</td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 支付方式</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
 			    <input id="housePayment" name="housePayment" type="radio" value="1" <!--{if $housePayment eq 1 }--> checked="checked" <!--{/if}--> onclick="changepaydetail()"/>押&nbsp;
 				<select name="housePayDetailY" id="housePayDetailY" style=" vertical-align:middle">
@@ -301,7 +302,7 @@ function checkRentPrice(){
 			        	<dl id="pic_<!--{$key_}-->">
         	        		<dt><img src="<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->"></dt>
         	        		<dd><span class="redlink"><a href="javascript:void(0)" onclick="changeTopicImg('<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->','<!--{$item_.picThumb}-->','<!--{$item_.picUrl}-->')">设为标题图</a></span></dd>
-        	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<!--{$item_.picInfo}-->"/><a href="javascript:void(0)" onclick="dropContainer('pic_<!--{$key_}-->')"><img src="<!--{$cfg.web_url}-->templates/images/ucenter/cha.JPG"></a></dd>
+        	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<!--{$item_.picInfo}-->"/><a href="javascript:void(0)" onclick="dropContainer('pic_<!--{$key_}-->')"><img src="<!--{$cfg.web_url}-->templates/images/ucenter/cha.jpg"></a></dd>
         	    		<input type="hidden" name="picPath[]" value="<!--{$item_.picUrl}-->"/>
         	    		<input type="hidden" name="picPathThumb[]" value="<!--{$item_.picThumb}-->"/>
         	    		<input type="hidden" name="picTypeId[]" value="<!--{$item_.pictypeId}-->"/>

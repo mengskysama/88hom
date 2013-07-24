@@ -27,6 +27,7 @@ $(function() {
             $("#btn_live").removeAttr("disabled");
         }
     });
+    textCounter(document.getElementById('villaTitle'),document.getElementById('villaTitleAlert'),30);
 	<!--{foreach from=$picTypeList item=item key=key}-->
     initPicUp3(<!--{$key}-->,'<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
 	<!--{/foreach}-->

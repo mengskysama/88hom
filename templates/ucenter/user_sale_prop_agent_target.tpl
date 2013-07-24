@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
-<title>我要求购—委托</title>
+<title>我要委托</title>
 <!--{$jsFiles}-->
 <!--{$cssFiles}-->
 </head>

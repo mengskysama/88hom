@@ -46,12 +46,12 @@ function check(){
 	}
 	
 	if(!CheckInfoCode('houseNumber',true)) return false;
-	if(!checkRentPrice()) return false;
 	if(!CheckRoom('houseRoom',true)) return false;
 	if(!CheckRoom('houseHall',true)) return false;
 	if(!CheckRoom('houseToilet',true)) return false;
 	if(!CheckRoom('houseKitchen',true)) return false;
 	if(!CheckRoom('houseBalcony',true)) return false;
+	if(!checkRentPrice()) return false;
 	
 	var val = $('input:radio[name="housePayment"]:checked').val();
     if (val == 1) {

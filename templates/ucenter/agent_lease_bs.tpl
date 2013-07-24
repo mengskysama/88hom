@@ -271,7 +271,7 @@ function checkRentPrice(){
     <input id="" name="villaBuildForm" type="radio" value="4" /> 叠加 </td>
   </tr>
   <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  租    金</td>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 租    金</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="villaRentPrice" name="villaRentPrice" type="text" /> <font class="z3">元/月</font></td>
   </tr>
   <tr>
@@ -282,7 +282,7 @@ function checkRentPrice(){
     </td>
   </tr>
   <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>户    型</td>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 户    型</td>
     <td align="left" valign="middle" class="p25 grzc_36">
     <input id="villaRoom" name="villaRoom" type="text" maxlength="1"/> <font class="z3">室</font> 
     <input id="villaHall" name="villaHall" type="text" maxlength="1"/> <font class="z3">厅</font> 
@@ -291,14 +291,14 @@ function checkRentPrice(){
     <input id="villaBalcony" name="villaBalcony" type="text" maxlength="1"/> <font class="z3">阳台</font></td>
   </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>租赁方式</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 租赁方式</td>
 			    <td align="left" valign="middle" class="p25">
 				<input type="radio" name="villaRentType" id="" value="1" checked="checked" /> 整租
                 <input type="radio" name="villaRentType" id="" value="2"  /> 合租				
 				</td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 支付方式</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
 			    <input id="villaPayment" checked="checked" name="villaPayment" type="radio" value="1" onclick="changepaydetail()"/>押&nbsp;
 				<select name="villaPayDetailY" id="villaPayDetailY" style=" vertical-align:middle">
@@ -415,7 +415,7 @@ function checkRentPrice(){
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">入住时间</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaLiveTime" name="villaLiveTime" type="text" value="<!--{$villaLiveTime}-->" />
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaLiveTime" name="villaLiveTime" type="text" value="" />
     </td>
   </tr>
 </table>

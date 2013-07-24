@@ -53,6 +53,7 @@ if($action == "toAgent"){
 	$propId = $secondPropService->sendPropToAgent($prop);
 	if($propId){
 		header("location:user_prop_agent_target.php?propId=".$propId."&txType=".$txType);
+		exit();
 	}
 	
 	$_SESSION['ERR_MSG_AGENT_PROP'] = "委托失败，请重试";

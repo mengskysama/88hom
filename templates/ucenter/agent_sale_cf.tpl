@@ -284,7 +284,7 @@ function check(){
 			    </td>
 			  </tr>
 			  <tr>
-			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
+			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑年代</td>
 			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryBuildYear" name="factoryBuildYear" type="text" maxlength="4" value="" /> <font class="z3">年</font>   
 			    </td>
 			  </tr>

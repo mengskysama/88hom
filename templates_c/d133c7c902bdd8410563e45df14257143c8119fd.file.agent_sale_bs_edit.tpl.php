@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-15 13:45:46
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-24 14:35:17
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_sale_bs_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1158951e38bcd96d4f3-62092693%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd133c7c902bdd8410563e45df14257143c8119fd' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_sale_bs_edit.tpl',
-      1 => 1373867144,
+      1 => 1374634844,
       2 => 'file',
     ),
   ),
@@ -38,6 +38,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'villaToilet' => 0,
     'villaKitchen' => 0,
     'villaBalcony' => 0,
+    'villaBuildStructure' => 0,
     'villaBuildArea' => 0,
     'villaUseArea' => 0,
     'villaBuildYear' => 0,
@@ -50,6 +51,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'villaGardenArea' => 0,
     'villaGarage' => 0,
     'villaGarageCount' => 0,
+    'villaParkingPlace' => 0,
+    'villaParkingPlaceCount' => 0,
     'villaFitment' => 0,
     'villaBaseService1' => 0,
     'villaBaseService2' => 0,
@@ -66,6 +69,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'key_' => 0,
     'topPicThumb' => 0,
     'topPicPath' => 0,
+    'propState' => 0,
     'propId' => 0,
   ),
   'has_nocache_code' => false,
@@ -93,6 +97,17 @@ $(function() {
             $("#btn_update").removeAttr("disabled");
         }
     });
+		
+    $("#btn_live").click(function() {
+        $("#btn_live").attr("disabled", true);
+        if (check()) {
+            $("#action_to_go").val("1");
+            document.getElementById("bsForm").submit();
+        } else {
+            $("#btn_live").removeAttr("disabled");
+        }
+    });
+    textCounter(document.getElementById('villaTitle'),document.getElementById('villaTitleAlert'),30);
 	<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
  $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -128,6 +143,7 @@ function check(){
 	if($("input[name='villaCellar']:checked").val() == 1 && !CheckCellarArea('villaCellarArea',true)) return false;	
 	if($("input[name='villaGarden']:checked").val() == 1 && !CheckGardenArea('villaGardenArea',true)) return false;
 	if($("input[name='villaGarage']:checked").val() == 1 && !checkVillaGarageCount()) return false;
+	if($("input[name='villaParkingPlace']:checked").val() == 1 && !checkVillaParkingPlaceCount()) return false;
 
 	if(!CheckTitle('villaTitle',true)) return false;
 	var villaContentValue = CKEDITOR.instances.villaContent.getData(); 
@@ -278,6 +294,13 @@ function checkVillaGarageCount(){
 "/> <font class="z3">阳台</font></td>
   </tr>
   <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">厅 结 构</td>
+    <td align="left" valign="middle" class="p25">
+    <input id="" name="villaBuildStructure" type="radio" value="1" <?php if ($_smarty_tpl->tpl_vars['villaBuildStructure']->value==1){?> checked="checked" <?php }?>/> 平层 
+    <input id="" name="villaBuildStructure" type="radio" value="2" <?php if ($_smarty_tpl->tpl_vars['villaBuildStructure']->value==2){?> checked="checked" <?php }?>/> 挑高
+    </td>
+  </tr>
+  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="villaBuildArea" name="villaBuildArea" type="text" maxlength="8" value="<?php echo $_smarty_tpl->tpl_vars['villaBuildArea']->value;?>
 "/> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
@@ -363,6 +386,21 @@ function checkVillaGarageCount(){
   <?php }?>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车库数量</td>
     <td align="left" valign="middle" class="p25 grzc_35"><input id="villaGarageCount" name="villaGarageCount" type="text" maxlength="2" value="<?php echo $_smarty_tpl->tpl_vars['villaGarageCount']->value;?>
+"/> <font class="z3">个</font></td>
+  </tr>
+  <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车位</td>
+    <td align="left" valign="middle" class="p25"> 
+    <input id="" name="villaParkingPlace" type="radio" value="1" <?php if ($_smarty_tpl->tpl_vars['villaParkingPlace']->value==1){?> checked="checked" <?php }?> onclick="selectParkingPlace(1)"/>有 
+    <input id="" name="villaParkingPlace" type="radio" value="0" <?php if ($_smarty_tpl->tpl_vars['villaParkingPlace']->value==0){?> checked="checked" <?php }?> onclick="selectParkingPlace(0)"/> 无</td>
+  </tr>
+  <?php if ($_smarty_tpl->tpl_vars['villaParkingPlace']->value==1){?> 
+  <tr id="tr_villaParkingPlaceCount">
+  <?php }else{ ?> 
+  <tr id="tr_villaParkingPlaceCount" style="display: none;">
+  <?php }?>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车位数量</td>
+    <td align="left" valign="middle" class="p25 grzc_35"><input id="villaParkingPlaceCount" name="villaParkingPlaceCount" type="text" maxlength="2" value="<?php echo $_smarty_tpl->tpl_vars['villaParkingPlaceCount']->value;?>
 "/> <font class="z3">个</font></td>
   </tr>
   <tr>
@@ -469,7 +507,7 @@ uploads/<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
         	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picInfo'];?>
 "/><a href="javascript:void(0)" onclick="dropContainer('pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
 ')"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
-templates/images/ucenter/cha.JPG"></a></dd>
+templates/images/ucenter/cha.jpg"></a></dd>
         	    		<input type="hidden" name="picPath[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
 "/>
         	    		<input type="hidden" name="picPathThumb[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
@@ -502,11 +540,13 @@ uploads/<?php echo $_smarty_tpl->tpl_vars['topPicThumb']->value;?>
 		  <tr>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
             <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_update" value="修改" /></td>
-            <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
+            <td width="320" height="80" align="center" valign="middle"><?php if ($_smarty_tpl->tpl_vars['propState']->value==0){?><input name="btn_live" type="button" class="mddl1" id="btn_live" value="发布" /><?php }?></td>
 	      </tr>
 	    </table>
 	    <input type="hidden" id="actionType" name="actionType" value="update"/>
 	    <input type="hidden" id="propId" name="propId" value="<?php echo $_smarty_tpl->tpl_vars['propId']->value;?>
+"/>
+	    <input type="hidden" id="action_to_go" name="action_to_go" value="<?php echo $_smarty_tpl->tpl_vars['propState']->value;?>
 "/>
 	    </form>
     </div>

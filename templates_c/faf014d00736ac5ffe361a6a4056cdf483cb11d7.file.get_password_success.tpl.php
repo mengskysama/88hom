@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-06-08 15:35:22
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-24 17:06:32
          compiled from "E:/workspace/projects/88hom/templates\ucenter\get_password_success.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2231851b2dd7ba7cfc5-54151729%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'faf014d00736ac5ffe361a6a4056cdf483cb11d7' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\get_password_success.tpl',
-      1 => 1370676910,
+      1 => 1370676964,
       2 => 'file',
     ),
   ),
@@ -65,7 +65,7 @@ ucenter/wjmm_03.jpg" /></td>
 			<?php }?>
 			<?php if ($_smarty_tpl->tpl_vars['err_code']->value==1&&$_smarty_tpl->tpl_vars['pass_channel']->value=='email'){?>
             <tr>
-                <td colspan="2"><div class="jhyj_bg">我们已把密码发到向您的邮箱<a class="red"><?php echo $_smarty_tpl->tpl_vars['receive_mail']->value;?>
+                <td colspan="2"><div class="jhyj_bg">我们已把密码发到您的邮箱<a class="red"><?php echo $_smarty_tpl->tpl_vars['receive_mail']->value;?>
 </a>。<br>注意：收件箱如若找不到该邮件，请尝试在垃圾邮箱查看</div></td>
             </tr>
             <tr>

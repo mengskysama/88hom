@@ -273,7 +273,7 @@ function changepaydetail() {
 			    </td>
 			  </tr>
 			  <tr>
-			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  租    金</td>
+			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 租    金</td>
 			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryRentPrice" name="factoryRentPrice" type="text" value="<!--{$factoryRentPrice}-->" /> <font class="z3">元/月</font></td>
 			  </tr>
 			  <tr>
@@ -293,7 +293,7 @@ function changepaydetail() {
 			    <td align="left" valign="middle" class="p25 grzc_31"><input id="factoryManagentUnits" name="factoryManagentUnits" type="text"  value="<!--{$factoryManagentUnits}-->" /></td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 支付方式</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
 			    <input id="factoryPayment" checked="checked" name="factoryPayment" type="radio" <!--{if $factoryPayment eq 1 }--> checked="checked" <!--{/if}--> value="1" onclick="changepaydetail()"/>押&nbsp;
 				<select name="factoryPayDetailY" id="factoryPayDetailY" style=" vertical-align:middle">
@@ -436,7 +436,7 @@ function changepaydetail() {
 			        	<dl id="pic_<!--{$key_}-->">
         	        		<dt><img src="<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->"></dt>
         	        		<dd><span class="redlink"><a href="javascript:void(0)" onclick="changeTopicImg('<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->','<!--{$item_.picThumb}-->','<!--{$item_.picUrl}-->')">设为标题图</a></span></dd>
-        	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<!--{$item_.picInfo}-->"/><a href="javascript:void(0)" onclick="dropContainer('pic_<!--{$key_}-->')"><img src="<!--{$cfg.web_url}-->templates/images/ucenter/cha.JPG"></a></dd>
+        	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<!--{$item_.picInfo}-->"/><a href="javascript:void(0)" onclick="dropContainer('pic_<!--{$key_}-->')"><img src="<!--{$cfg.web_url}-->templates/images/ucenter/cha.jpg"></a></dd>
         	    		<input type="hidden" name="picPath[]" value="<!--{$item_.picUrl}-->"/>
         	    		<input type="hidden" name="picPathThumb[]" value="<!--{$item_.picThumb}-->"/>
         	    		<input type="hidden" name="picTypeId[]" value="<!--{$item_.pictypeId}-->"/>

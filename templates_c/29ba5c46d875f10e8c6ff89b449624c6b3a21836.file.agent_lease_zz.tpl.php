@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 11:55:27
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-24 15:12:40
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_lease_zz.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2222551e38f8d7b7bf4-34258343%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '29ba5c46d875f10e8c6ff89b449624c6b3a21836' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_lease_zz.tpl',
-      1 => 1374551621,
+      1 => 1374649392,
       2 => 'file',
     ),
   ),
@@ -97,12 +97,12 @@ function check(){
 	}
 	
 	if(!CheckInfoCode('houseNumber',true)) return false;
-	if(!checkRentPrice()) return false;
 	if(!CheckRoom('houseRoom',true)) return false;
 	if(!CheckRoom('houseHall',true)) return false;
 	if(!CheckRoom('houseToilet',true)) return false;
 	if(!CheckRoom('houseKitchen',true)) return false;
 	if(!CheckRoom('houseBalcony',true)) return false;
+	if(!checkRentPrice()) return false;
 	
 	var val = $('input:radio[name="housePayment"]:checked').val();
     if (val == 1) {
@@ -224,7 +224,7 @@ function checkRentPrice(){
 			    <td align="left" valign="middle" class="p25 grzc_33"><input id="privateHouseNumber" name="privateHouseNumber" type="text" /></td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>户    型</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 户    型</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
 			    <input id="houseRoom" name="houseRoom" type="text" maxlength="1"/> 室 
 			    <input id="houseHall" name="houseHall" type="text" maxlength="1"/> 厅 
@@ -237,14 +237,14 @@ function checkRentPrice(){
 			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseSellPrice" name="houseSellPrice" type="text" /> 元/月</td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>租赁方式</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 租赁方式</td>
 			    <td align="left" valign="middle" class="p25">
 				<input type="radio" name="houseRentType" id="" onclick="ISJoinLease(1);" value="1" checked="checked" /> 整租
                 <input type="radio" name="houseRentType" id="" onclick="ISJoinLease(2);" value="2"  /> 合租				
 				</td>
 			  </tr>
 			  <tr id="tr_houseRentType_join" style="display:none;">
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>合租方式</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 合租方式</td>
 			    <td align="left" valign="middle" class="p25">
 	            <select name="houseRentRoomType" id="houseRentRoomType">
 	              <option selected="selected" value="1">主卧</option>
@@ -262,7 +262,7 @@ function checkRentPrice(){
 				</td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 支付方式</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
 			    <input id="housePayment" checked="checked" name="housePayment" type="radio" value="1" onclick="changepaydetail()"/>押&nbsp;
 				<select name="housePayDetailY" id="housePayDetailY" style=" vertical-align:middle">

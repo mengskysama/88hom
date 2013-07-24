@@ -151,8 +151,8 @@ class HousePropertyHandler extends PropertyHandler{
 		$house['houseBuildArea'] = $this->houseBuildArea == "" ? 0 : $this->houseBuildArea;
 		$house['houseUseArea'] = $this->houseUseArea == "" ? 0 : $this->houseUseArea;
 		$house['houseType'] = $this->houseType == "" ? 0 : $this->houseType;
-		$house['houseBuildStructure'] = $this->houseBuildStructure;
-		$house['houseBuildForm'] = $this->houseBuildForm;
+		$house['houseBuildStructure'] = $this->houseBuildStructure == "" ? 0 : $this->houseBuildStructure;
+		$house['houseBuildForm'] = $this->houseBuildForm == "" ? 0 : $this->houseBuildForm;
 		$house['houseForward'] = $this->houseForward;
 		$house['houseFitment'] = $this->houseFitment;
 		$house['houseBaseService'] = $houseBaseService;

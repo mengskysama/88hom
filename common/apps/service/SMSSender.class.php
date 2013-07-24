@@ -4,13 +4,12 @@ class SMSSender{
 		//改demo的功能是群发短信和发单条短信。（传一个手机号就是发单条，多个手机号既是群发）		
 		//您把序列号和密码还有手机号，填上，直接运行就可以了		
 		//如果您的系统是utf-8,请转成GB2312 后，再提交、
-		//请参考 'content'=>iconv( "UTF-8", "gb2312//IGNORE" ,$content),//短信内容
-		
+		//请参考 'content'=>iconv( "UTF-8", "gb2312//IGNORE" ,$content),//短信内容		
 		$flag = 0;
 		//要post的数据
 		$argv = array(
-				'sn'=>'SDK-111-010-01964', ////替换成您自己的序列号
-				'pwd'=>strtoupper(md5('SDK-111-010-01964'.'933769')), //此处密码需要加密 加密方式为 md5(sn+password) 32位大写  此处为百度md5直接加密工具：http://www.baidu.com/s?wd=md5&rsv_spt=1&issp=1&rsv_bp=0&ie=utf-8&tn=baiduhome_pg
+				'sn'=>'SDK-DLS-010-00473', ////替换成您自己的序列号
+				'pwd'=>strtoupper(md5('SDK-DLS-010-00473'.'259963')), //此处密码需要加密 加密方式为 md5(sn+password) 32位大写  此处为百度md5直接加密工具：http://www.baidu.com/s?wd=md5&rsv_spt=1&issp=1&rsv_bp=0&ie=utf-8&tn=baiduhome_pg
 				'mobile'=>$to,//手机号 多个用英文的逗号隔开 post理论没有长度限制.推荐群发一次小于等于10000个手机号
 				'content'=>iconv("UTF-8","GB2312",$content),//短信内容
 				'ext'=>'',
@@ -47,7 +46,6 @@ class SMSSender{
 				$inheader = 0;
 			}
 		}
-		//<string xmlns="http://tempuri.org/">-5</string>
 		$line=str_replace("<string xmlns=\"http://tempuri.org/\">","",$line);
 		$line=str_replace("</string>","",$line);
 		$result=explode("-",$line);

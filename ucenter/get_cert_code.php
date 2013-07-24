@@ -17,8 +17,8 @@ if(!$result){
 }
 
 $smsSender = new SMSSender();
-//$sent = $smsSender->send($userPhone, '您在房不剩房发布委托房源验证码是'.$certCode);
-$sent = true;
+$sent = $smsSender->send($userPhone, '为了确认这是来自您本人的真实信息，请输入手机验证码：'.$certCode.'，24小时内有效哦。【房不剩房】');
+//$sent = true;
 if($sent){
 	echo "200";
 	return;

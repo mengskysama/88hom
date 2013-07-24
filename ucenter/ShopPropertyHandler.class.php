@@ -160,7 +160,7 @@ class ShopPropertyHandler extends PropertyHandler{
 		
 		$shop['shopsRentState'] = $this->shopsRentState;
 		$shop['shopsPayment'] = $this->shopsPayment;
-		$shop['shopsPayDetailY'] = $this->shopsPayDetailF == "" ? -1 : $this->shopsPayDetailF;
+		$shop['shopsPayDetailY'] = $this->shopsPayDetailY == "" ? -1 : $this->shopsPayDetailY;
 		$shop['shopsPayDetailF'] = $this->shopsPayDetailF == "" ? -1 : $this->shopsPayDetailF;
 		$shop['shopsBuildArea'] = $this->shopsBuildArea;
 		$shop['shopsFloor'] = $this->shopsFloor;

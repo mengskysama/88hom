@@ -27,6 +27,7 @@ $(function() {
             $("#btn_live").removeAttr("disabled");
         }
     });
+    textCounter(document.getElementById('officeTitle'),document.getElementById('officeTitleAlert'),30);
 	<!--{foreach from=$picTypeList item=item key=key}-->
     initPicUp3(<!--{$key}-->,'<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
 	<!--{/foreach}-->
@@ -180,14 +181,14 @@ function checkRentPrice(){
     </td>
   </tr>
   <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>物 业 费</td>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 物 业 费</td>
     <td align="left" valign="middle" class="p25 grzc_32"><input id="officeProFee" name="officeProFee" type="text" value="<!--{$officeProFee}-->" /> 元/平米·月
     	</td>
   </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 支付方式</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
-			    <input id="villaPayment" checked="checked" name="officePayment" type="radio" value="1" <!--{if $officePayment eq 1 }--> checked="checked" <!--{/if}--> onclick="changeOfficePaydetail()"/>押&nbsp;
+			    <input id="officePayment" checked="checked" name="officePayment" type="radio" value="1" <!--{if $officePayment eq 1 }--> checked="checked" <!--{/if}--> onclick="changeOfficePaydetail()"/>押&nbsp;
 				<select name="officePayDetailY" id="officePayDetailY" style=" vertical-align:middle">
 				<option selected="selected" value="">请选择</option>
 				<option value="0" <!--{if $officePayDetailY eq 0 }--> selected="selected" <!--{/if}-->>零</option>
@@ -205,7 +206,7 @@ function checkRentPrice(){
                                     <option value="6" <!--{if $officePayDetailF eq 6 }--> selected="selected" <!--{/if}-->>六个月</option>
                                     <option value="12 <!--{if $officePayDetailF eq 12 }--> selected="selected" <!--{/if}-->">十二个月</option>
  				</select>
-			    <input id="villaPayment" name="officePayment" type="radio" value="2" <!--{if $officePayment eq 2 }--> checked="checked" <!--{/if}--> onclick="changeOfficePaydetail();" />面议
+			    <input id="officePayment" name="officePayment" type="radio" value="2" <!--{if $officePayment eq 2 }--> checked="checked" <!--{/if}--> onclick="changeOfficePaydetail();" />面议
 				</td>
 			  </tr>
   <tr>
@@ -282,7 +283,7 @@ function checkRentPrice(){
 			        	<dl id="pic_<!--{$key_}-->">
         	        		<dt><img src="<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->"></dt>
         	        		<dd><span class="redlink"><a href="javascript:void(0)" onclick="changeTopicImg('<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->','<!--{$item_.picThumb}-->','<!--{$item_.picUrl}-->')">设为标题图</a></span></dd>
-        	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<!--{$item_.picInfo}-->"/><a href="javascript:void(0)" onclick="dropContainer('pic_<!--{$key_}-->')"><img src="<!--{$cfg.web_url}-->templates/images/ucenter/cha.JPG"></a></dd>
+        	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<!--{$item_.picInfo}-->"/><a href="javascript:void(0)" onclick="dropContainer('pic_<!--{$key_}-->')"><img src="<!--{$cfg.web_url}-->templates/images/ucenter/cha.jpg"></a></dd>
         	    		<input type="hidden" name="picPath[]" value="<!--{$item_.picUrl}-->"/>
         	    		<input type="hidden" name="picPathThumb[]" value="<!--{$item_.picThumb}-->"/>
         	    		<input type="hidden" name="picTypeId[]" value="<!--{$item_.pictypeId}-->"/>

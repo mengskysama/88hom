@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-22 12:12:27
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-24 14:34:09
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_sell_property_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:845051e3ab6537a956-59315389%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5832570077e3932227e482e445e770e32531bbcd' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_sell_property_list.tpl',
-      1 => 1374466277,
+      1 => 1374592917,
       2 => 'file',
     ),
   ),
@@ -192,6 +192,10 @@ uploads/<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVa
 m<sup>2</sup><br />
 						单价：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['perPriceArea'];?>
 /m<sup>2</sup><br />
+                        <?php }elseif($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='xzl'){?>
+						售价：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propPrice'];?>
+元/平方米  面积：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propArea'];?>
+m<sup>2</sup><br />
                         <?php }else{ ?>
 						售价：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propPrice'];?>
 万 面积：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propArea'];?>

@@ -167,7 +167,7 @@ class FactoryDAO  {
 			$sql .= "factoryRentPrice=".($factory['factoryRentPrice'] == "" ? 0 : $factory['factoryRentPrice']).",";
 		}					
 		if(isset($factory['factoryIncludFee'])){
-			$sql .= "factoryIncludFee=".$factory['factoryIncludFee'].",";
+			$sql .= "factoryIncludFee=".($factory['factoryIncludFee'] == "" ? 0 : $factory['factoryIncludFee']).",";
 		}					
 		if(isset($factory['factoryPayment'])){
 			$sql .= "factoryPayment=".($factory['factoryPayment'] == "" ? 0 : $factory['factoryPayment']).",";
@@ -179,7 +179,7 @@ class FactoryDAO  {
 			$sql .= "factoryPayDetailF=".($factory['factoryPayDetailF'] == "" ? 0 : $factory['factoryPayDetailF']).",";
 		}				
 		if(isset($factory['factoryLeastYear'])){
-			$sql .= "factoryLeastYear=".$factory['factoryLeastYear'].",";
+			$sql .= "factoryLeastYear=".($factory['factoryLeastYear'] == "" ? 0 : $factory['factoryLeastYear']).",";
 		}				
 		if(isset($factory['factorySellRentType'])){
 			$sql .= "factorySellRentType=".$factory['factorySellRentType'].",";

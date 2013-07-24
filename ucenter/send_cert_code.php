@@ -27,8 +27,8 @@ if(!$result){
 }
 
 $smsSender = new SMSSender();
-//$sent = $smsSender->send($userPhone, '房不剩房注册码是'.$certCode);
-$sent = true;
+$sent = $smsSender->send($userPhone, '感谢您注册房不剩房，您的注册码是：'.$certCode.'，24小时内有效哦！【房不剩房】');
+//$sent = true;
 if($sent){
 	echo "200";
 	return;

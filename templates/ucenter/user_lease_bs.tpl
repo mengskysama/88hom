@@ -332,7 +332,7 @@ function checkRentPrice(){
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">朝    向</td>
     <td align="left" valign="middle" class="p25">
-    <input id="" name="villaForward" type="radio" value="1" /> 东 
+    <input id="" name="villaForward" type="radio" value="1" checked="checked" /> 东 
     <input id="" name="villaForward" type="radio" value="2" /> 西  
     <input id="" name="villaForward" type="radio" value="3" /> 南 
     <input id="" name="villaForward" type="radio" value="4" /> 北 </td>
@@ -355,7 +355,7 @@ function checkRentPrice(){
     <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">地下室类型</td>
     <td align="left" valign="middle" class="p25">
     <input id="villaCellarType" name="villaCellarType" type="radio" value="1" /> 全明 
-    <input id="villaCellarType" name="villaCellarType" type="radio" value="2" /> 半明 
+    <input id="villaCellarType" name="villaCellarType" type="radio" value="2" checked="checked" /> 半明 
     <input id="villaCellarType" name="villaCellarType" type="radio" value="3" /> 暗</td>
   </tr>
   <tr>
