@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-19 14:54:07
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-27 11:19:44
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_lease_bs_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1537051e3a39180c750-75609927%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f1729fed9ef1706b886c7066fec8698ce97abb47' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_lease_bs_edit.tpl',
-      1 => 1374216707,
+      1 => 1374893505,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'ckeditLib' => 0,
     'picTypeList' => 0,
     'key' => 0,
     'timestamp' => 0,
@@ -33,6 +32,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'privateVillaNumber' => 0,
     'villaBuildForm' => 0,
     'villaRentPrice' => 0,
+    'villaBuildStructure' => 0,
     'villaRoom' => 0,
     'villaHall' => 0,
     'villaToilet' => 0,
@@ -42,6 +42,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'villaPayment' => 0,
     'villaPayDetailY' => 0,
     'villaPayDetailF' => 0,
+    'villaBuildYear' => 0,
     'villaBuildArea' => 0,
     'villaForward' => 0,
     'villaAllFloor' => 0,
@@ -52,6 +53,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'villaGardenArea' => 0,
     'villaGarage' => 0,
     'villaGarageCount' => 0,
+    'villaParkingPlace' => 0,
+    'villaParkingPlaceCount' => 0,
     'villaFitment' => 0,
     'villaBaseService1' => 0,
     'villaBaseService2' => 0,
@@ -60,8 +63,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'villaBaseService5' => 0,
     'villaBaseService6' => 0,
     'villaLookTime' => 0,
+    'villaLiveTime' => 0,
     'villaTitle' => 0,
-    'villaContent' => 0,
+    'FCKeditor' => 0,
     'item' => 0,
     'propertyDetailPicList' => 0,
     'item_' => 0,
@@ -83,8 +87,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
-<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
-"></script>
 <script>
 $(function() {    
         
@@ -106,6 +108,7 @@ $(function() {
             $("#btn_live").removeAttr("disabled");
         }
     });
+    textCounter(document.getElementById('villaTitle'),document.getElementById('villaTitleAlert'),30);
 	<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
  $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -133,13 +136,28 @@ function check(){
 	if(!CheckRoom('villaToilet',true)) return false;
 	if(!CheckRoom('villaKitchen',true)) return false;
 	if(!CheckRoom('villaBalcony',true)) return false;
+	
+	var val = $('input:radio[name="villaPayment"]:checked').val();
+    if (val == 1) {
+        var villaPayDetailY = document.getElementById("villaPayDetailY").value;
+        var villaPayDetailF = document.getElementById("villaPayDetailF").value;
+        if(villaPayDetailY == ""){
+        	alert("请选择支付方式压多少");
+        	return false;
+        }
+        if(villaPayDetailF == ""){
+        	alert("请选择支付方式付多少");
+        	return false;
+        }
+    }
+	if(!CheckCreateTime('villaBuildYear',false)) return false;
 	if(!CheckRentArea()) return false;
 	if(!checkVillaAllFloor()) return false;
 
 	if($("input[name='villaCellar']:checked").val() == 1 && !CheckCellarArea('villaCellarArea',true)) return false;	
 	if($("input[name='villaGarden']:checked").val() == 1 && !CheckGardenArea('villaGardenArea',true)) return false;
 	if($("input[name='villaGarage']:checked").val() == 1 && !checkVillaGarageCount()) return false;
-
+	if($("input[name='villaParkingPlace']:checked").val() == 1 && !checkVillaParkingPlaceCount()) return false;	
 	
 	if(!CheckTitle('villaTitle',true)) return false;
 	var villaContentValue = CKEDITOR.instances.villaContent.getData(); 
@@ -340,6 +358,13 @@ function checkRentPrice(){
 " /> <font class="z3">元/月</font></td>
   </tr>
   <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">厅 结 构</td>
+    <td align="left" valign="middle" class="p25">
+    <input id="" name="villaBuildStructure" type="radio" value="1" <?php if ($_smarty_tpl->tpl_vars['villaBuildStructure']->value==1){?> checked="checked" <?php }?>/> 平层 
+    <input id="" name="villaBuildStructure" type="radio" value="2" <?php if ($_smarty_tpl->tpl_vars['villaBuildStructure']->value==2){?> checked="checked" <?php }?>/> 挑高
+    </td>
+  </tr>
+  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>户    型</td>
     <td align="left" valign="middle" class="p25 grzc_36">
     <input id="villaRoom" name="villaRoom" type="text" maxlength="1" value="<?php echo $_smarty_tpl->tpl_vars['villaRoom']->value;?>
@@ -384,6 +409,12 @@ function checkRentPrice(){
 			    <input id="villaPayment" name="villaPayment" type="radio" value="2" <?php if ($_smarty_tpl->tpl_vars['villaPayment']->value==2){?> checked="checked" <?php }?> onclick="changepaydetail();" />面议
 				</td>
 			  </tr>
+  <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaBuildYear" name="villaBuildYear" type="text" value="<?php echo $_smarty_tpl->tpl_vars['villaBuildYear']->value;?>
+" maxlength="4" />
+      <font class="z3"> 年</font></td>
+  </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 出租面积</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="villaBuildArea" name="villaBuildArea" type="text" value="<?php echo $_smarty_tpl->tpl_vars['villaBuildArea']->value;?>
@@ -461,6 +492,21 @@ function checkRentPrice(){
 "/> <font class="z3">个</font></td>
   </tr>
   <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车位</td>
+    <td align="left" valign="middle" class="p25"> 
+    <input id="" name="villaParkingPlace" type="radio" value="1" <?php if ($_smarty_tpl->tpl_vars['villaParkingPlace']->value==1){?> checked="checked" <?php }?> onclick="selectParkingPlace(1)"/>有 
+    <input id="" name="villaParkingPlace" type="radio" value="0" <?php if ($_smarty_tpl->tpl_vars['villaParkingPlace']->value==0){?> checked="checked" <?php }?> onclick="selectParkingPlace(0)"/> 无</td>
+  </tr>
+  <?php if ($_smarty_tpl->tpl_vars['villaParkingPlace']->value==1){?> 
+  <tr id="tr_villaParkingPlaceCount">
+  <?php }else{ ?> 
+  <tr id="tr_villaParkingPlaceCount" style="display: none;">
+  <?php }?>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车位数量</td>
+    <td align="left" valign="middle" class="p25 grzc_35"><input id="villaParkingPlaceCount" name="villaParkingPlaceCount" type="text" maxlength="2" value="<?php echo $_smarty_tpl->tpl_vars['villaParkingPlaceCount']->value;?>
+"/> <font class="z3">个</font></td>
+  </tr>
+  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>
     <td align="left" valign="middle" class="p25">
   	    <label><input id="" name="villaFitment" type="radio" value="1" <?php if ($_smarty_tpl->tpl_vars['villaFitment']->value==1){?> checked="checked" <?php }?> /> 豪华装修</label>     
@@ -496,6 +542,12 @@ function checkRentPrice(){
         <label><input id="" name="villaLookTime" type="radio" value="3" <?php if ($_smarty_tpl->tpl_vars['villaLookTime']->value==3){?> checked="checked" <?php }?> /> 电话预约</label>    
     </td>
   </tr>
+  <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">入住时间</td>
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaLiveTime" name="villaLiveTime" type="text" value="<?php echo $_smarty_tpl->tpl_vars['villaLiveTime']->value;?>
+" />
+    </td>
+  </tr>
 </table>
 	
         </div>
@@ -510,12 +562,8 @@ function checkRentPrice(){
 		  </tr>
 		  <tr>
 		    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-		    <td colspan="2" align="left" valign="middle">
-					    <textarea id="villaContent" name="villaContent" cols="86" rows="12" ><?php echo $_smarty_tpl->tpl_vars['villaContent']->value;?>
-</textarea>			    
-			            <script>
-			                CKEDITOR.replace( 'villaContent' );
-			            </script>
+		    <td colspan="2" align="left" valign="middle"><?php echo $_smarty_tpl->tpl_vars['FCKeditor']->value;?>
+
 						            <div class="bs"><span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 					      请勿从其它网站或其它房源描述中拷贝。</span></div>
 							      <div class="bs01">
@@ -565,7 +613,7 @@ uploads/<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
         	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picInfo'];?>
 "/><a href="javascript:void(0)" onclick="dropContainer('pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
 ')"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
-templates/images/ucenter/cha.JPG"></a></dd>
+templates/images/ucenter/cha.jpg"></a></dd>
         	    		<input type="hidden" name="picPath[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
 "/>
         	    		<input type="hidden" name="picPathThumb[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>

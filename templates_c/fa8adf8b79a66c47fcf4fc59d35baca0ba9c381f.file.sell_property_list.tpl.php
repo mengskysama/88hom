@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 10:13:25
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-27 09:33:24
          compiled from "E:/workspace/projects/88hom/templates\ucenter\sell_property_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24351cc05070ec3d9-96504959%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fa8adf8b79a66c47fcf4fc59d35baca0ba9c381f' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\sell_property_list.tpl',
-      1 => 1374466338,
+      1 => 1374721019,
       2 => 'file',
     ),
   ),
@@ -139,7 +139,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <div class="glcx">
        	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 			  <tr>
-			    <td width="55" height="50" align="center" valign="middle" bgcolor="#eeece1"><label><input id="checkall" name="checkall" type="checkbox" value="" / >选中</label></td>
+			    <td width="55" height="50" align="center" valign="middle" bgcolor="#eeece1"><label><input id="checkall" name="checkall" type="checkbox" value=""/>选中</label></td>
 			    <td width="225" height="50" align="center" valign="middle" bgcolor="#eeece1">房源基本信息</td>
 			    <td width="120" height="50" align="center" valign="middle" bgcolor="#eeece1">最后更新</td>
 			    <td width="120" height="50" align="center" valign="middle" bgcolor="#eeece1">录入时间</td>
@@ -179,7 +179,8 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['last']       = ($_sm
 <?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
 " / ></label></td>
 			    <td width="225" align="left" valign="middle" class="bor">
-			    	<img src="../uploads/<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propPhoto'];?>
+			    	<img width="74px" height="58px" src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+uploads/<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propPhoto'];?>
 " class="l">
 			        <span class="l wz">
 			        	名称：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propName'];?>
@@ -191,6 +192,10 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['last']       = ($_sm
 m<sup>2</sup><br />
 						单价：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['perPriceArea'];?>
 /m<sup>2</sup><br />
+                        <?php }elseif($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='xzl'){?>
+						售价：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propPrice'];?>
+元/平方米  面积：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propArea'];?>
+m<sup>2</sup><br />
                         <?php }else{ ?>
 						售价：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propPrice'];?>
 万 面积：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propArea'];?>
@@ -276,21 +281,6 @@ _<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable(
     </div>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-	
-        $("#checkall").click(function(){
-        	var ischecked = this.checked;
-            $("#prop_table input[type='checkbox'],#checkall").each(function(){
-            	this.checked = ischecked;
-                $(this).click(function(){
-                	if(!this.checked){
-                    	$('#checkall').get(0).checked=false;
-                    }
-                });
-            });
-		});
-	});
-	
     //页面刷新
     function reflash(){
     	window.location.reload();

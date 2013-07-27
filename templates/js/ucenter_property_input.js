@@ -17,7 +17,32 @@ $(function() {
 	    	document.getElementById("dis_est_alert").style.display="none";	 
       	  }
     });
+    $("#checkall").click(function(){
+    	var ischecked = this.checked;
+        $("#prop_table input[type='checkbox'],#checkall").each(function(){
+        	this.checked = ischecked;
+            $(this).click(function(){
+            	if(!this.checked){
+                	$('#checkall').get(0).checked=false;
+                }
+            });
+        });
+	});
 });
+
+function checkAllCheckbox(KeyName){
+
+	var ischecked = $("#"+KeyName).checked;
+    $("#prop_table input[type='checkbox'],#checkall").each(function(){
+    	this.checked = ischecked;
+        $(this).click(function(){
+        	if(!this.checked){
+            	$('#checkall').get(0).checked=false;
+            }
+        });
+    });
+}
+
 function emptyEstId(){
 	$("#estId").val("");    
 }

@@ -75,7 +75,7 @@
         <div class="glcx">
        	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 			  <tr>
-			    <td width="55" height="50" align="center" valign="middle" bgcolor="#eeece1"><label><input id="checkall" name="checkall" type="checkbox" value="" / >选中</label></td>
+			    <td width="55" height="50" align="center" valign="middle" bgcolor="#eeece1"><label><input id="checkall" name="checkall" type="checkbox" value=""/>选中</label></td>
 			    <td width="225" height="50" align="center" valign="middle" bgcolor="#eeece1">房源基本信息</td>
 			    <td width="120" height="50" align="center" valign="middle" bgcolor="#eeece1">最后更新</td>
 			    <td width="120" height="50" align="center" valign="middle" bgcolor="#eeece1">录入时间</td>
@@ -159,21 +159,6 @@
     </div>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-	
-        $("#checkall").click(function(){
-        	var ischecked = this.checked;
-            $("#prop_table input[type='checkbox'],#checkall").each(function(){
-            	this.checked = ischecked;
-                $(this).click(function(){
-                	if(!this.checked){
-                    	$('#checkall').get(0).checked=false;
-                    }
-                });
-            });
-		});
-	});
-	
     //页面刷新
     function reflash(){
     	window.location.reload();

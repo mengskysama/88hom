@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 10:18:10
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-27 11:15:00
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_sp.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2744051c7f0a56a3478-23197049%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd003a2e4311d0231366d6cb379966e1c5939056b' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_sp.tpl',
-      1 => 1374545882,
+      1 => 1374894542,
       2 => 'file',
     ),
   ),
@@ -22,12 +22,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'ckeditLib' => 0,
     'picTypeList' => 0,
     'key' => 0,
     'timestamp' => 0,
     'token' => 0,
     'restLivePropsCount' => 0,
+    'FCKeditor' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
@@ -42,8 +42,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
-<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
-"></script>
 <script>
 $(function() {    
 
@@ -248,11 +246,8 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-			    <td colspan="2" align="left" valign="middle" >
-			    <textarea id="shopsContent" name="shopsContent" cols="86" rows="12" ></textarea>			    
-				<script>
-					CKEDITOR.replace( 'shopsContent' );
-				</script>
+			    <td colspan="2" align="left" valign="middle" ><?php echo $_smarty_tpl->tpl_vars['FCKeditor']->value;?>
+
 				<span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 			请勿从其它网站或其它房源描述中拷贝。</span>
 			    	

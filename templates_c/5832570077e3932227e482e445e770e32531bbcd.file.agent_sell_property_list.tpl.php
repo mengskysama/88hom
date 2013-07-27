@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-24 14:34:09
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-27 11:18:29
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_sell_property_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:845051e3ab6537a956-59315389%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5832570077e3932227e482e445e770e32531bbcd' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_sell_property_list.tpl',
-      1 => 1374592917,
+      1 => 1374721097,
       2 => 'file',
     ),
   ),
@@ -179,7 +179,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['last']       = ($_sm
 <?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
 " / ></label></td>
 			    <td width="225" align="left" valign="middle" class="bor">
-			    	<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+			    	<img width="74px" height="58px" src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
 uploads/<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propPhoto'];?>
 " class="l">
 			        <span class="l wz">
@@ -279,20 +279,6 @@ _<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable(
     </div>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-	
-        $("#checkall").click(function(){
-        	var ischecked = this.checked;
-            $("#prop_table input[type='checkbox'],#checkall").each(function(){
-            	this.checked = ischecked;
-                $(this).click(function(){
-                	if(!this.checked){
-                    	$('#checkall').get(0).checked=false;
-                    }
-                });
-            });
-		});
-	});
 	
     //页面刷新
     function reflash(){

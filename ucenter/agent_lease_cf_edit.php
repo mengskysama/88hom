@@ -6,6 +6,7 @@ $tpl_name = $tpl_dir.'agent_lease_cf_edit.tpl';
 $propId = getParameter("propId","GET");
 $propService = new SecondHandPropertyService($db);
 $property = $propService->getFactoryPropertyById($userId,$propId);
+$factoryContent = "";
 if($property){
 
 	$factoryName = $property['factoryName'];
@@ -105,5 +106,7 @@ if($property){
 $picTypeList=$cfg['arr_pic']['2handFactory'];
 $smarty->assign('picTypeList',$picTypeList);
 $smarty->assign('userName',$userName);
+$FCKeditor = createCKeditor('factoryContent',0,400,150,$factoryContent);
+$smarty->assign('FCKeditor',$FCKeditor);
 $smarty->display($tpl_name);
 ?>

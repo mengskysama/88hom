@@ -9,5 +9,7 @@ $picTypeList=$cfg['arr_pic']['2handShop'];
 $smarty->assign('picTypeList',$picTypeList);
 $smarty->assign('userName',$userName);
 $smarty->assign('restLivePropsCount',$restLivePropsCount);
+$FCKeditor = createCKeditor('shopsContent',0,400,150,'');
+$smarty->assign('FCKeditor',$FCKeditor);
 $smarty->display($tpl_name);
 ?>

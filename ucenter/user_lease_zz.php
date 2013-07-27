@@ -9,5 +9,8 @@ $picTypeList=$cfg['arr_pic']['2handHouse'];
 $smarty->assign('picTypeList',$picTypeList);
 $smarty->assign('userName',$userName);
 $smarty->assign('restLivePropsCount',$restLivePropsCount);
+
+$FCKeditor = createCKeditor('houseContent',0,400,150,'');
+$smarty->assign('FCKeditor',$FCKeditor);
 $smarty->display($tpl_name);
 ?>

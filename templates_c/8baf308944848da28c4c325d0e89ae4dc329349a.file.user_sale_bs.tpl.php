@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 10:23:06
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-27 11:14:56
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_bs.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:75451d27095c38000-56840654%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8baf308944848da28c4c325d0e89ae4dc329349a' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_bs.tpl',
-      1 => 1374546174,
+      1 => 1374893594,
       2 => 'file',
     ),
   ),
@@ -22,12 +22,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'ckeditLib' => 0,
     'picTypeList' => 0,
     'key' => 0,
     'timestamp' => 0,
     'token' => 0,
     'restLivePropsCount' => 0,
+    'FCKeditor' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
@@ -42,8 +42,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
-<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
-"></script>
 <script>
 $(function() {    
 	<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
@@ -109,6 +107,7 @@ function check(){
 	if($("input[name='villaCellar']:checked").val() == 1 && !CheckCellarArea('villaCellarArea',true)) return false;	
 	if($("input[name='villaGarden']:checked").val() == 1 && !CheckGardenArea('villaGardenArea',true)) return false;
 	if($("input[name='villaGarage']:checked").val() == 1 && !checkVillaGarageCount()) return false;
+	if($("input[name='villaParkingPlace']:checked").val() == 1 && !checkVillaParkingPlaceCount()) return false;	
 	
 	if(!CheckTitle('villaTitle',true)) return false;
 	var villaContentValue = CKEDITOR.instances.villaContent.getData(); 
@@ -264,6 +263,13 @@ function checkVillaGarageCount(){
     <input id="villaBalcony" name="villaBalcony" type="text" maxlength="1" /> <font class="z3">阳台</font></td>
   </tr>
   <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">厅 结 构</td>
+    <td align="left" valign="middle" class="p25">
+    <input id="" name="villaBuildStructure" type="radio" value="1" checked="checked" /> 平层 
+    <input id="" name="villaBuildStructure" type="radio" value="2" /> 挑高
+    </td>
+  </tr>
+  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="villaBuildArea" name="villaBuildArea" type="text" maxlength="8" /> <font class="z3">平方米</font> 请填写产权面积，如将赠送面积算在内，视为违规。</td>
   </tr>
@@ -323,6 +329,14 @@ function checkVillaGarageCount(){
     <td align="left" valign="middle" class="p25 grzc_35"><input id="villaGarageCount" name="villaGarageCount" type="text" maxlength="2" /> <font class="z3">个</font></td>
   </tr>
   <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车位</td>
+    <td align="left" valign="middle" class="p25"> <input id="" name="villaParkingPlace" type="radio" value="1" onclick="selectParkingPlace(1)"/>有 <input id="" name="villaParkingPlace" type="radio" value="0" checked="checked" onclick="selectParkingPlace(0)"/> 无</td>
+  </tr>
+  <tr id="tr_villaParkingPlaceCount" style="display: none;">
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">车位数量</td>
+    <td align="left" valign="middle" class="p25 grzc_35"><input id="villaParkingPlaceCount" name="villaParkingPlaceCount" type="text" maxlength="2" /> <font class="z3">个</font></td>
+  </tr>
+  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">装修程度</td>
     <td align="left" valign="middle" class="p25">
   	    <label><input id="" name="villaFitment" type="radio" value="1" /> 豪华装修</label>     
@@ -365,11 +379,9 @@ function checkVillaGarageCount(){
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-			    <td colspan="2" align="left" valign="middle">
-						    <textarea id="villaContent" name="villaContent" cols="86" rows="12" ></textarea>			    
-				            <script>
-				                CKEDITOR.replace( 'villaContent' );
-				            </script><div class="bs"><span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
+			    <td colspan="2" align="left" valign="middle"><?php echo $_smarty_tpl->tpl_vars['FCKeditor']->value;?>
+
+			    <div class="bs"><span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
       请勿从其它网站或其它房源描述中拷贝。</span></div>
 		      <div class="bs01">
 		        <strong>注意事项：</strong></br>

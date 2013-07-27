@@ -6,6 +6,7 @@ $tpl_name = $tpl_dir.'user_lease_zz_edit.tpl';
 $propId = getParameter("propId","GET");
 $propService = new SecondHandPropertyService($db);
 $property = $propService->getHousePropertyById($userId,$propId);
+$houseContent = "";
 if($property){
 	$estId = $property['houseCommunityId'];
 	$estName = $property['propName'];
@@ -79,7 +80,6 @@ if($property){
 	$smarty->assign("houseForward",$houseForward);
 	$smarty->assign("houseFitment",$houseFitment);
 	$smarty->assign("houseTitle",$houseTitle);
-	$smarty->assign("houseContent",$houseContent);
 	$smarty->assign("propId",$propId);
 	$smarty->assign("propertyDetailPicList",$propertyDetailPicList);
 	$smarty->assign("propState",$houseState);
@@ -87,5 +87,7 @@ if($property){
 $picTypeList=$cfg['arr_pic']['2handHouse'];
 $smarty->assign('picTypeList',$picTypeList);
 $smarty->assign('userName',$userName);
+$FCKeditor = createCKeditor('houseContent',0,400,150,$houseContent);
+$smarty->assign('FCKeditor',$FCKeditor);
 $smarty->display($tpl_name);
 ?>

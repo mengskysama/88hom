@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-22 11:10:02
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-27 11:16:53
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_lease_sp_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2707051eca28aeb60f6-05718620%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '546131d511c3c66f5f7322a0386251a8ac66c0a2' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_lease_sp_edit.tpl',
-      1 => 1374218073,
+      1 => 1374894500,
       2 => 'file',
     ),
   ),
@@ -15,12 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51eca28b2c05d4_05097187',
   'variables' => 
   array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'ckeditLib' => 0,
     'picTypeList' => 0,
     'key' => 0,
     'timestamp' => 0,
@@ -30,9 +31,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'shopsAddress' => 0,
     'shopsNumber' => 0,
     'shopsType' => 0,
+    'shopsRentState' => 0,
     'shopsRentPrice' => 0,
     'shopsRentPriceUnit' => 0,
+    'shopsIncludFee' => 0,
     'shopsPropFee' => 0,
+    'shopsTransfer' => 0,
+    'shopsTransferFee' => 0,
+    'shopsPayment' => 0,
+    'shopsPayDetailY' => 0,
+    'shopsPayDetailF' => 0,
     'shopsBuildArea' => 0,
     'shopsFloor' => 0,
     'shopsAllFloor' => 0,
@@ -57,7 +65,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'shopsAimOperastion8' => 0,
     'shopsAimOperastion9' => 0,
     'shopsTitle' => 0,
-    'shopsContent' => 0,
+    'FCKeditor' => 0,
     'shopsTraffic' => 0,
     'shopsSet' => 0,
     'item' => 0,
@@ -70,8 +78,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'propId' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_51eca28b2c05d4_05097187',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51eca28b2c05d4_05097187')) {function content_51eca28b2c05d4_05097187($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -83,8 +89,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
-<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
-"></script>
 <script>
 $(function() {
         
@@ -106,7 +110,7 @@ $(function() {
             $("#btn_live").removeAttr("disabled");
         }
     });
-
+	textCounter(document.getElementById('shopsTitle'),document.getElementById('shopsTitleAlert'),30);
 	<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
  $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -130,6 +134,13 @@ function check(){
 	if(!CheckInfoCode('shopsNumber',true)) return false;		
 	if(!checkRentPrice()) return false;
 	if(!checkPropFee('shopsPropFee',true)) return false;
+	
+	var val = $('input:radio[name="shopsTransfer"]:checked').val();
+    if (val == 1 && !checkShopsTransferFee('shopsTransferFee')) {
+        return false;
+    }
+    if(!checkShopsPayment()) return false;
+	
 	if(!CheckBuildingArea('shopsBuildArea',true)) return false;
 	if(!CheckFloor('shopsFloor','shopsAllFloor',true)) return false;
 
@@ -263,6 +274,14 @@ function checkRentPrice(){
         <label><input id="" name="shopsType" type="radio" <?php if ($_smarty_tpl->tpl_vars['shopsType']->value==5){?> checked="checked" <?php }?> value="5" /> 其他</label></td>
   </tr>
   <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">商铺状态</td>
+    <td align="left" valign="middle" class="p25"> 
+    	<label><input id="" name="shopsRentState" type="radio" value="1" <?php if ($_smarty_tpl->tpl_vars['shopsRentState']->value==1){?> checked="checked" <?php }?> /> 营业中</label>     
+      	<label><input id="" name="shopsRentState" type="radio" value="2" <?php if ($_smarty_tpl->tpl_vars['shopsRentState']->value==2){?> checked="checked" <?php }?> /> 闲置中  </label>    
+        <label><input id="" name="shopsRentState" type="radio" value="3" <?php if ($_smarty_tpl->tpl_vars['shopsRentState']->value==3){?> checked="checked" <?php }?> /> 新铺</label></td>
+  </tr>
+  </tr>
+  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  租    金</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsRentPrice" name="shopsRentPrice" type="text" value="<?php echo $_smarty_tpl->tpl_vars['shopsRentPrice']->value;?>
 " />
@@ -271,10 +290,57 @@ function checkRentPrice(){
     <label><input id="" name="shopsRentPriceUnit" type="radio" onclick="checkPrice('1000000000',false)" value="3" <?php if ($_smarty_tpl->tpl_vars['shopsRentPriceUnit']->value==3){?> checked="checked" <?php }?> />元/月</label></td>
   </tr>
   <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否含物业费</td>
+    <td align="left" valign="middle" class="p25">
+    	<label><input id="" name="shopsIncludFee" type="radio" value="1" <?php if ($_smarty_tpl->tpl_vars['shopsIncludFee']->value==1){?> checked="checked" <?php }?>/> 是</label>     
+      	<label> <input id="" name="shopsIncludFee" type="radio" value="2" <?php if ($_smarty_tpl->tpl_vars['shopsIncludFee']->value==2){?> checked="checked" <?php }?>/> 否</label>   
+    </td>
+  </tr>
+  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 物 业 费</td>
     <td align="left" valign="middle" class="p25 grzc_32"><input id="shopsPropFee" name="shopsPropFee" type="text" value="<?php echo $_smarty_tpl->tpl_vars['shopsPropFee']->value;?>
-" /> <font class="z3">元/平米</font></td>
+"/> <font class="z3">元/平米</font></td>
   </tr>
+  <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否转让</td>
+    <td align="left" valign="middle" class="p25">
+    	<label><input id="" name="shopsTransfer" type="radio" value="1" <?php if ($_smarty_tpl->tpl_vars['shopsTransfer']->value==1){?> checked="checked" <?php }?> /> 是</label>     
+      	<label> <input id="" name="shopsTransfer" type="radio" value="2" <?php if ($_smarty_tpl->tpl_vars['shopsTransfer']->value==2){?> checked="checked" <?php }?> /> 否</label>   
+    </td>
+  </tr>
+  <?php if ($_smarty_tpl->tpl_vars['shopsTransfer']->value==1){?>
+  <tr id="tr_shopsTransferFee">
+  <?php }else{ ?>
+  <tr id="tr_shopsTransferFee" style="display: none;">
+  <?php }?>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 转 让 费</td>
+    <td align="left" valign="middle" class="p25 grzc_32"><input id="shopsTransferFee" name="shopsTransferFee" type="text" value="<?php echo $_smarty_tpl->tpl_vars['shopsTransferFee']->value;?>
+" onfocus="resetShopsTransferFee('shopsTransferFee')" onblur="resetShopsTransferFee('shopsTransferFee')"/> <font class="z3">万元</font></td>
+  </tr>
+			  <tr>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
+			    <td align="left" valign="middle" class="p25 grzc_35">
+			    <input id="shopsPayment" checked="checked" name="shopsPayment" type="radio" value="1" <?php if ($_smarty_tpl->tpl_vars['shopsPayment']->value==1){?> checked="checked" <?php }?> onclick="changeShopPaydetail()"/>押&nbsp;
+				<select name="shopsPayDetailY" id="shopsPayDetailY" style=" vertical-align:middle">
+				<option selected="selected" value="">请选择</option>
+				<option value="0" <?php if ($_smarty_tpl->tpl_vars['shopsPayDetailY']->value==0){?> selected="selected" <?php }?>>零</option>
+				<option value="1" <?php if ($_smarty_tpl->tpl_vars['shopsPayDetailY']->value==1){?> selected="selected" <?php }?>>一个月</option>
+				<option value="2" <?php if ($_smarty_tpl->tpl_vars['shopsPayDetailY']->value==2){?> selected="selected" <?php }?>>两个月</option>
+				<option value="3" <?php if ($_smarty_tpl->tpl_vars['shopsPayDetailY']->value==3){?> selected="selected" <?php }?>>三个月</option>
+				<option value="6" <?php if ($_smarty_tpl->tpl_vars['shopsPayDetailY']->value==6){?> selected="selected" <?php }?>>六个月</option>
+				</select>
+                                                       付&nbsp;
+				<select name="shopsPayDetailF" id="shopsPayDetailF" style=" vertical-align:middle">
+                                    <option selected="selected" value="">请选择</option>
+                                    <option value="1" <?php if ($_smarty_tpl->tpl_vars['shopsPayDetailF']->value==1){?> selected="selected" <?php }?>>一个月</option>
+                                    <option value="2" <?php if ($_smarty_tpl->tpl_vars['shopsPayDetailF']->value==2){?> selected="selected" <?php }?>>两个月</option>
+                                    <option value="3" <?php if ($_smarty_tpl->tpl_vars['shopsPayDetailF']->value==3){?> selected="selected" <?php }?>>三个月</option>
+                                    <option value="6" <?php if ($_smarty_tpl->tpl_vars['shopsPayDetailF']->value==6){?> selected="selected" <?php }?>>六个月</option>
+                                    <option value="12 <?php if ($_smarty_tpl->tpl_vars['shopsPayDetailF']->value==12){?> selected="selected" <?php }?>">十二个月</option>
+ 				</select>
+			    <input id="shopsPayment" name="shopsPayment" type="radio" value="2" <?php if ($_smarty_tpl->tpl_vars['shopsPayment']->value==2){?> checked="checked" <?php }?> onclick="changeShopPaydetail();" />面议
+				</td>
+			  </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsBuildArea" name="shopsBuildArea" type="text" value="<?php echo $_smarty_tpl->tpl_vars['shopsBuildArea']->value;?>
@@ -360,12 +426,8 @@ function checkRentPrice(){
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-			    <td colspan="2" align="left" valign="middle" >
-			    <textarea id="shopsContent" name="shopsContent" cols="86" rows="12" ><?php echo $_smarty_tpl->tpl_vars['shopsContent']->value;?>
-</textarea>			    
-				<script>
-					CKEDITOR.replace( 'shopsContent' );
-				</script>
+			    <td colspan="2" align="left" valign="middle" ><?php echo $_smarty_tpl->tpl_vars['FCKeditor']->value;?>
+
 				<span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 			请勿从其它网站或其它房源描述中拷贝。</span>
 			    	
@@ -424,7 +486,7 @@ uploads/<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
         	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picInfo'];?>
 "/><a href="javascript:void(0)" onclick="dropContainer('pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
 ')"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
-templates/images/ucenter/cha.JPG"></a></dd>
+templates/images/ucenter/cha.jpg"></a></dd>
         	    		<input type="hidden" name="picPath[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
 "/>
         	    		<input type="hidden" name="picPathThumb[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>

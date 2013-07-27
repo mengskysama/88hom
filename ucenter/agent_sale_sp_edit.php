@@ -6,6 +6,7 @@ $tpl_name = $tpl_dir.'agent_sale_sp_edit.tpl';
 $propId = getParameter("propId","GET");
 $propService = new SecondHandPropertyService($db);
 $property = $propService->getShopPropertyById($userId,$propId);
+$shopsContent = "";
 if($property){
 	$estId = $property['shopsCommunityId'];
 	$estName = $property['propName'];
@@ -74,7 +75,6 @@ if($property){
 	$smarty->assign("shopsFitment",$shopsFitment);
 	$smarty->assign("propertyDetailPicList",$propertyDetailPicList);
 	$smarty->assign("shopsTitle",$shopsTitle);
-	$smarty->assign("shopsContent",$shopsContent);
 	$smarty->assign("shopsTraffic",$shopsTraffic);
 	$smarty->assign("shopsSet",$shopsSet);
 	$smarty->assign("propId",$propId);
@@ -83,5 +83,7 @@ if($property){
 $picTypeList=$cfg['arr_pic']['2handShop'];
 $smarty->assign('picTypeList',$picTypeList);
 $smarty->assign('userName',$userName);
+$FCKeditor = createCKeditor('shopsContent',0,400,150,$shopsContent);
+$smarty->assign('FCKeditor',$FCKeditor);
 $smarty->display($tpl_name);
 ?>

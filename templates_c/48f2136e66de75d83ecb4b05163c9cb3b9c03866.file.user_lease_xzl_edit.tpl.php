@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-22 11:30:49
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-27 11:17:09
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_lease_xzl_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1536451eca5e018aed9-28931471%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '48f2136e66de75d83ecb4b05163c9cb3b9c03866' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_lease_xzl_edit.tpl',
-      1 => 1374463760,
+      1 => 1374894594,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'ckeditLib' => 0,
     'picTypeList' => 0,
     'key' => 0,
     'timestamp' => 0,
@@ -33,7 +32,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'officeType' => 0,
     'officeRentPrice' => 0,
     'officeRentPriceUnit' => 0,
+    'officeIncludFee' => 0,
     'officeProFee' => 0,
+    'officePayment' => 0,
+    'officePayDetailY' => 0,
+    'officePayDetailF' => 0,
     'officeBuildArea' => 0,
     'officeFloor' => 0,
     'officeAllFloor' => 0,
@@ -41,7 +44,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'officeFitment' => 0,
     'officeLevel' => 0,
     'officeTitle' => 0,
-    'officeContent' => 0,
+    'FCKeditor' => 0,
     'officeTraffic' => 0,
     'item' => 0,
     'propertyDetailPicList' => 0,
@@ -64,8 +67,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
-<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
-"></script>
 <script>
 $(function() {    
         
@@ -87,6 +88,7 @@ $(function() {
             $("#btn_live").removeAttr("disabled");
         }
     });
+    textCounter(document.getElementById('officeTitle'),document.getElementById('officeTitleAlert'),30);
 	<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
  $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -110,6 +112,7 @@ function check(){
 	if(!CheckInfoCode('officeNumber',true)) return false;	
 	if(!checkPrice('0',true)) return false;
 	if(!checkPropFee('officeProFee',true)) return false;
+	if(!checkOfficePayment()) return false;
 	if(!CheckBuildingArea('officeBuildArea',true)) return false;
 	if(!CheckFloor('officeFloor','officeAllFloor',true)) return false;
 	
@@ -251,11 +254,42 @@ function checkRentPrice(){
     </td>
   </tr>
   <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>物 业 费</td>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否含物业费</td>
+    <td align="left" valign="middle" class="p25">
+    	<label><input id="" name="officeIncludFee" type="radio" value="1" <?php if ($_smarty_tpl->tpl_vars['officeIncludFee']->value==1){?> checked="checked" <?php }?>/> 是</label>     
+      	<label> <input id="" name="officeIncludFee" type="radio" value="2" <?php if ($_smarty_tpl->tpl_vars['officeIncludFee']->value==2){?> checked="checked" <?php }?>/> 否</label>   
+    </td>
+  </tr>
+  <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 物 业 费</td>
     <td align="left" valign="middle" class="p25 grzc_32"><input id="officeProFee" name="officeProFee" type="text" value="<?php echo $_smarty_tpl->tpl_vars['officeProFee']->value;?>
 " /> 元/平米·月
     	</td>
   </tr>
+			  <tr>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
+			    <td align="left" valign="middle" class="p25 grzc_35">
+			    <input id="officePayment" checked="checked" name="officePayment" type="radio" value="1" <?php if ($_smarty_tpl->tpl_vars['officePayment']->value==1){?> checked="checked" <?php }?> onclick="changeShopPaydetail()"/>押&nbsp;
+				<select name="officePayDetailY" id="officePayDetailY" style=" vertical-align:middle">
+				<option selected="selected" value="">请选择</option>
+				<option value="0" <?php if ($_smarty_tpl->tpl_vars['officePayDetailY']->value==0){?> selected="selected" <?php }?>>零</option>
+				<option value="1" <?php if ($_smarty_tpl->tpl_vars['officePayDetailY']->value==1){?> selected="selected" <?php }?>>一个月</option>
+				<option value="2" <?php if ($_smarty_tpl->tpl_vars['officePayDetailY']->value==2){?> selected="selected" <?php }?>>两个月</option>
+				<option value="3" <?php if ($_smarty_tpl->tpl_vars['officePayDetailY']->value==3){?> selected="selected" <?php }?>>三个月</option>
+				<option value="6" <?php if ($_smarty_tpl->tpl_vars['officePayDetailY']->value==6){?> selected="selected" <?php }?>>六个月</option>
+				</select>
+                                                       付&nbsp;
+				<select name="officePayDetailF" id="officePayDetailF" style=" vertical-align:middle">
+                                    <option selected="selected" value="">请选择</option>
+                                    <option value="1" <?php if ($_smarty_tpl->tpl_vars['officePayDetailF']->value==1){?> selected="selected" <?php }?>>一个月</option>
+                                    <option value="2" <?php if ($_smarty_tpl->tpl_vars['officePayDetailF']->value==2){?> selected="selected" <?php }?>>两个月</option>
+                                    <option value="3" <?php if ($_smarty_tpl->tpl_vars['officePayDetailF']->value==3){?> selected="selected" <?php }?>>三个月</option>
+                                    <option value="6" <?php if ($_smarty_tpl->tpl_vars['officePayDetailF']->value==6){?> selected="selected" <?php }?>>六个月</option>
+                                    <option value="12 <?php if ($_smarty_tpl->tpl_vars['officePayDetailF']->value==12){?> selected="selected" <?php }?>">十二个月</option>
+ 				</select>
+			    <input id="officePayment" name="officePayment" type="radio" value="2" <?php if ($_smarty_tpl->tpl_vars['officePayment']->value==2){?> checked="checked" <?php }?> onclick="changeShopPaydetail();" />面议
+				</td>
+			  </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="officeBuildArea" name="officeBuildArea" type="text" value="<?php echo $_smarty_tpl->tpl_vars['officeBuildArea']->value;?>
@@ -305,12 +339,8 @@ function checkRentPrice(){
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-			    <td colspan="2" align="left" valign="middle">
-			    <textarea id="officeContent" name="officeContent" cols="86" rows="12" ><?php echo $_smarty_tpl->tpl_vars['officeContent']->value;?>
-</textarea>			    
-				<script>
-					CKEDITOR.replace( 'officeContent' );
-				</script>
+			    <td colspan="2" align="left" valign="middle"><?php echo $_smarty_tpl->tpl_vars['FCKeditor']->value;?>
+
 			    <span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 			请勿从其它网站或其它房源描述中拷贝。</span>
 			         <span>
@@ -362,7 +392,7 @@ uploads/<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
         	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picInfo'];?>
 "/><a href="javascript:void(0)" onclick="dropContainer('pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
 ')"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
-templates/images/ucenter/cha.JPG"></a></dd>
+templates/images/ucenter/cha.jpg"></a></dd>
         	    		<input type="hidden" name="picPath[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
 "/>
         	    		<input type="hidden" name="picPathThumb[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>

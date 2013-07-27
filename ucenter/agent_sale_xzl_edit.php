@@ -6,6 +6,7 @@ $tpl_name = $tpl_dir.'agent_sale_xzl_edit.tpl';
 $propId = getParameter("propId","GET");
 $propService = new SecondHandPropertyService($db);
 $property = $propService->getOfficePropertyById($userId,$propId);
+$officeContent = "";
 if($property){
 	$estId = $property['officeCommunityId'];
 	$estName = $property['propName'];	
@@ -54,7 +55,6 @@ if($property){
 	$smarty->assign("officeFitment",$officeFitment);
 	$smarty->assign("officeLevel",$officeLevel);
 	$smarty->assign("officeTitle",$officeTitle);
-	$smarty->assign("officeContent",$officeContent);
 	$smarty->assign("officeTraffic",$officeTraffic);
 	$smarty->assign("propId",$propId);
 	$smarty->assign("propertyDetailPicList",$propertyDetailPicList);
@@ -63,5 +63,7 @@ if($property){
 $picTypeList=$cfg['arr_pic']['2handOffice'];
 $smarty->assign('picTypeList',$picTypeList);
 $smarty->assign('userName',$userName);
+$FCKeditor = createCKeditor('officeContent',0,400,150,$officeContent);
+$smarty->assign('FCKeditor',$FCKeditor);
 $smarty->display($tpl_name);
 ?>

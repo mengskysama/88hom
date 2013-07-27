@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 11:47:33
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-27 11:14:38
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_lease_sp.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2195551dbc5a847e5a1-01965641%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '929f50b5be0f23b35cd66b5fb0ee9d8f32b81937' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_lease_sp.tpl',
-      1 => 1374551189,
+      1 => 1374894515,
       2 => 'file',
     ),
   ),
@@ -22,12 +22,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'ckeditLib' => 0,
     'picTypeList' => 0,
     'key' => 0,
     'timestamp' => 0,
     'token' => 0,
     'restLivePropsCount' => 0,
+    'FCKeditor' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
@@ -42,8 +42,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
-<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
-"></script>
 <script>
 $(function() {    
 
@@ -99,6 +97,13 @@ function check(){
 	if(!CheckInfoCode('shopsNumber',true)) return false;	
 	if(!checkRentPrice()) return false;
 	if(!checkPropFee('shopsPropFee',true)) return false;
+	
+	var val = $('input:radio[name="shopsTransfer"]:checked').val();
+    if (val == 1 && !checkShopsTransferFee('shopsTransferFee')) {
+        return false;
+    }    
+    if(!checkShopsPayment()) return false;
+	
 	if(!CheckBuildingArea('shopsBuildArea',true)) return false;
 	if(!CheckFloor('shopsFloor','shopsAllFloor',true)) return false;
 	
@@ -238,6 +243,13 @@ function checkRentPrice(){
         <label><input id="" name="shopsType" type="radio" value="5" /> 其他</label></td>
   </tr>
   <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">商铺状态</td>
+    <td align="left" valign="middle" class="p25"> 
+    	<label><input id="" name="shopsRentState" type="radio" value="1" checked="checked"/> 营业中</label>     
+      	<label><input id="" name="shopsRentState" type="radio" value="2"/> 闲置中  </label>    
+        <label><input id="" name="shopsRentState" type="radio" value="3" /> 新铺</label></td>
+  </tr>
+  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  租    金</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsRentPrice" name="shopsRentPrice" type="text" />
     <label><input id="" name="shopsRentPriceUnit" type="radio" onclick="checkPrice('30',false)" value="1" />元/平米·天</label>
@@ -245,9 +257,51 @@ function checkRentPrice(){
     <label><input id="" name="shopsRentPriceUnit" type="radio" onclick="checkPrice('1000000000',false)" value="3" checked="checked" />元/月</label></td>
   </tr>
   <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否含物业费</td>
+    <td align="left" valign="middle" class="p25">
+    	<label><input id="" name="shopsIncludFee" type="radio" value="1"/> 是</label>     
+      	<label> <input id="" name="shopsIncludFee" type="radio" value="2" checked="checked"/> 否</label>   
+    </td>
+  </tr>
+  <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 物 业 费</td>
     <td align="left" valign="middle" class="p25 grzc_32"><input id="shopsPropFee" name="shopsPropFee" type="text"/> <font class="z3">元/平米</font></td>
   </tr>
+  <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否转让</td>
+    <td align="left" valign="middle" class="p25">
+    	<label><input id="" name="shopsTransfer" type="radio" value="1" onclick="selectShopsTransfer(1)"/> 是</label>     
+      	<label> <input id="" name="shopsTransfer" type="radio" value="2" checked="checked" onclick="selectShopsTransfer(2)"/> 否</label>   
+    </td>
+  </tr>
+  <tr id="tr_shopsTransferFee" style="display: none;">
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">转 让 费</td>
+    <td align="left" valign="middle" class="p25 grzc_32"><input id="shopsTransferFee" name="shopsTransferFee" type="text" value="面议" onfocus="resetShopsTransferFee('shopsTransferFee')" onblur="resetShopsTransferFee('shopsTransferFee')"/> <font class="z3">万元</font></td>
+  </tr>
+			  <tr>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
+			    <td align="left" valign="middle" class="p25 grzc_35">
+			    <input id="shopsPayment" checked="checked" name="shopsPayment" type="radio" value="1" checked="checked" onclick="changeShopPaydetail()"/>押&nbsp;
+				<select name="shopsPayDetailY" id="shopsPayDetailY" style=" vertical-align:middle">
+				<option selected="selected" value="">请选择</option>
+				<option value="0">零</option>
+				<option value="1">一个月</option>
+				<option value="2">两个月</option>
+				<option value="3">三个月</option>
+				<option value="6">六个月</option>
+				</select>
+                                                       付&nbsp;
+				<select name="shopsPayDetailF" id="shopsPayDetailF" style=" vertical-align:middle">
+                                    <option selected="selected" value="">请选择</option>
+                                    <option value="1" >一个月</option>
+                                    <option value="2">两个月</option>
+                                    <option value="3">三个月</option>
+                                    <option value="6">六个月</option>
+                                    <option value="12">十二个月</option>
+ 				</select>
+			    <input id="shopsPayment" name="shopsPayment" type="radio" value="2" onclick="changeShopPaydetail();" />面议
+				</td>
+			  </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsBuildArea" name="shopsBuildArea" type="text" maxlength="8" /> <font class="z3">平方米</font></td>
@@ -311,11 +365,8 @@ function checkRentPrice(){
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-			    <td colspan="2" align="left" valign="middle" >
-			    <textarea id="shopsContent" name="shopsContent" cols="86" rows="12" ></textarea>			    
-				<script>
-					CKEDITOR.replace( 'shopsContent' );
-				</script>
+			    <td colspan="2" align="left" valign="middle" ><?php echo $_smarty_tpl->tpl_vars['FCKeditor']->value;?>
+
 				<span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 			请勿从其它网站或其它房源描述中拷贝。</span>
 			    	

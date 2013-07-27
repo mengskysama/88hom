@@ -9,5 +9,7 @@ $picTypeList=$cfg['arr_pic']['2handOffice'];
 $smarty->assign('picTypeList',$picTypeList);
 $smarty->assign('userName',$userName);
 $smarty->assign('restLivePropsCount',$restLivePropsCount);
+$FCKeditor = createCKeditor('officeContent',0,400,150,'');
+$smarty->assign('FCKeditor',$FCKeditor);
 $smarty->display($tpl_name);
 ?>

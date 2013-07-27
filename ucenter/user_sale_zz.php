@@ -14,6 +14,9 @@ $formList = $cfg['arr_build']['2handHouseBuildForm'];
 $smarty->assign('structureList',$structureList);
 $smarty->assign('formList',$formList);
 
+$FCKeditor = createCKeditor('houseContent',0,400,150,'');
+$smarty->assign('FCKeditor',$FCKeditor);
+
 $smarty->assign('userName',$userName);
 $smarty->assign('restLivePropsCount',$restLivePropsCount);
 $smarty->display($tpl_name);

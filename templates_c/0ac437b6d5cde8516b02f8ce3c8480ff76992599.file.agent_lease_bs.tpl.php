@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 15:21:09
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-27 11:18:07
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_lease_bs.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2420151e3a2c8665a03-51576890%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0ac437b6d5cde8516b02f8ce3c8480ff76992599' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_lease_bs.tpl',
-      1 => 1374563612,
+      1 => 1374893485,
       2 => 'file',
     ),
   ),
@@ -22,13 +22,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'ckeditLib' => 0,
     'picTypeList' => 0,
     'key' => 0,
     'timestamp' => 0,
     'token' => 0,
     'restLivePropsCount' => 0,
-    'villaLiveTime' => 0,
+    'FCKeditor' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
@@ -43,8 +42,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
-<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
-"></script>
 <script>
 $(function() {    
 	<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
@@ -326,7 +323,7 @@ function checkRentPrice(){
     <input id="" name="villaBuildForm" type="radio" value="4" /> 叠加 </td>
   </tr>
   <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  租    金</td>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 租    金</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="villaRentPrice" name="villaRentPrice" type="text" /> <font class="z3">元/月</font></td>
   </tr>
   <tr>
@@ -337,7 +334,7 @@ function checkRentPrice(){
     </td>
   </tr>
   <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>户    型</td>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 户    型</td>
     <td align="left" valign="middle" class="p25 grzc_36">
     <input id="villaRoom" name="villaRoom" type="text" maxlength="1"/> <font class="z3">室</font> 
     <input id="villaHall" name="villaHall" type="text" maxlength="1"/> <font class="z3">厅</font> 
@@ -346,14 +343,14 @@ function checkRentPrice(){
     <input id="villaBalcony" name="villaBalcony" type="text" maxlength="1"/> <font class="z3">阳台</font></td>
   </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>租赁方式</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 租赁方式</td>
 			    <td align="left" valign="middle" class="p25">
 				<input type="radio" name="villaRentType" id="" value="1" checked="checked" /> 整租
                 <input type="radio" name="villaRentType" id="" value="2"  /> 合租				
 				</td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 支付方式</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
 			    <input id="villaPayment" checked="checked" name="villaPayment" type="radio" value="1" onclick="changepaydetail()"/>押&nbsp;
 				<select name="villaPayDetailY" id="villaPayDetailY" style=" vertical-align:middle">
@@ -470,8 +467,7 @@ function checkRentPrice(){
   </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">入住时间</td>
-    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaLiveTime" name="villaLiveTime" type="text" value="<?php echo $_smarty_tpl->tpl_vars['villaLiveTime']->value;?>
-" />
+    <td align="left" valign="middle" class="p25 grzc_33"><input id="villaLiveTime" name="villaLiveTime" type="text" value="" />
     </td>
   </tr>
 </table>
@@ -487,11 +483,8 @@ function checkRentPrice(){
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-			    <td colspan="2" align="left" valign="middle">
-						    <textarea id="villaContent" name="villaContent" cols="86" rows="12" ></textarea>			    
-				            <script>
-				                CKEDITOR.replace( 'villaContent' );
-				            </script>
+			    <td colspan="2" align="left" valign="middle"><?php echo $_smarty_tpl->tpl_vars['FCKeditor']->value;?>
+
 				            <div class="bs"><span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 			      请勿从其它网站或其它房源描述中拷贝。</span></div>
 					      <div class="bs01">

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 10:35:00
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-27 11:14:24
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_lease_zz.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:679951dbc5a1346135-67832923%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3890f1f9934565664f7d673ace1f1ac5d7e61195' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_lease_zz.tpl',
-      1 => 1374546891,
+      1 => 1374892873,
       2 => 'file',
     ),
   ),
@@ -22,12 +22,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'ckeditLib' => 0,
     'picTypeList' => 0,
     'key' => 0,
     'timestamp' => 0,
     'token' => 0,
     'restLivePropsCount' => 0,
+    'FCKeditor' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
@@ -42,8 +42,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
-<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
-"></script>
 <script>
 $(function() {    
     
@@ -97,12 +95,12 @@ function check(){
 	}
 	
 	if(!CheckInfoCode('houseNumber',true)) return false;
-	if(!checkRentPrice()) return false;
 	if(!CheckRoom('houseRoom',true)) return false;
 	if(!CheckRoom('houseHall',true)) return false;
 	if(!CheckRoom('houseToilet',true)) return false;
 	if(!CheckRoom('houseKitchen',true)) return false;
 	if(!CheckRoom('houseBalcony',true)) return false;
+	if(!checkRentPrice()) return false;
 	
 	var val = $('input:radio[name="housePayment"]:checked').val();
     if (val == 1) {
@@ -344,13 +342,10 @@ function checkRentPrice(){
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-			    <td colspan="2" align="left" valign="middle">
-			    <textarea id="houseContent" name="houseContent" cols="86" rows="12" ></textarea>			    
-	            <script>
-	                CKEDITOR.replace( 'houseContent' );
-	            </script>
+			    <td colspan="2" align="left" valign="middle"><?php echo $_smarty_tpl->tpl_vars['FCKeditor']->value;?>
+
 	            <span style="border-bottom:none">可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
-				      请勿从其它网站或其它房源描述中拷贝。</span>
+				      请勿从其它网站或其它房源描述中拷贝。</span><br/><br/>
 				               <span>
 				         <b style="text-indent:0px;">注意事项：</b> <br />
 				1.上传宽度大于600像素，比例为5:4的图片可获得更好的展示效果。<br />

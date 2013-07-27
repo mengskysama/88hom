@@ -10,5 +10,7 @@ $picTypeList=$cfg['arr_pic']['2handFactory'];
 $smarty->assign('picTypeList',$picTypeList);
 $smarty->assign('userName',$userName);
 $smarty->assign('restLivePropsCount',$restLivePropsCount);
+$FCKeditor = createCKeditor('factoryContent',0,400,150,'');
+$smarty->assign('FCKeditor',$FCKeditor);
 $smarty->display($tpl_name);
 ?>

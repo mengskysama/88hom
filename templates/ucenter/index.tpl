@@ -23,7 +23,7 @@ $(document).ready(function() {
 		}     
     });
     
-	$("#button2").onclick(function() {      
+	$("#button2").click(function() {      
         var $inputTextVal = $(this).val();
 		if($inputTextVal == "") {
 			$(this).val("手机号/邮箱/用户名码");

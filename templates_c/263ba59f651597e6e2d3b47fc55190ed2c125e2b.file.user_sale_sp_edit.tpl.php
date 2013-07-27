@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-16 15:59:30
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-27 11:15:25
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_sale_sp_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2127651e4fd628c44a4-12887923%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '263ba59f651597e6e2d3b47fc55190ed2c125e2b' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_sale_sp_edit.tpl',
-      1 => 1373876166,
+      1 => 1374894527,
       2 => 'file',
     ),
   ),
@@ -15,12 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51e4fd62c30856_65699770',
   'variables' => 
   array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'ckeditLib' => 0,
     'picTypeList' => 0,
     'key' => 0,
     'timestamp' => 0,
@@ -56,7 +57,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'shopsAimOperastion8' => 0,
     'shopsAimOperastion9' => 0,
     'shopsTitle' => 0,
-    'shopsContent' => 0,
+    'FCKeditor' => 0,
     'shopsTraffic' => 0,
     'shopsSet' => 0,
     'item' => 0,
@@ -65,11 +66,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'key_' => 0,
     'topPicThumb' => 0,
     'topPicPath' => 0,
+    'propState' => 0,
     'propId' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_51e4fd62c30856_65699770',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51e4fd62c30856_65699770')) {function content_51e4fd62c30856_65699770($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -81,8 +81,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
-<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
-"></script>
 <script>
 $(function() {
         
@@ -92,6 +90,16 @@ $(function() {
             document.getElementById("spForm").submit();
         } else {
             $("#btn_update").removeAttr("disabled");
+        }
+    });
+		
+    $("#btn_live").click(function() {
+        $("#btn_live").attr("disabled", true);
+        if (check()) {
+            $("#action_to_go").val("1");
+            document.getElementById("spForm").submit();
+        } else {
+            $("#btn_live").removeAttr("disabled");
         }
     });
 
@@ -149,11 +157,11 @@ function check(){
 
 <body>
 <!--求购头部-->
-<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_agent_header']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['header_ucenter_user']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 <!--求购内容-->
 <div class="qg_main">
-	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_agent_left_menu']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_user_left_menu']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
   	<div class="qg_r">
     <p>你的位置: <a href="#">编辑商铺出售房源</a></p>
@@ -285,12 +293,8 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-			    <td colspan="2" align="left" valign="middle" >
-			    <textarea id="shopsContent" name="shopsContent" cols="86" rows="12" ><?php echo $_smarty_tpl->tpl_vars['shopsContent']->value;?>
-</textarea>			    
-				<script>
-					CKEDITOR.replace( 'shopsContent' );
-				</script>
+			    <td colspan="2" align="left" valign="middle" ><?php echo $_smarty_tpl->tpl_vars['FCKeditor']->value;?>
+
 				<span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 			请勿从其它网站或其它房源描述中拷贝。</span>
 			    </td>
@@ -382,11 +386,13 @@ uploads/<?php echo $_smarty_tpl->tpl_vars['topPicThumb']->value;?>
 		    <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
             <td width="120" align="center" valign="middle">
             <td width="120" align="center" valign="middle"><input name="btn_update" type="button" class="mddl1" id="btn_update" value="修改" /></td>
-            <td width="320" height="80" align="center" valign="middle">&nbsp;</td>
+            <td width="320" height="80" align="center" valign="middle"><?php if ($_smarty_tpl->tpl_vars['propState']->value==0){?><input name="btn_live" type="button" class="mddl1" id="btn_live" value="发布" /><?php }?></td>
 	      </tr>
 	    </table>
 	    <input type="hidden" id="actionType" name="actionType" value="update"/>
 	    <input type="hidden" id="propId" name="propId" value="<?php echo $_smarty_tpl->tpl_vars['propId']->value;?>
+"/>
+	    <input type="hidden" id="action_to_go" name="action_to_go" value="<?php echo $_smarty_tpl->tpl_vars['propState']->value;?>
 "/>
 	    </form>
     </div>

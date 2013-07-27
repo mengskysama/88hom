@@ -5,7 +5,6 @@
 <title>录入写字楼出售房源</title>
 <!--{$jsFiles}-->
 <!--{$cssFiles}-->
-<script language="JavaScript" type="text/javascript" src="<!--{$ckeditLib}-->"></script>
 <script>
 $(function() {       
 	<!--{foreach from=$picTypeList item=item key=key}-->
@@ -172,11 +171,7 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-			    <td colspan="2" align="left" valign="middle">
-			    <textarea id="officeContent" name="officeContent" cols="86" rows="12" ></textarea>			    
-				<script>
-					CKEDITOR.replace( 'officeContent' );
-				</script>
+			    <td colspan="2" align="left" valign="middle"><!--{$FCKeditor}-->
 			    <span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 			请勿从其它网站或其它房源描述中拷贝。</span>
 			    	

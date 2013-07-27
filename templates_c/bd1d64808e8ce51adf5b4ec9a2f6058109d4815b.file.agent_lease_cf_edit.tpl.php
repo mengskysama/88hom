@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-22 12:15:03
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-27 11:19:33
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_lease_cf_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1905751e4aef1d6c050-00934837%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bd1d64808e8ce51adf5b4ec9a2f6058109d4815b' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_lease_cf_edit.tpl',
-      1 => 1374216087,
+      1 => 1374893988,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'ckeditLib' => 0,
     'picTypeList' => 0,
     'key' => 0,
     'timestamp' => 0,
@@ -55,7 +54,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'factoryWater' => 0,
     'factoryHasCapacityNow' => 0,
     'factoryHasCapacityMax' => 0,
-    'factoryContent' => 0,
+    'FCKeditor' => 0,
     'factoryTraffic' => 0,
     'item' => 0,
     'propertyDetailPicList' => 0,
@@ -78,8 +77,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
-<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
-"></script>
 <script>
 $(function() {    
 
@@ -143,6 +140,21 @@ function check(){
 	if(!CheckInfoCode('factoryNumber',true)) return false;	
 	if(!checkRentPrice()) return false;
 	if(!checkPropFee('factoryProFee',true)) return false;
+	
+	var val = $('input:radio[name="factoryPayment"]:checked').val();
+    if (val == 1) {
+        var factoryPayDetailY = document.getElementById("factoryPayDetailY").value;
+        var factoryPayDetailF = document.getElementById("factoryPayDetailF").value;
+        if(factoryPayDetailY == ""){
+        	alert("请选择支付方式压多少");
+        	return false;
+        }
+        if(factoryPayDetailF == ""){
+        	alert("请选择支付方式付多少");
+        	return false;
+        }
+    }
+    
 	if($("#factoryLeastYear").val() != "" && !IsInt("factoryLeastYear")){
 		alert("起租年限只能是数字");
 		$("#factoryLeastYear").focus();
@@ -351,13 +363,13 @@ function changepaydetail() {
 			    </td>
 			  </tr>
 			  <tr>
-			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  租    金</td>
+			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 租    金</td>
 			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryRentPrice" name="factoryRentPrice" type="text" value="<?php echo $_smarty_tpl->tpl_vars['factoryRentPrice']->value;?>
 " /> <font class="z3">元/月</font></td>
 			  </tr>
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否含管理费</td>
-			    <td align="left" valign="middle" class="p25 grzc_32"> 
+			    <td align="left" valign="middle" class="p25"> 
 			    	<label><input id="" name="factoryIncludFee" type="radio" <?php if ($_smarty_tpl->tpl_vars['factoryIncludFee']->value==1){?> checked="checked" <?php }?> value="1" /> 是</label>     
 			      	<label> <input id="" name="factoryIncludFee" type="radio" <?php if ($_smarty_tpl->tpl_vars['factoryIncludFee']->value==2){?> checked="checked" <?php }?> value="2" /> 否</label>    
 			        </td>
@@ -374,7 +386,7 @@ function changepaydetail() {
 " /></td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 支付方式</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
 			    <input id="factoryPayment" checked="checked" name="factoryPayment" type="radio" <?php if ($_smarty_tpl->tpl_vars['factoryPayment']->value==1){?> checked="checked" <?php }?> value="1" onclick="changepaydetail()"/>押&nbsp;
 				<select name="factoryPayDetailY" id="factoryPayDetailY" style=" vertical-align:middle">
@@ -505,12 +517,8 @@ function changepaydetail() {
 		  </tr>
 		  <tr>
 		    <td align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-		    <td colspan="2" align="left" valign="middle" >
-				    <textarea id="factoryContent" name="factoryContent" cols="86" rows="12" ><?php echo $_smarty_tpl->tpl_vars['factoryContent']->value;?>
-</textarea>			    
-					<script>
-						CKEDITOR.replace( 'factoryContent' );
-					</script>
+		    <td colspan="2" align="left" valign="middle" ><?php echo $_smarty_tpl->tpl_vars['FCKeditor']->value;?>
+
 					<span style="border-bottom:none">可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 		      请勿从其它网站或其它房源描述中拷贝。</span>
 		      </td>
@@ -560,7 +568,7 @@ uploads/<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>
         	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picInfo'];?>
 "/><a href="javascript:void(0)" onclick="dropContainer('pic_<?php echo $_smarty_tpl->tpl_vars['key_']->value;?>
 ')"><img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
-templates/images/ucenter/cha.JPG"></a></dd>
+templates/images/ucenter/cha.jpg"></a></dd>
         	    		<input type="hidden" name="picPath[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picUrl'];?>
 "/>
         	    		<input type="hidden" name="picPathThumb[]" value="<?php echo $_smarty_tpl->tpl_vars['item_']->value['picThumb'];?>

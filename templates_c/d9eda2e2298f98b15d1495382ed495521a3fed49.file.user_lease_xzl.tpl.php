@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 11:36:48
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-27 11:14:46
          compiled from "E:/workspace/projects/88hom/templates\ucenter\user_lease_xzl.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2790651e8f6e40f74c5-48417683%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd9eda2e2298f98b15d1495382ed495521a3fed49' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\user_lease_xzl.tpl',
-      1 => 1374550516,
+      1 => 1374894581,
       2 => 'file',
     ),
   ),
@@ -22,12 +22,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'ckeditLib' => 0,
     'picTypeList' => 0,
     'key' => 0,
     'timestamp' => 0,
     'token' => 0,
     'restLivePropsCount' => 0,
+    'FCKeditor' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
@@ -42,8 +42,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
-<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
-"></script>
 <script>
 $(function() {    
 	<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
@@ -99,6 +97,7 @@ function check(){
 	if(!CheckInfoCode('officeNumber',true)) return false;	
 	if(!checkPrice('0',true)) return false;
 	if(!checkPropFee('officeProFee',true)) return false;
+	if(!checkOfficePayment()) return false;
 	if(!CheckBuildingArea('officeBuildArea',true)) return false;
 	if(!CheckFloor('officeFloor','officeAllFloor',true)) return false;
 	
@@ -248,10 +247,41 @@ function checkRentPrice(){
     </td>
   </tr>
   <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>物 业 费</td>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否含物业费</td>
+    <td align="left" valign="middle" class="p25">
+    	<label><input id="" name="officeIncludFee" type="radio" value="1"/> 是</label>     
+      	<label><input id="" name="officeIncludFee" type="radio" value="2" checked="checked"/> 否</label>   
+    </td>
+  </tr>
+  <tr>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 物 业 费</td>
     <td align="left" valign="middle" class="p25 grzc_32"><input id="officeProFee" name="officeProFee" type="text" /> 元/平米·月
     	</td>
   </tr>
+			  <tr>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
+			    <td align="left" valign="middle" class="p25 grzc_35">
+			    <input id="officePayment" checked="checked" name="officePayment" type="radio" value="1" checked="checked" onclick="changeOfficePaydetail()"/>押&nbsp;
+				<select name="officePayDetailY" id="officePayDetailY" style=" vertical-align:middle">
+				<option selected="selected" value="">请选择</option>
+				<option value="0">零</option>
+				<option value="1">一个月</option>
+				<option value="2">两个月</option>
+				<option value="3">三个月</option>
+				<option value="6">六个月</option>
+				</select>
+                                                       付&nbsp;
+				<select name="officePayDetailF" id="officePayDetailF" style=" vertical-align:middle">
+                                    <option selected="selected" value="">请选择</option>
+                                    <option value="1" >一个月</option>
+                                    <option value="2">两个月</option>
+                                    <option value="3">三个月</option>
+                                    <option value="6">六个月</option>
+                                    <option value="12">十二个月</option>
+ 				</select>
+			    <input id="officePayment" name="officePayment" type="radio" value="2" onclick="changeOfficePaydetail();" />面议
+				</td>
+			  </tr>
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="officeBuildArea" name="officeBuildArea" type="text" maxlength="8" /> 平方米</td>
@@ -296,11 +326,8 @@ function checkRentPrice(){
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-			    <td colspan="2" align="left" valign="middle">
-			    <textarea id="officeContent" name="officeContent" cols="86" rows="12" ></textarea>			    
-				<script>
-					CKEDITOR.replace( 'officeContent' );
-				</script>
+			    <td colspan="2" align="left" valign="middle"><?php echo $_smarty_tpl->tpl_vars['FCKeditor']->value;?>
+
 						    <span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 						请勿从其它网站或其它房源描述中拷贝。</span>
 			    	

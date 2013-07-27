@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 14:26:45
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-27 09:33:06
          compiled from "E:/workspace/projects/88hom/templates\ucenter\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:45625183520f67df85-16661246%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c97d3cc2295094cdb70d8a4f1a3e22bf84c36bfa' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\index.tpl',
-      1 => 1374560802,
+      1 => 1374888782,
       2 => 'file',
     ),
   ),
@@ -61,7 +61,7 @@ $(document).ready(function() {
 		}     
     });
     
-	$("#button2").onclick(function() {      
+	$("#button2").click(function() {      
         var $inputTextVal = $(this).val();
 		if($inputTextVal == "") {
 			$(this).val("手机号/邮箱/用户名码");

@@ -6,6 +6,7 @@ $tpl_name = $tpl_dir.'agent_lease_bs_edit.tpl';
 $propId = getParameter("propId","GET");
 $propService = new SecondHandPropertyService($db);
 $property = $propService->getVillaPropertyById($userId,$propId);
+$villaContent = "";
 if($property){
 	$estId = $property['villaCommunityId'];
 	$estName = $property['propName'];
@@ -118,12 +119,13 @@ if($property){
 	$smarty->assign("villaLiveTime",$villaLiveTime);
 	$smarty->assign("propertyDetailPicList",$propertyDetailPicList);
 	$smarty->assign("villaTitle",$villaTitle);
-	$smarty->assign("villaContent",$villaContent);
 	$smarty->assign("propId",$propId);
 	$smarty->assign("propState",$villaState);
 }
 $picTypeList=$cfg['arr_pic']['2handVilla'];
 $smarty->assign('picTypeList',$picTypeList);
 $smarty->assign('userName',$userName);
+$FCKeditor = createCKeditor('villaContent',0,400,150,$villaContent);
+$smarty->assign('FCKeditor',$FCKeditor);
 $smarty->display($tpl_name);
 ?>

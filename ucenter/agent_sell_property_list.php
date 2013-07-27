@@ -58,6 +58,7 @@ $propList = $props['data'];
 $pagination = $props['pagination'];
 
 $html->addJs("ucenter_property_input.js");
+$html->addJs('jquery-ui-1.8.21.custom.min.js');
 $html->addCss('ucenter/css.css');
 $html->show();
 $smarty->assign('ucenter_agent_header',$tpl_dir.'ucenter_agent_header.tpl');

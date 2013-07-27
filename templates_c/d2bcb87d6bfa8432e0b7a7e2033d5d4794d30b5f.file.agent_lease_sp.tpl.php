@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 17:38:10
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-27 11:18:12
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_lease_sp.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3080351e39ab2d6fd99-58416139%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd2bcb87d6bfa8432e0b7a7e2033d5d4794d30b5f' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_lease_sp.tpl',
-      1 => 1374571095,
+      1 => 1374894444,
       2 => 'file',
     ),
   ),
@@ -22,12 +22,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'ckeditLib' => 0,
     'picTypeList' => 0,
     'key' => 0,
     'timestamp' => 0,
     'token' => 0,
     'restLivePropsCount' => 0,
+    'FCKeditor' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
@@ -42,8 +42,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
-<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
-"></script>
 <script>
 $(function() {    
 
@@ -253,7 +251,7 @@ function checkRentPrice(){
         <label><input id="" name="shopsRentState" type="radio" value="3" /> 新铺</label></td>
   </tr>
   <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  租    金</td>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 租    金</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsRentPrice" name="shopsRentPrice" type="text" />
     <label><input id="" name="shopsRentPriceUnit" type="radio" onclick="checkPrice('30',false)" value="1" />元/平米·天</label>
     <label><input id="" name="shopsRentPriceUnit" type="radio" onclick="checkPrice('900',false)" value="2" />元/平米·月</label>
@@ -284,7 +282,7 @@ function checkRentPrice(){
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>支付方式</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
-			    <input id="villaPayment" checked="checked" name="shopsPayment" type="radio" value="1" checked="checked" onclick="changeShopPaydetail()"/>押&nbsp;
+			    <input id="shopsPayment" checked="checked" name="shopsPayment" type="radio" value="1" checked="checked" onclick="changeShopPaydetail()"/>押&nbsp;
 				<select name="shopsPayDetailY" id="shopsPayDetailY" style=" vertical-align:middle">
 				<option selected="selected" value="">请选择</option>
 				<option value="0">零</option>
@@ -302,7 +300,7 @@ function checkRentPrice(){
                                     <option value="6">六个月</option>
                                     <option value="12">十二个月</option>
  				</select>
-			    <input id="villaPayment" name="shopsPayment" type="radio" value="2" onclick="changeShopPaydetail();" />面议
+			    <input id="shopsPayment" name="shopsPayment" type="radio" value="2" onclick="changeShopPaydetail();" />面议
 				</td>
 			  </tr>
   <tr>
@@ -368,11 +366,8 @@ function checkRentPrice(){
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-			    <td colspan="2" align="left" valign="middle" >
-			    <textarea id="shopsContent" name="shopsContent" cols="86" rows="12" ></textarea>			    
-				<script>
-					CKEDITOR.replace( 'shopsContent' );
-				</script>
+			    <td colspan="2" align="left" valign="middle" ><?php echo $_smarty_tpl->tpl_vars['FCKeditor']->value;?>
+
 				<span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 			请勿从其它网站或其它房源描述中拷贝。</span>
 			    	

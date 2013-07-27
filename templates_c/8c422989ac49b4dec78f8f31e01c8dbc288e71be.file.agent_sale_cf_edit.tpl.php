@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-22 12:12:40
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-27 11:18:32
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_sale_cf_edit.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3071551e49fcecca523-55499541%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8c422989ac49b4dec78f8f31e01c8dbc288e71be' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_sale_cf_edit.tpl',
-      1 => 1374218444,
+      1 => 1374893952,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'ckeditLib' => 0,
     'picTypeList' => 0,
     'key' => 0,
     'timestamp' => 0,
@@ -52,7 +51,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'factoryHasCapacityNow' => 0,
     'factoryHasCapacityMax' => 0,
     'factoryPrivateNumber' => 0,
-    'factoryContent' => 0,
+    'FCKeditor' => 0,
     'factoryTraffic' => 0,
     'item' => 0,
     'propertyDetailPicList' => 0,
@@ -75,8 +74,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
-<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
-"></script>
 <script>
 $(function() {    
 
@@ -435,12 +432,8 @@ function check(){
 		  </tr>
 		  <tr>
 		    <td align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-		    <td colspan="2" align="left" valign="middle" >
-				    <textarea id="factoryContent" name="factoryContent" cols="86" rows="12" ><?php echo $_smarty_tpl->tpl_vars['factoryContent']->value;?>
-</textarea>			    
-					<script>
-						CKEDITOR.replace( 'factoryContent' );
-					</script>
+		    <td colspan="2" align="left" valign="middle" ><?php echo $_smarty_tpl->tpl_vars['FCKeditor']->value;?>
+
 					<span style="border-bottom:none">可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 		      请勿从其它网站或其它房源描述中拷贝。</span>
 		      </td>

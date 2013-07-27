@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-19 16:03:58
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-27 11:17:54
          compiled from "E:/workspace/projects/88hom/templates\ucenter\agent_sale_cf.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2021251e3bb93493851-16925453%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9a4e6110a9c73a93c8be187a1b1f596f5b461fa4' => 
     array (
       0 => 'E:/workspace/projects/88hom/templates\\ucenter\\agent_sale_cf.tpl',
-      1 => 1374220814,
+      1 => 1374893929,
       2 => 'file',
     ),
   ),
@@ -22,12 +22,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'ckeditLib' => 0,
     'picTypeList' => 0,
     'key' => 0,
     'timestamp' => 0,
     'token' => 0,
     'restLivePropsCount' => 0,
+    'FCKeditor' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
@@ -42,8 +42,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
-<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
-"></script>
 <script>
 $(function() {    
 
@@ -338,7 +336,7 @@ function check(){
 			    </td>
 			  </tr>
 			  <tr>
-			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
+			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑年代</td>
 			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryBuildYear" name="factoryBuildYear" type="text" maxlength="4" value="" /> <font class="z3">年</font>   
 			    </td>
 			  </tr>
@@ -394,11 +392,8 @@ function check(){
 		  </tr>
 		  <tr>
 		    <td align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-		    <td colspan="2" align="left" valign="middle" >
-				    <textarea id="factoryContent" name="factoryContent" cols="86" rows="12" ></textarea>			    
-					<script>
-						CKEDITOR.replace( 'factoryContent' );
-					</script>
+		    <td colspan="2" align="left" valign="middle" ><?php echo $_smarty_tpl->tpl_vars['FCKeditor']->value;?>
+
 					<span style="border-bottom:none">可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 		      请勿从其它网站或其它房源描述中拷贝。</span>
 		      </td>
