@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-24 22:10:47
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-28 16:52:47
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\sell_property_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1757751ce7fb296f1b1-35968700%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5e9b7150e0557bc555e3279d580a2af1b52447a9' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\sell_property_list.tpl',
-      1 => 1374675032,
+      1 => 1374915014,
       2 => 'file',
     ),
   ),
@@ -139,7 +139,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <div class="glcx">
        	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 			  <tr>
-			    <td width="55" height="50" align="center" valign="middle" bgcolor="#eeece1"><label><input id="checkall" name="checkall" type="checkbox" value="" / >选中</label></td>
+			    <td width="55" height="50" align="center" valign="middle" bgcolor="#eeece1"><label><input id="checkall" name="checkall" type="checkbox" value=""/>选中</label></td>
 			    <td width="225" height="50" align="center" valign="middle" bgcolor="#eeece1">房源基本信息</td>
 			    <td width="120" height="50" align="center" valign="middle" bgcolor="#eeece1">最后更新</td>
 			    <td width="120" height="50" align="center" valign="middle" bgcolor="#eeece1">录入时间</td>
@@ -281,21 +281,6 @@ _<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable(
     </div>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-	
-        $("#checkall").click(function(){
-        	var ischecked = this.checked;
-            $("#prop_table input[type='checkbox'],#checkall").each(function(){
-            	this.checked = ischecked;
-                $(this).click(function(){
-                	if(!this.checked){
-                    	$('#checkall').get(0).checked=false;
-                    }
-                });
-            });
-		});
-	});
-	
     //页面刷新
     function reflash(){
     	window.location.reload();

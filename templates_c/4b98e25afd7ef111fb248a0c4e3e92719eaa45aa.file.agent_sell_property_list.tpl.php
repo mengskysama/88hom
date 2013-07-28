@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-17 22:07:19
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-28 22:12:33
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\agent_sell_property_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:959551e541b89f3361-78474580%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4b98e25afd7ef111fb248a0c4e3e92719eaa45aa' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\agent_sell_property_list.tpl',
-      1 => 1374064423,
+      1 => 1375014636,
       2 => 'file',
     ),
   ),
@@ -24,6 +24,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cssFiles' => 0,
     'usedLivePropsCount' => 0,
     'restLivePropsCount' => 0,
+    'soonBeExpiredCount' => 0,
+    'usedRefreshTimes' => 0,
+    'restRefreshTimes' => 0,
     'unlivePropsCount' => 0,
     'expiredPropsCount' => 0,
     'illegalPropsCount' => 0,
@@ -70,7 +73,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="bs_tx1">发 布 量：已使用  <?php echo $_smarty_tpl->tpl_vars['usedLivePropsCount']->value;?>
     还可使用<?php echo $_smarty_tpl->tpl_vars['restLivePropsCount']->value;?>
 <br />               
-即将过期房源：<a href="#">0</a>  已刷新次数 <a href="#">0</a> 还可刷新次数 <a href="#">1</a></div>
+即将过期房源：<?php echo $_smarty_tpl->tpl_vars['soonBeExpiredCount']->value;?>
+  已刷新次数 <a id="d_usedRefreshTimes"><?php echo $_smarty_tpl->tpl_vars['usedRefreshTimes']->value;?>
+</a> 还可刷新次数 <a id="d_restRefreshTimes"><?php echo $_smarty_tpl->tpl_vars['restRefreshTimes']->value;?>
+</a></div>
 <div style="width:700px; border-bottom:1px solid #ddd">
 			<ul style="width:584px; font-size:14px; font-weight:bolder;">
    			 	<li><a href="javascript:void(0)" onclick="gotolink(1)">已发布房源</a></li>
@@ -173,7 +179,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['last']       = ($_sm
 <?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
 " / ></label></td>
 			    <td width="225" align="left" valign="middle" class="bor">
-			    	<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+			    	<img width="74px" height="58px" src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
 uploads/<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propPhoto'];?>
 " class="l">
 			        <span class="l wz">
@@ -186,6 +192,10 @@ uploads/<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVa
 m<sup>2</sup><br />
 						单价：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['perPriceArea'];?>
 /m<sup>2</sup><br />
+                        <?php }elseif($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='xzl'){?>
+						售价：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propPrice'];?>
+元/平方米  面积：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propArea'];?>
+m<sup>2</sup><br />
                         <?php }else{ ?>
 						售价：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propPrice'];?>
 万 面积：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propArea'];?>
@@ -201,7 +211,8 @@ _<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable(
 			    <td width="120" align="center" valign="middle" class="bor"><?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['createDate'];?>
 <br /><?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['createTime'];?>
 </td>
-			    <td width="92" align="center" valign="middle" class="bor"><font class="red">100</font> 次</td>
+			    <td width="92" align="center" valign="middle" class="bor"><font class="red"><?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['hitCount'];?>
+</font> 次</td>
 			    <td align="center" valign="middle" class="bor">
 			    <?php if ($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='zz'){?>
 			    <a href="agent_sale_zz_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
@@ -216,7 +227,7 @@ _<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable(
 			    <a href="agent_sale_xzl_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
 ">编辑</a>
 			    <?php }elseif($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='gc'){?>
-			    <a href="agent_sale_gc_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
+			    <a href="agent_sale_cf_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
 ">编辑</a>
 			    <?php }?>			    
 			     <a href="javascript:void(0);" onclick="deleteProp('<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind'];?>
@@ -269,20 +280,6 @@ _<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable(
     </div>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-	
-        $("#checkall").click(function(){
-        	var ischecked = this.checked;
-            $("#prop_table input[type='checkbox'],#checkall").each(function(){
-            	this.checked = ischecked;
-                $(this).click(function(){
-                	if(!this.checked){
-                    	$('#checkall').get(0).checked=false;
-                    }
-                });
-            });
-		});
-	});
 	
     //页面刷新
     function reflash(){

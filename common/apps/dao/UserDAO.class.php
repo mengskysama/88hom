@@ -6,8 +6,12 @@ class UserDAO{
 	}
 	
 	//added by Cheneil
-	public function getUserByUserName($username){
+	public function getUserByUserName($username,$userType=0){
 		$sql="select * from ecms_user where userState=1 and userUsername='$username'";
+		if($userType === 0 || $userType >= 1){
+			$sql .= " and userType=".$userType;
+		}
+		//echo $sql;return;
 		return $this->db->getQueryValue($sql);
 	}
 	public function checkUserByUserEmail($useEmail){

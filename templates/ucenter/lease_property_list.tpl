@@ -101,7 +101,7 @@
 			        </td>
 			    <td id="t_update_time_<!--{$propList[prop].propKind}-->_<!--{$propList[prop].propId}-->" width="120" align="center" valign="middle" style="line-height:22px;" class="bor"><!--{$propList[prop].updateDate}--><br /><!--{$propList[prop].updateTime}--></td>
 			    <td width="120" align="center" valign="middle" class="bor"><!--{$propList[prop].createDate}--><br /><!--{$propList[prop].createTime}--></td>
-			    <td width="92" align="center" valign="middle" class="bor"><font class="red">100</font> 次</td>
+			    <td width="92" align="center" valign="middle" class="bor"><font class="red"><!--{$propList[prop].hitCount}--></font> 次</td>
 			    <td align="center" valign="middle" class="bor">
 			    <!--{if $propList[prop].propKind eq 'zz'}-->
 			    <a href="user_lease_zz_edit.php?propId=<!--{$propList[prop].propId}-->">编辑</a>

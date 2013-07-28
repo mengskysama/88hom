@@ -12,6 +12,8 @@ $propType = getParameter("prop_type");
 $estId = getParameter("estId");
 $estName = getParameter("estName");
 $state = getParameter("action_to_go");
+$state = $state == 4 ? 1 : $state;
+
 $action = getParameter("action");
 $actionType = getParameter("actionType");
 $propTxType = getParameter("prop_tx_type");

@@ -243,7 +243,7 @@ class SecondHandPropertyService{
 		$page = ($page == "" || $page == 0) ? 1 : $page;
 		$query_limit = "limit ".(($page - 1) * USER_SELL_PROPERTY_LIST_PAGE_SIZE).",".USER_SELL_PROPERTY_LIST_PAGE_SIZE;
 		//fields
-		$query_fields = "propId,propKind,propName,propNumber,propPrice,propArea,propPriceUnit,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime ";
+		$query_fields = "propId,propKind,propName,propNumber,propPrice,propArea,propPriceUnit,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime,hitCount ";
 		$totalNum = $this->houseDAO->countPropertyList('vw_get_lease_property_list',$query_where);
 		$propList = $this->houseDAO->getPropertyList('vw_get_lease_property_list',$query_fields,$query_where,$query_order,$query_limit);
 		$pagination = pagination2($totalNum,USER_SELL_PROPERTY_LIST_PAGE_SIZE,$page,5);
@@ -304,7 +304,7 @@ class SecondHandPropertyService{
 		$page = ($page == "" || $page == 0) ? 1 : $page;
 		$query_limit = "limit ".(($page - 1) * USER_SELL_PROPERTY_LIST_PAGE_SIZE).",".USER_SELL_PROPERTY_LIST_PAGE_SIZE;		
 		//fields
-		$query_fields = "propId,propKind,propName,propNumber,propPrice,propArea,floor(propPrice*10000/propArea) as perPriceArea,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,createTime as propCreateTime ";
+		$query_fields = "propId,propKind,propName,propNumber,propPrice,propArea,floor(propPrice*10000/propArea) as perPriceArea,userId,propState,from_unixtime(createTime,'%Y-%m-%d') as createDate,from_unixtime(createTime,'%H:%i') as createTime,from_unixtime(updateTime,'%Y-%m-%d') as updateDate,from_unixtime(updateTime,'%H:%i') as updateTime,room,hall,propPhoto,hitCount,createTime as propCreateTime ";
 		$totalNum = $this->houseDAO->countPropertyList('vw_get_sell_property_list',$query_where);
 		//echo '<br/>finish to get totalNum --'.date('Ymd His');
 		$propList = $this->houseDAO->getPropertyList('vw_get_sell_property_list',$query_fields,$query_where,$query_order,$query_limit);

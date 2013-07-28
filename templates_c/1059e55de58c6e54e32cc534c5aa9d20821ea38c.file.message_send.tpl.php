@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-24 23:16:19
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-28 16:00:12
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\message_send.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:28404518e402574a714-91650917%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1059e55de58c6e54e32cc534c5aa9d20821ea38c' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\message_send.tpl',
-      1 => 1374678971,
+      1 => 1374679292,
       2 => 'file',
     ),
   ),
@@ -260,7 +260,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 data: option,
                 type: 'post',
                 success: function(msg){
-                	alert(msg.err+"|"+msg.result);
                     if (msg != null){
                         if(msg.err=="error"){
                             alert(msg.msg);

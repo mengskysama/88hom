@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-15 22:30:42
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-28 22:54:13
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\agent_sale_zz.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2497751e1194d0defe2-35888697%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '07a01e27ba424deddadb1b6f9be8331a863d1bef' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\agent_sale_zz.tpl',
-      1 => 1373891285,
+      1 => 1375023249,
       2 => 'file',
     ),
   ),
@@ -22,12 +22,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'ckeditLib' => 0,
     'picTypeList' => 0,
     'key' => 0,
     'timestamp' => 0,
     'token' => 0,
+    'restLivePropsCount' => 0,
+    'structureList' => 0,
     'item' => 0,
+    'formList' => 0,
+    'FCKeditor' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -41,8 +44,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
-<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
-"></script>
 <script>
 $(function() {    
     
@@ -145,7 +146,8 @@ function check(){
        		    <li><a href="agent_sale_cf.php">录入厂房出售房源</a></li>
    		  </ul>
           <div class="bs_tx">
-            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> 10</font> 条</span></p>
+            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> <?php echo $_smarty_tpl->tpl_vars['restLivePropsCount']->value;?>
+</font> 条</span></p>
             <input type="hidden" name="prop_type" value="zz">
             <input type="hidden" name="prop_tx_type" value="1">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
@@ -191,11 +193,11 @@ function check(){
 			    </td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  售    价</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 售    价</td>
 			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseSellPrice" name="houseSellPrice" type="text" /> 万元/套</td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>户    型</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 户    型</td>
 			    <td align="left" valign="middle" class="p25 grzc_35">
 			    <input id="houseRoom" name="houseRoom" type="text" maxlength="1"/> 室 
 			    <input id="houseHall" name="houseHall" type="text" maxlength="1"/> 厅 
@@ -205,7 +207,38 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑形式</td>
-			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildForm" name="houseBuildForm" type="text"  value="" /> </td>
+			    <td align="left" valign="middle" class="p25 grzc_33">				
+			    
+			    <select id="houseBuildStructure" name="houseBuildStructure">			    
+			    	<option value="0">选择结构</option>					
+					<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['structureList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>	    
+			    	<option value="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</option>
+					<?php } ?>		    	
+			    </select>
+			    
+			    <select id="houseBuildForm" name="houseBuildForm">				    
+			    	<option value="0">选择类别</option>					
+					<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['formList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>	    
+			    	<option value="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</option>
+					<?php } ?>		    	
+			    </select>
+				</td>
 			  </tr>
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑面积</td>
@@ -216,7 +249,7 @@ function check(){
 			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseUseArea" name="houseUseArea" type="text" maxlength="8" /><font class="z3">平方米</font></td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">建筑年代</td>
+			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 建筑年代</td>
 			    <td align="left" valign="middle" class="p25 grzc_33"><input id="houseBuildYear" name="houseBuildYear" type="text" maxlength="4"/><font class="z3">年</font></td>
 			  </tr>
 			  <tr>
@@ -226,7 +259,7 @@ function check(){
 			  <tr>
 			    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">朝    向</td>
 			    <td align="left" valign="middle" class="p25">
-			   	   <label><input id="" name="houseForward" type="radio" value="1" />东</label>     
+			   	   <label><input id="" name="houseForward" type="radio" value="1" checked="checked"/>东</label>     
 			      	<label> <input id="" name="houseForward" type="radio" value="2" /> 南  </label>    
 			        <label><input id="" name="houseForward" type="radio" value="3" /> 西</label>    
 			        <label><input id="" name="houseForward" type="radio" value="4" /> 北 </label>  
@@ -244,7 +277,7 @@ function check(){
 			  	    <label><input id="" name="houseFitment" type="radio" value="1" /> 豪华装修</label>     
 			      	<label> <input id="" name="houseFitment" type="radio" value="2" /> 精装修  </label>    
 			        <label><input id="" name="houseFitment" type="radio" value="3" /> 中等装修</label>    
-			        <label><input id="" name="houseFitment" type="radio" value="4" /> 简装修</label>  
+			        <label><input id="" name="houseFitment" type="radio" value="4" checked="checked"/> 简装修</label>  
 			        <label><input id="" name="houseFitment" type="radio" value="5" /> 毛坯</label>
 			    </td>
 			  </tr>
@@ -283,13 +316,10 @@ function check(){
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-			    <td colspan="2" align="left" valign="middle">
-			    <textarea id="houseContent" name="houseContent" cols="86" rows="12" ></textarea>			    
-	            <script>
-	                CKEDITOR.replace( 'houseContent' );
-	            </script>
+			    <td colspan="2" align="left" valign="middle"><?php echo $_smarty_tpl->tpl_vars['FCKeditor']->value;?>
+
 	            <span style="border-bottom:none">可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
-				      请勿从其它网站或其它房源描述中拷贝。</span>
+				      请勿从其它网站或其它房源描述中拷贝。</span><br/><br/>
 				               <span>
 				         <b style="text-indent:0px;">注意事项：</b> <br />
 				1.上传宽度大于600像素，比例为5:4的图片可获得更好的展示效果。<br />
@@ -321,7 +351,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 		      
 		       <tr>
 			    <td height="124" align="center" valign="middle" bgcolor="#f7f6f1">标题图</td>
-			    <td align="left" valign="top" class="p25"><div class="btt" id="topic_image"></div></td>
+			    <td align="left" valign="top" class="p25"><div id="topic_image"></div></td>
 			    
         	    <input type="hidden" id="topPicPath" name="topPicPath" value=""/>
         	    <input type="hidden" id="topPicPathThumb" name="topPicPathThumb" value=""/>

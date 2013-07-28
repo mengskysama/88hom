@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-17 22:18:38
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-28 15:00:11
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_register.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:187565183ceffcb09a2-61316980%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9dbd38769ea73e1e17f9b6c9fa2ee217bebe6a70' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_register.tpl',
-      1 => 1374064423,
+      1 => 1374994745,
       2 => 'file',
     ),
   ),
@@ -109,7 +109,7 @@ ucenter/yz_bq.gif" style="vertical-align:middle;"> 请输入答案</td>
    					    <td width="105" height="30" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机号：</td>
  					    <td height="30">
 							<input id="userPhone" name="userPhone" type="text" class="sjh"  value=""/>
-                            <input name="vcode" type="button" class="hq b0" id="vcode" value="" onclick="return sendCertCode();"/>
+                            <input name="vcode" type="button" class="yz r" id="vcode" value="获取手机验证码" onclick="return sendCertCode();"/>
 							
                         </td>
 		  </tr>
@@ -117,7 +117,7 @@ ucenter/yz_bq.gif" style="vertical-align:middle;"> 请输入答案</td>
   					    <td width="105" height="70" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机验证码：</td>
    					    <td height="70">
                        	  <input id="phoneCert" name="phoneCert" type="text" class="sjyz"  value=""/>
-                            <span class="yzm z6">若1分钟后仍未收到验证码短信，<a href="javascript:void(0);" id="a_sendcode">请点此重发</a><br /> 若无法收到验证短信，请使用<a href="email_register.php">电子邮箱注册</a></span>
+                            <span class="yzm z6">若无法收到验证短信，请使用<a href="email_register.php">电子邮箱注册</a></span>
                         </td>
 		  </tr>
 					  <tr>

@@ -268,7 +268,7 @@ function check(){
 		      
 		       <tr>
 			    <td height="124" align="center" valign="middle" bgcolor="#f7f6f1">标题图</td>
-			    <td align="left" valign="top" class="p25"><div class="btt" id="topic_image"></div></td>
+			    <td align="left" valign="top" class="p25"><div id="topic_image"></div></td>
 			    
         	    <input type="hidden" id="topPicPath" name="topPicPath" value=""/>
         	    <input type="hidden" id="topPicPathThumb" name="topPicPathThumb" value=""/>

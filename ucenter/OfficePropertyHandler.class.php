@@ -138,7 +138,7 @@ class OfficePropertyHandler extends PropertyHandler{
 		$office['officeSellRentType'] = $this->propTxType;
 		$office['officeTraffic'] = $this->officeTraffic;
 		if($officeState){
-			$office['officeState'] = $this->officeState;
+			$office['officeState'] = $officeState;
 		}
 		if($realEstId){
 			$office['officeCommunityId'] = $realEstId;

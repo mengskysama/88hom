@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-24 22:08:13
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-28 16:52:44
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\lease_property_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2216551d95a56141bb4-01417576%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '122a0a888ac01b67875fb80900c1d7141154b230' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\lease_property_list.tpl',
-      1 => 1374674889,
+      1 => 1374915014,
       2 => 'file',
     ),
   ),
@@ -179,7 +179,8 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['last']       = ($_sm
 <?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
 " / ></label></td>
 			    <td width="225" align="left" valign="middle" class="bor">
-			    	<img width="74px" height="58px" src="../uploads/<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propPhoto'];?>
+			    	<img width="74px" height="58px" src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+uploads/<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propPhoto'];?>
 " class="l">
 			        <span class="l wz">
 			        	名称：<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propName'];?>
@@ -273,20 +274,6 @@ _<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable(
     </div>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-	
-        $("#checkall").click(function(){
-        	var ischecked = this.checked;
-            $("#prop_table input[type='checkbox'],#checkall").each(function(){
-            	this.checked = ischecked;
-                $(this).click(function(){
-                	if(!this.checked){
-                    	$('#checkall').get(0).checked=false;
-                    }
-                });
-            });
-		});
-	});
 	
     //页面刷新
     function reflash(){

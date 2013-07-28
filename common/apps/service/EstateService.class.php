@@ -26,13 +26,12 @@ class EstateService{
 		$estId = $this->estateDAO->saveEstate($estate);
 		if(!$estId) return false;
 		
-		$picBuildType = $estate['estType'];
 		if(!empty($estate['photos'])){
 			$photos = $estate['photos'];
 			$len = count($photos);
 			for($key=0; $key<$len; $key++){
 				$pic['picBuildId'] = $estId;
-				$pic['picBuildType'] = $picBuildType;
+				$pic['picBuildType'] =  $photos[$key]['picBuildType'];
 				$pic['pictypeId'] = $photos[$key]['pictypeId'];
 				$pic['picSellRent'] = $photos[$key]['picSellRent'];
 				$pic['picUrl'] = $photos[$key]['picUrl'];

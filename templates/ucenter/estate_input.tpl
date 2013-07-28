@@ -47,9 +47,20 @@
             return false;
            }           
            
-			var estType = $('input:radio[name="estType"]:checked').val();
-		    if(estType==null){
-		    	alert("请选择物业类型");
+           if(ff("areaIndex").value == ""){
+           	alert("请选择区县商圈");
+           	return false;
+           }           
+           
+           
+			var checkedEstType = 0; 
+			$("input[name='estType[]']:checkbox").each(function () { 
+				if($(this).attr("checked")) { 
+					checkedEstType += 1; 
+				} 
+			}); 
+			if(checkedEstType == 0){
+				alert("请选择物业类型");
 		        return false;
 			}         
 			
@@ -256,10 +267,10 @@ a.blue { color:#000381; text-decoration: underline; }
             <li>
             	<div class="left"><span>*</span>物业类型：</div>
                 <div class="right">
-                	<input name="estType" type="radio" value="1" class="fxk"/> <span class="fxkwz">住宅</span>
-                    <input name="estType" type="radio" value="4" class="fxk"/> <span class="fxkwz">别墅</span>
-                    <input name="estType" type="radio" value="2" class="fxk"/> <span class="fxkwz">商铺</span>
-                    <input name="estType" type="radio" value="3" class="fxk"/> <span class="fxkwz">写字楼</span>
+                	<input name="estType[]" type="checkbox" value="1" class="fxk" checked="checked"/> <span class="fxkwz">住宅</span>
+                    <input name="estType[]" type="checkbox" value="4" class="fxk"/> <span class="fxkwz">别墅</span>
+                    <input name="estType[]" type="checkbox" value="2" class="fxk"/> <span class="fxkwz">商铺</span>
+                    <input name="estType[]" type="checkbox" value="3" class="fxk"/> <span class="fxkwz">写字楼</span>
                 </div>
             </li>
             <li>
@@ -284,15 +295,15 @@ a.blue { color:#000381; text-decoration: underline; }
             <li>
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle">户型图：<br/><input type="file" name="file_upload1" id="file_upload1"/></td>
-			    <td><div id="showImg1" style="float: left;">			
+			    <td width="120" height="36" align="center" valign="middle">户型图：<br/><input type="file" name="file_upload_1" id="file_upload_1"/></td>
+			    <td><div id="showImg_1" class="tpsc">			
 					</div>
 			    </td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle">小区图：<br/><input type="file" name="file_upload3" id="file_upload3"/></td>
+			    <td width="120" height="36" align="center" valign="middle">小区图：<br/><input type="file" name="file_upload_3" id="file_upload_3"/></td>
 			    <td>
-			    	<div id="showImg3" style="float: left;">			
+			    	<div id="showImg_3" class="tpsc">			
 					</div>
 			    </td>
 			  </tr>

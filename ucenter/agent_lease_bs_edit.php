@@ -68,6 +68,8 @@ if($property){
 	$photo['picBuildIdId'] = $propId;
 	$photo['picBuildType'] = 4;
 	$propertyDetailPicList = $propService->getPropPhotos($photo);
+	$picCount = count($propertyDetailPicList);
+	$smarty->assign("picCount",$picCount);
 
 	$photo['pictypeId'] = 1;
 	$topPic = $propService->getPropPhotos($photo);

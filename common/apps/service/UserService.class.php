@@ -9,8 +9,8 @@ class UserService{
 		$this->userDetailDAO=new UserDetailDAO($db);
 	}
 	//根据用户名获取用户信息
-	public function getUserByUserName($username){
-		$result=$this->userDAO->getUserByUserName($username);
+	public function getUserByUserName($username,$userType=0){
+		$result=$this->userDAO->getUserByUserName($username,$userType);
 		if(null==$result||$result==''){
 			return '';
 		}else{

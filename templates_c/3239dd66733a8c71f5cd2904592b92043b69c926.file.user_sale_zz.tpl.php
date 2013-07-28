@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-23 22:02:01
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-28 16:46:47
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\user_sale_zz.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1429151c30e3d6923a5-03520430%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3239dd66733a8c71f5cd2904592b92043b69c926' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\user_sale_zz.tpl',
-      1 => 1374585492,
+      1 => 1374915014,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cfg' => 0,
     'jsFiles' => 0,
     'cssFiles' => 0,
-    'ckeditLib' => 0,
     'picTypeList' => 0,
     'key' => 0,
     'timestamp' => 0,
@@ -31,6 +30,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'structureList' => 0,
     'item' => 0,
     'formList' => 0,
+    'FCKeditor' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -44,8 +44,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
 
-<script language="JavaScript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['ckeditLib']->value;?>
-"></script>
 <script>
 $(function() {    
     
@@ -317,13 +315,10 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-			    <td colspan="2" align="left" valign="middle">
-			    <textarea id="houseContent" name="houseContent" cols="86" rows="12" ></textarea>			    
-	            <script>
-	                CKEDITOR.replace( 'houseContent' );
-	            </script>
+			    <td colspan="2"><?php echo $_smarty_tpl->tpl_vars['FCKeditor']->value;?>
+
 	            <span style="border-bottom:none">可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
-				      请勿从其它网站或其它房源描述中拷贝。</span>
+				      请勿从其它网站或其它房源描述中拷贝。</span><br/><br/>
 				               <span>
 				         <b style="text-indent:0px;">注意事项：</b> <br />
 				1.上传宽度大于600像素，比例为5:4的图片可获得更好的展示效果。<br />

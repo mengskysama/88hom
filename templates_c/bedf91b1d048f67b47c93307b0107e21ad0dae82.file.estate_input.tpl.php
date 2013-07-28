@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-14 09:23:19
+<?php /* Smarty version Smarty-3.1.8, created on 2013-07-28 18:09:30
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\estate_input.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2175151e14e7b1a5551-67926741%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bedf91b1d048f67b47c93307b0107e21ad0dae82' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\estate_input.tpl',
-      1 => 1373764966,
+      1 => 1375006167,
       2 => 'file',
     ),
   ),
@@ -92,9 +92,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             return false;
            }           
            
-			var estType = $('input:radio[name="estType"]:checked').val();
-		    if(estType==null){
-		    	alert("请选择物业类型");
+           if(ff("areaIndex").value == ""){
+           	alert("请选择区县商圈");
+           	return false;
+           }           
+           
+           
+			var checkedEstType = 0; 
+			$("input[name='estType[]']:checkbox").each(function () { 
+				if($(this).attr("checked")) { 
+					checkedEstType += 1; 
+				} 
+			}); 
+			if(checkedEstType == 0){
+				alert("请选择物业类型");
 		        return false;
 			}         
 			
@@ -306,10 +317,10 @@ ucenter/qx-btn.gif) no-repeat; width:57px; height:30px; float:left; color:#1e313
             <li>
             	<div class="left"><span>*</span>物业类型：</div>
                 <div class="right">
-                	<input name="estType" type="radio" value="1" class="fxk"/> <span class="fxkwz">住宅</span>
-                    <input name="estType" type="radio" value="4" class="fxk"/> <span class="fxkwz">别墅</span>
-                    <input name="estType" type="radio" value="2" class="fxk"/> <span class="fxkwz">商铺</span>
-                    <input name="estType" type="radio" value="3" class="fxk"/> <span class="fxkwz">写字楼</span>
+                	<input name="estType[]" type="checkbox" value="1" class="fxk" checked="checked"/> <span class="fxkwz">住宅</span>
+                    <input name="estType[]" type="checkbox" value="4" class="fxk"/> <span class="fxkwz">别墅</span>
+                    <input name="estType[]" type="checkbox" value="2" class="fxk"/> <span class="fxkwz">商铺</span>
+                    <input name="estType[]" type="checkbox" value="3" class="fxk"/> <span class="fxkwz">写字楼</span>
                 </div>
             </li>
             <li>
@@ -334,15 +345,15 @@ ucenter/qx-btn.gif) no-repeat; width:57px; height:30px; float:left; color:#1e313
             <li>
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle">户型图：<br/><input type="file" name="file_upload1" id="file_upload1"/></td>
-			    <td><div id="showImg1" style="float: left;">			
+			    <td width="120" height="36" align="center" valign="middle">户型图：<br/><input type="file" name="file_upload_1" id="file_upload_1"/></td>
+			    <td><div id="showImg_1" class="tpsc">			
 					</div>
 			    </td>
 			  </tr>
 			  <tr>
-			    <td width="120" height="36" align="center" valign="middle">小区图：<br/><input type="file" name="file_upload3" id="file_upload3"/></td>
+			    <td width="120" height="36" align="center" valign="middle">小区图：<br/><input type="file" name="file_upload_3" id="file_upload_3"/></td>
 			    <td>
-			    	<div id="showImg3" style="float: left;">			
+			    	<div id="showImg_3" class="tpsc">			
 					</div>
 			    </td>
 			  </tr>

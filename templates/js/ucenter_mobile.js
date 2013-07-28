@@ -56,25 +56,6 @@ $(document).ready(function() {
         }
     });
 
-    $("#a_sendcode").click(function() {
-        if (jQuery("#vcode").attr("disabled") == true) {
-            return;
-        }
-        if ($("#userPhone").val() == "") {
-            ShowWrong($("#userPhone"), "请输入手机号码", "");
-            isMobileValid = false;
-            return;
-        }
-        check_mobilebase()
-        if (isMobileValid) {
-            ajax_mobile();
-        }
-        if (isMobileValid) {
-            sendVcode($("#userPhone").val(), $("#txt_mathcode").val());
-        }
-        return false;
-    });
-
     $("#btn_mathcode").click(function() {
         sendCertCode();
     });
@@ -109,7 +90,7 @@ function sendVcode(mobile, mathcode) {
                 refresh_code();
             	alert("验证码已发送");
                 document.getElementById("div_mathcode").style.display = "none";
-                //updateTimeLabel(120);
+                updateTimeLabel(180);
             } else if (req == 201) {
                 //显示运算输入
                 document.getElementById("div_mathcode").style.display = "";
@@ -158,10 +139,6 @@ function check_mobilebase() {
     var showObject = $("#div_userPhone");
     isMobileValid = true;
     ShowWrong($("#userPhone"), "", "");
-
-    //页面下部的发送
-    $("#a_sendcode").attr("disabled", false);
-
 
 }
 
@@ -298,7 +275,6 @@ function ShowNone(obj) {
 
 function updateTimeLabel(time) {
     var btn = $("#vcode");
-    var a_sendcode = $("#a_sendcode");
     btn.val(time <= 0 ? "获取手机验证码" : ("" + (time) + "秒后点击重新发送"));
     var hander = setInterval(function() {
         if (time <= 0) {
@@ -306,11 +282,9 @@ function updateTimeLabel(time) {
             hander = null;
             btn.val("获取手机验证码");
             btn.attr("disabled", false);
-            a_sendcode.attr("disabled", false);
         }
         else {
             btn.attr("disabled", true);
-            a_sendcode.attr("disabled", true);
             btn.val("" + (time--) + "秒后点击重新发送");
         }
     }, 1000);

@@ -52,6 +52,42 @@ function check_input() {
     return true;
 }      
 
+function addFav(){
+	
+    if (document.all){  
+        try{  
+            window.external.addFavorite('http://test.88hom.com/ucenter','通行证 - 房不剩房');  
+        }catch(e){  
+            alert( "加入收藏失败，请使用Ctrl+D进行添加" );  
+        }  
+          
+    }else if (window.sidebar){  
+        window.sidebar.addPanel('通行证 - 房不剩房','http://test.88hom.com/ucenter', "");  
+     }else{  
+        alert( "加入收藏失败，请使用Ctrl+D进行添加" );  
+    }  
+}
+
+function setHomepage(){  
+    if (document.all){  
+        document.body.style.behavior='url(#default#homepage)';  
+		document.body.setHomePage(window.location.href);  
+    }else if (window.sidebar){  
+        if(window.netscape){  
+            try{  
+                netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
+            }catch (e){  
+                alert( "该操作被浏览器拒绝，如果想启用该功能，请在地址栏内输入 about:config,然后将项 signed.applets.codebase_principal_support 值该为true" );  
+            }  
+        }  
+        var prefs = Components.classes['@mozilla.org/preferences-service;1'].getService(Components. interfaces.nsIPrefBranch);  
+        prefs.setCharPref('browser.startup.homepage',window.location.href);  
+    }else{  
+        alert('您的浏览器不支持自动自动设置首页, 请使用浏览器菜单手动设置!');  
+    }  
+}  
+
+
 </script>
 </head>
 
@@ -60,7 +96,7 @@ function check_input() {
 <div class="top">
     <a href="http://www.88hom.com" class="logo1"><img src="<!--{$cfg.web_images}-->ucenter/logo.jpg"></a>
     <span class="headerNav">
-    <a onclick="bookmarkit();" title="加入收藏夹">收藏</a> | <a onclick="this.style.behavior=&quot;url(#default#homepage)&quot;;this.sethomepage(&quot;http://localhost/88hom/ucenter/&quot;);return false;" title="设为首页">设为首页</a> | <a href="#">官方微博</a>
+    <a style="cursor:pointer" onclick="addFav();" title="加入收藏夹">收藏</a> | <a style="cursor:pointer" onclick="setHomepage();" title="设为首页">设为首页</a> | <a href="#">官方微博</a>
     </span>
 </div>
 <!--中间登录部分-->

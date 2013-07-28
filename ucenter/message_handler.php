@@ -39,8 +39,11 @@ if($action == "sendMessage"){
 	$userService = new UserService($db);
 	$toNameArr = split(",",$toName);
 	foreach($toNameArr as $name){
-		$toUser = $userService->getUserByUserName($name);
-		if($toUser == "") continue;
+		$toUser = $userService->getUserByUserName($name,-1);
+		if($toUser == ""){
+			echo "{\"err\":\"error\",\"msg\":\"不能发信息给用户".$name."，因为它并不存在\"}";
+			return;
+		}
 
 		$message['messageToUserId'] = $toUser['userId'];
 		$messageService->release($message);

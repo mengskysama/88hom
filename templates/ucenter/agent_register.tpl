@@ -163,24 +163,17 @@
    						 </td>
  					 </tr>
 					 <tr>
-  					     <td width="140" height="70" align="right" valign="middle" class="f14 z3"><font class="red">*&nbsp;</font>手机号码：</td>
-    					 <td colspan="2" height="70">
+  					     <td width="140" height="40" align="right" valign="middle" class="f14 z3"><font class="red">*&nbsp;</font>手机号码：</td>
+    					 <td colspan="2" height="40">
     					 <input id="userPhone" name="userPhone" type="text" value="" class="inp01"/>    					 
-                         <input name="vcode" type="button" class="hq b0" id="vcode" value="" onclick="return sendCertCode();"/></td>
+                         <input name="vcode" type="button" class="yz r" id="vcode" value="获取手机验证码" onclick="return sendCertCode();"/></td>
  					 </tr>
  					 <tr>
-  					    <td width="105" height="70" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机验证码：</td>
-   					    <td colspan="2" height="70">
+  					    <td width="105" height="40" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机验证码：</td>
+   					    <td colspan="2" height="40">
                        	  <input id="phoneCert" name="phoneCert" type="text" class="sjyz"  value=""/>
-                            <span class="yzm z6">若1分钟后仍未收到验证码短信，<a href="javascript:void(0);" id="a_sendcode">请点此重发</a><br /> 若无法收到验证短信，请使用<a href="email_register.php">电子邮箱注册</a></span>
                         </td>
 		  			</tr>
- 					 <tr>
-     						<td width="140" height="30"></td>
-						    <td height="30" colspan="2" valign="top">
-        					   	  <p class="z6"></p>
-       					    </td>
- 					 </tr>
   					 <tr>
    							<td width="140" height="35" align="right" valign="middle" class="f14 z3">办公电话：</td>
    							<td colspan="2" class="grzc_31"><input name="userTel" id="userTel" type="text"  value="" /></td>

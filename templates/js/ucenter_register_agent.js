@@ -53,6 +53,18 @@ function check() {
         isemaivalid = false;
         return false;
     }
+
+    check_mobilebase();
+    if (isMobileValid) {
+        check_mobile(this);
+    }
+    if (!isMobileValid) return false;
+    
+    check_code($("#phoneCert"));
+    if(!isCodeValid) return false;
+    
+    ajax_email();
+    if(!isemaivalid) return false;
     
     if (!$("#agree_ucenter").prop("checked")) {
         alert("请先选中同意《服务条款》和《隐私权相关政策》");

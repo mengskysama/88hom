@@ -26,6 +26,8 @@ $(function() {
             $("#btn_live").removeAttr("disabled");
         }
     });
+    textCounter(document.getElementById('houseTitle'),document.getElementById('houseTitleAlert'),30);
+    pictureIndex = <!--{$picCount}-->;
 	<!--{foreach from=$picTypeList item=item key=key}-->
     initPicUp3(<!--{$key}-->,'<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
 	<!--{/foreach}-->
@@ -246,7 +248,7 @@ function check(){
 						<!--{foreach from=$propertyDetailPicList item=item_ key=key_}-->
 			        	<!--{if $key==$item_.pictypeId}-->
 			        	<dl id="pic_<!--{$key_}-->">
-        	        		<dt><img src="<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->"></dt>
+        	        		<dt><img width="120" height="97" src="<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->"></dt>
         	        		<dd><span class="redlink"><a href="javascript:void(0)" onclick="changeTopicImg('<!--{$cfg.web_url}-->uploads/<!--{$item_.picThumb}-->','<!--{$item_.picThumb}-->','<!--{$item_.picUrl}-->')">设为标题图</a></span></dd>
         	        		<dd>描述：<input type="text" class="input01" name="picName[]" value="<!--{$item_.picInfo}-->"/><a href="javascript:void(0)" onclick="dropContainer('pic_<!--{$key_}-->')"><img src="<!--{$cfg.web_url}-->templates/images/ucenter/cha.jpg"></a></dd>
         	    		<input type="hidden" name="picPath[]" value="<!--{$item_.picUrl}-->"/>
@@ -263,7 +265,7 @@ function check(){
 		      
 		       <tr>
 			    <td height="124" align="center" valign="middle" bgcolor="#f7f6f1">标题图</td>
-			    <td align="left" valign="top" class="p25"><div class="btt" id="topic_image"><img src="<!--{$cfg.web_url}-->uploads/<!--{$topPicThumb}-->"></div></td>
+			    <td align="left" valign="top" class="p25"><div id="topic_image"><img width="120" height="97" src="<!--{$cfg.web_url}-->uploads/<!--{$topPicThumb}-->"></div></td>
 			    
         	    <input type="hidden" id="topPicPath" name="topPicPath" value="<!--{$topPicPath}-->"/>
         	    <input type="hidden" id="topPicPathThumb" name="topPicPathThumb" value="<!--{$topPicThumb}-->"/>
