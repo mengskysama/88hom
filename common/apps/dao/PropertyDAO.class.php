@@ -163,7 +163,6 @@ class PropertyDAO  {
 			  propertyIsPreferential=".(empty($property['propertyIsPreferential'])?0:$property['propertyIsPreferential']).",
 			  propertyPreferentialPrice='".(empty($property['propertyPreferentialPrice'])?'':$property['propertyPreferentialPrice'])."',  
 			  propertyPreferentialTitle='".(empty($property['propertyPreferentialTitle'])?'':$property['propertyPreferentialTitle'])."',  
-			  propertyState=".(empty($property['propertyState'])?0:$property['propertyState']).",
 			  propertyUpdateTime=".time()." 
 			  where propertyId=".$property['propertyId'];				
 //		echo $sql;
@@ -207,8 +206,22 @@ class PropertyDAO  {
 //		exit;
 		return $this->db->getQueryArray($sql);
 	}
-	public function getPropertyListByUserAndPic(){
-		
+	public function getPropertyListByUserAndPic($field = '*',$where='',$group='',$order='',$limit=''){
+		$sql="SELECT $field FROM ecms_property AS p 
+			  INNER JOIN ecms_user AS u ON p.propertyUserId=u.userId AND p.propertyState=1
+			  LEFT JOIN ecms_pic AS pic ON p.propertyId=pic.picBuildId AND pic.picState=1 AND pic.picBuildFatherType=2 AND pictypeId=3 
+			  $where 
+			  $group 
+			  $order 
+			  $limit";
+		return $this->db->getQueryArray($sql);
+	}
+	public function getPropertyList($field = '*',$where='',$order='',$limit=''){
+		$sql="select $field from ecms_property 
+			  $where 
+			  $order 
+			  $limit";
+		return $this->db->getQueryArray($sql);
 	}
 	/**
 	 * 修改楼盘源信息状态

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2013-07-18 22:53:59
+<?php /* Smarty version Smarty-3.1.8, created on 2013-08-03 11:10:35
          compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\agent_lease_property_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:482651e53e4d136a20-02954644%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd9b2f3a31c7735171e64395cc07b99ff4a3a90f1' => 
     array (
       0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\agent_lease_property_list.tpl',
-      1 => 1374150255,
+      1 => 1375454544,
       2 => 'file',
     ),
   ),
@@ -115,7 +115,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<option <?php if ($_smarty_tpl->tpl_vars['propKind']->value=="zz"){?> selected="selected" <?php }?> value="zz">住宅</option>
 			        <option <?php if ($_smarty_tpl->tpl_vars['propKind']->value=="bs"){?> selected="selected" <?php }?> value="bs">别墅</option>
 					<option <?php if ($_smarty_tpl->tpl_vars['propKind']->value=="sp"){?> selected="selected" <?php }?> value="sp">商铺</option>
-					<option <?php if ($_smarty_tpl->tpl_vars['propKind']->value=="xzl"){?> selected="selected" <?php }?> value="xzl">写字楼</option>     
+					<option <?php if ($_smarty_tpl->tpl_vars['propKind']->value=="xzl"){?> selected="selected" <?php }?> value="xzl">写字楼</option>  
+					<option <?php if ($_smarty_tpl->tpl_vars['propKind']->value=="gc"){?> selected="selected" <?php }?> value="gc">厂房</option>     
 			    </select></td>
 			  </tr>
 		  </table>
@@ -179,7 +180,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['prop']['last']       = ($_sm
 <?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
 " / ></label></td>
 			    <td width="225" align="left" valign="middle" class="bor">
-			    	<img src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+			    	<img width="74px" height="58px" src="<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
 uploads/<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propPhoto'];?>
 " class="l">
 			        <span class="l wz">
@@ -204,7 +205,8 @@ _<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable(
 			    <td width="120" align="center" valign="middle" class="bor"><?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['createDate'];?>
 <br /><?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['createTime'];?>
 </td>
-			    <td width="92" align="center" valign="middle" class="bor"><font class="red">100</font> 次</td>
+			    <td width="92" align="center" valign="middle" class="bor"><font class="red"><?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['hitCount'];?>
+</font> 次</td>
 			    <td align="center" valign="middle" class="bor">
 			    <?php if ($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='zz'){?>
 			    <a href="agent_lease_zz_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
@@ -219,14 +221,14 @@ _<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable(
 			    <a href="agent_lease_xzl_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
 ">编辑</a>
 			    <?php }elseif($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind']=='gc'){?>
-			    <a href="agent_lease_gc_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
+			    <a href="agent_lease_cf_edit.php?propId=<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
 ">编辑</a>
 			    <?php }?>			    
 			     <a href="javascript:void(0);" onclick="deleteProp('<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind'];?>
 <?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
 ')">删除</a><br />
 			     <?php if ($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propState']==1){?>
-			    	<a class="xx0" style="margin:8px 12px;">发布待审核</a>
+			    	<a class="xx0" style="margin:8px 12px;">审核中</a>
 			     <?php }elseif($_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propState']==5){?>
 			    	<a href="javascript:void(0)" onclick="refreshProp('<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propKind'];?>
 ','<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable('smarty')->value['section']['prop']['index']]['propId'];?>
@@ -273,20 +275,6 @@ _<?php echo $_smarty_tpl->tpl_vars['propList']->value[$_smarty_tpl->getVariable(
     </div>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-	
-        $("#checkall").click(function(){
-        	var ischecked = this.checked;
-            $("#prop_table input[type='checkbox'],#checkall").each(function(){
-            	this.checked = ischecked;
-                $(this).click(function(){
-                	if(!this.checked){
-                    	$('#checkall').get(0).checked=false;
-                    }
-                });
-            });
-		});
-	});
 	
     //页面刷新
     function reflash(){

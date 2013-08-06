@@ -11,7 +11,6 @@ class VillaDAO  {
 		$this->db=$db;
 	}
 	//发布厂房
-	//发布厂房
 	//added by Cheneil
 	public function release($villa){
 		$sql="insert into ecms_villa(villaTitle,villaContent,villaNumber,villaRoom,villaHall,villaToilet,villaKitchen,villaBalcony,villaBuildArea,
@@ -266,6 +265,89 @@ class VillaDAO  {
 		$sql="select count(*) as counts from ecms_villa $where";
 		return $this->db->getQueryValue($sql);
 	}
+	//added by david 
+	//搜索查询获取别墅出售列表信息
+	public function getVillaSellListForSearch($where='',$group='',$order='',$limit=''){
+		if($where!=''){
+			$where.=' AND v.villaSellRentType=1 AND ud.userdetailState=2';
+		}else{
+			$where='WHERE v.villaSellRentType=1 AND ud.userdetailState=2';
+		}
+		$sql="SELECT v.*,c.communityId,c.communityName,c.communityAddress,c.communityProvince,c.communityCity,
+			  c.communityDistrict,c.communityArea,u.userId,ud.userdetailName,i.imcpId,i.imcpShortName,p.picUrl,p.picThumb,p.picInfo 
+			  FROM ecms_villa AS v 
+			  INNER JOIN ecms_community AS c ON v.villaCommunityId=c.communityId AND v.villaState=5 AND c.communityState=1 
+			  INNER JOIN ecms_user AS u ON v.villaUserId=u.userId AND u.userState=1 AND u.userType<>0 
+			  LEFT JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=v.villaId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=4 AND p.picSellRent=1 
+			  $where 
+			  $group 
+			  $order 
+			  $limit";
+		return $this->db->getQueryArray($sql);
+	}
+	//搜索查询获取别墅出售总数信息
+	public function getVillaSellCountForSearch($where='',$group=''){
+		if($where!=''){
+			$where.=' AND v.villaSellRentType=1 AND ud.userdetailState=2';
+		}else{
+			$where='WHERE v.villaSellRentType=1 AND ud.userdetailState=2';
+		}
+		$sql="SELECT COUNT(*) AS counts FROM (SELECT v.villaId FROM ecms_villa AS v 
+			  INNER JOIN ecms_community AS c ON v.villaCommunityId=c.communityId AND v.villaState=5 AND c.communityState=1 
+			  INNER JOIN ecms_user AS u ON v.villaUserId=u.userId AND u.userState=1 AND u.userType<>0 
+			  LEFT JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=v.villaId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=4 AND p.picSellRent=1 
+			  $where 
+			  $group) as tb_new";
+		return $this->db->getQueryValue($sql);
+	}
+	//搜索查询获取别墅出租列表信息
+	public function getVillaRentListForSearch($where='',$group='',$order='',$limit=''){
+		if($where!=''){
+			$where.=' AND v.villaSellRentType=2 AND ud.userdetailState=2';
+		}else{
+			$where='WHERE v.villaSellRentType=2 AND ud.userdetailState=2';
+		}
+		$sql="SELECT v.*,c.communityId,c.communityName,c.communityAddress,c.communityProvince,c.communityCity,
+			  c.communityDistrict,c.communityArea,u.userId,ud.userdetailName,i.imcpId,i.imcpShortName,p.picUrl,p.picThumb,p.picInfo 
+			  FROM ecms_villa AS v 
+			  INNER JOIN ecms_community AS c ON v.villaCommunityId=c.communityId AND v.villaState=5 AND c.communityState=1 
+			  INNER JOIN ecms_user AS u ON v.villaUserId=u.userId AND u.userState=1 AND u.userType<>0 
+			  LEFT JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=v.villaId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=4 AND p.picSellRent=2 
+			  $where 
+			  $group 
+			  $order 
+			  $limit";
+		return $this->db->getQueryArray($sql);
+	}
+	//搜索查询获取别墅出租总数信息
+	public function getVillaRentCountForSearch($where='',$group=''){
+		if($where!=''){
+			$where.=' AND v.villaSellRentType=2 AND ud.userdetailState=2';
+		}else{
+			$where='WHERE v.villaSellRentType=2 AND ud.userdetailState=2';
+		}
+		$sql="SELECT COUNT(*) AS counts FROM (SELECT v.villaId FROM ecms_villa AS v 
+			  INNER JOIN ecms_community AS c ON v.villaCommunityId=c.communityId AND v.villaState=5 AND c.communityState=1 
+			  INNER JOIN ecms_user AS u ON v.villaUserId=u.userId AND u.userState=1 AND u.userType<>0 
+			  LEFT JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=v.villaId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=4 AND p.picSellRent=2 
+			  $where 
+			  $group) as tb_new";
+		return $this->db->getQueryValue($sql);
+	}
+	//点击统计
+	public function clickCount($id){
+		$sql="update ecms_villa set villaClickCount=villaClickCount+1 where villaId=$id";
+		return $this->db->getQueryExecute($sql);
+	}
+	//end to be added by david
 }
 
 

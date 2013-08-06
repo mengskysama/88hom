@@ -36,8 +36,13 @@ $(function() {
 function check(){
 	
 	if(!CheckInfoCode('officeNumber',true)) return false;	
-	if(!checkPrice('0',true)) return false;
-	if(!checkPropFee('officeProFee',true)) return false;
+	if(!checkPrice('0',true)) return false;	
+	
+	var val = $('input:radio[name="officeIncludFee"]:checked').val();
+    if (val == 2) {
+		if(!checkPropFee('officeProFee',true)) return false;
+    }
+	
 	if(!checkOfficePayment()) return false;
 	if(!CheckBuildingArea('officeBuildArea',true)) return false;
 	if(!CheckFloor('officeFloor','officeAllFloor',true)) return false;
@@ -176,11 +181,15 @@ function checkRentPrice(){
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否含物业费</td>
     <td align="left" valign="middle" class="p25">
-    	<label><input id="" name="officeIncludFee" type="radio" value="1" <!--{if $officeIncludFee eq 1 }--> checked="checked" <!--{/if}-->/> 是</label>     
-      	<label> <input id="" name="officeIncludFee" type="radio" value="2" <!--{if $officeIncludFee eq 2 }--> checked="checked" <!--{/if}-->/> 否</label>   
+    	<label><input id="" name="officeIncludFee" type="radio" value="1" <!--{if $officeIncludFee eq 1 }--> checked="checked" <!--{/if}--> onclick="changeIncludeFee(1,'officeProFee');"/> 是</label>     
+      	<label> <input id="" name="officeIncludFee" type="radio" value="2" <!--{if $officeIncludFee eq 2 }--> checked="checked" <!--{/if}--> onclick="changeIncludeFee(2,'officeProFee');"/> 否</label>   
     </td>
   </tr>
-  <tr>
+  <!--{if $officeIncludFee eq 2 }-->
+  <tr id="tr_prop_fee">
+  <!--{else}-->
+  <tr id="tr_prop_fee" style="display: none;">
+  <!--{/if}-->
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 物 业 费</td>
     <td align="left" valign="middle" class="p25 grzc_32"><input id="officeProFee" name="officeProFee" type="text" value="<!--{$officeProFee}-->" /> 元/平米·月
     	</td>

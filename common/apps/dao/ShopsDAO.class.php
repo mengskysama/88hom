@@ -90,7 +90,7 @@ class ShopsDAO{
 		if(isset($info['shopsType']) && $info['shopsType'] > 0){
 			$sql .= "shopsType=".$info['shopsType'].",";
 		} 
-		if(isset($info['shopsSellPrice'])){
+		if(isset($info['shopsSellPrice']) && $info['shopsSellPrice']>0){
 			$sql .= "shopsSellPrice=".$info['shopsSellPrice'].",";
 		} 
 		if(isset($info['shopsBuildArea'])){
@@ -117,7 +117,7 @@ class ShopsDAO{
 		if(isset($info['shopsIncludFee']) && $info['shopsIncludFee']>0){
 			$sql .= "shopsIncludFee=".$info['shopsIncludFee'].",";
 		}
-		if(isset($info['shopsPropFee'])){
+		if(isset($info['shopsPropFee']) && $info['shopsPropFee']>0){
 			$sql .= "shopsPropFee=".$info['shopsPropFee'].",";
 		}
 		if(isset($info['shopsTransfer']) && $info['shopsTransfer']>0){
@@ -167,5 +167,88 @@ class ShopsDAO{
 	public function getDetail(){
 		
 	}
+	//added by david 
+	//搜索查询获取商铺出售列表信息
+	public function getShopsSellListForSearch($where='',$group='',$order='',$limit=''){
+		if($where!=''){
+			$where.=' AND s.shopsSellRentType=1 AND ud.userdetailState=2';
+		}else{
+			$where='WHERE s.shopsSellRentType=1 AND ud.userdetailState=2';
+		}
+		$sql="SELECT s.*,c.communityId,c.communityName,c.communityAddress,c.communityProvince,c.communityCity,
+			  c.communityDistrict,c.communityArea,u.userId,ud.userdetailName,i.imcpId,i.imcpShortName,p.picUrl,p.picThumb,p.picInfo 
+			  FROM ecms_shops AS s 
+			  INNER JOIN ecms_community AS c ON s.shopsCommunityId=c.communityId AND s.shopsState=5 AND c.communityState=1 
+			  INNER JOIN ecms_user AS u ON s.shopsUserId=u.userId AND u.userState=1 AND u.userType<>0 
+			  LEFT JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=s.shopsId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=2 AND p.picSellRent=1 
+			  $where 
+			  $group 
+			  $order 
+			  $limit";
+		return $this->db->getQueryArray($sql);
+	}
+	//搜索查询获取商铺出售总数信息
+	public function getShopsSellCountForSearch($where='',$group=''){
+		if($where!=''){
+			$where.=' AND s.shopsSellRentType=1 AND ud.userdetailState=2';
+		}else{
+			$where='WHERE s.shopsSellRentType=1 AND ud.userdetailState=2';
+		}
+		$sql="SELECT COUNT(*) AS counts FROM (SELECT s.shopsId FROM ecms_shops AS s 
+			  INNER JOIN ecms_community AS c ON s.shopsCommunityId=c.communityId AND s.shopsState=5 AND c.communityState=1 
+			  INNER JOIN ecms_user AS u ON s.shopsUserId=u.userId AND u.userState=1 AND u.userType<>0 
+			  LEFT JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=s.shopsId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=2 AND p.picSellRent=1 
+			  $where 
+			  $group) as tb_new";
+		return $this->db->getQueryValue($sql);
+	}
+	//搜索查询获取商铺出租列表信息
+	public function getShopsRentListForSearch($where='',$group='',$order='',$limit=''){
+		if($where!=''){
+			$where.=' AND s.shopsSellRentType=2 AND ud.userdetailState=2';
+		}else{
+			$where='WHERE s.shopsSellRentType=2 AND ud.userdetailState=2';
+		}
+		$sql="SELECT s.*,c.communityId,c.communityName,c.communityAddress,c.communityProvince,c.communityCity,
+			  c.communityDistrict,c.communityArea,u.userId,ud.userdetailName,i.imcpId,i.imcpShortName,p.picUrl,p.picThumb,p.picInfo 
+			  FROM ecms_shops AS s 
+			  INNER JOIN ecms_community AS c ON s.shopsCommunityId=c.communityId AND s.shopsState=5 AND c.communityState=1 
+			  INNER JOIN ecms_user AS u ON s.shopsUserId=u.userId AND u.userState=1 AND u.userType<>0 
+			  LEFT JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=s.shopsId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=2 AND p.picSellRent=2 
+			  $where 
+			  $group 
+			  $order 
+			  $limit";
+		return $this->db->getQueryArray($sql);
+	}
+	//搜索查询获取商铺出租总数信息
+	public function getShopsRentCountForSearch($where='',$group=''){
+		if($where!=''){
+			$where.=' AND s.shopsSellRentType=2 AND ud.userdetailState=2';
+		}else{
+			$where='WHERE s.shopsSellRentType=2 AND ud.userdetailState=2';
+		}
+		$sql="SELECT COUNT(*) AS counts FROM (SELECT s.shopsId FROM ecms_shops AS s 
+			  INNER JOIN ecms_community AS c ON s.shopsCommunityId=c.communityId AND s.shopsState=5 AND c.communityState=1 
+			  INNER JOIN ecms_user AS u ON s.shopsUserId=u.userId AND u.userState=1 AND u.userType<>0 
+			  LEFT JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=s.shopsId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=2 AND p.picSellRent=2 
+			  $where 
+			  $group) as tb_new";
+		return $this->db->getQueryValue($sql);
+	}
+	//点击统计
+	public function clickCount($id){
+		$sql="update ecms_shops set shopsClickCount=shopsClickCount+1 where shopsId=$id";
+		return $this->db->getQueryExecute($sql);
+	}
+	//end to be added by david
 }
 ?>

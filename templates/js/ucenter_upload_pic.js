@@ -206,7 +206,7 @@ function initAgentPicUp(v_timestamp,v_token,v_file_path_upload,v_web_path,v_web_
 			'thumbResizeType': 1,
 			'thumbWidth': 125,
 			'thumbHeight': 100,
-			'watermark' : 1,
+			'watermark' : 0,
 			'watermarkPic': v_file_path_upload+'watermark.png',
 			'watermarkPos': 9,
 			'thumbDir'    : 'agent/',

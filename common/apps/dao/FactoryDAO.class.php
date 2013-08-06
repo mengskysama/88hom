@@ -50,15 +50,16 @@ class FactoryDAO  {
 										.",".(empty($factory['factoryPayDetailF'])?0:$factory['factoryPayDetailF'])
 										.",".(empty($factory['factoryLeastYear'])?0:$factory['factoryLeastYear'])
 										.",".(empty($factory['factorySellRentType'])?0:$factory['factorySellRentType'])
-										.",".(empty($factory['factoryProvince'])?-1:$factory['factoryProvince'])
-										.",".(empty($factory['factoryCity'])?-1:$factory['factoryCity'])
-										.",".(empty($factory['factoryDistrict'])?-1:$factory['factoryDistrict'])
-										.",".(empty($factory['factoryArea'])?-1:$factory['factoryArea'])
+										.",".($factory['factoryProvince'] == ""?1000000:$factory['factoryProvince'])
+										.",".($factory['factoryCity'] == ""?1000000:$factory['factoryCity'])
+										.",".($factory['factoryDistrict'] == ""?1000000:$factory['factoryDistrict'])
+										.",".($factory['factoryArea'] == ""?1000000:$factory['factoryArea'])
 										.",".(empty($factory['factoryState'])?0:$factory['factoryState'])
 										.",".(empty($factory['factoryUserId'])?0:$factory['factoryUserId'])
 										.",".time()
 										.",".time()
 										.")";
+		//echo "<br>".$sql;return;
 		$this->db->query($sql);
 		$factoryId = $this->db->getInsertNum();
 		return $factoryId;										
@@ -109,7 +110,7 @@ class FactoryDAO  {
 		if(isset($factory['factorySellPrice'])){
 			$sql .= "factorySellPrice=".($factory['factorySellPrice'] == "" ? 0 : $factory['factorySellPrice']).",";
 		}				
-		if(isset($factory['factoryProFee'])){
+		if(isset($factory['factoryProFee']) && !empty($factory['factoryProFee'])){
 			$sql .= "factoryProFee=".$factory['factoryProFee'].",";
 		}			
 		if(isset($factory['factoryManagentUnits'])){
@@ -118,19 +119,19 @@ class FactoryDAO  {
 		if(isset($factory['factoryPayInfo'])){
 			$sql .= "factoryPayInfo=".$factory['factoryPayInfo'].",";
 		}			
-		if(isset($factory['factoryFloorArea'])){
+		if(isset($factory['factoryFloorArea']) && !empty($factory['factoryFloorArea'])){
 			$sql .= "factoryFloorArea=".$factory['factoryFloorArea'].",";
 		}			
-		if(isset($factory['factoryBuildArea'])){
+		if(isset($factory['factoryBuildArea']) && !empty($factory['factoryBuildArea'])){
 			$sql .= "factoryBuildArea=".$factory['factoryBuildArea'].",";
 		}					
-		if(isset($factory['factoryOfficeArea'])){
+		if(isset($factory['factoryOfficeArea']) && !empty($factory['factoryOfficeArea'])){
 			$sql .= "factoryOfficeArea=".$factory['factoryOfficeArea'].",";
 		}				
-		if(isset($factory['factoryWorkshopArea'])){
+		if(isset($factory['factoryWorkshopArea']) && !empty($factory['factoryWorkshopArea'])){
 			$sql .= "factoryWorkshopArea=".$factory['factoryWorkshopArea'].",";
 		}				
-		if(isset($factory['factorySpaceArea'])){
+		if(isset($factory['factorySpaceArea']) && !empty($factory['factorySpaceArea'])){
 			$sql .= "factorySpaceArea=".$factory['factorySpaceArea'].",";
 		}				
 		if(isset($factory['factoryDormitory'])){
@@ -139,16 +140,16 @@ class FactoryDAO  {
 		if(isset($factory['factoryBuildYear'])){
 			$sql .= "factoryBuildYear=".($factory['factoryBuildYear'] == "" ? 0 : $factory['factoryBuildYear']).",";
 		}				
-		if(isset($factory['factorySpan'])){
+		if(isset($factory['factorySpan']) && !empty($factory['factorySpan'])){
 			$sql .= "factorySpan=".$factory['factorySpan'].",";
 		}				
-		if(isset($factory['factoryAllFloor'])){
+		if(isset($factory['factoryAllFloor']) && !empty($factory['factoryAllFloor'])){
 			$sql .= "factoryAllFloor=".$factory['factoryAllFloor'].",";
 		}				
-		if(isset($factory['factoryFloorHeight'])){
+		if(isset($factory['factoryFloorHeight']) && !empty($factory['factoryFloorHeight'])){
 			$sql .= "factoryFloorHeight=".$factory['factoryFloorHeight'].",";
 		}				
-		if(isset($factory['factoryLoadBearing'])){
+		if(isset($factory['factoryLoadBearing']) && !empty($factory['factoryLoadBearing'])){
 			$sql .= "factoryLoadBearing=".$factory['factoryLoadBearing'].",";
 		}				
 		if(isset($factory['factoryBuildStructure'])){
@@ -259,7 +260,82 @@ class FactoryDAO  {
 		$sql="select count(*) as counts from ecms_factory $where";
 		return $this->db->getQueryValue($sql);
 	}
+	//added by david 
+	//搜索查询获取厂房出售列表信息
+	public function getFactorySellListForSearch($where='',$group='',$order='',$limit=''){
+		if($where!=''){
+			$where.=' AND f.factorySellRentType=1 AND ud.userdetailState=2';
+		}else{
+			$where='WHERE f.factorySellRentType=1 AND ud.userdetailState=2';
+		}
+		$sql="SELECT f.*,u.userId,ud.userdetailName,i.imcpId,i.imcpShortName,p.picUrl,p.picThumb,p.picInfo  
+			  FROM ecms_factory AS f 
+			  INNER JOIN ecms_user AS u ON f.factoryUserId=u.userId AND f.factoryState=5 AND u.userState=1 AND u.userType=2 
+			  INNER JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=f.factoryId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=5 AND p.picSellRent=1 
+			  $where 
+			  $group 
+			  $order 
+			  $limit";
+		return $this->db->getQueryArray($sql);
+	}
+	//搜索查询获取住宅出售总数信息
+	public function getFactorySellCountForSearch($where='',$group=''){
+		if($where!=''){
+			$where.=' AND f.factorySellRentType=1 AND ud.userdetailState=2';
+		}else{
+			$where='WHERE f.factorySellRentType=1 AND ud.userdetailState=2';
+		}
+		$sql="SELECT COUNT(*) AS counts FROM (SELECT f.factoryId FROM ecms_factory AS f 
+			  INNER JOIN ecms_user AS u ON f.factoryUserId=u.userId AND f.factoryState=5 AND u.userState=1
+			  INNER JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=f.factoryId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=5 AND p.picSellRent=1 
+			  $where 
+			  $group) as tb_new";
+		return $this->db->getQueryValue($sql);
+	}
+	//搜索查询获取厂房出租列表信息
+	public function getFactoryRentListForSearch($where='',$group='',$order='',$limit=''){
+		if($where!=''){
+			$where.=' AND f.factorySellRentType=2 AND ud.userdetailState=2';
+		}else{
+			$where='WHERE f.factorySellRentType=2 AND ud.userdetailState=2';
+		}
+		$sql="SELECT f.*,u.userId,ud.userdetailName,i.imcpId,i.imcpShortName,p.picUrl,p.picThumb,p.picInfo  
+			  FROM ecms_factory AS f 
+			  INNER JOIN ecms_user AS u ON f.factoryUserId=u.userId AND f.factoryState=5 AND u.userState=1 AND u.userType=2 
+			  INNER JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=f.factoryId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=5 AND p.picSellRent=2 
+			  $where 
+			  $group 
+			  $order 
+			  $limit";
+		return $this->db->getQueryArray($sql);
+	}
+	//搜索查询获取厂房出租总数信息
+	public function getFactoryRentCountForSearch($where='',$group=''){
+		if($where!=''){
+			$where.=' AND f.factorySellRentType=2 AND ud.userdetailState=2';
+		}else{
+			$where='WHERE f.factorySellRentType=2 AND ud.userdetailState=2';
+		}
+		$sql="SELECT COUNT(*) AS counts FROM (SELECT f.factoryId FROM ecms_factory AS f 
+			  INNER JOIN ecms_user AS u ON f.factoryUserId=u.userId AND f.factoryState=5 AND u.userState=1
+			  INNER JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=f.factoryId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=5 AND p.picSellRent=2 
+			  $where 
+			  $group) as tb_new";
+		return $this->db->getQueryValue($sql);
+	}
+	//点击统计
+	public function clickCount($id){
+		$sql="update ecms_factory set factoryClickCount=factoryClickCount+1 where factoryId=$id";
+		return $this->db->getQueryExecute($sql);
+	}
+	//end to be added by david
 }
-
-
 ?>

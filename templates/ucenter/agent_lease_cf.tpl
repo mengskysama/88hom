@@ -63,7 +63,11 @@ function check(){
 	
 	if(!CheckInfoCode('factoryNumber',true)) return false;	
 	if(!checkRentPrice()) return false;
-	if(!checkPropFee('factoryProFee',true)) return false;
+	
+	var val = $('input:radio[name="factoryIncludFee"]:checked').val();
+    if (val == 2) {
+		if(!checkPropFee('factoryProFee',true)) return false;
+    }
 	
 	var val = $('input:radio[name="factoryPayment"]:checked').val();
     if (val == 1) {
@@ -294,11 +298,11 @@ function changepaydetail() {
 			  <tr>
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否含管理费</td>
 			    <td align="left" valign="middle" class="p25"> 
-			    	<label><input id="" name="factoryIncludFee" type="radio" value="1" checked="checked" /> 是</label>     
-			      	<label> <input id="" name="factoryIncludFee" type="radio" value="2" /> 否</label>    
+			    	<label><input id="" name="factoryIncludFee" type="radio" value="1" checked="checked" onclick="changeIncludeFee(1,'factoryProFee');"/> 是</label>     
+			      	<label><input id="" name="factoryIncludFee" type="radio" value="2" onclick="changeIncludeFee(2,'factoryProFee');"/> 否</label>    
 			    </td>
 			  </tr>
-			  <tr>
+			  <tr id="tr_prop_fee" style="display: none;">
 			    <td height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 管 理 费</td>
 			    <td align="left" valign="middle" class="p25 grzc_32"><input id="factoryProFee" name="factoryProFee" type="text"  value="" /> 
 			      <font class="z3">元/平米·月</font> </td>

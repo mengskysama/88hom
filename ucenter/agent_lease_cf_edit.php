@@ -18,16 +18,25 @@ if($property){
 	$factoryManagentUnits = $property['factoryManagentUnits'];
 	$factoryPayInfo = $property['factoryPayInfo'];
 	$factoryFloorArea = $property['factoryFloorArea'];
+	$factoryFloorArea = $factoryFloorArea === "0" ? "" : $factoryFloorArea;
 	$factoryBuildArea = $property['factoryBuildArea'];
+	$factoryBuildArea = $factoryBuildArea === "0" ? "" : $factoryBuildArea;
 	$factoryOfficeArea = $property['factoryOfficeArea'];
+	$factoryOfficeArea = $factoryOfficeArea === "0" ? "" : $factoryOfficeArea;
 	$factoryWorkshopArea = $property['factoryWorkshopArea'];
+	$factoryWorkshopArea = $factoryWorkshopArea === "0" ? "" : $factoryWorkshopArea;
 	$factorySpaceArea = $property['factorySpaceArea'];
+	$factorySpaceArea = $factorySpaceArea === "0" ? "" : $factorySpaceArea;
 	$factoryDormitory = $property['factoryDormitory'];
 	$factoryBuildYear = $property['factoryBuildYear'];
 	$factorySpan = $property['factorySpan'];
+	$factorySpan = $factorySpan === "0" ? "" : $factorySpan;
 	$factoryAllFloor = $property['factoryAllFloor'];
+	$factoryAllFloor = $factoryAllFloor === "0" ? "" : $factoryAllFloor;
 	$factoryFloorHeight = $property['factoryFloorHeight'];
+	$factoryFloorHeight = $factoryFloorHeight === "0" ? "" : $factoryFloorHeight;
 	$factoryLoadBearing = $property['factoryLoadBearing'];
+	$factoryLoadBearing = $factoryLoadBearing === "0" ? "" : $factoryLoadBearing;
 	$factoryBuildStructure = $property['factoryBuildStructure'];
 	$factoryWater = $property['factoryWater'];
 	$factoryHasCapacityNow = $property['factoryHasCapacityNow'];
@@ -48,6 +57,7 @@ if($property){
 	$factoryPayDetailY = $property['factoryPayDetailY'];
 	$factoryPayDetailF = $property['factoryPayDetailF'];
 	$factoryLeastYear = $property['factoryLeastYear'];
+	$factoryLeastYear = $factoryLeastYear === "0" ? "" : $factoryLeastYear;
 	$factoryState = $property['factoryState'];
 	
 	$photo['picBuildIdId'] = $propId;

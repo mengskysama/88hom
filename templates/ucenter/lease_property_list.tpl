@@ -114,7 +114,7 @@
 			    <!--{/if}-->			    
 			     <a href="javascript:void(0);" onclick="deleteProp('<!--{$propList[prop].propKind}--><!--{$propList[prop].propId}-->')">删除</a><br />
 			     <!--{if $propList[prop].propState eq 1}-->
-			    	<a class="xx0" style="margin:8px 12px;">发布待审核</a>
+			    	<a class="xx0" style="margin:8px 12px;">审核中</a>
 			     <!--{elseif $propList[prop].propState eq 5}-->
 			    	<a href="javascript:void(0);" onclick="refreshProp('<!--{$propList[prop].propKind}-->','<!--{$propList[prop].propId}-->')" class="xx0" style="margin:8px 12px;">刷新</a>
 			    	<a href="user_lease_prop_agent.php?propKind=<!--{$propList[prop].propKind}-->&propId=<!--{$propList[prop].propId}-->" class="xx0" style="margin:8px 12px;">去委托</a>

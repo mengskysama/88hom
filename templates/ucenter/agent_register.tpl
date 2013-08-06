@@ -166,7 +166,7 @@
   					     <td width="140" height="40" align="right" valign="middle" class="f14 z3"><font class="red">*&nbsp;</font>手机号码：</td>
     					 <td colspan="2" height="40">
     					 <input id="userPhone" name="userPhone" type="text" value="" class="inp01"/>    					 
-                         <input name="vcode" type="button" class="yz r" id="vcode" value="获取手机验证码" onclick="return sendCertCode();"/></td>
+                         <input name="vcode" type="button" class="yz r" id="vcode" value="获取免费手机验证码" onclick="return sendCertCode();"/></td>
  					 </tr>
  					 <tr>
   					    <td width="105" height="40" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机验证码：</td>

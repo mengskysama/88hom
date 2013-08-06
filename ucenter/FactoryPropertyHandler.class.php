@@ -22,7 +22,8 @@ class FactoryPropertyHandler extends PropertyHandler{
 		$this->factory['factoryCity'] = $areas[1];
 		$this->factory['factoryDistrict'] = $areas[2];
 		$this->factory['factoryArea'] = $areas[3];
-		//print_r($areas);return;
+		//echo "<br>";
+		//print_r($areas);
 		
 		$result = false;
 		if($this->factory['actionType'] == "update"){

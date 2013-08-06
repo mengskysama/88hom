@@ -235,12 +235,15 @@ function CheckRentArea(KeyName,flag)
 }
 
 function checkArea(KeyName,KeyValue,chkEmpty){
-    var value=document.getElementById(KeyName).value;
+    var value = trim(document.getElementById(KeyName).value);
     
-    if(chkEmpty == true && value==''){
-    	alert("请填写" + KeyValue);
-		$("#"+KeyName).focus();
-        return false;
+    if(value == ""){
+    	if(chkEmpty == true){
+        	alert("请填写" + KeyValue);
+    		$("#"+KeyName).focus();
+            return false;
+    	}
+    	return true;
     }
         
     if(check_float(KeyName)){
@@ -486,10 +489,10 @@ function checkPropFee(KeyName,flag){
 	}
 	
 	if(check_float(KeyName)){
-		if(parseFloat(value)<0 || parseFloat(value)>=1000000){
+		if(parseFloat(value)<=0 || parseFloat(value)>=1000000){
 			alert("物业费要小于100万元");
-            return false;
     		$("#"+KeyName).focus();
+            return false;
 		}
 		return true;
     }else{
@@ -505,17 +508,17 @@ function checkShopsTransferFee(KeyName){
 	var value = document.getElementById(KeyName).value;
 	if(trim(value) == "面议") return true;
 	
-	if(trim(value) == "" && flag) {
+	if(trim(value) == "") {
     	alert("请填写转让费");
 		$("#"+KeyName).focus();
     	return false;
 	}
 	
 	if(check_float(KeyName)){
-		if(parseFloat(value)<0){
+		if(parseFloat(value)<=0){
 			alert("转让费要大于0万元");
-            return false;
     		$("#"+KeyName).focus();
+            return false;
 		}
 		return true;
     }else{
@@ -558,8 +561,8 @@ function checkShopsPayment(){
         	alert("请选择支付方式付多少");
         	return false;
         }
-        return true;
     }
+    return true;
 }
 function changeShopPaydetail(){
 	var val = $('input:radio[name="shopsPayment"]:checked').val();
@@ -590,8 +593,8 @@ function checkOfficePayment(){
         	alert("请选择支付方式付多少");
         	return false;
         }
-        return true;
     }
+    return true;
 }
 function changeOfficePaydetail(){
 	var val = $('input:radio[name="officePayment"]:checked').val();
@@ -807,4 +810,13 @@ function checkVillaParkingPlaceCount(){
 		return false;
 	}
     return true;
+}
+//added by Cheneil on Aug02
+function changeIncludeFee(visible,propFeeObj){
+	if(visible==2){
+		$("#tr_prop_fee").css("display","");
+	}else{
+        $("#tr_prop_fee").css("display","none");
+        $("#"+propFeeObj).val("");
+	}
 }

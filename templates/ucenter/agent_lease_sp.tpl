@@ -46,7 +46,11 @@ function check(){
 	
 	if(!CheckInfoCode('shopsNumber',true)) return false;	
 	if(!checkRentPrice()) return false;
-	if(!checkPropFee('shopsPropFee',true)) return false;
+	
+	var val = $('input:radio[name="shopsIncludFee"]:checked').val();
+    if (val == 2) {
+		if(!checkPropFee('shopsPropFee',true)) return false;
+    }
 	
 	var val = $('input:radio[name="shopsTransfer"]:checked').val();
     if (val == 1 && !checkShopsTransferFee('shopsTransferFee')) {
@@ -207,11 +211,11 @@ function checkRentPrice(){
   <tr>
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1">是否含物业费</td>
     <td align="left" valign="middle" class="p25">
-    	<label><input id="" name="shopsIncludFee" type="radio" value="1"/> 是</label>     
-      	<label> <input id="" name="shopsIncludFee" type="radio" value="2" checked="checked"/> 否</label>   
+    	<label><input id="" name="shopsIncludFee" type="radio" value="1" checked="checked" onclick="changeIncludeFee(1,'shopsPropFee');"/> 是</label>     
+      	<label> <input id="" name="shopsIncludFee" type="radio" value="2" onclick="changeIncludeFee(2,'shopsPropFee');"/> 否</label>   
     </td>
   </tr>
-  <tr>
+  <tr id="tr_prop_fee" style="display: none;">
     <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 物 业 费</td>
     <td align="left" valign="middle" class="p25 grzc_32"><input id="shopsPropFee" name="shopsPropFee" type="text"/> <font class="z3">元/平米</font></td>
   </tr>

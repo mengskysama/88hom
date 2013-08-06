@@ -75,7 +75,7 @@
    					    <td width="105" height="30" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机号：</td>
  					    <td height="30">
 							<input id="userPhone" name="userPhone" type="text" class="sjh"  value=""/>
-                            <input name="vcode" type="button" class="yz r" id="vcode" value="获取手机验证码" onclick="return sendCertCode();"/>
+                            <input name="vcode" type="button" class="yz r" id="vcode" value="获取免费手机验证码" onclick="return sendCertCode();"/>
 							
                         </td>
 		  </tr>

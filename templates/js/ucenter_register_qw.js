@@ -392,7 +392,9 @@ function sendVcode(mobile, mathcode) {
         	
             if (req == 200) {
                 refresh_code();
+            	alert("验证码已发送");
                 document.getElementById("div_mathcode").style.display = "none";
+                updateTimeLabel(180);
             } else if (req == 201) {
                 //显示运算输入
                 document.getElementById("div_mathcode").style.display = "";
@@ -405,6 +407,23 @@ function sendVcode(mobile, mathcode) {
             }
         }
     });
+}
+
+function updateTimeLabel(time) {
+    var btn = $("#btn_send_vcode");
+    btn.val(time <= 0 ? "获取免费手机验证码" : ("" + (time) + "秒后点击重新发送"));
+    var hander = setInterval(function() {
+        if (time <= 0) {
+            clearInterval(hander);
+            hander = null;
+            btn.val("获取免费手机验证码");
+            btn.attr("disabled", false);
+        }
+        else {
+            btn.attr("disabled", true);
+            btn.val("" + (time--) + "秒后点击重新发送");
+        }
+    }, 1000);
 }
 
 function refresh_code() {

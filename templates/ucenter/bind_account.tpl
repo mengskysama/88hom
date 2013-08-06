@@ -84,14 +84,14 @@
 					    <td width="105" height="40" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机号：</td>
 					    <td height="40">
 		                   	<input id="userPhone" name="userPhone" type="text" class="sjh"  value=""/>
-                            <input name="btn_send_vcode" type="button" class="hq b0" id="btn_send_vcode" value="" onclick="return sendCertCode();"/>
+                            <input name="btn_send_vcode" type="button" class="yz r" id="btn_send_vcode" value="获取免费手机验证码" onclick="return sendCertCode();"/>
 		                </td>
 				  	</tr>
  					<tr>
   					    <td width="105" height="70" align="right" valign="middle" class="z14"><font class="red">*&nbsp;</font>手机验证码：</td>
    					    <td height="70">
                        	  <input id="phoneCert" name="phoneCert" type="text" class="sjyz"  value=""/>
-                            <span class="yzm z6">若1分钟后仍未收到验证码短信，<a href="javascript:void(0);" id="a_sendcode">请点此重发</a><br /> 若无法收到验证短信，请使用<a href="javascript:void(0);" onclick="radio_check('email')">电子邮箱注册</a></span>
+                            <span class="yzm z6">若无法收到验证短信，请使用<a href="javascript:void(0);" onclick="radio_check('email')">电子邮箱注册</a></span>
                         </td>
 		  			</tr>				  			
 					<tr>

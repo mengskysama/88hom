@@ -52,7 +52,8 @@
 					<option <!--{if $propKind == "zz" }--> selected="selected" <!--{/if}--> value="zz">住宅</option>
 			        <option <!--{if $propKind == "bs" }--> selected="selected" <!--{/if}--> value="bs">别墅</option>
 					<option <!--{if $propKind == "sp" }--> selected="selected" <!--{/if}--> value="sp">商铺</option>
-					<option <!--{if $propKind == "xzl" }--> selected="selected" <!--{/if}--> value="xzl">写字楼</option>     
+					<option <!--{if $propKind == "xzl" }--> selected="selected" <!--{/if}--> value="xzl">写字楼</option>  
+					<option <!--{if $propKind == "gc" }--> selected="selected" <!--{/if}--> value="gc">厂房</option>     
 			    </select></td>
 			  </tr>
 		  </table>
@@ -120,7 +121,7 @@
 			    <!--{/if}-->			    
 			     <a href="javascript:void(0);" onclick="deleteProp('<!--{$propList[prop].propKind}--><!--{$propList[prop].propId}-->')">删除</a><br />
 				 <!--{if $propList[prop].propState eq 1}-->
-			    	<a class="xx0" style="margin:8px 12px;">发布待审核</a>
+			    	<a class="xx0" style="margin:8px 12px;">审核中</a>
 			     <!--{elseif $propList[prop].propState eq 5}-->
 			    	<a href="javascript:void(0)" onclick="refreshProp('<!--{$propList[prop].propKind}-->','<!--{$propList[prop].propId}-->')" class="xx0" style="margin:8px 12px;">刷新</a>
 			     <!--{elseif $propList[prop].propState eq 0}-->

@@ -274,9 +274,9 @@ class HouseDAO  {
 	//搜索查询获取住宅出售列表信息
 	public function getHouseSellListForSearch($where='',$group='',$order='',$limit=''){
 		if($where!=''){
-			$where.=' AND h.houseSellRentType=1 AND (ud.userdetailState=2 OR ud.userdetailState IS NULL)';
+			$where.=' AND h.houseSellRentType=1 AND ud.userdetailState=2';
 		}else{
-			$where='WHERE h.houseSellRentType=1 AND (ud.userdetailState=2 OR ud.userdetailState IS NULL)';
+			$where='WHERE h.houseSellRentType=1 AND ud.userdetailState=2';
 		}
 		$sql="SELECT h.*,c.communityId,c.communityName,c.communityAddress,c.communityProvince,c.communityCity,
 			  c.communityDistrict,c.communityArea,u.userId,ud.userdetailName,i.imcpId,i.imcpShortName,p.picUrl,p.picThumb,p.picInfo 
@@ -284,8 +284,8 @@ class HouseDAO  {
 			  INNER JOIN ecms_community AS c ON h.houseCommunityId=c.communityId AND h.houseState=5 AND c.communityState=1 
 			  INNER JOIN ecms_user AS u ON h.houseUserId=u.userId AND u.userState=1 AND u.userType<>0 
 			  LEFT JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
-			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId 
-			  LEFT JOIN ecms_pic AS p ON p.picBuildId=h.houseId AND p.pictypeId=1 AND p.picBuildType=1 AND p.picSellRent=1 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=h.houseId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=1 AND p.picSellRent=1 
 			  $where 
 			  $group 
 			  $order 
@@ -295,16 +295,16 @@ class HouseDAO  {
 	//搜索查询获取住宅出售总数信息
 	public function getHouseSellCountForSearch($where='',$group=''){
 		if($where!=''){
-			$where.=' AND h.houseSellRentType=1 AND (ud.userdetailState=2 OR ud.userdetailState IS NULL)';
+			$where.=' AND h.houseSellRentType=1 AND ud.userdetailState=2';
 		}else{
-			$where='WHERE h.houseSellRentType=1 AND (ud.userdetailState=2 OR ud.userdetailState IS NULL)';
+			$where='WHERE h.houseSellRentType=1 AND ud.userdetailState=2';
 		}
 		$sql="SELECT COUNT(*) AS counts FROM (SELECT h.houseId FROM ecms_house AS h 
 			  INNER JOIN ecms_community AS c ON h.houseCommunityId=c.communityId AND h.houseState=5 AND c.communityState=1 
 			  INNER JOIN ecms_user AS u ON h.houseUserId=u.userId AND u.userState=1 AND u.userType<>0 
 			  LEFT JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
-			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId 
-			  LEFT JOIN ecms_pic AS p ON p.picBuildId=h.houseId AND p.pictypeId=1 AND p.picBuildType=1 AND p.picSellRent=1 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=h.houseId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=1 AND p.picSellRent=1 
 			  $where 
 			  $group) as tb_new";
 		return $this->db->getQueryValue($sql);
@@ -312,9 +312,9 @@ class HouseDAO  {
 	//搜索查询获取住宅出租列表信息
 	public function getHouseRentListForSearch($where='',$group='',$order='',$limit=''){
 		if($where!=''){
-			$where.=' AND h.houseSellRentType=2 AND (ud.userdetailState=2 OR ud.userdetailState IS NULL)';
+			$where.=' AND h.houseSellRentType=2 AND ud.userdetailState=2';
 		}else{
-			$where='WHERE h.houseSellRentType=2 AND (ud.userdetailState=2 OR ud.userdetailState IS NULL)';
+			$where='WHERE h.houseSellRentType=2 AND ud.userdetailState=2';
 		}
 		$sql="SELECT h.*,c.communityId,c.communityName,c.communityAddress,c.communityProvince,c.communityCity,
 			  c.communityDistrict,c.communityArea,u.userId,ud.userdetailName,i.imcpId,i.imcpShortName,p.picUrl,p.picThumb,p.picInfo 
@@ -322,8 +322,8 @@ class HouseDAO  {
 			  INNER JOIN ecms_community AS c ON h.houseCommunityId=c.communityId AND h.houseState=5 AND c.communityState=1 
 			  INNER JOIN ecms_user AS u ON h.houseUserId=u.userId AND u.userState=1 AND u.userType<>0 
 			  LEFT JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
-			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId 
-			  LEFT JOIN ecms_pic AS p ON p.picBuildId=h.houseId AND p.pictypeId=1 AND p.picBuildType=1 AND p.picSellRent=2 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=h.houseId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=1 AND p.picSellRent=2 
 			  $where 
 			  $group 
 			  $order 
@@ -333,19 +333,24 @@ class HouseDAO  {
 	//搜索查询获取住宅出租总数信息
 	public function getHouseRentCountForSearch($where='',$group=''){
 		if($where!=''){
-			$where.=' AND h.houseSellRentType=2 AND (ud.userdetailState=2 OR ud.userdetailState IS NULL)';
+			$where.=' AND h.houseSellRentType=2 AND ud.userdetailState=2';
 		}else{
-			$where='WHERE h.houseSellRentType=2 AND (ud.userdetailState=2 OR ud.userdetailState IS NULL)';
+			$where='WHERE h.houseSellRentType=2 AND ud.userdetailState=2';
 		}
 		$sql="SELECT COUNT(*) AS counts FROM (SELECT h.houseId FROM ecms_house AS h 
 			  INNER JOIN ecms_community AS c ON h.houseCommunityId=c.communityId AND h.houseState=5 AND c.communityState=1 
 			  INNER JOIN ecms_user AS u ON h.houseUserId=u.userId AND u.userState=1 AND u.userType<>0 
 			  LEFT JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
-			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId 
-			  LEFT JOIN ecms_pic AS p ON p.picBuildId=h.houseId AND p.pictypeId=1 AND p.picBuildType=1 AND p.picSellRent=2 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=h.houseId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=1 AND p.picSellRent=2 
 			  $where 
 			  $group) as tb_new";
 		return $this->db->getQueryValue($sql);
+	}
+	//点击统计
+	public function clickCount($id){
+		$sql="update ecms_house set houseClickCount=houseClickCount+1 where houseId=$id";
+		return $this->db->getQueryExecute($sql);
 	}
 	//end to be added by david
 }

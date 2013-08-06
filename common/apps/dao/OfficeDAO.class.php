@@ -92,7 +92,7 @@ class OfficeDAO{
 			$sql .= "officeIncludFee=".$info['officeIncludFee'].",";
 		} 
 		
-		if(isset($info['officeProFee'])){
+		if(isset($info['officeProFee']) && $info['officeProFee']>0){
 			$sql .= "officeProFee=".$info['officeProFee'].",";
 		} 
 		
@@ -151,5 +151,88 @@ class OfficeDAO{
 	public function getDetail(){
 		
 	}
+	//added by david 
+	//搜索查询获取写字楼出售列表信息
+	public function getOfficeSellListForSearch($where='',$group='',$order='',$limit=''){
+		if($where!=''){
+			$where.=' AND o.officeSellRentType=1 AND ud.userdetailState=2';
+		}else{
+			$where='WHERE o.officeSellRentType=1 AND ud.userdetailState=2';
+		}
+		$sql="SELECT o.*,c.communityId,c.communityName,c.communityAddress,c.communityProvince,c.communityCity,
+			  c.communityDistrict,c.communityArea,u.userId,ud.userdetailName,i.imcpId,i.imcpShortName,p.picUrl,p.picThumb,p.picInfo 
+			  FROM ecms_office AS o 
+			  INNER JOIN ecms_community AS c ON o.officeCommunityId=c.communityId AND o.officeState=5 AND c.communityState=1 
+			  INNER JOIN ecms_user AS u ON o.officeUserId=u.userId AND u.userState=1 AND u.userType<>0 
+			  LEFT JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=o.officeId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=3 AND p.picSellRent=1 
+			  $where 
+			  $group 
+			  $order 
+			  $limit";
+		return $this->db->getQueryArray($sql);
+	}
+	//搜索查询获取写字楼出售总数信息
+	public function getOfficeSellCountForSearch($where='',$group=''){
+		if($where!=''){
+			$where.=' AND o.officeSellRentType=1 AND ud.userdetailState=2';
+		}else{
+			$where='WHERE o.officeSellRentType=1 AND ud.userdetailState=2';
+		}
+		$sql="SELECT COUNT(*) AS counts FROM (SELECT o.officeId FROM ecms_office AS o 
+			  INNER JOIN ecms_community AS c ON o.officeCommunityId=c.communityId AND o.officeState=5 AND c.communityState=1 
+			  INNER JOIN ecms_user AS u ON o.officeUserId=u.userId AND u.userState=1 AND u.userType<>0 
+			  LEFT JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=o.officeId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=3 AND p.picSellRent=1 
+			  $where 
+			  $group) as tb_new";
+		return $this->db->getQueryValue($sql);
+	}
+	//搜索查询获取写字楼出租列表信息
+	public function getOfficeRentListForSearch($where='',$group='',$order='',$limit=''){
+		if($where!=''){
+			$where.=' AND o.officeSellRentType=2 AND ud.userdetailState=2';
+		}else{
+			$where='WHERE o.officeSellRentType=2 AND ud.userdetailState=2';
+		}
+		$sql="SELECT o.*,c.communityId,c.communityName,c.communityAddress,c.communityProvince,c.communityCity,
+			  c.communityDistrict,c.communityArea,u.userId,ud.userdetailName,i.imcpId,i.imcpShortName,p.picUrl,p.picThumb,p.picInfo 
+			  FROM ecms_office AS o 
+			  INNER JOIN ecms_community AS c ON o.officeCommunityId=c.communityId AND o.officeState=5 AND c.communityState=1 
+			  INNER JOIN ecms_user AS u ON o.officeUserId=u.userId AND u.userState=1 AND u.userType<>0 
+			  LEFT JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=o.officeId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=3 AND p.picSellRent=2 
+			  $where 
+			  $group 
+			  $order 
+			  $limit";
+		return $this->db->getQueryArray($sql);
+	}
+	//搜索查询获取写字楼出租总数信息
+	public function getOfficeRentCountForSearch($where='',$group=''){
+		if($where!=''){
+			$where.=' AND o.officeSellRentType=2 AND ud.userdetailState=2';
+		}else{
+			$where='WHERE o.officeSellRentType=2 AND ud.userdetailState=2';
+		}
+		$sql="SELECT COUNT(*) AS counts FROM (SELECT o.officeId FROM ecms_office AS o 
+			  INNER JOIN ecms_community AS c ON o.officeCommunityId=c.communityId AND o.officeState=5 AND c.communityState=1 
+			  INNER JOIN ecms_user AS u ON o.officeUserId=u.userId AND u.userState=1 AND u.userType<>0 
+			  LEFT JOIN ecms_user_detail AS ud ON u.userId=ud.userId 
+			  LEFT JOIN ecms_imcp AS i ON ud.imcpId=i.imcpId AND i.imcpState=1 
+			  LEFT JOIN ecms_pic AS p ON p.picBuildId=o.officeId AND p.picState=1 AND p.pictypeId=1 AND p.picBuildType=3 AND p.picSellRent=2 
+			  $where 
+			  $group) as tb_new";
+		return $this->db->getQueryValue($sql);
+	}
+	//点击统计
+	public function clickCount($id){
+		$sql="update ecms_office set officeClickCount=officeClickCount+1 where officeId=$id";
+		return $this->db->getQueryExecute($sql);
+	}
+	//end to be added by david
 }
 ?>

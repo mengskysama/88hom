@@ -79,20 +79,20 @@ class AuditDAO{
 	}
 	//住宅房源发布审核操作
 	public function getHouseList($where='',$order='',$limit=''){
-		$sql="select h.*,c.communityProvince,c.communityCity,c.communityDistrict,c.communityArea 
+		$sql="select h.*,u.*,c.communityProvince,c.communityCity,c.communityDistrict,c.communityArea 
 			  from ecms_house as h 
 			  inner join ecms_community as c on h.houseCommunityId=c.communityId 
+			  inner join ecms_user as u on h.houseUserId=u.userId and u.userState=1 and u.userType!=0 
 			  $where 
 			  $order 
 			  $limit";
-//		echo $sql;
-//		exit;
 		return $this->db->getQueryArray($sql);
 	}
 	public function countHouse($where){
 		$sql="select count(*) as counts 
 			  from ecms_house as h 
 			  inner join ecms_community as c on h.houseCommunityId=c.communityId 
+			  inner join ecms_user as u on h.houseUserId=u.userId and u.userState=1 and u.userType!=0 
 			  $where";
 		return $this->db->getQueryValue($sql);
 	}
@@ -101,28 +101,29 @@ class AuditDAO{
 		return $this->db->getQueryExecute($sql);
 	}
 	public function getHouseDetail($where=''){
-		$sql="select h.*,c.* 
+		$sql="select h.*,u.*,c.* 
 			  from ecms_house as h 
 			  inner join ecms_community as c on h.houseCommunityId=c.communityId 
+			  inner join ecms_user as u on h.houseUserId=u.userId and u.userState=1 and u.userType!=0 
 			  $where";
 		return $this->db->getQueryValue($sql);
 	}
 	//商铺房源发布审核操作
 	public function getShopsList($where='',$order='',$limit=''){
-		$sql="select s.*,c.communityProvince,c.communityCity,c.communityDistrict,c.communityArea 
+		$sql="select s.*,u.*,c.communityProvince,c.communityCity,c.communityDistrict,c.communityArea 
 			  from ecms_shops as s 
 			  inner join ecms_community as c on s.shopsCommunityId=c.communityId 
+			  inner join ecms_user as u on s.shopsUserId=u.userId and u.userState=1 and u.userType!=0 
 			  $where 
 			  $order 
 			  $limit";
-//		echo $sql;
-//		exit;
 		return $this->db->getQueryArray($sql);
 	}
 	public function countShops($where){
 		$sql="select count(*) as counts 
 			  from ecms_shops as s 
 			  inner join ecms_community as c on s.shopsCommunityId=c.communityId 
+			  inner join ecms_user as u on s.shopsUserId=u.userId and u.userState=1 and u.userType!=0 
 			  $where";
 		return $this->db->getQueryValue($sql);
 	}
@@ -131,17 +132,19 @@ class AuditDAO{
 		return $this->db->getQueryExecute($sql);
 	}
 	public function getShopsDetail($where=''){
-		$sql="select s.*,c.* 
+		$sql="select s.*,u.*,c.* 
 			  from ecms_shops as s 
 			  inner join ecms_community as c on s.shopsCommunityId=c.communityId 
+			  inner join ecms_user as u on s.shopsUserId=u.userId and u.userState=1 and u.userType!=0 
 			  $where";
 		return $this->db->getQueryValue($sql);
 	}
 	//写字楼房源发布审核操作
 	public function getOfficeList($where='',$order='',$limit=''){
-		$sql="select o.*,c.communityProvince,c.communityCity,c.communityDistrict,c.communityArea 
+		$sql="select o.*,u.*,c.communityProvince,c.communityCity,c.communityDistrict,c.communityArea 
 			  from ecms_office as o 
 			  inner join ecms_community as c on o.officeCommunityId=c.communityId 
+			  inner join ecms_user as u on o.officeUserId=u.userId and u.userState=1 and u.userType!=0 
 			  $where 
 			  $order 
 			  $limit";
@@ -151,6 +154,7 @@ class AuditDAO{
 		$sql="select count(*) as counts 
 			  from ecms_office as o 
 			  inner join ecms_community as c on o.officeCommunityId=c.communityId 
+			  inner join ecms_user as u on o.officeUserId=u.userId and u.userState=1 and u.userType!=0 
 			  $where";
 		return $this->db->getQueryValue($sql);
 	}
@@ -159,17 +163,19 @@ class AuditDAO{
 		return $this->db->getQueryExecute($sql);
 	}
 	public function getOfficeDetail($where=''){
-		$sql="select o.*,c.* 
+		$sql="select o.*,u.*,c.* 
 			  from ecms_office as o 
 			  inner join ecms_community as c on o.officeCommunityId=c.communityId 
+			  inner join ecms_user as u on o.officeUserId=u.userId and u.userState=1 and u.userType!=0 
 			  $where";
 		return $this->db->getQueryValue($sql);
 	}
 	//别墅房源发布审核操作
 	public function getVillaList($where='',$order='',$limit=''){
-		$sql="select v.*,c.communityProvince,c.communityCity,c.communityDistrict,c.communityArea 
+		$sql="select v.*,u.*,c.communityProvince,c.communityCity,c.communityDistrict,c.communityArea 
 			  from ecms_villa as v 
 			  inner join ecms_community as c on v.villaCommunityId=c.communityId 
+			  inner join ecms_user as u on v.villaUserId=u.userId and u.userState=1 and u.userType!=0 
 			  $where 
 			  $order 
 			  $limit";
@@ -179,6 +185,7 @@ class AuditDAO{
 		$sql="select count(*) as counts 
 			  from ecms_villa as v 
 			  inner join ecms_community as c on v.villaCommunityId=c.communityId 
+			  inner join ecms_user as u on v.villaUserId=u.userId and u.userState=1 and u.userType!=0 
 			  $where";
 		return $this->db->getQueryValue($sql);
 	}
@@ -187,30 +194,40 @@ class AuditDAO{
 		return $this->db->getQueryExecute($sql);
 	}
 	public function getVillaDetail($where=''){
-		$sql="select v.*,c.* 
-			  from ecms_villa as o 
+		$sql="select v.*,u.*,c.* 
+			  from ecms_villa as v 
 			  inner join ecms_community as c on v.villaCommunityId=c.communityId 
+			  inner join ecms_user as u on v.villaUserId=u.userId and u.userState=1 and u.userType!=0 
 			  $where";
 		return $this->db->getQueryValue($sql);
 	}
 	//厂房房源发布审核操作
 	public function getFactoryList($where='',$order='',$limit=''){
-		$sql="select f.*,c.communityProvince,c.communityCity,c.communityDistrict,c.communityArea 
+		$sql="select * 
 			  from ecms_factory as f 
-			  inner join ecms_community as c on f.villaCommunityId=c.communityId 
+			  inner join ecms_user as u on f.factoryUserId=u.userId and u.userState=1 and u.userType!=0 
 			  $where 
 			  $order 
 			  $limit";
 		return $this->db->getQueryArray($sql);
 	}
 	public function countFactory($where){
-		$sql="select count(*) as counts from ecms_factory 
+		$sql="select count(*) as counts 
+			  from ecms_factory as f 
+			  inner join ecms_user as u on f.factoryUserId=u.userId and u.userState=1 and u.userType!=0 
 			  $where";
 		return $this->db->getQueryValue($sql);
 	}
-	public function changeFactoryState($state,$fId){
-		$sql="update ecms_factory set factoryState=$state where factoryId=$fId";
+	public function changeFactoryState($state,$bId){
+		$sql="update ecms_factory set factoryState=$state where factoryId=$bId";
 		return $this->db->getQueryExecute($sql);
+	}
+	public function getFactoryDetail($where=''){
+		$sql="select *  
+			  from ecms_factory as f 
+			  inner join ecms_user as u on f.factoryUserId=u.userId and u.userState=1 and u.userType!=0 
+			  $where";
+		return $this->db->getQueryValue($sql);
 	}
 }
 ?>

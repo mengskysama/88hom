@@ -275,12 +275,12 @@ function ShowNone(obj) {
 
 function updateTimeLabel(time) {
     var btn = $("#vcode");
-    btn.val(time <= 0 ? "获取手机验证码" : ("" + (time) + "秒后点击重新发送"));
+    btn.val(time <= 0 ? "获取免费手机验证码" : ("" + (time) + "秒后点击重新发送"));
     var hander = setInterval(function() {
         if (time <= 0) {
             clearInterval(hander);
             hander = null;
-            btn.val("获取手机验证码");
+            btn.val("获取免费手机验证码");
             btn.attr("disabled", false);
         }
         else {

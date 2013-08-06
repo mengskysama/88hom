@@ -1,16 +1,66 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.8, created on 2013-08-03 11:08:50
+         compiled from "E:/workplace/phpprojects/88hom/templates\ucenter\agent_lease_sp.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:2113651fc7442b8e141-83081238%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '27d6c448d671b467caecf25548520d7e470fe754' => 
+    array (
+      0 => 'E:/workplace/phpprojects/88hom/templates\\ucenter\\agent_lease_sp.tpl',
+      1 => 1375497326,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '2113651fc7442b8e141-83081238',
+  'function' => 
+  array (
+  ),
+  'variables' => 
+  array (
+    'cfg' => 0,
+    'jsFiles' => 0,
+    'cssFiles' => 0,
+    'picTypeList' => 0,
+    'key' => 0,
+    'timestamp' => 0,
+    'token' => 0,
+    'restLivePropsCount' => 0,
+    'FCKeditor' => 0,
+    'item' => 0,
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_51fc7442d2e086_52724658',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_51fc7442d2e086_52724658')) {function content_51fc7442d2e086_52724658($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<!--{$cfg.web_charset}-->" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_charset'];?>
+" />
 <title>录入商铺出租房源</title>
-<!--{$jsFiles}-->
-<!--{$cssFiles}-->
+<?php echo $_smarty_tpl->tpl_vars['jsFiles']->value;?>
+
+<?php echo $_smarty_tpl->tpl_vars['cssFiles']->value;?>
+
 <script>
 $(function() {    
 
-	<!--{foreach from=$picTypeList item=item key=key}-->
-    initPicUp3(<!--{$key}-->,'<!--{$timestamp}-->','<!--{$token}-->','<!--{$cfg.file_path_upload}-->','<!--{$cfg.web_path}-->','<!--{$cfg.web_common}-->','<!--{$cfg.web_url}-->');
-	<!--{/foreach}-->
+	<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+    initPicUp3(<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+,'<?php echo $_smarty_tpl->tpl_vars['timestamp']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['token']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['file_path_upload'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_path'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_common'];?>
+','<?php echo $_smarty_tpl->tpl_vars['cfg']->value['web_url'];?>
+');
+	<?php } ?>
 	
     $("#btn_live").click(function() {
         $("#btn_live").attr("disabled", true);
@@ -55,7 +105,7 @@ function check(){
 	var val = $('input:radio[name="shopsTransfer"]:checked').val();
     if (val == 1 && !checkShopsTransferFee('shopsTransferFee')) {
         return false;
-    }    
+    }
     if(!checkShopsPayment()) return false;
 	
 	if(!CheckBuildingArea('shopsBuildArea',true)) return false;
@@ -149,22 +199,26 @@ function checkRentPrice(){
 
 <body>
 <!--求购头部-->
-<!--{include file="$header_ucenter_user"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_agent_header']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 <!--求购内容-->
 <div class="qg_main">
-	<!--{include file="$ucenter_user_left_menu"}-->
+	<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['ucenter_agent_left_menu']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
   	<div class="qg_r">
     <p>你的位置: <a href="#">房源管理</a></p>
    	<div class="qg_bs">
             <form id="spForm" name="spForm" action="property_handler.php" method="post" enctype="multipart/form-data">
  		   <ul>
-   			 	<li><a href="user_lease_zz.php">录入住宅出租房源</a></li>
-    		    <li><a href="user_lease_bs.php">录入别墅出租房源</a></li>
-     		    <li><a href="user_lease_sp.php">录入商铺出租房源</a></li>
-      		 	<li><a href="user_lease_xzl.php">录入写字楼出租房源</a></li>
+   			 	<li><a href="agent_lease_zz.php">录入住宅出租房源</a></li>
+    		    <li><a href="agent_lease_bs.php">录入别墅出租房源</a></li>
+     		    <li><a href="agent_lease_sp.php">录入商铺出租房源</a></li>
+      		 	<li><a href="agent_lease_xzl.php">录入写字楼出租房源</a></li>
+       		    <li><a href="agent_lease_cf.php">录入厂房出租房源</a></li>
    		  </ul>
           <div class="bs_tx">
-            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> <!--{$restLivePropsCount}--></font> 条</span></p>
+            <p><b>基本资料</b><span class="r"><font class="red">*</font> 为必填 | 还可发布<font class="red"> <?php echo $_smarty_tpl->tpl_vars['restLivePropsCount']->value;?>
+</font> 条</span></p>
             <input type="hidden" name="prop_type" value="sp">
             <input type="hidden" name="prop_tx_type" value="2">
             <table width="90%" border="0" cellspacing="1" cellpadding="0" bordercolor="#FFFFFF">
@@ -201,7 +255,7 @@ function checkRentPrice(){
         <label><input id="" name="shopsRentState" type="radio" value="3" /> 新铺</label></td>
   </tr>
   <tr>
-    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>  租    金</td>
+    <td width="120" height="36" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font> 租    金</td>
     <td align="left" valign="middle" class="p25 grzc_33"><input id="shopsRentPrice" name="shopsRentPrice" type="text" />
     <label><input id="" name="shopsRentPriceUnit" type="radio" onclick="checkPrice('30',false)" value="1" />元/平米·天</label>
     <label><input id="" name="shopsRentPriceUnit" type="radio" onclick="checkPrice('900',false)" value="2" />元/平米·月</label>
@@ -316,7 +370,8 @@ function checkRentPrice(){
 			  </tr>
 			  <tr>
 			    <td width="120" align="center" valign="middle" bgcolor="#f7f6f1"><font class="red">*</font>房源描述</td>
-			    <td colspan="2" align="left" valign="middle" ><!--{$FCKeditor}-->
+			    <td colspan="2" align="left" valign="middle" ><?php echo $_smarty_tpl->tpl_vars['FCKeditor']->value;?>
+
 				<span>可详细描述该房源特点，请勿填写联系方式或与房源无关信息以及图片、链接、FLASH等。<br />
 			请勿从其它网站或其它房源描述中拷贝。</span>
 			    	
@@ -335,17 +390,27 @@ function checkRentPrice(){
 			         <span style="border-bottom:none">如学校、商场、酒店、写字楼、医院、邮局、银行、餐饮等配套信息</span>
 			    </td>
 			  </tr>
-				<!--{foreach from=$picTypeList item=item key=key}-->
-				<tr><td height="220" align="center" valign="middle" bgcolor="#f7f6f1"><!--{$item}--></td>
+				<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['picTypeList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+				<tr><td height="220" align="center" valign="middle" bgcolor="#f7f6f1"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</td>
 		         <td height="215" align="left" valign="top" class="p25">
 		         	<div class="sc_btn">
-		                <input type="file" name="file_upload_<!--{$key}-->" id="file_upload_<!--{$key}-->"/>
+		                <input type="file" name="file_upload_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" id="file_upload_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"/>
 		            </div>
-		            <div class="tpsc" id="showImg_<!--{$key}-->">
+		            <div class="tpsc" id="showImg_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+">
 		            </div>
 				 </td>
 				</tr> 
-				<!--{/foreach}-->
+				<?php } ?>
 		      
 		       <tr>
 			    <td height="124" align="center" valign="middle" bgcolor="#f7f6f1">标题图</td>
@@ -370,6 +435,8 @@ function checkRentPrice(){
     </div>
 
 <!--求购底部-->
-<!--{include file="$footer"}-->
+<?php echo $_smarty_tpl->getSubTemplate (($_smarty_tpl->tpl_vars['footer']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 </body>
 </html>
+<?php }} ?>
